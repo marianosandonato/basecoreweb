@@ -4,6 +4,44 @@ Migración de [basecoresales.com](https://basecoresales.com/) (WordPress + Eleme
 
 Todo el contenido es estático y vive en el código (`src/content/` y las páginas de `src/app/`). No hay base de datos.
 
+## Cómo funciona esto: GitHub y Vercel
+
+El sitio usa dos servicios, y cada uno cumple un rol distinto.
+
+**GitHub — es donde vive el código.**
+Funciona como un Google Drive del proyecto, pero pensado para programadores: guarda todos los
+archivos y, además, el historial completo de cambios. Se puede ver quién cambió qué, cuándo, y
+volver atrás si algo se rompe. El repositorio es
+[github.com/marianosandonato/basecoreweb](https://github.com/marianosandonato/basecoreweb).
+GitHub **no** publica el sitio: nadie que entre a basecoresales.com está viendo GitHub.
+
+**Vercel — es donde vive el sitio publicado.**
+Es el servidor que atiende a los visitantes. Vercel está conectado al repositorio de GitHub y
+vigila los cambios: cada vez que se sube código a la rama `master`, Vercel lo compila solo y
+publica la versión nueva en unos minutos. No hay que subir archivos a mano ni tocar un FTP.
+El sitio en vivo es [basecoresales.com](https://basecoresales.com/).
+
+El flujo completo, entonces, es:
+
+```
+editás el código  →  se sube a GitHub  →  Vercel lo detecta, compila y publica
+   (tu máquina)         (el archivo)          (lo que ve el visitante)
+```
+
+Dos consecuencias prácticas de esto:
+
+- **Para cambiar un texto o una imagen del sitio no se entra a Vercel**, se cambia el código y se
+  sube a GitHub. Vercel se encarga del resto.
+- **Las claves secretas no van en GitHub.** Cosas como la API key de Resend (el servicio de email
+  del formulario) se cargan dentro del panel de Vercel, en *Settings → Environment Variables*.
+  Eso mantiene el repositorio público sin credenciales adentro.
+
+Si mandás cambios en una rama distinta de `master`, Vercel genera además una **preview**: una URL
+temporal con esa versión, para revisarla antes de que llegue al sitio real.
+
+Las instrucciones paso a paso de configuración están más abajo, en
+[Deploy en Vercel](#deploy-en-vercel-plan-gratuito).
+
 ## Desarrollo local
 
 ```bash
