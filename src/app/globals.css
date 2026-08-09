@@ -1,0 +1,422 @@
+@import "tailwindcss";
+
+/*
+ * Values mirror the WordPress original (see documentation/PLAN.md for the source of each one):
+ * - palette   -> elementor kit post-22.css
+ * - type      -> live computed styles on basecoresales.com
+ * - container -> .elementor-section-boxed > .elementor-container { max-width:1200px }
+ */
+@theme {
+  --color-primary: #0787d9;
+  --color-primary-dark: #056cb0;
+  --color-navy: #00294b;
+  --color-navy-deep: #01294b;
+  --color-body: #7a838b;
+  --color-heading: #1b1f2e;
+  --color-soft: #edf3f6;
+  --color-line: #c9d5db;
+  --color-muted: #d2dce5;
+  --color-whatsapp: #25d366;
+
+  --font-heading: var(--font-gilmer), sans-serif;
+  --font-sans: var(--font-dm-sans), sans-serif;
+  --font-body: var(--font-dm-sans), sans-serif;
+  --font-montserrat: var(--font-montserrat), sans-serif;
+  --font-sora: var(--font-sora), sans-serif;
+  --font-signature: var(--font-signature), cursive;
+
+  /*
+   * Elementor's only breakpoints are 767 / 1024 / 1200: desktop is >=1025px,
+   * tablet 768-1024, mobile <=767. Tailwind's `md` (>=768) is exactly the
+   * tablet floor, so it is the correct stack/unstack boundary — but `lg`
+   * (>=1024) fires one pixel before Elementor's desktop, so it can never
+   * express "desktop only". Hence `dt`.
+   *
+   * Rule of thumb in layout code: `md:` = tablet and up, `dt:` = desktop only.
+   *
+   * Declared in rem, not px: Tailwind's own breakpoints are rem, and it emits
+   * a px-valued custom breakpoint *before* the rem ones regardless of size — so
+   * `--breakpoint-dt: 1025px` put the dt block above md in the stylesheet and
+   * `md:` silently beat `dt:` at desktop. 64.0625rem == 1025px.
+   */
+  --breakpoint-dt: 64.0625rem;
+}
+
+/*
+ * Everything below is layered. Tailwind v4 registers `theme, base, components,
+ * utilities` — unlayered rules would beat ALL of them regardless of specificity,
+ * so element defaults go in `base` and our widget classes in `components`, which
+ * keeps plain utilities (text-white, text-[44px], ...) able to override them.
+ */
+@layer base {
+  body {
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--color-body);
+    background: #ffffff;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    color: var(--color-heading);
+  }
+}
+
+@layer components {
+  /* Elementor boxed container: 1200px outer, 15px column padding => 1170px content. */
+  .container-bc {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 15px;
+  }
+
+  /* Two /marketing sections (#dc71230, #3df3f2d) widen the container to 1400. */
+  .container-bc-wide {
+    width: 100%;
+    max-width: 1400px;
+    margin-inline: auto;
+    padding-inline: 15px;
+  }
+
+/* ---------------------------------------------------------------------------
+ * gsc-heading (theme heading widget)
+ * ------------------------------------------------------------------------ */
+
+/* Two 13x2px primary dashes above the eyebrow. */
+.heading-line {
+  line-height: 1px;
+  margin-bottom: 10px;
+}
+
+.heading-line span {
+  display: inline-block;
+  width: 13px;
+  height: 2px;
+  background: var(--color-primary);
+}
+
+.heading-line span + span {
+  margin-left: 5px;
+}
+
+/* .gsc-heading.auto-responsive.style-1 .title */
+.heading-title {
+  font-size: 45px;
+  line-height: 1.3;
+}
+
+@media (max-width: 1024.98px) {
+  .heading-title {
+    font-size: 39px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .heading-title {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .heading-title {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .heading-title {
+    font-size: 28px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Elementor flip-box, "zoom in" effect (widget-flip-box.min.css)
+ * ------------------------------------------------------------------------ */
+.flip-box {
+  position: relative;
+  height: 375px;
+}
+
+.flip-box__layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* The two effects are mutually exclusive, so each is scoped explicitly rather
+   than left to win a specificity tie against the other. */
+.flip-box:not(.flip-box--slide-up) .flip-box__back {
+  opacity: 0;
+  transform: scale(0.7);
+  transition:
+    transform 0.7s,
+    opacity 0.5s 0.2s;
+}
+
+.flip-box:not(.flip-box--slide-up):hover .flip-box__back,
+.flip-box:not(.flip-box--slide-up):focus-within .flip-box__back {
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    transform 0.7s,
+    opacity 0.5s;
+}
+
+/* "slide" effect, direction "up" (/marketing #fd651a4, #e8a47dc). The back
+   layer slides in from below and the front stays put; `push` would move the
+   front too, but this page uses `slide`. */
+.flip-box--slide-up {
+  overflow: hidden;
+}
+
+.flip-box--slide-up .flip-box__back {
+  opacity: 1;
+  transform: translateY(100%);
+  transition: transform 0.6s ease-in-out;
+}
+
+.flip-box--slide-up:hover .flip-box__back,
+.flip-box--slide-up:focus-within .flip-box__back {
+  transform: translateY(0);
+}
+
+/* ---------------------------------------------------------------------------
+ * service-item.style-2 (Ciclos de Venta cards)
+ * ------------------------------------------------------------------------ */
+.service-card .service-card-hover {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.35s 0.1s;
+}
+
+.service-card:hover .service-card-hover,
+.service-card:focus-within .service-card-hover {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ---------------------------------------------------------------------------
+ * Hero (Revolution Slider equivalent)
+ *
+ * Slider breakpoints are rl:[1240,1024,778,480] with module heights
+ * el:[880,620,550,350]. Each layer is positioned by `yo`, which Rev Slider
+ * applies as the offset of the LAYER'S CENTRE from the module's centre —
+ * verified against the live DOM on all three layers.
+ *
+ *          yo (title / tagline / button)   font-size    line-height
+ *  >=1240        -17 / 117 / 225           70 / 43 / 16   74 / 28 / 60
+ *  >=1024        -56 /  72 / 146           82 / 20 / 14   88 / 24 / 52
+ *  >= 778        -44 /  54 / 125           60 / 20 / 14   64 / 26 / 50
+ *   < 778        -57 /  16 /  75           38 / 20 / 14   45 / 20 / 40
+ * ------------------------------------------------------------------------ */
+
+/* Below the slider's 480px breakpoint Rev Slider scales the module height with
+   the viewport rather than holding 350px: measured 284 at 390, i.e. 350 x
+   (390/480). 350/480 = 0.729167. */
+.hero {
+  height: min(350px, 72.9167vw);
+}
+
+/* Positioning lives on the wrapper so the entrance animations, which also use
+   `transform`, can own the child element outright. */
+.hero-layer {
+  position: absolute;
+  left: 15px; /* data-xy="xo:15px" */
+  transform: translateY(-50%);
+}
+
+.hero-title-layer {
+  top: calc(50% - 57px);
+}
+
+.hero-tagline-layer {
+  top: calc(50% + 16px);
+}
+
+.hero-button-layer {
+  top: calc(50% + 75px);
+}
+
+.hero-title {
+  font-size: 38px;
+  line-height: 45px;
+}
+
+.hero-tagline {
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.hero-button {
+  font-size: 14px;
+  line-height: 40px;
+  padding-inline: 15px;
+}
+
+/* 768, not 778: Elementor's tablet floor. At 778 the hero stayed 350px for the
+   whole 768-777 band where the original is already ~543. */
+@media (min-width: 768px) {
+  .hero {
+    height: 550px;
+  }
+  .hero-title-layer {
+    top: calc(50% - 44px);
+  }
+  .hero-tagline-layer {
+    top: calc(50% + 54px);
+  }
+  .hero-button-layer {
+    top: calc(50% + 125px);
+  }
+  .hero-title {
+    font-size: 60px;
+    line-height: 64px;
+  }
+  .hero-tagline {
+    line-height: 26px;
+  }
+  .hero-button {
+    line-height: 50px;
+    padding-inline: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    height: 620px;
+  }
+  .hero-title-layer {
+    top: calc(50% - 56px);
+  }
+  .hero-tagline-layer {
+    top: calc(50% + 72px);
+  }
+  .hero-button-layer {
+    top: calc(50% + 146px);
+  }
+  .hero-title {
+    font-size: 82px;
+    line-height: 88px;
+  }
+  .hero-tagline {
+    line-height: 24px;
+  }
+  .hero-button {
+    line-height: 52px;
+    padding-inline: 31px;
+  }
+}
+
+@media (min-width: 1240px) {
+  .hero {
+    height: 880px;
+  }
+  .hero-title-layer {
+    top: calc(50% - 17px);
+  }
+  .hero-tagline-layer {
+    top: calc(50% + 117px);
+  }
+  .hero-button-layer {
+    top: calc(50% + 225px);
+  }
+  .hero-title {
+    font-size: 70px;
+    line-height: 74px;
+  }
+  .hero-tagline {
+    font-size: 43px;
+    line-height: 28px;
+  }
+  .hero-button {
+    font-size: 16px;
+    line-height: 60px;
+    padding-inline: 35px;
+  }
+}
+
+
+/* data-panzoom="d:10000;ss:100;se:110%" */
+@keyframes hero-panzoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+.animate-hero-panzoom {
+  animation: hero-panzoom 10s ease-out both;
+}
+
+/* H1: data-frame_0="sX:0.9;sY:0.9" -> scales up, starts at 850ms */
+@keyframes hero-zoom-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Tagline: data-frame_0="y:50" -> rises, starts at 1480ms */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Button: data-frame_0="x:-100%" + mask -> wipes in from the left at 1960ms */
+@keyframes hero-wipe-left {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-hero-title {
+  animation: hero-zoom-in 1s ease 0.85s both;
+}
+
+.animate-hero-tagline {
+  animation: hero-rise 1s ease 1.48s both;
+}
+
+.animate-hero-button {
+  animation: hero-wipe-left 1s ease 1.96s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-panzoom,
+  .animate-hero-title,
+  .animate-hero-tagline,
+  .animate-hero-button {
+    animation: none;
+  }
+
+  .flip-box__back,
+  .service-card .service-card-hover {
+    transition: none;
+  }
+}
+}

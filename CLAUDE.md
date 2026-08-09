@@ -1,0 +1,1 @@
+@documentation/AGENTS.md

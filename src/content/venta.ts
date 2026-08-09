@@ -1,0 +1,151 @@
+import { EstrategiaIcon, VentaIcon } from "@/components/cycleIcons";
+import { VENTA_GRID } from "./flipGrids";
+import type { ServicePageData } from "./types";
+
+export const venta: ServicePageData = {
+  slug: "venta",
+  breadcrumb: "Venta",
+  hero: {
+    title: ["¿Buscas mejorar", "tus procesos de venta?"],
+    lines: [
+      "Define un plan estratégico.",
+      "Profesionalizamos a tu equipo comercial.",
+    ],
+    image: "/images/sales-base-core-sales.jpg",
+  },
+  etapas: {
+    eyebrow: "MENTORING COMERCIAL",
+    grid: VENTA_GRID,
+    spacerTop: 80,
+    cards: [
+      {
+        title: "Diagnóstico de situación actual",
+        image: "/images/Base-Core-Consultoria-Comercial-y-Marketing-Diagnostico-de-situacion-actual.jpg",
+        items: [
+          "Relevamiento",
+          "Entrevistas a equipos",
+          "Presentación de diagnóstico",
+          "Oportunidades de mejora",
+        ],
+      },
+      {
+        title: "Modelo comercial",
+        image: "/images/Base-Core-Consultoria-Comercial-y-Marketing-modelo-comercial.jpg",
+        items: [
+          "Esquema de actuación",
+          "Orden de prioridades",
+          "Tipo de venta",
+          "Metodología",
+        ],
+      },
+      {
+        title: "Pipeline & Funnel",
+        image: "/images/Base-Core-Consultoria-Comercial-y-Marketing-Pipeline-Y-Funnel.jpg",
+        items: [
+          "Definición de las etapas del pipeline",
+          "Temporalidades",
+          "Requisitos obligatorios",
+          "Tasas de conversión del funnel",
+        ],
+      },
+      {
+        title: "Metas y Objetivos",
+        image: "/images/Base-Core-Consultoria-Comercial-y-Marketing-METAS-Y-OBJETIVOS.jpg",
+        items: [
+          "Resultado esperado",
+          "Meta general",
+          "Objetivos de resultado y gestión",
+          "Meta por vendedor",
+          "Venta Nueva - Up & Cross Sell - Recurrencia",
+        ],
+      },
+      {
+        title: "KPI’s",
+        image: "/images/Base-Core-Consultoria-Comercial-y-Marketing-KPI.jpg",
+        items: [
+          "Definición de indicadores relevantes",
+          "Medición de variables y resultados",
+          "Toma de decisiones estratégicas",
+        ],
+      },
+      {
+        title: "Forecast",
+        image: "/images/Base-Core-Consultoria-Comercial-y-Marketing-FORECAST.jpg",
+        items: [
+          "Previsión de demanda",
+          "Datos históricos de venta",
+          "Gasto promedio por cliente",
+          "Análisis de tendencias y competencia",
+          "Estimación de ventas y marketing",
+          "Datos de mercado",
+        ],
+      },
+      {
+        title: "Modelos de inducción y supervisión",
+        image: "/images/Base-Core-Consultoria-Comercial-y-Marketing-Modelos-de-induccion-y-supervision.jpg",
+        items: [
+          "Modelo de formación a vendedores",
+          "Auditoría de llamados",
+          "Habilidades duras y blandas",
+          "Modelo de supervisión",
+          "Coaching - Sprint",
+          "Temarios de reunión y seguimiento",
+        ],
+      },
+      {
+        title: "Esquemas de compensación",
+        image: "/images/Base-Core-Consultoria-Comercial-y-Marketing-Esquemas-de-compensacion.jpg",
+        items: [
+          "Remuneración fija y variable",
+          "Sistema de comisiones según objetivos",
+          "Premios - Bonos - Aceleradores",
+          "Esquema de beneficios",
+          "Simulador para liquidación de haberes",
+        ],
+      },
+      {
+        title: "Implementación CRM",
+        image: "/images/Base-Core-Consultoria-Comercial-y-Marketing-Implementacion-CRM.jpg",
+        items: [
+          "Base de datos para prospección",
+          "Procesos de preventa y venta",
+          "Acciones, tareas y seguimiento",
+          "Presupuestos",
+          "Reportes y paneles",
+        ],
+      },
+    ],
+  },
+  recruiting: {
+    title: "Conformamos un equipo de ventas sólido y profesional",
+    items: [
+      "Descripciones de puesto",
+      "Fuentes de reclutamiento",
+      "Direccionamiento de entrevistas",
+      "Presentación de candidatos",
+    ],
+  },
+  puestos: {
+    eyebrow: "ESTRUCTURA COMERCIAL VENTAS",
+    paddingTop: 90,
+    cards: [
+      {
+        title: "Cerradores",
+        icon: EstrategiaIcon,
+        image: "/images/cerradores-basecoresales.jpg",
+        roles: ["Sales Executive", "Inside Sales Rep", "Account Executive"],
+      },
+      {
+        title: "Nuevos Negocios",
+        icon: VentaIcon,
+        image: "/images/nuevos-negocios-base-core-sales.jpg",
+        roles: ["Business Development Manager"],
+      },
+    ],
+  },
+  nextCycle: {
+    label: "VER FUNNEL POSVENTA",
+    href: "/posventa",
+  },
+  contactTitleAs: "h2",
+};
