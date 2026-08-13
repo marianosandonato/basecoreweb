@@ -182,27 +182,6 @@ export default function MarketingPage() {
         </div>
       </section>
 
-      {/* Proceso banner (#afebda8) — navy with a repeating shape tile. */}
-      <section
-        className="bg-navy bg-repeat py-[60px] xl:py-[100px]"
-        style={{ backgroundImage: "url(/images/bg-shape-1.png)" }}
-      >
-        <div className="container-bc md:flex md:items-center">
-          <div className="md:w-[65%]">
-            <SectionHeading
-              eyebrow="Proceso"
-              title="El rumbo demanda procesos y el proceso define el rumbo."
-              dark
-              titleClassName="!text-[28px] !leading-[1.3] lg:!text-[34px] xl:!text-[40px] xl:!leading-[52px]"
-              eyebrowClassName="!text-[18px] !normal-case !tracking-normal !text-white mb-[8px]"
-            />
-          </div>
-          <div className="mt-[30px] text-center md:mt-0 md:w-[35%]">
-            <Button href="#contacto">CONTACTANOS</Button>
-          </div>
-        </div>
-      </section>
-
       {/* Hacemos crecer tu negocio (#3df3f2d) — same 1400/140/560/695 shape as
           the NaN section, left-aligned dark text on the light part of the photo. */}
       <section
