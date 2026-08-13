@@ -154,7 +154,7 @@ export default function HomePage() {
               <div className="animate-hero-button">
                 <a
                   href="#contacto"
-                  className="hero-button inline-block bg-primary font-montserrat font-semibold uppercase tracking-[1px] text-white transition-colors duration-300 hover:bg-[rgba(5,117,188,0.9)]"
+                  className="hero-button inline-block rounded-[4px] bg-primary font-montserrat font-semibold uppercase tracking-[1px] text-white transition-colors duration-300 hover:bg-[rgba(5,117,188,0.9)]"
                 >
                   AGENDAR RELEVAMIENTO
                 </a>

@@ -23,7 +23,7 @@ export default function ServiceCyclePage({ data }: { data: ServicePageData }) {
         title={data.hero.title}
         lines={data.hero.lines}
         image={data.hero.image}
-        cta={{ label: "AUDITORÍA GRATIS", href: "#contacto" }}
+        cta={{ label: "AGENDAR RELEVAMIENTO", href: "#contacto" }}
       />
 
       {/* "Etapas" heading (#41a6ea0c) — full-width section, centred text */}

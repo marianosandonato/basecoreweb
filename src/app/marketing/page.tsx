@@ -103,7 +103,7 @@ export default function MarketingPage() {
           "Generamos campañas para atraer leads.",
         ]}
         image="/images/marketing-slide-base-core-sales.jpg"
-        cta={{ label: "AUDITORÍA GRATIS", href: "#contacto" }}
+        cta={{ label: "AGENDAR RELEVAMIENTO", href: "#contacto" }}
       />
 
       {/* Pilares heading (#9b0a6dc) — the original carries its 100px of space
