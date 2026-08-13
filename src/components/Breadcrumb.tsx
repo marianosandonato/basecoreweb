@@ -60,13 +60,17 @@ export default function Breadcrumb({
   }
 
   return (
-    <div className="bg-navy">
-      {/* Flat navy, no photo texture: this strip sits inside the header's
-          transparent zone (Bar B), so it has to match Bar A's solid #00294b
-          exactly or the seam between "solid navy" and "navy + photo" shows up
-          as a visible line — the bug this component used to have. The
-          original's breadcrumb widget renders empty on these pages; ours is
-          kept deliberately for UX/SEO (see documentation/PLAN-PREVENTA.md). */}
+    <div className="absolute inset-x-0 top-0 z-30 bg-navy">
+      {/* Flat navy, no photo texture, and taken out of flow (absolute, like
+          Header itself): this strip lives inside the header's transparent
+          zone (Bar B), on top of the hero photo. Two bugs in one fixed here:
+          a flat fill matching Bar A's solid #00294b (else the seam between
+          "solid navy" and "navy + photo" shows as a visible line), and
+          `absolute` so it doesn't push the hero section down — in flow it
+          added ~68px the home page's hero never has, making these four pages
+          taller than home's. The original's breadcrumb widget renders empty
+          on these pages; ours is kept deliberately for UX/SEO (see
+          documentation/PLAN-PREVENTA.md). */}
       <nav aria-label="Breadcrumb" className="container-bc py-6">
         <ol className="flex items-center gap-2 text-sm text-white/80">
           <li>
