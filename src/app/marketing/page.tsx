@@ -7,7 +7,6 @@ import { AddsIcon, BrandIcon, ContentIcon } from "@/components/counterIcons";
 import FlipCardGrid from "@/components/FlipCardGrid";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
-import SquareCta from "@/components/SquareCta";
 import { MARKETING_GRID } from "@/content/flipGrids";
 import type { FlipCardData } from "@/content/types";
 
@@ -147,9 +146,7 @@ export default function MarketingPage() {
             descriptionClassName="!pt-[20px] !text-[#D7D7D7]"
           >
             <div className="mt-[30px]">
-              <SquareCta href="https://not-a-numb3r.com/" external>
-                HAGAMOS NEGOCIOS
-              </SquareCta>
+              <Button href="#contacto">AGENDAR RELEVAMIENTO</Button>
             </div>
           </SectionHeading>
         </div>
