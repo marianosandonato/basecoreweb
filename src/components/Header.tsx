@@ -40,6 +40,15 @@ export default function Header() {
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
+  // Next's <Link> only resets scroll on an actual route change. Clicking the
+  // nav item for the page you're already on is a no-op navigation-wise, so
+  // without this the page stays wherever the user had scrolled to.
+  const scrollToTopIfSamePage = (href: string) => {
+    if (isActive(href)) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       {/* ── Desktop (≥1025px) — absolute overlay ─────────────────────────── */}
@@ -87,6 +96,7 @@ export default function Header() {
                     <Link
                       href={item.href}
                       aria-current={isActive(item.href) ? "page" : undefined}
+                      onClick={() => scrollToTopIfSamePage(item.href)}
                       className={`px-[10px] py-[13px] font-sans text-[14px] font-light leading-none transition-colors hover:text-primary ${
                         isActive(item.href) ? "text-primary" : "text-white"
                       }`}
@@ -231,7 +241,10 @@ export default function Header() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    onClick={() => setOpen(false)}
+                    onClick={() => {
+                      setOpen(false);
+                      scrollToTopIfSamePage(item.href);
+                    }}
                     className={`block py-3 font-sans text-[15px] ${
                       isActive(item.href) ? "text-primary" : "text-navy"
                     }`}
