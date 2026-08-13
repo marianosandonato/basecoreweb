@@ -244,7 +244,7 @@ export default function HomePage() {
           Full-bleed 50/50: photo + black 74% on the left, solid navy on the right. */}
       <section className="relative z-[1] md:flex">
         <div
-          className="relative bg-cover bg-left bg-no-repeat px-[15px] pb-[80px] pt-[60px] max-md:bg-top md:w-1/2 md:py-0"
+          className="relative bg-cover bg-left bg-no-repeat px-[15px] pb-[80px] pt-[60px] max-md:bg-top md:w-1/2"
           style={{ backgroundImage: "url(/images/MARKETING-NAN.jpg)" }}
         >
           <span aria-hidden="true" className="absolute inset-0 bg-black opacity-[0.74]" />
