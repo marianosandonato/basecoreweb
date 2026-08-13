@@ -165,7 +165,7 @@ export default function MarketingPage() {
                 counters' 20px margin-top collapse otherwise. */}
             <div className="flex flex-col lg:w-[40%]">
               <SectionHeading
-                eyebrow="NOSOTROS"
+                eyebrow="NUESTRO PARTNER ESTRATÉGICO COMO AGENCIA DE MARKETING"
                 title="NaN"
                 description="NaN también es filosofía. Una forma de actuar, pensar y ejecutar. Hacemos crecer las marcas a través de una creatividad audaz y estratégica, enfocada en buscar nuevas formas de presentación contenidos al usuario en soportes digitales, visualizando las comunicaciones del presente y del futuro."
                 align="left"
