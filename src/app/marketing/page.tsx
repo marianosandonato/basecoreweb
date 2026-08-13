@@ -182,52 +182,32 @@ export default function MarketingPage() {
         </div>
       </section>
 
-      {/* Hacemos crecer tu negocio (#3df3f2d) — same 1400/140/560/695 shape as
-          the NaN section, left-aligned dark text on the light part of the photo. */}
+      {/* Hacemos crecer tu negocio (#3df3f2d) — background swapped to the navy
+          repeat-x buildings strip from the old "¿Qué esperas" section below
+          (now removed), so text needs `dark` to stay legible. */}
       <section
-        className="bg-cover bg-center bg-no-repeat py-[65px] max-md:bg-left xl:bg-fixed xl:py-[115px]"
-        style={{ backgroundImage: "url(/images/Base-Core-Sales-estrategia-tecnologia.jpeg)" }}
+        className="bg-navy bg-repeat-x py-[65px] max-md:bg-left xl:py-[115px]"
+        style={{ backgroundImage: "url(/images/footer-base-core-sales.jpg)" }}
       >
         <div className="container-bc-wide">
           <div className="lg:flex">
             <div className="lg:w-[10%]" />
             <div className="lg:w-[40%]">
               <SectionHeading
-                eyebrow="BASE CORE SALES"
+                eyebrow="NUESTRO MINDSET"
                 title="Hacemos crecer tu negocio"
                 description="NaN también es filosófico. Es una forma de pensar y actuar en la vida, de repensarnos en el vinculo, interactuando a partir del respeto primero interpersonal, luego frente al mundo. Es la expresión de deseo de enaltecer los vínculos, porque de los vínculos surgen los equipos. Y de los equipos la excelencia y los resultados. Y los resultados que buscamos son infinitos, porque están emparentados con la energía y la pasión que tampoco son números. #Not-a-numb3r."
                 align="left"
+                dark
                 maxWidth={530}
                 className="mb-[16px]"
+                eyebrowClassName="!text-white"
                 descriptionClassName="!pt-[20px]"
               />
             </div>
             <div className="lg:w-[50%]" />
           </div>
         </div>
-      </section>
-
-      {/* ¿Qué esperas para contactarnos? (#37326c4) — its own section on the
-          original, navy #00294BED over a repeat-x photo strip, not fixed. */}
-      <section
-        className="bg-navy bg-repeat-x py-[70px] xl:pb-[90px] xl:pt-[150px]"
-        style={{ backgroundImage: "url(/images/footer-base-core-sales.jpg)" }}
-      >
-        <div className="container-bc">
-          <SectionHeading
-            eyebrow="BASE CORE SALES"
-            title="¿Qué esperas para contactarnos?"
-            as="h3"
-            dark
-            maxWidth={800}
-            className="mb-[15px]"
-            titleClassName="!text-[28px] !leading-[1.3] lg:!text-[34px] xl:!text-[40px] xl:!leading-[52px]"
-            eyebrowClassName="!text-white"
-          />
-        </div>
-        {/* Elementor's 20px --widgets-spacing below the heading widget, plus the
-            original's empty gva-posts widget, which is itself 20px tall. */}
-        <div className="h-[40px]" aria-hidden="true" />
       </section>
 
       {/* Contacto (#437d5e49) */}
