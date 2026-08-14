@@ -78,7 +78,9 @@ export default function Header() {
                 </li>
                 <li className="flex items-center text-[13px]">
                   <a
-                    href={`tel:${site.phoneArgentina.tel}`}
+                    href={site.whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center text-muted transition-colors hover:text-primary"
                   >
                     <PhoneIcon className="mr-[0.25em] pr-px text-[12px] text-white" />
@@ -262,7 +264,9 @@ export default function Header() {
                 <EnvelopeIcon className="text-primary" /> {site.email}
               </a>
               <a
-                href={`tel:${site.phoneArgentina.tel}`}
+                href={site.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 text-body hover:text-primary"
               >
                 <PhoneIcon className="text-primary" /> {site.phoneArgentina.display}
