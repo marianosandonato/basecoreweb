@@ -1,10 +1,43 @@
 import Image from "next/image";
-import { site } from "@/lib/site";
+import { site, siteEn, type Lang } from "@/lib/site";
 import ContactForm from "./ContactForm";
 import SectionHeading from "./SectionHeading";
 import { CheckCircleIcon, LinkedinIcon } from "./icons";
 
 const cycleItems = ["Preventa", "Venta", "Posventa", "Marketing"];
+const cycleItemsEn = ["Presales", "Sales", "Post-Sales", "Marketing"];
+
+const copy = {
+  es: {
+    eyebrow: "Escríbenos",
+    title: "Contacto",
+    description: (
+      <>
+        Deja tus datos, programaremos un llamado para relevar tu situación actual.
+        <br />
+        Te propondremos un plan de ruta para la mejora de procesos y metodologías.
+      </>
+    ),
+    founderRole: site.founder.role,
+    ebookAlt: "E-Book Base Core Sales: Optimiza tus procesos",
+    linkedinAria: "LinkedIn de Mariano Sandonato",
+  },
+  en: {
+    eyebrow: "Get in Touch",
+    title: "Contact",
+    description: (
+      <>
+        Share your details and we&apos;ll schedule a call to assess where your business
+        stands today.
+        <br />
+        We&apos;ll come back with a roadmap to improve your processes and methodology.
+      </>
+    ),
+    founderRole: siteEn.founderRole,
+    ebookAlt: "Base Core Sales E-Book: Optimize your processes",
+    linkedinAria: "Mariano Sandonato's LinkedIn",
+  },
+} as const;
 
 /**
  * "Contacto" section — 50/50 split.
@@ -17,11 +50,16 @@ export default function ContactSection({
   titleAs = "h2",
   backgroundImage,
   className = "py-[70px] md:pb-[70px] md:pt-0 dt:pb-[120px] dt:pt-[90px]",
+  lang = "es",
 }: {
   titleAs?: "h1" | "h2" | "h3";
   backgroundImage?: string;
   className?: string;
+  lang?: Lang;
 }) {
+  const t = copy[lang];
+  const items = lang === "en" ? cycleItemsEn : cycleItems;
+
   return (
     <section
       id="contacto"
@@ -39,8 +77,8 @@ export default function ContactSection({
         {/* Left column */}
         <div className="px-[15px] md:w-1/2">
           <SectionHeading
-            eyebrow="Escríbenos"
-            title="Contacto"
+            eyebrow={t.eyebrow}
+            title={t.title}
             as={titleAs}
             maxWidth={530}
             align="left"
@@ -49,13 +87,7 @@ export default function ContactSection({
             className="md:mb-[40px]"
             titleClassName="mb-[6px]"
             descriptionClassName="!pt-[10px] md:!pt-[20px]"
-            description={
-              <>
-                Deja tus datos, programaremos un llamado para relevar tu situación actual.
-                <br />
-                Te propondremos un plan de ruta para la mejora de procesos y metodologías.
-              </>
-            }
+            description={t.description}
           />
 
           {/* Signature + LinkedIn (#a3d8b65) — a 3-column inner section,
@@ -68,7 +100,7 @@ export default function ContactSection({
                   {site.founder.name}
                 </span>{" "}
                 <span className="font-sans text-[18px] text-heading">
-                  - {site.founder.role}
+                  - {t.founderRole}
                 </span>
               </p>
             </div>
@@ -78,7 +110,7 @@ export default function ContactSection({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-[10%] bg-[#0077b5] text-[17px] text-white transition-transform duration-300 hover:scale-90"
-                aria-label="LinkedIn de Mariano Sandonato"
+                aria-label={t.linkedinAria}
               >
                 <LinkedinIcon />
               </a>
@@ -91,7 +123,7 @@ export default function ContactSection({
             <div className="md:w-[43.684%] md:pr-[30px]">
               <Image
                 src="/images/base-core-sales-ebook.jpg"
-                alt="E-Book Base Core Sales: Optimiza tus procesos"
+                alt={t.ebookAlt}
                 width={1920}
                 height={1204}
                 sizes="(max-width: 768px) 100vw, 240px"
@@ -100,7 +132,7 @@ export default function ContactSection({
             </div>
             <div className="mt-[30px] pb-[40px] md:-mt-[2px] md:w-[56.316%] md:pb-0">
               <ul>
-                {cycleItems.map((item) => (
+                {items.map((item) => (
                   /* 32.4px rows (the original's items measure 32 tall), and the
                      text starts at 28px: a 23px icon box plus 5px of text
                      padding on the original, 16px icon plus a 12px gap here. */
@@ -120,7 +152,7 @@ export default function ContactSection({
         {/* Right column — form (#67f127e9) */}
         <div className="px-[15px] md:w-1/2">
           <div className="border-x border-b border-t-4 border-solid border-line border-t-primary px-[15px] py-[30px] dt:p-[45px]">
-            <ContactForm />
+            <ContactForm lang={lang} />
           </div>
         </div>
       </div>

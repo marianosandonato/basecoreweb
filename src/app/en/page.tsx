@@ -3,12 +3,12 @@ import Image from "next/image";
 import Button from "@/components/Button";
 import CheckList from "@/components/CheckList";
 import ContactSection from "@/components/ContactSection";
-import LanguageBanner from "@/components/LanguageBanner";
 import MethodologyGrid, { type MethodologyStep } from "@/components/MethodologyGrid";
 import ProcessImageStack from "@/components/ProcessImageStack";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCards from "@/components/ServiceCards";
-import { site } from "@/lib/site";
+import LanguageBanner from "@/components/LanguageBanner";
+import { site, siteEn } from "@/lib/site";
 import { PosventaIcon, PreventaIcon, VentaIcon } from "@/components/cycleIcons";
 import {
   ChartBarIcon,
@@ -18,121 +18,125 @@ import {
 } from "@/components/icons";
 
 export const metadata: Metadata = {
-  title: site.name,
-  description:
-    "Creamos bases productivas. Consultoría comercial y marketing: procesos como servicio para preventa, venta, posventa y marketing.",
+  title: siteEn.name,
+  description: siteEn.description,
   alternates: {
-    canonical: "/",
+    canonical: "/en",
     languages: { es: "/", en: "/en", "x-default": "/" },
+  },
+  openGraph: {
+    locale: "en_US",
+    url: `${site.url}/en`,
+    title: siteEn.name,
+    description: siteEn.description,
   },
 };
 
 const aboutChecklist = [
-  "360: Ventas, Marketing y Comunicación",
-  "Estrategia y plan comercial",
-  "Procesos y herramientas",
-  "Formación de equipos",
+  "360°: Sales, Marketing & Communication",
+  "Commercial strategy & plan",
+  "Processes & tools",
+  "Team training",
 ];
 
 const methodology: readonly MethodologyStep[] = [
   {
-    title: "Diagnóstico",
+    title: "Discovery",
     icon: PaperPlaneIcon,
     frontImage: "/images/01-base-core-sales.jpg",
     backImage: "/images/1-diagnostico-base-core-sales.jpg",
-    items: ["Auditoría gratuita", "Relevamiento del estado actual del negocio"],
+    items: ["Free audit", "Assessment of your business's current state"],
   },
   {
-    title: "Plan de Ruta",
+    title: "Roadmap",
     icon: ChartBarIcon,
     frontImage: "/images/02-base-core-sales.jpg",
     backImage: "/images/2-plan-de-rutas-base-core-sales.jpg",
-    items: ["Presentación de gantt o plan de acción"],
+    items: ["Gantt chart or action plan presentation"],
   },
   {
-    title: "Estrategia",
+    title: "Strategy",
     icon: CogsIcon,
     frontImage: "/images/03-base-core-sales.jpg",
     backImage: "/images/3-estrategia-base-core-sales.jpg",
     items: [
-      "Presentación de diagnóstico",
-      "Adaptación del plan",
-      "Asignación de tu project leader",
-      "Sprint de reuniones semanales",
+      "Discovery findings presentation",
+      "Plan refinement",
+      "Your project leader is assigned",
+      "Weekly meeting sprints",
     ],
   },
   {
-    title: "Mejora Continua",
+    title: "Continuous Improvement",
     icon: ChartLineIcon,
     frontImage: "/images/04-base-core-sales.jpg",
     backImage: "/images/4-mejora-continua-base-core-sales.jpg",
     items: [
-      "Desarrollo de procesos",
-      "Monitoreo en mejora de métricas",
-      "Seguimiento del estado del proyecto",
+      "Process development",
+      "Metrics monitoring & improvement",
+      "Project status tracking",
     ],
   },
 ];
 
+// Destinations stay on the Spanish routes: those pages don't have an /en
+// version yet (see documentation/PLAN-I18N.md) and a translated card linking
+// to a translated page beats a 404 or blocking the link entirely.
 const cycles = [
   {
-    title: "Preventa",
+    title: "Presales",
     href: "/preventa",
     icon: PreventaIcon,
     image: "/images/presales-basecoresales-espana.jpg",
     roles: [
-      "Market research - Armado de base de datos - Prospección - Llamados en frío - Calificación de leads - Generación de oportunidades comerciales",
+      "Market research - Database building - Prospecting - Cold calling - Lead qualification - Sales opportunity generation",
     ],
   },
   {
-    title: "Venta",
+    title: "Sales",
     href: "/venta",
     icon: VentaIcon,
     image: "/images/sales-basecoresales-espana.jpg",
     roles: [
-      "Diagnóstico de situación actual - Modelo comercial - Pipeline - Metas y Objetivos - KPI’s - Tasas de conversión - Forecast - Modelos de inducción y supervisión - Esquemas de compensación - Implementación CRM",
+      "Current-state assessment - Sales model - Pipeline - Goals & targets - KPIs - Conversion rates - Forecasting - Onboarding & coaching models - Compensation schemes - CRM implementation",
     ],
   },
   {
-    title: "Posventa",
+    title: "Post-Sales",
     href: "/posventa",
     icon: PosventaIcon,
     image: "/images/support-basecoresales-espana.jpg",
     roles: [
-      "Calificación de clientes - ABC - Cross & Up Selling - Medición histórica de altas y bajas - Recupero - Captación - Segmentación de cartera - Retención – Fidelización",
+      "Customer scoring - ABC analysis - Cross & up-selling - Historical churn & acquisition tracking - Win-back - Customer acquisition - Portfolio segmentation - Retention & loyalty",
     ],
   },
 ];
 
 const partnerChecklist = [
-  "Estrategia creativa",
-  "Base estadística",
-  "SEO: Auditoría y posicionamiento",
-  "SEM - Publicidad Meta & Google",
+  "Creative strategy",
+  "Data & analytics",
+  "SEO: audit & rankings",
+  "SEM - Meta & Google Ads",
   "Social Media",
-  "Diseño gráfico",
-  "Sitios Web",
+  "Graphic design",
+  "Websites",
 ];
 
 const recruitingChecklist = [
-  "Descripciones de puesto",
-  "Fuentes de reclutamiento",
-  "Filtros de búsqueda",
-  "Direccionamiento de entrevistas",
-  "Selección de candidatos",
+  "Job descriptions",
+  "Sourcing channels",
+  "Screening filters",
+  "Interview coordination",
+  "Candidate selection",
 ];
 
-export default function HomePage() {
+export default function HomePageEn() {
   return (
     <>
-      <LanguageBanner lang="es" alternateHref="/en" />
+      <LanguageBanner lang="en" alternateHref="/" />
 
-      {/* ── Hero (#0e79c74) ───────────────────────────────────────────────
-          Revolution Slider: 880px tall, no colour overlay, content left-aligned
-          on the 1170px grid, slow pan-zoom on the photo. */}
+      {/* ── Hero ──────────────────────────────────────────────────────── */}
       <section className="hero relative overflow-hidden">
-        {/* The site's LCP image. The pan-zoom stays on this wrapper: animating
-            the <Image> itself would fight `fill`'s absolute positioning. */}
         <div className="animate-hero-panzoom absolute inset-0">
           <Image
             src="/images/basecoresales-slide-marketing-espana-1.jpg"
@@ -147,13 +151,13 @@ export default function HomePage() {
           <div className="relative h-full">
             <div className="hero-layer hero-title-layer">
               <h1 className="hero-title animate-hero-title font-heading font-bold text-white">
-                Consultoría Comercial
-                <br />y Marketing
+                Commercial Consulting
+                <br />& Marketing
               </h1>
             </div>
             <div className="hero-layer hero-tagline-layer">
               <p className="hero-tagline animate-hero-tagline font-sans text-white">
-                CREAMOS BASES PRODUCTIVAS
+                WE BUILD PRODUCTIVE FOUNDATIONS
               </p>
             </div>
             <div className="hero-layer hero-button-layer">
@@ -162,7 +166,7 @@ export default function HomePage() {
                   href="#contacto"
                   className="hero-button inline-block rounded-[4px] bg-primary font-montserrat font-semibold uppercase tracking-[1px] text-white transition-colors duration-300 hover:bg-[rgba(5,117,188,0.9)]"
                 >
-                  AGENDAR RELEVAMIENTO
+                  BOOK A DISCOVERY CALL
                 </a>
               </div>
             </div>
@@ -170,74 +174,65 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Nosotros / Proceso como servicio (#3b58066) ──────────────────── */}
+      {/* ── About Us / Process as a Service ─────────────────────────────── */}
       <section className="pb-[30px] dt:pb-[100px] dt:pt-[115px]">
         <div className="container-bc grid items-center dt:grid-cols-2">
-          {/* Layered composition — desktop/tablet only (elementor-hidden-mobile) */}
           <div className="hidden px-[15px] pt-[120px] md:block">
             <ProcessImageStack />
           </div>
 
           <div className="px-[15px] pb-[45px] dt:pl-[85px]">
-            {/* Mobile-only flat image (#0144309) */}
             <Image
               src="/images/Process-as-a-Service.jpg"
-              alt="Proceso como servicio"
+              alt="Process as a Service"
               width={850}
               height={567}
               className="mb-[40px] h-auto w-full md:hidden"
             />
 
-            {/* The widget is 112.132% wide in Elementor (#fdde924), which is what
-                keeps the 45px title on a single line. */}
             <SectionHeading
-              eyebrow="Nosotros"
-              title="Proceso como servicio"
+              eyebrow="About Us"
+              title="Process as a Service"
               align="left"
               maxWidth={800}
               className="mb-[8px] w-full dt:mb-[10px] dt:w-[112.132%] dt:max-w-[112.132%]"
             />
 
-            {/* icon-box (#a20a695) — a statement, not a heading description */}
             <h3 className="mb-[12px] font-heading text-[18px] font-medium leading-[24px] text-heading md:text-[20px] md:leading-[32px]">
-              Base Core ofrece servicios de consultoría para todos los ciclos de ventas.
+              Base Core delivers consulting services across every stage of the sales cycle.
             </h3>
 
             <CheckList items={aboutChecklist} />
 
             <h4 className="mt-[20px] font-sans text-[20px] font-normal leading-[26px] text-body dt:mt-[28px]">
-              Implementamos procesos para impulsar el desarrollo de tu empresa y aumentar
-              tus ventas.
+              We implement processes that drive your company&apos;s growth and increase
+              your sales.
             </h4>
 
             <div className="mt-[28px]">
-              <Button href="#contacto">CONTÁCTANOS</Button>
+              <Button href="#contacto">CONTACT US</Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── Metodología (#a72b136) ────────────────────────────────────────
-          Skyscraper photo, fixed on desktop. The Elementor overlay is #00294B
-          at alpha 0, so the photo is deliberately untinted. */}
+      {/* ── Methodology ──────────────────────────────────────────────────── */}
       <section
         className="bg-cover bg-center bg-no-repeat pb-[70px] pt-[80px] dt:bg-fixed dt:pb-[90px] dt:pt-[110px]"
         style={{ backgroundImage: "url(/images/footer-base-core-sales.jpg)" }}
       >
-        {/* Inner-section grids span the full 1200px container (no 15px inset),
-            so the 10px cell padding yields 280px cards at x=134 like the original. */}
         <div className="container-bc px-0">
           <MethodologyGrid steps={methodology} />
         </div>
       </section>
 
-      {/* ── Ciclos de Venta (#6ff6d2e) ───────────────────────────────────── */}
+      {/* ── Sales Cycles ─────────────────────────────────────────────────── */}
       <section className="pb-[40px] pt-[70px] dt:pb-[90px] dt:pt-[120px]">
         <div className="container-bc px-0">
           <div className="px-[15px]">
             <SectionHeading
-              eyebrow="mentoring comercial"
-              title="Ciclos de Venta"
+              eyebrow="commercial mentoring"
+              title="Sales Cycles"
               maxWidth={800}
               className="mb-[30px]"
             />
@@ -246,8 +241,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Partner Estratégico / Not-a-Numb3r (#5f421622) ────────────────
-          Full-bleed 50/50: photo + black 74% on the left, solid navy on the right. */}
+      {/* ── Strategic Partner / Not-a-Numb3r ──────────────────────────────── */}
       <section className="relative z-[1] md:flex">
         <div
           className="relative bg-cover bg-left bg-no-repeat px-[15px] pb-[80px] pt-[60px] max-md:bg-top md:w-1/2"
@@ -264,7 +258,6 @@ export default function HomePage() {
                 className="h-auto w-[155px] md:w-[35%]"
               />
             </div>
-            {/* Spacer (#7d141e93): 420px desktop, 10px below 1024 */}
             <div className="h-[10px] dt:h-[420px]" />
             <div className="px-[15px]">
               <Image
@@ -284,9 +277,9 @@ export default function HomePage() {
               eyebrow="Not-a-Numb3r"
               title={
                 <>
-                  Partner Estratégico
+                  Strategic Partner
                   <br />
-                  Agencia de Marketing
+                  Marketing Agency
                 </>
               }
               align="left"
@@ -299,30 +292,27 @@ export default function HomePage() {
             <CheckList items={partnerChecklist} dark size="md" />
             <div className="mt-[15px]">
               <Button href="/marketing" size="sm">
-                MÁS INFORMACIÓN
+                LEARN MORE
               </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── Recruiting (#e610736) ────────────────────────────────────────
-          One photo, no overlay: dark on the left, light on the right where the
-          text sits. 55/45 split. */}
+      {/* ── Recruiting ──────────────────────────────────────────────────── */}
       <section
         className="relative z-[1] bg-cover bg-right bg-no-repeat dt:flex dt:bg-fixed"
         style={{ backgroundImage: "url(/images/Fondo-Base-Core-01.jpg)" }}
       >
-        {/* Left column is empty — it only holds the 160px spacer */}
         <div className="px-[15px] pb-0 pt-[70px] md:pb-[80px] md:pt-[60px] dt:w-[55%] dt:py-0">
           <div className="h-[10px] dt:h-[160px]" />
         </div>
 
         <div className="px-[15px] pb-[45px] max-md:pl-[25px] dt:w-[45%] dt:py-[100px] dt:pl-[85px]">
           <SectionHeading
-            eyebrow="RECRUITING: FUERZA DE VENTAS"
-            title="Te acompañamos en la búsqueda y selección de perfiles acordes a tu negocio."
-            description="Además de nuestro modelo de formación, buscamos perfiles acordes y eficientes al modelo de ventas propuesto."
+            eyebrow="RECRUITING: SALES FORCE"
+            title="We support you in sourcing and selecting the right talent for your business."
+            description="Beyond our training model, we look for profiles that fit and perform within the proposed sales model."
             align="left"
             maxWidth={800}
             className="mb-[8px] pr-[50px] dt:mb-[10px]"
@@ -333,7 +323,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── E-Book CTA (#1ee6de6) ────────────────────────────────────────── */}
+      {/* ── E-Book CTA ──────────────────────────────────────────────────── */}
       <section
         className="relative bg-cover bg-center bg-no-repeat pb-[70px] pt-[80px] dt:bg-fixed dt:pb-[75px] dt:pt-[90px]"
         style={{ backgroundImage: "url(/images/base-core-sales-ebook.jpg)" }}
@@ -341,8 +331,8 @@ export default function HomePage() {
         <span aria-hidden="true" className="absolute inset-0 bg-navy opacity-[0.82]" />
         <div className="container-bc relative">
           <SectionHeading
-            title="Optimiza tus procesos: Primeros pasos para una estructura comercial efectiva"
-            description="Descarga nuestro E-Book"
+            title="Optimize Your Processes: First Steps Toward an Effective Sales Structure"
+            description="Download our free E-Book"
             dark
             showLine={false}
             maxWidth={900}
@@ -352,13 +342,13 @@ export default function HomePage() {
           />
           <div className="text-center">
             <Button href="#contacto" size="sm" className="mt-[15px]">
-              DESCARGAR
+              DOWNLOAD
             </Button>
           </div>
         </div>
       </section>
 
-      <ContactSection />
+      <ContactSection lang="en" />
     </>
   );
 }

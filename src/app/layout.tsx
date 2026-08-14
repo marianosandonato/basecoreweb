@@ -77,6 +77,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Reading the path here (e.g. via headers()) would make every route
+  // dynamic just to pick "es" vs "en" for one segment. Header/Footer derive
+  // it themselves client-side via usePathname() instead, so the site stays
+  // statically prerendered; only the /en layout patches <html lang> after
+  // hydration (see src/app/en/layout.tsx).
   return (
     <html
       lang="es"

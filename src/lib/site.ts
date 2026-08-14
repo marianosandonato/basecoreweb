@@ -35,3 +35,26 @@ export const nav = [
   { label: "Marketing", href: "/marketing" },
   { label: "Contacto", href: "/contacto" },
 ] as const;
+
+export type Lang = "es" | "en";
+
+/**
+ * Only "/" has an English counterpart so far (see documentation/PLAN-I18N.md).
+ * The other items keep their English label but link to the Spanish page —
+ * the closest available content — until each page gets its own /en route.
+ */
+export const navEn = [
+  { label: "Home", href: "/en" },
+  { label: "Presales", href: "/preventa" },
+  { label: "Sales", href: "/venta" },
+  { label: "Post-Sales", href: "/posventa" },
+  { label: "Marketing", href: "/marketing" },
+  { label: "Contact", href: "/contacto" },
+] as const;
+
+export const siteEn = {
+  name: "Base Core – Commercial Consulting & Marketing",
+  description:
+    "Commercial consulting and marketing for every stage of the sales cycle: presales, sales, post-sales and marketing. We build productive foundations.",
+  founderRole: "Founder",
+} as const;
