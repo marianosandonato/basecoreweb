@@ -29,10 +29,10 @@ const services = [
 // yet (see documentation/PLAN-I18N.md), so the label translates but the
 // destination stays the closest available content.
 const servicesEn = [
-  { label: "Presales", href: "/preventa" },
-  { label: "Sales", href: "/venta" },
-  { label: "Post-Sales", href: "/posventa" },
-  { label: "Marketing", href: "/marketing" },
+  { label: "Presales", href: "/en/presales" },
+  { label: "Sales", href: "/en/sales" },
+  { label: "Post-Sales", href: "/en/post-sales" },
+  { label: "Marketing", href: "/en/marketing" },
 ];
 
 const copy = {

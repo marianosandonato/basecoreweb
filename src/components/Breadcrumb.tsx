@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Lang } from "@/lib/site";
 
 /**
  * The theme's `gva_post_breadcrumb` widget.
@@ -17,10 +18,14 @@ import Link from "next/link";
 export default function Breadcrumb({
   current,
   variant = "bar",
+  lang = "es",
 }: {
   current: string;
   variant?: "bar" | "hero";
+  lang?: Lang;
 }) {
+  const homeHref = lang === "en" ? "/en" : "/";
+
   if (variant === "hero") {
     return (
       <div className="relative bg-heading">
@@ -42,7 +47,7 @@ export default function Breadcrumb({
           >
             <ol className="flex items-center rounded-t-[10px] bg-white px-[25px] pb-[22px] pt-[25px] absolute bottom-0 right-0 font-sans text-[15px] font-bold leading-[15px]">
               <li className="px-[10px]">
-                <Link href="/" className="text-heading transition-colors hover:text-primary">
+                <Link href={homeHref} className="text-heading transition-colors hover:text-primary">
                   Home
                 </Link>
               </li>
@@ -77,7 +82,7 @@ export default function Breadcrumb({
       <nav aria-label="Breadcrumb" className="container-bc">
         <ol className="flex items-center gap-2 text-sm text-white/80">
           <li>
-            <Link href="/" className="transition-colors hover:text-primary">
+            <Link href={homeHref} className="transition-colors hover:text-primary">
               Home
             </Link>
           </li>

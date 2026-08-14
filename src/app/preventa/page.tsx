@@ -6,7 +6,10 @@ export const metadata: Metadata = {
   title: "Preventa",
   description:
     "Consigue reuniones con tus clientes potenciales. Armado de base de datos, calificación de leads, prospección y detección de oportunidades comerciales.",
-  alternates: { canonical: "/preventa" },
+  alternates: {
+    canonical: "/preventa",
+    languages: { es: "/preventa", en: "/en/presales" },
+  },
 };
 
 export default function PreventaPage() {

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import type { Lang } from "@/lib/site";
+import { useRouter, usePathname } from "next/navigation";
+import { routeMap, type Lang } from "@/lib/site";
 
 const COOKIE_NAME = "basecore_lang";
 
@@ -31,19 +31,17 @@ const copy = {
 } as const;
 
 /**
- * Only rendered on "/" and "/en" — the only pair with a real translation so
- * far (see documentation/PLAN-I18N.md). Suggests, never redirects: Google
+ * Rendered once from the root layout — suggests, never redirects. Google
  * advises against auto-redirecting by browser language/geo, so this only
  * ever acts after the visitor's own click, then remembers it via cookie.
+ * Every page has a real /en (or /) counterpart via routeMap, so this no
+ * longer needs to be scoped to specific pages.
  */
-export default function LanguageBanner({
-  lang,
-  alternateHref,
-}: {
-  lang: Lang;
-  alternateHref: string;
-}) {
+export default function LanguageBanner() {
   const router = useRouter();
+  const pathname = usePathname();
+  const lang: Lang = pathname.startsWith("/en") ? "en" : "es";
+  const alternateHref = routeMap[pathname] ?? (lang === "en" ? "/" : "/en");
   const [visible, setVisible] = useState(false);
   const t = copy[lang];
 
@@ -53,7 +51,10 @@ export default function LanguageBanner({
     // read of browser-only state (cookie, navigator.language) on mount, not
     // something with a server snapshot, so useSyncExternalStore doesn't fit.
     const id = requestAnimationFrame(() => {
-      if (getCookie(COOKIE_NAME)) return;
+      if (getCookie(COOKIE_NAME)) {
+        setVisible(false);
+        return;
+      }
       const browserWantsSpanish = navigator.language.toLowerCase().startsWith("es");
       setVisible(lang === "en" ? browserWantsSpanish : !browserWantsSpanish);
     });
