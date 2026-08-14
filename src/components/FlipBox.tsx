@@ -18,18 +18,19 @@ import type { ReactNode } from "react";
  * See the `.flip-box*` rules in globals.css.
  *
  * `tabIndex` + `onClick` make the back layer reachable by keyboard and by
- * tap — clicking sets `clicked` in React state rather than leaning on
- * `:focus-within`, since a plain tabIndex div doesn't reliably take focus on
- * tap on iOS Safari. Below 768px there's also no hover at all, so an
- * IntersectionObserver tracks whether the box is in view and drives a
- * second bit of state, `inView`, live as it scrolls in and out (not a
- * one-time trigger — it un-reveals when the box leaves the viewport so it
- * flips again next time). Entering view only sets `inView` after a short
- * delay, giving the front a moment to actually be read before the flip
- * takes over; leaving view clears it immediately. `revealed` (either bit
- * true) drives the `flip-box--revealed` class, which only has an effect
- * inside the `max-width: 767px` block in globals.css — harmless to compute
- * at every width, so there's no need to also gate any of this on a
+ * tap — clicking toggles `revealed` directly in React state rather than
+ * leaning on `:focus-within`, since a plain tabIndex div doesn't reliably
+ * take focus on tap on iOS Safari, and a toggle (front->back->front) needs
+ * explicit state either way. Below 768px there's also no hover at all, so
+ * an IntersectionObserver drives the same `revealed` state live as the box
+ * scrolls in and out (not a one-time trigger — leaving the viewport clears
+ * it, so it flips again next time it scrolls in). Entering view only sets
+ * it after a short delay, giving the front a moment to actually be read
+ * before the flip takes over; leaving view clears it immediately, and a
+ * manual click in between sticks until the next scroll-driven change.
+ * `revealed` drives the `flip-box--revealed` class, which only has an
+ * effect inside the `max-width: 767px` block in globals.css — harmless to
+ * compute at every width, so there's no need to also gate any of this on a
  * matchMedia check. >=768 still runs on plain :hover/:focus-within, none of
  * which this touches.
  */
@@ -64,9 +65,7 @@ export default function FlipBox({
   label,
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
-  const [clicked, setClicked] = useState(false);
-  const revealed = inView || clicked;
+  const [revealed, setRevealed] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
@@ -76,10 +75,10 @@ export default function FlipBox({
       ([entry]) => {
         clearTimeout(timer);
         if (entry.isIntersecting) {
-          // ~1.5s to read the front (icon + title) before it flips away.
-          timer = setTimeout(() => setInView(true), 1500);
+          // ~0.75s to read the front (icon + title) before it flips away.
+          timer = setTimeout(() => setRevealed(true), 750);
         } else {
-          setInView(false);
+          setRevealed(false);
         }
       },
       { threshold: 0.4 },
@@ -102,7 +101,7 @@ export default function FlipBox({
       role="group"
       aria-label={label}
       onClick={() => {
-        setClicked(true);
+        setRevealed((r) => !r);
         ref.current?.focus();
       }}
     >
