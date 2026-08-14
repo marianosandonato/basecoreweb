@@ -150,7 +150,7 @@ export default function HomePage() {
             </div>
             <div className="hero-layer hero-tagline-layer">
               <p className="hero-tagline animate-hero-tagline font-sans text-white">
-                CREAMOS BASES PRODUCTIVAS
+                CREANDO BASES PRODUCTIVAS
               </p>
             </div>
             <div className="hero-layer hero-button-layer">

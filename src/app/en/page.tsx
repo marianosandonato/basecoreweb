@@ -154,7 +154,7 @@ export default function HomePageEn() {
             </div>
             <div className="hero-layer hero-tagline-layer">
               <p className="hero-tagline animate-hero-tagline font-sans text-white">
-                WE BUILD PRODUCTIVE FOUNDATIONS
+                BUILDING PRODUCTIVE FOUNDATIONS
               </p>
             </div>
             <div className="hero-layer hero-button-layer">
