@@ -1,6 +1,3 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 
 /**
@@ -17,22 +14,9 @@ import type { ReactNode } from "react";
  *
  * See the `.flip-box*` rules in globals.css.
  *
- * `tabIndex` + `onClick` make the back layer reachable by keyboard and by
- * tap — clicking toggles `revealed` directly in React state rather than
- * leaning on `:focus-within`, since a plain tabIndex div doesn't reliably
- * take focus on tap on iOS Safari, and a toggle (front->back->front) needs
- * explicit state either way. Below 768px there's also no hover at all, so
- * an IntersectionObserver drives the same `revealed` state live as the box
- * scrolls in and out (not a one-time trigger — leaving the viewport clears
- * it, so it flips again next time it scrolls in). Entering view only sets
- * it after a short delay, giving the front a moment to actually be read
- * before the flip takes over; leaving view clears it immediately, and a
- * manual click in between sticks until the next scroll-driven change.
- * `revealed` drives the `flip-box--revealed` class, which only has an
- * effect inside the `max-width: 767px` block in globals.css — harmless to
- * compute at every width, so there's no need to also gate any of this on a
- * matchMedia check. >=768 still runs on plain :hover/:focus-within, none of
- * which this touches.
+ * `tabIndex` on the wrapper makes the back layer reachable by keyboard, and
+ * touch devices get it on tap — Elementor sets `cursor:pointer` below 1024px
+ * for the same reason.
  */
 type Props = {
   frontImage: string;
@@ -64,46 +48,13 @@ export default function FlipBox({
   effect = "zoom-in",
   label,
 }: Props) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [revealed, setRevealed] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    let timer: ReturnType<typeof setTimeout> | undefined;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        clearTimeout(timer);
-        if (entry.isIntersecting) {
-          // ~0.75s to read the front (icon + title) before it flips away.
-          timer = setTimeout(() => setRevealed(true), 750);
-        } else {
-          setRevealed(false);
-        }
-      },
-      { threshold: 0.4 },
-    );
-    observer.observe(el);
-    return () => {
-      clearTimeout(timer);
-      observer.disconnect();
-    };
-  }, []);
-
   return (
     <div
-      ref={ref}
-      className={`flip-box cursor-pointer ${effect === "slide-up" ? "flip-box--slide-up" : ""} ${
-        revealed ? "flip-box--revealed" : ""
-      }`}
+      className={`flip-box cursor-pointer ${effect === "slide-up" ? "flip-box--slide-up" : ""}`}
       style={{ height: `${height}px` }}
       tabIndex={0}
       role="group"
       aria-label={label}
-      onClick={() => {
-        setRevealed((r) => !r);
-        ref.current?.focus();
-      }}
     >
       {/* Front */}
       <div
