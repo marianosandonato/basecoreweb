@@ -17,16 +17,21 @@ import type { ReactNode } from "react";
  *
  * See the `.flip-box*` rules in globals.css.
  *
- * `tabIndex` on the wrapper makes the back layer reachable by keyboard, and
- * touch devices get it on tap — Elementor sets `cursor:pointer` below 1024px
- * for the same reason, and that tap/focus trigger still works independently
- * of the below. Below 768px there's no hover at all, so an IntersectionObserver
- * also tracks whether the box is in view and toggles `flip-box--revealed`
- * live as it scrolls in and out — not a one-time trigger, so it keeps
- * flipping each time the box crosses the viewport rather than getting stuck
- * on the back after the first pass. That class only has an effect inside the
- * `max-width: 767px` block in globals.css — harmless to compute at every
- * width, so there's no need to also gate it on a matchMedia check.
+ * `tabIndex` + `onClick` make the back layer reachable by keyboard and by
+ * tap — clicking sets `clicked` in React state rather than leaning on
+ * `:focus-within`, since a plain tabIndex div doesn't reliably take focus on
+ * tap on iOS Safari. Below 768px there's also no hover at all, so an
+ * IntersectionObserver tracks whether the box is in view and drives a
+ * second bit of state, `inView`, live as it scrolls in and out (not a
+ * one-time trigger — it un-reveals when the box leaves the viewport so it
+ * flips again next time). Entering view only sets `inView` after a short
+ * delay, giving the front a moment to actually be read before the flip
+ * takes over; leaving view clears it immediately. `revealed` (either bit
+ * true) drives the `flip-box--revealed` class, which only has an effect
+ * inside the `max-width: 767px` block in globals.css — harmless to compute
+ * at every width, so there's no need to also gate any of this on a
+ * matchMedia check. >=768 still runs on plain :hover/:focus-within, none of
+ * which this touches.
  */
 type Props = {
   frontImage: string;
@@ -59,17 +64,31 @@ export default function FlipBox({
   label,
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
-  const [revealed, setRevealed] = useState(false);
+  const [inView, setInView] = useState(false);
+  const [clicked, setClicked] = useState(false);
+  const revealed = inView || clicked;
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    let timer: ReturnType<typeof setTimeout> | undefined;
     const observer = new IntersectionObserver(
-      ([entry]) => setRevealed(entry.isIntersecting),
+      ([entry]) => {
+        clearTimeout(timer);
+        if (entry.isIntersecting) {
+          // ~1.5s to read the front (icon + title) before it flips away.
+          timer = setTimeout(() => setInView(true), 1500);
+        } else {
+          setInView(false);
+        }
+      },
       { threshold: 0.4 },
     );
     observer.observe(el);
-    return () => observer.disconnect();
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
   }, []);
 
   return (
@@ -82,12 +101,10 @@ export default function FlipBox({
       tabIndex={0}
       role="group"
       aria-label={label}
-      // Tapping a plain tabIndex div doesn't reliably focus it on iOS
-      // Safari, so :focus-within (the tap/click trigger) can silently no-op
-      // there. Calling focus() explicitly in the click handler sidesteps
-      // that quirk everywhere, including desktop, where it's a harmless
-      // no-op alongside :hover.
-      onClick={() => ref.current?.focus()}
+      onClick={() => {
+        setClicked(true);
+        ref.current?.focus();
+      }}
     >
       {/* Front */}
       <div
