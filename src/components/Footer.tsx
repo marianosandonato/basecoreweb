@@ -135,8 +135,8 @@ export default function Footer() {
                       : "/images/logo-footer-base-core-sales-es.webp"
                   }
                   alt={lang === "en" ? siteEn.name : site.name}
-                  width={896}
-                  height={lang === "en" ? 999 : 1006}
+                  width={lang === "en" ? 1792 : 1781}
+                  height={2000}
                   className="mx-auto h-auto w-full max-w-[290px]"
                 />
               </Link>

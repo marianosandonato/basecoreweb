@@ -205,10 +205,10 @@ export default function Header() {
           <div className="flex items-center justify-between">
             <Link href={homeHref} aria-label={homeLabel} className="w-1/2">
               <Image
-                src="/images/logo-movil-base-core-sales.png"
+                src="/images/logo-movil-base-core-sales.webp"
                 alt={lang === "en" ? siteEn.name : site.name}
-                width={1293}
-                height={356}
+                width={2000}
+                height={552}
                 priority
                 className="h-auto w-full max-w-[150px] pt-[6px]"
               />
@@ -239,10 +239,10 @@ export default function Header() {
           <div className="absolute right-0 top-0 h-full w-72 max-w-[85%] overflow-y-auto bg-white p-6 shadow-xl">
             <div className="mb-6 flex items-center justify-between">
               <Image
-                src="/images/logo-movil-base-core-sales.png"
+                src="/images/logo-movil-base-core-sales.webp"
                 alt={lang === "en" ? siteEn.name : site.name}
-                width={1293}
-                height={356}
+                width={2000}
+                height={552}
                 className="h-auto w-[150px]"
               />
               <button
