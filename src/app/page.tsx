@@ -310,6 +310,21 @@ export default function HomePage() {
         className="relative z-[1] bg-cover bg-right bg-no-repeat dt:flex dt:bg-fixed"
         style={{ backgroundImage: "url(/images/Fondo-Base-Core-01.webp)" }}
       >
+        {/* Below dt this section has almost no height (the spacer div right
+            below is 10px), so the bg-cover photo above renders as an
+            unrecognisable, zoomed-in sliver. A real, properly framed image
+            replaces it up to dt, where the wide flex layout makes the CSS
+            background work as designed. */}
+        <div className="relative aspect-[4/5] w-full dt:hidden">
+          <Image
+            src="/images/Fondo-Base-Core-01.webp"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-[25%_30%]"
+          />
+        </div>
+
         {/* Left column is empty — it only holds the 160px spacer */}
         <div className="px-[15px] pb-0 pt-[70px] md:pb-[80px] md:pt-[60px] dt:w-[55%] dt:py-0">
           <div className="h-[10px] dt:h-[160px]" />
