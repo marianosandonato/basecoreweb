@@ -24,6 +24,31 @@ export function proxy(request: NextRequest) {
   return NextResponse.redirect(url);
 }
 
+/**
+ * `missing` excludes Link's automatic prefetch requests (tagged with
+ * `next-router-prefetch` / `purpose: prefetch`). Without this, a stale
+ * cookie present at prefetch time (e.g. the page loads with `es` still set)
+ * gets redirected here, and the client router caches that redirect. A later
+ * real click — after the cookie is updated to the new language — then
+ * reuses the cached (stale) redirect instead of fetching fresh, so the
+ * language switcher silently does nothing until a hard refresh bypasses the
+ * router cache.
+ */
 export const config = {
-  matcher: ["/", "/en"],
+  matcher: [
+    {
+      source: "/",
+      missing: [
+        { type: "header", key: "next-router-prefetch" },
+        { type: "header", key: "purpose", value: "prefetch" },
+      ],
+    },
+    {
+      source: "/en",
+      missing: [
+        { type: "header", key: "next-router-prefetch" },
+        { type: "header", key: "purpose", value: "prefetch" },
+      ],
+    },
+  ],
 };
