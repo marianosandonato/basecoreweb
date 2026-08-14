@@ -310,27 +310,43 @@ export default function HomePage() {
         className="relative z-[1] bg-cover bg-right bg-no-repeat dt:flex dt:bg-fixed"
         style={{ backgroundImage: "url(/images/Fondo-Base-Core-01.webp)" }}
       >
-        {/* Below dt this section has almost no height (the spacer div right
-            below is 10px), so the bg-cover photo above renders as an
-            unrecognisable, zoomed-in sliver. A real, properly framed image
-            replaces it up to dt, where the wide flex layout makes the CSS
-            background work as designed. */}
-        <div className="relative aspect-[4/5] w-full dt:hidden">
-          <Image
-            src="/images/Fondo-Base-Core-01.webp"
-            alt=""
-            fill
-            sizes="100vw"
-            className="object-cover object-[25%_30%]"
+        {/* Below dt: a single photo card with the text overlaid directly on
+            it (navy tint for legibility) instead of the two-column desktop
+            split, which only makes sense once dt:flex actually applies. */}
+        <div
+          className="relative bg-cover bg-no-repeat px-[15px] py-[35px] dt:hidden"
+          style={{
+            backgroundImage: "url(/images/Fondo-Base-Core-01.webp)",
+            backgroundPosition: "0% 30%",
+          }}
+        >
+          <span
+            aria-hidden="true"
+            className="absolute inset-0"
+            style={{ backgroundColor: "rgba(0, 41, 75, 0.55)" }}
           />
+          <div className="relative">
+            <SectionHeading
+              eyebrow="RECRUITING: FUERZA DE VENTAS"
+              title="Te acompañamos en la búsqueda y selección de perfiles acordes a tu negocio."
+              description="Además de nuestro modelo de formación, buscamos perfiles acordes y eficientes al modelo de ventas propuesto."
+              align="left"
+              dark
+              maxWidth={800}
+              className="mb-[8px]"
+            />
+            <div className="mt-[20px]">
+              <CheckList items={recruitingChecklist} dark size="md" />
+            </div>
+          </div>
         </div>
 
         {/* Left column is empty — it only holds the 160px spacer */}
-        <div className="px-[15px] pb-0 pt-[70px] md:pb-[80px] md:pt-[60px] dt:w-[55%] dt:py-0">
+        <div className="hidden px-[15px] pb-0 pt-[70px] md:pb-[80px] md:pt-[60px] dt:block dt:w-[55%] dt:py-0">
           <div className="h-[10px] dt:h-[160px]" />
         </div>
 
-        <div className="px-[15px] pb-[45px] max-md:pl-[25px] dt:w-[45%] dt:py-[100px] dt:pl-[85px]">
+        <div className="hidden px-[15px] pb-[45px] max-md:pl-[25px] dt:block dt:w-[45%] dt:py-[100px] dt:pl-[85px]">
           <SectionHeading
             eyebrow="RECRUITING: FUERZA DE VENTAS"
             title="Te acompañamos en la búsqueda y selección de perfiles acordes a tu negocio."
