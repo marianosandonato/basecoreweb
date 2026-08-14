@@ -131,12 +131,12 @@ export default function Footer() {
                 <Image
                   src={
                     lang === "en"
-                      ? "/images/logo-footer-base-core-sales-en.png"
-                      : "/images/logo-footer-base-core-sales-es.png"
+                      ? "/images/logo-footer-base-core-sales-en.webp"
+                      : "/images/logo-footer-base-core-sales-es.webp"
                   }
                   alt={lang === "en" ? siteEn.name : site.name}
-                  width={lang === "en" ? 896 : 225}
-                  height={lang === "en" ? 999 : 251}
+                  width={896}
+                  height={lang === "en" ? 999 : 1006}
                   className="mx-auto h-auto w-full max-w-[290px]"
                 />
               </Link>
