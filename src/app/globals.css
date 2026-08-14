@@ -188,6 +188,24 @@
   transform: translateY(0);
 }
 
+/* Below 768 there's no hover, so FlipBox flips itself the first time it
+   scrolls into view (see the IntersectionObserver in FlipBox.tsx) instead of
+   relying on a tap. Scoped to mobile only — >=768 keeps the hover/focus
+   behavior above untouched. */
+@media (max-width: 767px) {
+  .flip-box:not(.flip-box--slide-up).flip-box--revealed .flip-box__back {
+    opacity: 1;
+    transform: scale(1);
+    transition:
+      transform 0.7s,
+      opacity 0.5s;
+  }
+
+  .flip-box--slide-up.flip-box--revealed .flip-box__back {
+    transform: translateY(0);
+  }
+}
+
 /* ---------------------------------------------------------------------------
  * service-item.style-2 (Ciclos de Venta cards)
  * ------------------------------------------------------------------------ */

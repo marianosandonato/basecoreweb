@@ -25,69 +25,28 @@ export default function MethodologyGrid({ steps }: Props) {
         const Icon = step.icon;
         return (
           <div key={step.title} className="px-[10px] py-[10px]">
-            {/* >=md: unchanged hover-flip. Below md, hover doesn't exist and
-                tap-to-reveal meant anyone who only scrolls never sees the
-                description — so mobile gets a single static card instead
-                (test case for the rest of the site's flip-boxes). */}
-            <div className="hidden md:block">
-              <FlipBox
-                label={step.title}
-                frontImage={step.frontImage}
-                backImage={step.backImage}
-                front={
-                  <>
-                    <div className="mb-[20px] flex justify-center">
-                      <Icon className="text-[50px] text-primary" />
-                    </div>
-                    <h3 className="font-heading text-[21px] font-semibold leading-none text-heading">
-                      {step.title}
-                    </h3>
-                  </>
-                }
-                back={
-                  <div className="font-sans text-[14px] leading-[1.8] text-white">
-                    {step.items.map((item) => (
-                      <p key={item}>{item}</p>
-                    ))}
+            <FlipBox
+              label={step.title}
+              frontImage={step.frontImage}
+              backImage={step.backImage}
+              front={
+                <>
+                  <div className="mb-[20px] flex justify-center">
+                    <Icon className="text-[50px] text-primary" />
                   </div>
-                }
-              />
-            </div>
-
-            <div
-              className="relative flex flex-col items-center bg-cover bg-center bg-no-repeat p-[35px] text-center md:hidden"
-              style={{ backgroundImage: `url(${step.backImage})` }}
-            >
-              <span
-                aria-hidden="true"
-                className="absolute inset-0"
-                style={{ backgroundColor: "rgba(0, 41, 75, 0.24)" }}
-              />
-              {/* Same outlined 01-04 numeral as the >=md front card, extracted
-                  to a transparent watermark (alpha baked in, max ~39%) so it
-                  sits behind the text instead of on its own opaque card. */}
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 bg-center bg-no-repeat"
-                style={{
-                  backgroundImage: `url(${step.frontImage.replace("-base-core-sales.jpg", "-numeral-watermark.png")})`,
-                  backgroundSize: "55% auto",
-                }}
-              />
-              <div className="relative">
-                <div className="mb-[20px] flex justify-center">
-                  <Icon className="text-[50px] text-white" />
-                </div>
-                <h3 className="font-heading text-[21px] font-semibold leading-none text-white">
-                  {step.title}
-                </h3>
-                <div className="mt-[20px] font-sans text-[14px] leading-[1.8] text-white">
+                  <h3 className="font-heading text-[21px] font-semibold leading-none text-heading">
+                    {step.title}
+                  </h3>
+                </>
+              }
+              back={
+                <div className="font-sans text-[14px] leading-[1.8] text-white">
                   {step.items.map((item) => (
                     <p key={item}>{item}</p>
                   ))}
                 </div>
-              </div>
-            </div>
+              }
+            />
           </div>
         );
       })}

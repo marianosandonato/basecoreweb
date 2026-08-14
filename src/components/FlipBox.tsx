@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 
 /**
@@ -16,7 +19,12 @@ import type { ReactNode } from "react";
  *
  * `tabIndex` on the wrapper makes the back layer reachable by keyboard, and
  * touch devices get it on tap — Elementor sets `cursor:pointer` below 1024px
- * for the same reason.
+ * for the same reason. Below 768px there's no hover at all, and scrolling
+ * past a card without tapping it means the description never gets seen, so
+ * an IntersectionObserver flips it automatically the first time it enters
+ * the viewport. The `flip-box--revealed` class this sets only has an effect
+ * inside the `max-width: 767px` block in globals.css — harmless to compute
+ * at every width, so there's no need to also gate it on a matchMedia check.
  */
 type Props = {
   frontImage: string;
@@ -48,9 +56,31 @@ export default function FlipBox({
   effect = "zoom-in",
   label,
 }: Props) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [revealed, setRevealed] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setRevealed(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.4 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div
-      className={`flip-box cursor-pointer ${effect === "slide-up" ? "flip-box--slide-up" : ""}`}
+      ref={ref}
+      className={`flip-box cursor-pointer ${effect === "slide-up" ? "flip-box--slide-up" : ""} ${
+        revealed ? "flip-box--revealed" : ""
+      }`}
       style={{ height: `${height}px` }}
       tabIndex={0}
       role="group"
