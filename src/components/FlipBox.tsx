@@ -19,12 +19,14 @@ import type { ReactNode } from "react";
  *
  * `tabIndex` on the wrapper makes the back layer reachable by keyboard, and
  * touch devices get it on tap — Elementor sets `cursor:pointer` below 1024px
- * for the same reason. Below 768px there's no hover at all, and scrolling
- * past a card without tapping it means the description never gets seen, so
- * an IntersectionObserver flips it automatically the first time it enters
- * the viewport. The `flip-box--revealed` class this sets only has an effect
- * inside the `max-width: 767px` block in globals.css — harmless to compute
- * at every width, so there's no need to also gate it on a matchMedia check.
+ * for the same reason, and that tap/focus trigger still works independently
+ * of the below. Below 768px there's no hover at all, so an IntersectionObserver
+ * also tracks whether the box is in view and toggles `flip-box--revealed`
+ * live as it scrolls in and out — not a one-time trigger, so it keeps
+ * flipping each time the box crosses the viewport rather than getting stuck
+ * on the back after the first pass. That class only has an effect inside the
+ * `max-width: 767px` block in globals.css — harmless to compute at every
+ * width, so there's no need to also gate it on a matchMedia check.
  */
 type Props = {
   frontImage: string;
@@ -63,12 +65,7 @@ export default function FlipBox({
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setRevealed(true);
-          observer.disconnect();
-        }
-      },
+      ([entry]) => setRevealed(entry.isIntersecting),
       { threshold: 0.4 },
     );
     observer.observe(el);
@@ -85,6 +82,12 @@ export default function FlipBox({
       tabIndex={0}
       role="group"
       aria-label={label}
+      // Tapping a plain tabIndex div doesn't reliably focus it on iOS
+      // Safari, so :focus-within (the tap/click trigger) can silently no-op
+      // there. Calling focus() explicitly in the click handler sidesteps
+      // that quirk everywhere, including desktop, where it's a harmless
+      // no-op alongside :hover.
+      onClick={() => ref.current?.focus()}
     >
       {/* Front */}
       <div
