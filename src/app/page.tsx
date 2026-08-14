@@ -221,9 +221,12 @@ export default function HomePage() {
         className="bg-cover bg-center bg-no-repeat pb-[70px] pt-[80px] dt:bg-fixed dt:pb-[90px] dt:pt-[110px]"
         style={{ backgroundImage: "url(/images/footer-base-core-sales.webp)" }}
       >
-        {/* Inner-section grids span the full 1200px container (no 15px inset),
-            so the 10px cell padding yields 280px cards at x=134 like the original. */}
         <div className="container-bc px-0">
+          <div className="px-[15px]">
+            <SectionHeading title="ETAPAS" dark align="center" className="mb-[30px] dt:mb-[45px]" />
+          </div>
+          {/* Inner-section grids span the full 1200px container (no 15px inset),
+              so the 10px cell padding yields 280px cards at x=134 like the original. */}
           <MethodologyGrid steps={methodology} />
         </div>
       </section>
