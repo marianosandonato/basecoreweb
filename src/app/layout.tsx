@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { DM_Sans, Montserrat, Sora } from "next/font/google";
 import localFont from "next/font/local";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -30,25 +29,34 @@ const reey = localFont({
   src: [{ path: "../fonts/reey-regular.woff2", weight: "400", style: "normal" }],
 });
 
-/** Body copy, eyebrows, descriptions, form fields. */
-const dmSans = DM_Sans({
+/**
+ * Body copy, eyebrows, descriptions, form fields. Self-hosted instead of
+ * `next/font/google`: that loader fetches from fonts.gstatic.com *during
+ * the Vercel build*, and a stale build-cache entry pointing at a since-
+ * rotated Google asset hash reliably breaks the build with no code change
+ * on our side (happened twice — see the redeploy history around Aug 2026).
+ * DM Sans and Montserrat below are shipped as variable fonts (a single
+ * woff2 covering their whole weight range), same "latin"-only, woff2-only
+ * rule as Gilmer/reey (see that comment on `gilmer` above).
+ */
+const dmSans = localFont({
   variable: "--font-dm-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  display: "swap",
+  src: [{ path: "../fonts/DMSans-Variable.woff2", weight: "400 700", style: "normal" }],
 });
 
 /** "Not-a-Numb3r" eyebrow (200), cycle-page heroes (300), hero button (600). */
-const montserrat = Montserrat({
+const montserrat = localFont({
   variable: "--font-montserrat",
-  subsets: ["latin"],
-  weight: ["200", "300", "600"],
+  display: "swap",
+  src: [{ path: "../fonts/Montserrat-Variable.woff2", weight: "200 600", style: "normal" }],
 });
 
 /** Flip-box titles on the service cycle pages. */
-const sora = Sora({
+const sora = localFont({
   variable: "--font-sora",
-  subsets: ["latin"],
-  weight: ["200"],
+  display: "swap",
+  src: [{ path: "../fonts/Sora-200.woff2", weight: "200", style: "normal" }],
 });
 
 export const metadata: Metadata = {
