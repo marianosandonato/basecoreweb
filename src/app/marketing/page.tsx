@@ -204,7 +204,7 @@ export default function MarketingPage() {
             <div className="lg:w-[10%]" />
             <div className="lg:w-[40%]">
               <SectionHeading
-                eyebrow="NUESTRO MINDSET"
+                eyebrow="MINDSET"
                 title="Hacemos crecer tu negocio"
                 description="NaN también es filosófico. Es una forma de pensar y actuar en la vida, de repensarnos en el vinculo, interactuando a partir del respeto primero interpersonal, luego frente al mundo. Es la expresión de deseo de enaltecer los vínculos, porque de los vínculos surgen los equipos. Y de los equipos la excelencia y los resultados. Y los resultados que buscamos son infinitos, porque están emparentados con la energía y la pasión que tampoco son números. #Not-a-numb3r."
                 align="left"
