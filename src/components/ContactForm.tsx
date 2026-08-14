@@ -72,7 +72,10 @@ export default function ContactForm() {
       <input required name="nombre" placeholder="NOMBRE" className={fieldCls} />
       <input name="apellidos" placeholder="APELLIDO" className={fieldCls} />
       <input required name="empresa" placeholder="EMPRESA" className={fieldCls} />
-      <select name="servicio" defaultValue={SERVICES[0]} className={fieldCls} aria-label="Servicio">
+      <select name="servicio" defaultValue="" className={fieldCls} aria-label="Servicio">
+        <option value="" disabled>
+          SERVICIO
+        </option>
         {SERVICES.map((s) => (
           <option key={s} value={s}>
             {s}
