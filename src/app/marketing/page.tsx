@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Breadcrumb from "@/components/Breadcrumb";
 import Button from "@/components/Button";
 import ContactSection from "@/components/ContactSection";
@@ -166,7 +167,15 @@ export default function MarketingPage() {
             <div className="flex flex-col lg:w-[40%]">
               <SectionHeading
                 eyebrow="NUESTRO PARTNER ESTRATÉGICO COMO AGENCIA DE MARKETING"
-                title="NaN"
+                title={
+                  <Image
+                    src="/images/NaN-blanco.png"
+                    alt="NaN"
+                    width={523}
+                    height={158}
+                    className="h-auto w-[190px] brightness-0"
+                  />
+                }
                 description="NaN también es filosofía. Una forma de actuar, pensar y ejecutar. Hacemos crecer las marcas a través de una creatividad audaz y estratégica, enfocada en buscar nuevas formas de presentación contenidos al usuario en soportes digitales, visualizando las comunicaciones del presente y del futuro."
                 align="left"
                 maxWidth={530}
