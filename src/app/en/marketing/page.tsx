@@ -153,7 +153,7 @@ export default function MarketingPageEn() {
 
       <section
         className="bg-cover bg-center bg-no-repeat py-[65px] max-md:bg-left xl:bg-fixed xl:py-[115px]"
-        style={{ backgroundImage: "url(/images/Project-Management-Base-Core-Sales.jpeg)" }}
+        style={{ backgroundImage: "url(/images/Project-Management-Base-Core-Sales.webp)" }}
       >
         <div className="container-bc-wide">
           <div className="lg:flex">
@@ -188,7 +188,7 @@ export default function MarketingPageEn() {
 
       <section
         className="bg-navy bg-repeat-x py-[65px] max-md:bg-left xl:py-[115px]"
-        style={{ backgroundImage: "url(/images/footer-base-core-sales.jpg)" }}
+        style={{ backgroundImage: "url(/images/footer-base-core-sales.webp)" }}
       >
         <div className="container-bc-wide">
           <div className="lg:flex">

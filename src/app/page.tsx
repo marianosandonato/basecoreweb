@@ -219,7 +219,7 @@ export default function HomePage() {
           at alpha 0, so the photo is deliberately untinted. */}
       <section
         className="bg-cover bg-center bg-no-repeat pb-[70px] pt-[80px] dt:bg-fixed dt:pb-[90px] dt:pt-[110px]"
-        style={{ backgroundImage: "url(/images/footer-base-core-sales.jpg)" }}
+        style={{ backgroundImage: "url(/images/footer-base-core-sales.webp)" }}
       >
         {/* Inner-section grids span the full 1200px container (no 15px inset),
             so the 10px cell padding yields 280px cards at x=134 like the original. */}
@@ -248,7 +248,7 @@ export default function HomePage() {
       <section className="relative z-[1] md:flex">
         <div
           className="relative bg-cover bg-left bg-no-repeat px-[15px] pb-[80px] pt-[60px] max-md:bg-top md:w-1/2"
-          style={{ backgroundImage: "url(/images/MARKETING-NAN.jpg)" }}
+          style={{ backgroundImage: "url(/images/MARKETING-NAN.webp)" }}
         >
           <span aria-hidden="true" className="absolute inset-0 bg-black opacity-[0.74]" />
           <div className="relative flex h-full flex-col justify-between">
@@ -308,7 +308,7 @@ export default function HomePage() {
           text sits. 55/45 split. */}
       <section
         className="relative z-[1] bg-cover bg-right bg-no-repeat dt:flex dt:bg-fixed"
-        style={{ backgroundImage: "url(/images/Fondo-Base-Core-01.jpg)" }}
+        style={{ backgroundImage: "url(/images/Fondo-Base-Core-01.webp)" }}
       >
         {/* Left column is empty — it only holds the 160px spacer */}
         <div className="px-[15px] pb-0 pt-[70px] md:pb-[80px] md:pt-[60px] dt:w-[55%] dt:py-0">
@@ -333,7 +333,7 @@ export default function HomePage() {
       {/* ── E-Book CTA (#1ee6de6) ────────────────────────────────────────── */}
       <section
         className="relative bg-cover bg-center bg-no-repeat pb-[70px] pt-[80px] dt:bg-fixed dt:pb-[75px] dt:pt-[90px]"
-        style={{ backgroundImage: "url(/images/base-core-sales-ebook.jpg)" }}
+        style={{ backgroundImage: "url(/images/base-core-sales-ebook.webp)" }}
       >
         <span aria-hidden="true" className="absolute inset-0 bg-navy opacity-[0.82]" />
         <div className="container-bc relative">

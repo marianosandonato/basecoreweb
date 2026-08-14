@@ -89,7 +89,7 @@ export default function ServiceCyclePage({
            rows) and only sit side by side from 1025 up. Column padding at
            <=1024 is 60px 15px 80px on the spacer and 0 15px 45px on the text. */
         className="relative z-[1] bg-cover bg-right bg-no-repeat dt:flex dt:bg-fixed"
-        style={{ backgroundImage: "url(/images/Fondo-Base-Core-01.jpg)" }}
+        style={{ backgroundImage: "url(/images/Fondo-Base-Core-01.webp)" }}
       >
         <div className="px-[15px] pb-0 pt-[20px] md:pb-[80px] md:pt-[60px] dt:w-[55%] dt:py-0">
           <div className="h-[10px] dt:h-[160px]" />
@@ -137,7 +137,7 @@ export default function ServiceCyclePage({
       {data.nextCycle && (
         <section
           className="relative bg-cover bg-center bg-no-repeat pb-[70px] pt-[80px] dt:bg-fixed dt:pb-[100px] dt:pt-[110px]"
-          style={{ backgroundImage: "url(/images/redireccionamiento.jpg)" }}
+          style={{ backgroundImage: "url(/images/redireccionamiento.webp)" }}
         >
           <span aria-hidden="true" className="absolute inset-0 bg-navy opacity-[0.82]" />
           <div className="container-bc relative py-[10px] text-center">

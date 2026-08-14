@@ -122,7 +122,7 @@ export default function ContactSection({
           <div className="md:flex">
             <div className="md:w-[43.684%] md:pr-[30px]">
               <Image
-                src="/images/base-core-sales-ebook.jpg"
+                src="/images/base-core-sales-ebook.webp"
                 alt={t.ebookAlt}
                 width={1920}
                 height={1204}

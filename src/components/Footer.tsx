@@ -119,7 +119,7 @@ export default function Footer() {
       {/* ── Section 1 (#5043f31) ─────────────────────────────────────────── */}
       <div
         className="relative bg-navy bg-cover bg-center bg-no-repeat py-[70px] xl:pb-[70px] xl:pt-[110px]"
-        style={{ backgroundImage: "url(/images/footer-base-core-sales.jpg)" }}
+        style={{ backgroundImage: "url(/images/footer-base-core-sales.webp)" }}
       >
         <span aria-hidden="true" className="absolute inset-0 bg-navy opacity-40" />
 
