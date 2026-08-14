@@ -34,6 +34,7 @@ function IconBox({
   title,
   children,
   href,
+  external = false,
   titleSize = "text-[14px]",
   gutter = true,
 }: {
@@ -41,6 +42,7 @@ function IconBox({
   title: string;
   children: ReactNode;
   href?: string;
+  external?: boolean;
   titleSize?: string;
   /** e16a445 / d668fce carry `margin: 2px 0` on the widget container; fd5ab33 does not. */
   gutter?: boolean;
@@ -56,7 +58,12 @@ function IconBox({
         </p>
         <p className="font-sans text-[17px] font-medium leading-[32.4px] text-white">
           {href ? (
-            <a href={href} className="transition-colors hover:text-primary">
+            <a
+              href={href}
+              target={external ? "_blank" : undefined}
+              rel={external ? "noopener noreferrer" : undefined}
+              className="transition-colors hover:text-primary"
+            >
               {children}
             </a>
           ) : (
@@ -130,7 +137,8 @@ export default function Footer() {
                   <IconBox
                     Icon={FooterPhoneIcon}
                     title="Contactanos"
-                    href={`tel:${site.phoneArgentina.tel}`}
+                    href={site.whatsappUrl}
+                    external
                   >
                     {site.phoneArgentina.display}
                   </IconBox>
