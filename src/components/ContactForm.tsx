@@ -3,7 +3,11 @@
 import { useState, type FormEvent } from "react";
 import { site } from "@/lib/site";
 
-const SERVICES = ["PREVENTA", "VENTA", "POSVENTA", "MARKETING"] as const;
+const SERVICES = [
+  "CONSULTORÍA COMERCIAL",
+  "CONSULTORÍA DE MARKETING",
+  "CONSULTORÍA COMERCIAL Y MARKETING",
+] as const;
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -66,12 +70,9 @@ export default function ContactForm() {
         aria-hidden="true"
       />
       <input required name="nombre" placeholder="NOMBRE" className={fieldCls} />
-      <input name="apellidos" placeholder="APELLIDOS" className={fieldCls} />
+      <input name="apellidos" placeholder="APELLIDO" className={fieldCls} />
       <input required name="empresa" placeholder="EMPRESA" className={fieldCls} />
-      <select name="servicio" defaultValue="" className={fieldCls} aria-label="Servicio">
-        <option value="" disabled>
-          SERVICIO
-        </option>
+      <select name="servicio" defaultValue={SERVICES[0]} className={fieldCls} aria-label="Servicio">
         {SERVICES.map((s) => (
           <option key={s} value={s}>
             {s}
