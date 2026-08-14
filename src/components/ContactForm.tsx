@@ -1,15 +1,54 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { site } from "@/lib/site";
-
-const SERVICES = [
-  "CONSULTORÍA COMERCIAL",
-  "CONSULTORÍA DE MARKETING",
-  "CONSULTORÍA COMERCIAL Y MARKETING",
-] as const;
+import { site, type Lang } from "@/lib/site";
 
 type Status = "idle" | "sending" | "sent" | "error";
+
+const copy = {
+  es: {
+    name: "NOMBRE",
+    lastName: "APELLIDO",
+    company: "EMPRESA",
+    servicePlaceholder: "SERVICIO",
+    services: [
+      "CONSULTORÍA COMERCIAL",
+      "CONSULTORÍA DE MARKETING",
+      "CONSULTORÍA COMERCIAL Y MARKETING",
+    ],
+    whatsapp: "WHATSAPP",
+    email: "EMAIL",
+    message: "MENSAJE",
+    sending: "ENVIANDO...",
+    submit: "ENVIAR MENSAJE",
+    sentTitle: "¡Gracias por tu mensaje!",
+    sentBody: "Te contactaremos a la brevedad para coordinar un llamado.",
+    defaultError: "No se pudo enviar el mensaje.",
+    errorAlsoText: "También puedes escribirnos por",
+    errorOrText: "o a",
+  },
+  en: {
+    name: "FIRST NAME",
+    lastName: "LAST NAME",
+    company: "COMPANY",
+    servicePlaceholder: "SERVICE",
+    services: [
+      "COMMERCIAL CONSULTING",
+      "MARKETING CONSULTING",
+      "COMMERCIAL & MARKETING CONSULTING",
+    ],
+    whatsapp: "WHATSAPP",
+    email: "EMAIL",
+    message: "MESSAGE",
+    sending: "SENDING...",
+    submit: "SEND MESSAGE",
+    sentTitle: "Thanks for reaching out!",
+    sentBody: "We'll get back to you shortly to schedule a call.",
+    defaultError: "We couldn't send your message.",
+    errorAlsoText: "You can also reach us on",
+    errorOrText: "or at",
+  },
+} as const;
 
 /* Contact Form 7 fields as themed on basecoresales.com: 60px tall, #EDF3F6 fill,
    square corners, no visible border, 15px inline padding, DM Sans 14px #7A838B. */
@@ -18,7 +57,8 @@ const inputCls =
 
 const fieldCls = `${inputCls} h-[60px]`;
 
-export default function ContactForm() {
+export default function ContactForm({ lang = "es" }: { lang?: Lang }) {
+  const t = copy[lang];
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
 
@@ -37,23 +77,21 @@ export default function ContactForm() {
       });
       const json = await res.json().catch(() => ({}));
       if (!res.ok) {
-        throw new Error(json.error ?? "No se pudo enviar el mensaje.");
+        throw new Error(json.error ?? t.defaultError);
       }
       setStatus("sent");
       form.reset();
     } catch (err) {
       setStatus("error");
-      setError(err instanceof Error ? err.message : "No se pudo enviar el mensaje.");
+      setError(err instanceof Error ? err.message : t.defaultError);
     }
   }
 
   if (status === "sent") {
     return (
       <div className="rounded border border-primary/40 bg-soft p-8 text-center">
-        <p className="text-lg font-semibold text-navy">¡Gracias por tu mensaje!</p>
-        <p className="mt-2 text-body">
-          Te contactaremos a la brevedad para coordinar un llamado.
-        </p>
+        <p className="text-lg font-semibold text-navy">{t.sentTitle}</p>
+        <p className="mt-2 text-body">{t.sentBody}</p>
       </div>
     );
   }
@@ -69,20 +107,20 @@ export default function ContactForm() {
         className="hidden"
         aria-hidden="true"
       />
-      <input required name="nombre" placeholder="NOMBRE" className={fieldCls} />
-      <input name="apellidos" placeholder="APELLIDO" className={fieldCls} />
-      <input required name="empresa" placeholder="EMPRESA" className={fieldCls} />
+      <input required name="nombre" placeholder={t.name} className={fieldCls} />
+      <input name="apellidos" placeholder={t.lastName} className={fieldCls} />
+      <input required name="empresa" placeholder={t.company} className={fieldCls} />
       <div className="relative">
         <select
           name="servicio"
           defaultValue=""
           className={`${fieldCls} appearance-none pr-[15px]`}
-          aria-label="Servicio"
+          aria-label={t.servicePlaceholder}
         >
           <option value="" disabled>
-            SERVICIO
+            {t.servicePlaceholder}
           </option>
-          {SERVICES.map((s) => (
+          {t.services.map((s) => (
             <option key={s} value={s}>
               {s}
             </option>
@@ -98,8 +136,8 @@ export default function ContactForm() {
           <path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L241.03 381.476c-9.373 9.373-24.569 9.373-33.941 0z" />
         </svg>
       </div>
-      <input required name="whatsapp" placeholder="WHATSAPP" className={fieldCls} />
-      <input type="email" name="email" placeholder="EMAIL" className={fieldCls} />
+      <input required name="whatsapp" placeholder={t.whatsapp} className={fieldCls} />
+      <input type="email" name="email" placeholder={t.email} className={fieldCls} />
       {/* The textarea is 180px in the original too, but its wrapper measures 191:
           an inline-block in a block whose line-height is 32.4px leaves an 11px
           descender gap below it. That 11px is load-bearing for the 646px form
@@ -107,7 +145,7 @@ export default function ContactForm() {
       <div className="leading-[32.4px] sm:col-span-2">
         <textarea
           name="mensaje"
-          placeholder="MENSAJE"
+          placeholder={t.message}
           rows={5}
           className={`${inputCls} h-[180px] resize-none px-[20px] py-[10px]`}
         />
@@ -121,15 +159,15 @@ export default function ContactForm() {
           /* 18 + 22 + 18 = 58px, the original's `btn-cta` line-height. */
           className="w-auto rounded-none bg-primary px-[24px] py-[12px] font-heading text-[14px] font-bold uppercase leading-[22px] tracking-[2px] text-white transition-colors duration-300 hover:bg-[rgba(0,0,0,0.77)] disabled:cursor-not-allowed disabled:opacity-60 md:px-[30px] md:py-[18px]"
         >
-          {status === "sending" ? "ENVIANDO..." : "ENVIAR MENSAJE"}
+          {status === "sending" ? t.sending : t.submit}
         </button>
         {status === "error" && (
           <p className="mt-3 text-sm text-red-600">
-            {error} También puedes escribirnos por{" "}
+            {error} {t.errorAlsoText}{" "}
             <a href={site.whatsappUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-primary underline">
               WhatsApp
             </a>{" "}
-            o a{" "}
+            {t.errorOrText}{" "}
             <a href={`mailto:${site.email}`} className="font-semibold text-primary underline">
               {site.email}
             </a>

@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import type { ComponentType, ReactNode, SVGProps } from "react";
 import { site } from "@/lib/site";
 import { FacebookIcon, InstagramIcon, LinkedinIcon } from "./icons";
@@ -21,6 +24,35 @@ const services = [
   // internally; matching the header. See documentation/PLAN-FOOTER.md.
   { label: "Marketing", href: "/marketing" },
 ];
+
+// Same routes as the Spanish list — those pages don't have an /en version
+// yet (see documentation/PLAN-I18N.md), so the label translates but the
+// destination stays the closest available content.
+const servicesEn = [
+  { label: "Presales", href: "/preventa" },
+  { label: "Sales", href: "/venta" },
+  { label: "Post-Sales", href: "/posventa" },
+  { label: "Marketing", href: "/marketing" },
+];
+
+const copy = {
+  es: {
+    homeLabel: "Base Core – Inicio",
+    servicios: "Servicios",
+    contacto: "Contacto",
+    contactanos: "Contactanos",
+    dondeEstamos: "Dónde estamos",
+    rights: "Base Core Sales © 2022 Todos los Derechos Reservados",
+  },
+  en: {
+    homeLabel: "Base Core – Home",
+    servicios: "Services",
+    contacto: "Contact",
+    contactanos: "Contact us",
+    dondeEstamos: "Where we are",
+    rights: "Base Core Sales © 2022 All Rights Reserved",
+  },
+} as const;
 
 const socials = [
   { href: site.social.linkedin, label: "Linkedin", Icon: LinkedinIcon },
@@ -76,6 +108,12 @@ function IconBox({
 }
 
 export default function Footer() {
+  const pathname = usePathname();
+  const lang = pathname.startsWith("/en") ? "en" : "es";
+  const t = copy[lang];
+  const homeHref = lang === "en" ? "/en" : "/";
+  const serviceItems = lang === "en" ? servicesEn : services;
+
   return (
     <footer className="bg-navy text-white">
       {/* ── Section 1 (#5043f31) ─────────────────────────────────────────── */}
@@ -89,7 +127,7 @@ export default function Footer() {
           {/* Logo — 39% */}
           <div className="px-[15px] pb-[50px] lg:w-[39%] lg:pb-0 lg:pl-[15px] lg:pr-[25px]">
             <div className="mb-[30px] flex items-center pr-[10px] xl:mb-[40px]">
-              <Link href="/" aria-label="Base Core – Inicio" className="block w-full">
+              <Link href={homeHref} aria-label={t.homeLabel} className="block w-full">
                 <Image
                   src="/images/LOGO-BASE-CORE-SALES-CON-SLOGAN.png"
                   alt={site.name}
@@ -107,10 +145,10 @@ export default function Footer() {
             <div className="md:flex">
               <div className="md:w-[26%] md:pr-[15px]">
                 <h4 className="mb-[20px] pb-[2px] font-heading text-[20px] font-bold leading-none text-white max-[767px]:text-center">
-                  Servicios
+                  {t.servicios}
                 </h4>
                 <ul>
-                  {services.map((s) => (
+                  {serviceItems.map((s) => (
                     <li key={s.href} className="max-[767px]:text-center">
                       <Link
                         href={s.href}
@@ -128,7 +166,7 @@ export default function Footer() {
 
               <div className="max-[767px]:pt-[50px] md:w-[48%] md:pl-[15px]">
                 <h4 className="mb-[20px] pb-[2px] font-heading text-[20px] font-bold leading-none text-white max-[767px]:text-center">
-                  Contacto
+                  {t.contacto}
                 </h4>
                 <div className="flex flex-col gap-[20px]">
                   <IconBox Icon={FooterEmailIcon} title="Email" href={`mailto:${site.email}`}>
@@ -136,7 +174,7 @@ export default function Footer() {
                   </IconBox>
                   <IconBox
                     Icon={FooterPhoneIcon}
-                    title="Contactanos"
+                    title={t.contactanos}
                     href={site.whatsappUrl}
                     external
                   >
@@ -167,7 +205,7 @@ export default function Footer() {
                 <div className="mt-[20px]">
                   <IconBox
                     Icon={FooterPinIcon}
-                    title="Dónde estamos"
+                    title={t.dondeEstamos}
                     titleSize="text-[15px]"
                     gutter={false}
                   >
@@ -186,7 +224,7 @@ export default function Footer() {
           <div className="px-[15px]">
             {/* Year is hard-coded on the original — see documentation/PLAN-FOOTER.md. */}
             <p className="border-t border-white/10 py-[20px] text-center font-sans text-[16px] leading-[32.4px] text-[#C5D2DD] xl:py-[25px]">
-              Base Core Sales © 2022 Todos los Derechos Reservados
+              {t.rights}
             </p>
           </div>
         </div>
