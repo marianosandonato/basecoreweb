@@ -234,15 +234,15 @@
 }
 
 .hero-title-layer {
-  top: calc(50% - 57px);
+  top: calc(50% - 45px);
 }
 
 .hero-tagline-layer {
-  top: calc(50% + 16px);
+  top: calc(50% + 52px);
 }
 
 .hero-button-layer {
-  top: calc(50% + 75px);
+  top: calc(50% + 102px);
 }
 
 .hero-title {

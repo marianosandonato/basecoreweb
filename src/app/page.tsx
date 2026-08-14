@@ -182,7 +182,7 @@ export default function HomePage() {
               alt="Proceso como servicio"
               width={850}
               height={567}
-              className="mb-[40px] h-auto w-full md:hidden"
+              className="mb-[40px] mt-[15px] h-auto w-full md:hidden"
             />
 
             {/* The widget is 112.132% wide in Elementor (#fdde924), which is what

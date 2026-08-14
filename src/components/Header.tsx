@@ -201,7 +201,7 @@ export default function Header() {
         </div>
 
         {/* Logo + hamburger */}
-        <div className="px-[20px] pb-[13px] pt-[15px]">
+        <div className="px-[20px] py-[20px]">
           <div className="flex items-center justify-between">
             <Link href={homeHref} aria-label={homeLabel} className="w-1/2">
               <Image
@@ -210,7 +210,7 @@ export default function Header() {
                 width={2000}
                 height={552}
                 priority
-                className="h-auto w-full max-w-[150px] pt-[6px]"
+                className="h-auto w-full max-w-[170px]"
               />
             </Link>
             <div className="flex w-1/2 justify-end">

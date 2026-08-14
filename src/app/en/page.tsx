@@ -184,7 +184,7 @@ export default function HomePageEn() {
               alt="Process as a Service"
               width={850}
               height={567}
-              className="mb-[40px] h-auto w-full md:hidden"
+              className="mb-[40px] mt-[15px] h-auto w-full md:hidden"
             />
 
             <SectionHeading
