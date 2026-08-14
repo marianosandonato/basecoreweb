@@ -72,16 +72,35 @@ export default function ContactForm() {
       <input required name="nombre" placeholder="NOMBRE" className={fieldCls} />
       <input name="apellidos" placeholder="APELLIDO" className={fieldCls} />
       <input required name="empresa" placeholder="EMPRESA" className={fieldCls} />
-      <select name="servicio" defaultValue="" className={fieldCls} aria-label="Servicio">
-        <option value="" disabled>
-          SERVICIO
-        </option>
-        {SERVICES.map((s) => (
-          <option key={s} value={s}>
-            {s}
+      <div className="relative">
+        <select
+          name="servicio"
+          defaultValue=""
+          className={`${fieldCls} appearance-none pr-[15px]`}
+          aria-label="Servicio"
+        >
+          <option value="" disabled>
+            SERVICIO
           </option>
-        ))}
-      </select>
+          {SERVICES.map((s) => (
+            <option key={s} value={s}>
+              {s}
+            </option>
+          ))}
+        </select>
+        {/* Centered between "SERVICIO" (ends ~15+61px in) and the field's right
+            edge: measured midpoint is field-width/2 + 38px from the left, so
+            the icon's `right` offset is field-width/2 - 38px minus its own
+            half-width (6px) = calc(50% - 44px). Holds at any field width. */}
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 448 512"
+          className="pointer-events-none absolute top-1/2 h-[12px] w-[12px] -translate-y-1/2 fill-body"
+          style={{ right: "calc(50% - 44px)" }}
+        >
+          <path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L241.03 381.476c-9.373 9.373-24.569 9.373-33.941 0z" />
+        </svg>
+      </div>
       <input required name="whatsapp" placeholder="WHATSAPP" className={fieldCls} />
       <input type="email" name="email" placeholder="EMAIL" className={fieldCls} />
       {/* The textarea is 180px in the original too, but its wrapper measures 191:
