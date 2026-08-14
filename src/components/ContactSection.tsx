@@ -53,7 +53,7 @@ export default function ContactSection({
               <>
                 Deja tus datos, programaremos un llamado para relevar tu situación actual.
                 <br />
-                Te propondremos un plan de ruta para la mejora de procesos y metodologías
+                Te propondremos un plan de ruta para la mejora de procesos y metodologías.
               </>
             }
           />
