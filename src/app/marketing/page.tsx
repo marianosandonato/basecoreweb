@@ -180,6 +180,7 @@ export default function MarketingPage() {
                 align="left"
                 maxWidth={530}
                 className="mb-[16px]"
+                eyebrowClassName="mb-[20px]"
                 descriptionClassName="!pt-[20px]"
               />
               <div className="mt-[20px]">
