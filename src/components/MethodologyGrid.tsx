@@ -63,6 +63,17 @@ export default function MethodologyGrid({ steps }: Props) {
                 className="absolute inset-0"
                 style={{ backgroundColor: "rgba(0, 41, 75, 0.24)" }}
               />
+              {/* Same outlined 01-04 numeral as the >=md front card, extracted
+                  to a transparent watermark (alpha baked in, max ~39%) so it
+                  sits behind the text instead of on its own opaque card. */}
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-center bg-no-repeat"
+                style={{
+                  backgroundImage: `url(${step.frontImage.replace("-base-core-sales.jpg", "-numeral-watermark.png")})`,
+                  backgroundSize: "55% auto",
+                }}
+              />
               <div className="relative">
                 <div className="mb-[20px] flex justify-center">
                   <Icon className="text-[50px] text-white" />
