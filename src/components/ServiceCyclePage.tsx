@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import type { ServicePageData } from "@/content/types";
+import type { Lang } from "@/lib/site";
 import Breadcrumb from "./Breadcrumb";
 import CheckList from "./CheckList";
 import ContactSection from "./ContactSection";
@@ -9,21 +10,50 @@ import SectionHeading from "./SectionHeading";
 import ServiceCards from "./ServiceCards";
 import SquareCta from "./SquareCta";
 
+const copy = {
+  es: {
+    cta: "AGENDAR RELEVAMIENTO",
+    etapas: "Etapas",
+    recruitingEyebrow: "RECLUTAMIENTO: FUERZA DE VENTAS",
+    recruitingDescription:
+      "Además de nuestro modelo de formación, buscamos perfiles acordes y eficientes al modelo de ventas propuesto.",
+    puestos: "Puestos",
+    nextCycleTitle: "Descubrí cómo continúan los ciclos",
+  },
+  en: {
+    cta: "BOOK A DISCOVERY CALL",
+    etapas: "Stages",
+    recruitingEyebrow: "RECRUITING: SALES FORCE",
+    recruitingDescription:
+      "Beyond our training model, we look for profiles that fit and perform within the proposed sales model.",
+    puestos: "Positions",
+    nextCycleTitle: "See how the cycles continue",
+  },
+} as const;
+
 /**
  * Shared layout for Preventa / Venta / Posventa (Elementor page 24 on /preventa).
  * Section ids in the comments refer to that template — see documentation/PLAN-PREVENTA.md.
  */
-export default function ServiceCyclePage({ data }: { data: ServicePageData }) {
+export default function ServiceCyclePage({
+  data,
+  lang = "es",
+}: {
+  data: ServicePageData;
+  lang?: Lang;
+}) {
+  const t = copy[lang];
+
   return (
     <>
-      <Breadcrumb current={data.breadcrumb} />
+      <Breadcrumb current={data.breadcrumb} lang={lang} />
 
       {/* Hero (#7f215f0) */}
       <PageHero
         title={data.hero.title}
         lines={data.hero.lines}
         image={data.hero.image}
-        cta={{ label: "AGENDAR RELEVAMIENTO", href: "#contacto" }}
+        cta={{ label: t.cta, href: "#contacto" }}
       />
 
       {/* "Etapas" heading (#41a6ea0c) — full-width section, centred text */}
@@ -32,7 +62,7 @@ export default function ServiceCyclePage({ data }: { data: ServicePageData }) {
           <div style={{ height: `${data.etapas.spacerTop}px` }} />
         ) : null}
         <div className="px-[15px]">
-          <SectionHeading eyebrow={data.etapas.eyebrow} title="Etapas" maxWidth={800} />
+          <SectionHeading eyebrow={data.etapas.eyebrow} title={t.etapas} maxWidth={800} />
         </div>
       </section>
 
@@ -66,9 +96,9 @@ export default function ServiceCyclePage({ data }: { data: ServicePageData }) {
         </div>
         <div className="px-[15px] pb-[45px] max-md:pl-[25px] dt:w-[45%] dt:py-[100px] dt:pl-[85px]">
           <SectionHeading
-            eyebrow="RECLUTAMIENTO: FUERZA DE VENTAS"
+            eyebrow={t.recruitingEyebrow}
             title={data.recruiting.title}
-            description="Además de nuestro modelo de formación, buscamos perfiles acordes y eficientes al modelo de ventas propuesto."
+            description={t.recruitingDescription}
             align="left"
             maxWidth={800}
             className="mb-[8px] pr-[50px] dt:mb-[10px]"
@@ -91,7 +121,7 @@ export default function ServiceCyclePage({ data }: { data: ServicePageData }) {
         <div className="px-[15px] py-[10px]">
           <SectionHeading
             eyebrow={data.puestos.eyebrow}
-            title="Puestos"
+            title={t.puestos}
             maxWidth={800}
             className="mb-[20px]"
           />
@@ -112,7 +142,7 @@ export default function ServiceCyclePage({ data }: { data: ServicePageData }) {
           <span aria-hidden="true" className="absolute inset-0 bg-navy opacity-[0.82]" />
           <div className="container-bc relative py-[10px] text-center">
             <h2 className="mx-auto max-w-[900px] font-heading text-[26px] font-bold leading-[40px] text-white md:text-[40px] md:leading-[50px] dt:text-[60px] dt:leading-[68px]">
-              Descubrí cómo continúan los ciclos
+              {t.nextCycleTitle}
             </h2>
             <SquareCta href={data.nextCycle.href} className="mt-[35px]">
               {data.nextCycle.label}
@@ -126,6 +156,7 @@ export default function ServiceCyclePage({ data }: { data: ServicePageData }) {
         titleAs={data.contactTitleAs ?? "h3"}
         backgroundImage="/images/bg-5.jpg"
         className="mt-[65px] pb-[70px] pt-0 md:mt-0 dt:py-[120px]"
+        lang={lang}
       />
     </>
   );

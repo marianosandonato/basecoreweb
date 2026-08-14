@@ -6,7 +6,10 @@ export const metadata: Metadata = {
   title: "Contacto",
   description:
     "Escríbenos: deja tus datos y programaremos un llamado para relevar tu situación actual y proponerte un plan de ruta.",
-  alternates: { canonical: "/contacto" },
+  alternates: {
+    canonical: "/contacto",
+    languages: { es: "/contacto", en: "/en/contact" },
+  },
 };
 
 export default function ContactoPage() {

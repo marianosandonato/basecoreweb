@@ -38,19 +38,34 @@ export const nav = [
 
 export type Lang = "es" | "en";
 
-/**
- * Only "/" has an English counterpart so far (see documentation/PLAN-I18N.md).
- * The other items keep their English label but link to the Spanish page —
- * the closest available content — until each page gets its own /en route.
- */
 export const navEn = [
   { label: "Home", href: "/en" },
-  { label: "Presales", href: "/preventa" },
-  { label: "Sales", href: "/venta" },
-  { label: "Post-Sales", href: "/posventa" },
-  { label: "Marketing", href: "/marketing" },
-  { label: "Contact", href: "/contacto" },
+  { label: "Presales", href: "/en/presales" },
+  { label: "Sales", href: "/en/sales" },
+  { label: "Post-Sales", href: "/en/post-sales" },
+  { label: "Marketing", href: "/en/marketing" },
+  { label: "Contact", href: "/en/contact" },
 ] as const;
+
+/**
+ * Every ES path's EN counterpart, both directions — the single source of
+ * truth for the language switcher, the suggestion banner, and the footer's
+ * service links. Keep in sync with the route folders under src/app/(en/).
+ */
+export const routeMap: Record<string, string> = {
+  "/": "/en",
+  "/en": "/",
+  "/preventa": "/en/presales",
+  "/en/presales": "/preventa",
+  "/venta": "/en/sales",
+  "/en/sales": "/venta",
+  "/posventa": "/en/post-sales",
+  "/en/post-sales": "/posventa",
+  "/marketing": "/en/marketing",
+  "/en/marketing": "/marketing",
+  "/contacto": "/en/contact",
+  "/en/contact": "/contacto",
+};
 
 export const siteEn = {
   name: "Base Core – Commercial Consulting & Marketing",

@@ -7,7 +7,6 @@ import MethodologyGrid, { type MethodologyStep } from "@/components/MethodologyG
 import ProcessImageStack from "@/components/ProcessImageStack";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCards from "@/components/ServiceCards";
-import LanguageBanner from "@/components/LanguageBanner";
 import { site, siteEn } from "@/lib/site";
 import { PosventaIcon, PreventaIcon, VentaIcon } from "@/components/cycleIcons";
 import {
@@ -133,8 +132,6 @@ const recruitingChecklist = [
 export default function HomePageEn() {
   return (
     <>
-      <LanguageBanner lang="en" alternateHref="/" />
-
       {/* ── Hero ──────────────────────────────────────────────────────── */}
       <section className="hero relative overflow-hidden">
         <div className="animate-hero-panzoom absolute inset-0">

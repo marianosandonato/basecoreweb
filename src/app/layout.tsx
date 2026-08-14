@@ -3,6 +3,7 @@ import { DM_Sans, Montserrat, Sora } from "next/font/google";
 import localFont from "next/font/local";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import LanguageBanner from "@/components/LanguageBanner";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { site } from "@/lib/site";
 import "./globals.css";
@@ -92,6 +93,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <WhatsAppButton />
+        <LanguageBanner />
       </body>
     </html>
   );

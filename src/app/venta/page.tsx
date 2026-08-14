@@ -6,7 +6,10 @@ export const metadata: Metadata = {
   title: "Venta",
   description:
     "Mejora tus procesos de venta: modelo comercial, pipeline y funnel, metas y objetivos, KPI's, forecast, esquemas de compensación e implementación de CRM.",
-  alternates: { canonical: "/venta" },
+  alternates: {
+    canonical: "/venta",
+    languages: { es: "/venta", en: "/en/sales" },
+  },
 };
 
 export default function VentaPage() {

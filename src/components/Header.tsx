@@ -143,7 +143,7 @@ export default function Header() {
                 ))}
               </div>
               <span aria-hidden="true" className="h-4 w-px bg-white/[0.08]" />
-              <LanguageSwitcher lang={lang} className="text-white" />
+              <LanguageSwitcher className="text-white" />
             </div>
           </div>
         </div>
@@ -196,7 +196,7 @@ export default function Header() {
               ))}
             </ul>
             <span aria-hidden="true" className="h-4 w-px bg-white/20" />
-            <LanguageSwitcher lang={lang} className="text-white" />
+            <LanguageSwitcher className="text-white" />
           </div>
         </div>
 

@@ -1,0 +1,89 @@
+import { EstrategiaIcon, VentaIcon } from "@/components/cycleIcons";
+import { POSVENTA_GRID } from "./flipGrids";
+import type { ServicePageData } from "./types";
+
+export const posventaEn: ServicePageData = {
+  slug: "post-sales",
+  breadcrumb: "Post-Sales",
+  hero: {
+    title: ["Looking to build", "customer loyalty?"],
+    lines: [
+      "Improve your customers' experience.",
+      "We identify opportunities to grow your accounts.",
+    ],
+    image: "/images/Base-Core-Consultoria-Comercial-y-Marketing-Support.jpg",
+  },
+  etapas: {
+    eyebrow: "POST-SALES MENTORING",
+    grid: POSVENTA_GRID,
+    spacerTop: 65,
+    cards: [
+      {
+        title: "Account Development",
+        tagline: ["CROSS SELLING", "UP SELLING"],
+        image: "/images/Base-Core-Consultoria-Comercial-y-Marketing-DESARROLLO-DE-CUENTAS.jpg",
+        items: [
+          "ABC revenue analysis",
+          "Product mix",
+          "Ticket size and transactions",
+          "Seasonality",
+          "Commercial potential",
+        ],
+      },
+      {
+        title: "Historical Churn & Acquisition Tracking",
+        tagline: ["WIN-BACK", "ACQUISITION"],
+        image: "/images/Base-Core-Consultoria-Comercial-y-Marketing-MEDICION-HISTORICA-DE-ALTAS-Y-BAJAS-CHURN.jpg",
+        items: [
+          "Impact on target",
+          "Segmentation by sale type, channel and customer",
+          "Churn provisioning",
+        ],
+      },
+      {
+        title: "Portfolio Segmentation",
+        tagline: ["LOYALTY", "RETENTION"],
+        image: "/images/Base-Core-Consultoria-Comercial-y-Marketing-SEGMENTACION-DE-CARTERA.jpg",
+        items: [
+          "Average revenue vs. assigned potential",
+          "Seasonality",
+          "Analyze - Develop - Sustain",
+          "Mean - Standard deviation",
+        ],
+      },
+    ],
+  },
+  recruiting: {
+    title: "We build a solid, professional post-sales team",
+    items: [
+      "Job descriptions",
+      "Sourcing channels",
+      "Interview coordination",
+      "Candidate presentation",
+    ],
+  },
+  puestos: {
+    eyebrow: "POST-SALES COMMERCIAL STRUCTURE",
+    paddingTop: 120,
+    cards: [
+      {
+        title: "Retention",
+        icon: EstrategiaIcon,
+        image: "/images/retencion-base-core-sales.jpg",
+        roles: [
+          "Customer Success Rep",
+          "Customer Success Manager",
+          "Customer Support Executive",
+          "Customer Success Executive",
+        ],
+      },
+      {
+        title: "Growth",
+        icon: VentaIcon,
+        image: "/images/crecimiento-base-core-sales.jpg",
+        roles: ["Account Manager", "KAM", "Account Representative", "Channel Manager"],
+      },
+    ],
+  },
+  contactTitleAs: "h2",
+};

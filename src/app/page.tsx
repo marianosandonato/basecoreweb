@@ -3,7 +3,6 @@ import Image from "next/image";
 import Button from "@/components/Button";
 import CheckList from "@/components/CheckList";
 import ContactSection from "@/components/ContactSection";
-import LanguageBanner from "@/components/LanguageBanner";
 import MethodologyGrid, { type MethodologyStep } from "@/components/MethodologyGrid";
 import ProcessImageStack from "@/components/ProcessImageStack";
 import SectionHeading from "@/components/SectionHeading";
@@ -125,8 +124,6 @@ const recruitingChecklist = [
 export default function HomePage() {
   return (
     <>
-      <LanguageBanner lang="es" alternateHref="/en" />
-
       {/* ── Hero (#0e79c74) ───────────────────────────────────────────────
           Revolution Slider: 880px tall, no colour overlay, content left-aligned
           on the 1170px grid, slow pan-zoom on the photo. */}

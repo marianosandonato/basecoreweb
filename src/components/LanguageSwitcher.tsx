@@ -1,27 +1,28 @@
 "use client";
 
 import Link from "next/link";
-import type { Lang } from "@/lib/site";
+import { usePathname } from "next/navigation";
+import { routeMap, type Lang } from "@/lib/site";
 
 /** Remembers an explicit choice so proxy.ts can honor it on return visits. */
 function rememberLang(lang: Lang) {
   document.cookie = `basecore_lang=${lang}; path=/; max-age=31536000; samesite=lax`;
 }
 
-export default function LanguageSwitcher({
-  lang,
-  className = "",
-}: {
-  lang: Lang;
-  className?: string;
-}) {
+export default function LanguageSwitcher({ className = "" }: { className?: string }) {
+  const pathname = usePathname();
+  const lang: Lang = pathname.startsWith("/en") ? "en" : "es";
+  const otherHref = routeMap[pathname] ?? (lang === "en" ? "/" : "/en");
+  const esHref = lang === "es" ? pathname : otherHref;
+  const enHref = lang === "en" ? pathname : otherHref;
+
   return (
     <div
       className={`flex items-center gap-[6px] font-sans text-[13px] font-medium ${className}`}
       aria-label="Language"
     >
       <Link
-        href="/"
+        href={esHref}
         onClick={() => rememberLang("es")}
         aria-current={lang === "es" ? "true" : undefined}
         className={`transition-colors hover:text-primary ${
@@ -34,7 +35,7 @@ export default function LanguageSwitcher({
         |
       </span>
       <Link
-        href="/en"
+        href={enHref}
         onClick={() => rememberLang("en")}
         aria-current={lang === "en" ? "true" : undefined}
         className={`transition-colors hover:text-primary ${
