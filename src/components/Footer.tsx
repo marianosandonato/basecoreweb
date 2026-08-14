@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import type { ComponentType, ReactNode, SVGProps } from "react";
-import { site } from "@/lib/site";
+import { site, siteEn } from "@/lib/site";
 import { FacebookIcon, InstagramIcon, LinkedinIcon } from "./icons";
 import { FooterEmailIcon, FooterPhoneIcon, FooterPinIcon } from "./footerIcons";
 
@@ -129,10 +129,14 @@ export default function Footer() {
             <div className="mb-[30px] flex items-center pr-[10px] xl:mb-[40px]">
               <Link href={homeHref} aria-label={t.homeLabel} className="block w-full">
                 <Image
-                  src="/images/LOGO-BASE-CORE-SALES-CON-SLOGAN.png"
-                  alt={site.name}
-                  width={290}
-                  height={290}
+                  src={
+                    lang === "en"
+                      ? "/images/logo-footer-base-core-sales-en.png"
+                      : "/images/logo-footer-base-core-sales-es.png"
+                  }
+                  alt={lang === "en" ? siteEn.name : site.name}
+                  width={lang === "en" ? 896 : 225}
+                  height={lang === "en" ? 999 : 251}
                   className="mx-auto h-auto w-full max-w-[290px]"
                 />
               </Link>

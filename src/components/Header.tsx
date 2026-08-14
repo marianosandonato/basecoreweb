@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { nav, navEn, site } from "@/lib/site";
+import { nav, navEn, site, siteEn } from "@/lib/site";
 import {
   CloseIcon,
   EnvelopeIcon,
@@ -206,9 +206,9 @@ export default function Header() {
             <Link href={homeHref} aria-label={homeLabel} className="w-1/2">
               <Image
                 src="/images/logo-movil-base-core-sales.png"
-                alt={site.name}
-                width={866}
-                height={288}
+                alt={lang === "en" ? siteEn.name : site.name}
+                width={1293}
+                height={356}
                 priority
                 className="h-auto w-full max-w-[150px] pt-[6px]"
               />
@@ -240,9 +240,9 @@ export default function Header() {
             <div className="mb-6 flex items-center justify-between">
               <Image
                 src="/images/logo-movil-base-core-sales.png"
-                alt={site.name}
-                width={866}
-                height={288}
+                alt={lang === "en" ? siteEn.name : site.name}
+                width={1293}
+                height={356}
                 className="h-auto w-[150px]"
               />
               <button
