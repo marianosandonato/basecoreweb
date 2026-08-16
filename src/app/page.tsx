@@ -338,7 +338,7 @@ export default function HomePage() {
         <span aria-hidden="true" className="absolute inset-0 bg-navy opacity-[0.82]" />
         <div className="container-bc relative">
           <SectionHeading
-            title="Optimiza tus procesos: Primeros pasos para una estructura comercial efectiva"
+            title="Optimiza tus procesos: primeros pasos para un proceso comercial efectivo"
             description="Descarga nuestro E-Book"
             dark
             showLine={false}
@@ -348,7 +348,7 @@ export default function HomePage() {
             descriptionClassName="!text-[24px] !text-[#C6C6C6] !pt-[20px]"
           />
           <div className="text-center">
-            <Button href="#contacto" size="sm" className="mt-[15px]">
+            <Button href="/ebook" size="sm" className="mt-[15px]">
               DESCARGAR
             </Button>
           </div>

@@ -328,7 +328,7 @@ export default function HomePageEn() {
         <span aria-hidden="true" className="absolute inset-0 bg-navy opacity-[0.82]" />
         <div className="container-bc relative">
           <SectionHeading
-            title="Optimize Your Processes: First Steps Toward an Effective Sales Structure"
+            title="Optimize your processes: first steps toward an effective sales process"
             description="Download our free E-Book"
             dark
             showLine={false}
@@ -338,7 +338,7 @@ export default function HomePageEn() {
             descriptionClassName="!text-[24px] !text-[#C6C6C6] !pt-[20px]"
           />
           <div className="text-center">
-            <Button href="#contacto" size="sm" className="mt-[15px]">
+            <Button href="/en/ebook" size="sm" className="mt-[15px]">
               DOWNLOAD
             </Button>
           </div>

@@ -65,6 +65,8 @@ export const routeMap: Record<string, string> = {
   "/en/marketing": "/marketing",
   "/contacto": "/en/contact",
   "/en/contact": "/contacto",
+  "/ebook": "/en/ebook",
+  "/en/ebook": "/ebook",
 };
 
 export const siteEn = {
