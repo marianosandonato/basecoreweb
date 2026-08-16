@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import type { Lang } from "@/lib/site";
 
 /**
@@ -19,17 +20,22 @@ export default function Breadcrumb({
   current,
   variant = "bar",
   lang = "es",
+  title,
 }: {
   current: string;
   variant?: "bar" | "hero";
   lang?: Lang;
+  /** Only used by the "hero" variant — grows the box to fit a headline
+      above the corner trail tab (/ebook). /contacto passes none, so its
+      280px box is untouched. */
+  title?: ReactNode;
 }) {
   const homeHref = lang === "en" ? "/en" : "/";
 
   if (variant === "hero") {
     return (
       <div className="relative bg-heading">
-        {/* LCP image on /contacto. */}
+        {/* LCP image on /contacto and /ebook. */}
         <Image
           src="/images/breadcrumb.jpg"
           alt=""
@@ -39,12 +45,25 @@ export default function Breadcrumb({
           className="object-cover object-center"
         />
         {/* .container is 1200 with 12px padding; the inner is padded 160/0/120
-            and is the positioning context for the corner tab. */}
+            and is the positioning context for the corner tab. When `title` is
+            given, the extra in-flow text before the (still absolutely
+            positioned) tab grows the nav's height to fit it — /contacto's
+            280px stays exact since it renders nothing there. */}
         <div className="relative mx-auto w-full max-w-[1200px] px-[12px]">
           <nav
             aria-label="Breadcrumb"
-            className="relative pb-[120px] pt-[160px]"
+            className={`relative pb-[120px] pt-[160px] ${title ? "dt:pt-[300px]" : ""}`}
           >
+            {/* dt:pt-[300px]: from 1025 up, Header overlays this box with a
+                transparent zone holding the 200x200 logo (top 61-261px) — the
+                extra top padding clears it so the title text doesn't run
+                under the tree. Below dt the header is in normal flow (not
+                overlaid), so the base 160px is enough. */}
+            {title && (
+              <p className="max-w-[820px] pb-[40px] font-heading text-[22px] font-bold leading-[32px] text-white md:text-[28px] md:leading-[40px] dt:text-[32px] dt:leading-[44px]">
+                {title}
+              </p>
+            )}
             <ol className="flex items-center rounded-t-[10px] bg-white px-[25px] pb-[22px] pt-[25px] absolute bottom-0 right-0 font-sans text-[15px] font-bold leading-[15px]">
               <li className="px-[10px]">
                 <Link href={homeHref} className="text-heading transition-colors hover:text-primary">

@@ -10,6 +10,7 @@ const pairs: [string, string][] = [
   ["/posventa", "/en/post-sales"],
   ["/marketing", "/en/marketing"],
   ["/contacto", "/en/contact"],
+  ["/ebook", "/en/ebook"],
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
