@@ -110,8 +110,11 @@ export default function MarketingPage() {
       />
 
       {/* Pilares heading (#9b0a6dc) — the original carries its 100px of space
-          as a section margin; a spacer avoids the margin-collapse trap. */}
-      <div className="h-[100px]" aria-hidden="true" />
+          as a section margin; a spacer avoids the margin-collapse trap. Below
+          md this shrinks to 28px so the gap from the hero photo to the
+          heading-line dashes matches the other three pages' ~1cm (28px +
+          the section's 10px pt below). */}
+      <div className="h-[28px] md:h-[100px]" aria-hidden="true" />
       <section className="container-bc py-[10px]">
         <SectionHeading
           eyebrow="AGENCIA DE MARKETING"
