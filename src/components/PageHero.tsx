@@ -39,14 +39,17 @@ export default function PageHero({ title, lines, image, cta }: Props) {
         className="object-cover object-center"
       />
       <span aria-hidden="true" className="absolute inset-0 bg-[#01294B] opacity-[0.14]" />
-      <div className="relative flex flex-col items-center justify-center px-[15px] pb-[70px] text-center md:h-screen md:pb-0">
+      <div className="relative flex min-h-[482px] flex-col items-center justify-center px-[15px] pb-[70px] text-center md:h-screen md:min-h-0 md:pb-0">
         {/* The 50px spacer is a widget in the original's stack, so it is part of
             what gets vertically centred rather than section padding. Below
             md, the section has no explicit height (it's md:h-screen only from
-            768 up), so it shrinks to exactly the content's height and this
-            spacer becomes the entire top margin against the photo — pb-[70px]
-            mirrors it (50px spacer + 20px gap) so the button doesn't sit
-            flush against the image's bottom edge. */}
+            768 up), so it shrinks to exactly the content's height — min-h-[482px]
+            (measured on /preventa, the tallest of the four hero pages, whose
+            3-line title+tagline naturally need that much room) makes every
+            page's box that same height below md instead of each one shrinking
+            to fit its own shorter text. pb-[70px] mirrors the top spacer
+            (50px + 20px gap) so the button doesn't sit flush against the
+            image's bottom edge. */}
         <div aria-hidden="true" className="mb-[20px] h-[50px] shrink-0" />
 
         <h1 className="animate-hero-title font-montserrat text-[35px] font-light leading-[42px] text-white md:text-[50px] md:leading-[59px]">

@@ -58,8 +58,13 @@ export default function ServiceCyclePage({
 
       {/* "Etapas" heading (#41a6ea0c) — full-width section, centred text */}
       <section className="py-[10px]">
+        {/* Below md: a flat ~1cm (38px, incl. the section's 10px pt) gap from
+            the hero photo to the heading-line dashes on every page, instead
+            of each page's own desktop spacerTop (0/65/80px) bleeding into
+            mobile. */}
+        <div className="h-[28px] md:hidden" aria-hidden="true" />
         {data.etapas.spacerTop ? (
-          <div style={{ height: `${data.etapas.spacerTop}px` }} />
+          <div className="hidden md:block" style={{ height: `${data.etapas.spacerTop}px` }} />
         ) : null}
         <div className="px-[15px]">
           <SectionHeading eyebrow={data.etapas.eyebrow} title={t.etapas} maxWidth={800} />
