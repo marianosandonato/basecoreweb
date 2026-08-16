@@ -301,42 +301,11 @@ export default function HomePageEn() {
         className="relative z-[1] bg-cover bg-right bg-no-repeat dt:flex dt:bg-fixed"
         style={{ backgroundImage: "url(/images/Fondo-Base-Core-01.webp)" }}
       >
-        {/* Below dt: a single photo card with the text overlaid directly on
-            it (navy tint for legibility) instead of the two-column desktop
-            split, which only makes sense once dt:flex actually applies. */}
-        <div
-          className="relative bg-cover bg-no-repeat px-[15px] py-[35px] dt:hidden"
-          style={{
-            backgroundImage: "url(/images/Fondo-Base-Core-01.webp)",
-            backgroundPosition: "0% 30%",
-          }}
-        >
-          <span
-            aria-hidden="true"
-            className="absolute inset-0"
-            style={{ backgroundColor: "rgba(0, 41, 75, 0.55)" }}
-          />
-          <div className="relative">
-            <SectionHeading
-              eyebrow="RECRUITING: SALES FORCE"
-              title="We support you in sourcing and selecting the right talent for your business."
-              description="Beyond our training model, we look for profiles that fit and perform within the proposed sales model."
-              align="left"
-              dark
-              maxWidth={800}
-              className="mb-[8px]"
-            />
-            <div className="mt-[20px]">
-              <CheckList items={recruitingChecklist} dark size="md" />
-            </div>
-          </div>
-        </div>
-
-        <div className="hidden px-[15px] pb-0 pt-[70px] md:pb-[80px] md:pt-[60px] dt:block dt:w-[55%] dt:py-0">
+        <div className="px-[15px] pb-0 pt-[70px] md:pb-[80px] md:pt-[60px] dt:w-[55%] dt:py-0">
           <div className="h-[10px] dt:h-[160px]" />
         </div>
 
-        <div className="hidden px-[15px] pb-[45px] max-md:pl-[25px] dt:block dt:w-[45%] dt:py-[100px] dt:pl-[85px]">
+        <div className="px-[15px] pb-[45px] max-md:pl-[25px] dt:w-[45%] dt:py-[100px] dt:pl-[85px]">
           <SectionHeading
             eyebrow="RECRUITING: SALES FORCE"
             title="We support you in sourcing and selecting the right talent for your business."
