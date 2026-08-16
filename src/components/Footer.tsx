@@ -137,6 +137,7 @@ export default function Footer() {
                   alt={lang === "en" ? siteEn.name : site.name}
                   width={lang === "en" ? 1792 : 1781}
                   height={2000}
+                  sizes="290px"
                   className="mx-auto h-auto w-full max-w-[290px]"
                 />
               </Link>

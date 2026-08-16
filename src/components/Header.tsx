@@ -210,6 +210,7 @@ export default function Header() {
                 width={2000}
                 height={552}
                 priority
+                sizes="170px"
                 className="h-auto w-full max-w-[170px]"
               />
             </Link>
@@ -243,6 +244,7 @@ export default function Header() {
                 alt={lang === "en" ? siteEn.name : site.name}
                 width={2000}
                 height={552}
+                sizes="150px"
                 className="h-auto w-[150px]"
               />
               <button
