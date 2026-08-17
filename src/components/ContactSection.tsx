@@ -1,11 +1,13 @@
 import Image from "next/image";
-import { site, siteEn, type Lang } from "@/lib/site";
+import Link from "next/link";
+import { nav, navEn, site, siteEn, type Lang } from "@/lib/site";
 import ContactForm from "./ContactForm";
 import SectionHeading from "./SectionHeading";
 import { CheckCircleIcon, LinkedinIcon } from "./icons";
 
-const cycleItems = ["Preventa", "Venta", "Posventa", "Marketing"];
-const cycleItemsEn = ["Presales", "Sales", "Post-Sales", "Marketing"];
+/** Preventa/Venta/Posventa/Marketing — same order and labels as `nav`/`navEn`. */
+const cycleLinks = nav.slice(1, 5);
+const cycleLinksEn = navEn.slice(1, 5);
 
 const copy = {
   es: {
@@ -58,7 +60,7 @@ export default function ContactSection({
   lang?: Lang;
 }) {
   const t = copy[lang];
-  const items = lang === "en" ? cycleItemsEn : cycleItems;
+  const items = lang === "en" ? cycleLinksEn : cycleLinks;
 
   return (
     <section
@@ -137,11 +139,13 @@ export default function ContactSection({
                      text starts at 28px: a 23px icon box plus 5px of text
                      padding on the original, 16px icon plus a 12px gap here. */
                   <li
-                    key={item}
+                    key={item.href}
                     className="flex items-start gap-[12px] font-sans text-[17px] font-medium leading-[32.4px] text-navy"
                   >
                     <CheckCircleIcon className="mt-[8px] shrink-0 text-[16px] text-primary" />
-                    <span>{item}</span>
+                    <Link href={item.href} className="transition-colors hover:text-primary">
+                      {item.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
