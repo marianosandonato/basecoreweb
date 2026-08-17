@@ -76,7 +76,7 @@ export default function EbookSection({ lang = "es" }: { lang?: Lang }) {
             maxWidth={530}
             align="left"
             className="md:mb-[40px]"
-            titleClassName="mb-[6px]"
+            titleClassName="mb-[6px] !text-[26px] md:!text-[32px] dt:!text-[38px]"
             descriptionClassName="!pt-[10px] md:!pt-[20px]"
             description={t.description}
           />
@@ -144,6 +144,7 @@ export default function EbookSection({ lang = "es" }: { lang?: Lang }) {
             align="left"
             maxWidth={530}
             className="mb-[20px]"
+            titleClassName="!text-[26px] md:!text-[32px] dt:!text-[38px]"
             descriptionClassName="!pt-[10px] md:!pt-[15px]"
           />
           <div className="border-x border-b border-t-4 border-solid border-line border-t-primary px-[15px] py-[30px] dt:p-[45px]">
