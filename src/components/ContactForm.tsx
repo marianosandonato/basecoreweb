@@ -2,6 +2,9 @@
 
 import { useState, type FormEvent } from "react";
 import { site, type Lang } from "@/lib/site";
+import Turnstile from "./Turnstile";
+
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -61,6 +64,7 @@ export default function ContactForm({ lang = "es" }: { lang?: Lang }) {
   const t = copy[lang];
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -73,7 +77,7 @@ export default function ContactForm({ lang = "es" }: { lang?: Lang }) {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, turnstileToken: captchaToken }),
       });
       const json = await res.json().catch(() => ({}));
       if (!res.ok) {
@@ -150,12 +154,22 @@ export default function ContactForm({ lang = "es" }: { lang?: Lang }) {
           className={`${inputCls} h-[180px] resize-none px-[20px] py-[10px]`}
         />
       </div>
+      {TURNSTILE_SITE_KEY && (
+        <div className="sm:col-span-2">
+          <Turnstile
+            siteKey={TURNSTILE_SITE_KEY}
+            onVerify={setCaptchaToken}
+            onExpire={() => setCaptchaToken(null)}
+          />
+        </div>
+      )}
+
       {/* At <=767 the original drops the 35px lead-in and the button shrinks to
           192x46 with 12px/24px padding; from 768 it is 211x58 with 18px/30px. */}
       <div className="pt-0 sm:col-span-2 md:pt-[35px]">
         <button
           type="submit"
-          disabled={status === "sending"}
+          disabled={status === "sending" || (Boolean(TURNSTILE_SITE_KEY) && !captchaToken)}
           /* 18 + 22 + 18 = 58px, the original's `btn-cta` line-height. */
           className="w-auto rounded-none bg-primary px-[24px] py-[12px] font-heading text-[14px] font-bold uppercase leading-[22px] tracking-[2px] text-white transition-colors duration-300 hover:bg-[rgba(0,0,0,0.77)] disabled:cursor-not-allowed disabled:opacity-60 md:px-[30px] md:py-[18px]"
         >
