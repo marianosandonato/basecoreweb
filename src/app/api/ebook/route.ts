@@ -1,4 +1,5 @@
 import { Resend } from "resend";
+import { verifyTurnstile } from "@/lib/turnstile";
 
 type EbookPayload = {
   nombre?: string;
@@ -8,6 +9,7 @@ type EbookPayload = {
   email?: string;
   idioma?: string;
   website?: string; // honeypot
+  turnstileToken?: string;
 };
 
 function escapeHtml(value: string): string {
@@ -29,6 +31,15 @@ export async function POST(request: Request) {
   // Honeypot: silently accept bot submissions without sending anything
   if (data.website) {
     return Response.json({ ok: true });
+  }
+
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? null;
+  const captchaOk = await verifyTurnstile(data.turnstileToken, ip);
+  if (!captchaOk) {
+    return Response.json(
+      { error: "Verificación de seguridad fallida. Volvé a intentarlo." },
+      { status: 400 },
+    );
   }
 
   const nombre = data.nombre?.trim();
