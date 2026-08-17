@@ -18,7 +18,7 @@ export default function EbookPage() {
       <Breadcrumb
         current="E-Book"
         variant="hero"
-        title="¿Cuáles son los primeros pasos para un proceso comercial efectivo y la importancia de definir un efectivo ciclo de preventa para atraer nuevos clientes?"
+        title="¿Cuáles son los primeros pasos para un proceso comercial efectivo y la importancia de definir un ciclo de preventa para atraer nuevos clientes?"
       />
       <EbookSection />
     </>
