@@ -252,44 +252,26 @@ export default function HomePage() {
           <span aria-hidden="true" className="absolute inset-0 bg-black opacity-[0.74]" />
           <div className="relative flex h-full flex-col justify-between">
             <div className="pl-[15px]">
-              <Image
-                src="/images/NaN-blanco.png"
-                alt="NaN"
-                width={280}
-                height={280}
-                className="h-auto w-[155px] md:w-[35%]"
-              />
+              <span className="font-heading text-[28px] font-bold leading-[1.2] text-white md:text-[36px]">
+                Base Core
+                <br />
+                Marketing
+              </span>
             </div>
             {/* Spacer (#7d141e93): 420px desktop, 10px below 1024 */}
             <div className="h-[10px] dt:h-[420px]" />
-            <div className="px-[15px]">
-              <Image
-                src="/images/not-a-numb3r-light.png"
-                alt="Not-a-Numb3r"
-                width={1024}
-                height={95}
-                className="h-auto w-full"
-              />
-            </div>
           </div>
         </div>
 
         <div className="bg-navy px-[15px] py-[60px] max-md:pl-[35px] md:w-1/2 dt:py-[106px] dt:pl-[100px]">
           <div className="max-w-[680px]">
             <SectionHeading
-              eyebrow="Not-a-Numb3r"
-              title={
-                <>
-                  Partner Estratégico
-                  <br />
-                  Agencia de Marketing
-                </>
-              }
+              eyebrow="Desarrollo de Marca"
+              title="Agencia de Marketing"
               align="left"
               dark
               maxWidth={800}
               className="mb-[15px]"
-              eyebrowClassName="!font-montserrat !text-[26px] !font-extralight !normal-case !tracking-[2.2px] !leading-[30px] !text-muted"
               titleClassName="!text-[44px] !leading-[1.3]"
             />
             <CheckList items={partnerChecklist} dark size="md" />
