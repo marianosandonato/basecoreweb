@@ -6,7 +6,7 @@ export const venta: ServicePageData = {
   slug: "venta",
   breadcrumb: "Venta",
   hero: {
-    title: ["¿Buscas mejorar", "tus procesos de venta?"],
+    title: ["¿Buscas mejorar tu", "proceso de ventas?"],
     lines: [
       "Define un plan estratégico.",
       "Profesionalizamos a tu equipo comercial.",

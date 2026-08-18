@@ -12,7 +12,7 @@ const cycleLinksEn = navEn.slice(1, 5);
 const copy = {
   es: {
     eyebrow: "Escríbenos",
-    title: "Contacto",
+    title: "Diagnóstico Comercial Gratuito",
     description: (
       <>
         Deja tus datos, programaremos un llamado para relevar tu situación actual.
@@ -26,7 +26,7 @@ const copy = {
   },
   en: {
     eyebrow: "Get in Touch",
-    title: "Contact",
+    title: "Free Sales Consultation",
     description: (
       <>
         Share your details and we&apos;ll schedule a call to assess where your business

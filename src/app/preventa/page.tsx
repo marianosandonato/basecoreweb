@@ -3,9 +3,9 @@ import ServiceCyclePage from "@/components/ServiceCyclePage";
 import { preventa } from "@/content/preventa";
 
 export const metadata: Metadata = {
-  title: "Preventa",
+  title: "Prospección de Clientes B2B",
   description:
-    "Consigue reuniones con tus clientes potenciales. Armado de base de datos, calificación de leads, prospección y detección de oportunidades comerciales.",
+    "Prospección y captación de clientes B2B: armado de base de datos, calificación de leads y detección de oportunidades comerciales para conseguir más reuniones.",
   alternates: {
     canonical: "/preventa",
     languages: { es: "/preventa", en: "/en/presales" },

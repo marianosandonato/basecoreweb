@@ -3,11 +3,12 @@ import Breadcrumb from "@/components/Breadcrumb";
 import ContactSection from "@/components/ContactSection";
 import { site } from "@/lib/site";
 
+const title = "Free Sales Consultation";
 const description =
-  "Get in touch: share your details and we'll schedule a call to assess where your business stands and propose a roadmap.";
+  "Book a free sales consultation: share your details and we'll propose a roadmap to improve your processes and methodology.";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title,
   description,
   alternates: {
     canonical: "/en/contact",
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     locale: "en_US",
     url: `${site.url}/en/contact`,
-    title: "Contact",
+    title,
     description,
   },
 };

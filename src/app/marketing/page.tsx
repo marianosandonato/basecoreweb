@@ -12,9 +12,9 @@ import { MARKETING_GRID } from "@/content/flipGrids";
 import type { FlipCardData } from "@/content/types";
 
 export const metadata: Metadata = {
-  title: "Marketing",
+  title: "Marketing Digital para Pymes",
   description:
-    "Desarrolla tu imagen de marca junto a Not-a-Numb3r: estrategia creativa, SEO, pauta publicitaria, social media, diseño gráfico y sitios web.",
+    "Agencia de marketing digital para pymes junto a Not-a-Numb3r: estrategia de marca, SEO, redes sociales, pauta publicitaria, diseño gráfico y sitios web.",
   alternates: {
     canonical: "/marketing",
     languages: { es: "/marketing", en: "/en/marketing" },
@@ -100,7 +100,7 @@ export default function MarketingPage() {
 
       {/* Hero (#6be773a9) — same 100vh `height-full` section as the cycle pages. */}
       <PageHero
-        title={["¿Buscas desarrollar", "tu imagen de marca?"]}
+        title={["¿Buscas potenciar tu", "marketing digital?"]}
         lines={[
           "Creamos conceptos de comunicación.",
           "Generamos campañas para atraer leads.",

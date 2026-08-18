@@ -7,7 +7,7 @@ import MethodologyGrid, { type MethodologyStep } from "@/components/MethodologyG
 import ProcessImageStack from "@/components/ProcessImageStack";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCards from "@/components/ServiceCards";
-import { site, siteEn } from "@/lib/site";
+import { site } from "@/lib/site";
 import { PosventaIcon, PreventaIcon, VentaIcon } from "@/components/cycleIcons";
 import {
   ChartBarIcon,
@@ -16,9 +16,22 @@ import {
   PaperPlaneIcon,
 } from "@/components/icons";
 
+/**
+ * "/en" is a child route segment of the root layout (unlike "/", which
+ * shares the root layout's own segment and so is exempt from its title
+ * template — see node_modules/next/dist/docs' generate-metadata.md, the
+ * "title.template ... not the segment it's defined in" note). So `title`
+ * here gets " – Base Core Sales" appended by the root template automatically;
+ * only the openGraph title needs it spelled out, since OG fields aren't templated.
+ */
+const homeTitle = "Commercial Consulting for Small Business";
+const homeOgTitle = `${homeTitle} – Base Core Sales`;
+const homeDescription =
+  "Commercial consulting for small businesses in Spain and Latin America: sales process, prospecting, retention and marketing as a service. We build productive foundations.";
+
 export const metadata: Metadata = {
-  title: siteEn.name,
-  description: siteEn.description,
+  title: homeTitle,
+  description: homeDescription,
   alternates: {
     canonical: "/en",
     languages: { es: "/", en: "/en", "x-default": "/" },
@@ -26,8 +39,8 @@ export const metadata: Metadata = {
   openGraph: {
     locale: "en_US",
     url: `${site.url}/en`,
-    title: siteEn.name,
-    description: siteEn.description,
+    title: homeOgTitle,
+    description: homeDescription,
   },
 };
 

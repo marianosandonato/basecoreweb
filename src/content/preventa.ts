@@ -6,7 +6,7 @@ export const preventa: ServicePageData = {
   slug: "preventa",
   breadcrumb: "Preventa",
   hero: {
-    title: ["¿Buscas oportunidades", "de negocio?"],
+    title: ["¿Buscas prospectar y", "captar clientes B2B?"],
     lines: [
       "Consigue reuniones con tus clientes potenciales.",
       "Identificamos tu público objetivo y relevamos información imprescindible.",

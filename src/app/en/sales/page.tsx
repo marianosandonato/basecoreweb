@@ -3,11 +3,12 @@ import ServiceCyclePage from "@/components/ServiceCyclePage";
 import { ventaEn } from "@/content/venta.en";
 import { site } from "@/lib/site";
 
+const title = "Sales Process Consulting";
 const description =
-  "Improve your sales processes: sales model, pipeline and funnel, goals and targets, KPIs, forecasting, compensation schemes and CRM implementation.";
+  "Sales process consulting for small business: sales model, pipeline management, sales KPIs, forecasting, compensation schemes and CRM implementation.";
 
 export const metadata: Metadata = {
-  title: "Sales",
+  title,
   description,
   alternates: {
     canonical: "/en/sales",
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     locale: "en_US",
     url: `${site.url}/en/sales`,
-    title: "Sales",
+    title,
     description,
   },
 };

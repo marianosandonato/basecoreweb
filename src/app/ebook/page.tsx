@@ -3,9 +3,9 @@ import Breadcrumb from "@/components/Breadcrumb";
 import EbookSection from "@/components/EbookSection";
 
 export const metadata: Metadata = {
-  title: "E-Book",
+  title: "Proceso de Ventas desde Cero",
   description:
-    "Descarga gratis nuestro E-Book: primeros pasos para un proceso comercial efectivo y la importancia de un buen ciclo de preventa.",
+    "Descarga gratis nuestro e-book: cómo armar un proceso de ventas desde cero y la importancia de un buen ciclo de preventa para atraer nuevos clientes.",
   alternates: {
     canonical: "/ebook",
     languages: { es: "/ebook", en: "/en/ebook" },

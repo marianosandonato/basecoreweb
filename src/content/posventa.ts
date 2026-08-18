@@ -6,7 +6,7 @@ export const posventa: ServicePageData = {
   slug: "posventa",
   breadcrumb: "Posventa",
   hero: {
-    title: ["¿Buscas fidelizar", "a tus clientes?"],
+    title: ["¿Buscas fidelizar y", "retener a tus clientes?"],
     lines: [
       "Mejorá la experiencia de tus usuarios.",
       "Identificamos oportunidades para el desarrollo de cuentas.",

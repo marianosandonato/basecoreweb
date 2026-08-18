@@ -3,11 +3,12 @@ import ServiceCyclePage from "@/components/ServiceCyclePage";
 import { preventaEn } from "@/content/preventa.en";
 import { site } from "@/lib/site";
 
+const title = "B2B Lead Generation";
 const description =
-  "Get meetings with your potential clients. Database building, lead qualification, prospecting and sales opportunity detection.";
+  "B2B lead generation and prospecting: database building, lead qualification and opportunity detection to get more meetings with your potential clients.";
 
 export const metadata: Metadata = {
-  title: "Presales",
+  title,
   description,
   alternates: {
     canonical: "/en/presales",
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     locale: "en_US",
     url: `${site.url}/en/presales`,
-    title: "Presales",
+    title,
     description,
   },
 };

@@ -7,7 +7,6 @@ import MethodologyGrid, { type MethodologyStep } from "@/components/MethodologyG
 import ProcessImageStack from "@/components/ProcessImageStack";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCards from "@/components/ServiceCards";
-import { site } from "@/lib/site";
 import { PosventaIcon, PreventaIcon, VentaIcon } from "@/components/cycleIcons";
 import {
   ChartBarIcon,
@@ -17,9 +16,9 @@ import {
 } from "@/components/icons";
 
 export const metadata: Metadata = {
-  title: site.name,
+  title: "Consultoría Comercial para Pymes – Base Core Sales",
   description:
-    "Creamos bases productivas. Consultoría comercial y marketing: procesos como servicio para preventa, venta, posventa y marketing.",
+    "Consultoría comercial para pymes en España y Latinoamérica: procesos como servicio para preventa, venta, posventa y marketing. Creamos bases productivas.",
   alternates: {
     canonical: "/",
     languages: { es: "/", en: "/en", "x-default": "/" },

@@ -3,9 +3,9 @@ import ServiceCyclePage from "@/components/ServiceCyclePage";
 import { venta } from "@/content/venta";
 
 export const metadata: Metadata = {
-  title: "Venta",
+  title: "Proceso de Ventas para Pymes",
   description:
-    "Mejora tus procesos de venta: modelo comercial, pipeline y funnel, metas y objetivos, KPI's, forecast, esquemas de compensación e implementación de CRM.",
+    "Proceso de ventas para pymes: modelo comercial, pipeline y funnel, KPIs comerciales, forecast, esquemas de compensación e implementación de CRM.",
   alternates: {
     canonical: "/venta",
     languages: { es: "/venta", en: "/en/sales" },

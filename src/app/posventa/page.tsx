@@ -3,9 +3,9 @@ import ServiceCyclePage from "@/components/ServiceCyclePage";
 import { posventa } from "@/content/posventa";
 
 export const metadata: Metadata = {
-  title: "Posventa",
+  title: "Fidelización y Retención de Clientes",
   description:
-    "Fideliza a tus clientes: desarrollo de cuentas, cross y up selling, medición de churn, segmentación de cartera, retención y fidelización.",
+    "Fidelización y retención de clientes: reducción de churn, cross selling y up selling, desarrollo de cuentas y segmentación de cartera.",
   alternates: {
     canonical: "/posventa",
     languages: { es: "/posventa", en: "/en/post-sales" },

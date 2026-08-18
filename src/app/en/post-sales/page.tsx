@@ -3,11 +3,12 @@ import ServiceCyclePage from "@/components/ServiceCyclePage";
 import { posventaEn } from "@/content/posventa.en";
 import { site } from "@/lib/site";
 
+const title = "Customer Retention Consulting";
 const description =
-  "Build customer loyalty: account development, cross- and up-selling, churn measurement, portfolio segmentation, retention and loyalty.";
+  "Customer retention consulting for small business: reduce churn, cross-selling and up-selling, account development and portfolio segmentation.";
 
 export const metadata: Metadata = {
-  title: "Post-Sales",
+  title,
   description,
   alternates: {
     canonical: "/en/post-sales",
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     locale: "en_US",
     url: `${site.url}/en/post-sales`,
-    title: "Post-Sales",
+    title,
     description,
   },
 };

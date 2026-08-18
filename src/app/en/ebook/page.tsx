@@ -3,11 +3,12 @@ import Breadcrumb from "@/components/Breadcrumb";
 import EbookSection from "@/components/EbookSection";
 import { site } from "@/lib/site";
 
+const title = "Sales Process from Scratch";
 const description =
-  "Download our free E-Book: first steps to an effective sales process and the importance of a strong presales cycle.";
+  "Download our free e-book: how to build a sales process from scratch and the importance of a strong presales cycle to attract new clients.";
 
 export const metadata: Metadata = {
-  title: "E-Book",
+  title,
   description,
   alternates: {
     canonical: "/en/ebook",
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     locale: "en_US",
     url: `${site.url}/en/ebook`,
-    title: "E-Book",
+    title,
     description,
   },
 };

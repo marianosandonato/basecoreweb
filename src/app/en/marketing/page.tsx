@@ -12,11 +12,12 @@ import { MARKETING_GRID } from "@/content/flipGrids";
 import type { FlipCardData } from "@/content/types";
 import { site } from "@/lib/site";
 
+const title = "Marketing Consulting for Small Business";
 const description =
-  "Build your brand image with Not-a-Numb3r: creative strategy, SEO, paid advertising, social media, graphic design and websites.";
+  "Marketing consulting for small business with Not-a-Numb3r: branding, SEO, social media, paid advertising, graphic design and websites.";
 
 export const metadata: Metadata = {
-  title: "Marketing",
+  title,
   description,
   alternates: {
     canonical: "/en/marketing",
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     locale: "en_US",
     url: `${site.url}/en/marketing`,
-    title: "Marketing",
+    title,
     description,
   },
 };
@@ -102,7 +103,7 @@ export default function MarketingPageEn() {
       <Breadcrumb current="Marketing" lang="en" />
 
       <PageHero
-        title={["Looking to build", "your brand image?"]}
+        title={["Looking to boost your", "digital marketing?"]}
         lines={[
           "We create communication concepts.",
           "We generate campaigns that attract leads.",
