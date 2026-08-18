@@ -6,7 +6,7 @@ export const site = {
    * preview deployment points at itself instead of emitting canonical URLs for
    * the live WordPress site. Production needs no variable set.
    */
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://basecoresales.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.basecoresales.com",
   description:
     "Consultoría comercial y marketing para todos los ciclos de venta: preventa, venta, posventa y marketing. Creamos bases productivas.",
   email: "info@basecoresales.com",
