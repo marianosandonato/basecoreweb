@@ -259,15 +259,17 @@ export default function HomePageEn() {
           style={{ backgroundImage: "url(/images/MARKETING-NAN.webp)" }}
         >
           <span aria-hidden="true" className="absolute inset-0 bg-black opacity-[0.74]" />
-          <div className="relative flex h-full flex-col justify-between">
-            <div className="pl-[15px]">
-              <span className="font-heading text-[28px] font-bold leading-[1.2] text-white md:text-[36px]">
-                Base Core
-                <br />
-                Marketing
-              </span>
-            </div>
-            <div className="h-[10px] dt:h-[420px]" />
+          <div className="relative flex h-full min-h-[300px] flex-col items-center justify-center gap-[18px] text-center">
+            <Image
+              src="/images/base-core-logo-blanco-sin-slogan.webp"
+              alt="Base Core"
+              width={900}
+              height={927}
+              className="h-auto w-[140px] md:w-[190px]"
+            />
+            <span className="font-sora text-[24px] font-extralight tracking-[2px] text-white md:text-[30px]">
+              Marketing
+            </span>
           </div>
         </div>
 
