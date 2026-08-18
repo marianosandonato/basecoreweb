@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     url: `${site.url}/en/presales`,
     title,
     description,
+    images: ["/images/base-core-sales-consegui-reuniones-con-tus-clientes-potenciales.jpg"],
   },
 };
 

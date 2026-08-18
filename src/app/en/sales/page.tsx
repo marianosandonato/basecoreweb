@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     url: `${site.url}/en/sales`,
     title,
     description,
+    images: ["/images/sales-base-core-sales.jpg"],
   },
 };
 

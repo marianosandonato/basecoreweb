@@ -80,6 +80,12 @@ export const metadata: Metadata = {
     description: site.description,
     images: ["/images/basecoresales-slide-marketing-espana-1.jpg"],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: site.name,
+    description: site.description,
+    images: ["/images/basecoresales-slide-marketing-espana-1.jpg"],
+  },
 };
 
 /**

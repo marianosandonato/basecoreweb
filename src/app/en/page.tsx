@@ -41,6 +41,7 @@ export const metadata: Metadata = {
     url: `${site.url}/en`,
     title: homeOgTitle,
     description: homeDescription,
+    images: ["/images/basecoresales-slide-marketing-espana-1.jpg"],
   },
 };
 

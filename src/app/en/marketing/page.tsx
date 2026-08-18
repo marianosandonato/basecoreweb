@@ -28,6 +28,7 @@ export const metadata: Metadata = {
     url: `${site.url}/en/marketing`,
     title,
     description,
+    images: ["/images/marketing-slide-base-core-sales.jpg"],
   },
 };
 

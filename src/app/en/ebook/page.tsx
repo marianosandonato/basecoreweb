@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     url: `${site.url}/en/ebook`,
     title,
     description,
+    images: ["/images/base-core-sales-ebook.webp"],
   },
 };
 

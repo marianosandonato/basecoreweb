@@ -11,13 +11,22 @@ import SectionHeading from "@/components/SectionHeading";
 import { MARKETING_GRID } from "@/content/flipGrids";
 import type { FlipCardData } from "@/content/types";
 
+const title = "Marketing Digital para Pymes";
+const description =
+  "Agencia de marketing digital para pymes junto a Not-a-Numb3r: estrategia de marca, SEO, redes sociales, pauta publicitaria, diseño gráfico y sitios web.";
+
 export const metadata: Metadata = {
-  title: "Marketing Digital para Pymes",
-  description:
-    "Agencia de marketing digital para pymes junto a Not-a-Numb3r: estrategia de marca, SEO, redes sociales, pauta publicitaria, diseño gráfico y sitios web.",
+  title,
+  description,
   alternates: {
     canonical: "/marketing",
     languages: { es: "/marketing", en: "/en/marketing" },
+  },
+  openGraph: {
+    locale: "es_ES",
+    title,
+    description,
+    images: ["/images/marketing-slide-base-core-sales.jpg"],
   },
 };
 
