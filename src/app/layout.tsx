@@ -82,6 +82,30 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * ProfessionalService, not LocalBusiness: Base Core has no public office to
+ * declare an address for (see documentation/PLAN.md's Google Business
+ * Profile notes -- claiming a location without a genuine physical tie to it
+ * risks a misrepresentation flag from Google). areaServed carries the
+ * geographic targeting instead.
+ */
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: site.shortName,
+  url: site.url,
+  logo: `${site.url}/images/LOGO-BASE-CORE-SALES-CON-SLOGAN.png`,
+  description: site.description,
+  email: site.email,
+  areaServed: ["ES", "AR"],
+  founder: {
+    "@type": "Person",
+    name: site.founder.name,
+    url: site.founder.linkedin,
+  },
+  sameAs: [site.social.linkedin, site.social.instagram, site.social.facebook],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -98,6 +122,12 @@ export default function RootLayout({
       className={`${gilmer.variable} ${dmSans.variable} ${montserrat.variable} ${sora.variable} ${reey.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${site.gaId}`}
           strategy="afterInteractive"
