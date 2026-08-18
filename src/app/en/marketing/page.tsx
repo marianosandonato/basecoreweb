@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Breadcrumb from "@/components/Breadcrumb";
 import Button from "@/components/Button";
 import ContactSection from "@/components/ContactSection";
@@ -135,9 +134,9 @@ export default function MarketingPageEn() {
         <span aria-hidden="true" className="absolute inset-0 bg-navy opacity-90" />
         <div className="container-bc relative">
           <SectionHeading
-            eyebrow="NOT-A NUMB3R"
+            eyebrow="BASECORE MARKETING"
             title="Concept as a Service"
-            description="Elevating brands with NaN means: concept > strategy > advertising > scalability. When you have clarity of process, you have clarity of direction — and that's everything, in any area of life. As simple as that, as complex as that. Direction demands process, and process defines direction."
+            description="Elevating brands with BaseCore means: concept > strategy > advertising > scalability. When you have clarity of process, you have clarity of direction — and that's everything, in any area of life. As simple as that, as complex as that. Direction demands process, and process defines direction."
             dark
             showLine={false}
             maxWidth={900}
@@ -162,17 +161,9 @@ export default function MarketingPageEn() {
             <div className="lg:w-[10%]" />
             <div className="flex flex-col lg:w-[40%]">
               <SectionHeading
-                eyebrow="OUR STRATEGIC PARTNER AS A MARKETING AGENCY"
-                title={
-                  <Image
-                    src="/images/NaN-blanco.png"
-                    alt="NaN"
-                    width={523}
-                    height={158}
-                    className="h-auto w-[190px] brightness-0"
-                  />
-                }
-                description="NaN is also a philosophy — a way of acting, thinking and executing. We grow brands through bold, strategic creativity, focused on finding new ways to present content to users across digital platforms, envisioning the communications of today and tomorrow."
+                eyebrow="ABOUT US"
+                title="BaseCore Marketing"
+                description="BaseCore is also a philosophy — a way of acting, thinking and executing. We grow brands through bold, strategic creativity, focused on finding new ways to present content to users across digital platforms, envisioning the communications of today and tomorrow."
                 align="left"
                 maxWidth={530}
                 className="mb-[16px]"
@@ -199,7 +190,7 @@ export default function MarketingPageEn() {
               <SectionHeading
                 eyebrow="MINDSET"
                 title="We grow your business"
-                description="NaN is philosophical too. It's a way of thinking and acting in life — of rethinking how we relate, starting from interpersonal respect and extending outward to the world. It's a desire to elevate relationships, because relationships are where teams come from. And teams are where excellence and results come from. And the results we're after are limitless, because they're tied to energy and passion — which, like us, aren't just numbers. #Not-a-numb3r."
+                description="BaseCore is philosophical too. It's a way of thinking and acting in life — of rethinking how we relate, starting from interpersonal respect and extending outward to the world. It's a desire to elevate relationships, because relationships are where teams come from. And teams are where excellence and results come from. And the results we're after are limitless, because they're tied to energy and passion — which, like us, aren't just numbers."
                 align="left"
                 dark
                 maxWidth={530}
