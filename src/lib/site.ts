@@ -25,6 +25,8 @@ export const site = {
     instagram: "https://www.instagram.com/basecoresales/",
   },
   partnerUrl: "https://not-a-numb3r.com/",
+  /** Google Analytics 4 measurement ID (GA4 property "Base Core Sales"). */
+  gaId: "G-0NRE1KWMBM",
 } as const;
 
 export const nav = [

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Script from "next/script";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LanguageBanner from "@/components/LanguageBanner";
@@ -97,6 +98,18 @@ export default function RootLayout({
       className={`${gilmer.variable} ${dmSans.variable} ${montserrat.variable} ${sora.variable} ${reey.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${site.gaId}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${site.gaId}');
+          `}
+        </Script>
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
