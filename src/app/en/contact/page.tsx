@@ -3,9 +3,9 @@ import Breadcrumb from "@/components/Breadcrumb";
 import ContactSection from "@/components/ContactSection";
 import { site } from "@/lib/site";
 
-const title = "Free Sales Consultation";
+const title = "Free Consultation";
 const description =
-  "Book a free sales consultation: share your details and we'll propose a roadmap to improve your processes and methodology.";
+  "Book a free consultation: share your details and we'll propose a roadmap to improve your processes and methodology.";
 
 export const metadata: Metadata = {
   title,

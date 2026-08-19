@@ -3,9 +3,9 @@ import Breadcrumb from "@/components/Breadcrumb";
 import ContactSection from "@/components/ContactSection";
 
 export const metadata: Metadata = {
-  title: "Diagnóstico Comercial Gratuito",
+  title: "Diagnóstico Gratuito",
   description:
-    "Solicita un diagnóstico comercial gratuito: dejanos tus datos y te proponemos un plan de ruta para mejorar tus procesos y metodologías.",
+    "Solicita un diagnóstico gratuito: dejanos tus datos y te proponemos un plan de ruta para mejorar tus procesos y metodologías.",
   alternates: {
     canonical: "/contacto",
     languages: { es: "/contacto", en: "/en/contact" },
