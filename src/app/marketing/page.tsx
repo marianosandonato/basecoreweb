@@ -12,7 +12,7 @@ import type { FlipCardData } from "@/content/types";
 
 const title = "Marketing Digital para Pymes";
 const description =
-  "Agencia de marketing digital para pymes junto a Not-a-Numb3r: estrategia de marca, SEO, redes sociales, pauta publicitaria, diseño gráfico y sitios web.";
+  "Agencia de marketing digital para pymes: estrategia de marca, SEO, redes sociales, pauta publicitaria, diseño gráfico y sitios web.";
 
 export const metadata: Metadata = {
   title,
