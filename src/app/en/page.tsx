@@ -256,7 +256,7 @@ export default function HomePageEn() {
       <section className="relative z-[1] md:flex">
         <div
           className="relative bg-cover bg-left bg-no-repeat px-[15px] pb-[80px] pt-[60px] max-md:bg-top md:w-1/2"
-          style={{ backgroundImage: "url(/images/MARKETING-NAN.webp)" }}
+          style={{ backgroundImage: "url(/images/MARKETING-BASECORE.webp)" }}
         >
           <span aria-hidden="true" className="absolute inset-0 bg-black opacity-[0.74]" />
           <div className="relative flex h-full min-h-[300px] flex-col items-center justify-center gap-[18px] text-center">
