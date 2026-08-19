@@ -26,7 +26,7 @@ const copy = {
   },
   en: {
     eyebrow: "Get in Touch",
-    title: "Free Consultation",
+    title: "Free Diagnostic",
     description: (
       <>
         Share your details and we&apos;ll schedule a call to assess where your business
