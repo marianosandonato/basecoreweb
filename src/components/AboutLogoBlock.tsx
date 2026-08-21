@@ -18,7 +18,7 @@ export default function AboutLogoBlock({ label }: { label: string }) {
         src="/images/base-core-logo-azul-sin-slogan.webp"
         alt="Base Core"
         width={900}
-        height={750}
+        height={927}
         className="h-auto w-[140px] md:w-[190px]"
       />
       <span className="font-sora text-[24px] font-extralight tracking-[2px] text-navy md:text-[30px]">
