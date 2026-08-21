@@ -1,12 +1,12 @@
 import type { ServicePageData } from "@/content/types";
 import type { Lang } from "@/lib/site";
+import AboutLogoBlock from "./AboutLogoBlock";
 import Breadcrumb from "./Breadcrumb";
 import Button from "./Button";
 import CheckList from "./CheckList";
 import ContactSection from "./ContactSection";
 import FlipCardGrid from "./FlipCardGrid";
 import PageHero from "./PageHero";
-import ProcessImageStack from "./ProcessImageStack";
 import SectionHeading from "./SectionHeading";
 import ServiceCards from "./ServiceCards";
 import SquareCta from "./SquareCta";
@@ -78,7 +78,9 @@ export default function ServiceCyclePage({
           three-column construction: text, image stack, text. */}
       {data.about && (
         <section className="py-[50px]">
-          <div className="container-bc grid items-center dt:grid-cols-[1fr_340px_1.3fr]">
+          <div className="container-bc grid items-center dt:grid-cols-[340px_1fr_1.3fr]">
+            <AboutLogoBlock label={data.about.title} />
+
             <div className="px-[15px] pb-[45px] dt:pb-0">
               <SectionHeading
                 eyebrow={data.about.eyebrow}
@@ -97,10 +99,6 @@ export default function ServiceCyclePage({
               <div className="mt-[28px]">
                 <Button href="#contacto">{t.aboutCta}</Button>
               </div>
-            </div>
-
-            <div className="hidden px-[15px] md:flex md:justify-center">
-              <ProcessImageStack />
             </div>
 
             <div className="pl-[30px] pr-[15px] pb-[45px] dt:pb-0">

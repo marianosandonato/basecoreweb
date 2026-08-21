@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
+import AboutLogoBlock from "@/components/AboutLogoBlock";
 import Breadcrumb from "@/components/Breadcrumb";
 import Button from "@/components/Button";
 import CheckList from "@/components/CheckList";
 import ContactSection from "@/components/ContactSection";
 import FlipCardGrid from "@/components/FlipCardGrid";
 import PageHero from "@/components/PageHero";
-import ProcessImageStack from "@/components/ProcessImageStack";
 import SectionHeading from "@/components/SectionHeading";
 import TechnologyBlock from "@/components/TechnologyBlock";
 import { MARKETING_GRID } from "@/content/flipGrids";
@@ -116,7 +116,9 @@ export default function MarketingPage() {
           ServiceCyclePage #3b58066) — text, image stack, text. Sits right
           after the hero, ahead of "Pilares comunicacionales". */}
       <section className="py-[50px]">
-        <div className="container-bc grid items-center dt:grid-cols-[1fr_340px_1.3fr]">
+        <div className="container-bc grid items-center dt:grid-cols-[340px_1fr_1.3fr]">
+          <AboutLogoBlock label="Marketing" />
+
           <div className="px-[15px] pb-[45px] dt:pb-0">
             <SectionHeading
               eyebrow="QUÉ HACEMOS"
@@ -145,10 +147,6 @@ export default function MarketingPage() {
             <div className="mt-[28px]">
               <Button href="#contacto">CONTÁCTANOS</Button>
             </div>
-          </div>
-
-          <div className="hidden px-[15px] md:flex md:justify-center">
-            <ProcessImageStack />
           </div>
 
           <div className="pl-[30px] pr-[15px] pb-[45px] dt:pb-0">
