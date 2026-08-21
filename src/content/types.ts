@@ -68,8 +68,6 @@ export type ServicePageData = {
     eyebrow: string;
     cards: readonly FlipCardData[];
     grid: FlipGridSpec;
-    /** Elementor spacer above the heading (80px on /venta, 65px on /posventa). */
-    spacerTop?: number;
   };
   recruiting: {
     title: string;

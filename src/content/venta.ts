@@ -16,7 +16,6 @@ export const venta: ServicePageData = {
   etapas: {
     eyebrow: "MENTORING COMERCIAL",
     grid: VENTA_GRID,
-    spacerTop: 80,
     cards: [
       {
         title: "Diagnóstico de situación actual",

@@ -112,7 +112,7 @@ export default function MarketingPageEn() {
         cta={{ label: "BOOK A DISCOVERY CALL", href: "#contacto" }}
       />
 
-      <div className="h-[100px]" aria-hidden="true" />
+      <div className="h-[28px] md:hidden" aria-hidden="true" />
       <section className="container-bc py-[10px]">
         <SectionHeading
           eyebrow="MARKETING AGENCY"

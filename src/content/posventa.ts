@@ -16,7 +16,6 @@ export const posventa: ServicePageData = {
   etapas: {
     eyebrow: "MENTORING POSVENTA",
     grid: POSVENTA_GRID,
-    spacerTop: 65,
     cards: [
       {
         title: "Desarrollo de Cuentas",

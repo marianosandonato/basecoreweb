@@ -16,7 +16,6 @@ export const ventaEn: ServicePageData = {
   etapas: {
     eyebrow: "COMMERCIAL MENTORING",
     grid: VENTA_GRID,
-    spacerTop: 80,
     cards: [
       {
         title: "Current-State Assessment",

@@ -117,12 +117,10 @@ export default function MarketingPage() {
         cta={{ label: "AGENDAR RELEVAMIENTO", href: "#contacto" }}
       />
 
-      {/* Pilares heading (#9b0a6dc) — the original carries its 100px of space
-          as a section margin; a spacer avoids the margin-collapse trap. Below
-          md this shrinks to 28px so the gap from the hero photo to the
-          heading-line dashes matches the other three pages' ~1cm (28px +
-          the section's 10px pt below). */}
-      <div className="h-[28px] md:h-[100px]" aria-hidden="true" />
+      {/* Pilares heading (#9b0a6dc) — matches the cycle pages' hero-to-heading
+          gap (ServiceCyclePage): 28px below md, nothing extra from md up (the
+          section's own 10px pt is the only desktop gap). */}
+      <div className="h-[28px] md:hidden" aria-hidden="true" />
       <section className="container-bc py-[10px]">
         <SectionHeading
           eyebrow="AGENCIA DE MARKETING"
