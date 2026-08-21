@@ -214,7 +214,7 @@ export default function HomePage() {
           <div className="px-[15px] pb-[45px]">
             <h3 className="mb-[12px] font-heading text-[18px] font-medium leading-[24px] text-heading md:text-[20px] md:leading-[32px]">
               Implementamos procesos para impulsar el desarrollo de tu empresa, organizarla
-              y aumentar tus ventas.
+              y aumentar sus ventas.
             </h3>
 
             <p className="font-sans text-[18px] leading-[1.8] text-body">
