@@ -25,8 +25,8 @@ export const ventaEn: ServicePageData = {
       "Compensation schemes",
     ],
     paragraphs: [
-      "Closing a sale rarely comes down to a “naturally gifted” rep — it comes down to a process anyone on the team can follow and repeat with consistent results. Getting sales in order means being able to answer, at any moment, what stage each deal is in, how much you'll bill next month, and what's actually pushing a negotiation toward close — instead of finding out only at month's end.",
-      "A pipeline without metrics is, literally, a blind pipeline. In a real B2B commercial consulting engagement*, a company that was losing 60% of its opportunities to poor follow-up raised its conversion rate from 19% to 31% — and cut its sales cycle from 14 to 9 weeks — in nine months, simply by structuring the process and reviewing the pipeline every week.",
+      "Sustained results don't come from intuition — they come from a process anyone on the team can follow and repeat with consistent results. Getting sales in order means being able to answer, at any moment, what stage each deal is in and what's actually pushing a negotiation toward close.",
+      "A pipeline without metrics is, literally, a blind pipeline. An estimated 80% of sales require at least five follow-up touches to close, yet 44% of reps give up after the first one. That gap doesn't close by asking the team to try harder — it closes with a process that defines when, how, and who owns each follow-up.",
     ],
   },
   etapas: {

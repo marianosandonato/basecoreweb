@@ -75,13 +75,15 @@ export default function ServiceCyclePage({
 
       {/* "Qué hacemos" (replica of the home page's "Nosotros / Proceso como
           servicio" section, #3b58066) — second block on the page, same
-          three-column construction: text, image stack, text. */}
+          three-column construction: logo, text, text. Equal `gap-x` on
+          every gutter — the first column is `auto`-width so it hugs the
+          logo instead of leaving unused track space before the gap. */}
       {data.about && (
         <section className="py-[50px]">
-          <div className="container-bc grid items-center dt:grid-cols-[340px_1fr_1.3fr]">
+          <div className="container-bc grid items-center gap-y-[30px] dt:grid-cols-[auto_1fr_1.3fr] dt:gap-x-[45px] dt:gap-y-0">
             <AboutLogoBlock label={data.about.title} />
 
-            <div className="px-[15px] pb-[45px] dt:pb-0">
+            <div>
               <SectionHeading
                 eyebrow={data.about.eyebrow}
                 align="left"
@@ -96,7 +98,7 @@ export default function ServiceCyclePage({
               </div>
             </div>
 
-            <div className="pl-[30px] pr-[15px] pb-[45px] dt:pb-0">
+            <div>
               {data.about.paragraphs.map((paragraph, index) => (
                 <p
                   key={paragraph}

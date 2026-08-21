@@ -7,13 +7,14 @@ import Image from "next/image";
  * the home page's "Agencia de Marketing" cajon (and TechnologyBlock), just
  * sized up 35% (140/190px mark, Sora 24/30 label -> 189/257px, Sora 32/41).
  *
- * `justify-self-start` keeps the (internally centered) mark+label unit
- * flush against the grid's own left padding instead of centering inside
- * the whole 340px track — centering there read as a stray left margin.
+ * No fixed width or side padding here: the grid track is `auto` (see the
+ * three-column sections that render this), so it hugs the mark's real
+ * rendered width and the row's `gap-x` is the only space before the next
+ * column — the same gutter used between every other pair of columns.
  */
 export default function AboutLogoBlock({ label }: { label: string }) {
   return (
-    <div className="hidden w-fit flex-col items-center gap-[16px] justify-self-start px-[15px] text-center md:flex">
+    <div className="hidden flex-col items-center gap-[16px] text-center md:flex">
       <Image
         src="/images/base-core-logo-azul-sin-slogan.webp"
         alt="Base Core"

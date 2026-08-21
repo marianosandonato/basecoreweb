@@ -111,10 +111,10 @@ export default function MarketingPageEn() {
           image stack, text. Sits right after the hero, ahead of
           "Communication Pillars". */}
       <section className="py-[50px]">
-        <div className="container-bc grid items-center dt:grid-cols-[340px_1fr_1.3fr]">
+        <div className="container-bc grid items-center gap-y-[30px] dt:grid-cols-[auto_1fr_1.3fr] dt:gap-x-[45px] dt:gap-y-0">
           <AboutLogoBlock label="Marketing" />
 
-          <div className="px-[15px] pb-[45px] dt:pb-0">
+          <div>
             <SectionHeading
               eyebrow="WHAT WE DO"
               align="left"
@@ -139,7 +139,7 @@ export default function MarketingPageEn() {
             </div>
           </div>
 
-          <div className="pl-[30px] pr-[15px] pb-[45px] dt:pb-0">
+          <div>
             <p className="font-sans text-[18px] leading-[1.8] text-body">
               No stage of the sales cycle works in isolation: presales needs a brand that builds trust before the first contact, sales needs materials that back up the pitch, and post-sales needs consistent communication to sustain the relationship over time. That&apos;s why marketing isn&apos;t a channel separate from the sales process — it&apos;s the foundation everything else stands on.
             </p>

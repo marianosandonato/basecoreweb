@@ -41,10 +41,10 @@ export default function TecnologiaPage() {
 
       {/* "Qué hacemos" (replica of the cycle pages' about block) — logo, text, text. */}
       <section className="py-[50px]">
-        <div className="container-bc grid items-center dt:grid-cols-[340px_1fr_1.3fr]">
+        <div className="container-bc grid items-center gap-y-[30px] dt:grid-cols-[auto_1fr_1.3fr] dt:gap-x-[45px] dt:gap-y-0">
           <AboutLogoBlock label="Tecnología" />
 
-          <div className="px-[15px] pb-[45px] dt:pb-0">
+          <div>
             <SectionHeading
               eyebrow="QUÉ HACEMOS"
               align="left"
@@ -66,7 +66,7 @@ export default function TecnologiaPage() {
             </div>
           </div>
 
-          <div className="pl-[30px] pr-[15px] pb-[45px] dt:pb-0">
+          <div>
             <p className="font-sans text-[18px] leading-[1.8] text-body">AAA</p>
             <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-body">AAA</p>
           </div>

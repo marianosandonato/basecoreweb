@@ -116,10 +116,10 @@ export default function MarketingPage() {
           ServiceCyclePage #3b58066) — text, image stack, text. Sits right
           after the hero, ahead of "Pilares comunicacionales". */}
       <section className="py-[50px]">
-        <div className="container-bc grid items-center dt:grid-cols-[340px_1fr_1.3fr]">
+        <div className="container-bc grid items-center gap-y-[30px] dt:grid-cols-[auto_1fr_1.3fr] dt:gap-x-[45px] dt:gap-y-0">
           <AboutLogoBlock label="Marketing" />
 
-          <div className="px-[15px] pb-[45px] dt:pb-0">
+          <div>
             <SectionHeading
               eyebrow="QUÉ HACEMOS"
               align="left"
@@ -144,7 +144,7 @@ export default function MarketingPage() {
             </div>
           </div>
 
-          <div className="pl-[30px] pr-[15px] pb-[45px] dt:pb-0">
+          <div>
             <p className="font-sans text-[18px] leading-[1.8] text-body">
               Ninguna etapa del ciclo comercial funciona en el vacío: la preventa necesita una marca que genere confianza antes del primer contacto, la venta necesita materiales que respalden la propuesta, y la posventa necesita una comunicación consistente para sostener la relación en el tiempo. Por eso el marketing no es un canal aparte del proceso comercial — es la base sobre la que se apoya todo lo demás.
             </p>

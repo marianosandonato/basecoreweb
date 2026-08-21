@@ -25,8 +25,8 @@ export const venta: ServicePageData = {
       "Esquemas de compensación",
     ],
     paragraphs: [
-      "Cerrar una venta rara vez depende de un vendedor “con talento natural” — depende de un proceso que cualquier persona del equipo pueda seguir y repetir con resultados consistentes. Ordenar la venta significa poder responder, en cualquier momento, en qué etapa está cada oportunidad, cuánto vas a facturar el mes que viene, y qué es lo que realmente empuja una negociación hacia el cierre — en lugar de descubrirlo recién a fin de mes.",
-      "Un pipeline sin métricas es, literalmente, un pipeline ciego. En un caso real de consultoría comercial B2B*, una empresa que perdía el 60% de sus oportunidades por falta de seguimiento logró subir su tasa de conversión del 19% al 31% —y reducir su ciclo de venta de 14 a 9 semanas— en nueve meses, simplemente ordenando el proceso y revisando el pipeline cada semana.",
+      "Los resultados sostenidos no salen de la intuición: salen de un proceso que cualquier persona del equipo pueda seguir y repetir con resultados consistentes. Ordenar la venta significa poder responder, en cualquier momento, en qué etapa está cada oportunidad y qué es lo que realmente empuja una negociación hacia el cierre.",
+      "Un pipeline sin métricas es, literalmente, un pipeline ciego. Se estima que el 80% de las ventas requiere al menos cinco puntos de contacto para concretarse, pero el 44% de los vendedores abandona después del primero. Esa brecha no se cierra pidiendo más esfuerzo al equipo: se cierra con un proceso que defina cuándo, cómo y quién hace cada seguimiento.",
     ],
   },
   etapas: {
