@@ -21,7 +21,7 @@ const copy = {
       </>
     ),
     scheduleText: "O agenda directamente haciendo clic aquí:",
-    scheduleButton: "PROGRAMAR REUNION",
+    scheduleButton: "PROGRAMAR REUNIÓN",
     founderRole: site.founder.role,
     ebookAlt: "E-Book Base Core Sales: Optimiza tus procesos",
     linkedinAria: "LinkedIn de Mariano Sandonato",
