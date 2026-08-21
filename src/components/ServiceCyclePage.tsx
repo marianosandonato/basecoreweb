@@ -80,7 +80,7 @@ export default function ServiceCyclePage({
           logo instead of leaving unused track space before the gap. */}
       {data.about && (
         <section className="py-[50px]">
-          <div className="container-bc grid items-center gap-y-[30px] dt:grid-cols-[auto_1fr_1.3fr] dt:gap-x-[45px] dt:gap-y-0">
+          <div className="container-bc grid items-center gap-y-[30px] dt:grid-cols-[auto_1fr_1.3fr] dt:gap-x-[90px] dt:gap-y-0">
             <AboutLogoBlock label={data.about.title} />
 
             <div>
@@ -98,7 +98,7 @@ export default function ServiceCyclePage({
               </div>
             </div>
 
-            <div>
+            <div className="text-center">
               {data.about.paragraphs.map((paragraph, index) => (
                 <p
                   key={paragraph}

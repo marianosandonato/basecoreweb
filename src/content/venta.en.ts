@@ -25,8 +25,8 @@ export const ventaEn: ServicePageData = {
       "Compensation schemes",
     ],
     paragraphs: [
-      "Sustained results don't come from intuition — they come from a process anyone on the team can follow and repeat with consistent results. Getting sales in order means being able to answer, at any moment, what stage each deal is in and what's actually pushing a negotiation toward close.",
-      "A pipeline without metrics is, literally, a blind pipeline. An estimated 80% of sales require at least five follow-up touches to close, yet 44% of reps give up after the first one. That gap doesn't close by asking the team to try harder — it closes with a process that defines when, how, and who owns each follow-up.",
+      "Sustained results don't come from intuition — they come from a process the team can follow and repeat with consistent results. Getting sales in order means answering, at any moment, what stage each deal is in and what's pushing it toward close.",
+      "A pipeline without metrics is, literally, a blind pipeline. 80% of sales require at least five touches to close, yet 44% of reps give up after the first one. That gap closes with a process that defines when, how, and who follows up.",
     ],
   },
   etapas: {

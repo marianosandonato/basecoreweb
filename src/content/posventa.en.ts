@@ -24,8 +24,8 @@ export const posventaEn: ServicePageData = {
       "Customer retention & loyalty.",
     ],
     paragraphs: [
-      "Acquiring a new customer can cost 6 to 7 times more than retaining one who already trusts your business. Yet most organizations pour their commercial energy into opening new accounts. That's where post-sales makes the difference: it's the stage that determines whether that initial investment turns into a profitable, lasting relationship — or another lost account.",
-      "An existing customer has a 60% to 70% chance of buying from you again when the offer is relevant. A new prospect: 5% to 20%. That gap explains why small improvements in retention have an outsized impact on profitability. Seen this way, post-sales stops being a support function and becomes what it actually is: the most underrated profitability lever in the commercial cycle.",
+      "Acquiring a new customer can cost up to 7 times more than retaining one who already trusts your business, yet most companies pour their energy into opening new accounts. That's where post-sales decides the outcome: a profitable relationship, or another lost account.",
+      "An existing customer has a 60% to 70% chance of buying again; a new prospect, just 5% to 20%. That's why small gains in retention move profitability so much — post-sales isn't support, it's the most underrated lever in the cycle.",
     ],
   },
   etapas: {

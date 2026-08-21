@@ -116,7 +116,7 @@ export default function MarketingPage() {
           ServiceCyclePage #3b58066) — text, image stack, text. Sits right
           after the hero, ahead of "Pilares comunicacionales". */}
       <section className="py-[50px]">
-        <div className="container-bc grid items-center gap-y-[30px] dt:grid-cols-[auto_1fr_1.3fr] dt:gap-x-[45px] dt:gap-y-0">
+        <div className="container-bc grid items-center gap-y-[30px] dt:grid-cols-[auto_1fr_1.3fr] dt:gap-x-[90px] dt:gap-y-0">
           <AboutLogoBlock label="Marketing" />
 
           <div>
@@ -144,12 +144,12 @@ export default function MarketingPage() {
             </div>
           </div>
 
-          <div>
+          <div className="text-center">
             <p className="font-sans text-[18px] leading-[1.8] text-body">
-              Ninguna etapa del ciclo comercial funciona en el vacío: la preventa necesita una marca que genere confianza antes del primer contacto, la venta necesita materiales que respalden la propuesta, y la posventa necesita una comunicación consistente para sostener la relación en el tiempo. Por eso el marketing no es un canal aparte del proceso comercial — es la base sobre la que se apoya todo lo demás.
+              Ninguna etapa del ciclo comercial funciona en el vacío: la preventa necesita una marca confiable, la venta necesita materiales que respalden la propuesta, y la posventa necesita comunicación consistente. El marketing es la base de todo lo demás.
             </p>
             <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-body">
-              El 90% de los compradores B2B empiezan su proceso de compra investigando por su cuenta, mucho antes de hablar con un vendedor. Si tu marca no está construida —y no se encuentra— en ese momento, tu equipo comercial está compitiendo con una desventaja que ningún guion de ventas puede compensar.
+              El 90% de los compradores B2B empieza su proceso de compra investigando por su cuenta, mucho antes de hablar con un vendedor. Si tu marca no está construida —y no se encuentra— en ese momento, tu equipo compite con una desventaja que ningún guion compensa.
             </p>
           </div>
         </div>

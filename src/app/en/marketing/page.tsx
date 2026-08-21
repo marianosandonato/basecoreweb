@@ -111,7 +111,7 @@ export default function MarketingPageEn() {
           image stack, text. Sits right after the hero, ahead of
           "Communication Pillars". */}
       <section className="py-[50px]">
-        <div className="container-bc grid items-center gap-y-[30px] dt:grid-cols-[auto_1fr_1.3fr] dt:gap-x-[45px] dt:gap-y-0">
+        <div className="container-bc grid items-center gap-y-[30px] dt:grid-cols-[auto_1fr_1.3fr] dt:gap-x-[90px] dt:gap-y-0">
           <AboutLogoBlock label="Marketing" />
 
           <div>
@@ -139,12 +139,12 @@ export default function MarketingPageEn() {
             </div>
           </div>
 
-          <div>
+          <div className="text-center">
             <p className="font-sans text-[18px] leading-[1.8] text-body">
-              No stage of the sales cycle works in isolation: presales needs a brand that builds trust before the first contact, sales needs materials that back up the pitch, and post-sales needs consistent communication to sustain the relationship over time. That&apos;s why marketing isn&apos;t a channel separate from the sales process — it&apos;s the foundation everything else stands on.
+              No stage of the sales cycle works in isolation: presales needs a trustworthy brand, sales needs materials that back the pitch, and post-sales needs consistent communication. Marketing is the foundation everything else stands on.
             </p>
             <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-body">
-              90% of B2B buyers start their purchase journey researching on their own, long before they ever talk to a salesperson. If your brand isn&apos;t built — and isn&apos;t findable — at that moment, your sales team is competing at a disadvantage no sales script can make up for.
+              90% of B2B buyers start researching on their own, long before they talk to a salesperson. If your brand isn&apos;t built — and isn&apos;t findable — at that moment, your team competes at a disadvantage no script can make up for.
             </p>
           </div>
         </div>
