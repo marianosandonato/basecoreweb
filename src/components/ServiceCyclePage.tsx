@@ -10,6 +10,7 @@ import ProcessImageStack from "./ProcessImageStack";
 import SectionHeading from "./SectionHeading";
 import ServiceCards from "./ServiceCards";
 import SquareCta from "./SquareCta";
+import TechnologyBlock from "./TechnologyBlock";
 
 const copy = {
   es: {
@@ -149,6 +150,8 @@ export default function ServiceCyclePage({
 
       {/* Foot of the Etapas box — same 50px as the gap above it. */}
       <div className="h-[50px]" aria-hidden="true" />
+
+      <TechnologyBlock lang={lang} />
 
       {/* Recruiting (#27c2ba5f) — same construction as the home page:
           one photo, no overlay, dark text on the light half. */}

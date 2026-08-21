@@ -7,6 +7,7 @@ import MethodologyGrid, { type MethodologyStep } from "@/components/MethodologyG
 import ProcessImageStack from "@/components/ProcessImageStack";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCards from "@/components/ServiceCards";
+import TechnologyBlock from "@/components/TechnologyBlock";
 import { PosventaIcon, PreventaIcon, VentaIcon } from "@/components/cycleIcons";
 import {
   ChartBarIcon,
@@ -112,12 +113,6 @@ const partnerChecklist = [
   "Social Media",
   "Diseño gráfico",
   "Sitios Web",
-];
-
-const technologyChecklist = [
-  "Implementación de agentes y automatizaciones con Claude",
-  "Desarrollo de software con Claude Code",
-  "Implementación de CRM (Hubspot y otros)",
 ];
 
 const recruitingChecklist = [
@@ -313,53 +308,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Tecnología / IA + Software ──────────────────────────────────────
-          Full-bleed photo, logo on the left and the text block on the right,
-          ~2cm (76px) apart — both groups sit directly on the photo instead of
-          the marketing block's separate navy panel. The esfuminado is a
-          lighter touch than a first pass: dark enough to read the white text,
-          light enough that the photo underneath still shows through. */}
-      <section
-        className="relative z-[1] bg-cover bg-center bg-no-repeat px-[15px] py-[70px] dt:bg-fixed dt:py-[110px]"
-        style={{ backgroundImage: "url(/images/TECNOLOGIA-BASECORE.jpg)" }}
-      >
-        <span
-          aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-b from-navy/70 via-navy/55 to-navy/45"
-        />
-        <div className="relative mx-auto flex max-w-[960px] flex-col items-center gap-[40px] md:flex-row md:justify-center md:gap-[76px]">
-          <div className="flex shrink-0 flex-col items-center gap-[16px] text-center">
-            <Image
-              src="/images/base-core-logo-blanco-sin-slogan.webp"
-              alt="Base Core"
-              width={900}
-              height={927}
-              className="h-auto w-[140px] md:w-[190px]"
-            />
-            <span className="font-sora text-[24px] font-extralight tracking-[2px] text-white md:text-[30px]">
-              Tecnología
-            </span>
-          </div>
-
-          <div className="flex max-w-[460px] flex-col items-center text-center md:items-start md:text-left">
-            <SectionHeading
-              eyebrow="Implementaciones Tecnológicas"
-              title="IA + Software"
-              align="left"
-              dark
-              maxWidth={800}
-              className="mb-[15px] w-full"
-              titleClassName="!text-[44px] !leading-[1.3]"
-            />
-            <CheckList items={technologyChecklist} dark size="md" />
-            <div className="mt-[15px]">
-              <Button href="/tecnologia" size="sm">
-                MÁS INFORMACIÓN
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <TechnologyBlock />
 
       {/* ── Recruiting (#e610736) ────────────────────────────────────────
           One photo, no overlay: dark on the left, light on the right where the

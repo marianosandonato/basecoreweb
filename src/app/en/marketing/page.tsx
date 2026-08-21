@@ -7,6 +7,7 @@ import { AddsIcon, BrandIcon, ContentIcon } from "@/components/counterIcons";
 import FlipCardGrid from "@/components/FlipCardGrid";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
+import TechnologyBlock from "@/components/TechnologyBlock";
 import { MARKETING_GRID } from "@/content/flipGrids";
 import type { FlipCardData } from "@/content/types";
 import { site } from "@/lib/site";
@@ -129,6 +130,8 @@ export default function MarketingPageEn() {
         <FlipCardGrid cards={pilares.slice(4)} grid={MARKETING_GRID} />
       </section>
       <div className="h-[50px]" aria-hidden="true" />
+
+      <TechnologyBlock lang="en" />
 
       <section className="relative py-[70px] xl:pb-[100px] xl:pt-[110px]">
         <span aria-hidden="true" className="absolute inset-0 bg-navy opacity-90" />

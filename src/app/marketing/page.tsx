@@ -7,6 +7,7 @@ import { AddsIcon, BrandIcon, ContentIcon } from "@/components/counterIcons";
 import FlipCardGrid from "@/components/FlipCardGrid";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
+import TechnologyBlock from "@/components/TechnologyBlock";
 import { MARKETING_GRID } from "@/content/flipGrids";
 import type { FlipCardData } from "@/content/types";
 
@@ -138,6 +139,8 @@ export default function MarketingPage() {
         <FlipCardGrid cards={pilares.slice(4)} grid={MARKETING_GRID} />
       </section>
       <div className="h-[50px]" aria-hidden="true" />
+
+      <TechnologyBlock />
 
       {/* Concepto como Servicio (#931c3da) — no background image at all: the
           only paint is #00294B at 90% over the white body. The CTA is a
