@@ -353,6 +353,11 @@ export default function HomePage() {
               titleClassName="!text-[44px] !leading-[1.3]"
             />
             <CheckList items={technologyChecklist} dark size="md" />
+            <div className="mt-[15px]">
+              <Button href="/tecnologia" size="sm">
+                MÁS INFORMACIÓN
+              </Button>
+            </div>
           </div>
         </div>
       </section>
