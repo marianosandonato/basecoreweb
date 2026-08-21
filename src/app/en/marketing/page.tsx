@@ -111,7 +111,7 @@ export default function MarketingPageEn() {
           image stack, text. Sits right after the hero, ahead of
           "Communication Pillars". */}
       <section className="py-[50px]">
-        <div className="container-bc grid items-center gap-y-[30px] dt:grid-cols-[auto_1fr_1.3fr] dt:gap-x-[90px] dt:gap-y-0">
+        <div className="container-bc grid items-center gap-y-[30px] min-[1200px]:grid-cols-[auto_1fr_1.3fr] min-[1200px]:gap-x-[90px] min-[1200px]:gap-y-0">
           <AboutLogoBlock label="Marketing" />
 
           <div>
