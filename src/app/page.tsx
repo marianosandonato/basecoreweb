@@ -114,6 +114,12 @@ const partnerChecklist = [
   "Sitios Web",
 ];
 
+const technologyChecklist = [
+  "Implementación de agentes y automatizaciones con Claude",
+  "Desarrollo de software con Claude Code",
+  "Implementación de CRM (Hubspot y otros)",
+];
+
 const recruitingChecklist = [
   "Descripciones de puesto",
   "Fuentes de reclutamiento",
@@ -303,6 +309,50 @@ export default function HomePage() {
                 MÁS INFORMACIÓN
               </Button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Tecnología / IA + Software ──────────────────────────────────────
+          Same construction as Partner Estratégico above it: full-bleed 50/50,
+          photo on the left, solid navy on the right. Instead of a flat black
+          overlay, the photo gets a navy esfuminado fading in from the top —
+          same #00294B tone as the Metodología section's background photo. */}
+      <section className="relative z-[1] md:flex">
+        <div
+          className="relative bg-cover bg-left bg-no-repeat px-[15px] pb-[80px] pt-[60px] max-md:bg-top md:w-1/2"
+          style={{ backgroundImage: "url(/images/TECNOLOGIA-BASECORE.jpg)" }}
+        >
+          <span
+            aria-hidden="true"
+            className="absolute inset-x-0 top-0 h-2/3 bg-gradient-to-b from-navy/85 via-navy/35 to-transparent"
+          />
+          <div className="relative flex h-full min-h-[300px] flex-col items-center justify-center gap-[18px] text-center">
+            <Image
+              src="/images/base-core-logo-blanco-sin-slogan.webp"
+              alt="Base Core"
+              width={900}
+              height={927}
+              className="h-auto w-[140px] md:w-[190px]"
+            />
+            <span className="font-sora text-[24px] font-extralight tracking-[2px] text-white md:text-[30px]">
+              Tecnología
+            </span>
+          </div>
+        </div>
+
+        <div className="bg-navy px-[15px] py-[60px] max-md:pl-[35px] md:w-1/2 dt:py-[106px] dt:pl-[100px]">
+          <div className="max-w-[680px]">
+            <SectionHeading
+              eyebrow="Implementaciones Tecnológicas"
+              title="IA + Software"
+              align="left"
+              dark
+              maxWidth={800}
+              className="mb-[15px]"
+              titleClassName="!text-[44px] !leading-[1.3]"
+            />
+            <CheckList items={technologyChecklist} dark size="md" />
           </div>
         </div>
       </section>
