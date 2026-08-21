@@ -46,10 +46,12 @@ export const metadata: Metadata = {
 };
 
 const aboutChecklist = [
-  "360°: Sales, Marketing & Communication",
+  "Presales, Sales & Post-Sales",
   "Commercial strategy & plan",
-  "Processes & tools",
-  "Team training",
+  "Marketing: brand development",
+  "Tools: CRM, custom software",
+  "AI: automations with Claude",
+  "Team selection & training",
 ];
 
 const methodology: readonly MethodologyStep[] = [
@@ -186,14 +188,13 @@ export default function HomePageEn() {
       </section>
 
       {/* ── About Us / Process as a Service ───────────────────────────────
-          50px top/bottom, matching the cycle pages' Etapas/Puestos boxes. */}
+          50px top/bottom, matching the cycle pages' Etapas/Puestos boxes.
+          Three columns: text, the shrunk image composition centred, then
+          the "full cycle" copy. */}
       <section className="py-[50px]">
-        <div className="container-bc grid items-center dt:grid-cols-2">
-          <div className="hidden px-[15px] md:flex md:justify-center">
-            <ProcessImageStack />
-          </div>
-
-          <div className="px-[15px] pb-[45px] dt:pl-[85px]">
+        <div className="container-bc grid items-center dt:grid-cols-3">
+          <div className="px-[15px] pb-[45px]">
+            {/* Mobile-only flat image */}
             <Image
               src="/images/Process-as-a-Service.jpg"
               alt="Process as a Service"
@@ -207,23 +208,43 @@ export default function HomePageEn() {
               title="Process as a Service"
               align="left"
               maxWidth={800}
-              className="mb-[8px] w-full dt:mb-[10px] dt:w-[112.132%] dt:max-w-[112.132%]"
+              className="mb-[8px] w-full dt:mb-[10px]"
             />
 
             <h3 className="mb-[12px] font-heading text-[18px] font-medium leading-[24px] text-heading md:text-[20px] md:leading-[32px]">
-              Base Core delivers consulting services across every stage of the sales cycle.
+              Base Core delivers consulting services across every stage of sales and
+              marketing.
             </h3>
 
             <CheckList items={aboutChecklist} />
 
-            <h4 className="mt-[20px] font-sans text-[20px] font-normal leading-[26px] text-body dt:mt-[28px]">
-              We implement processes that drive your company&apos;s growth and increase
-              your sales.
-            </h4>
-
             <div className="mt-[28px]">
               <Button href="#contacto">CONTACT US</Button>
             </div>
+          </div>
+
+          {/* Layered composition — desktop/tablet only, shrunk and centred
+              in the middle column. */}
+          <div className="hidden px-[15px] md:flex md:justify-center">
+            <ProcessImageStack />
+          </div>
+
+          <div className="px-[15px] pb-[45px]">
+            <h3 className="mb-[12px] font-heading text-[18px] font-medium leading-[24px] text-heading md:text-[20px] md:leading-[32px]">
+              We implement processes that drive your company&apos;s growth and increase
+              your sales.
+            </h3>
+
+            <p className="font-sans text-[18px] leading-[1.8] text-body">
+              We support the implementation with a detailed work plan and concrete
+              timelines, so improvement doesn&apos;t depend on someone &ldquo;finding the
+              time&rdquo; to do it.
+            </p>
+            <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-body">
+              Marketing attracts. Presales qualifies. Sales closes. Post-sales retains.
+              <br />
+              That&apos;s the complete cycle we work on at Base Core.
+            </p>
           </div>
         </div>
       </section>
