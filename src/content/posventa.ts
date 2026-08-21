@@ -13,6 +13,22 @@ export const posventa: ServicePageData = {
     ],
     image: "/images/Base-Core-Consultoria-Comercial-y-Marketing-Support.jpg",
   },
+  about: {
+    eyebrow: "Qué hacemos",
+    title: "Posventa",
+    subtitle: "Algunos de nuestros desarrollos.",
+    bullets: [
+      "Desarrollo de cuentas",
+      "Cross y up-selling",
+      "Medición de bajas",
+      "Segmentación de cartera",
+      "Retención y fidelización de clientes.",
+    ],
+    paragraphs: [
+      "Conseguir un cliente nuevo puede costar entre 5 y 25 veces más que retener uno que ya confía en vos, según distintos estudios de Bain & Company y Harvard Business Review*. Sin embargo, es habitual que las empresas dediquen casi todo su esfuerzo comercial a la puerta de entrada, y muy poco a lo que pasa después de la firma. La posventa es donde se decide si esa inversión inicial se convierte en un cliente que vuelve a comprar — o en una oportunidad que se pierde en silencio.",
+      "Un cliente existente tiene entre 60% y 70% de probabilidad de comprarte de nuevo si le ofrecés algo relevante, contra apenas 5% a 20% de probabilidad de conversión de un prospecto nuevo, según datos de Marketing Metrics*. Y no es un detalle menor: un aumento del 5% en la retención puede elevar las ganancias de una empresa entre 25% y 95%. La posventa no es un costo de soporte — es, probablemente, la palanca de rentabilidad más subestimada de todo el ciclo comercial.",
+    ],
+  },
   etapas: {
     eyebrow: "MENTORING POSVENTA",
     grid: POSVENTA_GRID,
