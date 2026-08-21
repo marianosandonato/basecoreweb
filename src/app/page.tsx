@@ -223,8 +223,10 @@ export default function HomePage() {
               visibles en cada etapa.
             </p>
             <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-body">
-              El marketing atrae. La preventa califica. La venta cierra. La posventa
-              fideliza.
+              El marketing <strong className="font-bold uppercase">atrae</strong>. La
+              preventa <strong className="font-bold uppercase">califica</strong>. La venta{" "}
+              <strong className="font-bold uppercase">cierra</strong>. La posventa{" "}
+              <strong className="font-bold uppercase">fideliza</strong>.
               <br />
               Ese es el ciclo completo que trabajamos en Base Core.
             </p>

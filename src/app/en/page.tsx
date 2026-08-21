@@ -240,7 +240,10 @@ export default function HomePageEn() {
               timelines, so progress is tracked and results are visible at every stage.
             </p>
             <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-body">
-              Marketing attracts. Presales qualifies. Sales closes. Post-sales retains.
+              Marketing <strong className="font-bold uppercase">attracts</strong>. Presales{" "}
+              <strong className="font-bold uppercase">qualifies</strong>. Sales{" "}
+              <strong className="font-bold uppercase">closes</strong>. Post-sales{" "}
+              <strong className="font-bold uppercase">retains</strong>.
               <br />
               That&apos;s the complete cycle we work on at Base Core.
             </p>
