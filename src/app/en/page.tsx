@@ -189,7 +189,7 @@ export default function HomePageEn() {
           50px top/bottom, matching the cycle pages' Etapas/Puestos boxes. */}
       <section className="py-[50px]">
         <div className="container-bc grid items-center dt:grid-cols-2">
-          <div className="hidden px-[15px] pt-[120px] md:block">
+          <div className="hidden px-[15px] md:flex md:justify-center">
             <ProcessImageStack />
           </div>
 
