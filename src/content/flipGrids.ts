@@ -67,6 +67,6 @@ export const MARKETING_GRID: FlipGridSpec = {
   effect: "slide-up",
   titleFont: "gilmer",
   frontOverlay: "rgba(0, 0, 0, 0.48)",
-  backOverlay: "rgba(0, 41, 75, 0.95)",
+  backOverlay: "rgba(0, 41, 75, 0.83)",
   backStyle: "description",
 };
