@@ -1,10 +1,12 @@
 import type { ServicePageData } from "@/content/types";
 import type { Lang } from "@/lib/site";
 import Breadcrumb from "./Breadcrumb";
+import Button from "./Button";
 import CheckList from "./CheckList";
 import ContactSection from "./ContactSection";
 import FlipCardGrid from "./FlipCardGrid";
 import PageHero from "./PageHero";
+import ProcessImageStack from "./ProcessImageStack";
 import SectionHeading from "./SectionHeading";
 import ServiceCards from "./ServiceCards";
 import SquareCta from "./SquareCta";
@@ -18,6 +20,7 @@ const copy = {
       "Además de nuestro modelo de formación, buscamos perfiles acordes y eficientes al modelo de ventas propuesto.",
     puestos: "Puestos",
     nextCycleTitle: "Descubrí cómo continúan los ciclos",
+    aboutCta: "CONTÁCTANOS",
   },
   en: {
     cta: "BOOK A DISCOVERY CALL",
@@ -27,6 +30,7 @@ const copy = {
       "Beyond our training model, we look for profiles that fit and perform within the proposed sales model.",
     puestos: "Positions",
     nextCycleTitle: "See how the cycles continue",
+    aboutCta: "CONTACT US",
   },
 } as const;
 
@@ -54,6 +58,52 @@ export default function ServiceCyclePage({
         image={data.hero.image}
         cta={{ label: t.cta, href: "#contacto" }}
       />
+
+      {/* "Qué hacemos" (replica of the home page's "Nosotros / Proceso como
+          servicio" section, #3b58066) — second block on the page, same
+          three-column construction: text, image stack, text. */}
+      {data.about && (
+        <section className="py-[50px]">
+          <div className="container-bc grid items-center dt:grid-cols-3">
+            <div className="px-[15px] pb-[45px]">
+              <SectionHeading
+                eyebrow={data.about.eyebrow}
+                title={data.about.title}
+                align="left"
+                maxWidth={800}
+                className="mb-[8px] w-full dt:mb-[10px]"
+              />
+
+              <h3 className="mb-[12px] font-heading text-[18px] font-medium leading-[24px] text-heading md:text-[20px] md:leading-[32px]">
+                {data.about.subtitle}
+              </h3>
+
+              <CheckList items={data.about.bullets} />
+
+              <div className="mt-[28px]">
+                <Button href="#contacto">{t.aboutCta}</Button>
+              </div>
+            </div>
+
+            <div className="hidden px-[15px] md:flex md:justify-center">
+              <ProcessImageStack />
+            </div>
+
+            <div className="px-[15px] pb-[45px]">
+              {data.about.paragraphs.map((paragraph, index) => (
+                <p
+                  key={paragraph}
+                  className={`font-sans text-[18px] leading-[1.8] text-body ${
+                    index > 0 ? "mt-[20px]" : ""
+                  }`}
+                >
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* "Etapas" heading (#41a6ea0c) — full-width section, centred text.
           50px gap from the hero image, matching the 50px foot below the

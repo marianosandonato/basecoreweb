@@ -69,6 +69,14 @@ export type ServicePageData = {
     cards: readonly FlipCardData[];
     grid: FlipGridSpec;
   };
+  /** "Qué hacemos" section (#3b58066 layout) — second block on /preventa, after the hero. */
+  about?: {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    bullets: readonly string[];
+    paragraphs: readonly string[];
+  };
   recruiting: {
     title: string;
     items: readonly string[];
