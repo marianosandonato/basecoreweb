@@ -25,7 +25,11 @@ import LanguageSwitcher from "./LanguageSwitcher";
  *                             position:absolute, so it OVERLAYS the hero
  *   .header-mobile         <= 1024px — a sibling of that wrapper, so it stays in
  *                             normal flow and PUSHES the hero down
- * The breakpoint is 1024px, not 767px.
+ * The original's breakpoint is 1024px, not 767px. Ours is bumped to 1200px:
+ * once the nav grew to 7 items, the desktop bar's info column (location/email/
+ * phone, fixed at 45%) no longer fit next to the nav below ~1150-1200px and
+ * wrapped to two lines, so the off-canvas mobile header now covers that band
+ * instead — it already handles arbitrary content width with no such bug.
  */
 
 const socials = [
@@ -58,18 +62,21 @@ export default function Header() {
 
   return (
     <>
-      {/* ── Desktop (≥1025px) — absolute overlay ─────────────────────────── */}
-      <header className="absolute inset-x-0 top-0 z-40 hidden min-[1025px]:block">
+      {/* ── Desktop (≥1200px) — absolute overlay ─────────────────────────── */}
+      <header className="absolute inset-x-0 top-0 z-40 hidden min-[1200px]:block">
         {/* Bar A — navy, 58px. The original swaps to position:fixed via JS on
             scroll; since it already sits at y=0, fixed from the start is
             visually identical and needs no script. */}
         <div className="fixed inset-x-0 top-0 z-[999] bg-navy">
           {/* px-0: the Elementor container is a flush 1200px and the 15px inset
-              lives on each column, so the 45/41.333/13 split is of 1200, not 1170. */}
-          <div className="container-bc flex h-[58px] items-center px-0">
+              lives on each column, so the 45/41.333/13 split is of 1200, not 1170.
+              Widened to container-bc-wide (1400) once the nav grew to 7 items —
+              at 1200 the info column (fixed 45%) got squeezed by the nav's
+              unshrinkable (whitespace-nowrap) content and wrapped to 2 lines. */}
+          <div className="container-bc-wide flex h-[58px] items-center px-0">
             {/* Info — 45% */}
             <div className="w-[45%] px-[15px]">
-              <ul className="flex items-center gap-[20px]">
+              <ul className="flex items-center gap-[14px]">
                 <li className="flex items-center text-[13px] text-muted">
                   <MapMarkerIcon className="mr-[0.25em] pr-px text-[12px] text-white" />
                   {site.location}
@@ -100,7 +107,7 @@ export default function Header() {
             {/* Nav — fills the space left by Info (45%) and Social+switcher
                 (auto width). Was a fixed 41.333%; freed up so the language
                 switcher has room without ever overlapping the nav links. */}
-            <nav className="flex-1 px-[15px]" aria-label="Principal">
+            <nav className="flex-1 px-[10px]" aria-label="Principal">
               <ul className="flex items-center justify-end">
                 {items.map((item, i) => (
                   <li key={item.href} className="flex items-center">
@@ -108,7 +115,7 @@ export default function Header() {
                       href={item.href}
                       aria-current={isActive(item.href) ? "page" : undefined}
                       onClick={() => scrollToTopIfSamePage(item.href)}
-                      className={`whitespace-nowrap px-[10px] py-[13px] font-sans text-[14px] font-light leading-none transition-colors hover:text-primary ${
+                      className={`whitespace-nowrap px-[7px] py-[13px] font-sans text-[14px] font-light leading-none transition-colors hover:text-primary ${
                         isActive(item.href) ? "text-primary" : "text-white"
                       }`}
                     >
@@ -127,7 +134,7 @@ export default function Header() {
 
             {/* Social + language switcher — auto width, switcher immediately
                 to the right of the social icons. */}
-            <div className="flex shrink-0 items-center justify-end gap-[14px] px-[15px] py-[10px]">
+            <div className="flex shrink-0 items-center justify-end gap-[10px] px-[10px] py-[10px]">
               <div className="flex items-center">
                 {socials.map(({ href, label, Icon }) => (
                   <a
@@ -167,8 +174,8 @@ export default function Header() {
         </div>
       </header>
 
-      {/* ── Mobile / tablet (≤1024px) — in normal flow ───────────────────── */}
-      <div className="relative z-40 bg-white shadow-[0_5px_10px_0_rgba(0,0,0,0.05)] min-[1025px]:hidden">
+      {/* ── Mobile / tablet (≤1199px) — in normal flow ───────────────────── */}
+      <div className="relative z-40 bg-white shadow-[0_5px_10px_0_rgba(0,0,0,0.05)] min-[1200px]:hidden">
         {/* Topbar */}
         <div className="bg-[#1b1f2e] px-[15px] py-[5px] text-[14px] text-muted">
           <div className="flex items-center justify-between gap-3">
@@ -230,7 +237,7 @@ export default function Header() {
 
       {/* ── Off-canvas menu ──────────────────────────────────────────────── */}
       {open && (
-        <div className="fixed inset-0 z-50 min-[1025px]:hidden">
+        <div className="fixed inset-0 z-50 min-[1200px]:hidden">
           <button
             type="button"
             className="absolute inset-0 bg-black/60"

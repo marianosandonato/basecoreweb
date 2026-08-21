@@ -22,9 +22,12 @@ type Props = {
   lines: readonly string[];
   image: string;
   cta?: { label: string; href: string };
+  /** Every page uses the original's 14% tint; /tecnologia's busier AI photo
+      needs a bit more to keep the title readable, so this can override it. */
+  overlayOpacity?: number;
 };
 
-export default function PageHero({ title, lines, image, cta }: Props) {
+export default function PageHero({ title, lines, image, cta, overlayOpacity = 0.14 }: Props) {
   return (
     <section className="relative">
       {/* The LCP image on four of the six pages, so it goes through next/image
@@ -38,7 +41,11 @@ export default function PageHero({ title, lines, image, cta }: Props) {
         sizes="100vw"
         className="object-cover object-center"
       />
-      <span aria-hidden="true" className="absolute inset-0 bg-[#01294B] opacity-[0.14]" />
+      <span
+        aria-hidden="true"
+        className="absolute inset-0 bg-[#01294B]"
+        style={{ opacity: overlayOpacity }}
+      />
       <div className="relative flex min-h-[482px] flex-col items-center justify-center px-[15px] pb-[70px] text-center md:h-screen md:min-h-0 md:pb-0">
         {/* The 50px spacer is a widget in the original's stack, so it is part of
             what gets vertically centred rather than section padding. Below

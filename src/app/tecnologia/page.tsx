@@ -30,6 +30,7 @@ export default function TecnologiaPage() {
         ]}
         image="/images/TECNOLOGIA-BASECORE.jpg"
         cta={{ label: "AGENDAR RELEVAMIENTO", href: "#contacto" }}
+        overlayOpacity={0.32}
       />
 
       <ContactSection
