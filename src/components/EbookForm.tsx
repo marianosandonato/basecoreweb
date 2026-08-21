@@ -151,7 +151,7 @@ export default function EbookForm({
           type="submit"
           disabled={status === "sending" || (Boolean(TURNSTILE_SITE_KEY) && !captchaToken)}
           /* 18 + 22 + 18 = 58px, the original's `btn-cta` line-height. */
-          className="w-auto rounded-none bg-primary px-[24px] py-[12px] font-heading text-[14px] font-bold uppercase leading-[22px] tracking-[2px] text-white transition-colors duration-300 hover:bg-[rgba(0,0,0,0.77)] disabled:cursor-not-allowed disabled:opacity-60 md:px-[30px] md:py-[18px]"
+          className="w-auto rounded-[4px] bg-primary px-[24px] py-[12px] font-heading text-[14px] font-bold uppercase leading-[22px] tracking-[2px] text-white transition-colors duration-300 hover:bg-[rgba(0,0,0,0.77)] disabled:cursor-not-allowed disabled:opacity-60 md:px-[30px] md:py-[18px]"
         >
           {status === "sending" ? t.sending : t.submit}
         </button>
