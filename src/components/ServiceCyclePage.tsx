@@ -77,7 +77,7 @@ export default function ServiceCyclePage({
           three-column construction: text, image stack, text. */}
       {data.about && (
         <section className="py-[50px]">
-          <div className="container-bc grid items-center dt:grid-cols-3">
+          <div className="container-bc grid items-center dt:grid-cols-[1fr_340px_1.3fr]">
             <div className="px-[15px] pb-[45px]">
               <SectionHeading
                 eyebrow={data.about.eyebrow}
@@ -120,9 +120,12 @@ export default function ServiceCyclePage({
 
       {/* "Etapas" heading (#41a6ea0c) — full-width section, centred text.
           50px gap from the hero image, matching the 50px foot below the
-          flip-card grid — same on every cycle page and on /marketing. */}
+          flip-card grid — same on every cycle page and on /marketing.
+          When the "Qué hacemos" block runs first, its own bottom padding
+          already provides that gap, so the extra 50px spacer here would
+          double it up. */}
       <section className="py-[10px]">
-        <div className="h-[50px]" aria-hidden="true" />
+        {!data.about && <div className="h-[50px]" aria-hidden="true" />}
         <div className="px-[15px]">
           <SectionHeading eyebrow={data.etapas.eyebrow} title={t.etapas} maxWidth={800} />
         </div>
