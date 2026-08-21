@@ -231,14 +231,13 @@ export default function HomePageEn() {
 
           <div className="px-[15px] pb-[45px]">
             <h3 className="mb-[12px] font-heading text-[18px] font-medium leading-[24px] text-heading md:text-[20px] md:leading-[32px]">
-              We implement processes that drive your company&apos;s growth and increase
-              your sales.
+              We implement processes that drive your company&apos;s growth, help you get
+              organized, and increase your sales.
             </h3>
 
             <p className="font-sans text-[18px] leading-[1.8] text-body">
               We support the implementation with a detailed work plan and concrete
-              timelines, so improvement doesn&apos;t depend on someone &ldquo;finding the
-              time&rdquo; to do it.
+              timelines, so progress is tracked and results are visible at every stage.
             </p>
             <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-body">
               Marketing attracts. Presales qualifies. Sales closes. Post-sales retains.

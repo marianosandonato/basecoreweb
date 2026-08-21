@@ -213,14 +213,14 @@ export default function HomePage() {
 
           <div className="px-[15px] pb-[45px]">
             <h3 className="mb-[12px] font-heading text-[18px] font-medium leading-[24px] text-heading md:text-[20px] md:leading-[32px]">
-              Implementamos procesos para impulsar el desarrollo de tu empresa y aumentar
-              tus ventas.
+              Implementamos procesos para impulsar el desarrollo de tu empresa, organizarla
+              y aumentar tus ventas.
             </h3>
 
             <p className="font-sans text-[18px] leading-[1.8] text-body">
               Acompañamos la implementación, con un plan de trabajo detallado y plazos
-              concretos, para que la mejora no dependa de que alguien &ldquo;encuentre
-              tiempo&rdquo; de hacerla.
+              concretos, para que el desarrollo esté monitoreado y los resultados sean
+              visibles en cada etapa.
             </p>
             <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-body">
               El marketing atrae. La preventa califica. La venta cierra. La posventa
