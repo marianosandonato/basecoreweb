@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     "Implementamos agentes y procesos con IA. Migramos e instalamos CRM y otros softwares para tu equipo comercial.",
   alternates: {
     canonical: "/tecnologia",
+    languages: { es: "/tecnologia", en: "/en/tecnologia" },
   },
 };
 

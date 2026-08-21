@@ -137,6 +137,12 @@ const partnerChecklist = [
   "Websites",
 ];
 
+const technologyChecklist = [
+  "AI agent & automation implementation with Claude",
+  "Custom software development with Claude Code",
+  "CRM implementation (HubSpot and others)",
+];
+
 const recruitingChecklist = [
   "Job descriptions",
   "Sourcing channels",
@@ -312,6 +318,52 @@ export default function HomePageEn() {
             <CheckList items={partnerChecklist} dark size="md" />
             <div className="mt-[15px]">
               <Button href="/marketing" size="sm">
+                LEARN MORE
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Technology / AI + Software ──────────────────────────────────────
+          Full-bleed photo, logo on the left and the text block on the right,
+          ~2cm (76px) apart — both groups sit directly on the photo. See
+          src/app/page.tsx for the ES version this mirrors. */}
+      <section
+        className="relative z-[1] bg-cover bg-center bg-no-repeat px-[15px] py-[70px] dt:bg-fixed dt:py-[110px]"
+        style={{ backgroundImage: "url(/images/TECNOLOGIA-BASECORE.jpg)" }}
+      >
+        <span
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-b from-navy/70 via-navy/55 to-navy/45"
+        />
+        <div className="relative mx-auto flex max-w-[960px] flex-col items-center gap-[40px] md:flex-row md:justify-center md:gap-[76px]">
+          <div className="flex shrink-0 flex-col items-center gap-[16px] text-center">
+            <Image
+              src="/images/base-core-logo-blanco-sin-slogan.webp"
+              alt="Base Core"
+              width={900}
+              height={927}
+              className="h-auto w-[140px] md:w-[190px]"
+            />
+            <span className="font-sora text-[24px] font-extralight tracking-[2px] text-white md:text-[30px]">
+              Technology
+            </span>
+          </div>
+
+          <div className="flex max-w-[460px] flex-col items-center text-center md:items-start md:text-left">
+            <SectionHeading
+              eyebrow="Technology Implementations"
+              title="AI + Software"
+              align="left"
+              dark
+              maxWidth={800}
+              className="mb-[15px] w-full"
+              titleClassName="!text-[44px] !leading-[1.3]"
+            />
+            <CheckList items={technologyChecklist} dark size="md" />
+            <div className="mt-[15px]">
+              <Button href="/en/tecnologia" size="sm">
                 LEARN MORE
               </Button>
             </div>

@@ -47,6 +47,7 @@ export const navEn = [
   { label: "Sales", href: "/en/sales" },
   { label: "Post-Sales", href: "/en/post-sales" },
   { label: "Marketing", href: "/en/marketing" },
+  { label: "Technology", href: "/en/tecnologia" },
   { label: "Contact", href: "/en/contact" },
 ] as const;
 
@@ -66,6 +67,8 @@ export const routeMap: Record<string, string> = {
   "/en/post-sales": "/posventa",
   "/marketing": "/en/marketing",
   "/en/marketing": "/marketing",
+  "/tecnologia": "/en/tecnologia",
+  "/en/tecnologia": "/tecnologia",
   "/contacto": "/en/contact",
   "/en/contact": "/contacto",
   "/ebook": "/en/ebook",
