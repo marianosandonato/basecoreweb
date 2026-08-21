@@ -11,7 +11,7 @@ import type { ReactNode } from "react";
  */
 type Props = {
   eyebrow?: ReactNode;
-  title: ReactNode;
+  title?: ReactNode;
   description?: ReactNode;
   align?: "left" | "center";
   /** Light text for navy/photo backgrounds. */
@@ -75,13 +75,15 @@ export default function SectionHeading({
           </div>
         )}
 
-        <Tag
-          className={`heading-title font-heading font-bold ${
-            dark ? "text-white" : "text-heading"
-          } ${titleClassName}`}
-        >
-          {title}
-        </Tag>
+        {title && (
+          <Tag
+            className={`heading-title font-heading font-bold ${
+              dark ? "text-white" : "text-heading"
+            } ${titleClassName}`}
+          >
+            {title}
+          </Tag>
+        )}
 
         {description && (
           <div

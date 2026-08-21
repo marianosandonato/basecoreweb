@@ -3,20 +3,25 @@ import Image from "next/image";
 /**
  * Left column of the "Qué hacemos" three-column block (preventa/venta/
  * posventa/marketing/tecnologia) — the blue, no-slogan BaseCore mark with
- * the page name underneath, styled like the white logo+label pair in
- * TechnologyBlock. Replaces the old ProcessImageStack composition.
+ * the page name underneath. Same size/format as the white logo+label pair
+ * on the home page's "Agencia de Marketing" cajon (and TechnologyBlock):
+ * 140/190px mark, Sora 24/30 extralight label.
+ *
+ * `justify-self-start` keeps the (internally centered) mark+label unit
+ * flush against the grid's own left padding instead of centering inside
+ * the whole 340px track — centering there read as a stray left margin.
  */
 export default function AboutLogoBlock({ label }: { label: string }) {
   return (
-    <div className="hidden flex-col items-center gap-[16px] px-[15px] text-center md:flex">
+    <div className="hidden w-fit flex-col items-center gap-[16px] justify-self-start px-[15px] text-center md:flex">
       <Image
         src="/images/base-core-logo-azul-sin-slogan.webp"
         alt="Base Core"
         width={900}
         height={750}
-        className="h-auto w-[140px] md:w-[170px]"
+        className="h-auto w-[140px] md:w-[190px]"
       />
-      <span className="font-sora text-[22px] font-extralight tracking-[2px] text-navy md:text-[26px]">
+      <span className="font-sora text-[24px] font-extralight tracking-[2px] text-navy md:text-[30px]">
         {label}
       </span>
     </div>

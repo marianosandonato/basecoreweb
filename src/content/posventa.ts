@@ -16,7 +16,6 @@ export const posventa: ServicePageData = {
   about: {
     eyebrow: "Qué hacemos",
     title: "Posventa",
-    subtitle: "Algunos de nuestros desarrollos.",
     bullets: [
       "Desarrollo de cuentas",
       "Cross y up-selling",

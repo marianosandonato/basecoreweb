@@ -16,7 +16,6 @@ export const ventaEn: ServicePageData = {
   about: {
     eyebrow: "What We Do",
     title: "Sales",
-    subtitle: "Some of what we develop.",
     bullets: [
       "Sales model definition",
       "Pipeline & forecasting",

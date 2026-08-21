@@ -84,15 +84,10 @@ export default function ServiceCyclePage({
             <div className="px-[15px] pb-[45px] dt:pb-0">
               <SectionHeading
                 eyebrow={data.about.eyebrow}
-                title={data.about.title}
                 align="left"
                 maxWidth={800}
-                className="mb-[8px] w-full dt:mb-[10px]"
+                className="mb-[16px] w-full"
               />
-
-              <h3 className="mb-[12px] font-heading text-[18px] font-medium leading-[24px] text-heading md:text-[20px] md:leading-[32px]">
-                {data.about.subtitle}
-              </h3>
 
               <CheckList items={data.about.bullets} />
 

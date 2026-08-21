@@ -122,15 +122,10 @@ export default function MarketingPage() {
           <div className="px-[15px] pb-[45px] dt:pb-0">
             <SectionHeading
               eyebrow="QUÉ HACEMOS"
-              title="Marketing"
               align="left"
               maxWidth={800}
-              className="mb-[8px] w-full dt:mb-[10px]"
+              className="mb-[16px] w-full"
             />
-
-            <h3 className="mb-[12px] font-heading text-[18px] font-medium leading-[24px] text-heading md:text-[20px] md:leading-[32px]">
-              Algunos de nuestros desarrollos.
-            </h3>
 
             <CheckList
               items={[

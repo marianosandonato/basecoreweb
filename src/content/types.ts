@@ -73,7 +73,6 @@ export type ServicePageData = {
   about?: {
     eyebrow: string;
     title: string;
-    subtitle: string;
     bullets: readonly string[];
     paragraphs: readonly string[];
   };

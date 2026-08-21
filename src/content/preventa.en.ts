@@ -16,7 +16,6 @@ export const preventaEn: ServicePageData = {
   about: {
     eyebrow: "What We Do",
     title: "Presales",
-    subtitle: "Some of what we develop.",
     bullets: [
       "Database building",
       "Outreach models",
