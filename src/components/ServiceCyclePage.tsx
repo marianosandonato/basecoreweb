@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import type { ServicePageData } from "@/content/types";
 import type { Lang } from "@/lib/site";
 import Breadcrumb from "./Breadcrumb";
@@ -113,14 +112,9 @@ export default function ServiceCyclePage({
       </section>
 
       {/* Puestos (#e55ea54) — full-width section; the card grid is a 994px
-          block-grid centred inside it, so cards land at 467px wide. */}
-      <section
-        /* Elementor: 110/90 desktop (90 on /venta, 120 on /posventa), 70/40 at
-           <=1024. The desktop value has to ride a CSS variable — as an inline
-           `paddingTop` it beat the responsive class at every width. */
-        className="pb-[40px] pt-[70px] dt:pb-[90px] dt:pt-[var(--puestos-pt)]"
-        style={{ "--puestos-pt": `${data.puestos.paddingTop ?? 110}px` } as CSSProperties}
-      >
+          block-grid centred inside it, so cards land at 467px wide. Same
+          50px top/bottom as the Etapas box above. */}
+      <section className="py-[50px]">
         <div className="px-[15px] py-[10px]">
           <SectionHeading
             eyebrow={data.puestos.eyebrow}

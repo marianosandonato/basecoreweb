@@ -126,7 +126,6 @@ export const venta: ServicePageData = {
   },
   puestos: {
     eyebrow: "ESTRUCTURA COMERCIAL VENTAS",
-    paddingTop: 90,
     cards: [
       {
         title: "Cerradores",

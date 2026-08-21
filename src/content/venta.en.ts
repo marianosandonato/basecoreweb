@@ -126,7 +126,6 @@ export const ventaEn: ServicePageData = {
   },
   puestos: {
     eyebrow: "SALES COMMERCIAL STRUCTURE",
-    paddingTop: 90,
     cards: [
       {
         title: "Closers",

@@ -166,8 +166,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Nosotros / Proceso como servicio (#3b58066) ──────────────────── */}
-      <section className="pb-[30px] dt:pb-[100px] dt:pt-[115px]">
+      {/* ── Nosotros / Proceso como servicio (#3b58066) ────────────────────
+          50px top/bottom, matching the cycle pages' Etapas/Puestos boxes. */}
+      <section className="py-[50px]">
         <div className="container-bc grid items-center dt:grid-cols-2">
           {/* Layered composition — desktop/tablet only (elementor-hidden-mobile) */}
           <div className="hidden px-[15px] pt-[120px] md:block">
@@ -227,8 +228,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Ciclos de Venta (#6ff6d2e) ───────────────────────────────────── */}
-      <section className="pb-[40px] pt-[70px] dt:pb-[90px] dt:pt-[120px]">
+      {/* ── Ciclos de Venta (#6ff6d2e) ─────────────────────────────────────
+          50px top/bottom, matching the cycle pages' Etapas/Puestos boxes. */}
+      <section className="py-[50px]">
         <div className="container-bc px-0">
           <div className="px-[15px]">
             <SectionHeading

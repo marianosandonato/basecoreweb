@@ -185,8 +185,9 @@ export default function HomePageEn() {
         </div>
       </section>
 
-      {/* ── About Us / Process as a Service ─────────────────────────────── */}
-      <section className="pb-[30px] dt:pb-[100px] dt:pt-[115px]">
+      {/* ── About Us / Process as a Service ───────────────────────────────
+          50px top/bottom, matching the cycle pages' Etapas/Puestos boxes. */}
+      <section className="py-[50px]">
         <div className="container-bc grid items-center dt:grid-cols-2">
           <div className="hidden px-[15px] pt-[120px] md:block">
             <ProcessImageStack />
@@ -237,8 +238,9 @@ export default function HomePageEn() {
         </div>
       </section>
 
-      {/* ── Sales Cycles ─────────────────────────────────────────────────── */}
-      <section className="pb-[40px] pt-[70px] dt:pb-[90px] dt:pt-[120px]">
+      {/* ── Sales Cycles ─────────────────────────────────────────────────────
+          50px top/bottom, matching the cycle pages' Etapas/Puestos boxes. */}
+      <section className="py-[50px]">
         <div className="container-bc px-0">
           <div className="px-[15px]">
             <SectionHeading

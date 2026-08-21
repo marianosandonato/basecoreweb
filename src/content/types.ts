@@ -76,8 +76,6 @@ export type ServicePageData = {
   puestos: {
     eyebrow: string;
     cards: readonly PuestoCardData[];
-    /** Section top padding: 110px on /preventa, 90px on /venta. */
-    paddingTop?: number;
   };
   nextCycle?: {
     label: string;

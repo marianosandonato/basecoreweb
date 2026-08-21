@@ -63,7 +63,6 @@ export const posventa: ServicePageData = {
   },
   puestos: {
     eyebrow: "ESTRUCTURA COMERCIAL POSVENTA",
-    paddingTop: 120,
     cards: [
       {
         title: "Retención",
