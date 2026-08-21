@@ -25,8 +25,8 @@ export const posventa: ServicePageData = {
       "Retención y fidelización de clientes.",
     ],
     paragraphs: [
-      "Conseguir un cliente nuevo puede costar entre 5 y 25 veces más que retener uno que ya confía en vos, según distintos estudios de Bain & Company y Harvard Business Review*. Sin embargo, es habitual que las empresas dediquen casi todo su esfuerzo comercial a la puerta de entrada, y muy poco a lo que pasa después de la firma. La posventa es donde se decide si esa inversión inicial se convierte en un cliente que vuelve a comprar — o en una oportunidad que se pierde en silencio.",
-      "Un cliente existente tiene entre 60% y 70% de probabilidad de comprarte de nuevo si le ofrecés algo relevante, contra apenas 5% a 20% de probabilidad de conversión de un prospecto nuevo, según datos de Marketing Metrics*. Y no es un detalle menor: un aumento del 5% en la retención puede elevar las ganancias de una empresa entre 25% y 95%. La posventa no es un costo de soporte — es, probablemente, la palanca de rentabilidad más subestimada de todo el ciclo comercial.",
+      "Adquirir un cliente nuevo puede costar entre 6 y 7 veces más que retener a uno que ya confía en tu empresa. Sin embargo, la mayoría de las organizaciones concentra su energía comercial en la apertura de cuentas. Ahí es donde la posventa define el resultado: es la etapa que determina si esa inversión inicial se transforma en una relación rentable y sostenida, o en una nueva baja.",
+      "Un cliente existente tiene entre 60% y 70% de probabilidad de volver a comprarte cuando la propuesta es relevante. Un prospecto nuevo, entre 5% y 20%. Ese contraste explica por qué pequeñas mejoras en la tasa de retención tienen un impacto desproporcionado en la rentabilidad. Vista así, la posventa deja de ser un área de soporte y pasa a ser lo que realmente es: la palanca de rentabilidad más subestimada del ciclo comercial.",
     ],
   },
   etapas: {
