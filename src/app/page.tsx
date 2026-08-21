@@ -314,51 +314,41 @@ export default function HomePage() {
       </section>
 
       {/* ── Tecnología / IA + Software ──────────────────────────────────────
-          Same construction as Partner Estratégico above it: full-bleed 50/50,
-          photo on the left, solid navy on the right. Instead of a flat black
-          overlay, the photo gets a navy esfuminado fading in from the top —
-          same #00294B tone as the Metodología section's background photo. */}
-      <section className="relative z-[1] md:flex">
-        <div
-          className="relative bg-cover bg-left bg-no-repeat px-[15px] pb-[80px] pt-[60px] max-md:bg-top md:w-1/2"
-          style={{ backgroundImage: "url(/images/TECNOLOGIA-BASECORE.jpg)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="absolute inset-x-0 top-0 h-2/3 bg-gradient-to-b from-navy/85 via-navy/35 to-transparent"
+          Full-bleed photo (not the 50/50 split used above it): the navy
+          esfuminado now covers the whole frame, denser than a top-only fade,
+          so the centered logo/heading/checklist stay legible over the busy
+          photo — same #00294B tone as the Metodología section's background. */}
+      <section
+        className="relative z-[1] bg-cover bg-center bg-no-repeat px-[15px] py-[70px] dt:bg-fixed dt:py-[110px]"
+        style={{ backgroundImage: "url(/images/TECNOLOGIA-BASECORE.jpg)" }}
+      >
+        <span
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-b from-navy/92 via-navy/80 to-navy/70"
+        />
+        <div className="relative mx-auto flex max-w-[680px] flex-col items-center gap-[18px] text-center">
+          <Image
+            src="/images/base-core-logo-blanco-sin-slogan.webp"
+            alt="Base Core"
+            width={900}
+            height={927}
+            className="h-auto w-[140px] md:w-[190px]"
           />
-          <div className="relative flex h-full min-h-[300px] flex-col items-center justify-center gap-[18px] text-center">
-            <Image
-              src="/images/base-core-logo-blanco-sin-slogan.webp"
-              alt="Base Core"
-              width={900}
-              height={927}
-              className="h-auto w-[140px] md:w-[190px]"
-            />
-            <span className="font-sora text-[24px] font-extralight tracking-[2px] text-white md:text-[30px]">
-              Tecnología
-            </span>
-          </div>
-        </div>
+          <span className="font-sora text-[24px] font-extralight tracking-[2px] text-white md:text-[30px]">
+            Tecnología
+          </span>
 
-        <div className="bg-navy px-[15px] py-[60px] max-md:pl-[35px] md:w-1/2 dt:py-[106px] dt:pl-[100px]">
-          <div className="max-w-[680px]">
-            <SectionHeading
-              eyebrow="Implementaciones Tecnológicas"
-              title="IA + Software"
-              align="left"
-              dark
-              maxWidth={800}
-              className="mb-[15px]"
-              titleClassName="!text-[44px] !leading-[1.3]"
-            />
-            <CheckList items={technologyChecklist} dark size="md" />
-            <div className="mt-[15px]">
-              <Button href="/tecnologia" size="sm">
-                MÁS INFORMACIÓN
-              </Button>
-            </div>
-          </div>
+          <SectionHeading
+            eyebrow="Implementaciones Tecnológicas"
+            title="IA + Software"
+            dark
+            maxWidth={800}
+            titleClassName="!text-[44px] !leading-[1.3]"
+          />
+          <CheckList items={technologyChecklist} dark size="md" />
+          <Button href="/tecnologia" size="sm">
+            MÁS INFORMACIÓN
+          </Button>
         </div>
       </section>
 

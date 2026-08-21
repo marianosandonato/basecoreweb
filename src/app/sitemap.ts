@@ -34,5 +34,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
 
+  // /tecnologia has no /en counterpart yet, so it isn't part of the ES/EN
+  // pairs above — add it standalone once src/app/en/tecnologia exists.
+  entries.push({
+    url: `${site.url}/tecnologia`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.8,
+  });
+
   return entries;
 }
