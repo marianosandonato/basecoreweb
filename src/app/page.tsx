@@ -26,10 +26,10 @@ export const metadata: Metadata = {
 };
 
 const aboutChecklist = [
-  "360: Ventas, Marketing y Comunicación",
+  "Preventa, Venta y Posventa",
   "Estrategia y plan comercial",
-  "Procesos y herramientas",
-  "Formación de equipos",
+  "Marketing: desarrollo de marca, IA y herramientas (CRM, software a medida)",
+  "Selección y formación de equipos",
 ];
 
 const methodology: readonly MethodologyStep[] = [
@@ -167,15 +167,12 @@ export default function HomePage() {
       </section>
 
       {/* ── Nosotros / Proceso como servicio (#3b58066) ────────────────────
-          50px top/bottom, matching the cycle pages' Etapas/Puestos boxes. */}
+          50px top/bottom, matching the cycle pages' Etapas/Puestos boxes.
+          Three columns: text, the shrunk image composition centred, then
+          the "ciclo completo" copy. */}
       <section className="py-[50px]">
-        <div className="container-bc grid items-center dt:grid-cols-2">
-          {/* Layered composition — desktop/tablet only (elementor-hidden-mobile) */}
-          <div className="hidden px-[15px] pt-[120px] md:block">
-            <ProcessImageStack />
-          </div>
-
-          <div className="px-[15px] pb-[45px] dt:pl-[85px]">
+        <div className="container-bc grid items-center dt:grid-cols-3">
+          <div className="px-[15px] pb-[45px]">
             {/* Mobile-only flat image (#0144309) */}
             <Image
               src="/images/Process-as-a-Service.jpg"
@@ -185,19 +182,18 @@ export default function HomePage() {
               className="mb-[40px] mt-[15px] h-auto w-full md:hidden"
             />
 
-            {/* The widget is 112.132% wide in Elementor (#fdde924), which is what
-                keeps the 45px title on a single line. */}
             <SectionHeading
               eyebrow="Nosotros"
               title="Proceso como servicio"
               align="left"
               maxWidth={800}
-              className="mb-[8px] w-full dt:mb-[10px] dt:w-[112.132%] dt:max-w-[112.132%]"
+              className="mb-[8px] w-full dt:mb-[10px]"
             />
 
             {/* icon-box (#a20a695) — a statement, not a heading description */}
             <h3 className="mb-[12px] font-heading text-[18px] font-medium leading-[24px] text-heading md:text-[20px] md:leading-[32px]">
-              Base Core ofrece servicios de consultoría para todos los ciclos de ventas.
+              Base Core ofrece servicios de consultoría para todos los ciclos de ventas y
+              marketing.
             </h3>
 
             <CheckList items={aboutChecklist} />
@@ -210,6 +206,26 @@ export default function HomePage() {
             <div className="mt-[28px]">
               <Button href="#contacto">CONTÁCTANOS</Button>
             </div>
+          </div>
+
+          {/* Layered composition — desktop/tablet only, shrunk and centred
+              in the middle column. */}
+          <div className="hidden px-[15px] md:flex md:justify-center">
+            <ProcessImageStack />
+          </div>
+
+          <div className="px-[15px] pb-[45px]">
+            <p className="font-sans text-[18px] leading-[1.8] text-body">
+              Acompañamos la implementación, con un plan de trabajo detallado y plazos
+              concretos, para que la mejora no dependa de que alguien &ldquo;encuentre
+              tiempo&rdquo; de hacerla.
+            </p>
+            <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-body">
+              El marketing atrae. La preventa califica. La venta cierra. La posventa
+              fideliza.
+              <br />
+              Ese es el ciclo completo que trabajamos en Base Core.
+            </p>
           </div>
         </div>
       </section>
