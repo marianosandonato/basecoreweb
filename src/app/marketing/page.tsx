@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
+import Button from "@/components/Button";
 import CheckList from "@/components/CheckList";
 import ContactSection from "@/components/ContactSection";
-import Counters, { type CounterData } from "@/components/Counters";
-import { AddsIcon, BrandIcon, ContentIcon } from "@/components/counterIcons";
 import FlipCardGrid from "@/components/FlipCardGrid";
 import PageHero from "@/components/PageHero";
+import ProcessImageStack from "@/components/ProcessImageStack";
 import SectionHeading from "@/components/SectionHeading";
 import TechnologyBlock from "@/components/TechnologyBlock";
 import { MARKETING_GRID } from "@/content/flipGrids";
@@ -94,12 +94,6 @@ const pilares: readonly FlipCardData[] = [
   },
 ];
 
-const counters: readonly CounterData[] = [
-  { value: "100", symbol: "%", label: "Brand", icon: BrandIcon },
-  { value: "100", symbol: "%", label: "Content", icon: ContentIcon },
-  { value: "100", symbol: "%", label: "Adds", icon: AddsIcon },
-];
-
 export default function MarketingPage() {
   return (
     <>
@@ -118,34 +112,52 @@ export default function MarketingPage() {
         cta={{ label: "AGENDAR RELEVAMIENTO", href: "#contacto" }}
       />
 
-      {/* NaN + counters (#dc71230) — 1400px container, 140/560/695 columns so
-          the right-hand two thirds of the photo stay visible. Moved up to sit
-          right after the hero, ahead of "Pilares comunicacionales". */}
-      <section
-        className="bg-cover bg-center bg-no-repeat py-[65px] max-md:bg-left xl:bg-fixed xl:py-[115px]"
-        style={{ backgroundImage: "url(/images/Project-Management-Base-Core-Sales.webp)" }}
-      >
-        <div className="container-bc-wide">
-          <div className="lg:flex">
-            <div className="lg:w-[10%]" />
-            {/* flex, not block: the heading's 16px margin-bottom and the
-                counters' 20px margin-top collapse otherwise. */}
-            <div className="flex flex-col lg:w-[40%]">
-              <SectionHeading
-                eyebrow="NOSOTROS"
-                title="BaseCore Marketing"
-                description="BaseCore también es filosofía. Una forma de actuar, pensar y ejecutar. Hacemos crecer las marcas a través de una creatividad audaz y estratégica, enfocada en buscar nuevas formas de presentación contenidos al usuario en soportes digitales, visualizando las comunicaciones del presente y del futuro."
-                align="left"
-                maxWidth={530}
-                className="mb-[16px]"
-                eyebrowClassName="mb-[20px]"
-                descriptionClassName="!pt-[20px]"
-              />
-              <div className="mt-[20px]">
-                <Counters items={counters} />
-              </div>
+      {/* "Qué hacemos" (replica of the cycle pages' about block,
+          ServiceCyclePage #3b58066) — text, image stack, text. Sits right
+          after the hero, ahead of "Pilares comunicacionales". */}
+      <section className="py-[50px]">
+        <div className="container-bc grid items-center dt:grid-cols-[1fr_340px_1.3fr]">
+          <div className="px-[15px] pb-[45px] dt:pb-0">
+            <SectionHeading
+              eyebrow="QUÉ HACEMOS"
+              title="Marketing"
+              align="left"
+              maxWidth={800}
+              className="mb-[8px] w-full dt:mb-[10px]"
+            />
+
+            <h3 className="mb-[12px] font-heading text-[18px] font-medium leading-[24px] text-heading md:text-[20px] md:leading-[32px]">
+              Algunos de nuestros desarrollos.
+            </h3>
+
+            <CheckList
+              items={[
+                "Desarrollo de marca",
+                "Identidad corporativa",
+                "Concepto comunicacional",
+                "Estrategia creativa",
+                "SEO y Pauta Publicitaria",
+                "Redes sociales",
+                "Sitios web",
+              ]}
+            />
+
+            <div className="mt-[28px]">
+              <Button href="#contacto">CONTÁCTANOS</Button>
             </div>
-            <div className="lg:w-[50%]" />
+          </div>
+
+          <div className="hidden px-[15px] md:flex md:justify-center">
+            <ProcessImageStack />
+          </div>
+
+          <div className="pl-[30px] pr-[15px] pb-[45px] dt:pb-0">
+            <p className="font-sans text-[18px] leading-[1.8] text-body">
+              Ninguna etapa del ciclo comercial funciona en el vacío: la preventa necesita una marca que genere confianza antes del primer contacto, la venta necesita materiales que respalden la propuesta, y la posventa necesita una comunicación consistente para sostener la relación en el tiempo. Por eso el marketing no es un canal aparte del proceso comercial — es la base sobre la que se apoya todo lo demás.
+            </p>
+            <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-body">
+              El 90% de los compradores B2B empiezan su proceso de compra investigando por su cuenta, mucho antes de hablar con un vendedor. Si tu marca no está construida —y no se encuentra— en ese momento, tu equipo comercial está compitiendo con una desventaja que ningún guion de ventas puede compensar.
+            </p>
           </div>
         </div>
       </section>

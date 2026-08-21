@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
 import Button from "@/components/Button";
+import CheckList from "@/components/CheckList";
 import ContactSection from "@/components/ContactSection";
-import Counters, { type CounterData } from "@/components/Counters";
-import { AddsIcon, BrandIcon, ContentIcon } from "@/components/counterIcons";
 import FlipCardGrid from "@/components/FlipCardGrid";
 import PageHero from "@/components/PageHero";
+import ProcessImageStack from "@/components/ProcessImageStack";
 import SectionHeading from "@/components/SectionHeading";
 import TechnologyBlock from "@/components/TechnologyBlock";
 import { MARKETING_GRID } from "@/content/flipGrids";
@@ -92,12 +92,6 @@ const pilares: readonly FlipCardData[] = [
   },
 ];
 
-const counters: readonly CounterData[] = [
-  { value: "100", symbol: "%", label: "Brand", icon: BrandIcon },
-  { value: "100", symbol: "%", label: "Content", icon: ContentIcon },
-  { value: "100", symbol: "%", label: "Adds", icon: AddsIcon },
-];
-
 export default function MarketingPageEn() {
   return (
     <>
@@ -112,6 +106,56 @@ export default function MarketingPageEn() {
         image="/images/marketing-slide-base-core-sales.jpg"
         cta={{ label: "BOOK A DISCOVERY CALL", href: "#contacto" }}
       />
+
+      {/* "What We Do" (replica of the cycle pages' about block) — text,
+          image stack, text. Sits right after the hero, ahead of
+          "Communication Pillars". */}
+      <section className="py-[50px]">
+        <div className="container-bc grid items-center dt:grid-cols-[1fr_340px_1.3fr]">
+          <div className="px-[15px] pb-[45px] dt:pb-0">
+            <SectionHeading
+              eyebrow="WHAT WE DO"
+              title="Marketing"
+              align="left"
+              maxWidth={800}
+              className="mb-[8px] w-full dt:mb-[10px]"
+            />
+
+            <h3 className="mb-[12px] font-heading text-[18px] font-medium leading-[24px] text-heading md:text-[20px] md:leading-[32px]">
+              Some of what we develop.
+            </h3>
+
+            <CheckList
+              items={[
+                "Brand development",
+                "Corporate identity",
+                "Communication concept",
+                "Creative strategy",
+                "SEO & paid advertising",
+                "Social media",
+                "Websites",
+              ]}
+            />
+
+            <div className="mt-[28px]">
+              <Button href="#contacto">CONTACT US</Button>
+            </div>
+          </div>
+
+          <div className="hidden px-[15px] md:flex md:justify-center">
+            <ProcessImageStack />
+          </div>
+
+          <div className="pl-[30px] pr-[15px] pb-[45px] dt:pb-0">
+            <p className="font-sans text-[18px] leading-[1.8] text-body">
+              No stage of the sales cycle works in isolation: presales needs a brand that builds trust before the first contact, sales needs materials that back up the pitch, and post-sales needs consistent communication to sustain the relationship over time. That&apos;s why marketing isn&apos;t a channel separate from the sales process — it&apos;s the foundation everything else stands on.
+            </p>
+            <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-body">
+              90% of B2B buyers start their purchase journey researching on their own, long before they ever talk to a salesperson. If your brand isn&apos;t built — and isn&apos;t findable — at that moment, your sales team is competing at a disadvantage no sales script can make up for.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <div className="h-[50px]" aria-hidden="true" />
       <section className="container-bc py-[10px]">
@@ -133,76 +177,34 @@ export default function MarketingPageEn() {
 
       <TechnologyBlock lang="en" />
 
-      <section className="relative py-[70px] xl:pb-[100px] xl:pt-[110px]">
-        <span aria-hidden="true" className="absolute inset-0 bg-navy opacity-90" />
-        <div className="container-bc relative">
+      {/* Recruiting — same construction as the cycle pages' Recruiting
+          section, copy adapted from "sales force" to marketing. */}
+      <section
+        className="relative z-[1] bg-cover bg-right bg-no-repeat dt:flex dt:bg-fixed"
+        style={{ backgroundImage: "url(/images/Fondo-Base-Core-01.webp)" }}
+      >
+        <div className="px-[15px] pb-0 pt-[20px] md:pb-[80px] md:pt-[60px] dt:w-[55%] dt:py-0">
+          <div className="h-[10px] dt:h-[160px]" />
+        </div>
+        <div className="px-[15px] pb-[45px] max-md:pl-[25px] dt:w-[45%] dt:py-[100px] dt:pl-[85px]">
           <SectionHeading
-            eyebrow="BASECORE MARKETING"
-            title="Concept as a Service"
-            description="Elevating brands with BaseCore means: concept > strategy > advertising > scalability. When you have clarity of process, you have clarity of direction — and that's everything, in any area of life. As simple as that, as complex as that. Direction demands process, and process defines direction."
-            dark
-            showLine={false}
-            maxWidth={900}
-            className="mb-[20px]"
-            titleClassName="!text-[32px] !leading-[1.15] lg:!text-[46px] xl:!text-[60px] xl:!leading-[68px]"
-            eyebrowClassName="!text-body"
-            descriptionClassName="!pt-[20px] !text-[#D7D7D7]"
-          >
-            <div className="mt-[30px]">
-              <Button href="#contacto">BOOK A DISCOVERY CALL</Button>
-            </div>
-          </SectionHeading>
-        </div>
-      </section>
-
-      <section
-        className="bg-cover bg-center bg-no-repeat py-[65px] max-md:bg-left xl:bg-fixed xl:py-[115px]"
-        style={{ backgroundImage: "url(/images/Project-Management-Base-Core-Sales.webp)" }}
-      >
-        <div className="container-bc-wide">
-          <div className="lg:flex">
-            <div className="lg:w-[10%]" />
-            <div className="flex flex-col lg:w-[40%]">
-              <SectionHeading
-                eyebrow="ABOUT US"
-                title="BaseCore Marketing"
-                description="BaseCore is also a philosophy — a way of acting, thinking and executing. We grow brands through bold, strategic creativity, focused on finding new ways to present content to users across digital platforms, envisioning the communications of today and tomorrow."
-                align="left"
-                maxWidth={530}
-                className="mb-[16px]"
-                eyebrowClassName="mb-[20px]"
-                descriptionClassName="!pt-[20px]"
-              />
-              <div className="mt-[20px]">
-                <Counters items={counters} />
-              </div>
-            </div>
-            <div className="lg:w-[50%]" />
-          </div>
-        </div>
-      </section>
-
-      <section
-        className="bg-navy bg-repeat-x py-[65px] max-md:bg-left xl:py-[115px]"
-        style={{ backgroundImage: "url(/images/footer-base-core-sales.webp)" }}
-      >
-        <div className="container-bc-wide">
-          <div className="lg:flex">
-            <div className="lg:w-[10%]" />
-            <div className="lg:w-[40%]">
-              <SectionHeading
-                eyebrow="MINDSET"
-                title="We grow your business"
-                description="BaseCore is philosophical too. It's a way of thinking and acting in life — of rethinking how we relate, starting from interpersonal respect and extending outward to the world. It's a desire to elevate relationships, because relationships are where teams come from. And teams are where excellence and results come from. And the results we're after are limitless, because they're tied to energy and passion — which, like us, aren't just numbers."
-                align="left"
-                dark
-                maxWidth={530}
-                className="mb-[16px]"
-                eyebrowClassName="!text-white"
-                descriptionClassName="!pt-[20px]"
-              />
-            </div>
-            <div className="lg:w-[50%]" />
+            eyebrow="RECRUITING: MARKETING FORCE"
+            title="We build a solid, professional marketing team"
+            description="Beyond our training model, we look for profiles that fit and perform within the proposed marketing model."
+            align="left"
+            maxWidth={800}
+            className="mb-[8px] pr-[50px] dt:mb-[10px]"
+          />
+          <div className="mt-[20px]">
+            <CheckList
+              items={[
+                "Job descriptions",
+                "Sourcing channels",
+                "Interview coordination",
+                "Candidate presentation",
+              ]}
+              size="md"
+            />
           </div>
         </div>
       </section>
