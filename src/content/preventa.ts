@@ -15,19 +15,18 @@ export const preventa: ServicePageData = {
   },
   about: {
     eyebrow: "Qué hacemos",
-    title: "PREVENTA",
+    title: "Preventa",
     subtitle: "Algunos de nuestros desarrollos.",
     bullets: [
-      "Desarrollamos bases de datos",
-      "Modelo de contactación",
+      "Bases de datos",
+      "Modelos de contactación",
       "Calificación de leads",
       "Detección de oportunidades comerciales",
-      "Conseguimos reuniones con tus clientes potenciales.",
+      "Reuniones con tus clientes potenciales.",
     ],
     paragraphs: [
-      "Antes de que exista una venta, existe un trabajo silencioso de identificar, calificar y acercarse a quien realmente puede convertirse en cliente. Esa es la preventa: el conjunto de actividades que transforma una base de datos fría en una agenda de reuniones calificadas.",
-      "Según McKinsey & Company, las empresas con procesos de preventa sólidos logran tasas de éxito de 40% a 50% en negocios nuevos y de 80% a 90% en renovaciones — muy por encima del promedio del mercado. Ese tipo de resultado no sale de un informe: sale de un proceso bien construido y sostenido en el tiempo.",
-      "Una vez que la oportunidad está calificada, el trabajo pasa a manos del proceso de venta.",
+      "Antes de que exista una venta, existe un trabajo silencioso de identificar, calificar y acercarse a quien realmente puede convertirse en cliente. **Esa es la preventa**: el conjunto de actividades que transforma una base de datos fría en una agenda de reuniones calificadas.",
+      "Según **McKinsey & Company**, las empresas con procesos de preventa sólidos logran tasas de éxito de 40% a 50% en negocios nuevos y de 80% a 90% en renovaciones — muy por encima del promedio del mercado. Ese tipo de resultado no sale de un informe: sale de un proceso bien construido y sostenido en el tiempo.",
     ],
   },
   etapas: {

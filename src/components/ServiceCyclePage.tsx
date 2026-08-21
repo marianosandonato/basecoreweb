@@ -34,6 +34,19 @@ const copy = {
   },
 } as const;
 
+/** Renders `**bold**` markers in content-file copy as `<strong>`. */
+function renderBold(text: string) {
+  return text.split(/\*\*(.+?)\*\*/g).map((chunk, index) =>
+    index % 2 === 1 ? (
+      <strong key={index} className="font-bold">
+        {chunk}
+      </strong>
+    ) : (
+      chunk
+    ),
+  );
+}
+
 /**
  * Shared layout for Preventa / Venta / Posventa (Elementor page 24 on /preventa).
  * Section ids in the comments refer to that template — see documentation/PLAN-PREVENTA.md.
@@ -97,7 +110,7 @@ export default function ServiceCyclePage({
                     index > 0 ? "mt-[20px]" : ""
                   }`}
                 >
-                  {paragraph}
+                  {renderBold(paragraph)}
                 </p>
               ))}
             </div>
