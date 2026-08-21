@@ -57,11 +57,10 @@ export default function ServiceCyclePage({
       />
 
       {/* "Etapas" heading (#41a6ea0c) — full-width section, centred text.
-          28px gap below md, nothing extra from md up (the section's own
-          10px pt is the only desktop gap) — same on every cycle page and
-          on /marketing. */}
+          50px gap from the hero image, matching the 50px foot below the
+          flip-card grid — same on every cycle page and on /marketing. */}
       <section className="py-[10px]">
-        <div className="h-[28px] md:hidden" aria-hidden="true" />
+        <div className="h-[50px]" aria-hidden="true" />
         <div className="px-[15px]">
           <SectionHeading eyebrow={data.etapas.eyebrow} title={t.etapas} maxWidth={800} />
         </div>
@@ -83,9 +82,8 @@ export default function ServiceCyclePage({
         )}
       </section>
 
-      {/* Foot of the Etapas box — matches /marketing's spacer between its
-          Pilares grid and the next section. */}
-      <div className="h-[100px]" aria-hidden="true" />
+      {/* Foot of the Etapas box — same 50px as the gap above it. */}
+      <div className="h-[50px]" aria-hidden="true" />
 
       {/* Recruiting (#27c2ba5f) — same construction as the home page:
           one photo, no overlay, dark text on the light half. */}

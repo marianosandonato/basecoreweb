@@ -118,9 +118,8 @@ export default function MarketingPage() {
       />
 
       {/* Pilares heading (#9b0a6dc) — matches the cycle pages' hero-to-heading
-          gap (ServiceCyclePage): 28px below md, nothing extra from md up (the
-          section's own 10px pt is the only desktop gap). */}
-      <div className="h-[28px] md:hidden" aria-hidden="true" />
+          gap (ServiceCyclePage): 50px, same as the foot below the grid. */}
+      <div className="h-[50px]" aria-hidden="true" />
       <section className="container-bc py-[10px]">
         <SectionHeading
           eyebrow="AGENCIA DE MARKETING"
@@ -138,7 +137,7 @@ export default function MarketingPage() {
       <section className="container-bc px-0 pt-[24px]">
         <FlipCardGrid cards={pilares.slice(4)} grid={MARKETING_GRID} />
       </section>
-      <div className="h-[100px]" aria-hidden="true" />
+      <div className="h-[50px]" aria-hidden="true" />
 
       {/* Concepto como Servicio (#931c3da) — no background image at all: the
           only paint is #00294B at 90% over the white body. The CTA is a

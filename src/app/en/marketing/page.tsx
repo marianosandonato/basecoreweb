@@ -112,7 +112,7 @@ export default function MarketingPageEn() {
         cta={{ label: "BOOK A DISCOVERY CALL", href: "#contacto" }}
       />
 
-      <div className="h-[28px] md:hidden" aria-hidden="true" />
+      <div className="h-[50px]" aria-hidden="true" />
       <section className="container-bc py-[10px]">
         <SectionHeading
           eyebrow="MARKETING AGENCY"
@@ -128,7 +128,7 @@ export default function MarketingPageEn() {
       <section className="container-bc px-0 pt-[24px]">
         <FlipCardGrid cards={pilares.slice(4)} grid={MARKETING_GRID} />
       </section>
-      <div className="h-[100px]" aria-hidden="true" />
+      <div className="h-[50px]" aria-hidden="true" />
 
       <section className="relative py-[70px] xl:pb-[100px] xl:pt-[110px]">
         <span aria-hidden="true" className="absolute inset-0 bg-navy opacity-90" />
