@@ -13,6 +13,22 @@ export const preventaEn: ServicePageData = {
     ],
     image: "/images/base-core-sales-consegui-reuniones-con-tus-clientes-potenciales.jpg",
   },
+  about: {
+    eyebrow: "What We Do",
+    title: "Presales",
+    subtitle: "Some of what we develop.",
+    bullets: [
+      "Database building",
+      "Outreach models",
+      "Lead qualification",
+      "Sales opportunity detection",
+      "Meetings with your potential clients.",
+    ],
+    paragraphs: [
+      "Before a sale ever happens, there's quiet groundwork: identifying, qualifying, and reaching out to whoever can realistically become a client. **That's presales** — the set of activities that turns a cold database into a calendar full of qualified meetings.",
+      "According to **McKinsey & Company**, companies with strong presales processes achieve win rates of 40% to 50% on new business and 80% to 90% on renewals — well above the market average. Results like that don't come from a report: they come from a well-built process, sustained over time.",
+    ],
+  },
   etapas: {
     eyebrow: "PRESALES",
     grid: PREVENTA_GRID,

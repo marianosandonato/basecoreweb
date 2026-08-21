@@ -13,6 +13,22 @@ export const posventaEn: ServicePageData = {
     ],
     image: "/images/Base-Core-Consultoria-Comercial-y-Marketing-Support.jpg",
   },
+  about: {
+    eyebrow: "What We Do",
+    title: "Post-Sales",
+    subtitle: "Some of what we develop.",
+    bullets: [
+      "Account development",
+      "Cross-selling & up-selling",
+      "Churn tracking",
+      "Portfolio segmentation",
+      "Customer retention & loyalty.",
+    ],
+    paragraphs: [
+      "Acquiring a new customer can cost 5 to 25 times more than retaining one who already trusts you, according to various studies by Bain & Company and Harvard Business Review*. Yet it's common for companies to pour nearly all their commercial effort into the front door, and very little into what happens after the contract is signed. Post-sales is where that initial investment either turns into a customer who buys again — or an opportunity that quietly slips away.",
+      "An existing customer has a 60% to 70% chance of buying from you again when you offer them something relevant, versus just 5% to 20% for converting a new prospect, according to Marketing Metrics*. And it's not a minor detail: a 5% increase in retention can lift a company's profits by 25% to 95%. Post-sales isn't a support cost — it's arguably the most underrated profitability lever in the entire commercial cycle.",
+    ],
+  },
   etapas: {
     eyebrow: "POST-SALES MENTORING",
     grid: POSVENTA_GRID,

@@ -13,6 +13,23 @@ export const ventaEn: ServicePageData = {
     ],
     image: "/images/sales-base-core-sales.jpg",
   },
+  about: {
+    eyebrow: "What We Do",
+    title: "Sales",
+    subtitle: "Some of what we develop.",
+    bullets: [
+      "Sales model definition",
+      "Pipeline & forecasting",
+      "Sales funnels & cycles",
+      "Sales playbooks & materials",
+      "Goals, targets & KPIs",
+      "Compensation schemes",
+    ],
+    paragraphs: [
+      "Closing a sale rarely comes down to a “naturally gifted” rep — it comes down to a process anyone on the team can follow and repeat with consistent results. Getting sales in order means being able to answer, at any moment, what stage each deal is in, how much you'll bill next month, and what's actually pushing a negotiation toward close — instead of finding out only at month's end.",
+      "A pipeline without metrics is, literally, a blind pipeline. In a real B2B commercial consulting engagement*, a company that was losing 60% of its opportunities to poor follow-up raised its conversion rate from 19% to 31% — and cut its sales cycle from 14 to 9 weeks — in nine months, simply by structuring the process and reviewing the pipeline every week.",
+    ],
+  },
   etapas: {
     eyebrow: "COMMERCIAL MENTORING",
     grid: VENTA_GRID,
