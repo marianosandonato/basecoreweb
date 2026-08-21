@@ -78,7 +78,7 @@ export default function ServiceCyclePage({
       {data.about && (
         <section className="py-[50px]">
           <div className="container-bc grid items-center dt:grid-cols-[1fr_340px_1.3fr]">
-            <div className="px-[15px] pb-[45px]">
+            <div className="px-[15px] pb-[45px] dt:pb-0">
               <SectionHeading
                 eyebrow={data.about.eyebrow}
                 title={data.about.title}
@@ -102,7 +102,7 @@ export default function ServiceCyclePage({
               <ProcessImageStack />
             </div>
 
-            <div className="px-[15px] pb-[45px]">
+            <div className="pl-[30px] pr-[15px] pb-[45px] dt:pb-0">
               {data.about.paragraphs.map((paragraph, index) => (
                 <p
                   key={paragraph}

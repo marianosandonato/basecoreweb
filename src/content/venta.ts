@@ -13,6 +13,23 @@ export const venta: ServicePageData = {
     ],
     image: "/images/sales-base-core-sales.jpg",
   },
+  about: {
+    eyebrow: "Qué hacemos",
+    title: "Venta",
+    subtitle: "Algunos de nuestros desarrollos.",
+    bullets: [
+      "Definición de modelo comercial",
+      "Pipeline y forecast",
+      "Funnels y ciclos comerciales",
+      "Manuales y materiales de venta",
+      "Metas, objetivos y KPI’s",
+      "Esquemas de compensación",
+    ],
+    paragraphs: [
+      "Antes de que exista una venta, existe un trabajo silencioso de identificar, calificar y acercarse a quien realmente puede convertirse en cliente. Esa es la preventa: el conjunto de actividades que transforma una base de datos fría en una agenda de reuniones calificadas.",
+      "Un pipeline sin métricas es, literalmente, un pipeline ciego. En un caso real de consultoría comercial B2B*, una empresa que perdía el 60% de sus oportunidades por falta de seguimiento logró subir su tasa de conversión del 19% al 31% —y reducir su ciclo de venta de 14 a 9 semanas— en nueve meses, simplemente ordenando el proceso y revisando el pipeline cada semana.",
+    ],
+  },
   etapas: {
     eyebrow: "MENTORING COMERCIAL",
     grid: VENTA_GRID,
