@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
-import Button from "@/components/Button";
+import CheckList from "@/components/CheckList";
 import ContactSection from "@/components/ContactSection";
 import Counters, { type CounterData } from "@/components/Counters";
 import { AddsIcon, BrandIcon, ContentIcon } from "@/components/counterIcons";
@@ -118,57 +118,9 @@ export default function MarketingPage() {
         cta={{ label: "AGENDAR RELEVAMIENTO", href: "#contacto" }}
       />
 
-      {/* Pilares heading (#9b0a6dc) — matches the cycle pages' hero-to-heading
-          gap (ServiceCyclePage): 50px, same as the foot below the grid. */}
-      <div className="h-[50px]" aria-hidden="true" />
-      <section className="container-bc py-[10px]">
-        <SectionHeading
-          eyebrow="AGENCIA DE MARKETING"
-          title="Pilares comunicacionales"
-          maxWidth={800}
-          className="mb-[16px]"
-        />
-      </section>
-
-      {/* Pilares flip boxes — two sections of four on the original
-          (#fd651a4 margin 40/24, #e8a47dc margin 0/100), 270x430 each. */}
-      <section className="container-bc px-0 pt-[40px]">
-        <FlipCardGrid cards={pilares.slice(0, 4)} grid={MARKETING_GRID} />
-      </section>
-      <section className="container-bc px-0 pt-[24px]">
-        <FlipCardGrid cards={pilares.slice(4)} grid={MARKETING_GRID} />
-      </section>
-      <div className="h-[50px]" aria-hidden="true" />
-
-      <TechnologyBlock />
-
-      {/* Concepto como Servicio (#931c3da) — no background image at all: the
-          only paint is #00294B at 90% over the white body. The CTA is a
-          `.heading-action` inside the heading widget, not a separate widget. */}
-      <section className="relative py-[70px] xl:pb-[100px] xl:pt-[110px]">
-        <span aria-hidden="true" className="absolute inset-0 bg-navy opacity-90" />
-        <div className="container-bc relative">
-          <SectionHeading
-            eyebrow="BASECORE MARKETING"
-            title="Concepto como Servicio"
-            description="Elevar las marcas con BaseCore implica: conceptualización > estrategia > publicidad > escalabilidad. Cuando uno tiene claridad de procesos tiene claridad de rumbo y este es todo para cualquier ámbito de la vida. Así de sencillo, así de complejo. El rumbo demanda procesos y el proceso define el rumbo."
-            dark
-            showLine={false}
-            maxWidth={900}
-            className="mb-[20px]"
-            titleClassName="!text-[32px] !leading-[1.15] lg:!text-[46px] xl:!text-[60px] xl:!leading-[68px]"
-            eyebrowClassName="!text-body"
-            descriptionClassName="!pt-[20px] !text-[#D7D7D7]"
-          >
-            <div className="mt-[30px]">
-              <Button href="#contacto">AGENDAR RELEVAMIENTO</Button>
-            </div>
-          </SectionHeading>
-        </div>
-      </section>
-
       {/* NaN + counters (#dc71230) — 1400px container, 140/560/695 columns so
-          the right-hand two thirds of the photo stay visible. */}
+          the right-hand two thirds of the photo stay visible. Moved up to sit
+          right after the hero, ahead of "Pilares comunicacionales". */}
       <section
         className="bg-cover bg-center bg-no-repeat py-[65px] max-md:bg-left xl:bg-fixed xl:py-[115px]"
         style={{ backgroundImage: "url(/images/Project-Management-Base-Core-Sales.webp)" }}
@@ -198,30 +150,59 @@ export default function MarketingPage() {
         </div>
       </section>
 
-      {/* Hacemos crecer tu negocio (#3df3f2d) — background swapped to the navy
-          repeat-x buildings strip from the old "¿Qué esperas" section below
-          (now removed), so text needs `dark` to stay legible. */}
+      {/* Pilares heading (#9b0a6dc) — matches the cycle pages' hero-to-heading
+          gap (ServiceCyclePage): 50px, same as the foot below the grid. */}
+      <div className="h-[50px]" aria-hidden="true" />
+      <section className="container-bc py-[10px]">
+        <SectionHeading
+          eyebrow="AGENCIA DE MARKETING"
+          title="Pilares comunicacionales"
+          maxWidth={800}
+          className="mb-[16px]"
+        />
+      </section>
+
+      {/* Pilares flip boxes — two sections of four on the original
+          (#fd651a4 margin 40/24, #e8a47dc margin 0/100), 270x430 each. */}
+      <section className="container-bc px-0 pt-[40px]">
+        <FlipCardGrid cards={pilares.slice(0, 4)} grid={MARKETING_GRID} />
+      </section>
+      <section className="container-bc px-0 pt-[24px]">
+        <FlipCardGrid cards={pilares.slice(4)} grid={MARKETING_GRID} />
+      </section>
+      <div className="h-[50px]" aria-hidden="true" />
+
+      <TechnologyBlock />
+
+      {/* Recruiting — same construction as the cycle pages' Recruiting
+          section (ServiceCyclePage #27c2ba5f), copy adapted from "fuerza de
+          ventas" to marketing. */}
       <section
-        className="bg-navy bg-repeat-x py-[65px] max-md:bg-left xl:py-[115px]"
-        style={{ backgroundImage: "url(/images/footer-base-core-sales.webp)" }}
+        className="relative z-[1] bg-cover bg-right bg-no-repeat dt:flex dt:bg-fixed"
+        style={{ backgroundImage: "url(/images/Fondo-Base-Core-01.webp)" }}
       >
-        <div className="container-bc-wide">
-          <div className="lg:flex">
-            <div className="lg:w-[10%]" />
-            <div className="lg:w-[40%]">
-              <SectionHeading
-                eyebrow="MINDSET"
-                title="Hacemos crecer tu negocio"
-                description="BaseCore también es filosófico. Es una forma de pensar y actuar en la vida, de repensarnos en el vinculo, interactuando a partir del respeto primero interpersonal, luego frente al mundo. Es la expresión de deseo de enaltecer los vínculos, porque de los vínculos surgen los equipos. Y de los equipos la excelencia y los resultados. Y los resultados que buscamos son infinitos, porque están emparentados con la energía y la pasión que tampoco son números."
-                align="left"
-                dark
-                maxWidth={530}
-                className="mb-[16px]"
-                eyebrowClassName="!text-white"
-                descriptionClassName="!pt-[20px]"
-              />
-            </div>
-            <div className="lg:w-[50%]" />
+        <div className="px-[15px] pb-0 pt-[20px] md:pb-[80px] md:pt-[60px] dt:w-[55%] dt:py-0">
+          <div className="h-[10px] dt:h-[160px]" />
+        </div>
+        <div className="px-[15px] pb-[45px] max-md:pl-[25px] dt:w-[45%] dt:py-[100px] dt:pl-[85px]">
+          <SectionHeading
+            eyebrow="RECLUTAMIENTO: FUERZA DE MARKETING"
+            title="Conformamos un equipo de Marketing sólido y profesional"
+            description="Además de nuestro modelo de formación, buscamos perfiles acordes y eficientes al modelo de marketing propuesto."
+            align="left"
+            maxWidth={800}
+            className="mb-[8px] pr-[50px] dt:mb-[10px]"
+          />
+          <div className="mt-[20px]">
+            <CheckList
+              items={[
+                "Descripciones de puesto",
+                "Fuentes de reclutamiento",
+                "Direccionamiento de entrevistas",
+                "Presentación de candidatos",
+              ]}
+              size="md"
+            />
           </div>
         </div>
       </section>
