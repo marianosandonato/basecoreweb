@@ -20,6 +20,8 @@ const copy = {
         Te propondremos un plan de ruta para la mejora de procesos y metodologías.
       </>
     ),
+    scheduleText: "O agenda directamente haciendo clic aquí:",
+    scheduleButton: "PROGRAMAR REUNION",
     founderRole: site.founder.role,
     ebookAlt: "E-Book Base Core Sales: Optimiza tus procesos",
     linkedinAria: "LinkedIn de Mariano Sandonato",
@@ -35,6 +37,8 @@ const copy = {
         We&apos;ll come back with a roadmap to improve your processes and methodology.
       </>
     ),
+    scheduleText: "Or schedule directly by clicking here:",
+    scheduleButton: "SCHEDULE MEETING",
     founderRole: siteEn.founderRole,
     ebookAlt: "Base Core Sales E-Book: Optimize your processes",
     linkedinAria: "Mariano Sandonato's LinkedIn",
@@ -90,7 +94,19 @@ export default function ContactSection({
             titleClassName="mb-[6px]"
             descriptionClassName="!pt-[10px] md:!pt-[20px]"
             description={t.description}
-          />
+          >
+            <p className="pt-[10px] font-sans text-[18px] leading-[1.8] text-body">
+              {t.scheduleText}
+            </p>
+            <a
+              href={site.meetingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-[15px] inline-block w-auto rounded-[4px] bg-primary px-[24px] py-[12px] font-heading text-[14px] font-bold uppercase leading-[22px] tracking-[2px] text-white transition-colors duration-300 hover:bg-[rgba(0,0,0,0.77)] md:px-[30px] md:py-[18px]"
+            >
+              {t.scheduleButton}
+            </a>
+          </SectionHeading>
 
           {/* Signature + LinkedIn (#a3d8b65) — a 3-column inner section,
               72% / 10% / 17.3% of 570 with 10px column padding, so the icon
