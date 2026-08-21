@@ -28,7 +28,9 @@ export const metadata: Metadata = {
 const aboutChecklist = [
   "Preventa, Venta y Posventa",
   "Estrategia y plan comercial",
-  "Marketing: desarrollo de marca, IA y herramientas (CRM, software a medida)",
+  "Marketing: desarrollo de marca",
+  "Herramientas: CRM, software a medida",
+  "IA: Automatizaciones con Claude",
   "Selección y formación de equipos",
 ];
 
@@ -198,11 +200,6 @@ export default function HomePage() {
 
             <CheckList items={aboutChecklist} />
 
-            <h4 className="mt-[20px] font-sans text-[20px] font-normal leading-[26px] text-body dt:mt-[28px]">
-              Implementamos procesos para impulsar el desarrollo de tu empresa y aumentar
-              tus ventas.
-            </h4>
-
             <div className="mt-[28px]">
               <Button href="#contacto">CONTÁCTANOS</Button>
             </div>
@@ -215,6 +212,11 @@ export default function HomePage() {
           </div>
 
           <div className="px-[15px] pb-[45px]">
+            <h3 className="mb-[12px] font-heading text-[18px] font-medium leading-[24px] text-heading md:text-[20px] md:leading-[32px]">
+              Implementamos procesos para impulsar el desarrollo de tu empresa y aumentar
+              tus ventas.
+            </h3>
+
             <p className="font-sans text-[18px] leading-[1.8] text-body">
               Acompañamos la implementación, con un plan de trabajo detallado y plazos
               concretos, para que la mejora no dependa de que alguien &ldquo;encuentre
