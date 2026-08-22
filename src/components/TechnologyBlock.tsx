@@ -12,7 +12,7 @@ const copy = {
     bullets: [
       "Implementación de agentes y automatizaciones con Claude",
       "Desarrollo de software con Claude Code",
-      "Implementación de CRM (Hubspot y otros)",
+      "Implementación de CRM",
     ],
     cta: "MÁS INFORMACIÓN",
     href: "/tecnologia",
@@ -24,7 +24,7 @@ const copy = {
     bullets: [
       "AI agent & automation implementation with Claude",
       "Custom software development with Claude Code",
-      "CRM implementation (HubSpot and others)",
+      "CRM implementation",
     ],
     cta: "LEARN MORE",
     href: "/en/tecnologia",
