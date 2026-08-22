@@ -67,8 +67,24 @@ export default function TecnologiaPage() {
           </div>
 
           <div className="text-center">
-            <p className="font-sans text-[18px] leading-[1.8] text-body">AAA</p>
-            <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-body">AAA</p>
+            <p className="font-sans text-[18px] leading-[1.8] text-body">
+              Más de la mitad de las implementaciones de CRM no alcanzan los
+              objetivos que se propusieron. Lo llamativo es la causa: la
+              mayoría de esos fracasos se explica por factores humanos y de
+              proceso —falta de adopción, roles poco claros, flujos que nunca
+              se ordenaron. Un CRM no ordena un proceso comercial, lo
+              refleja. Por eso implementamos la herramienta después de haber
+              definido el proceso.
+            </p>
+            <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-body">
+              La IA aplicada a procesos comerciales dejó de ser una promesa:
+              hoy califica leads, enriquece datos de contacto, personaliza
+              seguimientos y anticipa intención de compra. Pero una
+              herramienta que aprende sobre un proceso desordenado solo
+              replica ese desorden más rápido. Implementamos IA donde hay una
+              tarea repetitiva claramente definida y un criterio claro
+              detrás.
+            </p>
           </div>
         </div>
       </section>

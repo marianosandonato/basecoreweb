@@ -66,8 +66,23 @@ export default function TechnologyPage() {
           </div>
 
           <div className="text-center">
-            <p className="font-sans text-[18px] leading-[1.8] text-body">AAA</p>
-            <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-body">AAA</p>
+            <p className="font-sans text-[18px] leading-[1.8] text-body">
+              More than half of all CRM implementations fall short of the
+              goals they set out to reach. What&apos;s striking is the cause:
+              most of those failures come down to human and process
+              factors — low adoption, unclear roles, workflows that were
+              never actually mapped out. A CRM doesn&apos;t fix a broken
+              sales process, it mirrors it. That&apos;s why we implement the
+              tool only after the process has been defined.
+            </p>
+            <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-body">
+              AI applied to sales processes is no longer just a promise:
+              today it qualifies leads, enriches contact data, personalizes
+              follow-ups, and anticipates purchase intent. But a tool that
+              learns from a disorganized process only replicates that
+              disorder faster. We deploy AI where there&apos;s a clearly
+              defined, repetitive task with a clear criterion behind it.
+            </p>
           </div>
         </div>
       </section>
