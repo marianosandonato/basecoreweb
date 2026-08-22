@@ -172,7 +172,7 @@ export default function MarketingPage() {
       <section className="container-bc px-0 pt-[40px]">
         <FlipCardGrid cards={pilares.slice(0, 4)} grid={MARKETING_GRID} />
       </section>
-      <section className="container-bc px-0 md:pt-[24px]">
+      <section className="container-bc px-0 pt-[15px] md:pt-[24px]">
         <FlipCardGrid cards={pilares.slice(4)} grid={MARKETING_GRID} />
       </section>
       <div className="h-[50px]" aria-hidden="true" />
@@ -183,7 +183,7 @@ export default function MarketingPage() {
           section (ServiceCyclePage #27c2ba5f), copy adapted from "fuerza de
           ventas" to marketing. */}
       <section
-        className="relative z-[1] bg-cover bg-right bg-no-repeat dt:flex dt:bg-fixed"
+        className="relative z-[1] min-h-[640px] bg-cover bg-right bg-no-repeat dt:flex dt:min-h-0 dt:bg-fixed"
         style={{ backgroundImage: "url(/images/Fondo-Base-Core-01.webp)" }}
       >
         <div className="px-[15px] pb-0 pt-[70px] md:pb-[80px] md:pt-[60px] dt:w-[55%] dt:py-0">

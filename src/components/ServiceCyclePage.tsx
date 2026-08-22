@@ -154,7 +154,7 @@ export default function ServiceCyclePage({
         /* Measured: the two columns stack at <=1024 (both at x=0, on separate
            rows) and only sit side by side from 1025 up. Column padding at
            <=1024 is 60px 15px 80px on the spacer and 0 15px 45px on the text. */
-        className="relative z-[1] bg-cover bg-right bg-no-repeat dt:flex dt:bg-fixed"
+        className="relative z-[1] min-h-[640px] bg-cover bg-right bg-no-repeat dt:flex dt:min-h-0 dt:bg-fixed"
         style={{ backgroundImage: "url(/images/Fondo-Base-Core-01.webp)" }}
       >
         <div className="px-[15px] pb-0 pt-[70px] md:pb-[80px] md:pt-[60px] dt:w-[55%] dt:py-0">

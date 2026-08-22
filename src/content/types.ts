@@ -33,6 +33,14 @@ export type FlipGridSpec = {
    * (/preventa 520 vs 500 comes from the section's own padding, not the cell).
    */
   cellPadding: { x: 10 | 15; y: 0 | 10 };
+  /**
+   * Vertical gap between stacked cards on mobile only (grid-cols-1, below
+   * `md:`). Undefined/0 leaves cards flush, matching the desktop margins
+   * these grids already carry from `cellPadding`. /marketing sets this to
+   * match its own 15px left/right card inset, so the stacked mobile column
+   * reads as evenly spaced on every side.
+   */
+  mobileGapY?: 15;
   /** Elementor flip-box effect. */
   effect: "zoom-in" | "slide-up";
   /** Cycle pages use Sora 200; /marketing uses Gilmer 600. */

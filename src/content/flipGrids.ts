@@ -64,6 +64,7 @@ export const MARKETING_GRID: FlipGridSpec = {
   columns: 4,
   boxHeight: 430,
   cellPadding: { x: 15, y: 0 },
+  mobileGapY: 15,
   effect: "slide-up",
   titleFont: "gilmer",
   frontOverlay: "rgba(0, 0, 0, 0.48)",

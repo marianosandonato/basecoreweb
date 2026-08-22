@@ -314,7 +314,7 @@ export default function HomePage() {
           One photo, no overlay: dark on the left, light on the right where the
           text sits. 55/45 split. */}
       <section
-        className="relative z-[1] bg-cover bg-right bg-no-repeat dt:flex dt:bg-fixed"
+        className="relative z-[1] min-h-[640px] bg-cover bg-right bg-no-repeat dt:flex dt:min-h-0 dt:bg-fixed"
         style={{ backgroundImage: "url(/images/Fondo-Base-Core-01.webp)" }}
       >
         {/* Left column is empty — it only holds the 160px spacer */}

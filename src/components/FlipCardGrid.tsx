@@ -33,8 +33,10 @@ type Props = {
  * /venta and /marketing do not.
  */
 export default function FlipCardGrid({ cards, grid }: Props) {
+  const mobileGapY = grid.mobileGapY === 15 ? "gap-y-[15px] md:gap-y-0" : "";
+
   return (
-    <div className={`grid gap-0 ${colClasses[grid.columns]}`}>
+    <div className={`grid gap-0 ${colClasses[grid.columns]} ${mobileGapY}`}>
       {cards.map((card) => (
         <div
           key={card.title}
