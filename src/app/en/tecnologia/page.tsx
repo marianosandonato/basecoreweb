@@ -186,7 +186,6 @@ export default function TechnologyPage() {
       <section className="container-bc px-0 pt-[15px] md:pt-[24px]">
         <FlipCardGrid cards={modules.slice(4)} grid={TECNOLOGIA_GRID} />
       </section>
-      <div className="h-[50px]" aria-hidden="true" />
 
       <ContactSection
         titleAs="h2"

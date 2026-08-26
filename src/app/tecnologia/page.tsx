@@ -194,8 +194,11 @@ export default function TecnologiaPage() {
       <section className="container-bc px-0 pt-[15px] md:pt-[24px]">
         <FlipCardGrid cards={modulos.slice(4)} grid={TECNOLOGIA_GRID} />
       </section>
-      <div className="h-[50px]" aria-hidden="true" />
 
+      {/* No extra foot spacer here — ContactSection's own top padding already
+          matches the gap /marketing gets after its Recruiting section (166px);
+          a second 50px spacer on top of it read as a much bigger gap than
+          every other transition on the page. */}
       <ContactSection
         titleAs="h2"
         backgroundImage="/images/bg-5.jpg"
