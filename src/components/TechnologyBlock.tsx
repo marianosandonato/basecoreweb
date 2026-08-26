@@ -139,7 +139,7 @@ export default function TechnologyBlock({
           </div>
         </div>
 
-        <div className="flex max-w-[460px] flex-col items-center text-center md:items-start md:text-left">
+        <div className="flex max-w-[460px] flex-col items-start text-left">
           <SectionHeading
             eyebrow={t.eyebrow}
             title={t.title}
