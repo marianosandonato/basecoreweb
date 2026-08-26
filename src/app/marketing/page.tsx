@@ -177,7 +177,7 @@ export default function MarketingPage() {
       </section>
       <div className="h-[50px]" aria-hidden="true" />
 
-      <TechnologyBlock />
+      <TechnologyBlock stage="marketing" />
 
       {/* Recruiting — same construction as the cycle pages' Recruiting
           section (ServiceCyclePage #27c2ba5f), copy adapted from "fuerza de

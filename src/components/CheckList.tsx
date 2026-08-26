@@ -1,3 +1,4 @@
+import { renderBold } from "@/lib/renderBold";
 import { CheckCircleIcon } from "./icons";
 
 /**
@@ -33,7 +34,7 @@ export default function CheckList({
       {items.map((item) => (
         <li key={item} className={`flex items-start gap-[10px] font-sans leading-[1.8] ${text}`}>
           <CheckCircleIcon className="mt-[9px] shrink-0 text-[14px] text-primary" />
-          <span>{item}</span>
+          <span>{renderBold(item)}</span>
         </li>
       ))}
     </ul>
