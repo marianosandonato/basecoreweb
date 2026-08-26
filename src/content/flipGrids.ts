@@ -71,3 +71,21 @@ export const MARKETING_GRID: FlipGridSpec = {
   backOverlay: "rgba(0, 41, 75, 0.83)",
   backStyle: "description",
 };
+
+/**
+ * /tecnologia "Módulos" — same box geometry and effect as /marketing's
+ * "Pilares comunicacionales", but each card's back is a bulleted list
+ * (4 items) rather than a single description paragraph.
+ */
+export const TECNOLOGIA_GRID: FlipGridSpec = {
+  layout: "boxed",
+  columns: 4,
+  boxHeight: 430,
+  cellPadding: { x: 15, y: 0 },
+  mobileGapY: 15,
+  effect: "slide-up",
+  titleFont: "gilmer",
+  frontOverlay: "rgba(0, 0, 0, 0.48)",
+  backOverlay: "rgba(0, 41, 75, 0.83)",
+  backStyle: "check-list",
+};
