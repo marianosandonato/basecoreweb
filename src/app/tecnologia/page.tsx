@@ -153,22 +153,19 @@ export default function TecnologiaPage() {
 
           <div className="text-center">
             <p className="font-sans text-[18px] leading-[1.8] text-body">
-              Más de la mitad de las implementaciones de CRM no alcanzan los
-              objetivos que se propusieron. Lo llamativo es la causa: la
-              mayoría de esos fracasos se explica por factores humanos y de
-              proceso —falta de adopción, roles poco claros, flujos que nunca
-              se ordenaron. Un CRM no ordena un proceso comercial, lo
-              refleja. Por eso implementamos la herramienta después de haber
-              definido el proceso.
+              Más de la mitad de las implementaciones de CRM falla por falta
+              de adopción, roles poco claros o flujos que nunca se
+              ordenaron. Un CRM no ordena un proceso comercial, lo refleja.
+              Por eso definimos el proceso{" "}
+              <strong className="font-bold">antes de implementar</strong> la
+              herramienta.
             </p>
             <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-body">
-              La IA aplicada a procesos comerciales dejó de ser una promesa:
-              hoy califica leads, enriquece datos de contacto, personaliza
-              seguimientos y anticipa intención de compra. Pero una
-              herramienta que aprende sobre un proceso desordenado solo
-              replica ese desorden más rápido. Implementamos IA donde hay una
-              tarea repetitiva claramente definida y un criterio claro
-              detrás.
+              Implementar IA no es sumar una herramienta más: es delegar
+              decisiones. Todas requieren un{" "}
+              <strong className="font-bold">criterio</strong> que hoy vive en
+              la cabeza de alguien de tu equipo. Nuestro trabajo es hacerlo
+              explícito antes de automatizarlo.
             </p>
           </div>
         </div>

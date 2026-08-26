@@ -149,21 +149,19 @@ export default function TechnologyPage() {
 
           <div className="text-center">
             <p className="font-sans text-[18px] leading-[1.8] text-body">
-              More than half of all CRM implementations fall short of the
-              goals they set out to reach. What&apos;s striking is the cause:
-              most of those failures come down to human and process
-              factors — low adoption, unclear roles, workflows that were
-              never actually mapped out. A CRM doesn&apos;t fix a broken
-              sales process, it mirrors it. That&apos;s why we implement the
-              tool only after the process has been defined.
+              More than half of all CRM implementations fail because of low
+              adoption, unclear roles, or workflows that were never mapped
+              out. A CRM doesn&apos;t fix a broken sales process, it mirrors
+              it. That&apos;s why we define the process{" "}
+              <strong className="font-bold">before implementing</strong> the
+              tool.
             </p>
             <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-body">
-              AI applied to sales processes is no longer just a promise:
-              today it qualifies leads, enriches contact data, personalizes
-              follow-ups, and anticipates purchase intent. But a tool that
-              learns from a disorganized process only replicates that
-              disorder faster. We deploy AI where there&apos;s a clearly
-              defined, repetitive task with a clear criterion behind it.
+              Implementing AI isn&apos;t just adding another tool: it&apos;s
+              delegating decisions. Each one requires a{" "}
+              <strong className="font-bold">criterion</strong> that today
+              lives in someone&apos;s head on your team. Our job is to make
+              it explicit before automating it.
             </p>
           </div>
         </div>

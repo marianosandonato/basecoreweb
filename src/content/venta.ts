@@ -25,8 +25,8 @@ export const venta: ServicePageData = {
       "Esquemas de compensación",
     ],
     paragraphs: [
-      "Los resultados sostenidos no salen de la intuición: salen de un proceso que el equipo pueda seguir y repetir con resultados consistentes. Ordenar la venta es responder, en cualquier momento, en qué etapa está cada oportunidad y qué empuja el cierre.",
-      "Un pipeline sin métricas es, literalmente, un pipeline ciego. El 80% de las ventas requiere al menos cinco contactos para concretarse, pero el 44% de los vendedores abandona tras el primero. Esa brecha se cierra con un proceso que defina cuándo, cómo y quién sigue.",
+      "Los resultados sostenidos no salen de la intuición: salen de un proceso que el equipo pueda seguir y repetir con resultados consistentes. **Ordenar la venta** es responder, en cualquier momento, en qué etapa está cada oportunidad y qué empuja el cierre.",
+      "Un pipeline sin métricas es, literalmente, un pipeline ciego. El 80% de las ventas requiere al menos cinco contactos para concretarse, pero el 44% de los vendedores abandona tras el primero. Esa brecha se cierra con un proceso que defina **cuándo y cómo avanzar**.",
     ],
   },
   etapas: {
