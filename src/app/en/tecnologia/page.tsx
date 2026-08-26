@@ -14,7 +14,7 @@ import type { FlipCardData } from "@/content/types";
 const modules: readonly FlipCardData[] = [
   {
     title: "AI Agents",
-    image: "/images/agentes-de-ia-base-core-sales-1.jpg",
+    image: "/images/agentes-de-ia-base-core-sales-1.webp",
     items: [
       "Automatic lead scoring and enrichment",
       "Chatbots and smart intake forms for first-line filtering",
@@ -24,7 +24,7 @@ const modules: readonly FlipCardData[] = [
   },
   {
     title: "Automation",
-    image: "/images/automatizacion-base-core-sales-1.jpg",
+    image: "/images/automatizacion-base-core-sales-1.webp",
     items: [
       "Automatic lead capture and routing",
       "Follow-up sequences, scrapers and nurturing",
@@ -34,7 +34,7 @@ const modules: readonly FlipCardData[] = [
   },
   {
     title: "CRM",
-    image: "/images/crm-base-core-sales-1.jpg",
+    image: "/images/crm-base-core-sales-1.webp",
     items: [
       "Implementation of HubSpot, Pipedrive, Zoho or other platforms",
       "Pipeline, stage and progression-criteria setup",
@@ -44,7 +44,7 @@ const modules: readonly FlipCardData[] = [
   },
   {
     title: "Management Software",
-    image: "/images/softwares-gestion-base-core-sales-1.jpg",
+    image: "/images/softwares-gestion-base-core-sales-1.webp",
     items: [
       "Agile development with Claude Code",
       "Sales, operations or project management systems",
@@ -54,7 +54,7 @@ const modules: readonly FlipCardData[] = [
   },
   {
     title: "Dashboards & Reporting",
-    image: "/images/tableros-reporting-base-core-sales-1.jpg",
+    image: "/images/tableros-reporting-base-core-sales-1.webp",
     items: [
       "Executive dashboard with the KPIs leadership actually uses",
       "Real-time pipeline, forecast and stage conversion",
@@ -64,7 +64,7 @@ const modules: readonly FlipCardData[] = [
   },
   {
     title: "Marketing",
-    image: "/images/marketing-tecnologia-base-core-sales-1.jpg",
+    image: "/images/marketing-tecnologia-base-core-sales-1.webp",
     items: [
       "Websites and landing pages built with Claude Code",
       "Google ranking and AI-search visibility",
@@ -74,7 +74,7 @@ const modules: readonly FlipCardData[] = [
   },
   {
     title: "AI Content & Design",
-    image: "/images/contenido-diseno-ia-base-core-sales-1.jpg",
+    image: "/images/contenido-diseno-ia-base-core-sales-1.webp",
     items: [
       "Content production at scale, on-brand and on-tone",
       "Creative variants to test and optimize campaigns",
@@ -84,7 +84,7 @@ const modules: readonly FlipCardData[] = [
   },
   {
     title: "Technology Diagnostics",
-    image: "/images/diagnostico-tecnologico-base-core-sales-1.jpg",
+    image: "/images/diagnostico-tecnologico-base-core-sales-1.webp",
     items: [
       "Tool inventory: what you use, what you pay for, what's duplicated",
       "Mapping how your processes actually work today, not how they should",

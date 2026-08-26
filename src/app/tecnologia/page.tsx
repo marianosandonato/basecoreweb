@@ -18,7 +18,7 @@ import type { FlipCardData } from "@/content/types";
 const modulos: readonly FlipCardData[] = [
   {
     title: "Agentes de IA",
-    image: "/images/agentes-de-ia-base-core-sales-1.jpg",
+    image: "/images/agentes-de-ia-base-core-sales-1.webp",
     items: [
       "Calificación y enriquecimiento automático de leads",
       "Chatbots y formularios inteligentes de primer filtro",
@@ -28,7 +28,7 @@ const modulos: readonly FlipCardData[] = [
   },
   {
     title: "Automatización",
-    image: "/images/automatizacion-base-core-sales-1.jpg",
+    image: "/images/automatizacion-base-core-sales-1.webp",
     items: [
       "Captura y asignación automática de leads",
       "Secuencias de seguimiento, scrapers y nurturing",
@@ -38,7 +38,7 @@ const modulos: readonly FlipCardData[] = [
   },
   {
     title: "CRM",
-    image: "/images/crm-base-core-sales-1.jpg",
+    image: "/images/crm-base-core-sales-1.webp",
     items: [
       "Implementación de HubSpot, Pipedrive, Zoho u otras plataformas",
       "Configuración de pipeline, etapas y criterios de avance",
@@ -48,7 +48,7 @@ const modulos: readonly FlipCardData[] = [
   },
   {
     title: "Softwares de gestión",
-    image: "/images/softwares-gestion-base-core-sales-1.jpg",
+    image: "/images/softwares-gestion-base-core-sales-1.webp",
     items: [
       "Desarrollo ágil con Claude Code",
       "Sistemas de gestión comercial, operativa o de proyectos",
@@ -58,7 +58,7 @@ const modulos: readonly FlipCardData[] = [
   },
   {
     title: "Tableros y reporting",
-    image: "/images/tableros-reporting-base-core-sales-1.jpg",
+    image: "/images/tableros-reporting-base-core-sales-1.webp",
     items: [
       "Dashboard ejecutivo con los KPIs que dirección realmente usa",
       "Pipeline, forecast y conversión entre etapas en tiempo real",
@@ -68,7 +68,7 @@ const modulos: readonly FlipCardData[] = [
   },
   {
     title: "Marketing",
-    image: "/images/marketing-tecnologia-base-core-sales-1.jpg",
+    image: "/images/marketing-tecnologia-base-core-sales-1.webp",
     items: [
       "Sitios web y landing pages con Claude Code",
       "Posicionamiento en Google y en buscadores con IA",
@@ -78,7 +78,7 @@ const modulos: readonly FlipCardData[] = [
   },
   {
     title: "Contenido y diseño con IA",
-    image: "/images/contenido-diseno-ia-base-core-sales-1.jpg",
+    image: "/images/contenido-diseno-ia-base-core-sales-1.webp",
     items: [
       "Producción de contenido a escala, alineado al tono de tu marca",
       "Variantes creativas para testear y optimizar campañas",
@@ -88,7 +88,7 @@ const modulos: readonly FlipCardData[] = [
   },
   {
     title: "Diagnóstico tecnológico",
-    image: "/images/diagnostico-tecnologico-base-core-sales-1.jpg",
+    image: "/images/diagnostico-tecnologico-base-core-sales-1.webp",
     items: [
       "Inventario de herramientas: qué usas, qué pagas y qué está duplicado",
       "Mapeo de cómo funcionan hoy tus procesos, no de cómo deberían",
