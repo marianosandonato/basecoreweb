@@ -1,5 +1,6 @@
 import type { ServicePageData } from "@/content/types";
 import type { Lang } from "@/lib/site";
+import { renderBold } from "@/lib/renderBold";
 import AboutLogoBlock from "./AboutLogoBlock";
 import Breadcrumb from "./Breadcrumb";
 import Button from "./Button";
@@ -35,18 +36,15 @@ const copy = {
   },
 } as const;
 
-/** Renders `**bold**` markers in content-file copy as `<strong>`. */
-function renderBold(text: string) {
-  return text.split(/\*\*(.+?)\*\*/g).map((chunk, index) =>
-    index % 2 === 1 ? (
-      <strong key={index} className="font-bold">
-        {chunk}
-      </strong>
-    ) : (
-      chunk
-    ),
-  );
-}
+/** `data.slug` is per-language ("preventa"/"presales", etc.) — normalize both to one TechnologyBlock stage key. */
+const stageBySlug: Record<string, "preventa" | "venta" | "posventa"> = {
+  preventa: "preventa",
+  presales: "preventa",
+  venta: "venta",
+  sales: "venta",
+  posventa: "posventa",
+  "post-sales": "posventa",
+};
 
 /**
  * Shared layout for Preventa / Venta / Posventa (Elementor page 24 on /preventa).
@@ -146,7 +144,7 @@ export default function ServiceCyclePage({
       {/* Foot of the Etapas box — same 50px as the gap above it. */}
       <div className="h-[50px]" aria-hidden="true" />
 
-      <TechnologyBlock lang={lang} />
+      <TechnologyBlock lang={lang} stage={stageBySlug[data.slug]} />
 
       {/* Recruiting (#27c2ba5f) — same construction as the home page:
           one photo, no overlay, dark text on the light half. */}

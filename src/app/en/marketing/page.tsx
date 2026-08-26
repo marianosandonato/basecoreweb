@@ -168,7 +168,7 @@ export default function MarketingPageEn() {
       </section>
       <div className="h-[50px]" aria-hidden="true" />
 
-      <TechnologyBlock lang="en" />
+      <TechnologyBlock lang="en" stage="marketing" />
 
       {/* Recruiting — same construction as the cycle pages' Recruiting
           section, copy adapted from "sales force" to marketing. */}
