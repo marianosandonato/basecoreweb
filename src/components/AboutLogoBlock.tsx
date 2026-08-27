@@ -12,17 +12,33 @@ import Image from "next/image";
  * rendered width and the row's `gap-x` is the only space before the next
  * column — the same gutter used between every other pair of columns.
  */
-export default function AboutLogoBlock({ label }: { label: string }) {
+export default function AboutLogoBlock({
+  label,
+  dark = false,
+}: {
+  label: string;
+  /** White mark + white label, for the navy/photo "Qué hacemos" treatment
+      (same asset as the home page's "Agencia de Marketing" cajón). */
+  dark?: boolean;
+}) {
   return (
     <div className="hidden flex-col items-center gap-[16px] text-center md:flex">
       <Image
-        src="/images/base-core-logo-azul-sin-slogan.webp"
+        src={
+          dark
+            ? "/images/base-core-logo-blanco-sin-slogan.webp"
+            : "/images/base-core-logo-azul-sin-slogan.webp"
+        }
         alt="Base Core"
         width={900}
         height={927}
         className="h-auto w-[189px] md:w-[257px]"
       />
-      <span className="font-sora text-[32px] font-extralight tracking-[2px] text-navy md:text-[41px]">
+      <span
+        className={`font-sora text-[32px] font-extralight tracking-[2px] md:text-[41px] ${
+          dark ? "text-white" : "text-navy"
+        }`}
+      >
         {label}
       </span>
     </div>

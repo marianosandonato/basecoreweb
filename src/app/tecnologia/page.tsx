@@ -124,15 +124,19 @@ export default function TecnologiaPage() {
         overlayOpacity={0.32}
       />
 
-      {/* "Qué hacemos" (replica of the cycle pages' about block) — logo, text, text. */}
-      <section className="py-[50px]">
+      {/* "Qué hacemos" (replica of the cycle pages' about block) — logo, text,
+          text. Navy background + white mark, same treatment as the home
+          page's "Agencia de Marketing" cajón, so this block continues the
+          hero's dark mood instead of a plain white slab. */}
+      <section className="bg-navy py-[50px]">
         <div className="container-bc grid items-center gap-y-[30px] min-[1200px]:grid-cols-[auto_1fr_1.3fr] min-[1200px]:gap-x-[90px] min-[1200px]:gap-y-0">
-          <AboutLogoBlock label="Tecnología" />
+          <AboutLogoBlock label="Tecnología" dark />
 
           <div>
             <SectionHeading
               eyebrow="QUÉ HACEMOS"
               align="left"
+              dark
               maxWidth={800}
               className="mb-[16px] w-full"
             />
@@ -144,6 +148,7 @@ export default function TecnologiaPage() {
                 "Software de gestión a medida",
                 "Softs facturación, logística, stock",
               ]}
+              dark
             />
 
             <div className="mt-[28px]">
@@ -152,7 +157,7 @@ export default function TecnologiaPage() {
           </div>
 
           <div className="text-center">
-            <p className="font-sans text-[18px] leading-[1.8] text-body">
+            <p className="font-sans text-[18px] leading-[1.8] text-muted">
               Más de la mitad de las implementaciones de CRM falla por falta
               de adopción, roles poco claros o flujos que nunca se
               ordenaron. Un CRM no ordena un proceso comercial, lo refleja.
@@ -160,7 +165,7 @@ export default function TecnologiaPage() {
               <strong className="font-bold">antes de implementar</strong>{" "}
               la herramienta.
             </p>
-            <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-body">
+            <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-muted">
               Implementar IA no es sumar una herramienta más: es delegar
               decisiones. Todas requieren un{" "}
               <strong className="font-bold">criterio</strong>{" "}

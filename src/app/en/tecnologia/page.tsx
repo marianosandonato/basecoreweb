@@ -120,15 +120,19 @@ export default function TechnologyPage() {
         overlayOpacity={0.32}
       />
 
-      {/* "What We Do" (replica of the cycle pages' about block) — logo, text, text. */}
-      <section className="py-[50px]">
+      {/* "What We Do" (replica of the cycle pages' about block) — logo, text,
+          text. Navy background + white mark, same treatment as the home
+          page's "Agencia de Marketing" cajón, so this block continues the
+          hero's dark mood instead of a plain white slab. */}
+      <section className="bg-navy py-[50px]">
         <div className="container-bc grid items-center gap-y-[30px] min-[1200px]:grid-cols-[auto_1fr_1.3fr] min-[1200px]:gap-x-[90px] min-[1200px]:gap-y-0">
-          <AboutLogoBlock label="Technology" />
+          <AboutLogoBlock label="Technology" dark />
 
           <div>
             <SectionHeading
               eyebrow="WHAT WE DO"
               align="left"
+              dark
               maxWidth={800}
               className="mb-[16px] w-full"
             />
@@ -140,6 +144,7 @@ export default function TechnologyPage() {
                 "Custom management software",
                 "Billing, logistics & inventory software",
               ]}
+              dark
             />
 
             <div className="mt-[28px]">
@@ -148,7 +153,7 @@ export default function TechnologyPage() {
           </div>
 
           <div className="text-center">
-            <p className="font-sans text-[18px] leading-[1.8] text-body">
+            <p className="font-sans text-[18px] leading-[1.8] text-muted">
               More than half of all CRM implementations fail because of low
               adoption, unclear roles, or workflows that were never mapped
               out. A CRM doesn&apos;t fix a broken sales process, it mirrors
@@ -156,7 +161,7 @@ export default function TechnologyPage() {
               <strong className="font-bold">before implementing</strong>{" "}
               the tool.
             </p>
-            <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-body">
+            <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-muted">
               Implementing AI isn&apos;t just adding another tool: it&apos;s
               delegating decisions. Each one requires a{" "}
               <strong className="font-bold">criterion</strong>{" "}

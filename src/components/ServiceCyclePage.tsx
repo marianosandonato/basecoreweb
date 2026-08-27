@@ -71,25 +71,31 @@ export default function ServiceCyclePage({
         cta={{ label: t.cta, href: "#contacto" }}
       />
 
-      {/* "Qué hacemos" (replica of the home page's "Nosotros / Proceso como
-          servicio" section, #3b58066) — second block on the page, same
-          three-column construction: logo, text, text. Equal `gap-x` on
-          every gutter — the first column is `auto`-width so it hugs the
-          logo instead of leaving unused track space before the gap. */}
+      {/* "Qué hacemos" — second block on the page, same three-column
+          construction: logo, text, text. Equal `gap-x` on every gutter —
+          the first column is `auto`-width so it hugs the logo instead of
+          leaving unused track space before the gap.
+
+          Navy background + white mark (same treatment as the home page's
+          "Agencia de Marketing" cajón, #5f421622) so this block continues
+          the hero's dark, photographic mood instead of breaking it with a
+          plain white slab — a solid colour rather than a busy photo keeps
+          the two paragraphs of body copy legible. */}
       {data.about && (
-        <section className="py-[50px]">
+        <section className="bg-navy py-[50px]">
           <div className="container-bc grid items-center gap-y-[30px] min-[1200px]:grid-cols-[auto_1fr_1.3fr] min-[1200px]:gap-x-[90px] min-[1200px]:gap-y-0">
-            <AboutLogoBlock label={data.about.title} />
+            <AboutLogoBlock label={data.about.title} dark />
 
             <div>
               <SectionHeading
                 eyebrow={data.about.eyebrow}
                 align="left"
+                dark
                 maxWidth={800}
                 className="mb-[16px] w-full"
               />
 
-              <CheckList items={data.about.bullets} />
+              <CheckList items={data.about.bullets} dark />
 
               <div className="mt-[28px]">
                 <Button href="#contacto">{t.aboutCta}</Button>
@@ -100,7 +106,7 @@ export default function ServiceCyclePage({
               {data.about.paragraphs.map((paragraph, index) => (
                 <p
                   key={paragraph}
-                  className={`font-sans text-[18px] leading-[1.8] text-body ${
+                  className={`font-sans text-[18px] leading-[1.8] text-muted ${
                     index > 0 ? "mt-[20px]" : ""
                   }`}
                 >
