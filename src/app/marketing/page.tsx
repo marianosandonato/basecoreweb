@@ -43,10 +43,13 @@ const pilares: readonly FlipCardData[] = [
     ],
   },
   {
-    title: "Base estadística",
-    image: "/images/base-estadistica-base-core-sales-mkt-1.jpg",
+    title: "IA + Software",
+    image: "/images/agentes-de-ia-base-core-sales-1.webp",
     items: [
-      "Sustento en investigación de mercado, tendencias, forecast e insights del consumidor.",
+      "Sitios web y landing pages con Claude Code",
+      "Posicionamiento en Google y en buscadores con IA",
+      "Captura automática de leads desde web y redes al CRM",
+      "Medición de retorno real por campaña y canal",
     ],
   },
   {
