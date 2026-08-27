@@ -102,7 +102,7 @@ const pilares: readonly FlipCardData[] = [
     ],
   },
   {
-    title: "Paid Advertising",
+    title: "Paid Media",
     image: "/images/pauta-publicitaria-mkt-base-core-sales-1.jpg",
     items: [
       "Audience research and campaign strategy",
