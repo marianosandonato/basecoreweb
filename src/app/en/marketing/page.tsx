@@ -98,17 +98,22 @@ const pilares: readonly FlipCardData[] = [
     title: "Websites",
     image: "/images/pagina-web-basecore-sales.jpg",
     items: [
-      "Your website is your brand's storefront — essential for generating business!",
+      "Built with Claude Code",
       "Corporate identity and UX/UI design",
-      "Responsive build and language",
-      "Hosting, content and copy",
+      "Responsive and multilingual",
+      "Hosting on physical and virtual servers",
+      "Version control and continuous backup",
+      "CTAs, WhatsApp buttons and forms",
     ],
   },
   {
     title: "Graphic Design",
     image: "/images/diseno-grafico-basecoresales-1.jpg",
     items: [
-      "Creating high-value graphic pieces to build visual and corporate identity.",
+      "High-value graphic pieces",
+      "Visual identity",
+      "Creative assets for campaigns and ads",
+      "Presentations, dossiers and sales materials",
     ],
   },
 ];

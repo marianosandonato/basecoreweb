@@ -100,17 +100,22 @@ const pilares: readonly FlipCardData[] = [
     title: "Sitios Web",
     image: "/images/pagina-web-basecore-sales.jpg",
     items: [
-      "Tu página web es la vidriera de tu marca y es imprescindible para generar negocios!",
+      "Desarrollo con Claude Code",
       "Identidad corporativa y diseño UX-UI",
-      "Responsive y lenguaje",
-      "Host, contenidos y textos",
+      "Responsive y multilenguaje",
+      "Hosting en servidores físicos y virtuales",
+      "Control de versiones y respaldo continuo",
+      "CTAs, botones de WhatsApp y formularios",
     ],
   },
   {
     title: "Diseño gráfico",
     image: "/images/diseno-grafico-basecoresales-1.jpg",
     items: [
-      "Creación de piezas gráficas de valor para lograr identidad visual y corporativa.",
+      "Piezas gráficas de valor",
+      "Identidad visual",
+      "Creatividades para campañas y anuncios",
+      "Presentaciones, dossiers y materiales comerciales",
     ],
   },
 ];
