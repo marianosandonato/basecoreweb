@@ -140,15 +140,19 @@ export default function MarketingPage() {
 
       {/* "Qué hacemos" (replica of the cycle pages' about block,
           ServiceCyclePage #3b58066) — text, image stack, text. Sits right
-          after the hero, ahead of "Pilares comunicacionales". */}
-      <section className="py-[50px]">
+          after the hero, ahead of "Pilares comunicacionales". Navy
+          background + white mark, same treatment as the home page's
+          "Agencia de Marketing" cajón, so this block continues the hero's
+          dark mood instead of a plain white slab. */}
+      <section className="bg-navy py-[50px]">
         <div className="container-bc grid items-center gap-y-[30px] min-[1200px]:grid-cols-[auto_1fr_1.3fr] min-[1200px]:gap-x-[90px] min-[1200px]:gap-y-0">
-          <AboutLogoBlock label="Marketing" />
+          <AboutLogoBlock label="Marketing" dark />
 
           <div>
             <SectionHeading
               eyebrow="QUÉ HACEMOS"
               align="left"
+              dark
               maxWidth={800}
               className="mb-[16px] w-full"
             />
@@ -163,6 +167,7 @@ export default function MarketingPage() {
                 "Redes sociales",
                 "Sitios web",
               ]}
+              dark
             />
 
             <div className="mt-[28px]">
@@ -171,13 +176,13 @@ export default function MarketingPage() {
           </div>
 
           <div className="text-center">
-            <p className="font-sans text-[18px] leading-[1.8] text-body">
+            <p className="font-sans text-[18px] leading-[1.8] text-muted">
               Ninguna etapa del ciclo comercial funciona en el vacío: la preventa necesita una marca confiable, la venta necesita materiales que respalden la propuesta, y la posventa necesita comunicación consistente.{" "}
-              <strong className="font-bold">El marketing es la base.</strong>
+              <strong className="font-bold text-white">El marketing es la base.</strong>
             </p>
-            <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-body">
+            <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-muted">
               El 90% de los compradores B2B empieza su proceso de compra investigando por su cuenta, mucho antes de hablar con un vendedor. Para cuando llegan a tu equipo comercial, ya se formaron una opinión: el marketing define{" "}
-              <strong className="font-bold">con qué opinión llegan</strong>.
+              <strong className="font-bold text-white">con qué opinión llegan</strong>.
             </p>
           </div>
         </div>

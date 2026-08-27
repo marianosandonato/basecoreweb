@@ -135,15 +135,18 @@ export default function MarketingPageEn() {
 
       {/* "What We Do" (replica of the cycle pages' about block) — text,
           image stack, text. Sits right after the hero, ahead of
-          "Communication Pillars". */}
-      <section className="py-[50px]">
+          "Communication Pillars". Navy background + white mark, same
+          treatment as the home page's "Agencia de Marketing" cajón, so this
+          block continues the hero's dark mood instead of a plain white slab. */}
+      <section className="bg-navy py-[50px]">
         <div className="container-bc grid items-center gap-y-[30px] min-[1200px]:grid-cols-[auto_1fr_1.3fr] min-[1200px]:gap-x-[90px] min-[1200px]:gap-y-0">
-          <AboutLogoBlock label="Marketing" />
+          <AboutLogoBlock label="Marketing" dark />
 
           <div>
             <SectionHeading
               eyebrow="WHAT WE DO"
               align="left"
+              dark
               maxWidth={800}
               className="mb-[16px] w-full"
             />
@@ -158,6 +161,7 @@ export default function MarketingPageEn() {
                 "Social media",
                 "Websites",
               ]}
+              dark
             />
 
             <div className="mt-[28px]">
@@ -166,13 +170,13 @@ export default function MarketingPageEn() {
           </div>
 
           <div className="text-center">
-            <p className="font-sans text-[18px] leading-[1.8] text-body">
+            <p className="font-sans text-[18px] leading-[1.8] text-muted">
               No stage of the sales cycle works in isolation: presales needs a trustworthy brand, sales needs materials that back the pitch, and post-sales needs consistent communication.{" "}
-              <strong className="font-bold">Marketing is the foundation.</strong>
+              <strong className="font-bold text-white">Marketing is the foundation.</strong>
             </p>
-            <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-body">
+            <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-muted">
               90% of B2B buyers start researching on their own, long before they talk to a salesperson. By the time they reach your sales team, they&apos;ve already formed an opinion: marketing defines{" "}
-              <strong className="font-bold">which opinion they arrive with</strong>.
+              <strong className="font-bold text-white">which opinion they arrive with</strong>.
             </p>
           </div>
         </div>
