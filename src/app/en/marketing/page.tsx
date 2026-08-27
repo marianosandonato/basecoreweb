@@ -172,11 +172,11 @@ export default function MarketingPageEn() {
           <div className="text-center">
             <p className="font-sans text-[18px] leading-[1.8] text-muted">
               No stage of the sales cycle works in isolation: presales needs a trustworthy brand, sales needs materials that back the pitch, and post-sales needs consistent communication.{" "}
-              <strong className="font-bold">Marketing is the foundation.</strong>
+              <strong className="font-bold text-white">Marketing is the foundation.</strong>
             </p>
             <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-muted">
               90% of B2B buyers start researching on their own, long before they talk to a salesperson. By the time they reach your sales team, they&apos;ve already formed an opinion: marketing defines{" "}
-              <strong className="font-bold">which opinion they arrive with</strong>.
+              <strong className="font-bold text-white">which opinion they arrive with</strong>.
             </p>
           </div>
         </div>

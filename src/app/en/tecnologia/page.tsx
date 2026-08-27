@@ -158,13 +158,13 @@ export default function TechnologyPage() {
               adoption, unclear roles, or workflows that were never mapped
               out. A CRM doesn&apos;t fix a broken sales process, it mirrors
               it. That&apos;s why we define the process{" "}
-              <strong className="font-bold">before implementing</strong>{" "}
+              <strong className="font-bold text-white">before implementing</strong>{" "}
               the tool.
             </p>
             <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-muted">
               Implementing AI isn&apos;t just adding another tool: it&apos;s
               delegating decisions. Each one requires a{" "}
-              <strong className="font-bold">criterion</strong>{" "}
+              <strong className="font-bold text-white">criterion</strong>{" "}
               that today lives in someone&apos;s head on your team. Our job
               is to make it explicit before automating it.
             </p>

@@ -178,11 +178,11 @@ export default function MarketingPage() {
           <div className="text-center">
             <p className="font-sans text-[18px] leading-[1.8] text-muted">
               Ninguna etapa del ciclo comercial funciona en el vacío: la preventa necesita una marca confiable, la venta necesita materiales que respalden la propuesta, y la posventa necesita comunicación consistente.{" "}
-              <strong className="font-bold">El marketing es la base.</strong>
+              <strong className="font-bold text-white">El marketing es la base.</strong>
             </p>
             <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-muted">
               El 90% de los compradores B2B empieza su proceso de compra investigando por su cuenta, mucho antes de hablar con un vendedor. Para cuando llegan a tu equipo comercial, ya se formaron una opinión: el marketing define{" "}
-              <strong className="font-bold">con qué opinión llegan</strong>.
+              <strong className="font-bold text-white">con qué opinión llegan</strong>.
             </p>
           </div>
         </div>

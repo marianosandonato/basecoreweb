@@ -110,7 +110,7 @@ export default function ServiceCyclePage({
                     index > 0 ? "mt-[20px]" : ""
                   }`}
                 >
-                  {renderBold(paragraph)}
+                  {renderBold(paragraph, "text-white")}
                 </p>
               ))}
             </div>
