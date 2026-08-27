@@ -75,13 +75,15 @@ const pilares: readonly FlipCardData[] = [
     ],
   },
   {
-    title: "Paid Advertising",
-    image: "/images/pauta-publicitaria-mkt-base-core-sales-1.jpg",
+    title: "Websites",
+    image: "/images/pagina-web-basecore-sales.jpg",
     items: [
-      "Audience research",
-      "Ad creation",
-      "Optimization and results analysis",
-      "Google, Instagram, Facebook and LinkedIn Ads campaigns",
+      "Built with Claude Code",
+      "Corporate identity and UX/UI design",
+      "Responsive and multilingual",
+      "Hosting on physical and virtual servers",
+      "Version control and continuous backup",
+      "CTAs, WhatsApp buttons and forms",
     ],
   },
   {
@@ -95,15 +97,13 @@ const pilares: readonly FlipCardData[] = [
     ],
   },
   {
-    title: "Websites",
-    image: "/images/pagina-web-basecore-sales.jpg",
+    title: "Paid Advertising",
+    image: "/images/pauta-publicitaria-mkt-base-core-sales-1.jpg",
     items: [
-      "Built with Claude Code",
-      "Corporate identity and UX/UI design",
-      "Responsive and multilingual",
-      "Hosting on physical and virtual servers",
-      "Version control and continuous backup",
-      "CTAs, WhatsApp buttons and forms",
+      "Audience research",
+      "Ad creation",
+      "Optimization and results analysis",
+      "Google, Instagram, Facebook and LinkedIn Ads campaigns",
     ],
   },
   {

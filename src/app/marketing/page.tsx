@@ -77,13 +77,15 @@ const pilares: readonly FlipCardData[] = [
     ],
   },
   {
-    title: "Pauta publicitaria",
-    image: "/images/pauta-publicitaria-mkt-base-core-sales-1.jpg",
+    title: "Sitios Web",
+    image: "/images/pagina-web-basecore-sales.jpg",
     items: [
-      "Estudio de audiencia",
-      "Creación de anuncios",
-      "Optimización y análisis de resultados",
-      "Campañas de Google, Instagram, Facebook y Linkedin Ads",
+      "Desarrollo con Claude Code",
+      "Identidad corporativa y diseño UX-UI",
+      "Responsive y multilenguaje",
+      "Hosting en servidores físicos y virtuales",
+      "Control de versiones y respaldo continuo",
+      "CTAs, botones de WhatsApp y formularios",
     ],
   },
   {
@@ -97,15 +99,13 @@ const pilares: readonly FlipCardData[] = [
     ],
   },
   {
-    title: "Sitios Web",
-    image: "/images/pagina-web-basecore-sales.jpg",
+    title: "Pauta publicitaria",
+    image: "/images/pauta-publicitaria-mkt-base-core-sales-1.jpg",
     items: [
-      "Desarrollo con Claude Code",
-      "Identidad corporativa y diseño UX-UI",
-      "Responsive y multilenguaje",
-      "Hosting en servidores físicos y virtuales",
-      "Control de versiones y respaldo continuo",
-      "CTAs, botones de WhatsApp y formularios",
+      "Estudio de audiencia",
+      "Creación de anuncios",
+      "Optimización y análisis de resultados",
+      "Campañas de Google, Instagram, Facebook y Linkedin Ads",
     ],
   },
   {
