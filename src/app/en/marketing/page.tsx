@@ -34,12 +34,23 @@ export const metadata: Metadata = {
 
 const pilares: readonly FlipCardData[] = [
   {
+    title: "Work Plan",
+    image: "/images/plan-de-trabajo-basecores-1.jpg",
+    items: [
+      "Gantt chart or action plan presentation",
+      "Actions defined for each communication pillar",
+      "Scheduled on a timeline",
+      "Definition of the work team and project leader",
+    ],
+  },
+  {
     title: "Creative Strategy",
     image: "/images/creatividad-base-core-sales-1.jpg",
     items: [
       "Current-state analysis",
       "Briefing-based discovery process",
       "Definition of the communication concept and creative strategy",
+      "Brandbook",
     ],
   },
   {
@@ -53,15 +64,6 @@ const pilares: readonly FlipCardData[] = [
     ],
   },
   {
-    title: "Work Plan",
-    image: "/images/plan-de-trabajo-basecores-1.jpg",
-    items: [
-      "Gantt chart or action plan presentation",
-      "Actions defined for each communication pillar",
-      "Scheduled on a timeline",
-    ],
-  },
-  {
     title: "SEO\n+ AI Search",
     image: "/images/SEO-base-cores-sales-1.jpg",
     items: [
@@ -69,6 +71,7 @@ const pilares: readonly FlipCardData[] = [
       "Keyword research and semantic strategy",
       "Competitor analysis",
       "Site architecture and content review",
+      "Tracking tag installation",
     ],
   },
   {
@@ -92,13 +95,6 @@ const pilares: readonly FlipCardData[] = [
     ],
   },
   {
-    title: "Graphic Design",
-    image: "/images/diseno-grafico-basecoresales-1.jpg",
-    items: [
-      "Creating high-value graphic pieces to build visual and corporate identity.",
-    ],
-  },
-  {
     title: "Websites",
     image: "/images/pagina-web-basecore-sales.jpg",
     items: [
@@ -106,6 +102,13 @@ const pilares: readonly FlipCardData[] = [
       "Corporate identity and UX/UI design",
       "Responsive build and language",
       "Hosting, content and copy",
+    ],
+  },
+  {
+    title: "Graphic Design",
+    image: "/images/diseno-grafico-basecoresales-1.jpg",
+    items: [
+      "Creating high-value graphic pieces to build visual and corporate identity.",
     ],
   },
 ];

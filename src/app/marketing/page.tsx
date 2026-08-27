@@ -36,12 +36,23 @@ export const metadata: Metadata = {
  */
 const pilares: readonly FlipCardData[] = [
   {
+    title: "Plan de trabajo",
+    image: "/images/plan-de-trabajo-basecores-1.jpg",
+    items: [
+      "Presentación de GANTT o Plan de Acción",
+      "Acciones a realizar en cada pilar comunicacional",
+      "Calendarización en una línea de tiempo",
+      "Definición del equipo de trabajo y project leader",
+    ],
+  },
+  {
     title: "Estrategia creativa",
     image: "/images/creatividad-base-core-sales-1.jpg",
     items: [
       "Análisis de situación actual",
       "Proceso de relevamiento por briefing",
       "Definición de concepto comunicacional y estrategia creativa",
+      "Brandbook",
     ],
   },
   {
@@ -55,15 +66,6 @@ const pilares: readonly FlipCardData[] = [
     ],
   },
   {
-    title: "Plan de trabajo",
-    image: "/images/plan-de-trabajo-basecores-1.jpg",
-    items: [
-      "Presentación de GANTT o Plan de Acción",
-      "Acciones a realizar en cada pilar comunicacional",
-      "Calendarización en una línea de tiempo",
-    ],
-  },
-  {
     title: "SEO\n+ Buscadores IA",
     image: "/images/SEO-base-cores-sales-1.jpg",
     items: [
@@ -71,6 +73,7 @@ const pilares: readonly FlipCardData[] = [
       "Palabras clave y estrategia semántica",
       "Análisis de competencia",
       "Arquitectura y contenido del sitio",
+      "Instalación de etiquetas",
     ],
   },
   {
@@ -94,13 +97,6 @@ const pilares: readonly FlipCardData[] = [
     ],
   },
   {
-    title: "Diseño gráfico",
-    image: "/images/diseno-grafico-basecoresales-1.jpg",
-    items: [
-      "Creación de piezas gráficas de valor para lograr identidad visual y corporativa.",
-    ],
-  },
-  {
     title: "Sitios Web",
     image: "/images/pagina-web-basecore-sales.jpg",
     items: [
@@ -108,6 +104,13 @@ const pilares: readonly FlipCardData[] = [
       "Identidad corporativa y diseño UX-UI",
       "Responsive y lenguaje",
       "Host, contenidos y textos",
+    ],
+  },
+  {
+    title: "Diseño gráfico",
+    image: "/images/diseno-grafico-basecoresales-1.jpg",
+    items: [
+      "Creación de piezas gráficas de valor para lograr identidad visual y corporativa.",
     ],
   },
 ];
