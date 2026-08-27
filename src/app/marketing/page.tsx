@@ -39,7 +39,9 @@ const pilares: readonly FlipCardData[] = [
     title: "Estrategia creativa",
     image: "/images/creatividad-base-core-sales-1.jpg",
     items: [
-      "Análisis de situación actual, proceso de relevamiento por briefing, definición de concepto comunicacional y estrategia creativa.",
+      "Análisis de situación actual",
+      "Proceso de relevamiento por briefing",
+      "Definición de concepto comunicacional y estrategia creativa",
     ],
   },
   {
@@ -56,28 +58,39 @@ const pilares: readonly FlipCardData[] = [
     title: "Plan de trabajo",
     image: "/images/plan-de-trabajo-basecores-1.jpg",
     items: [
-      "Presentación de GANTT o Plan de Acción, donde se especifican las acciones a realizar en cada pilar comunicacional, calendarizado en una línea de tiempo.",
+      "Presentación de GANTT o Plan de Acción",
+      "Acciones a realizar en cada pilar comunicacional",
+      "Calendarización en una línea de tiempo",
     ],
   },
   {
     title: "SEO\n+ Buscadores IA",
     image: "/images/SEO-base-cores-sales-1.jpg",
     items: [
-      "Auditoría de posicionamiento actual y propuesta de mejora en base a: palabras claves, estrategia semántica, competencia, arquitectura y contenido del sitio.",
+      "Auditoría de posicionamiento actual",
+      "Palabras clave y estrategia semántica",
+      "Análisis de competencia",
+      "Arquitectura y contenido del sitio",
     ],
   },
   {
     title: "Pauta publicitaria",
     image: "/images/pauta-publicitaria-mkt-base-core-sales-1.jpg",
     items: [
-      "Estudio de audiencia, creación de anuncios, optimización y análisis de resultados para campañas de Google, Instagram, Facebook y Linkedin Ads.",
+      "Estudio de audiencia",
+      "Creación de anuncios",
+      "Optimización y análisis de resultados",
+      "Campañas de Google, Instagram, Facebook y Linkedin Ads",
     ],
   },
   {
     title: "Social Media",
     image: "/images/redes-sociales-base-core-sales-1.jpg",
     items: [
-      "Definición de presencia en redes, optimización de bios, grilla de contenido, copywriting creativo - estratégico, moderación y programación de publicaciones.",
+      "Definición de presencia en redes",
+      "Optimización de bios",
+      "Grilla de contenido y copywriting creativo-estratégico",
+      "Moderación y programación de publicaciones",
     ],
   },
   {
@@ -92,7 +105,9 @@ const pilares: readonly FlipCardData[] = [
     image: "/images/pagina-web-basecore-sales.jpg",
     items: [
       "Tu página web es la vidriera de tu marca y es imprescindible para generar negocios!",
-      "Identidad corporativa, diseño UX-UI, responsive, lenguaje, host, contenidos y textos.",
+      "Identidad corporativa y diseño UX-UI",
+      "Responsive y lenguaje",
+      "Host, contenidos y textos",
     ],
   },
 ];

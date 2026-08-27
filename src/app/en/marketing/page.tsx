@@ -37,7 +37,9 @@ const pilares: readonly FlipCardData[] = [
     title: "Creative Strategy",
     image: "/images/creatividad-base-core-sales-1.jpg",
     items: [
-      "Current-state analysis, briefing-based discovery process, definition of the communication concept and creative strategy.",
+      "Current-state analysis",
+      "Briefing-based discovery process",
+      "Definition of the communication concept and creative strategy",
     ],
   },
   {
@@ -54,28 +56,39 @@ const pilares: readonly FlipCardData[] = [
     title: "Work Plan",
     image: "/images/plan-de-trabajo-basecores-1.jpg",
     items: [
-      "Gantt chart or action plan presentation, laying out the actions for each communication pillar on a timeline.",
+      "Gantt chart or action plan presentation",
+      "Actions defined for each communication pillar",
+      "Scheduled on a timeline",
     ],
   },
   {
     title: "SEO\n+ AI Search",
     image: "/images/SEO-base-cores-sales-1.jpg",
     items: [
-      "Audit of current rankings and an improvement plan based on: keywords, semantic strategy, competitors, site architecture and content.",
+      "Audit of current rankings",
+      "Keyword research and semantic strategy",
+      "Competitor analysis",
+      "Site architecture and content review",
     ],
   },
   {
     title: "Paid Advertising",
     image: "/images/pauta-publicitaria-mkt-base-core-sales-1.jpg",
     items: [
-      "Audience research, ad creation, optimization and results analysis for Google, Instagram, Facebook and LinkedIn Ads campaigns.",
+      "Audience research",
+      "Ad creation",
+      "Optimization and results analysis",
+      "Google, Instagram, Facebook and LinkedIn Ads campaigns",
     ],
   },
   {
     title: "Social Media",
     image: "/images/redes-sociales-base-core-sales-1.jpg",
     items: [
-      "Defining social presence, bio optimization, content grid, creative & strategic copywriting, moderation and post scheduling.",
+      "Defining social presence",
+      "Bio optimization",
+      "Content grid and creative & strategic copywriting",
+      "Moderation and post scheduling",
     ],
   },
   {
@@ -90,7 +103,9 @@ const pilares: readonly FlipCardData[] = [
     image: "/images/pagina-web-basecore-sales.jpg",
     items: [
       "Your website is your brand's storefront — essential for generating business!",
-      "Corporate identity, UX/UI design, responsive build, language, hosting, content and copy.",
+      "Corporate identity and UX/UI design",
+      "Responsive build and language",
+      "Hosting, content and copy",
     ],
   },
 ];

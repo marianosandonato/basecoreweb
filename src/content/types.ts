@@ -49,11 +49,10 @@ export type FlipGridSpec = {
   backOverlay: string;
   /**
    * How `FlipCardData.items` is rendered on the back face:
-   *   "check-list"  /preventa — fa-check-circle bullets
+   *   "check-list"  /preventa, /marketing, /tecnologia — fa-check-circle bullets
    *   "lines"       /venta, /posventa — plain stacked lines
-   *   "description" /marketing — a single description paragraph
    */
-  backStyle: "check-list" | "lines" | "description";
+  backStyle: "check-list" | "lines";
 };
 
 export type PuestoCardData = {
