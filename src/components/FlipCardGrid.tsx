@@ -122,18 +122,6 @@ function BackFace({
     );
   }
 
-  if (style === "description") {
-    // /marketing: a single description paragraph at DM Sans 14/32.4, no title
-    // repeated on the back.
-    return (
-      <div className="max-h-full overflow-y-auto font-sans text-[14px] leading-[32.4px] text-white">
-        {card.items.map((item) => (
-          <p key={item}>{item}</p>
-        ))}
-      </div>
-    );
-  }
-
   return (
     <div className="max-h-full overflow-y-auto font-sans text-[14px] leading-[1.6] text-white">
       {card.items.map((item) => (

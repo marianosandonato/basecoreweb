@@ -69,7 +69,7 @@ export const MARKETING_GRID: FlipGridSpec = {
   titleFont: "gilmer",
   frontOverlay: "rgba(0, 0, 0, 0.48)",
   backOverlay: "rgba(0, 41, 75, 0.83)",
-  backStyle: "description",
+  backStyle: "check-list",
 };
 
 /**
