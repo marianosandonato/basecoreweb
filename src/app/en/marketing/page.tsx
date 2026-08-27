@@ -41,10 +41,13 @@ const pilares: readonly FlipCardData[] = [
     ],
   },
   {
-    title: "Data Foundation",
-    image: "/images/base-estadistica-base-core-sales-mkt-1.jpg",
+    title: "AI + Software",
+    image: "/images/agentes-de-ia-base-core-sales-1.webp",
     items: [
-      "Grounded in market research, trends, forecasting and consumer insights.",
+      "Websites and landing pages built with Claude Code",
+      "Google ranking and AI-search visibility",
+      "Automatic lead capture from web and social into the CRM",
+      "Real ROI measurement by campaign and channel",
     ],
   },
   {
