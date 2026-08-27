@@ -55,11 +55,11 @@ export default function FlipCardGrid({ cards, grid }: Props) {
               <>
                 {grid.titleFont === "gilmer" ? (
                   <h3 className="font-heading text-[21px] font-semibold leading-[21px] text-white">
-                    {card.title}
+                    <TitleLines title={card.title} />
                   </h3>
                 ) : (
                   <h3 className="font-sora text-[21px] font-extralight leading-none text-white">
-                    {card.title}
+                    <TitleLines title={card.title} />
                   </h3>
                 )}
                 {card.tagline?.map((t) => (
@@ -77,6 +77,25 @@ export default function FlipCardGrid({ cards, grid }: Props) {
         </div>
       ))}
     </div>
+  );
+}
+
+/**
+ * Renders `title`, turning any embedded "\n" into a hard `<br />` at every
+ * width (unlike PageHero's title, this break is a deliberate design choice
+ * for the card, not a reproduction of the original's width-driven wrap).
+ */
+function TitleLines({ title }: { title: string }) {
+  const lines = title.split("\n");
+  return (
+    <>
+      {lines.map((line, i) => (
+        <span key={i}>
+          {line}
+          {i < lines.length - 1 && <br />}
+        </span>
+      ))}
+    </>
   );
 }
 

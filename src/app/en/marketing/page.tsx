@@ -58,7 +58,7 @@ const pilares: readonly FlipCardData[] = [
     ],
   },
   {
-    title: "SEO",
+    title: "SEO\n+ AI Search",
     image: "/images/SEO-base-cores-sales-1.jpg",
     items: [
       "Audit of current rankings and an improvement plan based on: keywords, semantic strategy, competitors, site architecture and content.",

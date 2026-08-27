@@ -60,7 +60,7 @@ const pilares: readonly FlipCardData[] = [
     ],
   },
   {
-    title: "SEO",
+    title: "SEO\n+ Buscadores IA",
     image: "/images/SEO-base-cores-sales-1.jpg",
     items: [
       "Auditoría de posicionamiento actual y propuesta de mejora en base a: palabras claves, estrategia semántica, competencia, arquitectura y contenido del sitio.",
