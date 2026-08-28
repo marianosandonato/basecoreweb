@@ -7,8 +7,13 @@
  * - container -> .elementor-section-boxed > .elementor-container { max-width:1200px }
  */
 @theme {
-  --color-primary: #0787d9;
-  --color-primary-dark: #056cb0;
+  /* #0787d9 (the original WordPress design's exact value) is only 3.83:1
+     with white text -- fails WCAG AA's 4.5:1, and every button on the site
+     is white-on-primary. Swapped in the darker shade already in the
+     palette (previously hover-only) at 5.5:1; primary-dark moved one step
+     darker still so hover keeps a visible step down from the new default. */
+  --color-primary: #056cb0;
+  --color-primary-dark: #04568d;
   --color-navy: #00294b;
   --color-navy-deep: #01294b;
   /* #7a838b (the original WordPress design's exact value) is 3.86:1 against
