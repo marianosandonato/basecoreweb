@@ -11,7 +11,10 @@
   --color-primary-dark: #056cb0;
   --color-navy: #00294b;
   --color-navy-deep: #01294b;
-  --color-body: #7a838b;
+  /* #7a838b (the original WordPress design's exact value) is 3.86:1 against
+     white -- fails WCAG AA's 4.5:1 for normal text. Darkened just enough to
+     clear it (5.1:1) while staying the same grey. */
+  --color-body: #686f76;
   --color-heading: #1b1f2e;
   --color-soft: #edf3f6;
   --color-line: #c9d5db;
