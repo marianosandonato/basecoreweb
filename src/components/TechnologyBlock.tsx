@@ -16,8 +16,7 @@ const copy = {
       "Desarrollo de software con Claude Code",
       "Implementación de CRM",
     ],
-    cta: "MÁS INFORMACIÓN",
-    ctaAriaLabel: "Más información sobre implementaciones tecnológicas",
+    cta: "IMPLEMENTACIONES TECNOLÓGICAS",
     href: "/tecnologia",
     stageLabels: {
       preventa: "Preventa",
@@ -57,8 +56,7 @@ const copy = {
       "Custom software development with Claude Code",
       "CRM implementation",
     ],
-    cta: "LEARN MORE",
-    ctaAriaLabel: "Learn more about technology implementations",
+    cta: "TECHNOLOGY IMPLEMENTATIONS",
     href: "/en/tecnologia",
     stageLabels: {
       preventa: "Presales",
@@ -153,7 +151,7 @@ export default function TechnologyBlock({
           />
           <CheckList items={bullets} dark size="md" />
           <div className="mt-[15px]">
-            <Button href={t.href} size="sm" ariaLabel={t.ctaAriaLabel}>
+            <Button href={t.href} size="sm">
               {t.cta}
             </Button>
           </div>

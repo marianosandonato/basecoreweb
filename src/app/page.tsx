@@ -300,8 +300,8 @@ export default function HomePage() {
             />
             <CheckList items={partnerChecklist} dark size="md" />
             <div className="mt-[15px]">
-              <Button href="/marketing" size="sm" ariaLabel="Más información sobre nuestra agencia de marketing">
-                MÁS INFORMACIÓN
+              <Button href="/marketing" size="sm">
+                AGENCIA DE MARKETING
               </Button>
             </div>
           </div>
