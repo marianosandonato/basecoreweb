@@ -188,6 +188,22 @@
   transform: translateY(0);
 }
 
+/* Scroll-triggered teaser (mobile/touch only, added by FlipBox.tsx via
+   IntersectionObserver): mirrors the hover/focus-within end state above so
+   the reveal looks identical to a manual flip, just auto-triggered once per
+   card. `will-change` lives here rather than on the base rule so it's only
+   paid for during the few seconds the class is present. */
+.flip-box:not(.flip-box--slide-up).flip-box--auto-reveal .flip-box__back {
+  opacity: 1;
+  transform: scale(1);
+  will-change: transform, opacity;
+}
+
+.flip-box--slide-up.flip-box--auto-reveal .flip-box__back {
+  transform: translateY(0);
+  will-change: transform;
+}
+
 /* ---------------------------------------------------------------------------
  * service-item.style-2 (Ciclos de Venta cards)
  * ------------------------------------------------------------------------ */
