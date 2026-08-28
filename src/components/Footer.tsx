@@ -149,9 +149,9 @@ export default function Footer() {
             {/* Inner section A */}
             <div className="md:flex">
               <div className="md:w-[26%] md:pr-[15px]">
-                <h4 className="mb-[20px] pb-[2px] font-heading text-[20px] font-bold leading-none text-white max-[767px]:text-center">
+                <h3 className="mb-[20px] pb-[2px] font-heading text-[20px] font-bold leading-none text-white max-[767px]:text-center">
                   {t.servicios}
-                </h4>
+                </h3>
                 <ul>
                   {serviceItems.map((s) => (
                     <li key={s.href} className="max-[767px]:text-center">
@@ -170,9 +170,9 @@ export default function Footer() {
               <div className="max-[767px]:pt-[40px] md:w-[25.662%] md:px-[15px]" />
 
               <div className="max-[767px]:pt-[50px] md:w-[48%] md:pl-[15px]">
-                <h4 className="mb-[20px] pb-[2px] font-heading text-[20px] font-bold leading-none text-white max-[767px]:text-center">
+                <h3 className="mb-[20px] pb-[2px] font-heading text-[20px] font-bold leading-none text-white max-[767px]:text-center">
                   {t.contacto}
-                </h4>
+                </h3>
                 <div className="flex flex-col gap-[20px]">
                   <IconBox Icon={FooterEmailIcon} title="Email" href={`mailto:${site.email}`}>
                     {site.email}

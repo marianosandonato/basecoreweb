@@ -364,7 +364,12 @@ export default function HomePageEn() {
             descriptionClassName="!text-[24px] !text-[#C6C6C6] !pt-[20px]"
           />
           <div className="text-center">
-            <Button href="/en/ebook" size="sm" className="mt-[15px]">
+            <Button
+              href="/en/ebook"
+              size="sm"
+              className="mt-[15px]"
+              ariaLabel="Download the sales process from scratch e-book"
+            >
               DOWNLOAD
             </Button>
           </div>

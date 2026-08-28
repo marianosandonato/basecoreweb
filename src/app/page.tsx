@@ -355,7 +355,12 @@ export default function HomePage() {
             descriptionClassName="!text-[24px] !text-[#C6C6C6] !pt-[20px]"
           />
           <div className="text-center">
-            <Button href="/ebook" size="sm" className="mt-[15px]">
+            <Button
+              href="/ebook"
+              size="sm"
+              className="mt-[15px]"
+              ariaLabel="Descargar el e-book sobre proceso de ventas desde cero"
+            >
               DESCARGAR
             </Button>
           </div>
