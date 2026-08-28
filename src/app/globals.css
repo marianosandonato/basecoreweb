@@ -14,6 +14,13 @@
      darker still so hover keeps a visible step down from the new default. */
   --color-primary: #056cb0;
   --color-primary-dark: #04568d;
+  /* --color-primary as blue TEXT on the navy header (active nav link, active
+     language switcher state) is a different pairing than white-on-primary --
+     it needs to be lighter than navy, not darker than white, so darkening
+     --color-primary for the button case above made this one fail *worse*
+     (2.95:1). This lighter blue is only for that on-dark-background text use;
+     it's not meant for use as a background (2.6:1 against white). */
+  --color-accent-light: #4fa8e0;
   --color-navy: #00294b;
   --color-navy-deep: #01294b;
   /* #7a838b (the original WordPress design's exact value) is 3.86:1 against

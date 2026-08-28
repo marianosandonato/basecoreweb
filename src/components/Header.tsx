@@ -84,7 +84,7 @@ export default function Header() {
                 <li className="flex items-center text-[13px]">
                   <a
                     href={`mailto:${site.email}`}
-                    className="flex items-center text-muted transition-colors hover:text-primary"
+                    className="flex items-center text-muted transition-colors hover:text-accent-light"
                   >
                     <EnvelopeIcon className="mr-[0.25em] pr-px text-[12px] text-white" />
                     {site.email}
@@ -95,7 +95,7 @@ export default function Header() {
                     href={site.whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center text-muted transition-colors hover:text-primary"
+                    className="flex items-center text-muted transition-colors hover:text-accent-light"
                   >
                     <PhoneIcon className="mr-[0.25em] pr-px text-[12px] text-white" />
                     {site.phoneArgentina.display}
@@ -115,8 +115,8 @@ export default function Header() {
                       href={item.href}
                       aria-current={isActive(item.href) ? "page" : undefined}
                       onClick={() => scrollToTopIfSamePage(item.href)}
-                      className={`whitespace-nowrap px-[7px] py-[13px] font-sans text-[14px] font-light leading-none transition-colors hover:text-primary ${
-                        isActive(item.href) ? "text-primary" : "text-white"
+                      className={`whitespace-nowrap px-[7px] py-[13px] font-sans text-[14px] font-light leading-none transition-colors hover:text-accent-light ${
+                        isActive(item.href) ? "text-accent-light" : "text-white"
                       }`}
                     >
                       {item.label}
@@ -181,7 +181,7 @@ export default function Header() {
             <div className="hidden min-[311px]:block">
               <a
                 href={`mailto:${site.email}`}
-                className="transition-colors hover:text-primary"
+                className="transition-colors hover:text-accent-light"
               >
                 {site.email}
               </a>
@@ -194,7 +194,7 @@ export default function Header() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="text-[16px] transition-colors hover:text-primary"
+                    className="text-[16px] transition-colors hover:text-accent-light"
                   >
                     <Icon />
                   </a>

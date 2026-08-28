@@ -25,8 +25,8 @@ export default function LanguageSwitcher({ className = "" }: { className?: strin
         href={esHref}
         onClick={() => rememberLang("es")}
         aria-current={lang === "es" ? "true" : undefined}
-        className={`transition-colors hover:text-primary ${
-          lang === "es" ? "text-primary" : "text-inherit opacity-70"
+        className={`transition-colors hover:text-accent-light ${
+          lang === "es" ? "text-accent-light" : "text-inherit opacity-70"
         }`}
       >
         ES
@@ -38,8 +38,8 @@ export default function LanguageSwitcher({ className = "" }: { className?: strin
         href={enHref}
         onClick={() => rememberLang("en")}
         aria-current={lang === "en" ? "true" : undefined}
-        className={`transition-colors hover:text-primary ${
-          lang === "en" ? "text-primary" : "text-inherit opacity-70"
+        className={`transition-colors hover:text-accent-light ${
+          lang === "en" ? "text-accent-light" : "text-inherit opacity-70"
         }`}
       >
         EN
