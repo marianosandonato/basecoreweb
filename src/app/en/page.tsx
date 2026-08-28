@@ -312,7 +312,7 @@ export default function HomePageEn() {
             />
             <CheckList items={partnerChecklist} dark size="md" />
             <div className="mt-[15px]">
-              <Button href="/marketing" size="sm">
+              <Button href="/en/marketing" size="sm" ariaLabel="Learn more about our marketing agency">
                 LEARN MORE
               </Button>
             </div>

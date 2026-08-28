@@ -17,6 +17,7 @@ const copy = {
       "Implementación de CRM",
     ],
     cta: "MÁS INFORMACIÓN",
+    ctaAriaLabel: "Más información sobre implementaciones tecnológicas",
     href: "/tecnologia",
     stageLabels: {
       preventa: "Preventa",
@@ -57,6 +58,7 @@ const copy = {
       "CRM implementation",
     ],
     cta: "LEARN MORE",
+    ctaAriaLabel: "Learn more about technology implementations",
     href: "/en/tecnologia",
     stageLabels: {
       preventa: "Presales",
@@ -151,7 +153,7 @@ export default function TechnologyBlock({
           />
           <CheckList items={bullets} dark size="md" />
           <div className="mt-[15px]">
-            <Button href={t.href} size="sm">
+            <Button href={t.href} size="sm" ariaLabel={t.ctaAriaLabel}>
               {t.cta}
             </Button>
           </div>

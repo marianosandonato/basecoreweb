@@ -17,6 +17,10 @@ type Props = {
   size?: "md" | "sm";
   external?: boolean;
   className?: string;
+  /** Overrides the accessible name for generic labels like "MÁS INFORMACIÓN" /
+      "LEARN MORE" that repeat across pages — screen readers and Lighthouse's
+      "descriptive link text" audit both need to know where the link actually goes. */
+  ariaLabel?: string;
 };
 
 const sizes = {
@@ -30,6 +34,7 @@ export default function Button({
   size = "md",
   external = false,
   className = "",
+  ariaLabel,
 }: Props) {
   const cls = [
     "inline-block rounded-[4px] bg-primary font-heading text-[16px] font-medium leading-none tracking-[2px] text-white",
@@ -40,14 +45,14 @@ export default function Button({
 
   if (external) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>
+      <a href={href} target="_blank" rel="noopener noreferrer" className={cls} aria-label={ariaLabel}>
         {children}
       </a>
     );
   }
 
   return (
-    <Link href={href} className={cls}>
+    <Link href={href} className={cls} aria-label={ariaLabel}>
       {children}
     </Link>
   );

@@ -165,7 +165,6 @@ export default function Header() {
                   alt={site.name}
                   width={200}
                   height={200}
-                  priority
                   className="mx-auto h-[200px] w-[200px]"
                 />
               </Link>
@@ -216,7 +215,6 @@ export default function Header() {
                 alt={lang === "en" ? siteEn.name : site.name}
                 width={2000}
                 height={552}
-                priority
                 sizes="170px"
                 className="h-auto w-full max-w-[170px]"
               />
