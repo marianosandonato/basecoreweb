@@ -53,15 +53,19 @@ const stageBySlug: Record<string, "preventa" | "venta" | "posventa"> = {
 export default function ServiceCyclePage({
   data,
   lang = "es",
+  path,
 }: {
   data: ServicePageData;
   lang?: Lang;
+  /** This page's own canonical path (e.g. "/preventa"), forwarded to
+      Breadcrumb for its BreadcrumbList schema. */
+  path?: string;
 }) {
   const t = copy[lang];
 
   return (
     <>
-      <Breadcrumb current={data.breadcrumb} lang={lang} />
+      <Breadcrumb current={data.breadcrumb} lang={lang} path={path} />
 
       {/* Hero (#7f215f0) */}
       <PageHero

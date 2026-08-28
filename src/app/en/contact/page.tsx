@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description,
   alternates: {
     canonical: "/en/contact",
-    languages: { es: "/contacto", en: "/en/contact" },
+    languages: { es: "/contacto", en: "/en/contact", "x-default": "/contacto" },
   },
   openGraph: {
     locale: "en_US",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 export default function ContactPageEn() {
   return (
     <>
-      <Breadcrumb current="Contact" variant="hero" lang="en" />
+      <Breadcrumb current="Contact" variant="hero" lang="en" path="/en/contact" />
       <ContactSection
         titleAs="h1"
         className="py-[70px] md:pb-[70px] md:pt-0 dt:pb-[120px] dt:pt-[90px]"

@@ -28,7 +28,7 @@ import {
 const homeTitle = "Commercial Consulting for Small Business";
 const homeOgTitle = `${homeTitle} – Base Core Sales`;
 const homeDescription =
-  "Commercial consulting for small businesses in Spain and Latin America: sales process, prospecting, retention and marketing as a service. We build productive foundations.";
+  "Commercial consulting for small businesses in Spain & Latin America: sales, prospecting, retention and marketing as a service. We build productive foundations.";
 
 export const metadata: Metadata = {
   title: homeTitle,

@@ -18,7 +18,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
 
   for (const [es, en] of pairs) {
-    const languages = { es: `${site.url}${es}`, en: `${site.url}${en}` };
+    const esUrl = `${site.url}${es}`;
+    const languages = { es: esUrl, en: `${site.url}${en}`, "x-default": esUrl };
     entries.push({
       url: `${site.url}${es}`,
       lastModified: new Date(),

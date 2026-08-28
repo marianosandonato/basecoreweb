@@ -7,6 +7,7 @@ import ContactSection from "@/components/ContactSection";
 import FlipCardGrid from "@/components/FlipCardGrid";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
+import ServiceJsonLd from "@/components/ServiceJsonLd";
 import TechnologyBlock from "@/components/TechnologyBlock";
 import { MARKETING_GRID } from "@/content/flipGrids";
 import type { FlipCardData } from "@/content/types";
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   description,
   alternates: {
     canonical: "/marketing",
-    languages: { es: "/marketing", en: "/en/marketing" },
+    languages: { es: "/marketing", en: "/en/marketing", "x-default": "/marketing" },
   },
   openGraph: {
     locale: "es_ES",
@@ -131,7 +132,8 @@ export default function MarketingPage() {
     <>
       {/* Breadcrumb (#31a24d1) — renders empty on the original, as on every
           inner page; ours shows a real trail. */}
-      <Breadcrumb current="Marketing" />
+      <ServiceJsonLd name={title} description={description} path="/marketing" />
+      <Breadcrumb current="Marketing" path="/marketing" />
 
       {/* Hero (#6be773a9) — same 100vh `height-full` section as the cycle pages. */}
       <PageHero

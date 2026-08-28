@@ -7,6 +7,7 @@ import ContactSection from "@/components/ContactSection";
 import FlipCardGrid from "@/components/FlipCardGrid";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
+import ServiceJsonLd from "@/components/ServiceJsonLd";
 import TechnologyBlock from "@/components/TechnologyBlock";
 import { MARKETING_GRID } from "@/content/flipGrids";
 import type { FlipCardData } from "@/content/types";
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
   description,
   alternates: {
     canonical: "/en/marketing",
-    languages: { es: "/marketing", en: "/en/marketing" },
+    languages: { es: "/marketing", en: "/en/marketing", "x-default": "/marketing" },
   },
   openGraph: {
     locale: "en_US",
@@ -127,7 +128,8 @@ const pilares: readonly FlipCardData[] = [
 export default function MarketingPageEn() {
   return (
     <>
-      <Breadcrumb current="Marketing" lang="en" />
+      <ServiceJsonLd name={title} description={description} path="/en/marketing" />
+      <Breadcrumb current="Marketing" lang="en" path="/en/marketing" />
 
       <PageHero
         title={["Looking to boost your", "digital marketing?"]}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ServiceCyclePage from "@/components/ServiceCyclePage";
+import ServiceJsonLd from "@/components/ServiceJsonLd";
 import { preventaEn } from "@/content/preventa.en";
 import { site } from "@/lib/site";
 
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   description,
   alternates: {
     canonical: "/en/presales",
-    languages: { es: "/preventa", en: "/en/presales" },
+    languages: { es: "/preventa", en: "/en/presales", "x-default": "/preventa" },
   },
   openGraph: {
     locale: "en_US",
@@ -24,5 +25,10 @@ export const metadata: Metadata = {
 };
 
 export default function PresalesPage() {
-  return <ServiceCyclePage data={preventaEn} lang="en" />;
+  return (
+    <>
+      <ServiceJsonLd name={title} description={description} path="/en/presales" />
+      <ServiceCyclePage data={preventaEn} lang="en" path="/en/presales" />
+    </>
+  );
 }

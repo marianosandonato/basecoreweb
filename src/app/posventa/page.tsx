@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ServiceCyclePage from "@/components/ServiceCyclePage";
+import ServiceJsonLd from "@/components/ServiceJsonLd";
 import { posventa } from "@/content/posventa";
 
 const title = "Fidelización y Retención de Clientes";
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   description,
   alternates: {
     canonical: "/posventa",
-    languages: { es: "/posventa", en: "/en/post-sales" },
+    languages: { es: "/posventa", en: "/en/post-sales", "x-default": "/posventa" },
   },
   openGraph: {
     locale: "es_ES",
@@ -22,5 +23,10 @@ export const metadata: Metadata = {
 };
 
 export default function PosventaPage() {
-  return <ServiceCyclePage data={posventa} />;
+  return (
+    <>
+      <ServiceJsonLd name={title} description={description} path="/posventa" />
+      <ServiceCyclePage data={posventa} path="/posventa" />
+    </>
+  );
 }

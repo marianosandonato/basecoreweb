@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Lang } from "@/lib/site";
+import { site } from "@/lib/site";
 
 /**
  * The theme's `gva_post_breadcrumb` widget.
@@ -21,6 +22,7 @@ export default function Breadcrumb({
   variant = "bar",
   lang = "es",
   title,
+  path,
 }: {
   current: string;
   variant?: "bar" | "hero";
@@ -29,8 +31,32 @@ export default function Breadcrumb({
       above the corner trail tab (/ebook). /contacto passes none, so its
       280px box is untouched. */
   title?: ReactNode;
+  /** This page's own canonical path (e.g. "/preventa"), for the BreadcrumbList
+      schema below. Omit on pages with no indexable canonical of their own
+      (e.g. not-found.tsx) to skip the schema entirely. */
+  path?: string;
 }) {
   const homeHref = lang === "en" ? "/en" : "/";
+
+  const breadcrumbJsonLd = path
+    ? {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${site.url}${homeHref}` },
+          { "@type": "ListItem", position: 2, name: current, item: `${site.url}${path}` },
+        ],
+      }
+    : null;
+
+  const jsonLdScript = breadcrumbJsonLd ? (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c"),
+      }}
+    />
+  ) : null;
 
   if (variant === "hero") {
     return (
@@ -79,6 +105,7 @@ export default function Breadcrumb({
             </ol>
           </nav>
         </div>
+        {jsonLdScript}
       </div>
     );
   }
@@ -109,6 +136,7 @@ export default function Breadcrumb({
           <li className="font-semibold text-white">{current}</li>
         </ol>
       </nav>
+      {jsonLdScript}
     </div>
   );
 }

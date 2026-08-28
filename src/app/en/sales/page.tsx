@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ServiceCyclePage from "@/components/ServiceCyclePage";
+import ServiceJsonLd from "@/components/ServiceJsonLd";
 import { ventaEn } from "@/content/venta.en";
 import { site } from "@/lib/site";
 
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   description,
   alternates: {
     canonical: "/en/sales",
-    languages: { es: "/venta", en: "/en/sales" },
+    languages: { es: "/venta", en: "/en/sales", "x-default": "/venta" },
   },
   openGraph: {
     locale: "en_US",
@@ -24,5 +25,10 @@ export const metadata: Metadata = {
 };
 
 export default function SalesPage() {
-  return <ServiceCyclePage data={ventaEn} lang="en" />;
+  return (
+    <>
+      <ServiceJsonLd name={title} description={description} path="/en/sales" />
+      <ServiceCyclePage data={ventaEn} lang="en" path="/en/sales" />
+    </>
+  );
 }

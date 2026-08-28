@@ -7,6 +7,7 @@ import ContactSection from "@/components/ContactSection";
 import FlipCardGrid from "@/components/FlipCardGrid";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
+import ServiceJsonLd from "@/components/ServiceJsonLd";
 import { TECNOLOGIA_GRID } from "@/content/flipGrids";
 import type { FlipCardData } from "@/content/types";
 
@@ -98,20 +99,24 @@ const modulos: readonly FlipCardData[] = [
   },
 ];
 
+const title = "Implementaciones Tecnológicas: IA + Software";
+const description =
+  "Implementamos agentes y procesos con IA. Migramos e instalamos CRM y otros softwares para tu equipo comercial.";
+
 export const metadata: Metadata = {
-  title: "Implementaciones Tecnológicas: IA + Software",
-  description:
-    "Implementamos agentes y procesos con IA. Migramos e instalamos CRM y otros softwares para tu equipo comercial.",
+  title,
+  description,
   alternates: {
     canonical: "/tecnologia",
-    languages: { es: "/tecnologia", en: "/en/tecnologia" },
+    languages: { es: "/tecnologia", en: "/en/tecnologia", "x-default": "/tecnologia" },
   },
 };
 
 export default function TecnologiaPage() {
   return (
     <>
-      <Breadcrumb current="Tecnología" />
+      <ServiceJsonLd name={title} description={description} path="/tecnologia" />
+      <Breadcrumb current="Tecnología" path="/tecnologia" />
 
       <PageHero
         title={["¿Buscas sistematizar e", "implementar IA?"]}

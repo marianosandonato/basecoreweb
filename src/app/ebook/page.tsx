@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description,
   alternates: {
     canonical: "/ebook",
-    languages: { es: "/ebook", en: "/en/ebook" },
+    languages: { es: "/ebook", en: "/en/ebook", "x-default": "/ebook" },
   },
   openGraph: {
     locale: "es_ES",
@@ -27,6 +27,7 @@ export default function EbookPage() {
       <Breadcrumb
         current="E-Book"
         variant="hero"
+        path="/ebook"
         title="¿Cuáles son los primeros pasos para un proceso comercial efectivo y la importancia de definir un ciclo de preventa para atraer nuevos clientes?"
       />
       <EbookSection />
