@@ -60,21 +60,21 @@ const methodology: readonly MethodologyStep[] = [
     title: "Discovery",
     icon: PaperPlaneIcon,
     frontImage: "/images/01-base-core-sales.jpg",
-    backImage: "/images/1-diagnostico-base-core-sales.jpg",
+    backImage: "/images/1-diagnostico-base-core-sales.webp",
     items: ["Free audit", "Assessment of your business's current state"],
   },
   {
     title: "Roadmap",
     icon: ChartBarIcon,
     frontImage: "/images/02-base-core-sales.jpg",
-    backImage: "/images/2-plan-de-rutas-base-core-sales.jpg",
+    backImage: "/images/2-plan-de-rutas-base-core-sales.webp",
     items: ["Gantt chart or action plan presentation"],
   },
   {
     title: "Strategy",
     icon: CogsIcon,
     frontImage: "/images/03-base-core-sales.jpg",
-    backImage: "/images/3-estrategia-base-core-sales.jpg",
+    backImage: "/images/3-estrategia-base-core-sales.webp",
     items: [
       "Discovery findings presentation",
       "Plan refinement",
@@ -86,7 +86,7 @@ const methodology: readonly MethodologyStep[] = [
     title: "Continuous Improvement",
     icon: ChartLineIcon,
     frontImage: "/images/04-base-core-sales.jpg",
-    backImage: "/images/4-mejora-continua-base-core-sales.jpg",
+    backImage: "/images/4-mejora-continua-base-core-sales.webp",
     items: [
       "Process development",
       "Metrics monitoring & improvement",
@@ -201,6 +201,7 @@ export default function HomePageEn() {
               alt="Process as a Service"
               width={850}
               height={567}
+              sizes="100vw"
               className="mb-[40px] mt-[15px] h-auto w-full md:hidden"
             />
 
@@ -291,6 +292,7 @@ export default function HomePageEn() {
               alt="Base Core"
               width={900}
               height={927}
+              sizes="(min-width: 768px) 190px, 140px"
               className="h-auto w-[140px] md:w-[190px]"
             />
             <span className="font-sora text-[24px] font-extralight tracking-[2px] text-white md:text-[30px]">
