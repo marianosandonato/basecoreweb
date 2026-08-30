@@ -163,7 +163,7 @@ export default function Header() {
 
                     {item.children && (
                       <ul
-                        className={`absolute left-0 top-full z-10 min-w-[170px] translate-y-[6px] rounded-[4px] bg-navy py-[6px] shadow-lg transition-[opacity,visibility] duration-150 ${
+                        className={`absolute left-0 top-full z-10 w-max translate-y-[6px] rounded-[4px] bg-navy py-[6px] shadow-lg transition-[opacity,visibility] duration-150 ${
                           dropdownOpen ? "visible opacity-100" : "invisible opacity-0"
                         }`}
                       >
