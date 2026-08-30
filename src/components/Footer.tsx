@@ -41,6 +41,15 @@ const servicesEn = [
   { label: "Blog", href: "/en/blog" },
 ];
 
+// documentation/PLAN-FOOTER.md flagged the hard-coded 2022 as an open
+// question never resolved — kept as the range start (unverified whether
+// it's Base Core's actual founding year; confirm with Mariano) so the
+// notice reads "© 2022–2027" and updates itself every year with no
+// further edits needed, instead of freezing on a single stale year again.
+const foundingYear = 2022;
+const currentYear = new Date().getFullYear();
+const yearRange = currentYear > foundingYear ? `${foundingYear}–${currentYear}` : `${foundingYear}`;
+
 const copy = {
   es: {
     homeLabel: "Base Core – Inicio",
@@ -48,7 +57,7 @@ const copy = {
     contacto: "Contacto",
     contactanos: "Contactanos",
     dondeEstamos: "Dónde estamos",
-    rights: "Base Core Sales © 2022 Todos los Derechos Reservados",
+    rights: `Base Core Sales © ${yearRange} Todos los Derechos Reservados`,
   },
   en: {
     homeLabel: "Base Core – Home",
@@ -56,7 +65,7 @@ const copy = {
     contacto: "Contact",
     contactanos: "Contact us",
     dondeEstamos: "Where we are",
-    rights: "Base Core Sales © 2022 All Rights Reserved",
+    rights: `Base Core Sales © ${yearRange} All Rights Reserved`,
   },
 } as const;
 
