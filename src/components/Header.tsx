@@ -4,8 +4,9 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { nav, navEn, site, siteEn } from "@/lib/site";
+import { headerNav, headerNavEn, site, siteEn } from "@/lib/site";
 import {
+  ChevronDownIcon,
   CloseIcon,
   EnvelopeIcon,
   FacebookIcon,
@@ -40,16 +41,27 @@ const socials = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [subOpen, setSubOpen] = useState(false);
   const pathname = usePathname();
   const lang = pathname.startsWith("/en") ? "en" : "es";
-  const items = lang === "en" ? navEn : nav;
+  const items = lang === "en" ? headerNavEn : headerNav;
   const homeHref = lang === "en" ? "/en" : "/";
   const homeLabel = lang === "en" ? "Base Core – Home" : "Base Core – Inicio";
   const openMenuLabel = lang === "en" ? "Open menu" : "Abrir menú";
   const closeMenuLabel = lang === "en" ? "Close menu" : "Cerrar menú";
+  const openSubmenuLabel = lang === "en" ? "Show submenu" : "Mostrar submenú";
+  const closeSubmenuLabel = lang === "en" ? "Hide submenu" : "Ocultar submenú";
 
   const isActive = (href: string) =>
     href === "/" || href === "/en" ? pathname === href : pathname.startsWith(href);
+
+  const isActiveEntry = (item: { href: string; children?: readonly { href: string }[] }) =>
+    isActive(item.href) || (item.children?.some((c) => isActive(c.href)) ?? false);
+
+  const closeOffCanvas = () => {
+    setOpen(false);
+    setSubOpen(false);
+  };
 
   // Next's <Link> only resets scroll on an actual route change. Clicking the
   // nav item for the page you're already on is a no-op navigation-wise, so
@@ -110,17 +122,42 @@ export default function Header() {
             <nav className="flex-1 px-[10px]" aria-label="Principal">
               <ul className="flex items-center justify-end">
                 {items.map((item, i) => (
-                  <li key={item.href} className="flex items-center">
+                  <li key={item.href} className="group relative flex items-center">
                     <Link
                       href={item.href}
-                      aria-current={isActive(item.href) ? "page" : undefined}
+                      aria-current={isActiveEntry(item) ? "page" : undefined}
                       onClick={() => scrollToTopIfSamePage(item.href)}
-                      className={`whitespace-nowrap px-[7px] py-[13px] font-sans text-[14px] font-light leading-none transition-colors hover:text-accent-light ${
-                        isActive(item.href) ? "text-accent-light" : "text-white"
+                      className={`flex items-center gap-[5px] whitespace-nowrap px-[7px] py-[13px] font-sans text-[14px] font-light leading-none transition-colors hover:text-accent-light ${
+                        isActiveEntry(item) ? "text-accent-light" : "text-white"
                       }`}
                     >
                       {item.label}
+                      {item.children && (
+                        <ChevronDownIcon className="text-[9px] transition-transform duration-150 group-hover:rotate-180" />
+                      )}
                     </Link>
+
+                    {item.children && (
+                      <ul
+                        className="invisible absolute left-0 top-full z-10 min-w-[170px] translate-y-[6px] rounded-[4px] bg-navy py-[6px] opacity-0 shadow-lg transition-[opacity,visibility] duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
+                      >
+                        {item.children.map((child) => (
+                          <li key={child.href}>
+                            <Link
+                              href={child.href}
+                              aria-current={isActive(child.href) ? "page" : undefined}
+                              onClick={() => scrollToTopIfSamePage(child.href)}
+                              className={`block whitespace-nowrap px-[16px] py-[9px] font-sans text-[14px] font-light transition-colors hover:text-accent-light ${
+                                isActive(child.href) ? "text-accent-light" : "text-white"
+                              }`}
+                            >
+                              {child.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
                     {i < items.length - 1 && (
                       <span
                         aria-hidden="true"
@@ -240,7 +277,7 @@ export default function Header() {
             type="button"
             className="absolute inset-0 bg-black/60"
             aria-label={closeMenuLabel}
-            onClick={() => setOpen(false)}
+            onClick={() => closeOffCanvas()}
           />
           <div className="absolute right-0 top-0 h-full w-72 max-w-[85%] overflow-y-auto bg-white p-6 shadow-xl">
             <div className="mb-6 flex items-center justify-between">
@@ -254,7 +291,7 @@ export default function Header() {
               />
               <button
                 type="button"
-                onClick={() => setOpen(false)}
+                onClick={() => closeOffCanvas()}
                 className="text-xl text-heading"
                 aria-label={closeMenuLabel}
               >
@@ -262,22 +299,74 @@ export default function Header() {
               </button>
             </div>
             <ul className="divide-y divide-line/40">
-              {items.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    onClick={() => {
-                      setOpen(false);
-                      scrollToTopIfSamePage(item.href);
-                    }}
-                    className={`block py-3 font-sans text-[15px] ${
-                      isActive(item.href) ? "text-primary" : "text-navy"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
+              {items.map((item) =>
+                item.children ? (
+                  <li key={item.href}>
+                    <div className="flex items-center">
+                      <Link
+                        href={item.href}
+                        onClick={() => {
+                          closeOffCanvas();
+                          scrollToTopIfSamePage(item.href);
+                        }}
+                        className={`block flex-1 py-3 font-sans text-[15px] ${
+                          isActiveEntry(item) ? "text-primary" : "text-navy"
+                        }`}
+                      >
+                        {item.label}
+                      </Link>
+                      <button
+                        type="button"
+                        onClick={() => setSubOpen((v) => !v)}
+                        aria-expanded={subOpen}
+                        aria-label={subOpen ? closeSubmenuLabel : openSubmenuLabel}
+                        className="p-3 text-navy"
+                      >
+                        <ChevronDownIcon
+                          className={`text-[11px] transition-transform duration-150 ${
+                            subOpen ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+                    </div>
+                    {subOpen && (
+                      <ul className="ml-[10px] border-l border-line/40 pb-[6px] pl-[16px]">
+                        {item.children.map((child) => (
+                          <li key={child.href}>
+                            <Link
+                              href={child.href}
+                              onClick={() => {
+                                closeOffCanvas();
+                                scrollToTopIfSamePage(child.href);
+                              }}
+                              className={`block py-2 font-sans text-[14px] ${
+                                isActive(child.href) ? "text-primary" : "text-body"
+                              }`}
+                            >
+                              {child.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ) : (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      onClick={() => {
+                        closeOffCanvas();
+                        scrollToTopIfSamePage(item.href);
+                      }}
+                      className={`block py-3 font-sans text-[15px] ${
+                        isActive(item.href) ? "text-primary" : "text-navy"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ),
+              )}
             </ul>
             <div className="mt-6 space-y-2 text-[14px]">
               <a

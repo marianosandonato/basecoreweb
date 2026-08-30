@@ -23,6 +23,7 @@ const services = [
   // The original links this to not-a-numb3r.com while the header links it
   // internally; matching the header. See documentation/PLAN-FOOTER.md.
   { label: "Marketing", href: "/marketing" },
+  { label: "Tecnología", href: "/tecnologia" },
   { label: "Blog", href: "/blog" },
 ];
 
@@ -34,6 +35,7 @@ const servicesEn = [
   { label: "Sales", href: "/en/sales" },
   { label: "Post-Sales", href: "/en/post-sales" },
   { label: "Marketing", href: "/en/marketing" },
+  { label: "Technology", href: "/en/tecnologia" },
   { label: "Blog", href: "/en/blog" },
 ];
 

@@ -29,6 +29,11 @@ export const site = {
   gaId: "G-0NRE1KWMBM",
 } as const;
 
+// Flat list of every top-level page, in canonical order. This is the source
+// of truth for pages like ContactSection/EbookSection that pull a plain
+// "Preventa/Venta/Posventa/Marketing" checklist via nav.slice(1, 5) — keep it
+// flat and untouched; the header's own grouped display lives in headerNav
+// below, built from these same entries so labels/hrefs never drift.
 export const nav = [
   { label: "Home", href: "/" },
   { label: "Preventa", href: "/preventa" },
@@ -50,6 +55,34 @@ export const navEn = [
   { label: "Technology", href: "/en/tecnologia" },
   { label: "Contact", href: "/en/contact" },
 ] as const;
+
+export type NavItem = { readonly label: string; readonly href: string };
+export type NavEntry = NavItem & { readonly children?: readonly NavItem[] };
+
+/**
+ * What the header actually renders: Preventa/Venta/Posventa collapsed into
+ * one "Venta" dropdown (so the desktop bar has room for Blog now, and for
+ * BaseHub later, without going back past the 7-item width that already
+ * forced the header to widen once — see documentation/PLAN-HEADER.md /
+ * Header.tsx). Everything else in `nav` passes through unchanged.
+ */
+export const headerNav: readonly NavEntry[] = [
+  nav[0],
+  { label: "Venta", href: nav[2].href, children: [nav[1], nav[2], nav[3]] },
+  nav[4],
+  nav[5],
+  { label: "Blog", href: "/blog" },
+  nav[6],
+];
+
+export const headerNavEn: readonly NavEntry[] = [
+  navEn[0],
+  { label: "Sales", href: navEn[2].href, children: [navEn[1], navEn[2], navEn[3]] },
+  navEn[4],
+  navEn[5],
+  { label: "Blog", href: "/en/blog" },
+  navEn[6],
+];
 
 // Blog post slugs are per-language and paired via blogSlugPairs in
 // src/content/blog/posts.ts, not here — this only covers the /blog index.

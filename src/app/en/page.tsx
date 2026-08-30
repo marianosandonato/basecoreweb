@@ -385,18 +385,44 @@ export default function HomePageEn() {
         <SectionHeading
           eyebrow="BLOG"
           title="Resources to sell better"
-          description="Articles on sales processes, CRM, and technology applied to sales."
+          description="Practical ideas on sales processes, CRM, and technology applied to sales."
           maxWidth={700}
           className="mb-[40px]"
         />
-        <div className="grid grid-cols-1 gap-[30px] md:grid-cols-3">
-          {blogPosts.slice(0, 3).map((entry) => (
-            <BlogCard key={entry.enSlug} post={entry.en} href={`/en/blog/${entry.enSlug}`} lang="en" />
-          ))}
-        </div>
+        {(() => {
+          const latestPosts = blogPosts.slice(0, 3);
+
+          if (latestPosts.length === 1) {
+            const [entry] = latestPosts;
+            return (
+              <div className="mx-auto max-w-[880px]">
+                <BlogCard post={entry.en} href={`/en/blog/${entry.enSlug}`} lang="en" featured />
+              </div>
+            );
+          }
+
+          return (
+            <div
+              className={`grid grid-cols-1 gap-[30px] ${
+                latestPosts.length === 2
+                  ? "mx-auto max-w-[780px] md:grid-cols-2"
+                  : "md:grid-cols-3"
+              }`}
+            >
+              {latestPosts.map((entry) => (
+                <BlogCard
+                  key={entry.enSlug}
+                  post={entry.en}
+                  href={`/en/blog/${entry.enSlug}`}
+                  lang="en"
+                />
+              ))}
+            </div>
+          );
+        })()}
         <div className="mt-[30px] text-center">
           <Button href="/en/blog" size="sm">
-            VIEW ALL ARTICLES
+            VISIT THE BLOG
           </Button>
         </div>
       </section>
