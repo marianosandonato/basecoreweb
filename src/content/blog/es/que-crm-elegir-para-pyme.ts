@@ -3,11 +3,11 @@ import type { BlogPost } from "../types";
 export const queCrmElegirParaPyme: BlogPost = {
   title: "¿Qué CRM elegir para una pyme? Guía sin vueltas",
   description:
-    "Comparamos los CRM más usados por pymes: HubSpot, Pipedrive, Zoho, Salesforce y Bitrix24, por precio, funciones y para qué equipo sirve cada uno.",
+    "Comparamos los CRM más usados por pymes: HubSpot, Zoho, Bitrix24, Pipedrive y Salesforce, por precio, funciones y para qué equipo sirve cada uno.",
   publishedAt: "2026-08-30",
   readingMinutes: 9,
-  image: "/images/crm-base-core-sales-1.webp",
-  imageAlt: "Comparativa de CRM para pymes: HubSpot, Pipedrive, Zoho, Salesforce y Bitrix24",
+  image: "/images/crm-comparativa-base-core-sales.webp",
+  imageAlt: "Dos personas comparando datos de ventas en una reunión para elegir un CRM",
   body: [
     {
       type: "p",
@@ -31,27 +31,11 @@ export const queCrmElegirParaPyme: BlogPost = {
     },
     {
       type: "h2",
-      text: "Pipedrive",
-    },
-    {
-      type: "p",
-      text: "No tiene plan gratuito, pero arranca liviano: desde 14 USD por usuario/mes con facturación anual. Su fuerte es la visualización del pipeline (pensado por y para gente de ventas, no para marketing ni soporte). Si tu prioridad número uno es ver de un vistazo en qué etapa está cada oportunidad y qué se estancó, suele ser la herramienta con la que el equipo comercial se siente más cómodo día a día.",
-    },
-    {
-      type: "h2",
       text: "Zoho CRM",
     },
     {
       type: "p",
       text: "Plan gratuito para hasta tres usuarios, y su plan pago de entrada (Standard, ~14 USD/usuario/mes) es el que más funciones trae por ese precio: múltiples pipelines, email masivo, dashboards personalizados. Zoho tiene sentido cuando ya usás, o vas a usar, otras herramientas de su suite (facturación, soporte, inventario), porque todo se integra nativamente. Si tu operación es más compleja que \"solo ventas\", vale la pena mirarlo primero por eso, no solo por precio.",
-    },
-    {
-      type: "h2",
-      text: "Salesforce",
-    },
-    {
-      type: "p",
-      text: "Salesforce es el CRM más usado del mundo: lidera el mercado global desde hace más de una década, según los reportes de IDC. Su plan de entrada, Starter Suite, arranca en 25 USD por usuario/mes con gestión de leads, contactos y oportunidades. El músculo real aparece en los planes superiores, con reportes avanzados, IA integrada y una capacidad de personalización casi sin límite. Ese poder tiene un costo más allá del dinero: la curva de aprendizaje es real, y en equipos chicos suele hacer falta alguien, interno o un partner de implementación, dedicado solo a configurarlo y mantenerlo al día. Tiene sentido cuando el equipo ya es grande o el proceso comercial es genuinamente complejo.",
     },
     {
       type: "h2",
@@ -63,16 +47,32 @@ export const queCrmElegirParaPyme: BlogPost = {
     },
     {
       type: "h2",
+      text: "Pipedrive",
+    },
+    {
+      type: "p",
+      text: "No tiene plan gratuito, pero arranca liviano: desde 14 USD por usuario/mes con facturación anual. Su fuerte es la visualización del pipeline (pensado por y para gente de ventas, no para marketing ni soporte). Si tu prioridad número uno es ver de un vistazo en qué etapa está cada oportunidad y qué se estancó, suele ser la herramienta con la que el equipo comercial se siente más cómodo día a día.",
+    },
+    {
+      type: "h2",
+      text: "Salesforce",
+    },
+    {
+      type: "p",
+      text: "Salesforce es el CRM más usado del mundo: lidera el mercado global desde hace más de una década, según los reportes de IDC. Su plan de entrada, Starter Suite, arranca en 25 USD por usuario/mes con gestión de leads, contactos y oportunidades. El músculo real aparece en los planes superiores, con reportes avanzados, IA integrada y una capacidad de personalización casi sin límite. Ese poder tiene un costo más allá del dinero: la curva de aprendizaje es real, y en equipos chicos suele hacer falta alguien, interno o un partner de implementación, dedicado solo a configurarlo y mantenerlo al día. Tiene sentido cuando el equipo ya es grande o el proceso comercial es genuinamente complejo.",
+    },
+    {
+      type: "h2",
       text: "Entonces, ¿cuál elegís?",
     },
     {
       type: "ul",
       items: [
-        "Simplicidad y foco absoluto en el pipeline → Pipedrive",
         "Marketing y ventas comparten la misma base, y preferís no pagar hasta crecer → HubSpot",
         "Tu negocio ya es (o va a ser) más que ventas: soporte, facturación, inventario → Zoho",
-        "Necesitás el CRM más completo del mercado y tenés equipo o presupuesto para sostenerlo → Salesforce",
         "Sos un equipo chico, con presupuesto ajustado, y no querés pagar por asiento → Bitrix24",
+        "Simplicidad y foco absoluto en el pipeline → Pipedrive",
+        "Necesitás el CRM más completo del mercado y tenés equipo o presupuesto para sostenerlo → Salesforce",
       ],
     },
     {
@@ -109,12 +109,12 @@ export const queCrmElegirParaPyme: BlogPost = {
       items: [
         "La inversión inicial es mayor que activar un plan de CRM ya armado.",
         "Necesitás a alguien, interno o externo, que lo mantenga y lo haga evolucionar con el tiempo.",
-        "No tiene, de entrada, el ecosistema de integraciones que sí traen HubSpot, Pipedrive, Zoho, Salesforce o Bitrix24.",
+        "No tiene, de entrada, el ecosistema de integraciones que sí traen HubSpot, Zoho, Bitrix24, Pipedrive o Salesforce.",
       ],
     },
     {
       type: "p",
-      text: "Tiene sentido evaluarlo cuando el proceso comercial ya maduró y un CRM genérico se queda corto. Como punto de partida, no funciona.",
+      text: "La mayoría de las pymes arranca con un CRM enlatado, y hace bien: resuelve rápido y cuesta poco. El desarrollo a medida llega en la etapa siguiente, cuando el proceso ya está probado y pide una herramienta hecha a su medida.",
     },
   ],
   cta: {

@@ -5,9 +5,9 @@ import ContactForm from "./ContactForm";
 import SectionHeading from "./SectionHeading";
 import { CheckCircleIcon, LinkedinIcon } from "./icons";
 
-/** Preventa/Venta/Posventa/Marketing — same order and labels as `nav`/`navEn`. */
-const cycleLinks = nav.slice(1, 5);
-const cycleLinksEn = navEn.slice(1, 5);
+/** Marketing/Preventa/Venta/Posventa/Tecnología — same order and labels as `nav`/`navEn`. */
+const cycleLinks = nav.slice(1, 6);
+const cycleLinksEn = navEn.slice(1, 6);
 
 const copy = {
   es: {

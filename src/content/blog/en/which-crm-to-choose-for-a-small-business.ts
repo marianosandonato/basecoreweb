@@ -3,11 +3,11 @@ import type { BlogPost } from "../types";
 export const whichCrmToChoose: BlogPost = {
   title: "Which CRM Should You Choose for a Small Business?",
   description:
-    "We compare HubSpot, Pipedrive, Zoho, Salesforce, and Bitrix24 on price, features, and fit, so you choose on criteria, not on trend.",
+    "We compare HubSpot, Zoho, Bitrix24, Pipedrive, and Salesforce on price, features, and fit, so you choose on criteria, not on trend.",
   publishedAt: "2026-08-30",
   readingMinutes: 9,
-  image: "/images/crm-base-core-sales-1.webp",
-  imageAlt: "CRM comparison for small businesses: HubSpot, Pipedrive, Zoho, Salesforce, and Bitrix24",
+  image: "/images/crm-comparativa-base-core-sales.webp",
+  imageAlt: "Two people comparing sales data in a meeting to choose a CRM",
   body: [
     {
       type: "p",
@@ -31,27 +31,11 @@ export const whichCrmToChoose: BlogPost = {
     },
     {
       type: "h2",
-      text: "Pipedrive",
-    },
-    {
-      type: "p",
-      text: "No free plan, but it starts light: from $14 per user/month on annual billing. Its strength is pipeline visualization (built by and for salespeople, not marketing or support). If your top priority is seeing at a glance which stage every deal is in and what's stalled, it's usually the tool sales teams feel most comfortable using day to day.",
-    },
-    {
-      type: "h2",
       text: "Zoho CRM",
     },
     {
       type: "p",
       text: "Free plan for up to three users, and its entry-level paid tier (Standard, ~$14/user/month) packs the most features for that price: multiple pipelines, mass email, custom dashboards. Zoho makes sense once you already use, or plan to use, other tools in its suite (billing, support, inventory), since everything integrates natively. If your operation is more than \"just sales,\" it's worth a look for that reason first, not just price.",
-    },
-    {
-      type: "h2",
-      text: "Salesforce",
-    },
-    {
-      type: "p",
-      text: "Salesforce is the most widely used CRM in the world: it has led the global market for more than a decade, according to IDC's reports. Its entry-level plan, Starter Suite, starts at $25 per user/month and covers lead, contact, and opportunity management. The real power shows up in the higher tiers: advanced reporting, built-in AI, and near-limitless customization. That power comes with a cost beyond the price tag. The learning curve is real, and small teams usually need someone, in-house or an implementation partner, dedicated to setting it up and keeping it running. It makes sense once your team is large or your sales process is genuinely complex.",
     },
     {
       type: "h2",
@@ -63,16 +47,32 @@ export const whichCrmToChoose: BlogPost = {
     },
     {
       type: "h2",
+      text: "Pipedrive",
+    },
+    {
+      type: "p",
+      text: "No free plan, but it starts light: from $14 per user/month on annual billing. Its strength is pipeline visualization (built by and for salespeople, not marketing or support). If your top priority is seeing at a glance which stage every deal is in and what's stalled, it's usually the tool sales teams feel most comfortable using day to day.",
+    },
+    {
+      type: "h2",
+      text: "Salesforce",
+    },
+    {
+      type: "p",
+      text: "Salesforce is the most widely used CRM in the world: it has led the global market for more than a decade, according to IDC's reports. Its entry-level plan, Starter Suite, starts at $25 per user/month and covers lead, contact, and opportunity management. The real power shows up in the higher tiers: advanced reporting, built-in AI, and near-limitless customization. That power comes with a cost beyond the price tag. The learning curve is real, and small teams usually need someone, in-house or an implementation partner, dedicated to setting it up and keeping it running. It makes sense once your team is large or your sales process is genuinely complex.",
+    },
+    {
+      type: "h2",
       text: "So, which one do you pick?",
     },
     {
       type: "ul",
       items: [
-        "Simplicity and total focus on the pipeline → Pipedrive",
         "Marketing and sales share the same database, and you'd rather not pay until you grow → HubSpot",
         "Your business is already more than sales: support, billing, inventory → Zoho",
-        "You need the most complete CRM on the market and the team or budget to run it → Salesforce",
         "You're a small team on a tight budget who'd rather skip per-seat pricing → Bitrix24",
+        "Simplicity and total focus on the pipeline → Pipedrive",
+        "You need the most complete CRM on the market and the team or budget to run it → Salesforce",
       ],
     },
     {
@@ -109,12 +109,12 @@ export const whichCrmToChoose: BlogPost = {
       items: [
         "The upfront investment is higher than turning on a ready-made CRM plan.",
         "You need someone, in-house or outside, to maintain it and keep it evolving.",
-        "It doesn't come with the integration ecosystem that HubSpot, Pipedrive, Zoho, Salesforce, or Bitrix24 already have built in.",
+        "It doesn't come with the integration ecosystem that HubSpot, Zoho, Bitrix24, Pipedrive, or Salesforce already have built in.",
       ],
     },
     {
       type: "p",
-      text: "It's worth evaluating seriously once your sales process has matured and a generic CRM starts falling short. As a starting point, it doesn't work.",
+      text: "Most small businesses start with an off-the-shelf CRM, and that's the right call: it solves the problem fast and cheap. Custom development comes in at the next stage, once your process is proven and ready for a tool built around it.",
     },
   ],
   cta: {
