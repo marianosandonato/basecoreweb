@@ -42,6 +42,7 @@ const socials = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [subOpen, setSubOpen] = useState(false);
+  const [desktopOpenHref, setDesktopOpenHref] = useState<string | null>(null);
   const pathname = usePathname();
   const lang = pathname.startsWith("/en") ? "en" : "es";
   const items = lang === "en" ? headerNavEn : headerNav;
@@ -121,32 +122,60 @@ export default function Header() {
                 switcher has room without ever overlapping the nav links. */}
             <nav className="flex-1 px-[10px]" aria-label="Principal">
               <ul className="flex items-center justify-end">
-                {items.map((item, i) => (
-                  <li key={item.href} className="group relative flex items-center">
+                {items.map((item, i) => {
+                  const dropdownOpen = item.children !== undefined && desktopOpenHref === item.href;
+                  return (
+                  <li
+                    key={item.href}
+                    className="relative flex items-center"
+                    onMouseEnter={() => item.children && setDesktopOpenHref(item.href)}
+                    onMouseLeave={() =>
+                      setDesktopOpenHref((h) => (h === item.href ? null : h))
+                    }
+                    onBlur={(e) => {
+                      if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+                        setDesktopOpenHref((h) => (h === item.href ? null : h));
+                      }
+                    }}
+                  >
                     <Link
                       href={item.href}
                       aria-current={isActiveEntry(item) ? "page" : undefined}
-                      onClick={() => scrollToTopIfSamePage(item.href)}
+                      aria-expanded={item.children ? dropdownOpen : undefined}
+                      onFocus={() => item.children && setDesktopOpenHref(item.href)}
+                      onClick={() => {
+                        scrollToTopIfSamePage(item.href);
+                        setDesktopOpenHref(null);
+                      }}
                       className={`flex items-center gap-[5px] whitespace-nowrap px-[7px] py-[13px] font-sans text-[14px] font-light leading-none transition-colors hover:text-accent-light ${
                         isActiveEntry(item) ? "text-accent-light" : "text-white"
                       }`}
                     >
                       {item.label}
                       {item.children && (
-                        <ChevronDownIcon className="text-[9px] transition-transform duration-150 group-hover:rotate-180" />
+                        <ChevronDownIcon
+                          className={`text-[9px] transition-transform duration-150 ${
+                            dropdownOpen ? "rotate-180" : ""
+                          }`}
+                        />
                       )}
                     </Link>
 
                     {item.children && (
                       <ul
-                        className="invisible absolute left-0 top-full z-10 min-w-[170px] translate-y-[6px] rounded-[4px] bg-navy py-[6px] opacity-0 shadow-lg transition-[opacity,visibility] duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
+                        className={`absolute left-0 top-full z-10 min-w-[170px] translate-y-[6px] rounded-[4px] bg-navy py-[6px] shadow-lg transition-[opacity,visibility] duration-150 ${
+                          dropdownOpen ? "visible opacity-100" : "invisible opacity-0"
+                        }`}
                       >
                         {item.children.map((child) => (
                           <li key={child.href}>
                             <Link
                               href={child.href}
                               aria-current={isActive(child.href) ? "page" : undefined}
-                              onClick={() => scrollToTopIfSamePage(child.href)}
+                              onClick={() => {
+                                scrollToTopIfSamePage(child.href);
+                                setDesktopOpenHref(null);
+                              }}
                               className={`block whitespace-nowrap px-[16px] py-[9px] font-sans text-[14px] font-light transition-colors hover:text-accent-light ${
                                 isActive(child.href) ? "text-accent-light" : "text-white"
                               }`}
@@ -165,7 +194,8 @@ export default function Header() {
                       />
                     )}
                   </li>
-                ))}
+                  );
+                })}
               </ul>
             </nav>
 
