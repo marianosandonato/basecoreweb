@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import BlogCard from "@/components/BlogCard";
 import Button from "@/components/Button";
 import CheckList from "@/components/CheckList";
 import ContactSection from "@/components/ContactSection";
@@ -8,6 +9,7 @@ import ProcessImageStack from "@/components/ProcessImageStack";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCards from "@/components/ServiceCards";
 import TechnologyBlock from "@/components/TechnologyBlock";
+import { blogPosts } from "@/content/blog/posts";
 import { site } from "@/lib/site";
 import { PosventaIcon, PreventaIcon, VentaIcon } from "@/components/cycleIcons";
 import {
@@ -375,6 +377,27 @@ export default function HomePageEn() {
               DOWNLOAD
             </Button>
           </div>
+        </div>
+      </section>
+
+      {/* Blog teaser — mirrors the ES Home's block, see that file for the note. */}
+      <section className="container-bc py-[70px] xl:py-[90px]">
+        <SectionHeading
+          eyebrow="BLOG"
+          title="Resources to sell better"
+          description="Articles on sales processes, CRM, and technology applied to sales."
+          maxWidth={700}
+          className="mb-[40px]"
+        />
+        <div className="grid grid-cols-1 gap-[30px] md:grid-cols-3">
+          {blogPosts.slice(0, 3).map((entry) => (
+            <BlogCard key={entry.enSlug} post={entry.en} href={`/en/blog/${entry.enSlug}`} lang="en" />
+          ))}
+        </div>
+        <div className="mt-[30px] text-center">
+          <Button href="/en/blog" size="sm">
+            VIEW ALL ARTICLES
+          </Button>
         </div>
       </section>
 

@@ -23,6 +23,7 @@ const services = [
   // The original links this to not-a-numb3r.com while the header links it
   // internally; matching the header. See documentation/PLAN-FOOTER.md.
   { label: "Marketing", href: "/marketing" },
+  { label: "Blog", href: "/blog" },
 ];
 
 // Same routes as the Spanish list — those pages don't have an /en version
@@ -33,6 +34,7 @@ const servicesEn = [
   { label: "Sales", href: "/en/sales" },
   { label: "Post-Sales", href: "/en/post-sales" },
   { label: "Marketing", href: "/en/marketing" },
+  { label: "Blog", href: "/en/blog" },
 ];
 
 const copy = {

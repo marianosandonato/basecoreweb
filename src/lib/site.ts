@@ -51,6 +51,9 @@ export const navEn = [
   { label: "Contact", href: "/en/contact" },
 ] as const;
 
+// Blog post slugs are per-language and paired via blogSlugPairs in
+// src/content/blog/posts.ts, not here — this only covers the /blog index.
+
 /**
  * Every ES path's EN counterpart, both directions — the single source of
  * truth for the language switcher, the suggestion banner, and the footer's
@@ -73,6 +76,8 @@ export const routeMap: Record<string, string> = {
   "/en/contact": "/contacto",
   "/ebook": "/en/ebook",
   "/en/ebook": "/ebook",
+  "/blog": "/en/blog",
+  "/en/blog": "/blog",
 };
 
 export const siteEn = {
