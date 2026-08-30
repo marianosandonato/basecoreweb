@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 
 const title = "Customer Retention Consulting";
 const description =
-  "Customer retention consulting for small business: reduce churn, cross-selling and up-selling, account development and portfolio segmentation.";
+  "Customer retention and customer success consulting for small business: reduce churn, cross-selling and up-selling, account development and portfolio segmentation.";
 
 export const metadata: Metadata = {
   title,

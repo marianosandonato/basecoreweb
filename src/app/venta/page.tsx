@@ -3,9 +3,9 @@ import ServiceCyclePage from "@/components/ServiceCyclePage";
 import ServiceJsonLd from "@/components/ServiceJsonLd";
 import { venta } from "@/content/venta";
 
-const title = "Proceso de Ventas para Pymes";
+const title = "Gestión Comercial para Pymes";
 const description =
-  "Proceso de ventas para pymes: modelo comercial, pipeline y funnel, KPIs comerciales, forecast, esquemas de compensación e implementación de CRM.";
+  "Gestión comercial para pymes: modelo comercial, procesos de ventas, pipeline y funnel, KPIs comerciales, forecast e implementación de CRM.";
 
 export const metadata: Metadata = {
   title,

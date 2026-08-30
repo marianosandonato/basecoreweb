@@ -5,7 +5,7 @@ import { preventa } from "@/content/preventa";
 
 const title = "Prospección de Clientes B2B";
 const description =
-  "Prospección y captación de clientes B2B: armado de base de datos, calificación de leads y detección de oportunidades comerciales para conseguir más reuniones.";
+  "Prospección y ventas B2B: armado de base de datos, calificación de leads y detección de oportunidades comerciales para conseguir más reuniones.";
 
 export const metadata: Metadata = {
   title,
