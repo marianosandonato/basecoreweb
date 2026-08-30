@@ -4,9 +4,9 @@ import ServiceJsonLd from "@/components/ServiceJsonLd";
 import { preventaEn } from "@/content/preventa.en";
 import { site } from "@/lib/site";
 
-const title = "B2B Lead Generation";
+const title = "B2B Lead Generation & Appointment Setting";
 const description =
-  "B2B lead generation and prospecting: database building, lead qualification and opportunity detection to get more meetings with your potential clients.";
+  "B2B lead generation and appointment setting: database building, lead qualification and opportunity detection to get more meetings with your potential clients.";
 
 export const metadata: Metadata = {
   title,

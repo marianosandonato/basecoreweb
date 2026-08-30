@@ -4,9 +4,9 @@ import ServiceJsonLd from "@/components/ServiceJsonLd";
 import { ventaEn } from "@/content/venta.en";
 import { site } from "@/lib/site";
 
-const title = "Sales Process Consulting";
+const title = "Commercial Management Consulting";
 const description =
-  "Sales process consulting for small business: sales model, pipeline management, sales KPIs, forecasting, compensation schemes and CRM implementation.";
+  "Commercial management for small business: sales process, pipeline management, sales KPIs, forecasting and CRM implementation.";
 
 export const metadata: Metadata = {
   title,

@@ -5,7 +5,7 @@ import { posventa } from "@/content/posventa";
 
 const title = "Fidelización y Retención de Clientes";
 const description =
-  "Fidelización y retención de clientes: reducción de churn, cross selling y up selling, desarrollo de cuentas y segmentación de cartera.";
+  "Fidelización de clientes y customer success: reducción de churn, cross selling y up selling, desarrollo de cuentas y segmentación de cartera.";
 
 export const metadata: Metadata = {
   title,

@@ -12,7 +12,7 @@ const cycleLinksEn = navEn.slice(1, 5);
 const copy = {
   es: {
     eyebrow: "E-BOOK",
-    title: "Primeros pasos para un proceso comercial efectivo.",
+    title: "Guía gratis: cómo armar tu proceso de ventas desde cero",
     description: (
       <>
         Desde Base Core trabajamos en la reorganización de todo tu equipo y proceso
@@ -33,7 +33,7 @@ const copy = {
   },
   en: {
     eyebrow: "E-BOOK",
-    title: "First steps to an effective sales process.",
+    title: "Free guide: how to build a sales process from scratch",
     description: (
       <>
         At Base Core we work on reorganizing your entire team and sales process. We hire

@@ -99,9 +99,9 @@ const modulos: readonly FlipCardData[] = [
   },
 ];
 
-const title = "Implementaciones Tecnológicas: IA + Software";
+const title = "CRM e IA para Empresas";
 const description =
-  "Implementamos agentes y procesos con IA. Migramos e instalamos CRM y otros softwares para tu equipo comercial.";
+  "CRM e IA para empresas: implementación de agentes de IA, automatización de procesos, consultoría CRM y software de gestión para tu equipo comercial.";
 
 export const metadata: Metadata = {
   title,
@@ -119,7 +119,7 @@ export default function TecnologiaPage() {
       <Breadcrumb current="Tecnología" path="/tecnologia" />
 
       <PageHero
-        title={["¿Buscas sistematizar e", "implementar IA?"]}
+        title={["¿Buscas implementar", "IA y CRM en tu empresa?"]}
         lines={[
           "Implementamos agentes y procesos con IA.",
           "Migramos e instalamos CRM y otros softwares.",
