@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import BlogCard from "@/components/BlogCard";
 import Button from "@/components/Button";
 import CheckList from "@/components/CheckList";
 import ContactSection from "@/components/ContactSection";
@@ -8,6 +9,7 @@ import ProcessImageStack from "@/components/ProcessImageStack";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCards from "@/components/ServiceCards";
 import TechnologyBlock from "@/components/TechnologyBlock";
+import { blogPosts } from "@/content/blog/posts";
 import { PosventaIcon, PreventaIcon, VentaIcon } from "@/components/cycleIcons";
 import {
   ChartBarIcon,
@@ -367,6 +369,52 @@ export default function HomePage() {
               DESCARGAR
             </Button>
           </div>
+        </div>
+      </section>
+
+      {/* Blog teaser — shows up to the 3 most recent posts, scales on its own
+          as more get added, no further Home changes needed. With a single
+          post (today's case) it spotlights it in a wide featured card
+          instead of a 3-up grid with two empty cells; with two posts it
+          centers a 2-up grid instead of stretching a lopsided 3-up one. */}
+      <section className="container-bc py-[70px] xl:py-[90px]">
+        <SectionHeading
+          eyebrow="BLOG"
+          title="Recursos para procesos comerciales efectivos"
+          description="Ideas prácticas sobre procesos comerciales, CRM y tecnología aplicada a ventas."
+          maxWidth={700}
+          className="mb-[40px]"
+        />
+        {(() => {
+          const latestPosts = blogPosts.slice(0, 3);
+
+          if (latestPosts.length === 1) {
+            const [entry] = latestPosts;
+            return (
+              <div className="mx-auto max-w-[880px]">
+                <BlogCard post={entry.es} href={`/blog/${entry.esSlug}`} featured />
+              </div>
+            );
+          }
+
+          return (
+            <div
+              className={`grid grid-cols-1 gap-[30px] ${
+                latestPosts.length === 2
+                  ? "mx-auto max-w-[780px] md:grid-cols-2"
+                  : "md:grid-cols-3"
+              }`}
+            >
+              {latestPosts.map((entry) => (
+                <BlogCard key={entry.esSlug} post={entry.es} href={`/blog/${entry.esSlug}`} />
+              ))}
+            </div>
+          );
+        })()}
+        <div className="mt-[30px] text-center">
+          <Button href="/blog" size="sm">
+            IR AL BLOG
+          </Button>
         </div>
       </section>
 

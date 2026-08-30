@@ -29,12 +29,19 @@ export const site = {
   gaId: "G-0NRE1KWMBM",
 } as const;
 
+// Flat list of every top-level page, in canonical order — Marketing before
+// the sales-cycle stages, since it's the top of the funnel that feeds them.
+// This is the source of truth for pages like ContactSection/EbookSection
+// that pull a plain "Marketing/Preventa/Venta/Posventa/Tecnología" checklist
+// via nav.slice(1, 6) — keep it flat and untouched; the header's own grouped
+// display lives in headerNav below, built from these same entries so
+// labels/hrefs never drift.
 export const nav = [
   { label: "Home", href: "/" },
+  { label: "Marketing", href: "/marketing" },
   { label: "Preventa", href: "/preventa" },
   { label: "Venta", href: "/venta" },
   { label: "Posventa", href: "/posventa" },
-  { label: "Marketing", href: "/marketing" },
   { label: "Tecnología", href: "/tecnologia" },
   { label: "Contacto", href: "/contacto" },
 ] as const;
@@ -43,13 +50,44 @@ export type Lang = "es" | "en";
 
 export const navEn = [
   { label: "Home", href: "/en" },
+  { label: "Marketing", href: "/en/marketing" },
   { label: "Presales", href: "/en/presales" },
   { label: "Sales", href: "/en/sales" },
   { label: "Post-Sales", href: "/en/post-sales" },
-  { label: "Marketing", href: "/en/marketing" },
   { label: "Technology", href: "/en/tecnologia" },
   { label: "Contact", href: "/en/contact" },
 ] as const;
+
+export type NavItem = { readonly label: string; readonly href: string };
+export type NavEntry = NavItem & { readonly children?: readonly NavItem[] };
+
+/**
+ * What the header actually renders: Preventa/Venta/Posventa collapsed into
+ * one "Venta" dropdown (so the desktop bar has room for Blog now, and for
+ * BaseHub later, without going back past the 7-item width that already
+ * forced the header to widen once — see documentation/PLAN-HEADER.md /
+ * Header.tsx). Everything else in `nav` passes through unchanged.
+ */
+export const headerNav: readonly NavEntry[] = [
+  nav[0],
+  nav[1],
+  { label: "Venta", href: nav[3].href, children: [nav[2], nav[3], nav[4]] },
+  nav[5],
+  { label: "Blog", href: "/blog" },
+  nav[6],
+];
+
+export const headerNavEn: readonly NavEntry[] = [
+  navEn[0],
+  navEn[1],
+  { label: "Sales", href: navEn[3].href, children: [navEn[2], navEn[3], navEn[4]] },
+  navEn[5],
+  { label: "Blog", href: "/en/blog" },
+  navEn[6],
+];
+
+// Blog post slugs are per-language and paired via blogSlugPairs in
+// src/content/blog/posts.ts, not here — this only covers the /blog index.
 
 /**
  * Every ES path's EN counterpart, both directions — the single source of
@@ -73,6 +111,8 @@ export const routeMap: Record<string, string> = {
   "/en/contact": "/contacto",
   "/ebook": "/en/ebook",
   "/en/ebook": "/ebook",
+  "/blog": "/en/blog",
+  "/en/blog": "/blog",
 };
 
 export const siteEn = {

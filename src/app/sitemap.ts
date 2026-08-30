@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
+import { blogPosts } from "@/content/blog/posts";
 
 // ES path -> EN path, for every page that now has both (see routeMap in
 // src/lib/site.ts, the same pairing used by the language switcher/banner).
@@ -12,6 +13,8 @@ const pairs: [string, string][] = [
   ["/tecnologia", "/en/tecnologia"],
   ["/contacto", "/en/contact"],
   ["/ebook", "/en/ebook"],
+  ["/blog", "/en/blog"],
+  ...blogPosts.map((p): [string, string] => [`/blog/${p.esSlug}`, `/en/blog/${p.enSlug}`]),
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

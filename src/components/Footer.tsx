@@ -17,22 +17,28 @@ import { FooterEmailIcon, FooterPhoneIcon, FooterPinIcon } from "./footerIcons";
  */
 
 const services = [
+  // The original links this to not-a-numb3r.com while the header links it
+  // internally; matching the header. See documentation/PLAN-FOOTER.md.
+  // Marketing goes first — it's the top of the funnel that feeds the three
+  // sales-cycle stages below it, same order as the header's nav.
+  { label: "Marketing", href: "/marketing" },
   { label: "Preventa", href: "/preventa" },
   { label: "Venta", href: "/venta" },
   { label: "Posventa", href: "/posventa" },
-  // The original links this to not-a-numb3r.com while the header links it
-  // internally; matching the header. See documentation/PLAN-FOOTER.md.
-  { label: "Marketing", href: "/marketing" },
+  { label: "Tecnología", href: "/tecnologia" },
+  { label: "Blog", href: "/blog" },
 ];
 
 // Same routes as the Spanish list — those pages don't have an /en version
 // yet (see documentation/PLAN-I18N.md), so the label translates but the
 // destination stays the closest available content.
 const servicesEn = [
+  { label: "Marketing", href: "/en/marketing" },
   { label: "Presales", href: "/en/presales" },
   { label: "Sales", href: "/en/sales" },
   { label: "Post-Sales", href: "/en/post-sales" },
-  { label: "Marketing", href: "/en/marketing" },
+  { label: "Technology", href: "/en/tecnologia" },
+  { label: "Blog", href: "/en/blog" },
 ];
 
 const copy = {
