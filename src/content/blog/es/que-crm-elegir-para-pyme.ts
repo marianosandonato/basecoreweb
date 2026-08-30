@@ -7,7 +7,7 @@ export const queCrmElegirParaPyme: BlogPost = {
   publishedAt: "2026-08-30",
   readingMinutes: 9,
   image: "/images/crm-comparativa-base-core-sales.webp",
-  imageAlt: "Dos personas comparando datos de ventas en una reunión para elegir un CRM",
+  imageAlt: "Pantalla mostrando un dashboard con métricas y datos de actividad de clientes",
   body: [
     {
       type: "p",
@@ -114,7 +114,7 @@ export const queCrmElegirParaPyme: BlogPost = {
     },
     {
       type: "p",
-      text: "La mayoría de las pymes arranca con un CRM enlatado, y hace bien: resuelve rápido y cuesta poco. El desarrollo a medida llega en la etapa siguiente, cuando el proceso ya está probado y pide una herramienta hecha a su medida.",
+      text: "Un CRM enlatado y un desarrollo a medida son dos caminos igual de válidos: con herramientas como Claude Code, construir el segundo ya no es caro ni lento. Lo que no cambia es la condición de entrada: sin un proceso comercial ordenado antes de arrancar, las dos opciones terminan siendo una agenda cara.",
     },
   ],
   cta: {

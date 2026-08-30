@@ -379,7 +379,7 @@ export default function HomePage() {
       <section className="container-bc py-[70px] xl:py-[90px]">
         <SectionHeading
           eyebrow="BLOG"
-          title="Recursos para vender mejor"
+          title="Recursos para procesos comerciales efectivos"
           description="Ideas prácticas sobre procesos comerciales, CRM y tecnología aplicada a ventas."
           maxWidth={700}
           className="mb-[40px]"

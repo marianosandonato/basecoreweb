@@ -7,7 +7,7 @@ export const whichCrmToChoose: BlogPost = {
   publishedAt: "2026-08-30",
   readingMinutes: 9,
   image: "/images/crm-comparativa-base-core-sales.webp",
-  imageAlt: "Two people comparing sales data in a meeting to choose a CRM",
+  imageAlt: "Screen showing a dashboard with customer activity metrics and data",
   body: [
     {
       type: "p",
@@ -114,7 +114,7 @@ export const whichCrmToChoose: BlogPost = {
     },
     {
       type: "p",
-      text: "Most small businesses start with an off-the-shelf CRM, and that's the right call: it solves the problem fast and cheap. Custom development comes in at the next stage, once your process is proven and ready for a tool built around it.",
+      text: "An off-the-shelf CRM and custom development are both valid paths: with tools like Claude Code, building the second one is no longer expensive or slow. The entry condition doesn't change either way: without a structured sales process before you start, both options end up as an expensive address book.",
     },
   ],
   cta: {
