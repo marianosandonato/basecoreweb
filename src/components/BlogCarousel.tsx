@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import BlogCard from "@/components/BlogCard";
 import { ChevronLeftIcon, ChevronRightIcon } from "@/components/icons";
 import type { Lang } from "@/lib/site";
@@ -29,6 +29,11 @@ export default function BlogCarousel({
   const trackRef = useRef<HTMLDivElement>(null);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(entries.length > 1);
+  // Vertical center of a card's own image (not the whole card, which runs
+  // taller than the image once the title/description below it are counted)
+  // -- measured off the real DOM so it stays correct at every breakpoint's
+  // card width instead of a guessed pixel value.
+  const [arrowTop, setArrowTop] = useState<number | null>(null);
 
   const updateEdges = useCallback(() => {
     const el = trackRef.current;
@@ -38,18 +43,30 @@ export default function BlogCarousel({
     setCanNext(el.scrollLeft < maxScroll - 8);
   }, []);
 
-  useEffect(() => {
+  const updateArrowTop = useCallback(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    const image = el.querySelector<HTMLElement>("[data-carousel-card] img")?.parentElement;
+    if (image) setArrowTop(image.getBoundingClientRect().height / 2);
+  }, []);
+
+  useLayoutEffect(() => {
     updateEdges();
+    updateArrowTop();
     const el = trackRef.current;
     if (!el) return;
     const onScroll = () => updateEdges();
+    const onResize = () => {
+      updateEdges();
+      updateArrowTop();
+    };
     el.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("resize", onResize);
     return () => {
       el.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("resize", onResize);
     };
-  }, [updateEdges]);
+  }, [updateEdges, updateArrowTop]);
 
   const scrollByCard = (direction: 1 | -1) => {
     const el = trackRef.current;
@@ -82,13 +99,14 @@ export default function BlogCarousel({
       </div>
 
       {entries.length > 1 && (
-        <div className="mt-[24px] flex items-center justify-center gap-[14px]">
+        <>
           <button
             type="button"
             onClick={() => scrollByCard(-1)}
             disabled={!canPrev}
             aria-label={t.prev}
-            className="flex h-[44px] w-[44px] items-center justify-center rounded-full border border-line bg-white text-heading transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:border-line disabled:hover:text-heading"
+            style={arrowTop != null ? { top: arrowTop } : undefined}
+            className="absolute left-[8px] z-10 flex h-[44px] w-[44px] -translate-y-1/2 items-center justify-center rounded-full border border-line bg-white/95 text-heading shadow-md transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-0 dt:-left-[22px]"
           >
             <ChevronLeftIcon className="text-[15px]" />
           </button>
@@ -97,11 +115,12 @@ export default function BlogCarousel({
             onClick={() => scrollByCard(1)}
             disabled={!canNext}
             aria-label={t.next}
-            className="flex h-[44px] w-[44px] items-center justify-center rounded-full border border-line bg-white text-heading transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:border-line disabled:hover:text-heading"
+            style={arrowTop != null ? { top: arrowTop } : undefined}
+            className="absolute right-[8px] z-10 flex h-[44px] w-[44px] -translate-y-1/2 items-center justify-center rounded-full border border-line bg-white/95 text-heading shadow-md transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-0 dt:-right-[22px]"
           >
             <ChevronRightIcon className="text-[15px]" />
           </button>
-        </div>
+        </>
       )}
     </div>
   );

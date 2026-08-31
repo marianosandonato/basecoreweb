@@ -13,9 +13,11 @@ import { comoPrevenirElChurn } from "./es/como-prevenir-el-churn";
 import { howToPreventChurn } from "./en/how-to-prevent-churn";
 
 /**
- * One entry per post, in publish order (newest first). `esSlug`/`enSlug` are
- * independent — each is written for its own language's SEO, not a literal
- * translation of the other — so this table is also the single source of
+ * One entry per post, in the order the Home carousel and /blog display them
+ * -- curated editorially, not strictly by `publishedAt` (see the 2026-09
+ * reorder: IA leads even though it isn't the newest). `esSlug`/`enSlug` are
+ * independent -- each is written for its own language's SEO, not a literal
+ * translation of the other -- so this table is also the single source of
  * truth the language switcher and the sitemap use to pair them up.
  */
 export type BlogEntry = {
@@ -27,16 +29,10 @@ export type BlogEntry = {
 
 export const blogPosts: readonly BlogEntry[] = [
   {
-    esSlug: "como-prevenir-el-churn",
-    enSlug: "how-to-prevent-churn",
-    es: comoPrevenirElChurn,
-    en: howToPreventChurn,
-  },
-  {
-    esSlug: "como-crear-estrategia-de-marketing-pyme",
-    enSlug: "how-to-create-a-marketing-strategy-for-a-small-business",
-    es: comoCrearEstrategiaDeMarketingPyme,
-    en: howToCreateAMarketingStrategyForASmallBusiness,
+    esSlug: "que-automatizar-con-ia-equipo-comercial",
+    enSlug: "what-to-automate-with-ai-in-a-sales-team",
+    es: queAutomatizarConIaEquipoComercial,
+    en: whatToAutomateWithAiInASalesTeam,
   },
   {
     esSlug: "como-calificar-leads-b2b",
@@ -51,10 +47,16 @@ export const blogPosts: readonly BlogEntry[] = [
     en: howToDoSalesFollowUp,
   },
   {
-    esSlug: "que-automatizar-con-ia-equipo-comercial",
-    enSlug: "what-to-automate-with-ai-in-a-sales-team",
-    es: queAutomatizarConIaEquipoComercial,
-    en: whatToAutomateWithAiInASalesTeam,
+    esSlug: "como-prevenir-el-churn",
+    enSlug: "how-to-prevent-churn",
+    es: comoPrevenirElChurn,
+    en: howToPreventChurn,
+  },
+  {
+    esSlug: "como-crear-estrategia-de-marketing-pyme",
+    enSlug: "how-to-create-a-marketing-strategy-for-a-small-business",
+    es: comoCrearEstrategiaDeMarketingPyme,
+    en: howToCreateAMarketingStrategyForASmallBusiness,
   },
   {
     esSlug: "que-crm-elegir-para-pyme",
