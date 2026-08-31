@@ -9,6 +9,8 @@ import { comoCalificarLeadsB2b } from "./es/como-calificar-leads-b2b";
 import { howToQualifyB2bLeads } from "./en/how-to-qualify-b2b-leads";
 import { comoCrearEstrategiaDeMarketingPyme } from "./es/como-crear-estrategia-de-marketing-pyme";
 import { howToCreateAMarketingStrategyForASmallBusiness } from "./en/how-to-create-a-marketing-strategy-for-a-small-business";
+import { comoPrevenirElChurn } from "./es/como-prevenir-el-churn";
+import { howToPreventChurn } from "./en/how-to-prevent-churn";
 
 /**
  * One entry per post, in publish order (newest first). `esSlug`/`enSlug` are
@@ -24,6 +26,12 @@ export type BlogEntry = {
 };
 
 export const blogPosts: readonly BlogEntry[] = [
+  {
+    esSlug: "como-prevenir-el-churn",
+    enSlug: "how-to-prevent-churn",
+    es: comoPrevenirElChurn,
+    en: howToPreventChurn,
+  },
   {
     esSlug: "como-crear-estrategia-de-marketing-pyme",
     enSlug: "how-to-create-a-marketing-strategy-for-a-small-business",
