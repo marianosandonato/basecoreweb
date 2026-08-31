@@ -1,6 +1,14 @@
 import type { BlogPost } from "./types";
 import { queCrmElegirParaPyme } from "./es/que-crm-elegir-para-pyme";
 import { whichCrmToChoose } from "./en/which-crm-to-choose-for-a-small-business";
+import { queAutomatizarConIaEquipoComercial } from "./es/que-automatizar-con-ia-equipo-comercial";
+import { whatToAutomateWithAiInASalesTeam } from "./en/what-to-automate-with-ai-in-a-sales-team";
+import { comoHacerSeguimientoComercial } from "./es/como-hacer-seguimiento-comercial";
+import { howToDoSalesFollowUp } from "./en/how-to-do-sales-follow-up";
+import { comoCalificarLeadsB2b } from "./es/como-calificar-leads-b2b";
+import { howToQualifyB2bLeads } from "./en/how-to-qualify-b2b-leads";
+import { comoCrearEstrategiaDeMarketingPyme } from "./es/como-crear-estrategia-de-marketing-pyme";
+import { howToCreateAMarketingStrategyForASmallBusiness } from "./en/how-to-create-a-marketing-strategy-for-a-small-business";
 
 /**
  * One entry per post, in publish order (newest first). `esSlug`/`enSlug` are
@@ -16,6 +24,30 @@ export type BlogEntry = {
 };
 
 export const blogPosts: readonly BlogEntry[] = [
+  {
+    esSlug: "como-crear-estrategia-de-marketing-pyme",
+    enSlug: "how-to-create-a-marketing-strategy-for-a-small-business",
+    es: comoCrearEstrategiaDeMarketingPyme,
+    en: howToCreateAMarketingStrategyForASmallBusiness,
+  },
+  {
+    esSlug: "como-calificar-leads-b2b",
+    enSlug: "how-to-qualify-b2b-leads",
+    es: comoCalificarLeadsB2b,
+    en: howToQualifyB2bLeads,
+  },
+  {
+    esSlug: "como-hacer-seguimiento-comercial",
+    enSlug: "how-to-do-sales-follow-up",
+    es: comoHacerSeguimientoComercial,
+    en: howToDoSalesFollowUp,
+  },
+  {
+    esSlug: "que-automatizar-con-ia-equipo-comercial",
+    enSlug: "what-to-automate-with-ai-in-a-sales-team",
+    es: queAutomatizarConIaEquipoComercial,
+    en: whatToAutomateWithAiInASalesTeam,
+  },
   {
     esSlug: "que-crm-elegir-para-pyme",
     enSlug: "which-crm-to-choose-for-a-small-business",
