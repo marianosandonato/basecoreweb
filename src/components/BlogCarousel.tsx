@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import BlogCard from "@/components/BlogCard";
 import { ChevronLeftIcon, ChevronRightIcon } from "@/components/icons";
 import type { Lang } from "@/lib/site";
@@ -16,7 +16,10 @@ const copy = {
  * the 3 most recent posts into a static grid, which meant older posts (and,
  * once there are more than 3, most of the blog) were never reachable from
  * Home. This scrolls through every post in `entries` instead, one card at a
- * time, keeping BlogCard's exact layout so it still matches /blog.
+ * time, keeping BlogCard's exact layout so it still matches /blog. Cards all
+ * stretch to the row's tallest one (BlogCard is `h-full flex-col`, the flex
+ * track below stretches its items by default) so the prev/next buttons can
+ * center on `top-1/2` of that shared height instead of a per-card measurement.
  */
 export default function BlogCarousel({
   entries,
@@ -29,11 +32,6 @@ export default function BlogCarousel({
   const trackRef = useRef<HTMLDivElement>(null);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(entries.length > 1);
-  // Vertical center of a card's own image (not the whole card, which runs
-  // taller than the image once the title/description below it are counted)
-  // -- measured off the real DOM so it stays correct at every breakpoint's
-  // card width instead of a guessed pixel value.
-  const [arrowTop, setArrowTop] = useState<number | null>(null);
 
   const updateEdges = useCallback(() => {
     const el = trackRef.current;
@@ -43,30 +41,18 @@ export default function BlogCarousel({
     setCanNext(el.scrollLeft < maxScroll - 8);
   }, []);
 
-  const updateArrowTop = useCallback(() => {
-    const el = trackRef.current;
-    if (!el) return;
-    const image = el.querySelector<HTMLElement>("[data-carousel-card] img")?.parentElement;
-    if (image) setArrowTop(image.getBoundingClientRect().height / 2);
-  }, []);
-
-  useLayoutEffect(() => {
+  useEffect(() => {
     updateEdges();
-    updateArrowTop();
     const el = trackRef.current;
     if (!el) return;
     const onScroll = () => updateEdges();
-    const onResize = () => {
-      updateEdges();
-      updateArrowTop();
-    };
+    window.addEventListener("resize", updateEdges);
     el.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onResize);
     return () => {
       el.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onResize);
+      window.removeEventListener("resize", updateEdges);
     };
-  }, [updateEdges, updateArrowTop]);
+  }, [updateEdges]);
 
   const scrollByCard = (direction: 1 | -1) => {
     const el = trackRef.current;
@@ -80,7 +66,7 @@ export default function BlogCarousel({
     <div role="region" aria-label={t.region} className="relative">
       <div
         ref={trackRef}
-        className="no-scrollbar flex snap-x snap-mandatory gap-[30px] overflow-x-auto scroll-smooth pb-[6px]"
+        className="no-scrollbar flex items-stretch snap-x snap-mandatory gap-[30px] overflow-x-auto scroll-smooth pb-[6px]"
       >
         {entries.map((entry) => {
           const post = lang === "es" ? entry.es : entry.en;
@@ -105,20 +91,18 @@ export default function BlogCarousel({
             onClick={() => scrollByCard(-1)}
             disabled={!canPrev}
             aria-label={t.prev}
-            style={arrowTop != null ? { top: arrowTop } : undefined}
-            className="absolute left-[8px] z-10 flex h-[44px] w-[44px] -translate-y-1/2 items-center justify-center rounded-full border border-line bg-white/95 text-heading shadow-md transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-0 dt:-left-[22px]"
+            className="absolute left-[12px] top-1/2 z-10 flex h-[88px] w-[88px] -translate-y-1/2 items-center justify-center rounded-full border border-line bg-white/95 text-heading shadow-md transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-0"
           >
-            <ChevronLeftIcon className="text-[15px]" />
+            <ChevronLeftIcon className="text-[30px]" />
           </button>
           <button
             type="button"
             onClick={() => scrollByCard(1)}
             disabled={!canNext}
             aria-label={t.next}
-            style={arrowTop != null ? { top: arrowTop } : undefined}
-            className="absolute right-[8px] z-10 flex h-[44px] w-[44px] -translate-y-1/2 items-center justify-center rounded-full border border-line bg-white/95 text-heading shadow-md transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-0 dt:-right-[22px]"
+            className="absolute right-[12px] top-1/2 z-10 flex h-[88px] w-[88px] -translate-y-1/2 items-center justify-center rounded-full border border-line bg-white/95 text-heading shadow-md transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-0"
           >
-            <ChevronRightIcon className="text-[15px]" />
+            <ChevronRightIcon className="text-[30px]" />
           </button>
         </>
       )}

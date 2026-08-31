@@ -70,9 +70,9 @@ export default function BlogCard({
   return (
     <Link
       href={href}
-      className="group block overflow-hidden rounded-[8px] border border-line bg-white transition-shadow hover:shadow-lg"
+      className="group flex h-full flex-col overflow-hidden rounded-[8px] border border-line bg-white transition-shadow hover:shadow-lg"
     >
-      <div className="relative aspect-[16/10] w-full overflow-hidden">
+      <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden">
         <Image
           src={post.image}
           alt={post.imageAlt}
@@ -81,7 +81,7 @@ export default function BlogCard({
           className="object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </div>
-      <div className="p-[24px]">
+      <div className="flex flex-1 flex-col p-[24px]">
         <p className="font-sans text-[13px] font-medium uppercase tracking-[1.5px] text-body">
           {t.minutes(post.readingMinutes)}
         </p>
@@ -91,7 +91,7 @@ export default function BlogCard({
         <p className="mt-[10px] font-sans text-[15px] leading-[26px] text-body line-clamp-3">
           {post.description}
         </p>
-        <span className="mt-[16px] inline-block font-sans text-[14px] font-semibold text-primary group-hover:underline">
+        <span className="mt-auto inline-block pt-[16px] font-sans text-[14px] font-semibold text-primary group-hover:underline">
           {t.readMore} →
         </span>
       </div>
