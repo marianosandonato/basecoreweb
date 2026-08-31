@@ -63,7 +63,7 @@ export default function BlogCarousel({
   };
 
   return (
-    <div role="region" aria-label={t.region} className="relative">
+    <div role="region" aria-label={t.region} className="relative px-[79px]">
       <div
         ref={trackRef}
         className="no-scrollbar flex items-stretch snap-x snap-mandatory gap-[30px] overflow-x-auto scroll-smooth pb-[6px]"
@@ -84,6 +84,8 @@ export default function BlogCarousel({
         })}
       </div>
 
+      {/* Buttons live in the px-[79px] gutter reserved above, not over the
+          track itself, so they never sit on top of a card's image/content. */}
       {entries.length > 1 && (
         <>
           <button
@@ -91,18 +93,18 @@ export default function BlogCarousel({
             onClick={() => scrollByCard(-1)}
             disabled={!canPrev}
             aria-label={t.prev}
-            className="absolute left-[12px] top-1/2 z-10 flex h-[88px] w-[88px] -translate-y-1/2 items-center justify-center rounded-full border border-line bg-white/95 text-heading shadow-md transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-0"
+            className="absolute left-0 top-1/2 z-10 flex h-[79px] w-[79px] -translate-y-1/2 items-center justify-center rounded-full border border-line bg-white/95 text-heading shadow-md transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-0"
           >
-            <ChevronLeftIcon className="text-[30px]" />
+            <ChevronLeftIcon className="text-[27px]" />
           </button>
           <button
             type="button"
             onClick={() => scrollByCard(1)}
             disabled={!canNext}
             aria-label={t.next}
-            className="absolute right-[12px] top-1/2 z-10 flex h-[88px] w-[88px] -translate-y-1/2 items-center justify-center rounded-full border border-line bg-white/95 text-heading shadow-md transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-0"
+            className="absolute right-0 top-1/2 z-10 flex h-[79px] w-[79px] -translate-y-1/2 items-center justify-center rounded-full border border-line bg-white/95 text-heading shadow-md transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-0"
           >
-            <ChevronRightIcon className="text-[30px]" />
+            <ChevronRightIcon className="text-[27px]" />
           </button>
         </>
       )}
