@@ -4,7 +4,7 @@ import Button from "@/components/Button";
 import ContactSection from "@/components/ContactSection";
 import BlogPostingJsonLd from "@/components/BlogPostingJsonLd";
 import { renderBold } from "@/lib/renderBold";
-import type { Lang } from "@/lib/site";
+import { site, siteEn, type Lang } from "@/lib/site";
 import type { BlogPost } from "@/content/blog/types";
 
 const copy = {
@@ -12,11 +12,13 @@ const copy = {
     breadcrumbLabel: "Blog",
     dateLocale: "es-ES",
     minutes: (n: number) => `${n} min de lectura`,
+    by: `Por ${site.founder.name}, ${site.founder.role} de ${site.shortName}`,
   },
   en: {
     breadcrumbLabel: "Blog",
     dateLocale: "en-US",
     minutes: (n: number) => `${n} min read`,
+    by: `By ${site.founder.name}, ${siteEn.founderRole} of ${site.shortName}`,
   },
 } as const;
 
@@ -49,6 +51,15 @@ export default function BlogPostPage({
           <h1 className="mt-[10px] font-heading text-[32px] font-bold leading-[40px] text-heading md:text-[42px] md:leading-[52px]">
             {post.title}
           </h1>
+
+          <a
+            href={site.founder.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-[14px] inline-block font-sans text-[14px] text-body hover:text-primary hover:underline"
+          >
+            {t.by}
+          </a>
 
           <div className="relative mt-[30px] aspect-[16/9] w-full overflow-hidden rounded-[8px]">
             <Image
