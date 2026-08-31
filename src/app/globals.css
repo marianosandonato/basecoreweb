@@ -450,4 +450,16 @@
     transition: none;
   }
 }
+
+/* Blog carousel (Home teaser): native horizontal scroll-snap, scrollbar
+   hidden since the prev/next buttons in BlogCarousel.tsx are the intended
+   control -- the bar itself added nothing but visual noise. */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 }
