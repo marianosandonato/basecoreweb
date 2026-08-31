@@ -63,7 +63,7 @@ export default function BlogCarousel({
   };
 
   return (
-    <div role="region" aria-label={t.region} className="relative px-[79px]">
+    <div role="region" aria-label={t.region} className="relative px-[95px]">
       <div
         ref={trackRef}
         className="no-scrollbar flex items-stretch snap-x snap-mandatory gap-[30px] overflow-x-auto scroll-smooth pb-[6px]"
@@ -84,8 +84,9 @@ export default function BlogCarousel({
         })}
       </div>
 
-      {/* Buttons live in the px-[79px] gutter reserved above, not over the
-          track itself, so they never sit on top of a card's image/content. */}
+      {/* Buttons live in the px-[95px] gutter reserved above, flush to the
+          outer edge, which leaves ~16px of breathing room between the
+          button and the card image instead of sitting right on top of it. */}
       {entries.length > 1 && (
         <>
           <button
