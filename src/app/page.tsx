@@ -318,6 +318,8 @@ export default function HomePage() {
 
       <TechnologyBlock />
 
+      <BaseHubTeaser />
+
       {/* ── Recruiting (#e610736) ────────────────────────────────────────
           One photo, no overlay: dark on the left, light on the right where the
           text sits. 55/45 split. */}
@@ -359,8 +361,6 @@ export default function HomePage() {
         />
         <ClientsCarousel projects={clientProjects} />
       </section>
-
-      <BaseHubTeaser />
 
       {/* ── E-Book CTA (#1ee6de6) ────────────────────────────────────────── */}
       <section

@@ -1,30 +1,31 @@
+import Image from "next/image";
 import Button from "./Button";
 import SectionHeading from "./SectionHeading";
 import type { Lang } from "@/lib/site";
 
 /**
  * Home/service-page teaser for BaseHub — links to the bespoke /basehub page.
- * Same shape as the Blog teaser section (container-bc, centred SectionHeading,
- * centred Button below): no product screenshot yet (reserved on /basehub
- * itself until the real capture is provided), so a plain text+CTA block reuses
- * an existing pattern instead of inventing a new visual treatment.
+ * Same 50/50 construction as the "Agencia de Marketing" cajón it sits next to
+ * on the home page (photo half + navy text half), but the photo half shows
+ * the real BaseHub dashboard at native resolution instead of a tinted stock
+ * shot — the product itself is the proof, not a caption.
  */
 const copy = {
   es: {
-    eyebrow: "BASEHUB",
     title: "Tu proyecto, en un solo lugar",
     description:
-      "Sin pagar una herramienta de gestión de proyectos aparte. BaseHub es nuestra plataforma de seguimiento e implementación, incluida en tu proyecto.",
+      "Sin pagar una herramienta de gestión de proyectos aparte. BaseHub es la plataforma de seguimiento e implementación de Base Core, incluida en tu proyecto. Estado en tiempo real, tarea por tarea, rama por rama.",
     cta: "CONOCÉ BASEHUB",
     href: "/basehub",
+    alt: "Panel de BaseHub con el avance de las seis áreas de un proyecto",
   },
   en: {
-    eyebrow: "BASEHUB",
     title: "Your project, in one place",
     description:
-      "No separate project management tool to pay for. BaseHub is our own tracking and implementation platform, included with your project.",
+      "No separate project management tool to pay for. BaseHub is Base Core's own tracking and implementation platform, included with your project. Real-time status, task by task, branch by branch.",
     cta: "SEE BASEHUB",
     href: "/en/basehub",
+    alt: "BaseHub dashboard showing progress across a project's six areas",
   },
 } as const;
 
@@ -38,18 +39,35 @@ export default function BaseHubTeaser({
   const t = copy[lang];
 
   return (
-    <section className={`container-bc py-[70px] xl:py-[90px] ${className}`}>
-      <SectionHeading
-        eyebrow={t.eyebrow}
-        title={t.title}
-        description={t.description}
-        maxWidth={700}
-        className="mb-[30px]"
-      />
-      <div className="text-center">
-        <Button href={t.href} size="sm">
-          {t.cta}
-        </Button>
+    <section className={`relative z-[1] md:flex ${className}`}>
+      <div className="relative min-h-[240px] md:min-h-0 md:w-1/2">
+        <Image
+          src="/images/basehub-dashboard.webp"
+          alt={t.alt}
+          fill
+          sizes="(min-width: 768px) 50vw, 100vw"
+          className="object-cover object-top"
+        />
+      </div>
+
+      <div className="bg-navy px-[15px] py-[60px] max-md:pl-[35px] md:w-1/2 dt:py-[106px] dt:pl-[100px]">
+        <div className="max-w-[680px]">
+          <SectionHeading
+            title={t.title}
+            description={t.description}
+            align="left"
+            dark
+            showLine={false}
+            maxWidth={800}
+            className="mb-[15px]"
+            titleClassName="!text-[36px] !leading-[1.3] md:!text-[44px]"
+          />
+          <div className="mt-[15px]">
+            <Button href={t.href} size="sm">
+              {t.cta}
+            </Button>
+          </div>
+        </div>
       </div>
     </section>
   );

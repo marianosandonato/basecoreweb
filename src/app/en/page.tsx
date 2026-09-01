@@ -330,6 +330,8 @@ export default function HomePageEn() {
 
       <TechnologyBlock lang="en" />
 
+      <BaseHubTeaser lang="en" />
+
       {/* ── Recruiting ──────────────────────────────────────────────────── */}
       <section
         className="relative z-[1] bg-cover bg-right bg-no-repeat dt:flex dt:bg-fixed"
@@ -366,8 +368,6 @@ export default function HomePageEn() {
         />
         <ClientsCarousel projects={clientProjects} lang="en" />
       </section>
-
-      <BaseHubTeaser lang="en" />
 
       {/* ── E-Book CTA ──────────────────────────────────────────────────── */}
       <section

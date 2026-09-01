@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import AboutLogoBlock from "@/components/AboutLogoBlock";
+import Image from "next/image";
 import Breadcrumb from "@/components/Breadcrumb";
 import Button from "@/components/Button";
 import ContactSection from "@/components/ContactSection";
-import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceJsonLd from "@/components/ServiceJsonLd";
 
@@ -52,22 +51,64 @@ export default function BaseHubPageEn() {
       <ServiceJsonLd name={title} description={description} path="/en/basehub" />
       <Breadcrumb current="BaseHub" lang="en" path="/en/basehub" />
 
-      <PageHero
-        title={["Your project,", "in one place."]}
-        lines={[
-          "No separate project management tool to pay for.",
-          "BaseHub is Base Core's own tracking and implementation platform, included with your project: see the real status, task by task, branch by branch.",
-        ]}
-        image="/images/tableros-reporting-base-core-sales-1.webp"
-        cta={{ label: "SEE HOW IT WORKS", href: "#how-it-works" }}
-      />
+      {/* Bespoke hero: solid navy (not a stretched photo — the header/nav
+          overlay reads exactly like every other inner page, no legibility
+          fight) with the real BaseHub screenshot shown below at its native
+          resolution, capped by container-bc's 1170px so it never upscales. */}
+      <section className="relative bg-navy pb-[60px] pt-[70px] dt:pt-[300px]">
+        <div className="container-bc text-center">
+          <h1 className="mx-auto max-w-[900px] font-montserrat text-[35px] font-light leading-[42px] text-white md:text-[50px] md:leading-[59px]">
+            Your project,
+            <span className="inline dt:block"> in one place.</span>
+          </h1>
+          <div className="mx-auto mt-[20px] max-w-[859px] font-sans text-[18px] leading-[32.4px] text-white/85">
+            <p>No separate project management tool to pay for.</p>
+            <p>
+              BaseHub is Base Core&apos;s own tracking and implementation platform, included with
+              your project. Real-time status, task by task, branch by branch.
+            </p>
+          </div>
+          <div className="mt-[20px]">
+            <Button href="#how-it-works" size="sm">
+              SEE HOW IT WORKS
+            </Button>
+          </div>
+        </div>
 
-      {/* "What it is" — same two-column construction as the cycle pages'
-          "What We Do" block (logo, text), minus the third checklist column:
-          this copy is one paragraph, not a bullet list. */}
+        <div className="container-bc mt-[50px]">
+          <div className="relative mx-auto aspect-[2559/1388] w-full overflow-hidden rounded-[8px] border border-white/10 shadow-[0_20px_60px_0_rgba(0,0,0,0.35)]">
+            <Image
+              src="/images/basehub-dashboard.webp"
+              alt="BaseHub dashboard showing progress across a project's six areas"
+              fill
+              priority
+              fetchPriority="high"
+              sizes="(min-width: 1200px) 1170px, 100vw"
+              className="object-cover object-top"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* "What it is" — logo lockup built for BaseHub specifically: the tree
+          mark alone (no "Base Core" wordmark baked into the image) with
+          "BaseHub" set below it, bold, matching the wordmark's own weight in
+          the product header rather than the thin, tracked type the other
+          pages' AboutLogoBlock uses for a page name. */}
       <section className="bg-navy py-[50px]">
         <div className="container-bc grid items-center gap-y-[30px] min-[1200px]:grid-cols-[auto_1fr] min-[1200px]:gap-x-[90px] min-[1200px]:gap-y-0">
-          <AboutLogoBlock label="BaseHub" dark />
+          <div className="hidden flex-col items-center gap-[10px] text-center md:flex">
+            <Image
+              src="/images/base-core-tree-icon-blanco.webp"
+              alt=""
+              width={700}
+              height={581}
+              className="h-auto w-[150px] md:w-[200px]"
+            />
+            <span className="font-heading text-[26px] font-bold text-white md:text-[32px]">
+              BaseHub
+            </span>
+          </div>
 
           <div>
             <SectionHeading
@@ -92,7 +133,12 @@ export default function BaseHubPageEn() {
           feature-grid headings. */}
       <div className="h-[50px]" aria-hidden="true" />
       <section id="how-it-works" className="container-bc py-[10px]">
-        <SectionHeading eyebrow="BASEHUB" title="How it works" maxWidth={800} className="mb-[16px]" />
+        <SectionHeading
+          eyebrow="PROJECT MANAGEMENT"
+          title="How it works"
+          maxWidth={800}
+          className="mb-[16px]"
+        />
       </section>
 
       {/* Feature grid — the 5 real features, two columns on desktop. */}
@@ -112,20 +158,9 @@ export default function BaseHubPageEn() {
         </div>
       </section>
 
-      {/* Product screenshot — reserved until the real capture is provided
-          (see "Decisiones cerradas" in the BaseHub planning artifact). */}
-      <section className="container-bc py-[50px]">
-        <div className="flex aspect-video w-full items-center justify-center rounded-[4px] border-2 border-dashed border-line bg-soft">
-          <p className="px-[15px] text-center font-sans text-[16px] text-body">
-            BaseHub screenshot — coming soon
-          </p>
-        </div>
-      </section>
-
       {/* Final CTA — same dark, centred construction as the E-Book CTA. CTA
           label matches the real one already used sitewide ("BOOK A DISCOVERY
-          CALL" — the EN equivalent of "AGENDAR RELEVAMIENTO") rather than the
-          unverified "BOOK YOUR ASSESSMENT" from the earlier copy draft. */}
+          CALL" — the EN equivalent of "AGENDAR RELEVAMIENTO"). */}
       <section className="bg-navy py-[70px] xl:py-[90px]">
         <div className="container-bc text-center">
           <SectionHeading
