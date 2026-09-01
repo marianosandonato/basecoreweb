@@ -11,6 +11,7 @@ const pairs: [string, string][] = [
   ["/posventa", "/en/post-sales"],
   ["/marketing", "/en/marketing"],
   ["/tecnologia", "/en/tecnologia"],
+  ["/basehub", "/en/basehub"],
   ["/contacto", "/en/contact"],
   ["/ebook", "/en/ebook"],
   ["/blog", "/en/blog"],

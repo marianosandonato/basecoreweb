@@ -27,6 +27,7 @@ const services = [
   { label: "Posventa", href: "/posventa" },
   { label: "Tecnología", href: "/tecnologia" },
   { label: "Blog", href: "/blog" },
+  { label: "BaseHub", href: "/basehub" },
 ];
 
 // Same routes as the Spanish list — those pages don't have an /en version
@@ -39,6 +40,7 @@ const servicesEn = [
   { label: "Post-Sales", href: "/en/post-sales" },
   { label: "Technology", href: "/en/tecnologia" },
   { label: "Blog", href: "/en/blog" },
+  { label: "BaseHub", href: "/en/basehub" },
 ];
 
 // documentation/PLAN-FOOTER.md flagged the hard-coded 2022 as an open

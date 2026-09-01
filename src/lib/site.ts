@@ -44,6 +44,7 @@ export const nav = [
   { label: "Posventa", href: "/posventa" },
   { label: "Tecnología", href: "/tecnologia" },
   { label: "Contacto", href: "/contacto" },
+  { label: "BaseHub", href: "/basehub" },
 ] as const;
 
 export type Lang = "es" | "en";
@@ -56,6 +57,7 @@ export const navEn = [
   { label: "Post-Sales", href: "/en/post-sales" },
   { label: "Technology", href: "/en/tecnologia" },
   { label: "Contact", href: "/en/contact" },
+  { label: "BaseHub", href: "/en/basehub" },
 ] as const;
 
 export type NavItem = { readonly label: string; readonly href: string };
@@ -63,16 +65,17 @@ export type NavEntry = NavItem & { readonly children?: readonly NavItem[] };
 
 /**
  * What the header actually renders: Preventa/Venta/Posventa collapsed into
- * one "Venta" dropdown (so the desktop bar has room for Blog now, and for
- * BaseHub later, without going back past the 7-item width that already
- * forced the header to widen once — see documentation/PLAN-HEADER.md /
- * Header.tsx). Everything else in `nav` passes through unchanged.
+ * one "Venta" dropdown (so the desktop bar has room for Blog and BaseHub,
+ * without going back past the 7-item width that already forced the header
+ * to widen once — see documentation/PLAN-HEADER.md / Header.tsx). Everything
+ * else in `nav` passes through unchanged.
  */
 export const headerNav: readonly NavEntry[] = [
   nav[0],
   nav[1],
   { label: "Venta", href: nav[3].href, children: [nav[2], nav[3], nav[4]] },
   nav[5],
+  nav[7],
   { label: "Blog", href: "/blog" },
   nav[6],
 ];
@@ -82,6 +85,7 @@ export const headerNavEn: readonly NavEntry[] = [
   navEn[1],
   { label: "Sales", href: navEn[3].href, children: [navEn[2], navEn[3], navEn[4]] },
   navEn[5],
+  navEn[7],
   { label: "Blog", href: "/en/blog" },
   navEn[6],
 ];
@@ -113,6 +117,8 @@ export const routeMap: Record<string, string> = {
   "/en/ebook": "/ebook",
   "/blog": "/en/blog",
   "/en/blog": "/blog",
+  "/basehub": "/en/basehub",
+  "/en/basehub": "/basehub",
 };
 
 export const siteEn = {

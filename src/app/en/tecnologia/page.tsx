@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import AboutLogoBlock from "@/components/AboutLogoBlock";
+import BaseHubTeaser from "@/components/BaseHubTeaser";
 import Breadcrumb from "@/components/Breadcrumb";
 import Button from "@/components/Button";
 import CheckList from "@/components/CheckList";
@@ -194,6 +195,11 @@ export default function TechnologyPage() {
       <section className="container-bc px-0 pt-[15px] md:pt-[24px]">
         <FlipCardGrid cards={modules.slice(4)} grid={TECNOLOGIA_GRID} />
       </section>
+
+      {/* /en/tecnologia has no TechnologyBlock/Recruiting cajones of its own
+          (it IS the tecnologia page), so the teaser sits here instead, right
+          before Contact. */}
+      <BaseHubTeaser lang="en" />
 
       <ContactSection
         titleAs="h2"

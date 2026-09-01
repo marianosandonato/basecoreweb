@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import AboutLogoBlock from "@/components/AboutLogoBlock";
+import BaseHubTeaser from "@/components/BaseHubTeaser";
 import Breadcrumb from "@/components/Breadcrumb";
 import Button from "@/components/Button";
 import CheckList from "@/components/CheckList";
@@ -202,10 +203,11 @@ export default function TecnologiaPage() {
         <FlipCardGrid cards={modulos.slice(4)} grid={TECNOLOGIA_GRID} />
       </section>
 
-      {/* No extra foot spacer here — ContactSection's own top padding already
-          matches the gap /marketing gets after its Recruiting section (166px);
-          a second 50px spacer on top of it read as a much bigger gap than
-          every other transition on the page. */}
+      {/* /tecnologia has no TechnologyBlock/Recruiting cajones of its own (it
+          IS the tecnologia page), so the teaser sits here instead, right
+          before Contacto. */}
+      <BaseHubTeaser />
+
       <ContactSection
         titleAs="h2"
         backgroundImage="/images/bg-5.jpg"

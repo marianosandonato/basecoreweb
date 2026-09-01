@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import AboutLogoBlock from "@/components/AboutLogoBlock";
+import BaseHubTeaser from "@/components/BaseHubTeaser";
 import Breadcrumb from "@/components/Breadcrumb";
 import Button from "@/components/Button";
 import CheckList from "@/components/CheckList";
@@ -209,6 +210,8 @@ export default function MarketingPageEn() {
       <div className="h-[50px]" aria-hidden="true" />
 
       <TechnologyBlock lang="en" stage="marketing" />
+
+      <BaseHubTeaser lang="en" />
 
       {/* Recruiting — same construction as the cycle pages' Recruiting
           section, copy adapted from "sales force" to marketing. */}

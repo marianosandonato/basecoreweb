@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import BaseHubTeaser from "@/components/BaseHubTeaser";
 import BlogCarousel from "@/components/BlogCarousel";
 import Button from "@/components/Button";
 import CheckList from "@/components/CheckList";
@@ -365,6 +366,8 @@ export default function HomePageEn() {
         />
         <ClientsCarousel projects={clientProjects} lang="en" />
       </section>
+
+      <BaseHubTeaser lang="en" />
 
       {/* ── E-Book CTA ──────────────────────────────────────────────────── */}
       <section

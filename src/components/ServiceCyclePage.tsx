@@ -2,6 +2,7 @@ import type { ServicePageData } from "@/content/types";
 import type { Lang } from "@/lib/site";
 import { renderBold } from "@/lib/renderBold";
 import AboutLogoBlock from "./AboutLogoBlock";
+import BaseHubTeaser from "./BaseHubTeaser";
 import Breadcrumb from "./Breadcrumb";
 import Button from "./Button";
 import CheckList from "./CheckList";
@@ -155,6 +156,8 @@ export default function ServiceCyclePage({
       <div className="h-[50px]" aria-hidden="true" />
 
       <TechnologyBlock lang={lang} stage={stageBySlug[data.slug]} />
+
+      <BaseHubTeaser lang={lang} />
 
       {/* Recruiting (#27c2ba5f) — same construction as the home page:
           one photo, no overlay, dark text on the light half. */}
