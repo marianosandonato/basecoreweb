@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
+import BaseHubMockup from "@/components/BaseHubMockup";
 import Button from "@/components/Button";
 import ContactSection from "@/components/ContactSection";
 import PageHero from "@/components/PageHero";
@@ -114,8 +115,17 @@ export default function BaseHubPageEn() {
         />
       </section>
 
-      {/* Feature grid — the 5 real features, two columns on desktop. */}
-      <section className="container-bc pb-[10px] pt-[30px]">
+      {/* Product screenshot, laptop-framed — sits between the heading and
+          the feature cards, same 40px-ish rhythm as the gap above/below the
+          Pilares/Módulos grids elsewhere on the site. */}
+      <section className="container-bc pb-[10px] pt-[10px]">
+        <BaseHubMockup alt="BaseHub dashboard showing progress across a project's six areas" />
+      </section>
+
+      {/* Feature grid — the 5 real features, two columns on desktop. 50px
+          foot so the cards don't sit flush against the section's bottom
+          edge, matching the Etapas/Puestos boxes' own 50px foot elsewhere. */}
+      <section className="container-bc pb-[50px] pt-[40px]">
         <div className="grid gap-[24px] md:grid-cols-2">
           {features.map((feature) => (
             <div

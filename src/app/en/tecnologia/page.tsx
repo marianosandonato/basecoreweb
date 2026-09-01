@@ -196,6 +196,11 @@ export default function TechnologyPage() {
         <FlipCardGrid cards={modules.slice(4)} grid={TECNOLOGIA_GRID} />
       </section>
 
+      {/* Foot of the Modules grid — same 50px as /marketing gets below its
+          own Pilares grid (was missing here, so the grid sat flush against
+          the teaser's photo below it). */}
+      <div className="h-[50px]" aria-hidden="true" />
+
       {/* /en/tecnologia has no TechnologyBlock/Recruiting cajones of its own
           (it IS the tecnologia page), so the teaser sits here instead, right
           before Contact. */}
