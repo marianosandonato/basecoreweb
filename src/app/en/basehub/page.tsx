@@ -65,11 +65,11 @@ export default function BaseHubPageEn() {
         title={["Your project,", "in one place."]}
         lines={[
           "No separate project management tool to pay for.",
-          "BaseHub is Base Core's own tracking and implementation platform, included with your project. Real-time status, task by task, branch by branch.",
+          "BaseHub is Base Core's own tracking and implementation platform, included with your project. Real-time status, task by task, area by area.",
         ]}
         image="/images/tableros-reporting-base-core-sales-1.webp"
         overlayOpacity={0.82}
-        cta={{ label: "SEE HOW IT WORKS", href: "#how-it-works" }}
+        cta={{ label: "BOOK A DISCOVERY CALL", href: "#contacto" }}
       />
 
       {/* "What it is" — no logo lockup: just "BaseHub" on its own, larger,
@@ -86,8 +86,14 @@ export default function BaseHubPageEn() {
 
           <div>
             <SectionHeading
-              eyebrow="WHAT IT IS"
-              title="Your implementation, visible from day one"
+              eyebrow="PROJECT MANAGEMENT"
+              title={
+                <>
+                  Your implementation visible
+                  <br />
+                  from day one
+                </>
+              }
               align="left"
               dark
               maxWidth={800}
@@ -95,9 +101,7 @@ export default function BaseHubPageEn() {
             />
             <p className="font-sans text-[18px] leading-[1.8] text-muted">
               When Base Core kicks off your project, it&apos;s organized inside BaseHub: your own
-              dashboard showing the status of your business&apos;s six areas —Marketing, Presales,
-              Sales, Post-sales, Recruiting and Technology— without having to ask anyone what&apos;s
-              going on.
+              dashboard showing the development status of the areas we&apos;ll work on together.
             </p>
           </div>
         </div>
@@ -108,7 +112,7 @@ export default function BaseHubPageEn() {
       <div className="h-[50px]" aria-hidden="true" />
       <section id="how-it-works" className="container-bc py-[10px]">
         <SectionHeading
-          eyebrow="PROJECT MANAGEMENT"
+          eyebrow="DASHBOARD"
           title="How it works"
           maxWidth={800}
           className="mb-[16px]"

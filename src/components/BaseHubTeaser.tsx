@@ -16,7 +16,7 @@ const copy = {
     title: "Tu proyecto, en un solo lugar",
     description:
       "Sin pagar una herramienta de gestión de proyectos aparte. BaseHub es la plataforma de seguimiento e implementación de Base Core, incluida en tu proyecto. Estado en tiempo real, tarea por tarea, rama por rama.",
-    cta: "CONOCÉ BASEHUB",
+    cta: "CONOCE BASEHUB",
     href: "/basehub",
   },
   en: {
@@ -48,6 +48,10 @@ export default function BaseHubTeaser({
         <span className="mb-[10px] block font-sans text-[22px] font-semibold tracking-tight text-white md:text-[26px]">
           {t.kicker}
         </span>
+        {/* Title set in the exact same type as the "BaseHub" wordmark on
+            /basehub's "Qué es" cajón (font-sans/DM Sans, semibold,
+            tracking-tight, 48/56px) instead of SectionHeading's usual
+            heading font — bigger and matching that lockup one-for-one. */}
         <SectionHeading
           title={t.title}
           description={t.description}
@@ -55,7 +59,7 @@ export default function BaseHubTeaser({
           showLine={false}
           maxWidth={800}
           className="mx-auto mb-[20px]"
-          titleClassName="!text-[36px] !leading-[1.3] md:!text-[44px]"
+          titleClassName="!font-sans !text-[48px] !font-semibold !tracking-tight md:!text-[56px]"
         />
         <Button href={t.href} size="sm">
           {t.cta}

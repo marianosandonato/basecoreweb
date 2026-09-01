@@ -43,7 +43,7 @@ const features = [
   {
     title: "Acceso para tu equipo",
     description:
-      "Entrás con tu usuario y ves el estado real de tu implementación, con el logo de tu empresa — sin esperar que alguien te mande un reporte.",
+      "Entra con tu usuario y ves el estado real de tu implementación, con el logo de tu empresa — sin esperar que alguien te mande un reporte.",
   },
 ];
 
@@ -66,11 +66,11 @@ export default function BaseHubPage() {
         title={["Tu proyecto,", "en un solo lugar."]}
         lines={[
           "Sin pagar una herramienta de gestión de proyectos aparte.",
-          "BaseHub es la plataforma de seguimiento e implementación de Base Core, incluida en tu proyecto. Estado en tiempo real, tarea por tarea, rama por rama.",
+          "BaseHub es la plataforma de seguimiento e implementación de Base Core, incluida en tu proyecto. Estado en tiempo real, tarea por tarea, área por área.",
         ]}
         image="/images/tableros-reporting-base-core-sales-1.webp"
         overlayOpacity={0.82}
-        cta={{ label: "VER CÓMO FUNCIONA", href: "#como-funciona" }}
+        cta={{ label: "AGENDAR RELEVAMIENTO", href: "#contacto" }}
       />
 
       {/* "Qué es" — no logo lockup: just "BaseHub" on its own, larger, set
@@ -87,8 +87,14 @@ export default function BaseHubPage() {
 
           <div>
             <SectionHeading
-              eyebrow="QUÉ ES"
-              title="Tu implementación, visible de principio a fin"
+              eyebrow="GESTIÓN DE PROYECTOS"
+              title={
+                <>
+                  Tu implementación visible
+                  <br />
+                  de principio a fin
+                </>
+              }
               align="left"
               dark
               maxWidth={800}
@@ -96,9 +102,7 @@ export default function BaseHubPage() {
             />
             <p className="font-sans text-[18px] leading-[1.8] text-muted">
               Cuando Base Core arranca tu proyecto, lo organiza en BaseHub: un tablero propio
-              donde ves el estado de las seis áreas de tu negocio —Marketing, Preventa, Venta,
-              Posventa, Recruiting y Tecnología— sin tener que preguntarle a nadie en qué está
-              cada cosa.
+              donde ves el estado de desarrollo de las áreas que trabajaremos juntos.
             </p>
           </div>
         </div>
@@ -109,7 +113,7 @@ export default function BaseHubPage() {
       <div className="h-[50px]" aria-hidden="true" />
       <section id="como-funciona" className="container-bc py-[10px]">
         <SectionHeading
-          eyebrow="GESTIÓN DE PROYECTOS"
+          eyebrow="TABLERO DE MANDO"
           title="Cómo funciona"
           maxWidth={800}
           className="mb-[16px]"
@@ -146,8 +150,8 @@ export default function BaseHubPage() {
       <section className="bg-navy py-[70px] xl:py-[90px]">
         <div className="container-bc text-center">
           <SectionHeading
-            title="Empezá tu implementación con BaseHub incluido"
-            description="Agendá un relevamiento gratuito y te mostramos cómo se ve tu proyecto organizado en BaseHub desde el primer día."
+            title="Empieza tu implementación con BaseHub incluido"
+            description="Agenda un relevamiento gratuito y te mostramos cómo se ve tu proyecto organizado en BaseHub desde el primer día."
             dark
             showLine={false}
             maxWidth={700}
