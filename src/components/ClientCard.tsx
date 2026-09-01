@@ -15,13 +15,16 @@ export default function ClientCard({
   lang?: Lang;
 }) {
   const t = copy[lang];
+  const fullName = project.nameSecondLine
+    ? `${project.name} ${project.nameSecondLine}`
+    : project.name;
 
   return (
     <a
       href={project.href}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={t.visit(project.name)}
+      aria-label={t.visit(fullName)}
       className="group flex h-full flex-col overflow-hidden rounded-[8px] border border-line bg-white transition-shadow hover:shadow-lg"
     >
       <div className="relative h-[160px] w-full shrink-0 border-b border-line bg-soft">
@@ -36,6 +39,12 @@ export default function ClientCard({
       <div className="flex flex-1 flex-col p-[24px]">
         <h3 className="font-heading text-[20px] font-bold leading-[28px] text-heading">
           {project.name}
+          {project.nameSecondLine && (
+            <>
+              <br />
+              {project.nameSecondLine}
+            </>
+          )}
         </h3>
         {project.tags[lang].length > 0 && (
           <ul className="mt-[12px] flex flex-wrap gap-[8px]">

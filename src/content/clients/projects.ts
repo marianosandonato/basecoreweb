@@ -11,6 +11,10 @@
 export type ClientProject = {
   slug: string;
   name: string;
+  /** Renders as a second line under `name` in the card heading (W Profesional's
+   * full name gets clipped on one line otherwise). Aria-label/alt text keep
+   * using the plain `name`/`logoAlt`, unaffected. */
+  nameSecondLine?: string;
   logo: string;
   logoAlt: { es: string; en: string };
   href: string;
@@ -51,7 +55,8 @@ export const clientProjects: readonly ClientProject[] = [
   },
   {
     slug: "w-profesional",
-    name: "W Profesional – Hair Therapy",
+    name: "W Profesional",
+    nameSecondLine: "Hair Therapy",
     logo: "/images/clientes/w-profesional-logo.png",
     logoAlt: {
       es: "Logo de W Profesional – Hair Therapy",
