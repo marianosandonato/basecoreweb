@@ -3,6 +3,7 @@ import Image from "next/image";
 import Breadcrumb from "@/components/Breadcrumb";
 import Button from "@/components/Button";
 import ContactSection from "@/components/ContactSection";
+import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceJsonLd from "@/components/ServiceJsonLd";
 
@@ -51,61 +52,33 @@ export default function BaseHubPageEn() {
       <ServiceJsonLd name={title} description={description} path="/en/basehub" />
       <Breadcrumb current="BaseHub" lang="en" path="/en/basehub" />
 
-      {/* Bespoke hero: solid navy (not a stretched photo — the header/nav
-          overlay reads exactly like every other inner page, no legibility
-          fight) with the real BaseHub screenshot shown below at its native
-          resolution, capped by container-bc's 1170px so it never upscales. */}
-      <section className="relative bg-navy pb-[60px] pt-[70px] dt:pt-[300px]">
-        <div className="container-bc text-center">
-          <h1 className="mx-auto max-w-[900px] font-montserrat text-[35px] font-light leading-[42px] text-white md:text-[50px] md:leading-[59px]">
-            Your project,
-            <span className="inline dt:block"> in one place.</span>
-          </h1>
-          <div className="mx-auto mt-[20px] max-w-[859px] font-sans text-[18px] leading-[32.4px] text-white/85">
-            <p>No separate project management tool to pay for.</p>
-            <p>
-              BaseHub is Base Core&apos;s own tracking and implementation platform, included with
-              your project. Real-time status, task by task, branch by branch.
-            </p>
-          </div>
-          <div className="mt-[20px]">
-            <Button href="#how-it-works" size="sm">
-              SEE HOW IT WORKS
-            </Button>
-          </div>
-        </div>
-
-        <div className="container-bc mt-[50px]">
-          <div className="relative mx-auto aspect-[2559/1388] w-full overflow-hidden rounded-[8px] border border-white/10 shadow-[0_20px_60px_0_rgba(0,0,0,0.35)]">
-            <Image
-              src="/images/basehub-dashboard.webp"
-              alt="BaseHub dashboard showing progress across a project's six areas"
-              fill
-              priority
-              fetchPriority="high"
-              sizes="(min-width: 1200px) 1170px, 100vw"
-              className="object-cover object-top"
-            />
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title={["Your project,", "in one place."]}
+        lines={[
+          "No separate project management tool to pay for.",
+          "BaseHub is Base Core's own tracking and implementation platform, included with your project. Real-time status, task by task, branch by branch.",
+        ]}
+        image="/images/tableros-reporting-base-core-sales-1.webp"
+        cta={{ label: "SEE HOW IT WORKS", href: "#how-it-works" }}
+      />
 
       {/* "What it is" — logo lockup built for BaseHub specifically: the tree
-          mark alone (no "Base Core" wordmark baked into the image) with
-          "BaseHub" set below it, bold, matching the wordmark's own weight in
-          the product header rather than the thin, tracked type the other
-          pages' AboutLogoBlock uses for a page name. */}
+          mark alone (no "Base Core" wordmark baked into the image), with
+          "BaseHub" set below it in the same font-sora/tracking-[2px] type the
+          site already uses for a page name under the mark (AboutLogoBlock,
+          TechnologyBlock's "Tecnología" label), just bold instead of
+          extralight — same lineup as the BaseHubTeaser kicker. */}
       <section className="bg-navy py-[50px]">
         <div className="container-bc grid items-center gap-y-[30px] min-[1200px]:grid-cols-[auto_1fr] min-[1200px]:gap-x-[90px] min-[1200px]:gap-y-0">
-          <div className="hidden flex-col items-center gap-[10px] text-center md:flex">
+          <div className="hidden flex-col items-center gap-[16px] text-center md:flex">
             <Image
               src="/images/base-core-tree-icon-blanco.webp"
               alt=""
               width={700}
               height={581}
-              className="h-auto w-[150px] md:w-[200px]"
+              className="h-auto w-[189px] md:w-[257px]"
             />
-            <span className="font-heading text-[26px] font-bold text-white md:text-[32px]">
+            <span className="font-sora text-[32px] font-bold tracking-[2px] text-white md:text-[41px]">
               BaseHub
             </span>
           </div>
