@@ -90,7 +90,7 @@ export default function BaseHubPage() {
               eyebrow="GESTIÓN DE PROYECTOS"
               title={
                 <>
-                  Tu implementación visible
+                  Tu implementación, visible
                   <br />
                   de principio a fin
                 </>

@@ -14,16 +14,22 @@ const copy = {
   es: {
     kicker: "BaseHub",
     title: "Tu proyecto, en un solo lugar",
-    description:
-      "Sin pagar una herramienta de gestión de proyectos aparte. BaseHub es la plataforma de seguimiento e implementación de Base Core, incluida en tu proyecto. Estado en tiempo real, tarea por tarea, rama por rama.",
+    lines: [
+      "Sin pagar una herramienta de gestión de proyectos aparte.",
+      "BaseHub es la plataforma de seguimiento e implementación de Base Core, incluida en tu proyecto.",
+      "Estado en tiempo real, tarea por tarea, área por área.",
+    ],
     cta: "CONOCE BASEHUB",
     href: "/basehub",
   },
   en: {
     kicker: "BaseHub",
     title: "Your project, in one place",
-    description:
-      "No separate project management tool to pay for. BaseHub is Base Core's own tracking and implementation platform, included with your project. Real-time status, task by task, branch by branch.",
+    lines: [
+      "No separate project management tool to pay for.",
+      "BaseHub is Base Core's own tracking and implementation platform, included with your project.",
+      "Real-time status, task by task, area by area.",
+    ],
     cta: "SEE BASEHUB",
     href: "/en/basehub",
   },
@@ -45,21 +51,27 @@ export default function BaseHubTeaser({
     >
       <span aria-hidden="true" className="absolute inset-0 bg-navy opacity-[0.82]" />
       <div className="container-bc relative text-center">
-        <span className="mb-[10px] block font-sans text-[22px] font-semibold tracking-tight text-white md:text-[26px]">
+        {/* Kicker set in the exact type of the "BaseHub" wordmark on
+            /basehub's "Qué es" cajón (font-sans/DM Sans, semibold,
+            tracking-tight, 48/56px) — not a smaller caption above the
+            title, the wordmark itself, at the cajón's own size. */}
+        <span className="mb-[10px] block font-sans text-[48px] font-semibold tracking-tight text-white md:text-[56px]">
           {t.kicker}
         </span>
-        {/* Title set in the exact same type as the "BaseHub" wordmark on
-            /basehub's "Qué es" cajón (font-sans/DM Sans, semibold,
-            tracking-tight, 48/56px) instead of SectionHeading's usual
-            heading font — bigger and matching that lockup one-for-one. */}
         <SectionHeading
           title={t.title}
-          description={t.description}
+          description={
+            <>
+              {t.lines.map((line) => (
+                <p key={line}>{line}</p>
+              ))}
+            </>
+          }
           dark
           showLine={false}
           maxWidth={800}
           className="mx-auto mb-[20px]"
-          titleClassName="!font-sans !text-[48px] !font-semibold !tracking-tight md:!text-[56px]"
+          titleClassName="!text-[36px] !leading-[1.3] md:!text-[44px]"
         />
         <Button href={t.href} size="sm">
           {t.cta}
