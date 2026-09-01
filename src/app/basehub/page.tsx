@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Breadcrumb from "@/components/Breadcrumb";
 import Button from "@/components/Button";
 import ContactSection from "@/components/ContactSection";
@@ -53,6 +52,15 @@ export default function BaseHubPage() {
       <ServiceJsonLd name={title} description={description} path="/basehub" />
       <Breadcrumb current="BaseHub" path="/basehub" />
 
+      {/* overlayOpacity: /venta's own hero reads fine at PageHero's 0.14
+          default because that photo is naturally dark/muted. This photo
+          (bright screens, white desk) is high-key — checked 0.14 and
+          /tecnologia's 0.32 exception side by side against /venta and both
+          still left the title sitting on bare white screen with no contrast.
+          0.82 (same value the E-Book CTA section already uses for its own
+          photo backdrop) is what actually gets this photo to the same
+          legible-everywhere result /venta has — verified with a screenshot,
+          not assumed. */}
       <PageHero
         title={["Tu proyecto,", "en un solo lugar."]}
         lines={[
@@ -60,26 +68,18 @@ export default function BaseHubPage() {
           "BaseHub es la plataforma de seguimiento e implementación de Base Core, incluida en tu proyecto. Estado en tiempo real, tarea por tarea, rama por rama.",
         ]}
         image="/images/tableros-reporting-base-core-sales-1.webp"
+        overlayOpacity={0.82}
         cta={{ label: "VER CÓMO FUNCIONA", href: "#como-funciona" }}
       />
 
-      {/* "Qué es" — logo lockup built for BaseHub specifically: the tree mark
-          alone (no "Base Core" wordmark baked into the image), with
-          "BaseHub" set below it in the same font-sora/tracking-[2px] type
-          the site already uses for a page name under the mark (AboutLogoBlock,
-          TechnologyBlock's "Tecnología" label), just bold instead of
-          extralight — same lineup as the BaseHubTeaser kicker. */}
+      {/* "Qué es" — no logo lockup: just "BaseHub" on its own, larger, set
+          in the product's own wordmark type (per the BaseHub app's
+          developer: DM Sans / font-sans, font-semibold, tracking-tight —
+          not a heading-tag font, a plain span). */}
       <section className="bg-navy py-[50px]">
         <div className="container-bc grid items-center gap-y-[30px] min-[1200px]:grid-cols-[auto_1fr] min-[1200px]:gap-x-[90px] min-[1200px]:gap-y-0">
-          <div className="hidden flex-col items-center gap-[16px] text-center md:flex">
-            <Image
-              src="/images/base-core-tree-icon-blanco.webp"
-              alt=""
-              width={700}
-              height={581}
-              className="h-auto w-[189px] md:w-[257px]"
-            />
-            <span className="font-sora text-[32px] font-bold tracking-[2px] text-white md:text-[41px]">
+          <div className="hidden items-center justify-center text-center md:flex">
+            <span className="font-sans text-[48px] font-semibold tracking-tight text-white md:text-[56px]">
               BaseHub
             </span>
           </div>
