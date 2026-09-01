@@ -3,6 +3,7 @@ import Image from "next/image";
 import BlogCarousel from "@/components/BlogCarousel";
 import Button from "@/components/Button";
 import CheckList from "@/components/CheckList";
+import ClientsCarousel from "@/components/ClientsCarousel";
 import ContactSection from "@/components/ContactSection";
 import MethodologyGrid, { type MethodologyStep } from "@/components/MethodologyGrid";
 import ProcessImageStack from "@/components/ProcessImageStack";
@@ -10,6 +11,7 @@ import SectionHeading from "@/components/SectionHeading";
 import ServiceCards from "@/components/ServiceCards";
 import TechnologyBlock from "@/components/TechnologyBlock";
 import { blogPosts } from "@/content/blog/posts";
+import { clientProjects } from "@/content/clients/projects";
 import { PosventaIcon, PreventaIcon, VentaIcon } from "@/components/cycleIcons";
 import {
   ChartBarIcon,
@@ -340,6 +342,21 @@ export default function HomePage() {
             <CheckList items={recruitingChecklist} size="md" />
           </div>
         </div>
+      </section>
+
+      {/* Empresas con las que trabajamos (#seo-plan 4.4) — prueba social sin
+          testimonios textuales: logo real + servicios prestados, cada
+          tarjeta linkea al sitio del cliente. Reutiliza la mecánica de
+          BlogCarousel (ver ClientsCarousel). */}
+      <section className="container-bc py-[70px] xl:py-[90px]">
+        <SectionHeading
+          eyebrow="NUESTRO TRABAJO"
+          title="Empresas con las que trabajamos"
+          description="Organizaciones con las que ya implementamos procesos comerciales, marketing y tecnología."
+          maxWidth={700}
+          className="mb-[40px]"
+        />
+        <ClientsCarousel projects={clientProjects} />
       </section>
 
       {/* ── E-Book CTA (#1ee6de6) ────────────────────────────────────────── */}

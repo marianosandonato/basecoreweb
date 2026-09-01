@@ -3,6 +3,7 @@ import Image from "next/image";
 import BlogCarousel from "@/components/BlogCarousel";
 import Button from "@/components/Button";
 import CheckList from "@/components/CheckList";
+import ClientsCarousel from "@/components/ClientsCarousel";
 import ContactSection from "@/components/ContactSection";
 import MethodologyGrid, { type MethodologyStep } from "@/components/MethodologyGrid";
 import ProcessImageStack from "@/components/ProcessImageStack";
@@ -10,6 +11,7 @@ import SectionHeading from "@/components/SectionHeading";
 import ServiceCards from "@/components/ServiceCards";
 import TechnologyBlock from "@/components/TechnologyBlock";
 import { blogPosts } from "@/content/blog/posts";
+import { clientProjects } from "@/content/clients/projects";
 import { site } from "@/lib/site";
 import { PosventaIcon, PreventaIcon, VentaIcon } from "@/components/cycleIcons";
 import {
@@ -349,6 +351,19 @@ export default function HomePageEn() {
             <CheckList items={recruitingChecklist} size="md" />
           </div>
         </div>
+      </section>
+
+      {/* Companies we've worked with — mirrors the ES Home's block, see that
+          file for the note. */}
+      <section className="container-bc py-[70px] xl:py-[90px]">
+        <SectionHeading
+          eyebrow="OUR WORK"
+          title="Companies we've worked with"
+          description="Organizations where we've already implemented commercial processes, marketing and technology."
+          maxWidth={700}
+          className="mb-[40px]"
+        />
+        <ClientsCarousel projects={clientProjects} lang="en" />
       </section>
 
       {/* ── E-Book CTA ──────────────────────────────────────────────────── */}
