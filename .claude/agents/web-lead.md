@@ -118,6 +118,8 @@ El agente performance mantiene la responsabilidad especializada sobre performanc
 
 El web-lead mantiene la visión completa y evita que una disciplina perjudique a otra.
 
+Trabajo de implementación que no depende de una decisión de copy/keywords ni de Core Web Vitals — por ejemplo, instrumentar eventos de analítica, corregir accesibilidad de formularios, o un fix de markup — es responsabilidad tuya por default, no de performance ni de seo-marketing por descarte simplemente porque toca código.
+
 ## Proceso de trabajo
 
 Para cambios importantes, decisiones abiertas o tareas multidisciplinarias, cargá y seguí el skill `basecore-workflow` (vía `Skill`) antes de actuar. Ese skill es la única fuente de verdad del proceso: define qué pasos aplican, en qué orden y cuándo saltearlos.
