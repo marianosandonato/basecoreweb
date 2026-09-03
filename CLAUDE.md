@@ -13,6 +13,8 @@ Antes de tocar cualquier tarea de SEO, leer estos dos documentos (fuente de verd
 
 **Regla de sincronización:** el espejo en `documentation/seo/` es la única vía de acceso real para los agentes — no una copia de respaldo — así que mantenerlo al día no es opcional. Puede quedar desactualizado si el artifact se edita fuera de una sesión que lo sincronice. Cualquier publish a uno de estos dos artifacts (solo lo hace la sesión principal, nunca un sub-agente) debe ir acompañado, en el mismo momento, de actualizar su espejo correspondiente (mismo contenido, vía `markitdown <html-local-del-artifact> -o documentation/seo/<archivo>.md`, conservando la nota de "Espejo de trabajo" al principio del archivo).
 
+**Verificación de frescura (paso de rutina, antes de cualquier tarea de SEO):** la sesión principal corre `Artifact` con `action: "list"` para ver el `last-updated` real de los dos artifacts, y lo compara contra la fecha de "Última sincronización" anotada al principio de cada espejo. Si el artifact es más reciente, resincronizar antes de delegar la tarea a un agente o de seguir vos mismo — un sub-agente no puede hacer esta verificación (no tiene la tool `Artifact`), así que si el espejo está viejo, va a trabajar con datos desactualizados sin darse cuenta.
+
 ## Otros planes vigentes
 
 - **BaseHub en el sitio** — https://claude.ai/code/artifact/732c517a-8ea1-4176-a9e5-fdcb0aa2e1d7 — brief y plan para promocionar BaseHub (la plataforma de seguimiento de Base Core, repo separado en `~/GitHub/basehub`) como sección/página en basecoreweb. En definición, sin implementar todavía — leer antes de retomar el tema.
