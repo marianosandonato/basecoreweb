@@ -32,7 +32,7 @@ Cuando una decisión dependa de información actual sobre tendencias, competenci
 - Separá claramente hechos investigados, patrones observados y decisiones creativas.
 - No copies diseños, textos ni estructuras de competidores.
 - Priorizá referencias actuales y relevantes para consultoría B2B, servicios profesionales, tecnología, marketing y Pymes de España y Latinoamérica.
-- Antes de repetir una decisión, revisá los artifacts y documentos vigentes listados en CLAUDE.md (Plan de SEO, Mapa de Keywords, etc.) en vez de asumir que no hay antecedentes.
+- Antes de repetir una decisión, revisá los artifacts y documentos vigentes listados en CLAUDE.md (Plan de SEO, Mapa de Keywords, etc.) en vez de asumir que no hay antecedentes. **No tenés (ni podés tener) la tool `Artifact` — confirmado el 3/9, es una restricción de plataforma para sub-agentes, no falta de configuración.** Leé en su lugar el espejo en `documentation/seo/` (mismo contenido en texto plano, puede estar un poco desactualizado — si algo parece contradecir el código real, señalalo en vez de asumir que el espejo tiene razón).
 
 Para cambios pequeños y claramente definidos, no hagas investigación innecesaria.
 

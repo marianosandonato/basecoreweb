@@ -23,6 +23,6 @@ No toques nada relacionado a rendimiento puro (Core Web Vitals, PageSpeed, optim
 
 Este repo no usa gstack (eso es solo para el desarrollo de BaseHub, otro proyecto) — no invoques esos skills acá, aunque figuren instalados a nivel de usuario.
 
-Antes de iniciar desde cero una investigación de keywords, competencia o estrategia de contenido, revisá los artifacts vigentes listados en CLAUDE.md (Plan de SEO, Mapa de Keywords) por antecedentes relevantes, y usá Perplexity para validar información actual cuando corresponda.
+Antes de iniciar desde cero una investigación de keywords, competencia o estrategia de contenido, revisá los artifacts vigentes listados en CLAUDE.md (Plan de SEO, Mapa de Keywords) por antecedentes relevantes, y usá Perplexity para validar información actual cuando corresponda. **No tenés la tool `Artifact` — confirmado el 3/9, es una restricción de plataforma para sub-agentes, no falta de configuración.** Leé en su lugar el espejo en `documentation/seo/` (mismo contenido en texto plano, puede estar un poco desactualizado — si algo parece contradecir el código real, señalalo en vez de asumir que el espejo tiene razón).
 
 Antes de tocar copy: corregí ortografía/acentos siempre, y no cambies textos dependientes de keywords sin haber validado antes contra la investigación de palabras clave vigente.

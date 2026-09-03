@@ -6,10 +6,12 @@ MarkItDown (Microsoft, instalado vía pipx) está disponible como comando `marki
 
 ## Documentos SEO vigentes
 
-Antes de tocar cualquier tarea de SEO, leer estos dos artifacts (fuente de verdad del estado actual, no reconstruir de memoria):
+Antes de tocar cualquier tarea de SEO, leer estos dos documentos (fuente de verdad del estado actual, no reconstruir de memoria):
 
-- **Plan de SEO de Base Core** — https://claude.ai/code/artifact/f6230fde-8996-4d03-ae8a-4211f111ed90 — plan de fases (1 a 5), qué está Hecho/Pendiente/Bloqueado en cada una.
-- **Mapa de Keywords Basecore** — https://claude.ai/code/artifact/2fb2b4bf-cd0c-41a4-a152-05098b5423f9 — research completo de Google Keyword Planner (ES/AR/EN) que respalda las decisiones de keywords de la Fase 3.1/3.5.
+- **Plan de SEO de Base Core** — plan de fases (1 a 7), qué está Hecho/Pendiente/Bloqueado en cada una. Artifact (fuente de verdad, solo accesible desde la sesión principal — confirmado el 3/9 que la tool `Artifact` no está disponible para sub-agentes, es una restricción de plataforma): https://claude.ai/code/artifact/f6230fde-8996-4d03-ae8a-4211f111ed90 — los agentes (`web-lead`, `seo-marketing`, `performance`) deben leer en su lugar el espejo: `documentation/seo/plan-seo.md`.
+- **Mapa de Keywords Basecore** — research completo de Google Keyword Planner (ES/AR/EN) que respalda las decisiones de keywords de la Fase 3.1/3.5. Artifact (fuente de verdad, mismo límite de acceso): https://claude.ai/code/artifact/2fb2b4bf-cd0c-41a4-a152-05098b5423f9 — espejo: `documentation/seo/mapa-keywords.md`.
+
+**Regla de sincronización:** el espejo en `documentation/seo/` es la única vía de acceso real para los agentes — no una copia de respaldo — así que mantenerlo al día no es opcional. Puede quedar desactualizado si el artifact se edita fuera de una sesión que lo sincronice. Cualquier publish a uno de estos dos artifacts (solo lo hace la sesión principal, nunca un sub-agente) debe ir acompañado, en el mismo momento, de actualizar su espejo correspondiente (mismo contenido, vía `markitdown <html-local-del-artifact> -o documentation/seo/<archivo>.md`, conservando la nota de "Espejo de trabajo" al principio del archivo).
 
 ## Otros planes vigentes
 
