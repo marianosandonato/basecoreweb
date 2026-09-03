@@ -18,6 +18,12 @@ export const metadata: Metadata = {
     canonical: "/basehub",
     languages: { es: "/basehub", en: "/en/basehub", "x-default": "/basehub" },
   },
+  openGraph: {
+    locale: "es_ES",
+    title,
+    description,
+    images: ["/images/basehub-dashboard.webp"],
+  },
 };
 
 /** The 5 features that exist today in BaseHub (Fases 1-3) — no more, no less. */

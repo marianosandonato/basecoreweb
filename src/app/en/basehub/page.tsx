@@ -6,6 +6,7 @@ import ContactSection from "@/components/ContactSection";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceJsonLd from "@/components/ServiceJsonLd";
+import { site } from "@/lib/site";
 
 const title = "BaseHub: Project Management Platform";
 const description =
@@ -17,6 +18,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/en/basehub",
     languages: { es: "/basehub", en: "/en/basehub", "x-default": "/basehub" },
+  },
+  openGraph: {
+    locale: "en_US",
+    url: `${site.url}/en/basehub`,
+    title,
+    description,
+    images: ["/images/basehub-dashboard.webp"],
   },
 };
 
