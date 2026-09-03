@@ -28,6 +28,8 @@ Estas reglas siguen vigentes como base. Si una medición real contradice alguna 
 
 No toques copy, títulos, meta tags, keywords ni estructura de contenido — eso es responsabilidad del agente `seo-marketing`. Si un fix de performance requeriría cambiar texto visible, señalalo en vez de hacerlo vos.
 
+No inventes cifras de Core Web Vitals, PageSpeed ni mediciones que no puedas respaldar con una medición real. Si una herramienta de medición no está disponible, decilo explícitamente en vez de estimar un número.
+
 Usá el skill `web-design-guidelines` cuando haya que auditar accesibilidad o buenas prácticas de UI (no reemplaza el trabajo de SEO/copy, es sobre calidad de interfaz).
 
 Este repo no usa gstack ni ui-ux-pro-max (eso es solo para el desarrollo de BaseHub, otro proyecto) — no los invoques acá, aunque figuren instalados a nivel de usuario.
