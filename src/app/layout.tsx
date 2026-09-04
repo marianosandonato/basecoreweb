@@ -23,10 +23,19 @@ const gilmer = localFont({
   ],
 });
 
-/** Founder signature in the contact section only. */
+/**
+ * Founder signature, rendered by the ContactSection/EbookSection components
+ * (Home, marketing, tecnologia, ebook, basehub, contacto -- not on every
+ * route, and always below the fold). `preload: false` because next/font/
+ * local preloads every font declared in the root layout on every route by
+ * default; eager-loading this one everywhere just competes with the hero
+ * image for early bandwidth. It still loads normally via CSS wherever it's
+ * used.
+ */
 const reey = localFont({
   variable: "--font-signature",
   display: "swap",
+  preload: false,
   src: [{ path: "../fonts/reey-regular.woff2", weight: "400", style: "normal" }],
 });
 
@@ -53,10 +62,18 @@ const montserrat = localFont({
   src: [{ path: "../fonts/Montserrat-Variable.woff2", weight: "200 600", style: "normal" }],
 });
 
-/** Flip-box titles on the service cycle pages. */
+/**
+ * Flip-box titles on the /preventa, /venta, /posventa cycle pages (and their
+ * /en equivalents), plus a couple of below-the-fold section labels ("Marketing"
+ * / "Tecnología") in AboutLogoBlock and TechnologyBlock. Not used on every
+ * page -- and never above the fold where it is used -- so same `preload:
+ * false` rationale as `reey` above: eager-loading it on every route just
+ * competes with the hero image for early bandwidth.
+ */
 const sora = localFont({
   variable: "--font-sora",
   display: "swap",
+  preload: false,
   src: [{ path: "../fonts/Sora-200.woff2", weight: "200", style: "normal" }],
 });
 
