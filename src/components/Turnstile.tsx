@@ -44,18 +44,47 @@ export default function Turnstile({
 
   useEffect(() => {
     let cancelled = false;
+    const container = containerRef.current;
+    if (!container) return;
 
-    loadTurnstileScript().then(() => {
-      if (cancelled || !containerRef.current || !window.turnstile) return;
-      widgetIdRef.current = window.turnstile.render(containerRef.current, {
-        sitekey: siteKey,
-        callback: onVerify,
-        "expired-callback": () => onExpire?.(),
+    function mountWidget() {
+      loadTurnstileScript().then(() => {
+        if (cancelled || !containerRef.current || !window.turnstile) return;
+        widgetIdRef.current = window.turnstile.render(containerRef.current, {
+          sitekey: siteKey,
+          callback: onVerify,
+          "expired-callback": () => onExpire?.(),
+        });
       });
-    });
+    }
+
+    // Defer fetching/executing the Turnstile script (and its CPU cost) until
+    // the form is actually about to be seen, instead of on every page that
+    // mounts a form regardless of whether the visitor scrolls to it.
+    if (typeof IntersectionObserver === "undefined") {
+      mountWidget();
+      return () => {
+        cancelled = true;
+        if (widgetIdRef.current && window.turnstile) {
+          window.turnstile.remove(widgetIdRef.current);
+        }
+      };
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          observer.disconnect();
+          mountWidget();
+        }
+      },
+      { rootMargin: "200px" },
+    );
+    observer.observe(container);
 
     return () => {
       cancelled = true;
+      observer.disconnect();
       if (widgetIdRef.current && window.turnstile) {
         window.turnstile.remove(widgetIdRef.current);
       }
