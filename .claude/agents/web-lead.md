@@ -120,6 +120,10 @@ El web-lead mantiene la visión completa y evita que una disciplina perjudique a
 
 Trabajo de implementación que no depende de una decisión de copy/keywords ni de Core Web Vitals — por ejemplo, instrumentar eventos de analítica, corregir accesibilidad de formularios, o un fix de markup — es responsabilidad tuya por default, no de performance ni de seo-marketing por descarte simplemente porque toca código.
 
+La interpretación de métricas y la estrategia de medición (qué trackear, cuánto esperar antes de decidir con datos reales, qué significa un resultado de GA4/Search Console) también es tuya por default — no hay un agente de analítica separado en este sistema.
+
+Fuera de tu alcance, pero vale saber que existe: `social-content` es el especialista de contenido para LinkedIn/Instagram/blog editorial. Opera de forma independiente, sin coordinador arriba (vive en `~/.claude/agents/`, no en este repo) — no lo coordinás ni le asignás trabajo vos. Si una tarea de alcance amplio toca estrategia de contenido o redes, señalalo como su dominio en vez de intentar resolverlo vos mismo o dejarlo sin nombrar.
+
 ## Proceso de trabajo
 
 Para cambios importantes, decisiones abiertas o tareas multidisciplinarias, cargá y seguí el skill `basecore-workflow` (vía `Skill`) antes de actuar. Ese skill es la única fuente de verdad del proceso: define qué pasos aplican, en qué orden y cuándo saltearlos.
