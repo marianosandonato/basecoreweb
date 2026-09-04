@@ -32,7 +32,16 @@ export default function ClientCard({
           src={project.logo}
           alt={project.logoAlt[lang]}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 380px"
+          /* Card's actual rendered width inside ClientsCarousel, measured live at
+             each breakpoint (not guessed): 1-col mobile ~= 100vw - 237px, 2-col
+             sm/tablet ~= 50vw - 134px (offsets come from the region's px-[95px]
+             gutters + gap), 3-col dt caps at 305px once the 1200px container
+             maxes out. The previous 100vw/50vw/380px values assumed the logo
+             filled the viewport/half-viewport, which it never does in this
+             horizontally-scrolling carousel -- that mismatch is what caused
+             next/image to fetch oversized srcset candidates (PSI "Improve
+             image delivery", ~61 KiB on the client logos). */
+          sizes="(max-width: 639px) calc(100vw - 237px), (max-width: 1024px) calc(50vw - 134px), 305px"
           className="object-contain p-[24px] transition-transform duration-300 group-hover:scale-105"
         />
       </div>
