@@ -13,7 +13,7 @@ basecoresales.com · auditoría & hoja de ruta
 
 Diagnóstico completo del estado actual del sitio (código real, revisado hoy) y plan paso a paso para posicionarlo en buscadores. Cada tarea indica su estado, el texto o código exacto involucrado, y para qué sirve.
 
-37 / 55 tareas · +2 en progreso (2.3, 4.4) · +2 bloqueadas (GBP, 4.5)
+38 / 55 tareas · +1 en progreso (4.4) · +2 bloqueadas (GBP, 4.5)
 
 [Diagnóstico](#diagnostico)
 [Fase 1 · Técnico](#fase1)
@@ -369,7 +369,7 @@ Propiedad de Dominio verificada por DNS (Cloudflare) — hoy es la única propie
 
 2.3 — Medir conversiones clave
 
-En progreso 4/9
+Hecho · evento clave marcado 4/9
 
 Configurar como eventos en GA4: envío del formulario de `/contacto` y descarga del e-book.
 
@@ -377,9 +377,9 @@ Configurar como eventos en GA4: envío del formulario de `/contacto` y descarga 
 
 **Primer intento (4/9, mañana) — bloqueado por falta de datos, no de acceso:** Mariano entró a GA4 Admin → Eventos. `file_download` ya figuraba como evento clave (viene de la medición mejorada estándar de GA4 — no confirma que el código nuevo haya corrido, cualquier descarga de PDF ya lo disparaba antes). `generate_lead` no aparecía en ningún lado: ni en eventos clave ni en los 8 eventos recientes de los últimos 28 días, porque todavía no se había disparado ni una vez en producción.
 
-**Confirmado en Tiempo real (4/9, más tarde):** Mariano completó 2 envíos reales (con captcha real) en el sitio en vivo y `generate_lead` apareció en Informes → Tiempo real — confirma que el código funciona en producción, tal como estaba escrito. Horas después todavía no aparece en Admin → Eventos ni en el informe estándar de Eventos. Esto es esperable, no un problema: a diferencia de Tiempo real (instantáneo), esas dos vistas se arman sobre datos procesados, y para un evento custom completamente nuevo el procesamiento puede tardar hasta 24-48hs la primera vez.
+**Confirmado en Tiempo real (4/9, más tarde):** Mariano completó 2 envíos reales (con captcha real) en el sitio en vivo y `generate_lead` apareció en Informes → Tiempo real — confirma que el código funciona en producción, tal como estaba escrito.
 
-**Próximo paso, no técnico:** revisar de nuevo Admin → Eventos mañana (5/9). Si para entonces sigue sin aparecer, ahí sí conviene investigar más — hasta ahora no hay ningún indicio de que el código o el evento estén mal. Recién cuando aparezca ahí se puede marcar `generate_lead` como evento clave — no hay credenciales de la GA4 Admin API en este repo (a diferencia de Search Console, ver 7.5), así que ese paso lo sigue haciendo una persona con acceso a la consola. Parte de la resolución de la [Auditoría General](https://claude.ai/code/artifact/eadc7b1e-9133-4676-8d57-ee30009f8826) (tema 1, el de mayor prioridad de todo el documento).
+**Cerrado (4/9, mismo día):** Mariano marcó `generate_lead` como evento clave en GA4 Admin → Eventos, junto a `file_download`. Las dos conversiones que importan (envío del formulario de contacto y descarga del e-book) ya están medidas como eventos clave. Parte de la resolución de la [Auditoría General](https://claude.ai/code/artifact/eadc7b1e-9133-4676-8d57-ee30009f8826) (tema 1, el de mayor prioridad de todo el documento).
 
 **Para qué sirve:** saber no solo cuánta gente entra, sino cuánta efectivamente deja sus datos o se interesa — la métrica que realmente importa para un negocio de consultoría.
 
@@ -940,7 +940,7 @@ Documentado por `performance` en el Test 3 (Performance Web), señalado como "fu
 
 ### Por dónde seguir
 
-**Fase 1 (técnica) mayormente cerrada, con 2 de los 4 hallazgos del 3/9 ya resueltos el 4/9** (1.17 H1 de Home y 1.19 formularios sin label, ambos vía la [Auditoría General](https://claude.ai/code/artifact/eadc7b1e-9133-4676-8d57-ee30009f8826)) — quedan 1.18 (`lang` incorrecto en `/en`, requiere spike de Next.js 16) y 1.20 (housekeeping menor), ninguno bloqueante. Aparte de eso, sigue incluyendo la vuelta a fondo de rendimiento, accesibilidad y el bloqueo de Cloudflare a bots de IA que nadie sabía que existía (1.5, 1.14, 1.15, 1.16). PageSpeed hoy: Accessibility, Best Practices y SEO en 100/100 en mobile y desktop; Performance en 95/99. Fase 2 (medición) con 2.3 en progreso (código listo, falta marcar los eventos como clave en la consola de GA4 — ver 2.3). Not-a-Numb3r ya no aparece en ningún lugar del sitio (3.2).
+**Fase 1 (técnica) mayormente cerrada, con 2 de los 4 hallazgos del 3/9 ya resueltos el 4/9** (1.17 H1 de Home y 1.19 formularios sin label, ambos vía la [Auditoría General](https://claude.ai/code/artifact/eadc7b1e-9133-4676-8d57-ee30009f8826)) — quedan 1.18 (`lang` incorrecto en `/en`, requiere spike de Next.js 16) y 1.20 (housekeeping menor), ninguno bloqueante. Aparte de eso, sigue incluyendo la vuelta a fondo de rendimiento, accesibilidad y el bloqueo de Cloudflare a bots de IA que nadie sabía que existía (1.5, 1.14, 1.15, 1.16). PageSpeed hoy: Accessibility, Best Practices y SEO en 100/100 en mobile y desktop; Performance en 95/99. Fase 2 (medición) cerrada: 2.3 quedó resuelta el 4/9, con `generate_lead` y `file_download` marcados como eventos clave en GA4. Not-a-Numb3r ya no aparece en ningún lugar del sitio (3.2).
 
 Google Business Profile (4.1) quedó **bloqueado**, no solo pendiente: la verificación fue rechazada y Mariano ya no está en Buenos Aires para regrabar el video que Google exige en vivo. Necesita una decisión de enfoque antes de reintentar, no solo tiempo.
 
@@ -951,11 +951,11 @@ Google Business Profile (4.1) quedó **bloqueado**, no solo pendiente: la verifi
 **Fase 6 (buscadores de IA) cerrada el 31/8:** las 5 tareas resueltas — bots de IA sin bloquear (6.1), schema BlogPosting con autoría (6.2), firma visible del autor en cada post (6.3), y `/llms.txt` generado dinámicamente desde `blogPosts` (6.4). Solo queda 6.5 (seguimiento manual mensual de visibilidad en IA), que recién tiene sentido arrancar ahora que hay 6 posts publicados para probar en ChatGPT/Perplexity/Google.
 
 1. **Hecho el 4/9, vía la [Auditoría General](https://claude.ai/code/artifact/eadc7b1e-9133-4676-8d57-ee30009f8826) (Test 4 del Plan de Agentes):** código de 2.3 (eventos GA4 `generate_lead`/`file_download`), 1.17 (H1) y 1.19 (labels de formulario) resueltos y pusheados a `master`. También se reposicionó la sección de logos de clientes (4.4) y se corrigió `.agents/product-marketing.md`, que decía por error que no había prueba social publicada.
-2. **Actualizado 4/9:** `file_download` ya está marcado como evento clave en GA4. `generate_lead` se confirmó funcionando en Tiempo real (2 envíos reales completados por Mariano) pero todavía no aparece en Admin → Eventos — esperable, GA4 puede tardar hasta 24-48hs en procesar un evento custom nuevo por primera vez. Revisar de nuevo el 5/9; recién ahí se marca como evento clave — ver 2.3.
+2. **Cerrado 4/9:** `generate_lead` y `file_download` ya están marcados como eventos clave en GA4 — ver 2.3.
 3. Arrancar el seguimiento mensual de visibilidad en IA (6.5) — sin herramientas pagas, probar 5-10 búsquedas reales y anotar si Base Core aparece citado.
 4. Decidir el enfoque de Google Business Profile (4.1) antes de invertir tiempo en un segundo intento de verificación.
 5. Primeros backlinks (4.3) siguen sin arrancar. De 4.4 solo falta el testimonio corto y la reseña en Google Business Profile — la sección en el sitio ya está (ver 4.4).
-6. Mantenimiento continuo (5.1): revisión mensual de posiciones/tráfico recién puede arrancar cuando 2.3 quede 100% cerrado (falta el paso manual en GA4) — ya tiene la mitad del trabajo hecha con `scripts/seo/gsc.py` (ver 7.5) para el lado de Search Console.
+6. Mantenimiento continuo (5.1): con 2.3 ya cerrado, puede arrancar la revisión mensual de posiciones/tráfico — ya tiene la mitad del trabajo hecha con `scripts/seo/gsc.py` (ver 7.5) para el lado de Search Console.
 7. Quedan 1.18 (`lang` en `/en`, requiere spike) y 1.20 (housekeeping) de los hallazgos técnicos del 3/9, más 3.7-3.9 de contenido (copy ya confirmado por `seo-marketing`) — documentados y listos para implementar cuando corresponda.
 8. **Nuevo el 4/9:** 4.5 (política de privacidad/GDPR) y 5.3 (gate del e-book) se trasladaron acá desde la [Auditoría General](https://claude.ai/code/artifact/eadc7b1e-9133-4676-8d57-ee30009f8826), que dejó de repetir su detalle — 4.5 bloqueado por expertise legal externa, 5.3 bloqueado hasta tener datos reales de 2.3.
 9. **Nuevo el 4/9, encontrados auditando sincronía entre documentos:** 3.10 (H1 de `/ebook` decidido en el Mapa de Keywords el 30/8, nunca implementado) y 7.9 (mismo bug de `<br/>` que 1.17, replicado en `/basehub`, señalado por `performance` pero nunca trasladado al plan) — ninguno de los dos estaba trackeado acá hasta hoy pese a estar ya documentados en otro lado.
