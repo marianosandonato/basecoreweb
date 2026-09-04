@@ -13,7 +13,7 @@ basecoresales.com · auditoría & hoja de ruta
 
 Diagnóstico completo del estado actual del sitio (código real, revisado hoy) y plan paso a paso para posicionarlo en buscadores. Cada tarea indica su estado, el texto o código exacto involucrado, y para qué sirve.
 
-38 / 55 tareas · +1 en progreso (4.4) · +2 bloqueadas (GBP, 4.5)
+37 / 57 tareas · +1 en progreso (4.4) · +2 bloqueadas (GBP, 4.5)
 
 [Diagnóstico](#diagnostico)
 [Fase 1 · Técnico](#fase1)
@@ -258,7 +258,7 @@ Cambio aplicado en src/lib/site.ts
 
 1.14 — Core Web Vitals / Rendimiento (PageSpeed Insights)
 
-Hecho · Mobile 95 · Desktop 99
+Regresión detectada 4/9 · Mobile 57-60
 
 Auditoría completa el 28-29/8 con varias vueltas de PageSpeed. El LCP en mobile llegó a estar en 8.6s en la primera medición — la causa real fue la competencia de imágenes con prioridad alta descripta en 1.7, no algo estructural del sitio. Durante el proceso, los números de mobile saltaron mucho entre corridas (3.2s, 7.9s, 11.3s, 2.8s) — se confirmó que era ruido de la simulación de red lenta de Lighthouse combinado con estar testeando a veces la versión sin `www` (que redirige, sumando ~1.35s reales antes de arrancar a cargar). Con la URL correcta y todo corregido, el resultado quedó estable.
 
@@ -271,6 +271,8 @@ LCP            2.8s      0.9s
 CLS              0         0
 TBT            60ms      20ms
 ```
+
+**Regresión detectada 4/9, vía Test 5 del Plan de Agentes:** remedido con Lighthouse CLI real (PSI sin cuota disponible) contra `www.basecoresales.com`, 3 corridas consistentes. Los números de arriba ya no están vigentes: **Mobile Performance cayó a 57-60, LCP mobile a 10.3-12.9s** (era 2.8s). Desktop bajó menos: 99→93, LCP 0.9s→1.7s. CLS se mantuvo en 0 — los carruseles nuevos (logos, blog) quedan descartados como causa. Causa con evidencia: ~1.9s de trabajo de CPU compartido entre páginas antes de pintar el hero, con Cloudflare Turnstile (carga en las 12 páginas con formulario, aunque nadie llegue a verlo) y GTM como los componentes con más peso confirmado — sin cifra limpia de cuánto pesa cada uno por separado. Nada de esto se corrigió todavía, a pedido explícito de no tocar producción. Detalle técnico completo y plan de acción propuesto (sin aplicar) en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929), sección 01/03/04.
 
 **Para qué sirve:** Core Web Vitals es un factor de posicionamiento directo desde 2021, y además es la experiencia real de cualquiera que entra desde el celular con mala señal — justo el escenario más común para alguien buscando "consultoría comercial" desde el traslado o el trabajo.
 
@@ -338,6 +340,14 @@ Pendiente · bajo esfuerzo, ninguno bloqueante
 Tres hallazgos de bajo impacto agrupados para no inflar el plan — detalle completo en `SEO-AUDIT.md`: (1) `sitemap.ts` pone `lastModified: new Date()` en las 32 URLs en cada request, en vez de una fecha real por página — Google puede terminar ignorando la señal; (2) `/blog`, `/en/blog`, `/tecnologia` y `/en/tecnologia` no tienen imagen Open Graph propia, a diferencia del resto del sitio; (3) `http://basecoresales.com` (sin `www`) hace un redirect de doble salto en vez de uno — configuración de Cloudflare/DNS, no código, a evaluar por `performance`.
 
 **Para qué sirve:** higiene técnica de bajo esfuerzo — quick wins para cuando se toque cualquiera de esas áreas, sin necesidad de una tanda de trabajo dedicada.
+
+1.21 — Este documento desincronizado del código real en Venta y Contacto
+
+Pendiente · encontrado 4/9, vía Test 5
+
+Auditado por `seo-marketing` comparando el texto exacto de 1.1/1.2/1.6 contra el código real y `git log -p`. Dos casos confirmados, además del que ya se sabía: **Venta** (este documento dice title "Proceso de Ventas para Pymes" / H1 "¿Buscas mejorar tu proceso de ventas?"; producción real desde el 30/8 dice "Gestión Comercial para Pymes" / "¿Buscas mejorar tu gestión comercial?", meta sin "esquemas de compensación") y **Contacto** (este documento dice "Diagnóstico Comercial Gratuito"; producción real desde el **19/8** — más viejo que el caso de Venta — dice "Diagnóstico Gratuito", sin "Comercial"). Además, **Tecnología** nunca se agregó a la tabla de la sección 1.1 (no es contradicción, es un vacío: su title/meta/H1 se implementó el 30/8 vía 3.6, pero 1.1 no se actualizó para incluirla).
+
+**Para qué sirve:** cualquier decisión de copy que se tome apoyándose en el texto exacto de 1.1/1.2/1.6 hoy corre riesgo de partir de un estado que ya no existe. No se corrigió el texto de esas secciones todavía — queda pendiente resincronizarlas (Venta, Contacto, sumar Tecnología) y correr una pasada completa por si hay más casos, no solo estos tres.
 
 Fase 2
 
@@ -752,7 +762,17 @@ En progreso
 
 **Actualizado 4/9:** la sección en el sitio ya existe y no era nueva — 5 logos de clientes reales con link (Barfer, Don Seitán, W Profesional Hair Therapy, Grand Market Open, Street Market Norte) en "Empresas con las que trabajamos" (`ClientsCarousel`). Este ítem había quedado marcado "Pendiente" por error: la [Auditoría General](https://claude.ai/code/artifact/eadc7b1e-9133-4676-8d57-ee30009f8826) (tema 4) encontró que `.agents/product-marketing.md` también decía que no existían — las dos memorias estaban desactualizadas contra el código real. Se corrigió `product-marketing.md` y se reposicionó la sección más arriba en la Home (ES/EN, antes estaba entre Recruiting y el CTA del e-book, ahora justo después de "Nosotros") vía `seo-marketing`. Sigue pendiente lo que sí falta: un testimonio corto en texto y una reseña en Google Business Profile — ninguna de las dos existe todavía.
 
+**Precisado 4/9, vía Test 5:** `seo-marketing` auditó los 5 logos contra el Mapa de Keywords y encontró que la tensión "prueba social B2C vs. posicionamiento B2B" no es un problema de todo el sitio — está acotada a `/preventa`, la única página donde "B2B" es keyword primaria/secundaria validada con volumen real (el resto del sitio usa keywords agnósticas al tipo de cliente final del cliente de Base Core). Los 5 clientes actuales (mascotas, comida vegana, peluquería, mercados) no contradicen esa promesa, pero tampoco la refuerzan — ninguno está etiquetado como caso B2B. No recomienda reencuadrar el copy hacia "pymes de consumo y servicios" (esa frase no tiene research/volumen detrás, sería inventar una keyword nueva). Recomienda conseguir y etiquetar al menos un cliente con perfil B2B real antes de seguir escalando keywords B2B específicamente en `/preventa` — mismo testimonio pendiente de arriba, con este matiz de encaje agregado.
+
 **Para qué sirve:** combina SEO (Google valora reseñas en la ficha local) con el problema de fondo de credibilidad — es la señal más directa de "esto ya funcionó para alguien".
+
+4.6 — Decisión de canal social: no activar Instagram/LinkedIn de empresa
+
+Pendiente · decisión tomada 4/9, sin ejecutar
+
+Encontrado y resuelto en el mismo Test 5: Instagram (`@basecoresales`) tiene 41 seguidores, sigue a 7 cuentas y 1 solo post publicado — prácticamente inactivo, pese a que `/marketing` vende "Social Media" como servicio a los propios clientes. LinkedIn de empresa quedó bloqueado por authwall, sin poder confirmar actividad desde afuera. `social-content` verificó el dato por su cuenta y recomendó, con research citado (Edelman-LinkedIn B2B Thought Leadership Impact Report): **no activar ninguno de los dos todavía** — en consultoría B2B de alto involucramiento el comprador evalúa a la persona antes que al perfil corporativo, y un perfil casi vacío resta confianza en vez de sumarla. Recomienda en su lugar reforzar el LinkedIn **personal** de Mariano con contenido educativo, más sistematizar pedidos de referidos específicos (no genéricos) — no abrir ningún canal nuevo. Pauta paga queda para después: sin prueba social publicada todavía, sería gastar en algo que no convierte.
+
+**Para qué sirve:** cierra una decisión que venía flotando sin resolver (¿vale la pena reactivar redes?) con evidencia en vez de intuición — nada de esto se ejecutó todavía, sigue siendo una decisión de dirección, no un cambio de contenido.
 
 4.5 — Política de privacidad y consentimiento (GDPR/LOPDGDD)
 
@@ -960,6 +980,7 @@ Google Business Profile (4.1) quedó **bloqueado**, no solo pendiente: la verifi
 8. **Nuevo el 4/9:** 4.5 (política de privacidad/GDPR) y 5.3 (gate del e-book) se trasladaron acá desde la [Auditoría General](https://claude.ai/code/artifact/eadc7b1e-9133-4676-8d57-ee30009f8826), que dejó de repetir su detalle — 4.5 bloqueado por expertise legal externa, 5.3 bloqueado hasta tener datos reales de 2.3.
 9. **Nuevo el 4/9, encontrados auditando sincronía entre documentos:** 3.10 (H1 de `/ebook` decidido en el Mapa de Keywords el 30/8, nunca implementado) y 7.9 (mismo bug de `<br/>` que 1.17, replicado en `/basehub`, señalado por `performance` pero nunca trasladado al plan) — ninguno de los dos estaba trackeado acá hasta hoy pese a estar ya documentados en otro lado.
 10. **Nuevo el 4/9:** 5.4, re-correr la auditoría SEO/accesibilidad completa con `seo-marketing` — el prompt corregido (regla "no inventes") nunca se probó desde el arranque de una corrida real, y sirve de paso para validar los fixes de hoy y redescubrir 3.10/7.9 por cuenta propia.
+11. **Nuevo el 4/9, vía el Test 5 del [Plan de Agentes](https://claude.ai/code/artifact/73487516-6e4f-4227-a068-463ba9ea9939) (coordinación multi-especialista):** 1.14 pasa de "Hecho" a regresión detectada — Mobile Performance cayó de 95 a 57-60 (detalle en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929)). Se suma 1.21 (este documento desincronizado en Venta y Contacto, más el vacío de Tecnología en 1.1) y 4.6 (decisión de no activar Instagram/LinkedIn de empresa, reforzar el LinkedIn personal de Mariano). 4.4 se precisa: el hueco de prueba social B2B es específico de `/preventa`, no de todo el sitio. A pedido explícito de Mariano, nada de esto se implementó — todo queda como tarea pendiente, no como cambio aplicado.
 
 **Fase 7 (BaseHub) avanzada:** `/basehub` y `/en/basehub` están en producción desde el 1/9 con los mismos fundamentos on-page y el mismo enlazado interno que el resto del sitio (7.1, 7.2). El 3/9 se cerraron cinco tareas más: la validación de keywords confirmó el copy vigente sin necesidad de reescribirlo (7.3) y sumó BaseHub al Mapa de Keywords como noveno pilar (7.4); la imagen Open Graph propia ya usa la captura real del dashboard (7.6); y PageSpeed dio Accessibility/Best Practices/SEO en 100/100 y Desktop en 98, con el número de Performance mobile pendiente de una remedición limpia por ruido de infraestructura en la sesión de testeo, no por un problema real de la página (7.7). De paso se montó acceso propio a la API de Search Console (service account + `scripts/seo/gsc.py` en el repo) — con eso se detectó que `/basehub` en español nunca había sido rastreada (el sitemap llevaba desde el 31/8 sin releerse) y se resolvió: sitemap reenviado e indexación solicitada, Google ya la rastreó el mismo 3/9 y está en proceso normal de indexación (7.5, en curso — `/en/basehub` ya está indexada). Solo queda evaluar un post de blog sobre PMO — la keyword con mejor volumen/competencia de todo el research de BaseHub, ver 7.3 — como ángulo de contenido (7.8, no urgente).
 
