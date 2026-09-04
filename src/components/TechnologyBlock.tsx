@@ -110,10 +110,14 @@ export default function TechnologyBlock({
   const bullets = stage ? t.stageBullets[stage] : t.bullets;
 
   return (
-    <section
-      className="relative z-[1] bg-cover bg-center bg-no-repeat px-[15px] py-[70px] dt:bg-fixed dt:py-[110px]"
-      style={{ backgroundImage: "url(/images/TECNOLOGIA-BASECORE.jpg)" }}
-    >
+    <section className="relative z-[1] overflow-hidden px-[15px] py-[70px] dt:py-[110px]">
+      <Image
+        src="/images/TECNOLOGIA-BASECORE.jpg"
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover object-center"
+      />
       <span
         aria-hidden="true"
         className="absolute inset-0 bg-gradient-to-b from-navy/70 via-navy/55 to-navy/45"
