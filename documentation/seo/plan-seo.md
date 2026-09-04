@@ -13,7 +13,7 @@ basecoresales.com · auditoría & hoja de ruta
 
 Diagnóstico completo del estado actual del sitio (código real, revisado hoy) y plan paso a paso para posicionarlo en buscadores. Cada tarea indica su estado, el texto o código exacto involucrado, y para qué sirve.
 
-37 / 54 tareas · +2 en progreso (2.3, 4.4) · +2 bloqueadas (GBP, 4.5)
+37 / 55 tareas · +2 en progreso (2.3, 4.4) · +2 bloqueadas (GBP, 4.5)
 
 [Diagnóstico](#diagnostico)
 [Fase 1 · Técnico](#fase1)
@@ -792,6 +792,14 @@ Pendiente · bloqueado hasta tener datos reales de 2.3
 
 **Para qué sirve:** hipótesis razonable, no confirmada, de que agrega fricción evitable frente a lo que necesita un lead magnet de bajo compromiso — no se puede medir el efecto real sin 2.3 resuelto primero, ni antes ni después del cambio. Trasladado el 4/9 desde el tema 5 de la [Auditoría General](https://claude.ai/code/artifact/eadc7b1e-9133-4676-8d57-ee30009f8826) — dueño único de este dato de acá en adelante.
 
+5.4 — Re-correr auditoría SEO/accesibilidad con `seo-marketing`
+
+Pendiente · sin bloqueo
+
+La única auditoría SEO/on-page/accesibilidad completa que corrió el equipo de agentes fue el Test 2 del [Plan de Agentes](https://claude.ai/code/artifact/73487516-6e4f-4227-a068-463ba9ea9939) (3/9) — `seo-marketing.md` recibió su regla "no inventes keywords/volúmenes/resultados de clientes" recién *después* de esa corrida, así que nunca actuó con ella desde el arranque. Desde entonces el sitio cambió (GA4, labels de formulario, H1 de Home, logos de clientes) y aparecieron dos gaps (3.10, 7.9) que se encontraron por chequeo manual de sincronía entre documentos, no por el propio ciclo del agente.
+
+**Para qué sirve:** valida los fixes de hoy con mirada fresca y prompt ya corregido, y es la oportunidad de que el agente redescubra 3.10/7.9 por su cuenta como chequeo cruzado de su propio proceso. Sumado el 4/9, sin bloqueo — se puede correr cuando se decida.
+
 Fase 6
 
 ## Posicionamiento en buscadores de IA (AEO/GEO)
@@ -945,6 +953,7 @@ Google Business Profile (4.1) quedó **bloqueado**, no solo pendiente: la verifi
 7. Quedan 1.18 (`lang` en `/en`, requiere spike) y 1.20 (housekeeping) de los hallazgos técnicos del 3/9, más 3.7-3.9 de contenido (copy ya confirmado por `seo-marketing`) — documentados y listos para implementar cuando corresponda.
 8. **Nuevo el 4/9:** 4.5 (política de privacidad/GDPR) y 5.3 (gate del e-book) se trasladaron acá desde la [Auditoría General](https://claude.ai/code/artifact/eadc7b1e-9133-4676-8d57-ee30009f8826), que dejó de repetir su detalle — 4.5 bloqueado por expertise legal externa, 5.3 bloqueado hasta tener datos reales de 2.3.
 9. **Nuevo el 4/9, encontrados auditando sincronía entre documentos:** 3.10 (H1 de `/ebook` decidido en el Mapa de Keywords el 30/8, nunca implementado) y 7.9 (mismo bug de `<br/>` que 1.17, replicado en `/basehub`, señalado por `performance` pero nunca trasladado al plan) — ninguno de los dos estaba trackeado acá hasta hoy pese a estar ya documentados en otro lado.
+10. **Nuevo el 4/9:** 5.4, re-correr la auditoría SEO/accesibilidad completa con `seo-marketing` — el prompt corregido (regla "no inventes") nunca se probó desde el arranque de una corrida real, y sirve de paso para validar los fixes de hoy y redescubrir 3.10/7.9 por cuenta propia.
 
 **Fase 7 (BaseHub) avanzada:** `/basehub` y `/en/basehub` están en producción desde el 1/9 con los mismos fundamentos on-page y el mismo enlazado interno que el resto del sitio (7.1, 7.2). El 3/9 se cerraron cinco tareas más: la validación de keywords confirmó el copy vigente sin necesidad de reescribirlo (7.3) y sumó BaseHub al Mapa de Keywords como noveno pilar (7.4); la imagen Open Graph propia ya usa la captura real del dashboard (7.6); y PageSpeed dio Accessibility/Best Practices/SEO en 100/100 y Desktop en 98, con el número de Performance mobile pendiente de una remedición limpia por ruido de infraestructura en la sesión de testeo, no por un problema real de la página (7.7). De paso se montó acceso propio a la API de Search Console (service account + `scripts/seo/gsc.py` en el repo) — con eso se detectó que `/basehub` en español nunca había sido rastreada (el sitemap llevaba desde el 31/8 sin releerse) y se resolvió: sitemap reenviado e indexación solicitada, Google ya la rastreó el mismo 3/9 y está en proceso normal de indexación (7.5, en curso — `/en/basehub` ya está indexada). Solo queda evaluar un post de blog sobre PMO — la keyword con mejor volumen/competencia de todo el research de BaseHub, ver 7.3 — como ángulo de contenido (7.8, no urgente).
 
