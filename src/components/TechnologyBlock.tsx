@@ -115,7 +115,23 @@ export default function TechnologyBlock({
         src="/images/TECNOLOGIA-BASECORE.jpg"
         alt=""
         fill
-        sizes="100vw"
+        // The section really is full-bleed (no max-width truncates it), so
+        // `100vw` alone is accurate -- but Next's default `deviceSizes` jumps
+        // straight from 1200 to 1920 with no step between, so any 1x-DPR
+        // desktop viewport in the very common 1201-1920px range (every
+        // non-retina laptop/monitor at 1280/1440/1600/1920) was requesting
+        // the 1920w candidate. Measured locally (uncontaminated by the prod
+        // CDN's image cache): 1920w webp q75 = 262,906 bytes vs 1200w webp
+        // q75 = 127,786 bytes -- more than double for a photo the heavy
+        // navy/70-55-45% gradient overlay mostly hides anyway (pixel-diffed
+        // the two at full render size: mean channel delta 4/255, imperceptible).
+        // Capping the slot at 1200px for >=1200px viewports removes that 2x
+        // spike for 1x-DPR desktops without changing anything below 1200px
+        // (mobile keeps its already-verified 100vw/41KB result) and without
+        // changing anything for 2x-DPR desktops (they were already jumping to
+        // 2048/3840 before this and still do -- that part needs a
+        // deviceSizes/qualities change in next.config.ts, out of scope here).
+        sizes="(max-width: 1199px) 100vw, 1200px"
         className="object-cover object-center"
       />
       <span
