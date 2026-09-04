@@ -18,3 +18,8 @@ Antes de tocar cualquier tarea de SEO, leer estos dos documentos (fuente de verd
 ## Otros planes vigentes
 
 - **BaseHub en el sitio** — https://claude.ai/code/artifact/732c517a-8ea1-4176-a9e5-fdcb0aa2e1d7 — brief y plan para promocionar BaseHub (la plataforma de seguimiento de Base Core, repo separado en `~/GitHub/basehub`) como sección/página en basecoreweb. En definición, sin implementar todavía — leer antes de retomar el tema.
+
+## Documentos archivados (no consultar como fuente activa)
+
+- **Auditoría General** — https://claude.ai/code/artifact/eadc7b1e-9133-4676-8d57-ee30009f8826 — archivada el 4/9. Sus 7 temas quedaron resueltos, trasladados al Plan de SEO (puntos 2.3, 4.4, 4.5, 5.3) o descartados — no le queda ningún dato propio sin dueño en otro lado. No hace falta leerla para trabajo de SEO ni de conversión: el Plan de SEO es la única fuente viva de ese seguimiento. Queda como registro histórico del Test 4 del Plan de Agentes, no como tracker activo.
+- **Regla de fondo (Camino B), aplicable a futuros artifacts duplicados:** cuando un mismo dato/tarea aparece en más de un artifact, un solo documento queda como "dueño" con el detalle completo, y los demás solo linkean a él en vez de repetirlo — nunca dos copias completas del mismo hallazgo. Evita la duplicación silenciosa que causó el error de Barcelona (ver Plan de SEO 4.1) y permite archivar un documento entero una vez que no le queda contenido propio.
