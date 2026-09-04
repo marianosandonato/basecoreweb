@@ -675,9 +675,11 @@ Base Core tiene presencia física en Barcelona y Buenos Aires — eso es una ven
 
 Bloqueado · verificación rechazada
 
-**Alcance ajustado a un solo local:** Mariano opera desde Australia sin oficina propia en ninguna de las dos ciudades. Se descartó Barcelona (sin domicilio real que la respalde). Buenos Aires sí tiene respaldo legítimo: domicilio legal en CABA. Ficha creada como **negocio de zona de servicio** (sin dirección pública), categoría "Consultoría de negocios", zona de servicio CABA, teléfono `+54 11 5564-3798`.
+**Corregido 4/9:** la nota anterior de este punto ("se descartó Barcelona, sin domicilio real que la respalde") era incorrecta — la oficina de Barcelona **sí está activa**, confirmado por Mariano. El dato original nunca se validó bien, mismo tipo de problema de fondo que tuvo la ficha de Buenos Aires con Google (ver abajo): una afirmación se dio por cierta sin la verificación que le correspondía.
 
-Qué pasó (29/8)
+**Sinergia con Buenos Aires:** con las dos oficinas confirmadas activas, el mismo bloqueo que frenó el intento de CABA aplica en espejo a Barcelona — Mariano opera desde Australia, y Google Business Profile exige grabar el video de verificación en vivo desde el propio local, sin aceptar uno pregrabado. Intentar Barcelona hoy tiene el mismo problema de fondo que reintentar Buenos Aires: ninguno de los dos se puede verificar sin estar físicamente ahí. Ficha de Buenos Aires ya creada como **negocio de zona de servicio** (sin dirección pública), categoría "Consultoría de negocios", zona de servicio CABA, teléfono `+54 11 5564-3798` — Barcelona todavía no tiene ficha creada.
+
+Qué pasó con Buenos Aires (29/8)
 
 ```
 Video grabado el 21/8 en Buenos Aires. Google lo rechazó: pidió
@@ -692,9 +694,9 @@ link (no acepta subir uno grabado antes) — no se puede reintentar
 sin estar físicamente en Buenos Aires de nuevo.
 ```
 
-**Punto abierto real, no solo un trámite pendiente:** antes de reintentar hay que resolver si vale la pena — implica otro viaje a Buenos Aires, o evaluar si un negocio de zona de servicio sin domicilio propio en la ciudad es siquiera viable para Google en este formato. Vale la pena decidir el enfoque antes de invertir tiempo en otro intento.
+**Punto abierto real, no solo un trámite pendiente:** antes de reintentar cualquiera de las dos ciudades hay que resolver si vale la pena — implica un viaje físico a Barcelona o a Buenos Aires, o evaluar si conviene priorizar una sola. Vale la pena decidir el enfoque (y cuál ciudad primero) antes de invertir tiempo en un nuevo intento.
 
-**Para qué sirve:** es lo que hace aparecer en el mapa y en el bloque local de resultados cuando alguien busca "consultoría comercial" + Buenos Aires. También es una de las señales más fuertes de "negocio real" para alguien que investiga antes de contratar.
+**Para qué sirve:** es lo que hace aparecer en el mapa y en el bloque local de resultados cuando alguien busca "consultoría comercial" + la ciudad. También es una de las señales más fuertes de "negocio real" para alguien que investiga antes de contratar.
 
 4.2 — Consistencia de nombre/dirección/teléfono (NAP)
 
@@ -702,7 +704,7 @@ Hecho · teléfonos verificados
 
 Confirmado el 18/8: el teléfono de Argentina (`+54 11 5564-3798`) es el mismo en el sitio, Instagram, LinkedIn y Facebook. Sin acción pendiente en ese frente — quedó como recuperación de acceso a Instagram en el camino, ya resuelto.
 
-Punto abierto, menor: el sitio todavía dice "Barcelona - Bs.As." como ubicación, que ya no refleja la realidad (sin oficina en Barcelona, ver 4.1) — a revisar si conviene ajustarlo cuando se retome el copy del sitio.
+**Corregido 4/9:** "Barcelona - Bs.As." en `site.location` (header y footer) es correcto — la oficina de Barcelona está activa. La nota anterior de este punto, que la daba por desactualizada, se apoyaba en el error de 4.1 (ya corregido). Sin acción de código pendiente.
 
 **Para qué sirve:** Google usa esa coherencia como señal de confianza. Datos que no coinciden entre plataformas debilitan el SEO local.
 
