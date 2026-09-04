@@ -13,7 +13,7 @@ basecoresales.com · auditoría & hoja de ruta
 
 Diagnóstico completo del estado actual del sitio (código real, revisado hoy) y plan paso a paso para posicionarlo en buscadores. Cada tarea indica su estado, el texto o código exacto involucrado, y para qué sirve.
 
-37 / 50 tareas · +2 en progreso (2.3, 4.4) · +1 bloqueada (GBP)
+37 / 52 tareas · +2 en progreso (2.3, 4.4) · +2 bloqueadas (GBP, 4.5)
 
 [Diagnóstico](#diagnostico)
 [Fase 1 · Técnico](#fase1)
@@ -724,6 +724,18 @@ En progreso
 
 **Para qué sirve:** combina SEO (Google valora reseñas en la ficha local) con el problema de fondo de credibilidad — es la señal más directa de "esto ya funcionó para alguien".
 
+4.5 — Política de privacidad y consentimiento (GDPR/LOPDGDD)
+
+Bloqueado · requiere expertise legal externa
+
+Cero rutas legales en `src/app`, cero menciones a "privacidad/privacy/gdpr/rgpd/consentimiento" en `src/`, ningún checkbox de consentimiento en ningún formulario. Verificado por research externo (Lawwwing, Mariscal Abogados, Securiti): en España, GDPR (Art. 13) + LOPDGDD, supervisado por la AEPD, exige aviso de privacidad accesible y consentimiento inequívoco para procesar datos de formularios — no es una recomendación de buena práctica, es una obligación legal.
+
+**Propuesta:** página de privacidad + checkbox de consentimiento en ambos formularios. El texto legal necesita revisión de alguien con expertise real en protección de datos española/argentina antes de publicarse — ningún agente de este equipo tiene autoridad legal para redactarlo por su cuenta. Sin dependencias técnicas: puede avanzar en paralelo a todo lo demás.
+
+**Confirmado con el usuario (4/9):** nada por ahora, ni siquiera el andamiaje técnico (ruta + checkbox) — se retoma cuando haya texto legal listo o alguien con esa expertise lo revise.
+
+**Para qué sirve:** cierra un riesgo de cumplimiento real y suma una señal de confianza donde el negocio ya identificó su desafío de credibilidad (ver 4.4). Trasladado el 4/9 desde el tema 3 de la [Auditoría General](https://claude.ai/code/artifact/eadc7b1e-9133-4676-8d57-ee30009f8826) — dueño único de este dato de acá en adelante.
+
 Fase 5
 
 ## Mantenimiento continuo
@@ -745,6 +757,16 @@ Pendiente
 Sumar artículos nuevos al blog (Fase 3.4) y refrescar las páginas de servicio con datos o ejemplos nuevos cada pocos meses.
 
 **Para qué sirve:** Google favorece los sitios que se mantienen activos frente a los que quedan estáticos; además da motivos para que alguien vuelva a visitar el sitio.
+
+5.3 — Evaluar el gate del e-book y el campo WhatsApp obligatorio
+
+Pendiente · bloqueado hasta tener datos reales de 2.3
+
+`whatsapp` es `required` en ambos formularios; `email` no lo es. `EbookForm.tsx` exige nombre, empresa y WhatsApp para un e-book que se descarga client-side sin depender de esos datos para nada funcional. Además, `/ebook` abre con un headline de valor claro pero sin ningún adelanto visible de "qué incluye" antes del formulario. Ambos formularios muestran Cloudflare Turnstile visible antes de habilitar el envío — fricción menor pero real, más notoria en mobile (ver también [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929)).
+
+**Propuesta:** que `seo-marketing` decida qué campos son realmente necesarios, y evalúe si vale la pena A/B testear un gate más liviano (solo nombre + email) contra el actual, y sumar un adelanto de contenido en `/ebook`.
+
+**Para qué sirve:** hipótesis razonable, no confirmada, de que agrega fricción evitable frente a lo que necesita un lead magnet de bajo compromiso — no se puede medir el efecto real sin 2.3 resuelto primero, ni antes ni después del cambio. Trasladado el 4/9 desde el tema 5 de la [Auditoría General](https://claude.ai/code/artifact/eadc7b1e-9133-4676-8d57-ee30009f8826) — dueño único de este dato de acá en adelante.
 
 Fase 6
 
@@ -887,6 +909,7 @@ Google Business Profile (4.1) quedó **bloqueado**, no solo pendiente: la verifi
 5. Primeros backlinks (4.3) siguen sin arrancar. De 4.4 solo falta el testimonio corto y la reseña en Google Business Profile — la sección en el sitio ya está (ver 4.4).
 6. Mantenimiento continuo (5.1): revisión mensual de posiciones/tráfico recién puede arrancar cuando 2.3 quede 100% cerrado (falta el paso manual en GA4) — ya tiene la mitad del trabajo hecha con `scripts/seo/gsc.py` (ver 7.5) para el lado de Search Console.
 7. Quedan 1.18 (`lang` en `/en`, requiere spike) y 1.20 (housekeeping) de los hallazgos técnicos del 3/9, más 3.7-3.9 de contenido (copy ya confirmado por `seo-marketing`) — documentados y listos para implementar cuando corresponda.
+8. **Nuevo el 4/9:** 4.5 (política de privacidad/GDPR) y 5.3 (gate del e-book) se trasladaron acá desde la [Auditoría General](https://claude.ai/code/artifact/eadc7b1e-9133-4676-8d57-ee30009f8826), que dejó de repetir su detalle — 4.5 bloqueado por expertise legal externa, 5.3 bloqueado hasta tener datos reales de 2.3.
 
 **Fase 7 (BaseHub) avanzada:** `/basehub` y `/en/basehub` están en producción desde el 1/9 con los mismos fundamentos on-page y el mismo enlazado interno que el resto del sitio (7.1, 7.2). El 3/9 se cerraron cinco tareas más: la validación de keywords confirmó el copy vigente sin necesidad de reescribirlo (7.3) y sumó BaseHub al Mapa de Keywords como noveno pilar (7.4); la imagen Open Graph propia ya usa la captura real del dashboard (7.6); y PageSpeed dio Accessibility/Best Practices/SEO en 100/100 y Desktop en 98, con el número de Performance mobile pendiente de una remedición limpia por ruido de infraestructura en la sesión de testeo, no por un problema real de la página (7.7). De paso se montó acceso propio a la API de Search Console (service account + `scripts/seo/gsc.py` en el repo) — con eso se detectó que `/basehub` en español nunca había sido rastreada (el sitemap llevaba desde el 31/8 sin releerse) y se resolvió: sitemap reenviado e indexación solicitada, Google ya la rastreó el mismo 3/9 y está en proceso normal de indexación (7.5, en curso — `/en/basehub` ya está indexada). Solo queda evaluar un post de blog sobre PMO — la keyword con mejor volumen/competencia de todo el research de BaseHub, ver 7.3 — como ángulo de contenido (7.8, no urgente).
 
