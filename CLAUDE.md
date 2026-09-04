@@ -18,6 +18,7 @@ Antes de tocar cualquier tarea de SEO, leer estos dos documentos (fuente de verd
 ## Otros planes vigentes
 
 - **BaseHub en el sitio** — https://claude.ai/code/artifact/732c517a-8ea1-4176-a9e5-fdcb0aa2e1d7 — brief y plan para promocionar BaseHub (la plataforma de seguimiento de Base Core, repo separado en `~/GitHub/basehub`) como sección/página en basecoreweb. En definición, sin implementar todavía — leer antes de retomar el tema.
+- **Plan Social Media** — https://claude.ai/code/artifact/26b56c60-5c7c-4697-87ff-7b91b9c015bb — auditoría de `social-content` (4/9) con público, pilares y 3 direcciones de contenido para LinkedIn. En definición, ninguna dirección elegida todavía — leer antes de retomar el tema o de producir contenido de redes.
 
 ## Documentos archivados (no consultar como fuente activa)
 
