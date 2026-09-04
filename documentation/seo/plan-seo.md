@@ -13,7 +13,7 @@ basecoresales.com · auditoría & hoja de ruta
 
 Diagnóstico completo del estado actual del sitio (código real, revisado hoy) y plan paso a paso para posicionarlo en buscadores. Cada tarea indica su estado, el texto o código exacto involucrado, y para qué sirve.
 
-37 / 52 tareas · +2 en progreso (2.3, 4.4) · +2 bloqueadas (GBP, 4.5)
+37 / 54 tareas · +2 en progreso (2.3, 4.4) · +2 bloqueadas (GBP, 4.5)
 
 [Diagnóstico](#diagnostico)
 [Fase 1 · Técnico](#fase1)
@@ -665,6 +665,30 @@ EN (/en/blog):  Commercial Management & CRM Blog
 
 **Para qué sirve:** el title de `/blog` era lo único del sitio sin señal de keyword; FAQPage es una oportunidad real pendiente de contenido, no de código.
 
+3.10 — Implementar el H1 de /ebook y /en/ebook decidido en el Mapa de Keywords (Opción A)
+
+Pendiente · copy ya definido
+
+Encontrado el 4/9 auditando sincronía entre documentos: el Mapa de Keywords decidió el 30/8 (sección 10) que Contacto queda sin cambios, pero `/ebook` y `/en/ebook` implementan la Opción A — nunca se llevó a código. Verificado en `src/app/ebook/page.tsx` (línea 31) y `src/app/en/ebook/page.tsx` (línea 34): el H1 real sigue siendo la pregunta original.
+
+H1 actual vs. decidido
+
+```
+ES actual:    ¿Cuáles son los primeros pasos para un proceso comercial
+              efectivo y la importancia de definir un ciclo de preventa
+              para atraer nuevos clientes?
+ES decidido:  Guía gratis: cómo armar tu proceso de ventas desde cero
+
+EN actual:    What are the first steps to an effective sales process
+              and the importance of defining a presales cycle to
+              attract new clients?
+EN decidido:  Free guide: how to build a sales process from scratch
+```
+
+Botón de descarga sin cambios en ambos casos — solo se toca el H1.
+
+**Para qué sirve:** mantiene casi textual la frase ya validada por competencia, nombra el formato y dice "gratis/free" explícito — cierra el gap entre lo que ya se investigó y lo que el sitio realmente muestra. Detalle completo de la decisión: [Mapa de Keywords Basecore](https://claude.ai/code/artifact/2fb2b4bf-cd0c-41a4-a152-05098b5423f9), sección 10.
+
 Fase 4
 
 ## SEO local y autoridad
@@ -890,6 +914,16 @@ Mismo patrón que 3.4: un post sobre seguimiento/gestión de la implementación 
 
 **Para qué sirve:** mismo razonamiento que el resto del blog (3.4) — contenido útil construye autoridad frente a alguien que todavía no conoce BaseHub.
 
+7.9 — H1 de /basehub y /en/basehub rompe el texto plano (misma familia que 1.17)
+
+Pendiente · fix trivial, mismo patrón que 1.17
+
+Documentado por `performance` en el Test 3 (Performance Web), señalado como "fuera de scope" de ese test y nunca trasladado acá hasta hoy. Mismo bug que 1.17 (ya resuelto en Home) pero en el `SectionHeading` de `/basehub` y `/en/basehub`: `src/app/basehub/page.tsx` línea 100 y `src/app/en/basehub/page.tsx` línea 101 — el `<br />` pegado a la palabra siguiente da "Tu implementación, visiblede principio a fin" / "Your implementation, visiblefrom day one" en el texto plano.
+
+**Solución:** mismo fix que 1.17 — agregar un espacio real después del `<br />` en los 2 archivos, sin tocar el salto de línea visual.
+
+**Para qué sirve:** mismo razonamiento que 1.17 — el nombre accesible/textContent del heading no debe concatenar palabras. Detalle original del hallazgo: [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929).
+
 ### Por dónde seguir
 
 **Fase 1 (técnica) mayormente cerrada, con 2 de los 4 hallazgos del 3/9 ya resueltos el 4/9** (1.17 H1 de Home y 1.19 formularios sin label, ambos vía la [Auditoría General](https://claude.ai/code/artifact/eadc7b1e-9133-4676-8d57-ee30009f8826)) — quedan 1.18 (`lang` incorrecto en `/en`, requiere spike de Next.js 16) y 1.20 (housekeeping menor), ninguno bloqueante. Aparte de eso, sigue incluyendo la vuelta a fondo de rendimiento, accesibilidad y el bloqueo de Cloudflare a bots de IA que nadie sabía que existía (1.5, 1.14, 1.15, 1.16). PageSpeed hoy: Accessibility, Best Practices y SEO en 100/100 en mobile y desktop; Performance en 95/99. Fase 2 (medición) con 2.3 en progreso (código listo, falta marcar los eventos como clave en la consola de GA4 — ver 2.3). Not-a-Numb3r ya no aparece en ningún lugar del sitio (3.2).
@@ -910,6 +944,7 @@ Google Business Profile (4.1) quedó **bloqueado**, no solo pendiente: la verifi
 6. Mantenimiento continuo (5.1): revisión mensual de posiciones/tráfico recién puede arrancar cuando 2.3 quede 100% cerrado (falta el paso manual en GA4) — ya tiene la mitad del trabajo hecha con `scripts/seo/gsc.py` (ver 7.5) para el lado de Search Console.
 7. Quedan 1.18 (`lang` en `/en`, requiere spike) y 1.20 (housekeeping) de los hallazgos técnicos del 3/9, más 3.7-3.9 de contenido (copy ya confirmado por `seo-marketing`) — documentados y listos para implementar cuando corresponda.
 8. **Nuevo el 4/9:** 4.5 (política de privacidad/GDPR) y 5.3 (gate del e-book) se trasladaron acá desde la [Auditoría General](https://claude.ai/code/artifact/eadc7b1e-9133-4676-8d57-ee30009f8826), que dejó de repetir su detalle — 4.5 bloqueado por expertise legal externa, 5.3 bloqueado hasta tener datos reales de 2.3.
+9. **Nuevo el 4/9, encontrados auditando sincronía entre documentos:** 3.10 (H1 de `/ebook` decidido en el Mapa de Keywords el 30/8, nunca implementado) y 7.9 (mismo bug de `<br/>` que 1.17, replicado en `/basehub`, señalado por `performance` pero nunca trasladado al plan) — ninguno de los dos estaba trackeado acá hasta hoy pese a estar ya documentados en otro lado.
 
 **Fase 7 (BaseHub) avanzada:** `/basehub` y `/en/basehub` están en producción desde el 1/9 con los mismos fundamentos on-page y el mismo enlazado interno que el resto del sitio (7.1, 7.2). El 3/9 se cerraron cinco tareas más: la validación de keywords confirmó el copy vigente sin necesidad de reescribirlo (7.3) y sumó BaseHub al Mapa de Keywords como noveno pilar (7.4); la imagen Open Graph propia ya usa la captura real del dashboard (7.6); y PageSpeed dio Accessibility/Best Practices/SEO en 100/100 y Desktop en 98, con el número de Performance mobile pendiente de una remedición limpia por ruido de infraestructura en la sesión de testeo, no por un problema real de la página (7.7). De paso se montó acceso propio a la API de Search Console (service account + `scripts/seo/gsc.py` en el repo) — con eso se detectó que `/basehub` en español nunca había sido rastreada (el sitemap llevaba desde el 31/8 sin releerse) y se resolvió: sitemap reenviado e indexación solicitada, Google ya la rastreó el mismo 3/9 y está en proceso normal de indexación (7.5, en curso — `/en/basehub` ya está indexada). Solo queda evaluar un post de blog sobre PMO — la keyword con mejor volumen/competencia de todo el research de BaseHub, ver 7.3 — como ángulo de contenido (7.8, no urgente).
 
