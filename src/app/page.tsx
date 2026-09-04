@@ -242,6 +242,26 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Empresas con las que trabajamos (#seo-plan 4.4 / auditoría tema 4) —
+          prueba social sin testimonios textuales: logo real + servicios
+          prestados, cada tarjeta linkea al sitio del cliente. Reutiliza la
+          mecánica de BlogCarousel (ver ClientsCarousel). Reposicionada aquí
+          (justo después de "Nosotros", antes de Metodología) en vez de su
+          lugar original más abajo (entre Recruiting y el CTA del e-book):
+          es el punto más temprano donde ya se explicó qué hace Base Core,
+          así la prueba social llega antes de que el visitante tenga que
+          leer Metodología/Ciclos/Marketing/Recruiting para encontrarla. */}
+      <section className="container-bc py-[70px] xl:py-[90px]">
+        <SectionHeading
+          eyebrow="NUESTRO TRABAJO"
+          title="Empresas con las que trabajamos"
+          description="Organizaciones con las que ya implementamos procesos comerciales, marketing y tecnología."
+          maxWidth={700}
+          className="mb-[40px]"
+        />
+        <ClientsCarousel projects={clientProjects} />
+      </section>
+
       {/* ── Metodología (#a72b136) ────────────────────────────────────────
           Skyscraper photo, fixed on desktop. The Elementor overlay is #00294B
           at alpha 0, so the photo is deliberately untinted. */}
@@ -345,21 +365,6 @@ export default function HomePage() {
             <CheckList items={recruitingChecklist} size="md" />
           </div>
         </div>
-      </section>
-
-      {/* Empresas con las que trabajamos (#seo-plan 4.4) — prueba social sin
-          testimonios textuales: logo real + servicios prestados, cada
-          tarjeta linkea al sitio del cliente. Reutiliza la mecánica de
-          BlogCarousel (ver ClientsCarousel). */}
-      <section className="container-bc py-[70px] xl:py-[90px]">
-        <SectionHeading
-          eyebrow="NUESTRO TRABAJO"
-          title="Empresas con las que trabajamos"
-          description="Organizaciones con las que ya implementamos procesos comerciales, marketing y tecnología."
-          maxWidth={700}
-          className="mb-[40px]"
-        />
-        <ClientsCarousel projects={clientProjects} />
       </section>
 
       {/* ── E-Book CTA (#1ee6de6) ────────────────────────────────────────── */}

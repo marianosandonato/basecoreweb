@@ -1,7 +1,7 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`web-lead`, `seo-marketing`, `performance`) — confirmado el 3/9 que la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma, no de configuración), así que solo la sesión principal puede leer el artifact directo. Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/f6230fde-8996-4d03-ae8a-4211f111ed90
-> - Última sincronización: 2026-09-03
+> - Última sincronización: 2026-09-04
 
 ---
 
@@ -13,7 +13,7 @@ basecoresales.com · auditoría & hoja de ruta
 
 Diagnóstico completo del estado actual del sitio (código real, revisado hoy) y plan paso a paso para posicionarlo en buscadores. Cada tarea indica su estado, el texto o código exacto involucrado, y para qué sirve.
 
-35 / 50 tareas · +1 bloqueada (GBP)
+37 / 50 tareas · +2 en progreso (2.3, 4.4) · +1 bloqueada (GBP)
 
 [Diagnóstico](#diagnostico)
 [Fase 1 · Técnico](#fase1)
@@ -303,13 +303,13 @@ PageSpeed marcaba dos botones con texto "MÁS INFORMACIÓN" (a `/marketing` y a 
 
 1.17 — H1 de Home rompe el texto plano: "Comercialy Marketing" / "MarketingConsulting"
 
-Pendiente
+Resuelto 4/9
 
-El texto visible en pantalla es correcto ("Consultoría Comercial y Marketing", en dos líneas), pero `src/app/page.tsx` (y su par `/en`) arma el salto de línea con un `<br />` pegado a la palabra siguiente sin espacio — el `textContent` del H1 (lo que lee Google, lo que se copia/pega) da "Consultoría Comercialy Marketing", sin espacio real. Mismo bug en `/en` ("MarketingConsulting").
+El texto visible en pantalla es correcto ("Consultoría Comercial y Marketing", en dos líneas), pero `src/app/page.tsx` (y su par `/en`) armaba el salto de línea con un `<br />` pegado a la palabra siguiente sin espacio — el `textContent` del H1 (lo que lee Google, lo que se copia/pega) daba "Consultoría Comercialy Marketing", sin espacio real. Mismo bug en `/en` ("MarketingConsulting").
 
-La Fase 1.6 (18/8) había dejado este H1 deliberadamente intacto por temor a "romper el layout a pixel" — pero el fix real no toca el layout ni el texto visible: `PageHero.tsx` (ya usado en las 5 páginas de servicio) resuelve este mismo caso con un patrón que preserva el salto de línea visual sin romper el texto plano. Replicarlo en Home no cambia una sola palabra del hero.
+**Resuelto:** se agregó el espacio real después del `<br />` en ambos archivos (ES y EN) — el salto de línea visual no cambió, solo el texto plano subyacente. Verificado con Playwright: `h1.textContent` ya da "Consultoría Comercial y Marketing" / "Commercial & Marketing Consulting". Parte de la resolución de la [Auditoría General](https://claude.ai/code/artifact/eadc7b1e-9133-4676-8d57-ee30009f8826) (tema 6).
 
-**Para qué sirve:** es el H1 más visible del sitio, en los dos idiomas — cualquier herramienta de SEO/scraping, o alguien copiando el titular, ve una palabra rota.
+**Para qué sirve:** es el H1 más visible del sitio, en los dos idiomas — cualquier herramienta de SEO/scraping, o alguien copiando el titular, ya no ve una palabra rota.
 
 1.18 — `<html lang="es">` incorrecto en todo `/en/*` durante la carga inicial
 
@@ -323,11 +323,13 @@ Requiere decidir el enfoque en Next.js 16 (posible reestructuración de `/en` co
 
 1.19 — Formularios de Contacto y E-Book: campos sin `<label>`, solo `placeholder`
 
-Pendiente
+Resuelto 4/9
 
-`ContactForm.tsx` y `EbookForm.tsx` etiquetan nombre/apellidos/empresa/whatsapp/email (y mensaje en Contacto) solo con `placeholder` — sin `<label>`, `aria-label` ni `aria-labelledby` (el único campo bien resuelto es el `<select>` de "Servicio", que sí tiene `aria-label`). Es el patrón de fallo WCAG 3.3.2 (técnica F89): el placeholder no es persistente, así que apenas alguien empieza a escribir pierde la referencia del campo. Pega directo en los dos únicos formularios cuyo objetivo es generar un lead.
+`ContactForm.tsx` y `EbookForm.tsx` etiquetaban nombre/apellidos/empresa/whatsapp/email (y mensaje en Contacto) solo con `placeholder` — sin `<label>`, `aria-label` ni `aria-labelledby` (el único campo bien resuelto era el `<select>` de "Servicio", que sí tiene `aria-label`). Era el patrón de fallo WCAG 3.3.2 (técnica F89): el placeholder no es persistente, así que apenas alguien empieza a escribir pierde la referencia del campo.
 
-**Para qué sirve:** es a la vez un problema de accesibilidad y de CRO. Fix de bajo esfuerzo: agregar label `sr-only` o `aria-label` por campo, mismo criterio ya usado en el select.
+**Resuelto:** se agregó un `<label> sr-only` por campo en ambos formularios (11 campos en total, ES/EN vía el objeto `copy` ya existente) — mismo criterio que ya usaba el select, sin cambiar el diseño visual. Verificado con Playwright: los 11 campos ya exponen nombre accesible vía `el.labels[0]`. Parte de la resolución de la [Auditoría General](https://claude.ai/code/artifact/eadc7b1e-9133-4676-8d57-ee30009f8826) (tema 2).
+
+**Para qué sirve:** era a la vez un problema de accesibilidad y de CRO — resuelto con el mismo fix de bajo esfuerzo previsto acá.
 
 1.20 — Housekeeping técnico menor (sitemap, imágenes OG, redirect del apex)
 
@@ -367,9 +369,11 @@ Propiedad de Dominio verificada por DNS (Cloudflare) — hoy es la única propie
 
 2.3 — Medir conversiones clave
 
-Pendiente
+En progreso 4/9
 
 Configurar como eventos en GA4: envío del formulario de `/contacto` y descarga del e-book.
+
+**Código hecho:** `ContactForm.tsx` dispara `gtag('event', 'generate_lead', ...)` en el envío exitoso; `EbookForm.tsx` dispara `generate_lead` y `file_download` al descargar el PDF. Verificado en build y en el navegador. **Falta el paso manual:** entrar a GA4 → Admin → Eventos y marcar `generate_lead` y `file_download` como eventos clave — no hay credenciales de la GA4 Admin API en este repo (a diferencia de Search Console, ver 7.5), así que ese último paso lo tiene que hacer una persona con acceso a la consola. Parte de la resolución de la [Auditoría General](https://claude.ai/code/artifact/eadc7b1e-9133-4676-8d57-ee30009f8826) (tema 1, el de mayor prioridad de todo el documento).
 
 **Para qué sirve:** saber no solo cuánta gente entra, sino cuánta efectivamente deja sus datos o se interesa — la métrica que realmente importa para un negocio de consultoría.
 
@@ -712,9 +716,9 @@ Dominio nuevo, sin enlaces externos todavía. El plan original apuntaba a pedirl
 
 4.4 — Testimonios y prueba social
 
-Pendiente
+En progreso
 
-Sin case studies formales todavía, pero un testimonio corto en texto de un primer cliente (aunque sea informal) ya suma. Se puede incorporar como reseña en Google Business Profile y como sección en el sitio.
+**Actualizado 4/9:** la sección en el sitio ya existe y no era nueva — 5 logos de clientes reales con link (Barfer, Don Seitán, W Profesional Hair Therapy, Grand Market Open, Street Market Norte) en "Empresas con las que trabajamos" (`ClientsCarousel`). Este ítem había quedado marcado "Pendiente" por error: la [Auditoría General](https://claude.ai/code/artifact/eadc7b1e-9133-4676-8d57-ee30009f8826) (tema 4) encontró que `.agents/product-marketing.md` también decía que no existían — las dos memorias estaban desactualizadas contra el código real. Se corrigió `product-marketing.md` y se reposicionó la sección más arriba en la Home (ES/EN, antes estaba entre Recruiting y el CTA del e-book, ahora justo después de "Nosotros") vía `seo-marketing`. Sigue pendiente lo que sí falta: un testimonio corto en texto y una reseña en Google Business Profile — ninguna de las dos existe todavía.
 
 **Para qué sirve:** combina SEO (Google valora reseñas en la ficha local) con el problema de fondo de credibilidad — es la señal más directa de "esto ya funcionó para alguien".
 
@@ -864,7 +868,7 @@ Mismo patrón que 3.4: un post sobre seguimiento/gestión de la implementación 
 
 ### Por dónde seguir
 
-**Fase 1 (técnica) mayormente cerrada, con 4 hallazgos nuevos del 3/9** (1.17-1.20: H1 de Home rompe el texto plano, `lang` incorrecto en `/en`, formularios sin label, housekeeping menor) que la auditoría del sistema de agentes nuevo encontró después de que la fase se hubiera dado por cerrada — ninguno bloqueante, pero corrigen la foto de "cerrada por completo". Aparte de eso, sigue incluyendo la vuelta a fondo de rendimiento, accesibilidad y el bloqueo de Cloudflare a bots de IA que nadie sabía que existía (1.5, 1.14, 1.15, 1.16). PageSpeed hoy: Accessibility, Best Practices y SEO en 100/100 en mobile y desktop; Performance en 95/99. Fase 2 (medición) también cerrada salvo el seguimiento de conversiones puntuales (2.3). Not-a-Numb3r ya no aparece en ningún lugar del sitio (3.2).
+**Fase 1 (técnica) mayormente cerrada, con 2 de los 4 hallazgos del 3/9 ya resueltos el 4/9** (1.17 H1 de Home y 1.19 formularios sin label, ambos vía la [Auditoría General](https://claude.ai/code/artifact/eadc7b1e-9133-4676-8d57-ee30009f8826)) — quedan 1.18 (`lang` incorrecto en `/en`, requiere spike de Next.js 16) y 1.20 (housekeeping menor), ninguno bloqueante. Aparte de eso, sigue incluyendo la vuelta a fondo de rendimiento, accesibilidad y el bloqueo de Cloudflare a bots de IA que nadie sabía que existía (1.5, 1.14, 1.15, 1.16). PageSpeed hoy: Accessibility, Best Practices y SEO en 100/100 en mobile y desktop; Performance en 95/99. Fase 2 (medición) con 2.3 en progreso (código listo, falta marcar los eventos como clave en la consola de GA4 — ver 2.3). Not-a-Numb3r ya no aparece en ningún lugar del sitio (3.2).
 
 Google Business Profile (4.1) quedó **bloqueado**, no solo pendiente: la verificación fue rechazada y Mariano ya no está en Buenos Aires para regrabar el video que Google exige en vivo. Necesita una decisión de enfoque antes de reintentar, no solo tiempo.
 
@@ -874,13 +878,14 @@ Google Business Profile (4.1) quedó **bloqueado**, no solo pendiente: la verifi
 
 **Fase 6 (buscadores de IA) cerrada el 31/8:** las 5 tareas resueltas — bots de IA sin bloquear (6.1), schema BlogPosting con autoría (6.2), firma visible del autor en cada post (6.3), y `/llms.txt` generado dinámicamente desde `blogPosts` (6.4). Solo queda 6.5 (seguimiento manual mensual de visibilidad en IA), que recién tiene sentido arrancar ahora que hay 6 posts publicados para probar en ChatGPT/Perplexity/Google.
 
-1. **Próxima sesión — decidido explícitamente el 3/9:** arrancar con 2.3 (medir conversiones clave: eventos de formulario de contacto y descarga de e-book en GA4). Es la tarea de mayor apalancamiento pendiente — sin esto, cualquier otra decisión del plan se sigue tomando sin saber si el sitio genera leads, y además desbloquea 5.1.
-2. Arrancar el seguimiento mensual de visibilidad en IA (6.5) — sin herramientas pagas, probar 5-10 búsquedas reales y anotar si Base Core aparece citado.
-3. Decidir el enfoque de Google Business Profile (4.1) antes de invertir tiempo en un segundo intento de verificación.
-4. Primeros backlinks (4.3) y testimonios/prueba social (4.4), ambos sin arrancar todavía.
-5. Mantenimiento continuo (5.1): revisión mensual de posiciones/tráfico recién puede arrancar cuando Fase 2 esté lista (falta 2.3) — ya tiene la mitad del trabajo hecha con `scripts/seo/gsc.py` (ver 7.5) para el lado de Search Console; falta el lado de GA4.
-6. Siete hallazgos nuevos del 3/9 (1.17-1.20 técnicos, 3.7-3.9 de contenido con copy ya confirmado por `seo-marketing`) quedaron documentados y listos para implementar cuando corresponda — no compiten con la prioridad de 2.3.
+1. **Hecho el 4/9, vía la [Auditoría General](https://claude.ai/code/artifact/eadc7b1e-9133-4676-8d57-ee30009f8826) (Test 4 del Plan de Agentes):** código de 2.3 (eventos GA4 `generate_lead`/`file_download`), 1.17 (H1) y 1.19 (labels de formulario) resueltos y pusheados a `master`. También se reposicionó la sección de logos de clientes (4.4) y se corrigió `.agents/product-marketing.md`, que decía por error que no había prueba social publicada.
+2. **Único pendiente manual que queda de esta tanda:** marcar `generate_lead` y `file_download` como eventos clave en GA4 (Admin → Eventos) — recién ahí 2.3 queda 100% cerrado y desbloquea 5.1.
+3. Arrancar el seguimiento mensual de visibilidad en IA (6.5) — sin herramientas pagas, probar 5-10 búsquedas reales y anotar si Base Core aparece citado.
+4. Decidir el enfoque de Google Business Profile (4.1) antes de invertir tiempo en un segundo intento de verificación.
+5. Primeros backlinks (4.3) siguen sin arrancar. De 4.4 solo falta el testimonio corto y la reseña en Google Business Profile — la sección en el sitio ya está (ver 4.4).
+6. Mantenimiento continuo (5.1): revisión mensual de posiciones/tráfico recién puede arrancar cuando 2.3 quede 100% cerrado (falta el paso manual en GA4) — ya tiene la mitad del trabajo hecha con `scripts/seo/gsc.py` (ver 7.5) para el lado de Search Console.
+7. Quedan 1.18 (`lang` en `/en`, requiere spike) y 1.20 (housekeeping) de los hallazgos técnicos del 3/9, más 3.7-3.9 de contenido (copy ya confirmado por `seo-marketing`) — documentados y listos para implementar cuando corresponda.
 
 **Fase 7 (BaseHub) avanzada:** `/basehub` y `/en/basehub` están en producción desde el 1/9 con los mismos fundamentos on-page y el mismo enlazado interno que el resto del sitio (7.1, 7.2). El 3/9 se cerraron cinco tareas más: la validación de keywords confirmó el copy vigente sin necesidad de reescribirlo (7.3) y sumó BaseHub al Mapa de Keywords como noveno pilar (7.4); la imagen Open Graph propia ya usa la captura real del dashboard (7.6); y PageSpeed dio Accessibility/Best Practices/SEO en 100/100 y Desktop en 98, con el número de Performance mobile pendiente de una remedición limpia por ruido de infraestructura en la sesión de testeo, no por un problema real de la página (7.7). De paso se montó acceso propio a la API de Search Console (service account + `scripts/seo/gsc.py` en el repo) — con eso se detectó que `/basehub` en español nunca había sido rastreada (el sitemap llevaba desde el 31/8 sin releerse) y se resolvió: sitemap reenviado e indexación solicitada, Google ya la rastreó el mismo 3/9 y está en proceso normal de indexación (7.5, en curso — `/en/basehub` ya está indexada). Solo queda evaluar un post de blog sobre PMO — la keyword con mejor volumen/competencia de todo el research de BaseHub, ver 7.3 — como ángulo de contenido (7.8, no urgente).
 
-Última actualización: 2026-09-03 · se irá marcando como Hecho a medida que avancemos.
+Última actualización: 2026-09-04 · se irá marcando como Hecho a medida que avancemos.

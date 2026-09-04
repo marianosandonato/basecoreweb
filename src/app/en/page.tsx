@@ -259,6 +259,20 @@ export default function HomePageEn() {
         </div>
       </section>
 
+      {/* Companies we've worked with (SEO audit theme 4) — mirrors the ES
+          Home's block, repositioned right after "Nosotros"/value prop and
+          before Methodology, see that file for the note. */}
+      <section className="container-bc py-[70px] xl:py-[90px]">
+        <SectionHeading
+          eyebrow="OUR WORK"
+          title="Companies we've worked with"
+          description="Organizations where we've already implemented commercial processes, marketing and technology."
+          maxWidth={700}
+          className="mb-[40px]"
+        />
+        <ClientsCarousel projects={clientProjects} lang="en" />
+      </section>
+
       {/* ── Methodology ──────────────────────────────────────────────────── */}
       <section
         className="bg-cover bg-center bg-no-repeat pb-[70px] pt-[80px] dt:bg-fixed dt:pb-[90px] dt:pt-[110px]"
@@ -354,19 +368,6 @@ export default function HomePageEn() {
             <CheckList items={recruitingChecklist} size="md" />
           </div>
         </div>
-      </section>
-
-      {/* Companies we've worked with — mirrors the ES Home's block, see that
-          file for the note. */}
-      <section className="container-bc py-[70px] xl:py-[90px]">
-        <SectionHeading
-          eyebrow="OUR WORK"
-          title="Companies we've worked with"
-          description="Organizations where we've already implemented commercial processes, marketing and technology."
-          maxWidth={700}
-          className="mb-[40px]"
-        />
-        <ClientsCarousel projects={clientProjects} lang="en" />
       </section>
 
       {/* ── E-Book CTA ──────────────────────────────────────────────────── */}

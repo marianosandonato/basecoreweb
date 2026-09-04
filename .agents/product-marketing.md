@@ -1,7 +1,7 @@
 # Product Marketing Context
 
-**Document version:** v2
-**Last updated:** 2026-09-01
+**Document version:** v3
+**Last updated:** 2026-09-04
 
 ## Product Overview
 **One-liner:** Consultoría comercial y de marketing para pymes en España y Latinoamérica, con "proceso como servicio" para todo el ciclo de venta: preventa, venta, posventa y marketing.
@@ -122,11 +122,11 @@
 **Personality:** Metódico, boutique/personal (fundador visible, LinkedIn propio), moderno-tecnológico (IA, Claude Code) dentro de una categoría tradicionalmente conservadora (consultoría comercial).
 
 ## Proof Points
-**Metrics:** Actualmente ninguna métrica propia publicada (sin casos de éxito ni logos de clientes en el sitio — confirmado al no encontrar testimonios ni logos en el código). Los "números" que aparecen en el copy son estadísticas externas citadas (McKinsey, tasas de retención/contacto de venta), usadas como respaldo de autoridad, no como resultados propios.
+**Metrics:** Actualmente ninguna métrica de resultados propia publicada (no hay casos de éxito con cifras cuantificadas). Los "números" que aparecen en el copy son estadísticas externas citadas (McKinsey, tasas de retención/contacto de venta), usadas como respaldo de autoridad, no como resultados propios.
 
-**Customers:** Ninguno listado públicamente todavía.
+**Customers:** 5 logos de clientes reales, cada uno con link a su sitio, en la sección "Empresas con las que trabajamos" de la Home (`src/content/clients/projects.ts` + `ClientsCarousel`, confirmado en código y en producción): Barfer, Don Seitán, W Profesional Hair Therapy, Grand Market Open, Street Market Norte. Cada tarjeta describe el tipo de trabajo realizado (estrategia de ventas, marketing, tecnología) pero sin resultado/métrica cuantificada por cliente — no verificado todavía con esos clientes, no inventar ninguno.
 
-**Testimonials:** Ninguno todavía.
+**Testimonials:** Ninguno todavía (los logos de clientes no van acompañados de citas ni reseñas — ver "Customers" arriba).
 
 **Value themes:**
 | Theme | Proof |
@@ -146,5 +146,6 @@
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v3 (2026-09-04) — Corrected "Proof Points" (Metrics/Customers/Testimonials): v2 claimed no client logos existed on the site, which was factually wrong — the Home has shown 5 real client logos with links (Barfer, Don Seitán, W Profesional, Grand Market Open, Street Market Norte) since before v2 was drafted. Found while confirming Auditoría General theme 4 (social proof underused + stale memory); also repositioned the "Empresas con las que trabajamos" section higher on the Home (ES and EN) so it appears right after the value-prop section instead of near the bottom of the page.
 - v2 (2026-09-01) — Added BaseHub (Base Core's own project-tracking platform, given to clients free instead of a paid PMO) as a key differentiator and folded it into the "no case studies" objection response, ahead of a dedicated site section/page promoting it. See the "BaseHub en el sitio" artifact linked from `CLAUDE.md` for the full brief.
 - v1 (2026-08-28) — Initial context, auto-drafted from the basecoreweb codebase (home + service pages, site.ts, ebook) and cross-referenced with existing session memory on Mariano/Base Core.
