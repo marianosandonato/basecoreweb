@@ -172,7 +172,7 @@ export default function HomePageEn() {
             <div className="hero-layer hero-title-layer">
               <h1 className="hero-title animate-hero-title font-heading font-bold text-white">
                 Commercial & Marketing
-                <br />Consulting
+                <br /> Consulting
               </h1>
             </div>
             <div className="hero-layer hero-tagline-layer">

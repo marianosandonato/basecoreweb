@@ -4,6 +4,12 @@ import { useState, type FormEvent } from "react";
 import { site, type Lang } from "@/lib/site";
 import Turnstile from "./Turnstile";
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
 const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
 type Status = "idle" | "sending" | "sent" | "error";
@@ -83,6 +89,7 @@ export default function ContactForm({ lang = "es" }: { lang?: Lang }) {
       if (!res.ok) {
         throw new Error(json.error ?? t.defaultError);
       }
+      window.gtag?.("event", "generate_lead", { form_id: "contact" });
       setStatus("sent");
       form.reset();
     } catch (err) {
@@ -111,9 +118,18 @@ export default function ContactForm({ lang = "es" }: { lang?: Lang }) {
         className="hidden"
         aria-hidden="true"
       />
-      <input required name="nombre" placeholder={t.name} className={fieldCls} />
-      <input name="apellidos" placeholder={t.lastName} className={fieldCls} />
-      <input required name="empresa" placeholder={t.company} className={fieldCls} />
+      <label htmlFor="contact-nombre" className="sr-only">
+        {t.name}
+      </label>
+      <input required id="contact-nombre" name="nombre" placeholder={t.name} className={fieldCls} />
+      <label htmlFor="contact-apellidos" className="sr-only">
+        {t.lastName}
+      </label>
+      <input id="contact-apellidos" name="apellidos" placeholder={t.lastName} className={fieldCls} />
+      <label htmlFor="contact-empresa" className="sr-only">
+        {t.company}
+      </label>
+      <input required id="contact-empresa" name="empresa" placeholder={t.company} className={fieldCls} />
       <div className="relative">
         <select
           name="servicio"
@@ -140,14 +156,24 @@ export default function ContactForm({ lang = "es" }: { lang?: Lang }) {
           <path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L241.03 381.476c-9.373 9.373-24.569 9.373-33.941 0z" />
         </svg>
       </div>
-      <input required name="whatsapp" placeholder={t.whatsapp} className={fieldCls} />
-      <input type="email" name="email" placeholder={t.email} className={fieldCls} />
+      <label htmlFor="contact-whatsapp" className="sr-only">
+        {t.whatsapp}
+      </label>
+      <input required id="contact-whatsapp" name="whatsapp" placeholder={t.whatsapp} className={fieldCls} />
+      <label htmlFor="contact-email" className="sr-only">
+        {t.email}
+      </label>
+      <input type="email" id="contact-email" name="email" placeholder={t.email} className={fieldCls} />
       {/* The textarea is 180px in the original too, but its wrapper measures 191:
           an inline-block in a block whose line-height is 32.4px leaves an 11px
           descender gap below it. That 11px is load-bearing for the 646px form
           height, so the wrapper reproduces it rather than absorbing it. */}
       <div className="leading-[32.4px] sm:col-span-2">
+        <label htmlFor="contact-mensaje" className="sr-only">
+          {t.message}
+        </label>
         <textarea
+          id="contact-mensaje"
           name="mensaje"
           placeholder={t.message}
           rows={5}

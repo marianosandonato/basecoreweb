@@ -4,6 +4,12 @@ import { useState, type FormEvent } from "react";
 import { site, type Lang } from "@/lib/site";
 import Turnstile from "./Turnstile";
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
 const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
 type Status = "idle" | "sending" | "sent" | "error";
@@ -94,7 +100,9 @@ export default function EbookForm({
       if (!res.ok) {
         throw new Error(json.error ?? t.defaultError);
       }
+      window.gtag?.("event", "generate_lead", { form_id: "ebook" });
       triggerDownload(file, fileName);
+      window.gtag?.("event", "file_download", { file_name: fileName, link_url: file });
       setStatus("sent");
       form.reset();
     } catch (err) {
@@ -130,11 +138,32 @@ export default function EbookForm({
         className="hidden"
         aria-hidden="true"
       />
-      <input required name="nombre" placeholder={t.name} className={fieldCls} />
-      <input name="apellidos" placeholder={t.lastName} className={fieldCls} />
-      <input required name="empresa" placeholder={t.company} className={fieldCls} />
-      <input required name="whatsapp" placeholder={t.whatsapp} className={fieldCls} />
-      <input type="email" name="email" placeholder={t.email} className={`${fieldCls} sm:col-span-2`} />
+      <label htmlFor="ebook-nombre" className="sr-only">
+        {t.name}
+      </label>
+      <input required id="ebook-nombre" name="nombre" placeholder={t.name} className={fieldCls} />
+      <label htmlFor="ebook-apellidos" className="sr-only">
+        {t.lastName}
+      </label>
+      <input id="ebook-apellidos" name="apellidos" placeholder={t.lastName} className={fieldCls} />
+      <label htmlFor="ebook-empresa" className="sr-only">
+        {t.company}
+      </label>
+      <input required id="ebook-empresa" name="empresa" placeholder={t.company} className={fieldCls} />
+      <label htmlFor="ebook-whatsapp" className="sr-only">
+        {t.whatsapp}
+      </label>
+      <input required id="ebook-whatsapp" name="whatsapp" placeholder={t.whatsapp} className={fieldCls} />
+      <label htmlFor="ebook-email" className="sr-only">
+        {t.email}
+      </label>
+      <input
+        type="email"
+        id="ebook-email"
+        name="email"
+        placeholder={t.email}
+        className={`${fieldCls} sm:col-span-2`}
+      />
 
       {TURNSTILE_SITE_KEY && (
         <div className="sm:col-span-2">

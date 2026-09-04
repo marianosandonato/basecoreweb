@@ -153,7 +153,7 @@ export default function HomePage() {
             <div className="hero-layer hero-title-layer">
               <h1 className="hero-title animate-hero-title font-heading font-bold text-white">
                 Consultoría Comercial
-                <br />y Marketing
+                <br /> y Marketing
               </h1>
             </div>
             <div className="hero-layer hero-tagline-layer">
