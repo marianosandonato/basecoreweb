@@ -182,13 +182,22 @@ export default function HomePage() {
       <section className="py-[50px]">
         <div className="container-bc grid items-center dt:grid-cols-3">
           <div className="px-[15px] pb-[45px]">
-            {/* Mobile-only flat image (#0144309) */}
+            {/* Mobile-only flat image (#0144309). `sizes` was "100vw" but the
+                image never spans the full viewport: it sits inside
+                `.container-bc` (15px each side) *and* this div's own
+                `px-[15px]` (another 15px each side), so real display width is
+                `100vw - 60px`. On a 412px-wide mobile viewport (Moto G Power,
+                PSI's mobile emulation) that's 352px displayed vs the 412px
+                `100vw` was telling the browser to plan for -- at DPR 1.75
+                that picked the 750w srcset candidate (25.2KB) instead of the
+                640w one (21.2KB) that the true 352px display width needs.
+                Confirmed against prod's own `_next/image` endpoint. */}
             <Image
               src="/images/Process-as-a-Service.jpg"
               alt="Proceso como servicio"
               width={850}
               height={567}
-              sizes="100vw"
+              sizes="(max-width: 767px) calc(100vw - 60px), 100vw"
               className="mb-[40px] mt-[15px] h-auto w-full md:hidden"
             />
 

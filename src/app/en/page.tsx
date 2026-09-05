@@ -201,13 +201,17 @@ export default function HomePageEn() {
       <section className="py-[50px]">
         <div className="container-bc grid items-center dt:grid-cols-3">
           <div className="px-[15px] pb-[45px]">
-            {/* Mobile-only flat image */}
+            {/* Mobile-only flat image. `sizes` was "100vw" but the image
+                never spans the full viewport: it sits inside `.container-bc`
+                (15px each side) *and* this div's own `px-[15px]` (another
+                15px each side), so real display width is `100vw - 60px`. Same
+                fix and measurement as the ES Home (`src/app/page.tsx`). */}
             <Image
               src="/images/Process-as-a-Service.jpg"
               alt="Process as a Service"
               width={850}
               height={567}
-              sizes="100vw"
+              sizes="(max-width: 767px) calc(100vw - 60px), 100vw"
               className="mb-[40px] mt-[15px] h-auto w-full md:hidden"
             />
 
