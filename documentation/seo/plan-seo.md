@@ -1,7 +1,7 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`web-lead`, `seo-marketing`, `performance`) — confirmado el 3/9 que la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma, no de configuración), así que solo la sesión principal puede leer el artifact directo. Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/f6230fde-8996-4d03-ae8a-4211f111ed90
-> - Última sincronización: 2026-09-04
+> - Última sincronización: 2026-09-05
 
 ---
 
@@ -13,7 +13,7 @@ basecoresales.com · auditoría & hoja de ruta
 
 Diagnóstico completo del estado actual del sitio (código real, revisado hoy) y plan paso a paso para posicionarlo en buscadores. Cada tarea indica su estado, el texto o código exacto involucrado, y para qué sirve.
 
-37 / 57 tareas · +1 en progreso (4.4) · +2 bloqueadas (GBP, 4.5)
+43 / 57 tareas · +2 en progreso (1.14, 4.4) · +2 bloqueadas (GBP, 4.5)
 
 [Diagnóstico](#diagnostico)
 [Fase 1 · Técnico](#fase1)
@@ -41,7 +41,7 @@ Esto es lo que el sitio tiene implementado *hoy*, verificado leyendo el código 
 | Twitter Card | Hecho | Agregada globalmente en `layout.tsx` |
 | Datos estructurados (JSON-LD) | Hecho | `ProfessionalService` sitio entero + `Service` y `BreadcrumbList` por página (ver 1.11) |
 | Bots de IA (Google-Extended, GPTBot, ClaudeBot...) | Hecho | Cloudflare los bloqueaba en robots.txt sin que nadie lo hubiera configurado a propósito (ver 1.5) |
-| Core Web Vitals (LCP/CLS/TBT) | Hecho | Mobile 95, Desktop 99 en PageSpeed — ver 1.14 |
+| Core Web Vitals (LCP/CLS/TBT) | Parcial | Mobile 88 en recuperación (regresión a 57-60 el 4/9, remontando con 4 fixes deployados) — ver 1.14 |
 | Contraste de color (WCAG AA) | Hecho | Accessibility 100/100 en PageSpeed — ver 1.15 |
 | Google Search Console | Hecho | Solo queda la propiedad de Dominio (se borró la vieja de Prefijo de URL, nunca vio tráfico real) |
 | Google Analytics / GA4 | Hecho | Instalado y confirmado en tiempo real (ID `G-0NRE1KWMBM`) |
@@ -258,7 +258,7 @@ Cambio aplicado en src/lib/site.ts
 
 1.14 — Core Web Vitals / Rendimiento (PageSpeed Insights)
 
-Regresión detectada 4/9 · Mobile 57-60
+En recuperación · Mobile 88, LCP 3.6s
 
 Auditoría completa el 28-29/8 con varias vueltas de PageSpeed. El LCP en mobile llegó a estar en 8.6s en la primera medición — la causa real fue la competencia de imágenes con prioridad alta descripta en 1.7, no algo estructural del sitio. Durante el proceso, los números de mobile saltaron mucho entre corridas (3.2s, 7.9s, 11.3s, 2.8s) — se confirmó que era ruido de la simulación de red lenta de Lighthouse combinado con estar testeando a veces la versión sin `www` (que redirige, sumando ~1.35s reales antes de arrancar a cargar). Con la URL correcta y todo corregido, el resultado quedó estable.
 
@@ -273,6 +273,8 @@ TBT            60ms      20ms
 ```
 
 **Regresión detectada 4/9, vía Test 5 del Plan de Agentes:** remedido con Lighthouse CLI real (PSI sin cuota disponible) contra `www.basecoresales.com`, 3 corridas consistentes. Los números de arriba ya no están vigentes: **Mobile Performance cayó a 57-60, LCP mobile a 10.3-12.9s** (era 2.8s). Desktop bajó menos: 99→93, LCP 0.9s→1.7s. CLS se mantuvo en 0 — los carruseles nuevos (logos, blog) quedan descartados como causa. Causa con evidencia: ~1.9s de trabajo de CPU compartido entre páginas antes de pintar el hero, con Cloudflare Turnstile (carga en las 12 páginas con formulario, aunque nadie llegue a verlo) y GTM como los componentes con más peso confirmado — sin cifra limpia de cuánto pesa cada uno por separado. Nada de esto se corrigió todavía, a pedido explícito de no tocar producción. Detalle técnico completo y plan de acción propuesto (sin aplicar) en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929), sección 01/03/04.
+
+**Recuperación en curso, confirmada con PSI real (5/9):** se implementaron y deployaron 4 fixes, uno a la vez, cada uno medido antes de sumar el próximo — (1) Cloudflare Turnstile diferido con `IntersectionObserver` (ya no carga hasta que el formulario entra en viewport); (2) `sizes` corregido en el carrusel de logos de clientes, un bug nuevo no incluido en el diagnóstico original (61 KiB de más por un `sizes` mal calibrado); (3) `preload:false` en las fuentes `sora`/`reey`, que se preloadeaban en las 16 páginas aunque solo se usan en algunas y siempre debajo del fold; (4) `TECNOLOGIA-BASECORE.jpg` migrada de CSS `background-image` a `next/image` (192KB→41KB en mobile; en desktop subió a 263KB por el `deviceSizes` por defecto de Next — matiz sin resolver antes de decidir si migrar las otras 8 imágenes de fondo). Progresión medida con PSI real: **Perf mobile 57-60 (4/9) → 84 → 88, LCP mobile 10-13s → 4.1s → 3.6s.** LCP sigue sin llegar a "bueno" (≤2.5s). Quedan sin tocar: JS sin usar (GTM 71KiB + bundle app 28KiB), JS legacy/polyfills de features ya baseline (25KiB), CSS render-blocking (160ms), la decisión de las otras 8 imágenes de fondo, y el paso 6 del plan de acción (instrumentar INP real con `web-vitals`). Detalle técnico completo en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929), actualizado 5/9.
 
 **Para qué sirve:** Core Web Vitals es un factor de posicionamiento directo desde 2021, y además es la experiencia real de cualquiera que entra desde el celular con mala señal — justo el escenario más común para alguien buscando "consultoría comercial" desde el traslado o el trabajo.
 
@@ -335,9 +337,9 @@ Resuelto 4/9
 
 1.20 — Housekeeping técnico menor (sitemap, imágenes OG, redirect del apex)
 
-Pendiente · bajo esfuerzo, ninguno bloqueante
+Parcial · 2 de 3 resueltos 5/9
 
-Tres hallazgos de bajo impacto agrupados para no inflar el plan — detalle completo en `SEO-AUDIT.md`: (1) `sitemap.ts` pone `lastModified: new Date()` en las 32 URLs en cada request, en vez de una fecha real por página — Google puede terminar ignorando la señal; (2) `/blog`, `/en/blog`, `/tecnologia` y `/en/tecnologia` no tienen imagen Open Graph propia, a diferencia del resto del sitio; (3) `http://basecoresales.com` (sin `www`) hace un redirect de doble salto en vez de uno — configuración de Cloudflare/DNS, no código, a evaluar por `performance`.
+Tres hallazgos de bajo impacto agrupados para no inflar el plan — detalle completo en `SEO-AUDIT.md`. **Resuelto (5/9):** (1) `sitemap.ts` ya no pone `lastModified: new Date()` en cada request — cada URL tiene ahora una fecha real fija, tomada de cuándo se tocó por última vez esa página según el propio historial de este plan (los posts del blog usan su `publishedAt` real); (2) `/blog`/`/en/blog` y `/tecnologia`/`/en/tecnologia` ya tienen imagen Open Graph propia, reusando assets existentes (la foto de `/tecnologia` para ambas versiones de esa página, la imagen del post "¿Qué CRM elegir?" para el blog — no se generó ningún asset nuevo). **Sigue pendiente:** (3) el redirect de doble salto en `http://basecoresales.com` (sin `www`) — configuración de Cloudflare/DNS, no código, a evaluar por `performance`.
 
 **Para qué sirve:** higiene técnica de bajo esfuerzo — quick wins para cuando se toque cualquiera de esas áreas, sin necesidad de una tanda de trabajo dedicada.
 
@@ -630,11 +632,11 @@ Hecho · title/meta/H1 implementados 30/8
 
 3.7 — H2 para la sección "Metodología" de Home
 
-Pendiente · copy ya definido
+Hecho · 5/9
 
-La sección de Home que agrupa Diagnóstico / Plan de Ruta / Estrategia / Mejora Continua no tiene ningún heading propio — salta de H1 a cuatro H3 sueltos, sin H2 intermedio. `seo-marketing` confirmó el texto sin forzar una keyword ("proceso comercial" ya está tomado por Venta y E-Book — reutilizarlo acá arriesgaba canibalizar esas dos páginas):
+La sección de Home que agrupa Diagnóstico / Plan de Ruta / Estrategia / Mejora Continua no tenía ningún heading propio — saltaba de H1 a cuatro H3 sueltos, sin H2 intermedio. `seo-marketing` confirmó el texto sin forzar una keyword ("proceso comercial" ya está tomado por Venta y E-Book — reutilizarlo acá arriesgaba canibalizar esas dos páginas):
 
-Texto final
+Texto en producción (ES y EN)
 
 ```
 ES: eyebrow "Cómo trabajamos" + H2 "Nuestra metodología"
@@ -645,11 +647,11 @@ EN: eyebrow "How we work"   + H2 "Our methodology"
 
 3.8 — Enlaces internos hacia /ebook desde /preventa y /venta
 
-Pendiente · anchors ya definidos
+Hecho · 5/9
 
-`/ebook` y `/en/ebook` hoy solo se enlazan desde el teaser del propio Home. `seo-marketing` definió el anchor text final, ajustado para no repetir (y así canibalizar) la keyword propia de cada página de origen:
+`/ebook` y `/en/ebook` antes solo se enlazaban desde el teaser del propio Home. Se sumó un tercer párrafo con link contextual en `/preventa` y `/venta` (y sus pares `/en/presales`, `/en/sales`), con el anchor text definido por `seo-marketing`, ajustado para no repetir (y así canibalizar) la keyword propia de cada página de origen. Implementado vía una función nueva `renderRich()` (en `src/lib/renderBold.tsx`) que soporta `[texto](url)` en el copy de contenido, sin tocar el helper `renderBold` existente.
 
-Texto final (ES)
+Texto en producción (ES)
 
 ```
 Desde /preventa: "Si estás armando tu proceso de ventas desde cero,
@@ -666,11 +668,11 @@ Mismo criterio en inglés desde `/en/presales` y `/en/sales` — texto completo 
 
 3.9 — Title de /blog sin keyword + oportunidad de FAQPage schema
 
-Pendiente · title ya definido
+Hecho (title) · 5/9
 
-`/blog` y `/en/blog` tenían el único title del sitio sin ninguna keyword ("Blog" / "Blog – Base Core Sales"). `seo-marketing` confirmó "gestión comercial" (sin conflicto con el Mapa) y lo acortó para respetar la convención de longitud del sitio (~30 caracteres antes del sufijo):
+`/blog` y `/en/blog` tenían el único title del sitio sin ninguna keyword ("Blog" / "Blog – Base Core Sales"). `seo-marketing` confirmó "gestión comercial" (sin conflicto con el Mapa) y lo acortó para respetar la convención de longitud del sitio (~30 caracteres antes del sufijo). Ya en producción:
 
-Texto final
+Texto en producción
 
 ```
 ES (/blog):     Blog de Gestión Comercial y CRM
@@ -683,27 +685,27 @@ EN (/en/blog):  Commercial Management & CRM Blog
 
 3.10 — Implementar el H1 de /ebook y /en/ebook decidido en el Mapa de Keywords (Opción A)
 
-Pendiente · copy ya definido
+Hecho · 5/9, premisa corregida
 
-Encontrado el 4/9 auditando sincronía entre documentos: el Mapa de Keywords decidió el 30/8 (sección 10) que Contacto queda sin cambios, pero `/ebook` y `/en/ebook` implementan la Opción A — nunca se llevó a código. Verificado en `src/app/ebook/page.tsx` (línea 31) y `src/app/en/ebook/page.tsx` (línea 34): el H1 real sigue siendo la pregunta original.
+**Premisa original incorrecta, corregida el 5/9:** este punto decía que el H1 real "nunca se llevó a código", basado en el texto de `src/app/ebook/page.tsx` línea 31 y `src/app/en/ebook/page.tsx` línea 34. Al implementarlo, `seo-marketing` encontró que ese `<h1>` real (en `EbookSection.tsx`, `as="h1"`) **ya tenía el texto nuevo desde el 30/8** — confirmado por `git log -p`. La línea 31/34 que este documento citaba es el título decorativo del `Breadcrumb` (variant="hero", se renderiza como `<p>`, no como H1) — ese sí seguía con la pregunta vieja. El gap real estaba ahí, no en el H1.
 
-H1 actual vs. decidido
+Título de Breadcrumb actualizado (ES y EN)
 
 ```
 ES actual:    ¿Cuáles son los primeros pasos para un proceso comercial
               efectivo y la importancia de definir un ciclo de preventa
               para atraer nuevos clientes?
-ES decidido:  Guía gratis: cómo armar tu proceso de ventas desde cero
+ES nuevo:     Guía gratis: cómo armar tu proceso de ventas desde cero
 
 EN actual:    What are the first steps to an effective sales process
               and the importance of defining a presales cycle to
               attract new clients?
-EN decidido:  Free guide: how to build a sales process from scratch
+EN nuevo:     Free guide: how to build a sales process from scratch
 ```
 
-Botón de descarga sin cambios en ambos casos — solo se toca el H1.
+Botón de descarga sin cambios en ambos casos — solo se tocó el título del breadcrumb, para que no conviva con un H1 real que ya decía otra cosa.
 
-**Para qué sirve:** mantiene casi textual la frase ya validada por competencia, nombra el formato y dice "gratis/free" explícito — cierra el gap entre lo que ya se investigó y lo que el sitio realmente muestra. Detalle completo de la decisión: [Mapa de Keywords Basecore](https://claude.ai/code/artifact/2fb2b4bf-cd0c-41a4-a152-05098b5423f9), sección 10.
+**Para qué sirve:** mantiene casi textual la frase ya validada por competencia, nombra el formato y dice "gratis/free" explícito — cierra el gap entre lo que ya se investigó y lo que el sitio realmente muestra (ahora en las dos piezas de texto, no solo en el H1). Detalle completo de la decisión: [Mapa de Keywords Basecore](https://claude.ai/code/artifact/2fb2b4bf-cd0c-41a4-a152-05098b5423f9), sección 10.
 
 Fase 4
 
@@ -950,11 +952,11 @@ Mismo patrón que 3.4: un post sobre seguimiento/gestión de la implementación 
 
 7.9 — H1 de /basehub y /en/basehub rompe el texto plano (misma familia que 1.17)
 
-Pendiente · fix trivial, mismo patrón que 1.17
+Resuelto 5/9
 
-Documentado por `performance` en el Test 3 (Performance Web), señalado como "fuera de scope" de ese test y nunca trasladado acá hasta hoy. Mismo bug que 1.17 (ya resuelto en Home) pero en el `SectionHeading` de `/basehub` y `/en/basehub`: `src/app/basehub/page.tsx` línea 100 y `src/app/en/basehub/page.tsx` línea 101 — el `<br />` pegado a la palabra siguiente da "Tu implementación, visiblede principio a fin" / "Your implementation, visiblefrom day one" en el texto plano.
+Documentado por `performance` en el Test 3 (Performance Web), señalado como "fuera de scope" de ese test y nunca trasladado acá hasta el 4/9. Mismo bug que 1.17 (ya resuelto en Home) en el `SectionHeading` de `/basehub` y `/en/basehub`: `src/app/basehub/page.tsx` línea 100 y `src/app/en/basehub/page.tsx` línea 101 — el `<br />` pegado a la palabra siguiente daba "Tu implementación, visiblede principio a fin" / "Your implementation, visiblefrom day one" en el texto plano.
 
-**Solución:** mismo fix que 1.17 — agregar un espacio real después del `<br />` en los 2 archivos, sin tocar el salto de línea visual.
+**Resuelto:** mismo fix que 1.17 — agregado un espacio real después del `<br />` en los 2 archivos, sin tocar el salto de línea visual. Verificado con `curl` contra el HTML servido.
 
 **Para qué sirve:** mismo razonamiento que 1.17 — el nombre accesible/textContent del heading no debe concatenar palabras. Detalle original del hallazgo: [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929).
 
@@ -976,12 +978,14 @@ Google Business Profile (4.1) quedó **bloqueado**, no solo pendiente: la verifi
 4. Decidir el enfoque de Google Business Profile (4.1) antes de invertir tiempo en un segundo intento de verificación.
 5. Primeros backlinks (4.3) siguen sin arrancar. De 4.4 solo falta el testimonio corto y la reseña en Google Business Profile — la sección en el sitio ya está (ver 4.4).
 6. Mantenimiento continuo (5.1): con 2.3 ya cerrado, puede arrancar la revisión mensual de posiciones/tráfico — ya tiene la mitad del trabajo hecha con `scripts/seo/gsc.py` (ver 7.5) para el lado de Search Console.
-7. Quedan 1.18 (`lang` en `/en`, requiere spike) y 1.20 (housekeeping) de los hallazgos técnicos del 3/9, más 3.7-3.9 de contenido (copy ya confirmado por `seo-marketing`) — documentados y listos para implementar cuando corresponda.
+7. Queda 1.18 (`lang` en `/en`, requiere spike) de los hallazgos técnicos del 3/9 — 1.20 se resolvió en un 2/3 el 5/9 (ver ítem 13).
 8. **Nuevo el 4/9:** 4.5 (política de privacidad/GDPR) y 5.3 (gate del e-book) se trasladaron acá desde la [Auditoría General](https://claude.ai/code/artifact/eadc7b1e-9133-4676-8d57-ee30009f8826), que dejó de repetir su detalle — 4.5 bloqueado por expertise legal externa, 5.3 bloqueado hasta tener datos reales de 2.3.
 9. **Nuevo el 4/9, encontrados auditando sincronía entre documentos:** 3.10 (H1 de `/ebook` decidido en el Mapa de Keywords el 30/8, nunca implementado) y 7.9 (mismo bug de `<br/>` que 1.17, replicado en `/basehub`, señalado por `performance` pero nunca trasladado al plan) — ninguno de los dos estaba trackeado acá hasta hoy pese a estar ya documentados en otro lado.
 10. **Nuevo el 4/9:** 5.4, re-correr la auditoría SEO/accesibilidad completa con `seo-marketing` — el prompt corregido (regla "no inventes") nunca se probó desde el arranque de una corrida real, y sirve de paso para validar los fixes de hoy y redescubrir 3.10/7.9 por cuenta propia.
 11. **Nuevo el 4/9, vía el Test 5 del [Plan de Agentes](https://claude.ai/code/artifact/73487516-6e4f-4227-a068-463ba9ea9939) (coordinación multi-especialista):** 1.14 pasa de "Hecho" a regresión detectada — Mobile Performance cayó de 95 a 57-60 (detalle en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929)). Se suma 1.21 (este documento desincronizado en Venta y Contacto, más el vacío de Tecnología en 1.1) y 4.6 (decisión de no activar Instagram/LinkedIn de empresa, reforzar el LinkedIn personal de Mariano). 4.4 se precisa: el hueco de prueba social B2B es específico de `/preventa`, no de todo el sitio. A pedido explícito de Mariano, nada de esto se implementó — todo queda como tarea pendiente, no como cambio aplicado.
+12. **Nuevo el 5/9:** 1.14 pasa de "regresión sin tocar" a recuperación en curso — 4 fixes de performance deployados uno a la vez (Turnstile diferido, `sizes` de logos, `preload:false` en fuentes, imagen de Tecnología migrada a `next/image`), cada uno confirmado con PSI real antes del siguiente. Mobile pasó de 57-60 a 88, LCP de 10-13s a 3.6s — mejora real pero todavía no llega a "bueno" (≤2.5s). Quedan JS sin usar/legacy, CSS render-blocking, la decisión de las otras 8 imágenes de fondo, e instrumentar INP — detalle en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929).
+13. **Nuevo el 5/9, vía `seo-marketing`:** 7 quick wins de contenido/técnicos implementados y comiteados de una — 3.7 (H2 "Metodología" en Home), 3.8 (links a /ebook desde /preventa y /venta), 3.9 (title de /blog), 3.10 (título de `/ebook` — con la premisa corregida: el H1 real ya estaba bien desde el 30/8, el gap era el título del breadcrumb), 7.9 (`<br/>` pegado en /basehub) y 2 de los 3 puntos de 1.20 (sitemap con fechas reales, OG de /blog y /tecnologia). Queda sin tocar el tercer punto de 1.20 (redirect del apex sin `www`, config de Cloudflare/DNS) y, del resto del housekeeping técnico, 1.18/1.21.
 
 **Fase 7 (BaseHub) avanzada:** `/basehub` y `/en/basehub` están en producción desde el 1/9 con los mismos fundamentos on-page y el mismo enlazado interno que el resto del sitio (7.1, 7.2). El 3/9 se cerraron cinco tareas más: la validación de keywords confirmó el copy vigente sin necesidad de reescribirlo (7.3) y sumó BaseHub al Mapa de Keywords como noveno pilar (7.4); la imagen Open Graph propia ya usa la captura real del dashboard (7.6); y PageSpeed dio Accessibility/Best Practices/SEO en 100/100 y Desktop en 98, con el número de Performance mobile pendiente de una remedición limpia por ruido de infraestructura en la sesión de testeo, no por un problema real de la página (7.7). De paso se montó acceso propio a la API de Search Console (service account + `scripts/seo/gsc.py` en el repo) — con eso se detectó que `/basehub` en español nunca había sido rastreada (el sitemap llevaba desde el 31/8 sin releerse) y se resolvió: sitemap reenviado e indexación solicitada, Google ya la rastreó el mismo 3/9 y está en proceso normal de indexación (7.5, en curso — `/en/basehub` ya está indexada). Solo queda evaluar un post de blog sobre PMO — la keyword con mejor volumen/competencia de todo el research de BaseHub, ver 7.3 — como ángulo de contenido (7.8, no urgente).
 
-Última actualización: 2026-09-04 · se irá marcando como Hecho a medida que avancemos.
+Última actualización: 2026-09-05 (quick wins de contenido/técnicos) · se irá marcando como Hecho a medida que avancemos.
