@@ -1,6 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    // Required now that /(es) and /(en)/en are two separate root layouts
+    // (see documentation/seo/plan-seo.md 1.18) -- Next.js has no single
+    // layout left to compose a 404 from for a URL that matches neither
+    // group (e.g. a typo'd link), so it needs its own full document. See
+    // src/app/global-not-found.tsx.
+    globalNotFound: true,
+  },
+
   // Applied to every route. No Content-Security-Policy: the font loader and the
   // inline `style` attributes used throughout would need nonces, which is a
   // project of its own rather than something to half-do here.
