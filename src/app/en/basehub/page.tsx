@@ -77,6 +77,14 @@ export default function BaseHubPageEn() {
         ]}
         image="/images/tableros-reporting-base-core-sales-1.webp"
         overlayOpacity={0.82}
+        // This photo is natively 1200x801 (measured on the source file), so
+        // PageHero's default 1200px cap is a no-op here: Next's optimizer
+        // never upscales past the source, meaning the w=1200/1920/2048/3840
+        // candidates are all byte-for-byte the same 70,056-byte file
+        // (confirmed via curl). Keeping `100vw` explicit so a future default
+        // change to PageHero doesn't silently start capping a photo that has
+        // nothing to gain from it.
+        sizes="100vw"
         cta={{ label: "BOOK A DISCOVERY CALL", href: "#contacto" }}
       />
 

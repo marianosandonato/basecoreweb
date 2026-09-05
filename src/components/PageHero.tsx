@@ -25,9 +25,26 @@ type Props = {
   /** Every page uses the original's 14% tint; /tecnologia's busier AI photo
       needs a bit more to keep the title readable, so this can override it. */
   overlayOpacity?: number;
+  /** Same 1200/1920 `deviceSizes` gap fixed in TechnologyBlock (see that file's
+      comment): Next's default jump from 1200 to 1920 with no step between
+      means any 1x-DPR desktop in the 1201-1920px range requests the 1920w
+      candidate for a section that's never wider than the viewport. Capping
+      the slot at 1200px removes that spike; verified per-page with a
+      pixel-diff against each page's own overlay before applying (see the
+      five `PageHero` call sites this covers). Override back to `"100vw"`
+      only when the source photo is already <=1200px wide, where the cap
+      would be a byte-for-byte no-op (e.g. /basehub — see its own comment). */
+  sizes?: string;
 };
 
-export default function PageHero({ title, lines, image, cta, overlayOpacity = 0.14 }: Props) {
+export default function PageHero({
+  title,
+  lines,
+  image,
+  cta,
+  overlayOpacity = 0.14,
+  sizes = "(max-width: 1199px) 100vw, 1200px",
+}: Props) {
   return (
     <section className="relative">
       {/* The LCP image on four of the six pages, so it goes through next/image
@@ -39,7 +56,7 @@ export default function PageHero({ title, lines, image, cta, overlayOpacity = 0.
         fill
         priority
         fetchPriority="high"
-        sizes="100vw"
+        sizes={sizes}
         className="object-cover object-center"
       />
       <span
