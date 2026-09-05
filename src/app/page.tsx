@@ -244,8 +244,7 @@ export default function HomePage() {
               preventa <strong className="font-bold uppercase">califica</strong>. La venta{" "}
               <strong className="font-bold uppercase">cierra</strong>. La posventa{" "}
               <strong className="font-bold uppercase">fideliza</strong>.
-              <br />
-              Ese es el ciclo completo que trabajamos en Base Core.
+              <br /> Ese es el ciclo completo que trabajamos en Base Core.
             </p>
           </div>
         </div>

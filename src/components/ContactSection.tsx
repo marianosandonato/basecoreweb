@@ -16,8 +16,7 @@ const copy = {
     description: (
       <>
         Deja tus datos, programaremos un llamado para relevar tu situación actual.
-        <br />
-        Te propondremos un plan de ruta para la mejora de procesos y metodologías.
+        <br /> Te propondremos un plan de ruta para la mejora de procesos y metodologías.
       </>
     ),
     scheduleText: "O agenda directamente haciendo clic aquí:",
@@ -33,8 +32,7 @@ const copy = {
       <>
         Share your details and we&apos;ll schedule a call to assess where your business
         stands today.
-        <br />
-        We&apos;ll come back with a roadmap to improve your processes and methodology.
+        <br /> We&apos;ll come back with a roadmap to improve your processes and methodology.
       </>
     ),
     scheduleText: "Or schedule directly by clicking here:",

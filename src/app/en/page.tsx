@@ -256,8 +256,7 @@ export default function HomePageEn() {
               <strong className="font-bold uppercase">qualifies</strong>. Sales{" "}
               <strong className="font-bold uppercase">closes</strong>. Post-sales{" "}
               <strong className="font-bold uppercase">retains</strong>.
-              <br />
-              That&apos;s the complete cycle we work on at Base Core.
+              <br /> That&apos;s the complete cycle we work on at Base Core.
             </p>
           </div>
         </div>
