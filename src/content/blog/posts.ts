@@ -11,6 +11,8 @@ import { comoCrearEstrategiaDeMarketingPyme } from "./es/como-crear-estrategia-d
 import { howToCreateAMarketingStrategyForASmallBusiness } from "./en/how-to-create-a-marketing-strategy-for-a-small-business";
 import { comoPrevenirElChurn } from "./es/como-prevenir-el-churn";
 import { howToPreventChurn } from "./en/how-to-prevent-churn";
+import { pmoPorQueTuPymeNoNecesitaPagarUnoAparte } from "./es/pmo-por-que-tu-pyme-no-necesita-pagar-uno-aparte";
+import { pmoWhyYourSmallBusinessDoesntNeedToPayForOne } from "./en/pmo-why-your-small-business-doesnt-need-to-pay-for-one";
 
 /**
  * One entry per post, in the order the Home carousel and /blog display them
@@ -63,6 +65,12 @@ export const blogPosts: readonly BlogEntry[] = [
     enSlug: "which-crm-to-choose-for-a-small-business",
     es: queCrmElegirParaPyme,
     en: whichCrmToChoose,
+  },
+  {
+    esSlug: "pmo-por-que-tu-pyme-no-necesita-pagar-uno-aparte",
+    enSlug: "pmo-why-your-small-business-doesnt-need-to-pay-for-one",
+    es: pmoPorQueTuPymeNoNecesitaPagarUnoAparte,
+    en: pmoWhyYourSmallBusinessDoesntNeedToPayForOne,
   },
 ];
 
