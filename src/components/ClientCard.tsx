@@ -50,8 +50,7 @@ export default function ClientCard({
           {project.name}
           {project.nameSecondLine && (
             <>
-              <br />
-              {project.nameSecondLine}
+              <br /> {project.nameSecondLine}
             </>
           )}
         </h3>
