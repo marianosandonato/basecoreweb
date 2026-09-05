@@ -4,6 +4,7 @@ import Script from "next/script";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LanguageBanner from "@/components/LanguageBanner";
+import WebVitals from "@/components/WebVitals";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { site } from "@/lib/site";
 import "./globals.css";
@@ -168,6 +169,7 @@ export default function RootLayout({
         <Footer />
         <WhatsAppButton />
         <LanguageBanner />
+        <WebVitals />
       </body>
     </html>
   );
