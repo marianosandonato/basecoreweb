@@ -38,12 +38,13 @@ declare global {
  * one GA4 event per metric, named after the metric itself ("LCP" / "CLS" /
  * "INP"), not a single generic "web_vitals" event with a metric_name param --
  * that shape shows up in several third-party GTM tutorials, but this site
- * has no GTM container, it calls gtag() directly (see the inline
- * "google-analytics" Script in src/app/layout.tsx), so the library's direct-
- * gtag recipe is the one that actually applies here. `metric_rating` is the
- * one addition beyond the library's minimal example: it's listed there as an
- * optional extra param, and it lets us filter "poor" events in GA4 without
- * needing BigQuery export.
+ * calls gtag() directly (see the inline "google-analytics" Script in
+ * src/components/AppShell.tsx -- the gtag/js library itself is deferred via
+ * GtmLoader.tsx, but that shim runs eagerly so gtag() is always available),
+ * so the library's direct-gtag recipe is the one that actually applies here.
+ * `metric_rating` is the one addition beyond the library's minimal example:
+ * it's listed there as an optional extra param, and it lets us filter "poor"
+ * events in GA4 without needing BigQuery export.
  */
 const CORE_WEB_VITALS = new Set(["LCP", "CLS", "INP"]);
 

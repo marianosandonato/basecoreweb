@@ -1,5 +1,6 @@
 import Script from "next/script";
 import Footer from "@/components/Footer";
+import GtmLoader from "@/components/GtmLoader";
 import Header from "@/components/Header";
 import LanguageBanner from "@/components/LanguageBanner";
 import WebVitals from "@/components/WebVitals";
@@ -26,10 +27,17 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           __html: JSON.stringify(professionalServiceJsonLd).replace(/</g, "\\u003c"),
         }}
       />
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${site.gaId}`}
-        strategy="afterInteractive"
-      />
+      {/*
+        The dataLayer/gtag() shim stays eager (no network cost, a few bytes
+        of inline JS) so window.gtag(...) exists and queues correctly the
+        moment WebVitals.tsx/ContactForm.tsx/EbookForm.tsx call it -- they
+        use `window.gtag?.(...)`, which silently no-ops (drops the call,
+        doesn't queue it) if `gtag` isn't defined yet, so this can't be
+        deferred. It's the actual gtag/js *library* (~166KB, GtmLoader below)
+        that competed with LCP; deferring only that keeps every gtag() call
+        landing in dataLayer as before, just processed once the library loads
+        a beat later.
+      */}
       <Script id="google-analytics" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
@@ -38,6 +46,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           gtag('config', '${site.gaId}');
         `}
       </Script>
+      <GtmLoader gaId={site.gaId} />
       <Header />
       <main className="flex-1">{children}</main>
       <Footer />
