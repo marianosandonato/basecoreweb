@@ -111,6 +111,12 @@ export const metadata: Metadata = {
     canonical: "/tecnologia",
     languages: { es: "/tecnologia", en: "/en/tecnologia", "x-default": "/tecnologia" },
   },
+  openGraph: {
+    locale: "es_ES",
+    title,
+    description,
+    images: ["/images/TECNOLOGIA-BASECORE.jpg"],
+  },
 };
 
 export default function TecnologiaPage() {

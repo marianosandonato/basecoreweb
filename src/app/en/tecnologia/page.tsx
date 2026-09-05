@@ -11,6 +11,7 @@ import SectionHeading from "@/components/SectionHeading";
 import ServiceJsonLd from "@/components/ServiceJsonLd";
 import { TECNOLOGIA_GRID } from "@/content/flipGrids";
 import type { FlipCardData } from "@/content/types";
+import { site } from "@/lib/site";
 
 /** EN counterpart of /tecnologia's "Módulos" — see the ES page for source. */
 const modules: readonly FlipCardData[] = [
@@ -106,6 +107,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/en/tecnologia",
     languages: { es: "/tecnologia", en: "/en/tecnologia", "x-default": "/tecnologia" },
+  },
+  openGraph: {
+    locale: "en_US",
+    url: `${site.url}/en/tecnologia`,
+    title,
+    description,
+    images: ["/images/TECNOLOGIA-BASECORE.jpg"],
   },
 };
 

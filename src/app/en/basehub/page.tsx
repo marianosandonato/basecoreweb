@@ -98,8 +98,7 @@ export default function BaseHubPageEn() {
               title={
                 <>
                   Your implementation, visible
-                  <br />
-                  from day one
+                  <br /> from day one
                 </>
               }
               align="left"

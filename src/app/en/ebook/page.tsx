@@ -31,7 +31,7 @@ export default function EbookPageEn() {
         variant="hero"
         lang="en"
         path="/en/ebook"
-        title="What are the first steps to an effective sales process and the importance of defining a presales cycle to attract new clients?"
+        title="Free guide: how to build a sales process from scratch"
       />
       <EbookSection lang="en" />
     </>

@@ -272,6 +272,15 @@ export default function HomePage() {
         {/* Inner-section grids span the full 1200px container (no 15px inset),
             so the 10px cell padding yields 280px cards at x=134 like the original. */}
         <div className="container-bc px-0">
+          <div className="px-[15px]">
+            <SectionHeading
+              eyebrow="Cómo trabajamos"
+              title="Nuestra metodología"
+              dark
+              maxWidth={700}
+              className="mb-[30px] dt:mb-[40px]"
+            />
+          </div>
           <MethodologyGrid steps={methodology} />
         </div>
       </section>

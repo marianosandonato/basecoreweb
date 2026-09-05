@@ -279,6 +279,15 @@ export default function HomePageEn() {
         style={{ backgroundImage: "url(/images/footer-base-core-sales.webp)" }}
       >
         <div className="container-bc px-0">
+          <div className="px-[15px]">
+            <SectionHeading
+              eyebrow="How we work"
+              title="Our methodology"
+              dark
+              maxWidth={700}
+              className="mb-[30px] dt:mb-[40px]"
+            />
+          </div>
           <MethodologyGrid steps={methodology} />
         </div>
       </section>

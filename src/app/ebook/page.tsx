@@ -28,7 +28,7 @@ export default function EbookPage() {
         current="E-Book"
         variant="hero"
         path="/ebook"
-        title="¿Cuáles son los primeros pasos para un proceso comercial efectivo y la importancia de definir un ciclo de preventa para atraer nuevos clientes?"
+        title="Guía gratis: cómo armar tu proceso de ventas desde cero"
       />
       <EbookSection />
     </>

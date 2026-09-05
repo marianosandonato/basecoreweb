@@ -3,7 +3,8 @@ import BlogListPage from "@/components/BlogListPage";
 import { blogPosts } from "@/content/blog/posts";
 import { site } from "@/lib/site";
 
-const title = "Blog";
+const title = "Commercial Management & CRM Blog";
+const ogTitle = `${title} – ${site.shortName}`;
 const description =
   "Articles on sales processes, CRM, and technology applied to sales for small businesses in Spain and Latin America.";
 
@@ -17,8 +18,10 @@ export const metadata: Metadata = {
   openGraph: {
     locale: "en_US",
     url: `${site.url}/en/blog`,
-    title,
+    title: ogTitle,
     description,
+    // Same reused asset as the ES /blog page — see that file for the note.
+    images: ["/images/crm-comparativa-base-core-sales.webp"],
   },
 };
 

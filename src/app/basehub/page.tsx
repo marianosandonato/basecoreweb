@@ -97,8 +97,7 @@ export default function BaseHubPage() {
               title={
                 <>
                   Tu implementación, visible
-                  <br />
-                  de principio a fin
+                  <br /> de principio a fin
                 </>
               }
               align="left"

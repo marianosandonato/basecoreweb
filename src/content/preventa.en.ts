@@ -26,6 +26,7 @@ export const preventaEn: ServicePageData = {
     paragraphs: [
       "Before a sale ever happens, there's quiet groundwork: identifying, qualifying, and reaching out to whoever can realistically become a client. **That's presales** — the set of activities that turns a cold database into a calendar full of qualified meetings.",
       "According to **McKinsey & Company**, companies with strong presales processes achieve win rates of 40% to 50% on new business and 80% to 90% on renewals. Results like that don't come from a report — they come from a well-built process, sustained over time.",
+      "If you're building your [sales process from scratch](/en/ebook), download our free e-book.",
     ],
   },
   etapas: {

@@ -1,6 +1,6 @@
 import type { ServicePageData } from "@/content/types";
 import type { Lang } from "@/lib/site";
-import { renderBold } from "@/lib/renderBold";
+import { renderRich } from "@/lib/renderBold";
 import AboutLogoBlock from "./AboutLogoBlock";
 import BaseHubTeaser from "./BaseHubTeaser";
 import Breadcrumb from "./Breadcrumb";
@@ -115,7 +115,10 @@ export default function ServiceCyclePage({
                     index > 0 ? "mt-[20px]" : ""
                   }`}
                 >
-                  {renderBold(paragraph, "text-white")}
+                  {renderRich(paragraph, {
+                    boldClassName: "text-white",
+                    linkClassName: "text-white underline underline-offset-2 hover:no-underline",
+                  })}
                 </p>
               ))}
             </div>
