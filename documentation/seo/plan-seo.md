@@ -13,7 +13,7 @@ basecoresales.com · auditoría & hoja de ruta
 
 Diagnóstico completo del estado actual del sitio (código real, revisado hoy) y plan paso a paso para posicionarlo en buscadores. Cada tarea indica su estado, el texto o código exacto involucrado, y para qué sirve.
 
-44 / 57 tareas · +2 en progreso (1.14, 4.4) · +2 bloqueadas (GBP, 4.5)
+46 / 58 tareas · +2 en progreso (1.14, 4.4) · +2 bloqueadas (GBP, 4.5)
 
 [Diagnóstico](#diagnostico)
 [Fase 1 · Técnico](#fase1)
@@ -58,58 +58,65 @@ Que Google pueda rastrear, entender e indexar cada página correctamente. Es la 
 
 1.1 — Title tag por página
 
-Hecho · reescrito con keyword research
+Hecho · resincronizado 5/9 (ver 1.21)
 
-Reescritos el 18/8 usando el mapa de palabras clave de la Fase 3.1 — antes eran genéricos ("Preventa", "Venta"), sin validar contra ninguna búsqueda real. Patrón **"Palabra clave – Base Core Sales"** (Home es la excepción técnica: al compartir segmento con el layout raíz, Next.js no le aplica ese sufijo automático, así que va escrito a mano).
+Reescritos el 18/8 usando el mapa de palabras clave de la Fase 3.1 — antes eran genéricos ("Preventa", "Venta"), sin validar contra ninguna búsqueda real. Patrón **"Palabra clave – Base Core Sales"** (Home es la excepción técnica: al compartir segmento con el layout raíz, Next.js no le aplica ese sufijo automático, así que va escrito a mano). **Resincronizado el 5/9 vía auditoría 5.4** — Venta, Contacto y Tecnología quedaron actualizados con el texto real de producción (ver 1.21 para el detalle de cada cambio y su commit).
 
-Texto exacto en producción
+Texto exacto en producción (verificado 5/9)
 
 ```
-Home:      Consultoría Comercial para Pymes – Base Core Sales
-Preventa:  Prospección de Clientes B2B – Base Core Sales
-Venta:     Proceso de Ventas para Pymes – Base Core Sales
-Posventa:  Fidelización y Retención de Clientes – Base Core Sales
-Marketing: Marketing Digital para Pymes – Base Core Sales
-Contacto:  Diagnóstico Comercial Gratuito – Base Core Sales
-E-Book:    Proceso de Ventas desde Cero – Base Core Sales
+Home:       Consultoría Comercial para Pymes – Base Core Sales
+Preventa:   Prospección de Clientes B2B – Base Core Sales
+Venta:      Gestión Comercial para Pymes – Base Core Sales
+Posventa:   Fidelización y Retención de Clientes – Base Core Sales
+Marketing:  Marketing Digital para Pymes – Base Core Sales
+Contacto:   Diagnóstico Gratuito – Base Core Sales
+Tecnología: CRM e IA para Empresas – Base Core Sales
+E-Book:     Proceso de Ventas desde Cero – Base Core Sales
 ```
 
 **Para qué sirve:** es el texto azul y clickeable que aparece en los resultados de Google. Es la señal más fuerte de "de qué trata esta página" para el buscador, y lo primero que decide si alguien hace clic.
 
 1.2 — Meta description por página
 
-Hecho · reescrito con keyword research
+Hecho · resincronizado 5/9 (ver 1.21)
 
-Texto exacto en producción
+**Resincronizado el 5/9 vía auditoría 5.4:** Preventa, Venta, Posventa, Marketing y Contacto tenían texto viejo en este documento — cada uno se había actualizado en producción en distintos commits (30/8 y 19/8) sin que esta sección se tocara. Se suma también Tecnología, que nunca había entrado a esta tabla. Detalle de cada caso, con commit exacto, en 1.21.
+
+Texto exacto en producción (verificado 5/9)
 
 ```
-Home:      Consultoría comercial para pymes en España y Latinoamérica:
-           procesos como servicio para preventa, venta, posventa y
-           marketing. Creamos bases productivas.
+Home:       Consultoría comercial para pymes en España y Latinoamérica:
+            procesos como servicio para preventa, venta, posventa y
+            marketing. Creamos bases productivas.
 
-Preventa:  Prospección y captación de clientes B2B: armado de base de
-           datos, calificación de leads y detección de oportunidades
-           comerciales para conseguir más reuniones.
+Preventa:   Prospección y ventas B2B: armado de base de datos,
+            calificación de leads y detección de oportunidades
+            comerciales para conseguir más reuniones.
 
-Venta:     Proceso de ventas para pymes: modelo comercial, pipeline y
-           funnel, KPIs comerciales, forecast, esquemas de
-           compensación e implementación de CRM.
+Venta:      Gestión comercial para pymes: modelo comercial, procesos
+            de ventas, pipeline y funnel, KPIs comerciales, forecast
+            e implementación de CRM.
 
-Posventa:  Fidelización y retención de clientes: reducción de churn,
-           cross selling y up selling, desarrollo de cuentas y
-           segmentación de cartera.
+Posventa:   Fidelización de clientes y customer success: reducción
+            de churn, cross selling y up selling, desarrollo de
+            cuentas y segmentación de cartera.
 
-Marketing: Agencia de marketing digital para pymes junto a
-           Not-a-Numb3r: estrategia de marca, SEO, redes sociales,
-           pauta publicitaria, diseño gráfico y sitios web.
+Marketing:  Agencia de marketing digital para pymes: estrategia de
+            marca, SEO, redes sociales, pauta publicitaria, diseño
+            gráfico y sitios web.
 
-Contacto:  Solicita un diagnóstico comercial gratuito: dejanos tus
-           datos y te proponemos un plan de ruta para mejorar tus
-           procesos y metodologías.
+Contacto:   Solicita un diagnóstico gratuito: dejanos tus datos y te
+            proponemos un plan de ruta para mejorar tus procesos y
+            metodologías.
 
-E-Book:    Descarga gratis nuestro e-book: cómo armar un proceso de
-           ventas desde cero y la importancia de un buen ciclo de
-           preventa para atraer nuevos clientes.
+Tecnología: CRM e IA para empresas: implementación de agentes de IA,
+            automatización de procesos, consultoría CRM y software
+            de gestión para tu equipo comercial.
+
+E-Book:     Descarga gratis nuestro e-book: cómo armar un proceso de
+            ventas desde cero y la importancia de un buen ciclo de
+            preventa para atraer nuevos clientes.
 ```
 
 **Para qué sirve:** es el texto gris debajo del título en Google. No suma directamente al posicionamiento, pero convence a la persona de hacer clic — funciona como el "copy publicitario" del resultado de búsqueda.
@@ -159,21 +166,22 @@ Sitemap: https://www.basecoresales.com/sitemap.xml
 
 1.6 — Un solo H1 por página, con jerarquía H2/H3
 
-Hecho · texto reescrito con keyword research
+Hecho · resincronizado 5/9 (ver 1.21)
 
-Cada página tiene exactamente un H1 (vía los componentes `PageHero` / `ServiceCyclePage`), y las secciones internas usan H2/H3 de forma consistente. El texto del H1 de Preventa/Venta/Posventa/Marketing se reescribió el 18/8 para incorporar la palabra clave validada, manteniendo el estilo de pregunta ("¿Buscas...?") ya existente en la marca:
+Cada página tiene exactamente un H1 (vía los componentes `PageHero` / `ServiceCyclePage`), y las secciones internas usan H2/H3 de forma consistente. El texto del H1 de Preventa/Venta/Posventa/Marketing se reescribió el 18/8 para incorporar la palabra clave validada, manteniendo el estilo de pregunta ("¿Buscas...?") ya existente en la marca. **Resincronizado el 5/9:** Venta y Contacto cambiaron en producción el 30/8 y 19/8 respectivamente sin que este documento se actualizara; se suma Tecnología, que nunca había entrado a esta tabla.
 
-H1 en producción (ES)
+H1 en producción (ES, verificado 5/9)
 
 ```
-Preventa:  ¿Buscas prospectar y captar clientes B2B?
-Venta:     ¿Buscas mejorar tu proceso de ventas?
-Posventa:  ¿Buscas fidelizar y retener a tus clientes?
-Marketing: ¿Buscas potenciar tu marketing digital?
-Contacto:  Diagnóstico Comercial Gratuito
-Home:      Consultoría Comercial y Marketing (sin cambios — hero con
-           salto de línea fijo por diseño, ya alineado al keyword
-           principal, tocarlo arriesgaba romper el layout a pixel)
+Preventa:   ¿Buscas prospectar y captar clientes B2B?
+Venta:      ¿Buscas mejorar tu gestión comercial?
+Posventa:   ¿Buscas fidelizar y retener a tus clientes?
+Marketing:  ¿Buscas potenciar tu marketing digital?
+Contacto:   Diagnóstico Gratuito
+Tecnología: ¿Buscas implementar IA y CRM en tu empresa?
+Home:       Consultoría Comercial y Marketing (sin cambios — hero con
+            salto de línea fijo por diseño, ya alineado al keyword
+            principal, tocarlo arriesgaba romper el layout a pixel)
 ```
 
 De paso se encontró que la sección de "Etapas" de Venta ya tenía un H3 propio por subtema (Pipeline & Funnel, KPI's, Forecast, Implementación CRM...) casi calcado a las palabras clave secundarias — la reestructuración que sugería la investigación ya estaba resuelta de fábrica, no hizo falta tocarla.
@@ -321,7 +329,7 @@ El texto visible en pantalla es correcto ("Consultoría Comercial y Marketing", 
 
 Pendiente · requiere spike de Next.js 16
 
-`src/app/layout.tsx` fija `<html lang="es">` de forma estática; en `/en`, un client component corrige el atributo recién en un `useEffect`, después de la hidratación. `curl` sobre `/en` (sin ejecutar JavaScript) confirma que el HTML que sirve el servidor dice `lang="es"` con contenido 100% en inglés — falla WCAG 3.1.1 (nivel A) en las 8+ rutas `/en`. Impacto en SEO bajo (hreflang ya está bien implementado), pero cualquier auditor de accesibilidad automatizado lo marca.
+`src/app/layout.tsx` fija `<html lang="es">` de forma estática; en `/en`, un client component corrige el atributo recién en un `useEffect`, después de la hidratación. `curl` sobre `/en` (sin ejecutar JavaScript) confirma que el HTML que sirve el servidor dice `lang="es"` con contenido 100% en inglés — falla WCAG 3.1.1 (nivel A) en las 8+ rutas `/en`. Impacto en SEO bajo (hreflang ya está bien implementado), pero cualquier auditor de accesibilidad automatizado lo marca. **Alcance confirmado el 5/9 vía auditoría 5.4:** el bug también está presente en `/en/blog` y `/en/basehub` (rutas que no existían cuando se documentó este punto originalmente) — mismo bug de fondo, mismo alcance real: todas las rutas `/en/*` actuales, no solo las 8 originales.
 
 Requiere decidir el enfoque en Next.js 16 (posible reestructuración de `/en` como route group con su propio layout) antes de tocar código, coordinado con `performance` por el posible impacto en renderizado estático — no aplicar un parche rápido que no resuelva el HTML servido.
 
@@ -347,11 +355,25 @@ Tres hallazgos de bajo impacto agrupados para no inflar el plan — detalle comp
 
 1.21 — Este documento desincronizado del código real en Venta y Contacto
 
-Pendiente · encontrado 4/9, vía Test 5
+Hecho · resincronizado 5/9, vía auditoría 5.4
 
-Auditado por `seo-marketing` comparando el texto exacto de 1.1/1.2/1.6 contra el código real y `git log -p`. Dos casos confirmados, además del que ya se sabía: **Venta** (este documento dice title "Proceso de Ventas para Pymes" / H1 "¿Buscas mejorar tu proceso de ventas?"; producción real desde el 30/8 dice "Gestión Comercial para Pymes" / "¿Buscas mejorar tu gestión comercial?", meta sin "esquemas de compensación") y **Contacto** (este documento dice "Diagnóstico Comercial Gratuito"; producción real desde el **19/8** — más viejo que el caso de Venta — dice "Diagnóstico Gratuito", sin "Comercial"). Además, **Tecnología** nunca se agregó a la tabla de la sección 1.1 (no es contradicción, es un vacío: su title/meta/H1 se implementó el 30/8 vía 3.6, pero 1.1 no se actualizó para incluirla).
+Auditado primero por `seo-marketing` el 4/9 (Test 5, comparando 1.1/1.2/1.6 contra el código real y `git log -p`), y cerrado del todo el 5/9 con una pasada completa de las 8 páginas (Home, Preventa, Venta, Posventa, Marketing, Contacto, Tecnología, E-Book) vía la auditoría 5.4. Total: **6 casos confirmados**, ya corregidos en 1.1/1.2/1.6.
 
-**Para qué sirve:** cualquier decisión de copy que se tome apoyándose en el texto exacto de 1.1/1.2/1.6 hoy corre riesgo de partir de un estado que ya no existe. No se corrigió el texto de esas secciones todavía — queda pendiente resincronizarlas (Venta, Contacto, sumar Tecnología) y correr una pasada completa por si hay más casos, no solo estos tres.
+**Encontrados el 4/9** — **Venta** (title "Proceso de Ventas para Pymes" → real "Gestión Comercial para Pymes" desde el 30/8; H1 "¿Buscas mejorar tu proceso de ventas?" → real "¿Buscas mejorar tu gestión comercial?"; meta sin "esquemas de compensación") y **Contacto** (title/H1 "Diagnóstico Comercial Gratuito" → real "Diagnóstico Gratuito" desde el **19/8**, el caso más viejo de todos). Además, **Tecnología** nunca se había agregado a la tabla de 1.1 (no era contradicción, era un vacío: su title/meta/H1 se implementó el 30/8 vía 3.6, pero 1.1/1.2/1.6 nunca se actualizaron para incluirla).
+
+**Encontrados el 5/9, en la pasada completa** — 3 casos nuevos, los tres en meta description (no en title ni H1): **Preventa** (doc: "Prospección y captación de clientes B2B..." → real: "Prospección y ventas B2B...", commit `2fa5c5c` del 30/8, coherente con subir "ventas B2B" ya documentado en el Mapa de Keywords); **Posventa** (doc: "Fidelización y retención de clientes..." → real: "Fidelización de clientes y customer success...", mismo commit `2fa5c5c`, implementa la ganancia "customer success" ya recomendada); **Marketing** (doc: "...junto a Not-a-Numb3r..." → real: sin esa mención, commit `c5133b4` del 19/8 — es la ejecución en código de la decisión 3.2, ya marcada Hecho, pero 1.2 nunca reflejó el texto nuevo).
+
+**Para qué sirve:** cualquier decisión de copy que se apoye en 1.1/1.2/1.6 ahora parte de texto verificado línea por línea contra el código real, no de memoria — y confirma que ninguno de los 6 casos era un bug real del sitio, todos eran el plan sin actualizar después de un cambio ya implementado.
+
+1.22 — Bug de `<br/>` en tarjeta de cliente (W Profesional), misma familia que 1.17/7.9
+
+Resuelto 5/9, vía auditoría 5.4
+
+Encontrado por `seo-marketing` en la auditoría 5.4, redescubriendo por su cuenta la misma familia de bug que 1.17 (Home) y 7.9 (/basehub): en `ClientCard.tsx`, la tarjeta de "W Profesional Hair Therapy" en el carrusel de clientes de Home (ES y EN, mismo dato compartido) — el único cliente con `nameSecondLine` — renderizaba el `<br />` pegado directo a la segunda línea, dando `textContent` "W ProfesionalHair Therapy" sin espacio.
+
+**Resuelto:** mismo fix que 1.17/7.9 — agregado un espacio real después del `<br />`, sin tocar el salto de línea visual. Verificado con `curl` contra el HTML servido. La auditoría revisó el resto del árbol de componentes buscando la misma familia: `PageHero.tsx` ya inserta espacios reales entre líneas de H1 (resuelto de origen); `FlipCardGrid.tsx` tiene la misma vulnerabilidad latente pero no se dispara hoy (ningún título en `flipGrids.ts` tiene salto de línea) — riesgo a futuro, no bug activo, sin acción por ahora.
+
+**Para qué sirve:** mismo razonamiento que 1.17/7.9 — el nombre accesible/textContent no debe concatenar palabras, y esta vez el hallazgo salió del propio ciclo de auditoría del agente, no de un chequeo manual.
 
 Fase 2
 
@@ -989,7 +1011,8 @@ Google Business Profile (4.1) quedó **bloqueado**, no solo pendiente: la verifi
 13. **Nuevo el 5/9, segunda tanda:** el trade-off de desktop de la imagen de Tecnología se resolvió (era un salto del `deviceSizes` de Next, no el `sizes` — cap a 1200px, 262KB→128KB) y se replicó el mismo fix en `PageHero` (5 de 6 páginas; `/basehub` excluida porque su imagen no tiene margen de optimización). Se instrumentó INP real a GA4 con el hook nativo de Next 16 (paso 6 del plan cerrado). JS legacy se decidió ignorar (bug de Next sin fix seguro) y las imágenes 2x-DPR/cambio global de `next.config.ts` quedan en pausa (Lighthouse no las mide). Pendiente: remedir todo esto con PSI real. Detalle en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929).
 14. **Nuevo el 5/9, vía `seo-marketing`:** 7 quick wins de contenido/técnicos implementados y comiteados de una — 3.7 (H2 "Metodología" en Home), 3.8 (links a /ebook desde /preventa y /venta), 3.9 (title de /blog), 3.10 (título de `/ebook` — con la premisa corregida: el H1 real ya estaba bien desde el 30/8, el gap era el título del breadcrumb), 7.9 (`<br/>` pegado en /basehub) y 2 de los 3 puntos de 1.20 (sitemap con fechas reales, OG de /blog y /tecnologia). Del resto del housekeeping técnico queda 1.18/1.21.
 15. **Nuevo el 5/9, cierre de 1.20:** el tercer punto (redirect de doble salto del apex sin `www`) quedó resuelto — `performance` diagnosticó que Cloudflare resolvía http→https y recién Vercel hacía el salto apex→www en un segundo hop; Mariano aplicó una Redirect Rule propia en Cloudflare (host del apex → `301` directo a `https://www.basecoresales.com` con el path preservado) y quedó verificado con `curl` en un solo salto. 1.20 pasa a Hecho del todo.
+16. **Nuevo el 5/9, auditoría 5.4 completa (`seo-marketing`, mirada fresca con el prompt ya corregido):** 1.21 cerrado del todo — pasada completa de las 8 páginas encontró 3 casos nuevos de meta description desincronizada (Preventa, Posventa, Marketing), sumados a los 3 ya conocidos (Venta, Contacto, Tecnología ausente de la tabla); las 3 secciones 1.1/1.2/1.6 quedaron resincronizadas con texto verificado. De paso se redescubrió por cuenta propia un bug nuevo de la familia 1.17/7.9 (`<br/>` sin espacio en la tarjeta de cliente "W Profesional", ver 1.22) y se confirmó que 1.18 (`lang` en `/en`) también afecta a `/en/blog` y `/en/basehub`. Confirmado que sigue resuelto: 1.17, 7.9, 1.19, 1.15, 3.9, 1.20. Único pendiente real de Fase 1 que queda: 1.18 (requiere spike de Next.js 16).
 
 **Fase 7 (BaseHub) avanzada:** `/basehub` y `/en/basehub` están en producción desde el 1/9 con los mismos fundamentos on-page y el mismo enlazado interno que el resto del sitio (7.1, 7.2). El 3/9 se cerraron cinco tareas más: la validación de keywords confirmó el copy vigente sin necesidad de reescribirlo (7.3) y sumó BaseHub al Mapa de Keywords como noveno pilar (7.4); la imagen Open Graph propia ya usa la captura real del dashboard (7.6); y PageSpeed dio Accessibility/Best Practices/SEO en 100/100 y Desktop en 98, con el número de Performance mobile pendiente de una remedición limpia por ruido de infraestructura en la sesión de testeo, no por un problema real de la página (7.7). De paso se montó acceso propio a la API de Search Console (service account + `scripts/seo/gsc.py` en el repo) — con eso se detectó que `/basehub` en español nunca había sido rastreada (el sitemap llevaba desde el 31/8 sin releerse) y se resolvió: sitemap reenviado e indexación solicitada, Google ya la rastreó el mismo 3/9 y está en proceso normal de indexación (7.5, en curso — `/en/basehub` ya está indexada). Solo queda evaluar un post de blog sobre PMO — la keyword con mejor volumen/competencia de todo el research de BaseHub, ver 7.3 — como ángulo de contenido (7.8, no urgente).
 
-Última actualización: 2026-09-05 (quick wins de contenido/técnicos + segunda tanda de performance) · se irá marcando como Hecho a medida que avancemos.
+Última actualización: 2026-09-05 (quick wins de contenido/técnicos + segunda tanda de performance + auditoría 5.4) · se irá marcando como Hecho a medida que avancemos.
