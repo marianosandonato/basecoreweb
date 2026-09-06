@@ -11,6 +11,7 @@ import ProcessImageStack from "@/components/ProcessImageStack";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCards from "@/components/ServiceCards";
 import TechnologyBlock from "@/components/TechnologyBlock";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import { blogPosts } from "@/content/blog/posts";
 import { clientProjects } from "@/content/clients/projects";
 import { PosventaIcon, PreventaIcon, VentaIcon } from "@/components/cycleIcons";
@@ -251,14 +252,14 @@ export default function HomePage() {
       </section>
 
       {/* Empresas con las que trabajamos (#seo-plan 4.4 / auditoría tema 4) —
-          prueba social sin testimonios textuales: logo real + servicios
-          prestados, cada tarjeta linkea al sitio del cliente. Reutiliza la
-          mecánica de BlogCarousel (ver ClientsCarousel). Reposicionada aquí
-          (justo después de "Nosotros", antes de Metodología) en vez de su
-          lugar original más abajo (entre Recruiting y el CTA del e-book):
-          es el punto más temprano donde ya se explicó qué hace Base Core,
-          así la prueba social llega antes de que el visitante tenga que
-          leer Metodología/Ciclos/Marketing/Recruiting para encontrarla. */}
+          prueba social con logo real + servicios prestados, cada tarjeta
+          linkea al sitio del cliente. Reutiliza la mecánica de BlogCarousel
+          (ver ClientsCarousel). Reposicionada aquí (justo después de
+          "Nosotros", antes de Metodología) en vez de su lugar original más
+          abajo (entre Recruiting y el CTA del e-book): es el punto más
+          temprano donde ya se explicó qué hace Base Core, así la prueba
+          social llega antes de que el visitante tenga que leer
+          Metodología/Ciclos/Marketing/Recruiting para encontrarla. */}
       <section className="container-bc py-[70px] xl:py-[90px]">
         <SectionHeading
           eyebrow="NUESTRO TRABAJO"
@@ -268,6 +269,19 @@ export default function HomePage() {
           className="mb-[40px]"
         />
         <ClientsCarousel projects={clientProjects} />
+      </section>
+
+      {/* Testimonios — cita textual de clientes con testimonial cargado en
+          clientProjects, justo después del carrusel de logos para reforzar
+          la misma prueba social con la voz del cliente. */}
+      <section className="container-bc py-[70px] xl:py-[90px]">
+        <SectionHeading
+          eyebrow="TESTIMONIOS"
+          title="Lo que dicen quienes trabajaron con nosotros"
+          maxWidth={700}
+          className="mb-[40px]"
+        />
+        <TestimonialsSection projects={clientProjects} />
       </section>
 
       {/* ── Metodología (#a72b136) ────────────────────────────────────────

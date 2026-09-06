@@ -11,6 +11,7 @@ import ProcessImageStack from "@/components/ProcessImageStack";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCards from "@/components/ServiceCards";
 import TechnologyBlock from "@/components/TechnologyBlock";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import { blogPosts } from "@/content/blog/posts";
 import { clientProjects } from "@/content/clients/projects";
 import { site } from "@/lib/site";
@@ -274,6 +275,19 @@ export default function HomePageEn() {
           className="mb-[40px]"
         />
         <ClientsCarousel projects={clientProjects} lang="en" />
+      </section>
+
+      {/* Testimonials — direct client quotes from clientProjects entries
+          that have one, right after the logo carousel to reinforce the same
+          social proof with the client's own voice. */}
+      <section className="container-bc py-[70px] xl:py-[90px]">
+        <SectionHeading
+          eyebrow="TESTIMONIALS"
+          title="What our clients say"
+          maxWidth={700}
+          className="mb-[40px]"
+        />
+        <TestimonialsSection projects={clientProjects} lang="en" />
       </section>
 
       {/* ── Methodology ──────────────────────────────────────────────────── */}
