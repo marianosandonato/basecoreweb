@@ -102,10 +102,10 @@ const copy = {
       "Comprobar el resultado y ajustar",
     ],
     extensionBadge: "SERVICIO A MEDIDA",
-    extensionTitle: "El mismo método, aplicado a tu negocio",
+    extensionTitle: "El mismo método, a la medida de tu negocio",
     extensionBody:
       "Base Core también diseña y construye agentes de este tipo para otras áreas de tu empresa, con el mismo criterio de investigar, observar y decidir antes de automatizar.",
-    extensionAreas: ["Preventa", "Venta", "Posventa", "Recruiting", "Marketing"],
+    extensionAreas: ["Preventa", "Venta", "Posventa", "Reclutamiento", "Marketing"],
     extensionCta: "CONVERSEMOS SOBRE TU EQUIPO",
   },
   en: {
@@ -177,7 +177,7 @@ const copy = {
       "Check the real result and adjust",
     ],
     extensionBadge: "CUSTOM-BUILT SERVICE",
-    extensionTitle: "The same method, applied to your business",
+    extensionTitle: "The same method, tailored to your business",
     extensionBody:
       "Base Core also designs and builds agents like these for other areas of your company, with the same discipline of researching, observing and deciding before automating.",
     extensionAreas: ["Presales", "Sales", "Post-Sales", "Recruiting", "Marketing"],
