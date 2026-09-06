@@ -140,26 +140,40 @@ export default function TechnologyBlock({
           </div>
         </div>
 
-        <div className="flex max-w-[460px] flex-col items-start text-left">
+        <div className="flex max-w-[460px] flex-col items-center text-center md:items-start md:text-left">
+          {/* centerOnMobile (correction B): align="left" sets an explicit
+              text-left on SectionHeading's own eyebrow/title, which -- being
+              directly assigned, not inherited -- doesn't fall back to this
+              column's text-center just because the column changed. Needs its
+              own opt-in to actually center below `md`. */}
           <SectionHeading
             eyebrow={t.eyebrow}
             title={t.title}
             align="left"
+            centerOnMobile
             showLine={false}
             maxWidth={800}
             className="mb-[15px] w-full"
             titleClassName="!text-[44px] !leading-[1.3]"
           />
-          <CheckList items={bullets} size="md" />
+          <CheckList items={bullets} size="md" centerOnMobile />
           <div className="mt-[15px]">
             {/* max-md: the label ("IMPLEMENTACIONES TECNOLÓGICAS") is wider
                 than the mobile column, so it always wraps -- and an
                 inline-block box that wraps naturally claims the *full*
                 available width (CSS shrink-to-fit: once max-content exceeds
                 available space, used width = available space), not just
-                what its wrapped lines need. w-fit + a max-width narrower
-                than the column forces the wrap, then shrinks the box back
-                down to its actual (now 2-line) content width. */}
+                what its wrapped lines need. w-fit alone doesn't fix that --
+                shrink-to-fit's own formula still resolves to the full
+                available width whenever the unwrapped text is wider than it,
+                so the box needs an explicit max-width to cap the available
+                width fed into that formula (260px: just enough to fit the ES
+                copy's longest word, "IMPLEMENTACIONES", on one of the two
+                wrapped lines without it overflowing the box -- verified
+                against both language variants via Playwright/browse). The
+                parent column's own `items-center` (mobile) then centers that
+                fixed-width box, and its inherited `text-center` centers the
+                wrapped label inside it. */}
             <Button href={t.href} size="sm" className="max-md:w-fit max-md:max-w-[260px]">
               {t.cta}
             </Button>

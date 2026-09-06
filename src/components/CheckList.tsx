@@ -16,8 +16,11 @@ type Props = {
   dark?: boolean;
   columns?: 1 | 2;
   size?: "sm" | "md";
-  /** Centers each icon+text row as a unit below `md` (icon-list version of
-      SectionHeading's own `centerOnMobile`) — opt-in per call site. */
+  /** Centers the whole list as a block below `md` (icon-list version of
+      SectionHeading's own `centerOnMobile`) — opt-in per call site. The
+      `<ul>` itself shrinks to its widest row and gets `mx-auto`, so rows of
+      different text length still share one left edge instead of each row
+      centering independently (which floats them to different centers). */
   centerOnMobile?: boolean;
 };
 
@@ -32,14 +35,14 @@ export default function CheckList({
     size === "sm"
       ? `text-[17px] font-medium ${dark ? "text-white" : "text-navy"}`
       : `text-[18px] font-normal ${dark ? "text-white" : "text-body"}`;
-  const justify = centerOnMobile ? "justify-center md:justify-start" : "";
+  const center = centerOnMobile ? "mx-auto w-fit md:mx-0 md:w-auto" : "";
 
   return (
-    <ul className={columns === 2 ? "grid gap-x-8 sm:grid-cols-2" : ""}>
+    <ul className={`${columns === 2 ? "grid gap-x-8 sm:grid-cols-2" : ""} ${center}`}>
       {items.map((item) => (
         <li
           key={item}
-          className={`flex items-start gap-[10px] font-sans leading-[1.8] ${text} ${justify}`}
+          className={`flex items-start gap-[10px] font-sans leading-[1.8] ${text}`}
         >
           <CheckCircleIcon className="mt-[9px] shrink-0 text-[14px] text-primary" />
           <span>{renderBold(item)}</span>

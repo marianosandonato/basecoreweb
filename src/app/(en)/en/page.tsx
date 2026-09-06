@@ -244,7 +244,7 @@ export default function HomePageEn() {
             <ProcessImageStack />
           </div>
 
-          <div className="px-[15px] pb-[15px] md:pb-[45px]">
+          <div className="px-[15px] pb-[15px] text-center md:pb-[45px] md:text-left">
             <h3 className="mb-[12px] font-heading text-[18px] font-medium leading-[24px] text-heading md:text-[20px] md:leading-[32px]">
               We implement processes that drive your company&apos;s growth, help you get
               organized, and increase your sales.
