@@ -71,13 +71,11 @@ export default function BaseHubPageEn() {
           not assumed. */}
       <PageHero
         beforeTitle={
-          // Same wordmark, same size (48px/56px, font-sans, semibold,
-          // tracking-tight) as the "BaseHub" lockup in the "What it is"
-          // cajón right below — see that section's own comment for why it's
-          // a plain span rather than a logo image (no BaseHub logo file
-          // exists; the product's own developer confirmed this is the
-          // wordmark treatment).
-          <span className="font-sans text-[48px] font-semibold tracking-tight text-white md:text-[56px]">
+          // Same wordmark as the "BaseHub" lockup in the "What it is" cajón
+          // right below (see that section's own comment for why it's a plain
+          // span rather than a logo image), but 20% larger here per feedback
+          // that matching size read too small in the hero — 58px/67px vs. 48px/56px.
+          <span className="font-sans text-[58px] font-semibold tracking-tight text-white md:text-[67px]">
             BaseHub
           </span>
         }
