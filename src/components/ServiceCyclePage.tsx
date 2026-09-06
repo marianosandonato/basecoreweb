@@ -92,16 +92,22 @@ export default function ServiceCyclePage({
           <div className="container-bc grid items-center gap-y-[30px] min-[1200px]:grid-cols-[auto_1fr_1.3fr] min-[1200px]:gap-x-[90px] min-[1200px]:gap-y-0">
             <AboutLogoBlock label={data.about.title} dark />
 
-            <div>
+            {/* text-center/md:text-left (#7 ajustes estéticos, punto 6): the
+                site's "cajón descriptivo" pattern (dashes, eyebrow, bullets,
+                CTA) -- centered on mobile only, matching the equivalent
+                block on Home, /marketing, /tecnologia and /basehub. Covers
+                all 3 cycle pages x ES/EN since they share this component. */}
+            <div className="text-center md:text-left">
               <SectionHeading
                 eyebrow={data.about.eyebrow}
                 align="left"
+                centerOnMobile
                 dark
                 maxWidth={800}
                 className="mb-[16px] w-full"
               />
 
-              <CheckList items={data.about.bullets} dark />
+              <CheckList items={data.about.bullets} dark centerOnMobile />
 
               <div className="mt-[28px]">
                 <Button href="#contacto">{t.aboutCta}</Button>

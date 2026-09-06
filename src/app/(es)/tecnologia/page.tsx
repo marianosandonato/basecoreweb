@@ -144,10 +144,13 @@ export default function TecnologiaPage() {
         <div className="container-bc grid items-center gap-y-[30px] min-[1200px]:grid-cols-[auto_1fr_1.3fr] min-[1200px]:gap-x-[90px] min-[1200px]:gap-y-0">
           <AboutLogoBlock label="Tecnología" dark />
 
-          <div>
+          {/* text-center/md:text-left (#7 ajustes estéticos, punto 6): mirrors
+              ServiceCyclePage's own "Qué hacemos" fix — see that file. */}
+          <div className="text-center md:text-left">
             <SectionHeading
               eyebrow="QUÉ HACEMOS"
               align="left"
+              centerOnMobile
               dark
               maxWidth={800}
               className="mb-[16px] w-full"
@@ -161,6 +164,7 @@ export default function TecnologiaPage() {
                 "Softs facturación, logística, stock",
               ]}
               dark
+              centerOnMobile
             />
 
             <div className="mt-[28px]">

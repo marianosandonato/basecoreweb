@@ -108,7 +108,11 @@ export default function BaseHubPage() {
             </span>
           </div>
 
-          <div>
+          {/* text-center/md:text-left (#7 ajustes estéticos, punto 6): mirrors
+              ServiceCyclePage's own "Qué hacemos" fix — see that file. No
+              CheckList/Button here, but the paragraph below inherits the
+              alignment since it has none of its own. */}
+          <div className="text-center md:text-left">
             <SectionHeading
               eyebrow="GESTIÓN DE PROYECTOS"
               title={
@@ -118,6 +122,7 @@ export default function BaseHubPage() {
                 </>
               }
               align="left"
+              centerOnMobile
               dark
               maxWidth={800}
               className="mb-[16px] w-full"

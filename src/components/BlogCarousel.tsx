@@ -63,7 +63,12 @@ export default function BlogCarousel({
   };
 
   return (
-    <div role="region" aria-label={t.region} className="relative px-[95px]">
+    // Below sm: the 95px gutter (sized for the 79px desktop arrow) left only
+    // ~170px for the card on a 390px phone (#7 ajustes estéticos, punto 5,
+    // same fix as ClientsCarousel's punto 2). Arrow shrunk to 40px (WCAG's
+    // ~44px touch-target floor) and the gutter trimmed to match. sm: and up
+    // keep the original 95/79/27 values untouched.
+    <div role="region" aria-label={t.region} className="relative px-[44px] sm:px-[95px]">
       <div
         ref={trackRef}
         className="no-scrollbar flex items-stretch snap-x snap-mandatory gap-[30px] overflow-x-auto scroll-smooth pb-[6px]"
@@ -94,18 +99,18 @@ export default function BlogCarousel({
             onClick={() => scrollByCard(-1)}
             disabled={!canPrev}
             aria-label={t.prev}
-            className="absolute left-0 top-1/2 z-10 flex h-[79px] w-[79px] -translate-y-1/2 items-center justify-center rounded-full border border-line bg-white/95 text-heading shadow-md transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-0"
+            className="absolute left-0 top-1/2 z-10 flex h-[40px] w-[40px] -translate-y-1/2 items-center justify-center rounded-full border border-line bg-white/95 text-heading shadow-md transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-0 sm:h-[79px] sm:w-[79px]"
           >
-            <ChevronLeftIcon className="text-[27px]" />
+            <ChevronLeftIcon className="text-[15px] sm:text-[27px]" />
           </button>
           <button
             type="button"
             onClick={() => scrollByCard(1)}
             disabled={!canNext}
             aria-label={t.next}
-            className="absolute right-0 top-1/2 z-10 flex h-[79px] w-[79px] -translate-y-1/2 items-center justify-center rounded-full border border-line bg-white/95 text-heading shadow-md transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-0"
+            className="absolute right-0 top-1/2 z-10 flex h-[40px] w-[40px] -translate-y-1/2 items-center justify-center rounded-full border border-line bg-white/95 text-heading shadow-md transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-0 sm:h-[79px] sm:w-[79px]"
           >
-            <ChevronRightIcon className="text-[27px]" />
+            <ChevronRightIcon className="text-[15px] sm:text-[27px]" />
           </button>
         </>
       )}

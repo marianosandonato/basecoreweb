@@ -179,9 +179,15 @@ export default function HomePage() {
           50px top/bottom, matching the cycle pages' Etapas/Puestos boxes.
           Three columns: text, the shrunk image composition centred, then
           the "ciclo completo" copy. */}
-      <section className="py-[50px]">
+      <section className="pt-[50px] pb-[20px] md:pb-[50px]">
         <div className="container-bc grid items-center dt:grid-cols-3">
-          <div className="px-[15px] pb-[45px]">
+          {/* text-center/md:text-left (#7 ajustes estéticos, punto 6): this
+              column is the site's "cajón descriptivo" pattern (dashes,
+              eyebrow, title, statement, bullets, CTA) -- centered on mobile
+              only, matching the equivalent block on /marketing, /tecnologia,
+              /basehub and the cycle pages. Desktop keeps the original
+              left-aligned layout. */}
+          <div className="px-[15px] pb-[45px] text-center md:text-left">
             {/* Mobile-only flat image (#0144309). `sizes` was "100vw" but the
                 image never spans the full viewport: it sits inside
                 `.container-bc` (15px each side) *and* this div's own
@@ -205,6 +211,7 @@ export default function HomePage() {
               eyebrow="Nosotros"
               title="Proceso como servicio"
               align="left"
+              centerOnMobile
               maxWidth={800}
               className="mb-[8px] w-full dt:mb-[10px]"
             />
@@ -215,7 +222,7 @@ export default function HomePage() {
               marketing.
             </h3>
 
-            <CheckList items={aboutChecklist} />
+            <CheckList items={aboutChecklist} centerOnMobile />
 
             <div className="mt-[28px]">
               <Button href="#contacto">CONTÁCTANOS</Button>
@@ -228,7 +235,7 @@ export default function HomePage() {
             <ProcessImageStack />
           </div>
 
-          <div className="px-[15px] pb-[45px]">
+          <div className="px-[15px] pb-[15px] md:pb-[45px]">
             <h3 className="mb-[12px] font-heading text-[18px] font-medium leading-[24px] text-heading md:text-[20px] md:leading-[32px]">
               Implementamos procesos para impulsar el desarrollo de tu empresa, organizarla
               y aumentar sus ventas.
@@ -258,8 +265,16 @@ export default function HomePage() {
           lugar original más abajo (entre Recruiting y el CTA del e-book):
           es el punto más temprano donde ya se explicó qué hace Base Core,
           así la prueba social llega antes de que el visitante tenga que
-          leer Metodología/Ciclos/Marketing/Recruiting para encontrarla. */}
-      <section className="container-bc py-[70px] xl:py-[90px]">
+          leer Metodología/Ciclos/Marketing/Recruiting para encontrarla.
+          pt-[30px] mobile (#7 ajustes estéticos, punto 1): stacked with the
+          "Nosotros" section's own trimmed pb-[15px]/pb-[20px] above, the
+          combined mobile gap before this heading was 211px (measured) --
+          three paddings stacking straight down with nothing stacked beside
+          them, since the middle column (image) is `hidden` below `md`. Cut
+          each contributor roughly in half instead of to zero, so there's
+          still a visible section break. md:py-[70px] keeps desktop/tablet
+          untouched. */}
+      <section className="container-bc pt-[30px] pb-[70px] md:py-[70px] xl:py-[90px]">
         <SectionHeading
           eyebrow="NUESTRO TRABAJO"
           title="Empresas con las que trabajamos"
