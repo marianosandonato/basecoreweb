@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { routeMap, type Lang } from "@/lib/site";
 
 const COOKIE_NAME = "basecore_lang";
+// Read by WhatsAppButton.tsx so it offsets by this banner's real height instead of a guessed constant.
+const BANNER_HEIGHT_VAR = "--lang-banner-height";
 
 function getCookie(name: string): string | undefined {
   return document.cookie
@@ -43,7 +45,29 @@ export default function LanguageBanner() {
   const lang: Lang = pathname.startsWith("/en") ? "en" : "es";
   const alternateHref = routeMap[pathname] ?? (lang === "en" ? "/" : "/en");
   const [visible, setVisible] = useState(false);
+  const bannerRef = useRef<HTMLDivElement>(null);
   const t = copy[lang];
+
+  // ResizeObserver, not a one-time read: the banner wraps to a taller layout on mobile than desktop.
+  useEffect(() => {
+    if (!visible) {
+      document.documentElement.style.setProperty(BANNER_HEIGHT_VAR, "0px");
+      return;
+    }
+    const el = bannerRef.current;
+    if (!el) return;
+    // offsetHeight (not contentRect) to include the py-[12px] padding that actually occupies screen space.
+    const setHeight = () => {
+      document.documentElement.style.setProperty(BANNER_HEIGHT_VAR, `${el.offsetHeight}px`);
+    };
+    setHeight();
+    const observer = new ResizeObserver(setHeight);
+    observer.observe(el);
+    return () => {
+      observer.disconnect();
+      document.documentElement.style.setProperty(BANNER_HEIGHT_VAR, "0px");
+    };
+  }, [visible]);
 
   useEffect(() => {
     // Deferred a frame so the setState below isn't synchronous inside the
@@ -69,7 +93,10 @@ export default function LanguageBanner() {
   };
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-[1000] bg-navy px-[15px] py-[12px] text-white shadow-[0_-2px_10px_rgba(0,0,0,0.15)]">
+    <div
+      ref={bannerRef}
+      className="fixed inset-x-0 bottom-0 z-[1000] bg-navy px-[15px] py-[12px] text-white shadow-[0_-2px_10px_rgba(0,0,0,0.15)]"
+    >
       <div className="container-bc flex flex-wrap items-center justify-center gap-x-[16px] gap-y-[8px] px-0 text-center sm:justify-between sm:text-left">
         <p className="font-sans text-[14px] text-[#D2DCE5]">{t.text}</p>
         <div className="flex items-center gap-[16px]">
