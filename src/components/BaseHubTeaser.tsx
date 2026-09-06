@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Button from "./Button";
 import SectionHeading from "./SectionHeading";
 import type { Lang } from "@/lib/site";
@@ -45,10 +46,14 @@ export default function BaseHubTeaser({
   const t = copy[lang];
 
   return (
-    <section
-      className={`relative bg-cover bg-center bg-no-repeat py-[70px] xl:py-[90px] dt:bg-fixed ${className}`}
-      style={{ backgroundImage: "url(/images/tableros-reporting-base-core-sales-1.webp)" }}
-    >
+    <section className={`relative overflow-hidden py-[70px] xl:py-[90px] ${className}`}>
+      <Image
+        src="/images/tableros-reporting-base-core-sales-1.webp"
+        alt=""
+        fill
+        sizes="(max-width: 1199px) 100vw, 1200px"
+        className="object-cover object-center"
+      />
       <span aria-hidden="true" className="absolute inset-0 bg-navy opacity-[0.82]" />
       <div className="container-bc relative text-center">
         {/* Kicker set in the exact type of the "BaseHub" wordmark on

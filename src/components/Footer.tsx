@@ -134,10 +134,14 @@ export default function Footer() {
   return (
     <footer className="bg-navy text-white">
       {/* ── Section 1 (#5043f31) ─────────────────────────────────────────── */}
-      <div
-        className="relative bg-navy bg-cover bg-center bg-no-repeat py-[70px] xl:pb-[70px] xl:pt-[110px]"
-        style={{ backgroundImage: "url(/images/footer-base-core-sales.webp)" }}
-      >
+      <div className="relative overflow-hidden bg-navy py-[70px] xl:pb-[70px] xl:pt-[110px]">
+        <Image
+          src="/images/footer-base-core-sales.webp"
+          alt=""
+          fill
+          sizes="(max-width: 1199px) 100vw, 1200px"
+          className="object-cover object-center"
+        />
         <span aria-hidden="true" className="absolute inset-0 bg-navy opacity-40" />
 
         <div className="container-bc relative px-0 lg:flex">

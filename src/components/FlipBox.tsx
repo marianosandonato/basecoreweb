@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import type { ReactNode } from "react";
+import Image from "next/image";
 
 /**
  * Elementor flip-box widget, in the two effects the site actually uses.
@@ -140,12 +141,16 @@ export default function FlipBox({
       aria-label={label}
     >
       {/* Front */}
-      <div
-        className="flip-box__layer bg-cover bg-center bg-no-repeat"
-        style={{ backgroundColor: frontColor, backgroundImage: `url(${frontImage})` }}
-      >
+      <div className="flip-box__layer" style={{ backgroundColor: frontColor }}>
+        <Image
+          src={frontImage}
+          alt=""
+          fill
+          sizes="(max-width: 767px) 100vw, 400px"
+          className="object-cover object-center"
+        />
         <div
-          className="flex h-full w-full flex-col items-stretch justify-center p-[35px] text-center"
+          className="relative flex h-full w-full flex-col items-stretch justify-center p-[35px] text-center"
           style={frontOverlay ? { backgroundColor: frontOverlay } : undefined}
         >
           {front}
@@ -153,12 +158,16 @@ export default function FlipBox({
       </div>
 
       {/* Back */}
-      <div
-        className="flip-box__layer flip-box__back bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${backImage})` }}
-      >
+      <div className="flip-box__layer flip-box__back">
+        <Image
+          src={backImage}
+          alt=""
+          fill
+          sizes="(max-width: 767px) 100vw, 400px"
+          className="object-cover object-center"
+        />
         <div
-          className="flex h-full w-full flex-col items-stretch justify-center p-[35px] text-center text-white"
+          className="relative flex h-full w-full flex-col items-stretch justify-center p-[35px] text-center text-white"
           style={{ backgroundColor: backOverlay }}
         >
           {back}

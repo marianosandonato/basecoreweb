@@ -67,11 +67,19 @@ export default function ContactSection({
   return (
     <section
       id="contacto"
-      className={`relative bg-white bg-cover bg-center bg-no-repeat ${className}`}
-      style={backgroundImage ? { backgroundImage: `url(${backgroundImage})` } : undefined}
+      className={`relative bg-white ${backgroundImage ? "overflow-hidden" : ""} ${className}`}
     >
       {backgroundImage && (
-        <span aria-hidden="true" className="absolute inset-0 bg-white opacity-[0.97]" />
+        <>
+          <Image
+            src={backgroundImage}
+            alt=""
+            fill
+            sizes="(max-width: 1199px) 100vw, 1200px"
+            className="object-cover object-center"
+          />
+          <span aria-hidden="true" className="absolute inset-0 bg-white opacity-[0.97]" />
+        </>
       )}
       {/* px-0: the original's two columns are 600px each — half of the full 1200
           container, not of the 1170 content box — with the 15px padding inside
