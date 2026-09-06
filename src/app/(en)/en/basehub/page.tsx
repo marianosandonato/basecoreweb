@@ -109,7 +109,9 @@ export default function BaseHubPageEn() {
             </span>
           </div>
 
-          <div>
+          {/* text-center/md:text-left (#7 ajustes estéticos, punto 6): mirrors
+              the ES page's own fix. */}
+          <div className="text-center md:text-left">
             <SectionHeading
               eyebrow="PROJECT MANAGEMENT"
               title={
@@ -119,6 +121,7 @@ export default function BaseHubPageEn() {
                 </>
               }
               align="left"
+              centerOnMobile
               dark
               maxWidth={800}
               className="mb-[16px] w-full"

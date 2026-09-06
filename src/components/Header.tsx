@@ -50,8 +50,6 @@ export default function Header() {
   const homeLabel = lang === "en" ? "Base Core – Home" : "Base Core – Inicio";
   const openMenuLabel = lang === "en" ? "Open menu" : "Abrir menú";
   const closeMenuLabel = lang === "en" ? "Close menu" : "Cerrar menú";
-  const openSubmenuLabel = lang === "en" ? "Show submenu" : "Mostrar submenú";
-  const closeSubmenuLabel = lang === "en" ? "Hide submenu" : "Ocultar submenú";
 
   const isActive = (href: string) =>
     href === "/" || href === "/en" ? pathname === href : pathname.startsWith(href);
@@ -332,33 +330,30 @@ export default function Header() {
               {items.map((item) =>
                 item.children ? (
                   <li key={item.href}>
-                    <div className="flex items-center">
-                      <Link
-                        href={item.href}
-                        onClick={() => {
-                          closeOffCanvas();
-                          scrollToTopIfSamePage(item.href);
-                        }}
-                        className={`block flex-1 py-3 font-sans text-[15px] ${
-                          isActiveEntry(item) ? "text-primary" : "text-navy"
+                    {/* Toggle, not a Link (#7 ajustes estéticos, punto 7):
+                        this row used to be a Link to item.href (here, "/venta"
+                        -- the parent is just a proxy label standing in for
+                        its own Preventa/Venta/Posventa children) plus a
+                        separate small arrow button that actually toggled the
+                        submenu. Most of the row's tap target navigated away
+                        instead of expanding, so the submenu was easy to miss.
+                        One full-width button now both toggles and carries
+                        the visible label. */}
+                    <button
+                      type="button"
+                      onClick={() => setSubOpen((v) => !v)}
+                      aria-expanded={subOpen}
+                      className={`flex w-full items-center justify-between py-3 font-sans text-[15px] ${
+                        isActiveEntry(item) ? "text-primary" : "text-navy"
+                      }`}
+                    >
+                      {item.label}
+                      <ChevronDownIcon
+                        className={`text-[11px] transition-transform duration-150 ${
+                          subOpen ? "rotate-180" : ""
                         }`}
-                      >
-                        {item.label}
-                      </Link>
-                      <button
-                        type="button"
-                        onClick={() => setSubOpen((v) => !v)}
-                        aria-expanded={subOpen}
-                        aria-label={subOpen ? closeSubmenuLabel : openSubmenuLabel}
-                        className="p-3 text-navy"
-                      >
-                        <ChevronDownIcon
-                          className={`text-[11px] transition-transform duration-150 ${
-                            subOpen ? "rotate-180" : ""
-                          }`}
-                        />
-                      </button>
-                    </div>
+                      />
+                    </button>
                     {subOpen && (
                       <ul className="ml-[10px] border-l border-line/40 pb-[6px] pl-[16px]">
                         {item.children.map((child) => (

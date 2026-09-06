@@ -14,6 +14,14 @@ type Props = {
   title?: ReactNode;
   description?: ReactNode;
   align?: "left" | "center";
+  /**
+   * Forces centered text/heading-line below `md` regardless of `align`,
+   * reverting to `align`'s own value at `md` and up. Opt-in per call site
+   * (not baked into `align="left"` itself) so it doesn't ripple into every
+   * other left-aligned section that hasn't been asked to change — e.g.
+   * TechnologyBlock keeps `align="left"` on mobile too.
+   */
+  centerOnMobile?: boolean;
   /** Light text for navy/photo backgrounds. */
   dark?: boolean;
   as?: "h1" | "h2" | "h3";
@@ -40,6 +48,7 @@ export default function SectionHeading({
   title,
   description,
   align = "center",
+  centerOnMobile = false,
   dark = false,
   as: Tag = "h2",
   showLine = true,
@@ -51,11 +60,23 @@ export default function SectionHeading({
   children,
 }: Props) {
   const centered = align === "center";
+  // Below `md`, `centerOnMobile` forces centered regardless of `align`; at
+  // `md` and up it always falls back to `align`'s own value.
+  const textAlignClass = centerOnMobile
+    ? `text-center ${centered ? "" : "md:text-left"}`
+    : centered
+      ? "text-center"
+      : "text-left";
+  const innerAlignClass = centerOnMobile
+    ? `mx-auto ${centered ? "" : "md:mx-0"}`
+    : centered
+      ? "mx-auto"
+      : "";
 
   return (
-    <div className={`w-full ${centered ? "text-center" : "text-left"} ${className}`}>
+    <div className={`w-full ${textAlignClass} ${className}`}>
       <div
-        className={centered ? "mx-auto" : ""}
+        className={innerAlignClass}
         style={maxWidth ? { maxWidth: `${maxWidth}px` } : undefined}
       >
         {showLine && (

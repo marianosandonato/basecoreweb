@@ -145,13 +145,22 @@ export default function TechnologyBlock({
             eyebrow={t.eyebrow}
             title={t.title}
             align="left"
+            showLine={false}
             maxWidth={800}
             className="mb-[15px] w-full"
             titleClassName="!text-[44px] !leading-[1.3]"
           />
           <CheckList items={bullets} size="md" />
           <div className="mt-[15px]">
-            <Button href={t.href} size="sm">
+            {/* max-md: the label ("IMPLEMENTACIONES TECNOLÓGICAS") is wider
+                than the mobile column, so it always wraps -- and an
+                inline-block box that wraps naturally claims the *full*
+                available width (CSS shrink-to-fit: once max-content exceeds
+                available space, used width = available space), not just
+                what its wrapped lines need. w-fit + a max-width narrower
+                than the column forces the wrap, then shrinks the box back
+                down to its actual (now 2-line) content width. */}
+            <Button href={t.href} size="sm" className="max-md:w-fit max-md:max-w-[260px]">
               {t.cta}
             </Button>
           </div>

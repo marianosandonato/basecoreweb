@@ -198,9 +198,11 @@ export default function HomePageEn() {
           50px top/bottom, matching the cycle pages' Etapas/Puestos boxes.
           Three columns: text, the shrunk image composition centred, then
           the "full cycle" copy. */}
-      <section className="py-[50px]">
+      <section className="pt-[50px] pb-[20px] md:pb-[50px]">
         <div className="container-bc grid items-center dt:grid-cols-3">
-          <div className="px-[15px] pb-[45px]">
+          {/* text-center/md:text-left (#7 ajustes estéticos, punto 6): mirrors
+              the ES Home's own fix — see that file for the full note. */}
+          <div className="px-[15px] pb-[45px] text-center md:text-left">
             {/* Mobile-only flat image. `sizes` was "100vw" but the image
                 never spans the full viewport: it sits inside `.container-bc`
                 (15px each side) *and* this div's own `px-[15px]` (another
@@ -219,6 +221,7 @@ export default function HomePageEn() {
               eyebrow="About Us"
               title="Process as a Service"
               align="left"
+              centerOnMobile
               maxWidth={800}
               className="mb-[8px] w-full dt:mb-[10px]"
             />
@@ -228,7 +231,7 @@ export default function HomePageEn() {
               marketing.
             </h3>
 
-            <CheckList items={aboutChecklist} />
+            <CheckList items={aboutChecklist} centerOnMobile />
 
             <div className="mt-[28px]">
               <Button href="#contacto">CONTACT US</Button>
@@ -241,7 +244,7 @@ export default function HomePageEn() {
             <ProcessImageStack />
           </div>
 
-          <div className="px-[15px] pb-[45px]">
+          <div className="px-[15px] pb-[15px] md:pb-[45px]">
             <h3 className="mb-[12px] font-heading text-[18px] font-medium leading-[24px] text-heading md:text-[20px] md:leading-[32px]">
               We implement processes that drive your company&apos;s growth, help you get
               organized, and increase your sales.
@@ -264,8 +267,10 @@ export default function HomePageEn() {
 
       {/* Companies we've worked with (SEO audit theme 4) — mirrors the ES
           Home's block, repositioned right after "Nosotros"/value prop and
-          before Methodology, see that file for the note. */}
-      <section className="container-bc py-[70px] xl:py-[90px]">
+          before Methodology, see that file for the note. Mobile top padding
+          trimmed to pt-[30px] (#7 ajustes estéticos, punto 1) — mirrors the
+          ES Home's own fix. */}
+      <section className="container-bc pt-[30px] pb-[70px] md:py-[70px] xl:py-[90px]">
         <SectionHeading
           eyebrow="OUR WORK"
           title="Companies we've worked with"
