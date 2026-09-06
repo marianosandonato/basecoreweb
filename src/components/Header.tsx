@@ -355,7 +355,7 @@ export default function Header() {
                       />
                     </button>
                     {subOpen && (
-                      <ul className="ml-[10px] border-l border-line/40 pb-[6px] pl-[16px]">
+                      <ul className="pb-[6px] pl-[10px]">
                         {item.children.map((child) => (
                           <li key={child.href}>
                             <Link
