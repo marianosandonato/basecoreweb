@@ -70,6 +70,15 @@ export default function BaseHubPageEn() {
           legible-everywhere result /venta has — verified with a screenshot,
           not assumed. */}
       <PageHero
+        beforeTitle={
+          // Same wordmark as the "BaseHub" lockup in the "What it is" cajón
+          // right below (see that section's own comment for why it's a plain
+          // span rather than a logo image), but 20% larger here per feedback
+          // that matching size read too small in the hero — 58px/67px vs. 48px/56px.
+          <span className="font-sans text-[58px] font-semibold tracking-tight text-white md:text-[67px]">
+            BaseHub
+          </span>
+        }
         title={["Your project,", "in one place."]}
         lines={[
           "No separate project management tool to pay for.",

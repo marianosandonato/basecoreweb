@@ -21,6 +21,11 @@ type Props = {
   title: string[];
   lines: readonly string[];
   image: string;
+  /** Optional content rendered above the h1 (e.g. a product wordmark/logo).
+      Shares the title's own fade-in timing since it introduces the title
+      rather than preceding it as a separate beat. Not used by default — only
+      /basehub passes one, for the BaseHub wordmark. */
+  beforeTitle?: React.ReactNode;
   cta?: { label: string; href: string };
   /** Every page uses the original's 14% tint; /tecnologia's busier AI photo
       needs a bit more to keep the title readable, so this can override it. */
@@ -41,6 +46,7 @@ export default function PageHero({
   title,
   lines,
   image,
+  beforeTitle,
   cta,
   overlayOpacity = 0.14,
   sizes = "(max-width: 1199px) 100vw, 1200px",
@@ -76,6 +82,8 @@ export default function PageHero({
             (50px + 20px gap) so the button doesn't sit flush against the
             image's bottom edge. */}
         <div aria-hidden="true" className="mb-[20px] h-[50px] shrink-0" />
+
+        {beforeTitle && <div className="animate-hero-title mb-[20px]">{beforeTitle}</div>}
 
         <h1 className="animate-hero-title font-montserrat text-[35px] font-light leading-[42px] text-white md:text-[50px] md:leading-[59px]">
           {/* The original's h1 is one text run that re-wraps; the line breaks
