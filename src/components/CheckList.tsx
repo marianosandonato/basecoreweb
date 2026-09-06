@@ -42,10 +42,16 @@ export default function CheckList({
       {items.map((item) => (
         <li
           key={item}
-          className={`flex items-start gap-[10px] font-sans leading-[1.8] ${text}`}
+          className={`flex items-start gap-[10px] text-left font-sans leading-[1.8] ${text}`}
         >
+          {/* Explicit text-left (bug fix): without it, a `centerOnMobile`
+              ancestor's inherited text-center reaches this span too. A
+              one-line bullet never shows it (nothing to center within its
+              own row), but a bullet long enough to wrap gets its wrapped
+              lines centered against each other instead of left-aligned --
+              only visible on the longest bullet in a list, easy to miss. */}
           <CheckCircleIcon className="mt-[9px] shrink-0 text-[14px] text-primary" />
-          <span>{renderBold(item)}</span>
+          <span className="text-left">{renderBold(item)}</span>
         </li>
       ))}
     </ul>

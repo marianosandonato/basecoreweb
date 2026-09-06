@@ -344,13 +344,15 @@ export default function HomePageEn() {
               eyebrow="Brand Development"
               title="Marketing Agency"
               align="left"
+              centerOnMobile
+              showLine={false}
               dark
               maxWidth={800}
               className="mb-[15px]"
               titleClassName="!text-[44px] !leading-[1.3]"
             />
-            <CheckList items={partnerChecklist} dark size="md" />
-            <div className="mt-[15px]">
+            <CheckList items={partnerChecklist} dark size="md" centerOnMobile />
+            <div className="mt-[15px] text-center md:text-left">
               <Button href="/en/marketing" size="sm">
                 MARKETING AGENCY
               </Button>
