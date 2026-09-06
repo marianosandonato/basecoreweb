@@ -111,48 +111,29 @@ export default function TechnologyBlock({
 
   return (
     <section className="relative z-[1] overflow-hidden px-[15px] py-[70px] dt:py-[110px]">
+      {/* No navy overlay: this block is informational (like Metodología/Recruiting), not a CTA like BaseHub/E-Book -- photo chosen light enough for dark text unaided. */}
       <Image
-        src="/images/TECNOLOGIA-BASECORE.jpg"
+        src="/images/Base-Core-Sales-estrategia-tecnologia.jpeg"
         alt=""
         fill
-        // The section really is full-bleed (no max-width truncates it), so
-        // `100vw` alone is accurate -- but Next's default `deviceSizes` jumps
-        // straight from 1200 to 1920 with no step between, so any 1x-DPR
-        // desktop viewport in the very common 1201-1920px range (every
-        // non-retina laptop/monitor at 1280/1440/1600/1920) was requesting
-        // the 1920w candidate. Measured locally (uncontaminated by the prod
-        // CDN's image cache): 1920w webp q75 = 262,906 bytes vs 1200w webp
-        // q75 = 127,786 bytes -- more than double for a photo the heavy
-        // navy/70-55-45% gradient overlay mostly hides anyway (pixel-diffed
-        // the two at full render size: mean channel delta 4/255, imperceptible).
-        // Capping the slot at 1200px for >=1200px viewports removes that 2x
-        // spike for 1x-DPR desktops without changing anything below 1200px
-        // (mobile keeps its already-verified 100vw/41KB result) and without
-        // changing anything for 2x-DPR desktops (they were already jumping to
-        // 2048/3840 before this and still do -- that part needs a
-        // deviceSizes/qualities change in next.config.ts, out of scope here).
         sizes="(max-width: 1199px) 100vw, 1200px"
         className="object-cover object-center"
-      />
-      <span
-        aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-b from-navy/70 via-navy/55 to-navy/45"
       />
       <div className="relative mx-auto flex max-w-[960px] flex-col items-center gap-[40px] md:flex-row md:justify-center md:gap-[76px]">
         <div className="flex shrink-0 flex-col items-center gap-[16px] text-center">
           <Image
-            src="/images/base-core-logo-blanco-sin-slogan.webp"
+            src="/images/base-core-logo-azul-sin-slogan.webp"
             alt="Base Core"
             width={900}
             height={927}
             className="h-auto w-[140px] md:w-[190px]"
           />
           <div className="flex flex-col items-center gap-[4px]">
-            <span className="font-sora text-[24px] font-extralight tracking-[2px] text-white md:text-[30px]">
+            <span className="font-sora text-[24px] font-extralight tracking-[2px] text-navy md:text-[30px]">
               {t.label}
             </span>
             {stage && (
-              <span className="font-sora text-[15px] font-light tracking-[2px] text-white/80 md:text-[18px]">
+              <span className="font-sora text-[15px] font-light tracking-[2px] text-body md:text-[18px]">
                 {t.stageLabels[stage]}
               </span>
             )}
@@ -164,12 +145,11 @@ export default function TechnologyBlock({
             eyebrow={t.eyebrow}
             title={t.title}
             align="left"
-            dark
             maxWidth={800}
             className="mb-[15px] w-full"
             titleClassName="!text-[44px] !leading-[1.3]"
           />
-          <CheckList items={bullets} dark size="md" />
+          <CheckList items={bullets} size="md" />
           <div className="mt-[15px]">
             <Button href={t.href} size="sm">
               {t.cta}
