@@ -347,7 +347,13 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="bg-navy px-[15px] py-[60px] max-md:pl-[35px] md:w-1/2 dt:py-[106px] dt:pl-[100px]">
+        {/* max-md:pl removed (punto 10 fix): that asymmetric left padding
+            predates centerOnMobile and made sense for left-aligned text --
+            now that this column centers on mobile, it shifted the whole
+            centered block ~10px right of true center (measured live: 35px
+            left vs 15px right padding on a 375px content width). Symmetric
+            px-[15px] on mobile; dt:pl-[100px] (desktop) is untouched. */}
+        <div className="bg-navy px-[15px] py-[60px] md:w-1/2 dt:py-[106px] dt:pl-[100px]">
           <div className="max-w-[680px]">
             <SectionHeading
               eyebrow="Desarrollo de Marca"

@@ -338,7 +338,11 @@ export default function HomePageEn() {
           </div>
         </div>
 
-        <div className="bg-navy px-[15px] py-[60px] max-md:pl-[35px] md:w-1/2 dt:py-[106px] dt:pl-[100px]">
+        {/* max-md:pl removed (punto 10 fix): see the ES Home's own note -- the
+            asymmetric left padding shifted the centered block off-true-center
+            on mobile once this column started centering. Symmetric
+            px-[15px] on mobile; dt:pl-[100px] (desktop) is untouched. */}
+        <div className="bg-navy px-[15px] py-[60px] md:w-1/2 dt:py-[106px] dt:pl-[100px]">
           <div className="max-w-[680px]">
             <SectionHeading
               eyebrow="Brand Development"
