@@ -51,21 +51,53 @@ function loadGtagScript(gaId: string) {
  */
 const IDLE_TIMEOUT_MS = 2500;
 
+/**
+ * Extra delay held before even *requesting* idle time, confirmed necessary
+ * by a local production-build trace (Lighthouse CLI, devtools throttling,
+ * mobile CPU 4x/8x -- see commit message for the full before/after
+ * numbers): requestIdleCallback fired the very first idle slot after
+ * hydration in every run, and that slot lines up almost exactly with when
+ * Next.js's own <Link> prefetching (also idle-scheduled) starts firing its
+ * batch of RSC requests for the header/footer nav links. Both features
+ * grabbing the same first-idle moment stacked GTM's ~166KB fetch on top of
+ * that prefetch burst under throttled network, keeping the connection
+ * non-quiet for longer and pulling more of the timeline into Lighthouse's
+ * [FCP, TTI] window that Total Blocking Time is measured over -- not a
+ * literal main-thread collision with React hydration (traces showed GTM's
+ * own script evaluation running in isolation, no overlapping hydration
+ * tasks), but a shared-idle-slot pileup with the framework's own prefetcher.
+ * Holding off this long before asking for idle time at all (rather than
+ * raising IDLE_TIMEOUT_MS, which traces showed was never actually the
+ * limiting factor -- genuine idle was found well before any timeout could
+ * fire) lets that initial prefetch burst mostly clear the connection first.
+ */
+const PRE_IDLE_DELAY_MS = 2000;
+
 export default function GtmLoader({ gaId }: { gaId: string }) {
   useEffect(() => {
     if (requested) return undefined;
 
-    if (typeof window.requestIdleCallback === "function") {
-      const id = window.requestIdleCallback(() => loadGtagScript(gaId), {
-        timeout: IDLE_TIMEOUT_MS,
-      });
-      return () => window.cancelIdleCallback(id);
+    let idleId: number | undefined;
+
+    function scheduleIdle() {
+      if (typeof window.requestIdleCallback === "function") {
+        idleId = window.requestIdleCallback(() => loadGtagScript(gaId), {
+          timeout: IDLE_TIMEOUT_MS,
+        });
+      } else {
+        // No requestIdleCallback support at all (older Safari) -- there's
+        // no idle signal to hook, so just wait out the same ceiling on a
+        // timer.
+        window.setTimeout(() => loadGtagScript(gaId), IDLE_TIMEOUT_MS);
+      }
     }
 
-    // No requestIdleCallback support at all (older Safari) -- there's no
-    // idle signal to hook, so just wait out the same ceiling on a timer.
-    const timeoutId = window.setTimeout(() => loadGtagScript(gaId), IDLE_TIMEOUT_MS);
-    return () => window.clearTimeout(timeoutId);
+    const delayId = window.setTimeout(scheduleIdle, PRE_IDLE_DELAY_MS);
+
+    return () => {
+      window.clearTimeout(delayId);
+      if (idleId !== undefined) window.cancelIdleCallback(idleId);
+    };
   }, [gaId]);
 
   return null;
