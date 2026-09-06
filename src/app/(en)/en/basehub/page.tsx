@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
 };
 
-/** EN counterpart of /basehub's 5 real features — see the ES page for source. */
+/** EN counterpart of /basehub's 8 real features — see the ES page for source. */
 const features = [
   {
     title: "Dashboard by work area",
@@ -51,6 +51,21 @@ const features = [
     title: "Access for your team",
     description:
       "Log in with your own user and see your implementation's real status, with your company's logo — no more waiting on someone to send you a report.",
+  },
+  {
+    title: "Delivery approvals",
+    description:
+      "Every delivery that needs your sign-off lands on your dashboard: approve or reject it in one click, no more email chains getting lost.",
+  },
+  {
+    title: "Always up-to-date report",
+    description:
+      "A report built by your consultant, with the real progress percentage for each area — it updates itself, never out of date.",
+  },
+  {
+    title: "Cross-area dependencies",
+    description:
+      "Your tasks on a timeline, with connectors showing what depends on what across areas — so you see why something is waiting on something else.",
   },
 ];
 

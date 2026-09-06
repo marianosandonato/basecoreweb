@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
 };
 
-/** The 5 features that exist today in BaseHub (Fases 1-3) — no more, no less. */
+/** The 8 features that exist today in BaseHub — no more, no less. */
 const features = [
   {
     title: "Panel por área de trabajo",
@@ -50,6 +50,21 @@ const features = [
     title: "Acceso para tu equipo",
     description:
       "Entra con tu usuario y ves el estado real de tu implementación, con el logo de tu empresa — sin esperar que alguien te mande un reporte.",
+  },
+  {
+    title: "Aprobación de entregas",
+    description:
+      "Cada entrega que necesita tu aprobación llega a tu tablero: la apruebas o la rechazas con un clic, sin cadenas de correos perdidos.",
+  },
+  {
+    title: "Informe siempre actualizado",
+    description:
+      "Un informe armado por tu consultor, con el % de avance real de cada área — se actualiza solo, nunca queda desfasado.",
+  },
+  {
+    title: "Dependencias entre áreas",
+    description:
+      "Tus tareas en una línea de tiempo, con conectores que muestran qué depende de qué entre áreas — así ves por qué algo está esperando a otra cosa.",
   },
 ];
 

@@ -110,7 +110,7 @@ export default function TechnologyBlock({
   const bullets = stage ? t.stageBullets[stage] : t.bullets;
 
   return (
-    <section className="relative z-[1] overflow-hidden px-[15px] py-[70px] dt:py-[110px]">
+    <section className="relative z-[1] overflow-hidden px-[15px] py-[55px] dt:py-[90px]">
       {/* No navy overlay: this block is informational (like Metodología/Recruiting), not a CTA like BaseHub/E-Book -- photo chosen light enough for dark text unaided. */}
       <Image
         src="/images/Base-Core-Sales-estrategia-tecnologia.jpeg"
@@ -120,7 +120,7 @@ export default function TechnologyBlock({
         className="object-cover object-center"
       />
       <div className="relative mx-auto flex max-w-[960px] flex-col items-center gap-[40px] md:flex-row md:justify-center md:gap-[76px]">
-        <div className="flex shrink-0 flex-col items-center gap-[16px] text-center">
+        <div className="flex shrink-0 flex-col items-center gap-[12px] text-center">
           <Image
             src="/images/base-core-logo-azul-sin-slogan.webp"
             alt="Base Core"
@@ -155,9 +155,17 @@ export default function TechnologyBlock({
             maxWidth={800}
             className="mb-[15px] w-full"
             titleClassName="!text-[44px] !leading-[1.3]"
+            // eyebrow-to-title gap (spacing polish): matches the 15px the
+            // wrapping `className` already puts between title and bullets,
+            // measured with Playwright -- eyebrow has no margin of its own
+            // otherwise, just its 30px line-height.
+            eyebrowClassName="mb-[15px]"
           />
           <CheckList items={bullets} size="md" centerOnMobile />
-          <div className="mt-[15px]">
+          {/* bullets-to-button gap (spacing polish): matches the section's
+              own bottom padding above, so the button sits as far from the
+              bullets as it does from the cajón's foot. */}
+          <div className="mt-[55px] dt:mt-[90px]">
             {/* max-md: the label ("IMPLEMENTACIONES TECNOLÓGICAS") is wider
                 than the mobile column, so it always wraps -- and an
                 inline-block box that wraps naturally claims the *full*
