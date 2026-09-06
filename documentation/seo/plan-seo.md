@@ -1,7 +1,7 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`web-lead`, `seo-marketing`, `performance`) — confirmado el 3/9 que la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma, no de configuración), así que solo la sesión principal puede leer el artifact directo. Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/f6230fde-8996-4d03-ae8a-4211f111ed90
-> - Última sincronización: 2026-09-05
+> - Última sincronización: 2026-09-06
 > - Nota: este documento se reorganizó el 5/9 — ahora es el tablero activo (solo tareas pendientes/bloqueadas/en progreso en detalle). El registro completo de tareas ya resueltas vive en `documentation/seo/historial-seo.md`.
 
 ---
@@ -173,13 +173,15 @@ Dominio nuevo, sin enlaces externos todavía. El plan original apuntaba a not-a-
 
 4.4 — Testimonios y prueba social
 
-En progreso · esperando testimonio
+En progreso · desarrollado, pendiente de decisión
 
-La sección de logos de clientes reales (Barfer, Don Seitán, W Profesional Hair Therapy, Grand Market Open, Street Market Norte) ya existe y está reposicionada en Home. Falta un testimonio corto en texto y una reseña en Google Business Profile — ninguna de las dos existe todavía.
+Barfer, Don Seitán y W Profesional dieron el OK para un testimonio, sin saber qué escribir — Mariano pidió redactarlo junto con el equipo. `seo-marketing` investigó buenas prácticas (estructura antes/durante/después, sin superlativos genéricos) y redactó 3 copys en ES/EN basados solo en el servicio real prestado a cada cliente (sin métricas inventadas). Atribución con nombre de pila + cargo, sin apellido en los 3 — decisión deliberada pareja (uno de los clientes es familiar del dueño de Base Core).
 
-**Matiz de encaje:** la tensión "prueba social B2C vs. posicionamiento B2B" está acotada a `/preventa` (única página donde "B2B" es keyword validada). Conviene que el próximo testimonio sea de un cliente con perfil B2B real antes de seguir escalando esas keywords ahí.
+**Implementado (6/9):** nueva sección "Testimonios" en el Home (ES/EN), debajo del carrusel de logos — grid de 3 tarjetas (cita + logo + nombre + rol), sin schema.org Review/AggregateRating (Google no muestra estrellas en reseñas "self-serving" publicadas por la propia empresa). Código completo en la rama `feat/client-testimonials` (commit `4c62ac7`), verificado con tsc/lint/build y revisado visualmente (desktop/mobile, ES/EN) en un preview de Vercel.
 
-**Estado:** se preparó un mensaje (WhatsApp/email) para pedirle el testimonio a cualquiera de los 5 clientes — a la espera de la respuesta.
+**Estado:** a pedido de Mariano queda así — desarrollado y probado, pero sin mergear a `master` ni pushear a producción, a la espera de que decida si avanza. No hay apuro: la rama y el preview no afectan producción ni se autoborran.
+
+**Matiz de encaje:** la tensión "prueba social B2C vs. posicionamiento B2B" está acotada a `/preventa` (única página donde "B2B" es keyword validada) — ninguno de estos 3 testimonios se usó ahí. Sigue faltando la reseña en Google Business Profile (bloqueada, ver 4.1).
 
 **Para qué sirve:** señal directa de "esto ya funcionó para alguien", clave para el desafío de credibilidad del negocio.
 
@@ -301,9 +303,9 @@ Fases 1, 2, 3, 6 y 7 quedaron cerradas — sin ningún pendiente técnico ni de 
 
 Lo activo hoy, en orden de qué depende de qué:
 
-* **4.4 — Testimonio:** único punto con una acción tuya esperando respuesta activa (mensaje ya preparado para pedírselo a alguno de los 5 clientes).
+* **4.4 — Testimonios:** copy escrito y aprobado, sección implementada y probada en preview (rama `feat/client-testimonials`) — a la espera de que Mariano decida mergear a producción.
 * **1.14 — Performance:** falta remedir con PSI real (sesión limpia, sin extensiones) los últimos 2 fixes deployados el 5/9, antes de decidir si vale la pena encarar GTM/bundle sin usar.
 * **4.1 (GBP), 4.3 (backlinks), 4.6 (LinkedIn/referidos), 5.1 (revisión mensual), 5.2 (contenido periódico), 5.3 (gate del e-book), 6.5 (visibilidad IA):** todos en pausa por decisión explícita — ninguno bloqueado por otro, se retoman cuando decidas.
 * **4.5 — GDPR:** bloqueado hasta tener texto legal revisado por alguien con expertise real en protección de datos española/argentina.
 
-Última actualización: 2026-09-05 (reorganización del documento — separado el detalle histórico al [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8)) · se irá marcando como Hecho a medida que avancemos.
+Última actualización: 2026-09-06 (4.4: testimonios redactados e implementados en preview, pendientes de push) · se irá marcando como Hecho a medida que avancemos.
