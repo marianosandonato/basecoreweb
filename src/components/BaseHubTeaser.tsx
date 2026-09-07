@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Button from "./Button";
 import SectionHeading from "./SectionHeading";
@@ -17,9 +18,15 @@ const copy = {
     title: "Tu proyecto, en un solo lugar",
     lines: [
       "Sin pagar una herramienta de gestión de proyectos aparte.",
-      "BaseHub es la plataforma de seguimiento e implementación de Base Core, incluida en tu proyecto.",
-      "Estado en tiempo real, tarea por tarea, área por área.",
-    ],
+      <>
+        BaseHub es la plataforma de seguimiento e implementación de Base Core,
+        <br /> incluida en tu proyecto.
+      </>,
+      <>
+        Estado en tiempo real, tarea por tarea,
+        <br /> área por área.
+      </>,
+    ] as readonly ReactNode[],
     cta: "CONOCE BASEHUB",
     href: "/basehub",
   },
@@ -30,7 +37,7 @@ const copy = {
       "No separate project management tool to pay for.",
       "BaseHub is Base Core's own tracking and implementation platform, included with your project.",
       "Real-time status, task by task, area by area.",
-    ],
+    ] as readonly ReactNode[],
     cta: "SEE BASEHUB",
     href: "/en/basehub",
   },
@@ -67,8 +74,8 @@ export default function BaseHubTeaser({
           title={t.title}
           description={
             <>
-              {t.lines.map((line) => (
-                <p key={line}>{line}</p>
+              {t.lines.map((line, i) => (
+                <p key={i}>{line}</p>
               ))}
             </>
           }
