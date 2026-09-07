@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import AboutLogoBlock from "@/components/AboutLogoBlock";
 import BaseHubTeaser from "@/components/BaseHubTeaser";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -230,14 +231,18 @@ export default function MarketingPage() {
       {/* Recruiting — same construction as the cycle pages' Recruiting
           section (ServiceCyclePage #27c2ba5f), copy adapted from "fuerza de
           ventas" to marketing. */}
-      <section
-        className="relative z-[1] min-h-[640px] bg-cover bg-right bg-no-repeat dt:flex dt:min-h-0 dt:bg-fixed"
-        style={{ backgroundImage: "url(/images/Fondo-Base-Core-01.webp)" }}
-      >
-        <div className="px-[15px] pb-0 pt-[70px] md:pb-[80px] md:pt-[60px] dt:w-[55%] dt:py-0">
+      <section className="relative z-[1] min-h-[640px] overflow-hidden dt:flex dt:min-h-0">
+        <Image
+          src="/images/Fondo-Base-Core-01.webp"
+          alt=""
+          fill
+          sizes="(max-width: 1199px) 100vw, 1200px"
+          className="object-cover object-right"
+        />
+        <div className="relative px-[15px] pb-0 pt-[70px] md:pb-[80px] md:pt-[60px] dt:w-[55%] dt:py-0">
           <div className="h-[10px] dt:h-[160px]" />
         </div>
-        <div className="px-[15px] pb-[45px] max-md:pl-[25px] dt:w-[45%] dt:py-[100px] dt:pl-[85px]">
+        <div className="relative px-[15px] pb-[45px] max-md:pl-[25px] dt:w-[45%] dt:py-[100px] dt:pl-[85px]">
           <SectionHeading
             eyebrow="RECLUTAMIENTO: FUERZA DE MARKETING"
             title="Conformamos un equipo de Marketing sólido y profesional"

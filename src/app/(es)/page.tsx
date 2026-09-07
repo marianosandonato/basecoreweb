@@ -307,13 +307,17 @@ export default function HomePage() {
       {/* ── Metodología (#a72b136) ────────────────────────────────────────
           Skyscraper photo, fixed on desktop. The Elementor overlay is #00294B
           at alpha 0, so the photo is deliberately untinted. */}
-      <section
-        className="bg-cover bg-center bg-no-repeat pb-[70px] pt-[80px] dt:bg-fixed dt:pb-[90px] dt:pt-[110px]"
-        style={{ backgroundImage: "url(/images/footer-base-core-sales.webp)" }}
-      >
+      <section className="relative overflow-hidden pb-[70px] pt-[80px] dt:pb-[90px] dt:pt-[110px]">
+        <Image
+          src="/images/footer-base-core-sales.webp"
+          alt=""
+          fill
+          sizes="(max-width: 1199px) 100vw, 1200px"
+          className="object-cover object-center"
+        />
         {/* Inner-section grids span the full 1200px container (no 15px inset),
             so the 10px cell padding yields 280px cards at x=134 like the original. */}
-        <div className="container-bc px-0">
+        <div className="container-bc relative px-0">
           <div className="px-[15px]">
             <SectionHeading
               eyebrow="Cómo trabajamos"
@@ -346,10 +350,14 @@ export default function HomePage() {
       {/* ── Partner Estratégico / Not-a-Numb3r (#5f421622) ────────────────
           Full-bleed 50/50: photo + black 74% on the left, solid navy on the right. */}
       <section className="relative z-[1] md:flex">
-        <div
-          className="relative bg-cover bg-left bg-no-repeat px-[15px] pb-[80px] pt-[60px] max-md:bg-top md:w-1/2"
-          style={{ backgroundImage: "url(/images/MARKETING-BASECORE.webp)" }}
-        >
+        <div className="relative overflow-hidden px-[15px] pb-[80px] pt-[60px] md:w-1/2">
+          <Image
+            src="/images/MARKETING-BASECORE.webp"
+            alt=""
+            fill
+            sizes="(max-width: 1199px) 100vw, 1200px"
+            className="object-cover object-left max-md:object-top"
+          />
           <span aria-hidden="true" className="absolute inset-0 bg-black opacity-[0.74]" />
           <div className="relative flex h-full min-h-[300px] flex-col items-center justify-center gap-[18px] text-center">
             <Image
@@ -402,12 +410,16 @@ export default function HomePage() {
       {/* ── Recruiting (#e610736) ────────────────────────────────────────
           One photo, no overlay: dark on the left, light on the right where the
           text sits. 55/45 split. */}
-      <section
-        className="relative z-[1] min-h-[640px] bg-cover bg-right bg-no-repeat dt:flex dt:min-h-0 dt:bg-fixed"
-        style={{ backgroundImage: "url(/images/Fondo-Base-Core-01.webp)" }}
-      >
+      <section className="relative z-[1] min-h-[640px] overflow-hidden dt:flex dt:min-h-0">
+        <Image
+          src="/images/Fondo-Base-Core-01.webp"
+          alt=""
+          fill
+          sizes="(max-width: 1199px) 100vw, 1200px"
+          className="object-cover object-right"
+        />
         {/* Left column is empty — it only holds the 160px spacer */}
-        <div className="px-[15px] pb-0 pt-[70px] md:pb-[80px] md:pt-[60px] dt:w-[55%] dt:py-0">
+        <div className="relative px-[15px] pb-0 pt-[70px] md:pb-[80px] md:pt-[60px] dt:w-[55%] dt:py-0">
           <div className="h-[10px] dt:h-[160px]" />
         </div>
 
@@ -419,7 +431,7 @@ export default function HomePage() {
             ~25px left on mobile once added. Scoped to md: (only where the
             layout is no longer centered) so mobile centers true and desktop
             keeps its original spacing. */}
-        <div className="px-[15px] pb-[45px] dt:w-[45%] dt:py-[100px] dt:pl-[85px]">
+        <div className="relative px-[15px] pb-[45px] dt:w-[45%] dt:py-[100px] dt:pl-[85px]">
           <SectionHeading
             eyebrow="RECRUITING: FUERZA DE VENTAS"
             title="Te acompañamos en la búsqueda y selección de perfiles acordes a tu negocio."
@@ -437,10 +449,14 @@ export default function HomePage() {
       </section>
 
       {/* ── E-Book CTA (#1ee6de6) ────────────────────────────────────────── */}
-      <section
-        className="relative bg-cover bg-center bg-no-repeat pb-[70px] pt-[80px] dt:bg-fixed dt:pb-[75px] dt:pt-[90px]"
-        style={{ backgroundImage: "url(/images/base-core-sales-ebook.webp)" }}
-      >
+      <section className="relative overflow-hidden pb-[70px] pt-[80px] dt:pb-[75px] dt:pt-[90px]">
+        <Image
+          src="/images/base-core-sales-ebook.webp"
+          alt=""
+          fill
+          sizes="(max-width: 1199px) 100vw, 1200px"
+          className="object-cover object-center"
+        />
         <span aria-hidden="true" className="absolute inset-0 bg-navy opacity-[0.82]" />
         <div className="container-bc relative">
           <SectionHeading
