@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { nav, navEn, site, siteEn, type Lang } from "@/lib/site";
+import Button from "./Button";
 import ContactForm from "./ContactForm";
 import SectionHeading from "./SectionHeading";
 import { CheckCircleIcon, LinkedinIcon } from "./icons";
@@ -22,8 +23,9 @@ const copy = {
     scheduleText: "O agenda directamente haciendo clic aquí:",
     scheduleButton: "PROGRAMAR REUNIÓN",
     founderRole: site.founder.role,
-    calendarAlt: "Agenda para programar una reunión con Base Core",
+    founderPhotoAlt: "Mariano Sandonato, fundador de Base Core, dando una charla",
     linkedinAria: "LinkedIn de Mariano Sandonato",
+    linkedinButton: "LINKEDIN",
   },
   en: {
     eyebrow: "Get in Touch",
@@ -38,8 +40,9 @@ const copy = {
     scheduleText: "Or schedule directly by clicking here:",
     scheduleButton: "BOOK MEETING",
     founderRole: siteEn.founderRole,
-    calendarAlt: "Calendar to schedule a meeting with Base Core",
+    founderPhotoAlt: "Mariano Sandonato, founder of Base Core, speaking on stage",
     linkedinAria: "Mariano Sandonato's LinkedIn",
+    linkedinButton: "LINKEDIN",
   },
 } as const;
 
@@ -142,23 +145,35 @@ export default function ContactSection({
             <div className="max-md:hidden md:w-[17.37%]" />
           </div>
 
-          {/* Calendar photo + cycle list (#43a3e1) — the photo is sized to
-              match the list's rendered height (md:items-stretch + fill),
-              not the other way around, so it stays aligned as the list
-              grows or shrinks a row. */}
-          <div className="md:flex md:items-stretch">
-            <div className="md:w-[43.684%] md:pr-[30px]">
-              <div className="relative h-[200px] w-full overflow-hidden rounded-[4px] md:h-full">
+          {/* Personal photo + cycle list (#43a3e1) — was a stock calendar
+              photo stretched to match the list's height (md:items-stretch +
+              fill); replaced with a real photo of the founder speaking, plus
+              his name and a LinkedIn button underneath. The photo now keeps
+              its own aspect ratio instead of stretching to the list, since
+              name+button live below it rather than the list dictating its
+              height. Note: this repeats site.founder.name + LinkedIn a
+              second time within the same section (the signature block above
+              already has both) — left as-is per product decision, not
+              resolved here. */}
+          <div className="md:flex md:items-start md:gap-[30px]">
+            <div className="md:w-[43.684%]">
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[4px]">
                 <Image
-                  src="/images/calendario-base-core-sales.webp"
-                  alt={t.calendarAlt}
+                  src="/images/mariano-sandonato-speaker.webp"
+                  alt={t.founderPhotoAlt}
                   fill
                   sizes="(max-width: 768px) 100vw, 240px"
-                  className="object-cover"
+                  className="object-cover object-[50%_15%]"
                 />
               </div>
+              <p className="pt-[16px] font-heading text-[18px] font-bold text-heading">
+                {site.founder.name}
+              </p>
+              <Button href={site.founder.linkedin} external size="sm" className="mt-[12px]">
+                {t.linkedinButton}
+              </Button>
             </div>
-            <div className="mt-[30px] pb-[40px] md:-mt-[2px] md:w-[56.316%] md:pb-0">
+            <div className="mt-[30px] pb-[40px] md:mt-0 md:w-[56.316%] md:pb-0">
               <ul>
                 {items.map((item) => (
                   /* 32.4px rows (the original's items measure 32 tall), and the

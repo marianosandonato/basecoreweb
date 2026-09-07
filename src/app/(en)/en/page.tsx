@@ -378,17 +378,23 @@ export default function HomePageEn() {
           <div className="h-[10px] dt:h-[160px]" />
         </div>
 
-        <div className="px-[15px] pb-[45px] max-md:pl-[25px] dt:w-[45%] dt:py-[100px] dt:pl-[85px]">
+        {/* max-md:pl removed (punto 12 fix): see the ES Home's own note -- same
+            asymmetric-padding shift as the Marketing cajón, plus the bigger
+            offender, `pr-[50px]` below, scoped to md: so it no longer pushes
+            centerOnMobile's centered block off-true-center on mobile. */}
+        <div className="px-[15px] pb-[45px] dt:w-[45%] dt:py-[100px] dt:pl-[85px]">
           <SectionHeading
             eyebrow="RECRUITING: SALES FORCE"
             title="We support you in sourcing and selecting the right talent for your business."
             description="Beyond our training model, we look for profiles that fit and perform within the proposed sales model."
             align="left"
+            centerOnMobile
+            showLine={false}
             maxWidth={800}
-            className="mb-[8px] pr-[50px] dt:mb-[10px]"
+            className="mb-[8px] md:pr-[50px] dt:mb-[10px]"
           />
           <div className="mt-[20px]">
-            <CheckList items={recruitingChecklist} size="md" />
+            <CheckList items={recruitingChecklist} size="md" centerOnMobile />
           </div>
         </div>
       </section>
