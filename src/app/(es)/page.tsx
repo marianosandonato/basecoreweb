@@ -392,17 +392,27 @@ export default function HomePage() {
           <div className="h-[10px] dt:h-[160px]" />
         </div>
 
-        <div className="px-[15px] pb-[45px] max-md:pl-[25px] dt:w-[45%] dt:py-[100px] dt:pl-[85px]">
+        {/* max-md:pl removed (punto 12 fix): same asymmetric-padding bug as the
+            Marketing cajón (see that section's own note) -- measured live,
+            confirmed the ~5px shift. The bigger offender here was `pr-[50px]`
+            below: harmless while left-aligned (just trailing whitespace), but
+            unconditional so it also shifted centerOnMobile's centered block
+            ~25px left on mobile once added. Scoped to md: (only where the
+            layout is no longer centered) so mobile centers true and desktop
+            keeps its original spacing. */}
+        <div className="px-[15px] pb-[45px] dt:w-[45%] dt:py-[100px] dt:pl-[85px]">
           <SectionHeading
             eyebrow="RECRUITING: FUERZA DE VENTAS"
             title="Te acompañamos en la búsqueda y selección de perfiles acordes a tu negocio."
             description="Además de nuestro modelo de formación, buscamos perfiles acordes y eficientes al modelo de ventas propuesto."
             align="left"
+            centerOnMobile
+            showLine={false}
             maxWidth={800}
-            className="mb-[8px] pr-[50px] dt:mb-[10px]"
+            className="mb-[8px] md:pr-[50px] dt:mb-[10px]"
           />
           <div className="mt-[20px]">
-            <CheckList items={recruitingChecklist} size="md" />
+            <CheckList items={recruitingChecklist} size="md" centerOnMobile />
           </div>
         </div>
       </section>
