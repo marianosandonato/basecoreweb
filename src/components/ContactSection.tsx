@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { nav, navEn, site, siteEn, type Lang } from "@/lib/site";
-import Button from "./Button";
 import ContactForm from "./ContactForm";
 import SectionHeading from "./SectionHeading";
 import { CheckCircleIcon, LinkedinIcon } from "./icons";
@@ -23,9 +22,8 @@ const copy = {
     scheduleText: "O agenda directamente haciendo clic aquí:",
     scheduleButton: "PROGRAMAR REUNIÓN",
     founderRole: site.founder.role,
-    founderPhotoAlt: "Mariano Sandonato, fundador de Base Core, dando una charla",
+    founderPhotoAlt: "Mariano Sandonato, fundador de Base Core",
     linkedinAria: "LinkedIn de Mariano Sandonato",
-    linkedinButton: "LINKEDIN",
   },
   en: {
     eyebrow: "Get in Touch",
@@ -40,9 +38,8 @@ const copy = {
     scheduleText: "Or schedule directly by clicking here:",
     scheduleButton: "BOOK MEETING",
     founderRole: siteEn.founderRole,
-    founderPhotoAlt: "Mariano Sandonato, founder of Base Core, speaking on stage",
+    founderPhotoAlt: "Mariano Sandonato, founder of Base Core",
     linkedinAria: "Mariano Sandonato's LinkedIn",
-    linkedinButton: "LINKEDIN",
   },
 } as const;
 
@@ -145,33 +142,38 @@ export default function ContactSection({
             <div className="max-md:hidden md:w-[17.37%]" />
           </div>
 
-          {/* Personal photo + cycle list (#43a3e1) — was a stock calendar
-              photo stretched to match the list's height (md:items-stretch +
-              fill); replaced with a real photo of the founder speaking, plus
-              his name and a LinkedIn button underneath. The photo now keeps
-              its own aspect ratio instead of stretching to the list, since
-              name+button live below it rather than the list dictating its
-              height. Note: this repeats site.founder.name + LinkedIn a
-              second time within the same section (the signature block above
-              already has both) — left as-is per product decision, not
-              resolved here. */}
-          <div className="md:flex md:items-start md:gap-[30px]">
-            <div className="md:w-[43.684%]">
-              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[4px]">
-                <Image
-                  src="/images/mariano-sandonato-speaker.webp"
-                  alt={t.founderPhotoAlt}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 240px"
-                  className="object-cover object-[50%_15%]"
-                />
-              </div>
-              <p className="pt-[16px] font-heading text-[18px] font-bold text-heading">
-                {site.founder.name}
-              </p>
-              <Button href={site.founder.linkedin} external size="sm" className="mt-[12px]">
-                {t.linkedinButton}
-              </Button>
+          {/* Personal photo (circular avatar, LinkedIn-style) + cycle list
+              (#43a3e1). Correction from the previous round: name + LinkedIn
+              button below the photo were removed — they duplicated the
+              Signature + LinkedIn block right above (flagged, not fixed,
+              in that round; now resolved by product decision). With no text
+              of its own anymore, the photo goes back to matching the list's
+              own rendered height (md:items-stretch on the row + h-full on
+              the photo) rather than sizing itself, same mechanism the
+              original stock-photo version used — aspect-square keeps it a
+              circle at whatever height that resolves to. Mobile has no list
+              height to match (stacked layout), so it gets a fixed diameter
+              instead. */}
+          <div className="md:flex md:items-center md:gap-[30px]">
+            {/* Fixed diameter (140px mobile, 162px desktop) rather than
+                stretching to match the list's rendered height live:
+                tried `md:h-full` on a flex item next to `align-items:
+                stretch` first -- against this row's auto (content-based)
+                height, `height:100%` resolved to 0 instead of picking up
+                the stretch (measured live, not a Tailwind typo), which
+                then zeroed the aspect-square width too. 162px is that same
+                target height computed directly instead: the list is always
+                exactly 5 rows at this component's own fixed 32.4px
+                line-height (see the list's own comment below), so it's a
+                known constant, not a guess. */}
+            <div className="relative mx-auto aspect-square w-[140px] shrink-0 overflow-hidden rounded-full md:mx-0 md:w-[162px]">
+              <Image
+                src="/images/mariano-sandonato-avatar.webp"
+                alt={t.founderPhotoAlt}
+                fill
+                sizes="(max-width: 768px) 140px, 162px"
+                className="object-cover"
+              />
             </div>
             <div className="mt-[30px] pb-[40px] md:mt-0 md:w-[56.316%] md:pb-0">
               <ul>
