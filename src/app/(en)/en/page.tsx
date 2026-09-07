@@ -198,7 +198,8 @@ export default function HomePageEn() {
           50px top/bottom, matching the cycle pages' Etapas/Puestos boxes.
           Three columns: text, the shrunk image composition centred, then
           the "full cycle" copy. */}
-      <section className="pt-[50px] pb-[20px] md:pb-[50px]">
+      {/* dt:pb-0 (punto 15 fix) -- see the ES Home's own note. */}
+      <section className="pt-[50px] pb-[20px] md:pb-[50px] dt:pb-0">
         <div className="container-bc grid items-center dt:grid-cols-3">
           {/* text-center/md:text-left (#7 ajustes estéticos, punto 6): mirrors
               the ES Home's own fix — see that file for the full note. */}
@@ -244,7 +245,8 @@ export default function HomePageEn() {
             <ProcessImageStack />
           </div>
 
-          <div className="px-[15px] pb-[15px] text-center md:pb-[45px] md:text-left">
+          {/* dt:self-end + dt:pb-0 (punto 15 fix) -- see the ES Home's own note. */}
+          <div className="px-[15px] pb-[15px] text-center md:pb-[45px] md:text-left dt:self-end dt:pb-0">
             <h3 className="mb-[12px] font-heading text-[18px] font-medium leading-[24px] text-heading md:text-[20px] md:leading-[32px]">
               We implement processes that drive your company&apos;s growth, help you get
               organized, and increase your sales.

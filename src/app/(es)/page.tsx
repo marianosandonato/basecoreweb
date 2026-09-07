@@ -179,7 +179,13 @@ export default function HomePage() {
           50px top/bottom, matching the cycle pages' Etapas/Puestos boxes.
           Three columns: text, the shrunk image composition centred, then
           the "ciclo completo" copy. */}
-      <section className="pt-[50px] pb-[20px] md:pb-[50px]">
+      {/* dt:pb-0 (punto 15 fix): at dt: this section's own closing padding
+          just stacked on top of the next section's (Empresas) own opening
+          padding, which is already symmetric with ITS OWN closing padding
+          (py-[90px] at xl:) -- letting Empresas alone own the gap between
+          them, instead of both sides padding independently, is what
+          actually makes that gap equal its own bottom margin as asked. */}
+      <section className="pt-[50px] pb-[20px] md:pb-[50px] dt:pb-0">
         <div className="container-bc grid items-center dt:grid-cols-3">
           {/* text-center/md:text-left (#7 ajustes estéticos, punto 6): this
               column is the site's "cajón descriptivo" pattern (dashes,
@@ -235,7 +241,20 @@ export default function HomePage() {
             <ProcessImageStack />
           </div>
 
-          <div className="px-[15px] pb-[15px] text-center md:pb-[45px] md:text-left">
+          {/* dt:self-end + dt:pb-0 (punto 15 fix): this column's text is much
+              shorter than column 1 (bullets+button), which sets the grid
+              row's height. With the grid's own `items-center`, the text sat
+              vertically centered in the tall row -- floating with dead
+              space both above and below it (measured live: ~284px before
+              "Nuestro trabajo" on desktop; mobile unaffected, dt:grid-cols-3
+              only applies at that breakpoint). self-end closes the space
+              below; dt:pb-0 removes this column's own bottom padding so it
+              sits flush with the row's true bottom instead of floating
+              45px above it -- the section below (dt:pb-0 on the section
+              itself, see above) then owns the entire gap via its own
+              opening padding, which is already symmetric with its own
+              closing padding, instead of three paddings stacking. */}
+          <div className="px-[15px] pb-[15px] text-center md:pb-[45px] md:text-left dt:self-end dt:pb-0">
             <h3 className="mb-[12px] font-heading text-[18px] font-medium leading-[24px] text-heading md:text-[20px] md:leading-[32px]">
               Implementamos procesos para impulsar el desarrollo de tu empresa, organizarla
               y aumentar sus ventas.
