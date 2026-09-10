@@ -9,12 +9,15 @@ type Stage = "preventa" | "venta" | "posventa" | "marketing";
 const copy = {
   es: {
     label: "Tecnología",
-    eyebrow: "Implementaciones Tecnológicas",
-    title: "IA + Software",
+    eyebrow: "Convertimos tus procesos en sistemas",
+    title: "IA + Automatización + CRM",
+    intro:
+      "Agentes de IA que ejecutan tareas, automatizaciones que conectan tus procesos y CRM que centraliza toda tu operación comercial.",
     bullets: [
-      "Implementación de agentes y automatizaciones con Claude",
-      "Desarrollo de software con Claude Code",
-      "Implementación de CRM",
+      "**IA:** Agentes que califican leads, hacen seguimiento de oportunidades y detectan señales de posventa durante todo el ciclo comercial.",
+      "**Automatización:** Workflows que conectan marketing, ventas, CRM y posventa sin depender de tareas manuales.",
+      "**Software a medida:** Sitios, dashboards, portales de clientes y herramientas internas adaptadas a tus procesos comerciales.",
+      "**CRM:** Implementamos y optimizamos HubSpot, Pipedrive, Zoho y otras plataformas para mejorar la gestión de leads, oportunidades, clientes y todo tu ciclo comercial.",
     ],
     cta: "IMPLEMENTACIONES TECNOLÓGICAS",
     href: "/tecnologia",
@@ -24,37 +27,59 @@ const copy = {
       posventa: "Posventa",
       marketing: "Marketing",
     },
+    stageEyebrow: {
+      marketing: "Tecnología para escalar tu marketing",
+      preventa: "Tecnología para acelerar la preventa",
+      venta: "Tecnología para vender más y mejor",
+      posventa: "Tecnología para retener y hacer crecer a tus clientes",
+    },
+    stageIntro: {
+      marketing:
+        "Convertimos tu marketing en un sistema de captación, nutrición y medición conectado con tu operación comercial.",
+      preventa:
+        "Identificamos, enriquecemos y calificamos oportunidades para que tu equipo comercial se concentre en los leads con mayor potencial.",
+      venta:
+        "Automatizamos el seguimiento comercial, ordenamos tu pipeline y transformamos los datos de ventas en decisiones.",
+      posventa: "Convertimos la posventa en un sistema de seguimiento, retención y crecimiento de clientes.",
+    },
     stageBullets: {
       preventa: [
-        "**Claude:** Agentes de calificación y enriquecimiento de leads",
-        "**Claude Code:** Desarrollo de scrapers para nurturing",
-        "**CRM:** Gestión de base de datos y oportunidades",
+        "**IA:** Agentes que califican, investigan y enriquecen leads según los criterios de tu negocio.",
+        "**Automatización:** Flujos de lead scoring, nurturing, asignación y seguimiento para acelerar el paso de lead a oportunidad.",
+        "**Software a medida:** Herramientas de prospección, enriquecimiento de datos y gestión de oportunidades adaptadas a tu proceso.",
+        "**CRM:** Gestión de leads, criterios de calificación, asignación automática y seguimiento de cada oportunidad.",
       ],
       venta: [
-        "**Claude:** Agentes de seguimiento y análisis de oportunidades",
-        "**Claude Code:** Tableros de pipeline, forecast y reporting de KPIs",
-        "**CRM:** Configuración de etapas, criterios de avance y alertas",
+        "**IA:** Agentes que analizan oportunidades, preparan seguimientos y detectan acciones para avanzar en cada negocio.",
+        "**Automatización:** Flujos para seguimiento, tareas, alertas y actualización automática de oportunidades.",
+        "**Software a medida:** Dashboards de pipeline, forecast, KPIs y herramientas comerciales adaptadas a tu proceso.",
+        "**CRM:** Configuración de etapas, criterios de avance, responsables, actividades, alertas y reporting comercial.",
       ],
       posventa: [
-        "**Claude:** Agentes de detección de señales de churn y oportunidades de recompra",
-        "**Claude Code:** Desarrollo de tableros de segmentación de cartera",
-        "**CRM:** Planes de contacto, renovaciones y seguimiento posventa",
+        "**IA:** Agentes que detectan señales de churn, oportunidades de recompra y necesidades de atención.",
+        "**Automatización:** Flujos para seguimiento, renovaciones, recordatorios, satisfacción y acciones de retención.",
+        "**Software a medida:** Dashboards de cartera, segmentación, indicadores de clientes y herramientas de seguimiento.",
+        "**CRM:** Gestión de clientes, planes de contacto, renovaciones, historial e información para nuevas oportunidades.",
       ],
       marketing: [
-        "**Claude:** Agentes de generación y adaptación de contenido",
-        "**Claude Code:** Sitios web, SEO, campañas",
-        "**CRM:** Canales de captación, campañas activas y leads de marketing",
+        "**IA:** Agentes que investigan, generan y adaptan contenidos para diferentes audiencias y canales.",
+        "**Automatización:** Workflows para captación, nurturing, campañas y seguimiento de leads sin tareas repetitivas.",
+        "**Software a medida:** Sitios web, landing pages, herramientas de marketing y soluciones SEO adaptadas a tus objetivos.",
+        "**CRM:** Captura y centralización de leads, campañas, segmentación y datos para conectar marketing con ventas.",
       ],
     },
   },
   en: {
     label: "Technology",
-    eyebrow: "Technology Implementations",
-    title: "AI + Software",
+    eyebrow: "We turn your processes into systems",
+    title: "AI + Automation + CRM",
+    intro:
+      "AI agents that execute tasks, automations that connect your processes, and a CRM that centralizes your entire commercial operation.",
     bullets: [
-      "AI agent & automation implementation with Claude",
-      "Custom software development with Claude Code",
-      "CRM implementation",
+      "**AI:** Agents that qualify leads, follow up on opportunities, and catch post-sales signals throughout the entire sales cycle.",
+      "**Automation:** Workflows that connect marketing, sales, CRM, and post-sales without relying on manual tasks.",
+      "**Custom software:** Sites, dashboards, client portals, and internal tools tailored to your sales processes.",
+      "**CRM:** We implement and optimize HubSpot, Pipedrive, Zoho, and other platforms to improve lead, opportunity, and customer management across your entire sales cycle.",
     ],
     cta: "TECHNOLOGY IMPLEMENTATIONS",
     href: "/en/tecnologia",
@@ -64,40 +89,64 @@ const copy = {
       posventa: "Post-Sales",
       marketing: "Marketing",
     },
+    stageEyebrow: {
+      marketing: "Technology to scale your marketing",
+      preventa: "Technology to accelerate presales",
+      venta: "Technology to sell more and better",
+      posventa: "Technology to retain and grow your customers",
+    },
+    stageIntro: {
+      marketing:
+        "We turn your marketing into an acquisition, nurturing, and measurement system connected to your sales operation.",
+      preventa:
+        "We identify, enrich, and qualify opportunities so your sales team focuses on the leads with the most potential.",
+      venta: "We automate sales follow-up, organize your pipeline, and turn your sales data into decisions.",
+      posventa: "We turn post-sales into a system for following up, retaining, and growing customers.",
+    },
     stageBullets: {
       preventa: [
-        "**Claude:** Lead scoring and enrichment agents",
-        "**Claude Code:** Custom scraper development for nurturing",
-        "**CRM:** Database and opportunity management",
+        "**AI:** Agents that qualify, research, and enrich leads based on your business's criteria.",
+        "**Automation:** Lead scoring, nurturing, assignment, and follow-up flows to speed up the move from lead to opportunity.",
+        "**Custom software:** Prospecting, data enrichment, and opportunity management tools tailored to your process.",
+        "**CRM:** Lead management, qualification criteria, automatic assignment, and follow-up for every opportunity.",
       ],
       venta: [
-        "**Claude:** Opportunity follow-up and analysis agents",
-        "**Claude Code:** Pipeline, forecast, and KPI reporting dashboards",
-        "**CRM:** Stage configuration, advancement criteria, and alerts",
+        "**AI:** Agents that analyze opportunities, prepare follow-ups, and flag actions to move each deal forward.",
+        "**Automation:** Flows for follow-up, tasks, alerts, and automatic opportunity updates.",
+        "**Custom software:** Pipeline, forecast, and KPI dashboards and sales tools tailored to your process.",
+        "**CRM:** Stage configuration, advancement criteria, owners, activities, alerts, and sales reporting.",
       ],
       posventa: [
-        "**Claude:** Churn-signal detection and win-back opportunity agents",
-        "**Claude Code:** Portfolio segmentation dashboard development",
-        "**CRM:** Contact plans, renewals, and post-sales follow-up",
+        "**AI:** Agents that detect churn signals, repurchase opportunities, and attention needs.",
+        "**Automation:** Flows for follow-up, renewals, reminders, satisfaction, and retention actions.",
+        "**Custom software:** Portfolio dashboards, segmentation, customer indicators, and follow-up tools.",
+        "**CRM:** Customer management, contact plans, renewals, history, and information for new opportunities.",
       ],
       marketing: [
-        "**Claude:** Content generation and repurposing agents",
-        "**Claude Code:** Websites, SEO, campaigns",
-        "**CRM:** Acquisition channels, active campaigns, and marketing leads",
+        "**AI:** Agents that research, generate, and adapt content for different audiences and channels.",
+        "**Automation:** Workflows for acquisition, nurturing, campaigns, and lead follow-up without repetitive tasks.",
+        "**Custom software:** Websites, landing pages, marketing tools, and SEO solutions tailored to your goals.",
+        "**CRM:** Capturing and centralizing leads, campaigns, segmentation, and data to connect marketing with sales.",
       ],
     },
   },
 } as const;
 
 /**
- * "Tecnología / IA + Software" — full-bleed photo, logo on the left and the
- * text block on the right, ~2cm (76px) apart, both groups sitting directly
- * on the photo. First built on the home page, then reused on the cycle pages
- * (between Etapas and Recruiting) and /marketing (below Pilares).
+ * "Tecnología / IA + Automatización + CRM" — full-bleed photo, logo on the
+ * left and the text block on the right, ~2cm (76px) apart, both groups
+ * sitting directly on the photo. First built on the home page, then reused
+ * on the cycle pages (between Etapas and Recruiting) and /marketing (below
+ * Pilares).
  *
- * `stage` swaps the generic bullets for the page's own tech stack and adds
- * the cycle name under the "Tecnología" logo lockup; omit it (home page) to
- * keep the original generic copy.
+ * `stage` swaps the generic eyebrow/intro/bullets for the page's own framing
+ * and tech stack, and adds the cycle name under the "Tecnología" logo
+ * lockup; omit it (home page) to keep the generic copy. `title` stays fixed
+ * across every page — only the eyebrow above it and the bold intro sentence
+ * below it change per stage. Bullets lead with a business capability
+ * (IA / Automatización / Software a medida / CRM), not a tool/product name
+ * (Claude, Claude Code) — deliberate: this cajón faces the client, so it
+ * stays at the "what it does for you" level, not "which tool we run".
  */
 export default function TechnologyBlock({
   lang = "es",
@@ -107,6 +156,8 @@ export default function TechnologyBlock({
   stage?: Stage;
 }) {
   const t = copy[lang];
+  const eyebrow = stage ? t.stageEyebrow[stage] : t.eyebrow;
+  const intro = stage ? t.stageIntro[stage] : t.intro;
   const bullets = stage ? t.stageBullets[stage] : t.bullets;
 
   return (
@@ -147,8 +198,9 @@ export default function TechnologyBlock({
               column's text-center just because the column changed. Needs its
               own opt-in to actually center below `md`. */}
           <SectionHeading
-            eyebrow={t.eyebrow}
+            eyebrow={eyebrow}
             title={t.title}
+            description={intro}
             align="left"
             centerOnMobile
             showLine={false}
@@ -160,6 +212,11 @@ export default function TechnologyBlock({
             // measured with Playwright -- eyebrow has no margin of its own
             // otherwise, just its 30px line-height.
             eyebrowClassName="mb-[15px]"
+            // Bold, heading-dark intro sentence (not the muted body-gray
+            // SectionHeading defaults to elsewhere) -- it replaces what used
+            // to be a bullet, so it needs the same visual weight as one, not
+            // the softer voice of a description paragraph.
+            descriptionClassName="!font-bold !text-heading"
           />
           <CheckList items={bullets} size="md" centerOnMobile />
           {/* bullets-to-button gap (spacing polish): matches the section's
