@@ -36,7 +36,7 @@ const aboutChecklist = [
   "Estrategia y plan comercial",
   "Marketing: desarrollo de marca",
   "Herramientas: CRM, software a medida",
-  "IA: Automatizaciones con Claude",
+  "IA + Automatizaciones",
   "Selección y formación de equipos",
 ];
 

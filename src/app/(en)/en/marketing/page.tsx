@@ -59,10 +59,10 @@ const pilares: readonly FlipCardData[] = [
     ],
   },
   {
-    title: "AI + Software",
+    title: "AI + Automation + CRM",
     image: "/images/agentes-de-ia-base-core-sales-1.webp",
     items: [
-      "Websites and landing pages built with Claude Code",
+      "Websites and landing pages",
       "Email marketing with smart segmentation and automated sending",
       "Automated, behavior-based lead nurturing",
       "Predictive lead scoring: which contacts are closest to buying",
