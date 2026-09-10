@@ -10,6 +10,7 @@ import FlipCardGrid from "@/components/FlipCardGrid";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceJsonLd from "@/components/ServiceJsonLd";
+import TechStageMatrix from "@/components/TechStageMatrix";
 import { TECNOLOGIA_GRID } from "@/content/flipGrids";
 import type { FlipCardData } from "@/content/types";
 import { site } from "@/lib/site";
@@ -213,6 +214,11 @@ export default function TechnologyPage() {
           own Pilares grid (was missing here, so the grid sat flush against
           the teaser's photo below it). */}
       <div className="h-[50px]" aria-hidden="true" />
+
+      {/* "The same technology, across your entire sales cycle" — matrix
+          cajón (stages x capabilities), between Modules and BaseCore AI
+          System. Self-contained (own header, spacer at the end). */}
+      <TechStageMatrix lang="en" />
 
       {/* "BaseCore AI System" — the AI methodology cajón, between Modules and
           the BaseHub teaser. Self-contained (own header, spacer at the end). */}
