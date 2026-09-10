@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import AboutLogoBlock from "@/components/AboutLogoBlock";
+import AiSystemSection from "@/components/AiSystemSection";
 import BaseHubTeaser from "@/components/BaseHubTeaser";
 import Breadcrumb from "@/components/Breadcrumb";
 import Button from "@/components/Button";
@@ -212,6 +213,10 @@ export default function TechnologyPage() {
           own Pilares grid (was missing here, so the grid sat flush against
           the teaser's photo below it). */}
       <div className="h-[50px]" aria-hidden="true" />
+
+      {/* "BaseCore AI System" — the AI methodology cajón, between Modules and
+          the BaseHub teaser. Self-contained (own header, spacer at the end). */}
+      <AiSystemSection lang="en" />
 
       {/* /en/tecnologia has no TechnologyBlock/Recruiting cajones of its own
           (it IS the tecnologia page), so the teaser sits here instead, right
