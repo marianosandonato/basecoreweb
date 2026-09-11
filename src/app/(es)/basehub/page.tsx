@@ -93,7 +93,8 @@ export default function BaseHubPage() {
             BaseHub
           </span>
         }
-        title={["Tu proyecto, en un solo lugar"]}
+        title={["Tu proyecto,", "en un solo lugar."]}
+        titleClassName="!font-bold"
         lines={[
           "Sin pagar una herramienta de gestión de proyectos aparte.",
           <>

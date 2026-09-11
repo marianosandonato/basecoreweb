@@ -94,7 +94,8 @@ export default function BaseHubPageEn() {
             BaseHub
           </span>
         }
-        title={["Your project, in one place"]}
+        title={["Your project,", "in one place."]}
+        titleClassName="!font-bold"
         lines={[
           "No separate project management tool to pay for.",
           "BaseHub is Base Core's own tracking and implementation platform, included with your project.",
