@@ -1,8 +1,8 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`web-lead`, `seo-marketing`, `performance`) — confirmado el 3/9 que la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma, no de configuración), así que solo la sesión principal puede leer el artifact directo. Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8
-> - Última sincronización: 2026-09-05
-> - Nota: documento nuevo, creado el 5/9 al separar el detalle histórico del Plan de SEO (`documentation/seo/plan-seo.md`), que ahora es el tablero activo.
+> - Última sincronización: 2026-09-11
+> - Nota: documento nuevo, creado el 5/9 al separar el detalle histórico del Plan de SEO (`documentation/seo/plan-seo.md`), que ahora es el tablero activo. El 11/9 se sumó el cierre de 1.14 (Core Web Vitals).
 
 ---
 
@@ -29,7 +29,7 @@ Fase 1
 
 ## Cimientos técnicos (on-page)
 
-Que Google pueda rastrear, entender e indexar cada página correctamente. Cerrada del todo el 5/9 — sin ningún pendiente técnico abierto (el único ítem activo de esta fase, 1.14 Core Web Vitals, sigue en el Plan de SEO por estar en progreso).
+Que Google pueda rastrear, entender e indexar cada página correctamente. Cerrada del todo — 1.14 (Core Web Vitals) fue la última en confirmarse, el 11/9.
 
 1.1 — Title tag por página
 
@@ -238,6 +238,31 @@ Cambio aplicado en src/lib/site.ts
 ```
 
 **Para qué sirve:** alinea lo declarado a Google con lo que el servidor sirve sin redirect.
+
+1.14 — Core Web Vitals / Rendimiento (PageSpeed Insights)
+
+Hecho · confirmado 11/9
+
+Regresión detectada 4/9 (Mobile Performance 95→57-60, LCP a 10-13s). Recuperación en 16 commits repartidos en 3 días, cada uno medido con PSI real antes de sumar el siguiente — cronología completa, gráfico y método de medición en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929), que sigue siendo el documento vivo para el detalle técnico de CWV (no se duplica acá).
+
+Progresión medida con PSI real
+
+```
+Mobile Performance:  57-60 (4/9) → 84 → 88 → 81-88 (asentado) → 88 confirmado (11/9)
+LCP mobile:          10-13s → 4.1s → 3.6s → 3.5s (11/9)
+TBT mobile:                                       40ms (11/9, el mejor de toda la serie)
+Desktop Performance: 93-98, estable en toda la serie
+```
+
+**Fixes principales:** Turnstile diferido a `IntersectionObserver` (mayor impacto individual, TBT 1.9s→70ms), `sizes` corregido en logos/imágenes, `preload:false` en fuentes no críticas, migración de 9 imágenes de fondo CSS a `next/image`, INP instrumentado a GA4, Google Tag Manager sacado del critical path (2 iteraciones — la primera mejoró LCP pero rompió TBT por competir con el prefetch de `<Link>`), `experimental.inlineCss` para eliminar el request bloqueante del CSS global, bundle-split de `blogSlugPairs` (sacó ~80KB del chunk de `LanguageSwitcher`), y lazy-load de `LanguageBanner`/`EbookForm` con `next/dynamic`.
+
+**De paso, un bug de indexación relacionado:** Google Search Console marcó "Redirect error" en `/sales/` y `/presales/` (mail del 7/9) por una cadena de 3 redirects (Cloudflare apex→www + el redirect automático de barra final de Next + el redirect del slug legacy) — un salto más que el resto del sitio. Resuelto el 11/9 moviendo el manejo de la barra final a `src/proxy.ts` con `skipTrailingSlashRedirect`, colapsando la cadena a los mismos 2 saltos del resto de las páginas.
+
+**Investigado y descartado en el camino** (con su propia prueba, no una suposición): el componente `WebVitals` como causa de varianza, la región de Vercel (nunca fue Sydney, era el POP de caché), el caching de Cloudflare, una supuesta regresión de código (bisect real: +1.3% de peso, dentro del ruido), y Lighthouse CLI de este sandbox como fuente de medición (10-50× más ruido que señal real, PSI real siempre gana).
+
+**Sigue abierto, sin bloquear el cierre de esta tarea** (tracking vivo en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929)): migrar la sección "Recruiting" (Home + `/marketing`) a `next/image` necesita re-recortar el asset fuente o aceptar un zoom más cerrado — no es un fix de código, es una decisión de diseño. El JS sin usar del bundle propio (28KB) no se toca sin un bundle-analyzer real. Ninguno de los dos es una regresión ni bloquea nada más.
+
+**Para qué sirve:** Core Web Vitals es señal directa de ranking de Google, y la primera impresión real de cualquier visitante.
 
 1.15 — Accesibilidad: contraste de color (WCAG AA)
 
@@ -741,5 +766,6 @@ El registro día a día de cómo se llegó al estado actual — el "Por dónde s
 12. **5/9, cierre de 1.18:** reestructuración a route groups (`(es)`/`(en)`), verificado con `curl` y Playwright. Fase 1 queda sin ningún pendiente técnico abierto.
 13. **5/9, cierre de 7.8:** publicado el séptimo post del blog, sobre "PMO". Fase 7 queda sin ningún pendiente propio.
 14. **5/9, reorganización del documento:** el Plan de SEO pasó de un único documento de 58 tareas a esta separación entre tablero activo (Plan de SEO) e historial permanente (este documento) — a pedido de Mariano, para que el documento vivo sea fácil de leer y actualizar sin perder ningún registro.
+15. **11/9, cierre de 1.14:** PSI real confirma Mobile 88 estable (TBT 40ms, el mejor de la serie) — se cierran de una tacada 4 PRs (redirect de GSC en `/sales/`/`/presales/`, bundle-split de `blogSlugPairs`, 3 de 4 fondos migrados a `next/image`, lazy-load de `LanguageBanner`/`EbookForm`) y se corrige en el momento un bug de encuadre que uno de esos mismos PRs había introducido sin querer en `/marketing` (mismo bug que ya se había revertido en Home, pero se pasó por alto que el commit traído también tocaba esa página). Fase 1 queda cerrada del todo. Detalle técnico completo en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929).
 
 Historial Técnico SEO · Base Core · creado el 5 de septiembre de 2026, a partir del Plan de SEO original · espejo de trabajo en `documentation/seo/historial-seo.md`

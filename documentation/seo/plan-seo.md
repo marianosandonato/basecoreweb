@@ -1,8 +1,8 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`web-lead`, `seo-marketing`, `performance`) — confirmado el 3/9 que la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma, no de configuración), así que solo la sesión principal puede leer el artifact directo. Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/f6230fde-8996-4d03-ae8a-4211f111ed90
-> - Última sincronización: 2026-09-06
-> - Nota: este documento se reorganizó el 5/9 — ahora es el tablero activo (solo tareas pendientes/bloqueadas/en progreso en detalle). El registro completo de tareas ya resueltas vive en `documentation/seo/historial-seo.md`.
+> - Última sincronización: 2026-09-11
+> - Nota: este documento se reorganizó el 5/9 — ahora es el tablero activo (solo tareas pendientes/bloqueadas/en progreso en detalle). El registro completo de tareas ya resueltas vive en `documentation/seo/historial-seo.md`. El 11/9 cerró 1.14 (Core Web Vitals) del todo.
 
 ---
 
@@ -14,9 +14,9 @@ basecoresales.com · auditoría & hoja de ruta
 
 Tablero activo: qué falta hacer, con el detalle completo solo de lo que sigue abierto. Las tareas ya resueltas quedan en la tabla de estado como una línea — el registro completo de cómo se resolvió cada una vive en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8), sin perder ni un dato.
 
-📋 [Ver Historial Técnico SEO (detalle de las 49 tareas ya resueltas)](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8)
+📋 [Ver Historial Técnico SEO (detalle de las 50 tareas ya resueltas)](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8)
 
-49 / 59 tareas · +2 en progreso (1.14, 4.4) · +2 bloqueadas (4.1, 4.5)
+50 / 59 tareas · +1 en progreso (4.4) · +2 bloqueadas (4.1, 4.5)
 
 [Diagnóstico](#diagnostico)
 [Fase 1 · Técnico](#fase1)
@@ -44,10 +44,10 @@ Esto es lo que el sitio tiene implementado *hoy*.
 | Open Graph / Twitter Card | Hecho | Imagen propia por página de servicio (1.9, 1.10) |
 | Datos estructurados (JSON-LD) | Hecho | `ProfessionalService` + `Service` + `BreadcrumbList` (1.11) |
 | Bots de IA (GPTBot, ClaudeBot...) | Hecho | Sin bloqueo, ni en robots.txt ni en Cloudflare (1.5) |
-| Core Web Vitals (LCP/CLS/TBT) | Parcial | Mobile 88 en recuperación, LCP 3.6s — ver 1.14 |
+| Core Web Vitals (LCP/CLS/TBT) | Hecho | Mobile 88 confirmado, TBT 40ms, LCP 3.5s (1.14) |
 | `lang` correcto en `/en/*` | Hecho | Route groups separados por idioma, resuelto 5/9 (1.18) |
 | Contraste de color (WCAG AA) | Hecho | Accessibility 100/100 en PageSpeed (1.15) |
-| Google Search Console | Hecho | Propiedad de Dominio, 16/16 páginas indexadas (1.12, 2.2) |
+| Google Search Console | Hecho | Propiedad de Dominio, 16/16 páginas indexadas (1.12, 2.2) — error de redirección en 2 slugs legacy corregido 11/9, detalle en 1.14 |
 | Google Analytics / GA4 | Hecho | ID `G-0NRE1KWMBM`, eventos clave marcados (2.1, 2.3) |
 | Palabras clave con volumen real | Hecho | Mapa validado con Keyword Planner en ES, AR e inglés (3.5) |
 | Google Business Profile | Bloqueado | Verificación rechazada, requiere viaje — ver 4.1 |
@@ -58,7 +58,7 @@ Fase 1
 
 ## Cimientos técnicos (on-page)
 
-Cerrada del todo el 5/9 — sin ningún pendiente técnico abierto. Detalle completo de las 21 tareas resueltas en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8).
+Cerrada del todo — 1.14 (Core Web Vitals) fue la última en confirmarse, el 11/9. Detalle completo de las 22 tareas resueltas en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8).
 
 | # | Tarea | Estado |
 | --- | --- | --- |
@@ -75,7 +75,7 @@ Cerrada del todo el 5/9 — sin ningún pendiente técnico abierto. Detalle comp
 | 1.11 | Datos estructurados (JSON-LD) | Hecho |
 | 1.12 | Verificación en Google Search Console | Hecho |
 | 1.13 | Bug de dominio canónico | Hecho |
-| 1.14 | Core Web Vitals / Rendimiento | En progreso |
+| 1.14 | Core Web Vitals / Rendimiento | Hecho |
 | 1.15 | Contraste de color (WCAG AA) | Hecho |
 | 1.16 | Texto de enlaces + bug link EN | Hecho |
 | 1.17 | H1 de Home rompe texto plano | Hecho |
@@ -84,28 +84,6 @@ Cerrada del todo el 5/9 — sin ningún pendiente técnico abierto. Detalle comp
 | 1.20 | Housekeeping técnico menor | Hecho |
 | 1.21 | Documento desincronizado | Hecho |
 | 1.22 | Bug de `<br/>` en tarjeta de cliente | Hecho |
-
-1.14 — Core Web Vitals / Rendimiento (PageSpeed Insights)
-
-En recuperación · Mobile 88, LCP 3.6s
-
-Regresión detectada 4/9 (Mobile Performance cayó de 95 a 57-60, LCP a 10-13s). Recuperación con 6 fixes deployados uno a la vez, cada uno medido con PSI real antes de sumar el siguiente: Turnstile diferido, `sizes` de logos, `preload:false` en fuentes, imagen de Tecnología a `next/image`, cap de `deviceSizes` replicado en `PageHero` (5 de 6 páginas), e INP instrumentado a GA4 vía `useReportWebVitals` nativo de Next.js 16.
-
-Progresión medida con PSI real
-
-```
-Mobile Performance:  57-60 (4/9) → 84 → 88
-LCP mobile:          10-13s → 4.1s → 3.6s
-Desktop Performance: 93 (sin regresión mayor)
-```
-
-**Todavía sin remedir:** los últimos 2 fixes (cap de deviceSizes + INP) fueron deployados el 5/9 por la tarde, después de la última medición de PSI real (Perf 88, LCP 3.6s) — falta confirmar si movieron la aguja.
-
-**Decisiones tomadas, sin código:** JS legacy (13.7KB de polyfills) se ignora — depende de una ruta interna no soportada de Next.js, bug conocido y abierto en `vercel/next.js`. Imágenes 2x-DPR y el cambio global de `next.config.ts` quedan en pausa — Lighthouse mide a 1x-DPR, así que ese caso no es visible con la herramienta de referencia actual.
-
-**Sin decidir todavía:** JS sin usar de GTM (~71KB) + bundle de la app (~28KB) — requiere cambiar cuándo/cómo carga GTM, mayor alcance que un ajuste puntual. CSS render-blocking (11.8KB, 160ms) — bajo impacto, no prioritario. Detalle técnico completo en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929).
-
-**Próximo paso:** remedir con PageSpeed Insights real (sesión limpia, sin extensiones de Chrome) para confirmar el efecto de los últimos 2 fixes antes de decidir si vale la pena encarar GTM/bundle.
 
 Fase 2
 
@@ -304,8 +282,7 @@ Fases 1, 2, 3, 6 y 7 quedaron cerradas — sin ningún pendiente técnico ni de 
 Lo activo hoy, en orden de qué depende de qué:
 
 * **4.4 — Testimonios:** copy escrito y aprobado, sección implementada y probada en preview (rama `feat/client-testimonials`) — a la espera de que Mariano decida mergear a producción.
-* **1.14 — Performance:** falta remedir con PSI real (sesión limpia, sin extensiones) los últimos 2 fixes deployados el 5/9, antes de decidir si vale la pena encarar GTM/bundle sin usar.
 * **4.1 (GBP), 4.3 (backlinks), 4.6 (LinkedIn/referidos), 5.1 (revisión mensual), 5.2 (contenido periódico), 5.3 (gate del e-book), 6.5 (visibilidad IA):** todos en pausa por decisión explícita — ninguno bloqueado por otro, se retoman cuando decidas.
 * **4.5 — GDPR:** bloqueado hasta tener texto legal revisado por alguien con expertise real en protección de datos española/argentina.
 
-Última actualización: 2026-09-06 (4.4: testimonios redactados e implementados en preview, pendientes de push) · se irá marcando como Hecho a medida que avancemos.
+Última actualización: 2026-09-11 (1.14 cerrado: Core Web Vitals confirmado + error de redirección de GSC corregido) · se irá marcando como Hecho a medida que avancemos.
