@@ -14,7 +14,7 @@ import { TECNOLOGIA_GRID } from "@/content/flipGrids";
 import type { FlipCardData } from "@/content/types";
 import { site } from "@/lib/site";
 
-/** EN counterpart of /tecnologia's "Módulos" — see the ES page for source. */
+/** EN counterpart of /tecnologia's "Soluciones" (was "Módulos") — see the ES page for source. */
 const modules: readonly FlipCardData[] = [
   {
     title: "AI Agents",
@@ -191,12 +191,12 @@ export default function TechnologyPage() {
         </div>
       </section>
 
-      {/* Modules heading — EN counterpart of /tecnologia's "Módulos". */}
+      {/* Solutions heading — EN counterpart of /tecnologia's "Soluciones". */}
       <div className="h-[50px]" aria-hidden="true" />
       <section className="container-bc py-[10px]">
         <SectionHeading
           eyebrow="TECHNOLOGY FOUNDATIONS"
-          title="Modules"
+          title="Solutions"
           maxWidth={800}
           className="mb-[16px]"
         />
@@ -209,12 +209,12 @@ export default function TechnologyPage() {
         <FlipCardGrid cards={modules.slice(4)} grid={TECNOLOGIA_GRID} />
       </section>
 
-      {/* Foot of the Modules grid — same 50px as /marketing gets below its
+      {/* Foot of the Solutions grid — same 50px as /marketing gets below its
           own Pilares grid (was missing here, so the grid sat flush against
           the teaser's photo below it). */}
       <div className="h-[50px]" aria-hidden="true" />
 
-      {/* "BaseCore AI System" — the AI methodology cajón, between Modules and
+      {/* "BaseCore AI System" — the AI methodology cajón, between Solutions and
           the BaseHub teaser. Self-contained (own header, spacer at the end). */}
       <AiSystemSection lang="en" />
 

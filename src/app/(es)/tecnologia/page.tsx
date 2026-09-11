@@ -14,7 +14,7 @@ import { TECNOLOGIA_GRID } from "@/content/flipGrids";
 import type { FlipCardData } from "@/content/types";
 
 /**
- * The eight "Módulos" flip boxes — /tecnologia's counterpart to /marketing's
+ * The eight "Soluciones" flip boxes (was "Módulos") — /tecnologia's counterpart to /marketing's
  * "Pilares comunicacionales", same box geometry (TECNOLOGIA_GRID) but with a
  * bulleted back face instead of a description paragraph.
  */
@@ -193,19 +193,20 @@ export default function TecnologiaPage() {
         </div>
       </section>
 
-      {/* Módulos heading — replica of /marketing's "Pilares comunicacionales"
-          heading spacing (50px foot above, matching the grid below). */}
+      {/* "Soluciones" heading (was "Módulos") — replica of /marketing's
+          "Pilares comunicacionales" heading spacing (50px foot above,
+          matching the grid below). */}
       <div className="h-[50px]" aria-hidden="true" />
       <section className="container-bc py-[10px]">
         <SectionHeading
           eyebrow="BASES TECNOLÓGICAS"
-          title="Módulos"
+          title="Soluciones"
           maxWidth={800}
           className="mb-[16px]"
         />
       </section>
 
-      {/* Módulos flip boxes — same two-rows-of-four construction as
+      {/* Soluciones flip boxes — same two-rows-of-four construction as
           /marketing's pilares grid. */}
       <section className="container-bc px-0 pt-[40px]">
         <FlipCardGrid cards={modulos.slice(0, 4)} grid={TECNOLOGIA_GRID} />
@@ -214,13 +215,13 @@ export default function TecnologiaPage() {
         <FlipCardGrid cards={modulos.slice(4)} grid={TECNOLOGIA_GRID} />
       </section>
 
-      {/* Foot of the Módulos grid — same 50px as /marketing gets below its
+      {/* Foot of the Soluciones grid — same 50px as /marketing gets below its
           own Pilares grid (was missing here, so the grid sat flush against
           the teaser's photo below it). */}
       <div className="h-[50px]" aria-hidden="true" />
 
-      {/* "BaseCore AI System" — the AI methodology cajón, between Módulos and
-          the BaseHub teaser. Self-contained (own header, spacer at the end). */}
+      {/* "BaseCore AI System" — the AI methodology cajón, between Soluciones
+          and the BaseHub teaser. Self-contained (own header, spacer at the end). */}
       <AiSystemSection lang="es" />
 
       {/* /tecnologia has no TechnologyBlock/Recruiting cajones of its own (it
