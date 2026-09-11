@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import AboutLogoBlock from "@/components/AboutLogoBlock";
 import BaseHubTeaser from "@/components/BaseHubTeaser";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -230,19 +229,27 @@ export default function MarketingPage() {
 
       {/* Recruiting — same construction as the cycle pages' Recruiting
           section (ServiceCyclePage #27c2ba5f), copy adapted from "fuerza de
-          ventas" to marketing. */}
-      <section className="relative z-[1] min-h-[640px] overflow-hidden dt:flex dt:min-h-0">
-        <Image
-          src="/images/Fondo-Base-Core-01.webp"
-          alt=""
-          fill
-          sizes="(max-width: 1199px) 100vw, 1200px"
-          className="object-cover object-right"
-        />
-        <div className="relative px-[15px] pb-0 pt-[70px] md:pb-[80px] md:pt-[60px] dt:w-[55%] dt:py-0">
+          ventas" to marketing.
+          NOT on next/image (reverted): background-size:cover computes
+          "cover" against the viewport when paired with dt:bg-fixed, while
+          next/image's fill+object-cover computes it against this box --
+          and this box's aspect ratio is close enough to the photo's own
+          (1920x1267) that object-position has essentially no panning room
+          to compensate for the resulting zoom mismatch (confirmed
+          empirically on the identical Home section: tested object-right,
+          60%, 20%, all visually identical, all cropping the man's head at
+          the left edge). Fixing this needs either a re-cropped source
+          asset or a conscious call to accept the tighter zoom -- a design
+          decision, not a mechanical migration. See the Home page's own
+          Recruiting section for the same note. */}
+      <section
+        className="relative z-[1] min-h-[640px] bg-cover bg-right bg-no-repeat dt:flex dt:min-h-0 dt:bg-fixed"
+        style={{ backgroundImage: "url(/images/Fondo-Base-Core-01.webp)" }}
+      >
+        <div className="px-[15px] pb-0 pt-[70px] md:pb-[80px] md:pt-[60px] dt:w-[55%] dt:py-0">
           <div className="h-[10px] dt:h-[160px]" />
         </div>
-        <div className="relative px-[15px] pb-[45px] max-md:pl-[25px] dt:w-[45%] dt:py-[100px] dt:pl-[85px]">
+        <div className="px-[15px] pb-[45px] max-md:pl-[25px] dt:w-[45%] dt:py-[100px] dt:pl-[85px]">
           <SectionHeading
             eyebrow="RECLUTAMIENTO: FUERZA DE MARKETING"
             title="Conformamos un equipo de Marketing sólido y profesional"
