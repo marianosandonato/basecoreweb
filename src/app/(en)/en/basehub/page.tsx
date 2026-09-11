@@ -138,12 +138,13 @@ export default function BaseHubPageEn() {
               align="left"
               centerOnMobile
               dark
+              showLine={false}
               maxWidth={800}
               className="mb-[16px] w-full"
             />
             <p className="font-sans text-[18px] leading-[1.8] text-muted">
               When Base Core kicks off your project, it&apos;s organized inside BaseHub: your own
-              dashboard showing the development status of the areas we&apos;ll work on together.
+              <br /> dashboard showing the development status of your business&apos;s areas.
             </p>
           </div>
         </div>
