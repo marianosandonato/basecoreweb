@@ -410,16 +410,12 @@ export default function HomePage() {
       {/* ── Recruiting (#e610736) ────────────────────────────────────────
           One photo, no overlay: dark on the left, light on the right where the
           text sits. 55/45 split. */}
-      <section className="relative z-[1] min-h-[640px] overflow-hidden dt:flex dt:min-h-0">
-        <Image
-          src="/images/Fondo-Base-Core-01.webp"
-          alt=""
-          fill
-          sizes="(max-width: 1199px) 100vw, 1200px"
-          className="object-cover object-right"
-        />
+      <section
+        className="relative z-[1] min-h-[640px] bg-cover bg-right bg-no-repeat dt:flex dt:min-h-0 dt:bg-fixed"
+        style={{ backgroundImage: "url(/images/Fondo-Base-Core-01.webp)" }}
+      >
         {/* Left column is empty — it only holds the 160px spacer */}
-        <div className="relative px-[15px] pb-0 pt-[70px] md:pb-[80px] md:pt-[60px] dt:w-[55%] dt:py-0">
+        <div className="px-[15px] pb-0 pt-[70px] md:pb-[80px] md:pt-[60px] dt:w-[55%] dt:py-0">
           <div className="h-[10px] dt:h-[160px]" />
         </div>
 
@@ -430,8 +426,18 @@ export default function HomePage() {
             unconditional so it also shifted centerOnMobile's centered block
             ~25px left on mobile once added. Scoped to md: (only where the
             layout is no longer centered) so mobile centers true and desktop
-            keeps its original spacing. */}
-        <div className="relative px-[15px] pb-[45px] dt:w-[45%] dt:py-[100px] dt:pl-[85px]">
+            keeps its original spacing.
+            NOT migrated to next/image like the other 3 sections below (see
+            perf-plan pendientes): background-size:cover + bg-fixed sizes
+            "cover" against the *viewport*, while next/image's fill+object-cover
+            sizes it against this box -- and this box's aspect ratio is close
+            enough to the photo's own (1920x1267) that object-position has
+            almost no panning room to compensate for the resulting zoom
+            mismatch (confirmed empirically, not just in theory: tested
+            object-right, 60%, 20%, all visually identical). Fixing this needs
+            either a re-cropped source asset or accepting the tighter zoom --
+            a visual/design call, not a mechanical migration. */}
+        <div className="px-[15px] pb-[45px] dt:w-[45%] dt:py-[100px] dt:pl-[85px]">
           <SectionHeading
             eyebrow="RECRUITING: FUERZA DE VENTAS"
             title="Te acompañamos en la búsqueda y selección de perfiles acordes a tu negocio."
