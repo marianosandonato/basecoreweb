@@ -195,7 +195,7 @@ export default function BaseHubPageEn() {
         <div className="container-bc text-center">
           <SectionHeading
             title="Start your implementation with BaseHub included"
-            description="Book a free assessment and we'll show you what your project looks like organized in BaseHub from day one."
+            description="You don't need to pay for another tool to manage your project. BaseHub is included with your implementation so you and your team can track progress, tasks, and results in one place."
             dark
             showLine={false}
             maxWidth={700}
