@@ -19,7 +19,11 @@ import Button from "./Button";
  */
 type Props = {
   title: string[];
-  lines: readonly string[];
+  /** Usually plain strings, one per `<p>` — a line can also be a JSX
+      fragment with a manual `<br />` (e.g. /basehub's own hero) when a
+      paragraph needs a break at a specific word instead of wherever the
+      viewport happens to wrap it. */
+  lines: readonly React.ReactNode[];
   image: string;
   /** Optional content rendered above the h1 (e.g. a product wordmark/logo).
       Shares the title's own fade-in timing since it introduces the title
@@ -98,8 +102,8 @@ export default function PageHero({
         </h1>
 
         <div className="animate-hero-tagline mt-[20px] max-w-[859px] font-sans text-[18px] leading-[32.4px] text-white">
-          {lines.map((line) => (
-            <p key={line}>{line}</p>
+          {lines.map((line, i) => (
+            <p key={i}>{line}</p>
           ))}
         </div>
 

@@ -93,10 +93,14 @@ export default function BaseHubPage() {
             BaseHub
           </span>
         }
-        title={["Tu proyecto,", "en un solo lugar."]}
+        title={["Tu proyecto, en un solo lugar"]}
         lines={[
           "Sin pagar una herramienta de gestión de proyectos aparte.",
-          "BaseHub es la plataforma de seguimiento e implementación de Base Core, incluida en tu proyecto. Estado en tiempo real, tarea por tarea, área por área.",
+          <>
+            BaseHub es la plataforma de seguimiento e implementación de Base Core,
+            <br /> incluida en tu proyecto.
+          </>,
+          "Estado en tiempo real, tarea por tarea, área por área.",
         ]}
         image="/images/tableros-reporting-base-core-sales-1.webp"
         overlayOpacity={0.82}
