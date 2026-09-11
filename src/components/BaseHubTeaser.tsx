@@ -15,24 +15,31 @@ import type { Lang } from "@/lib/site";
 const copy = {
   es: {
     kicker: "BaseHub",
-    title: "Tu proyecto, en un solo lugar",
+    title: (
+      <>
+        Tu proyecto,
+        <br /> en un solo lugar.
+      </>
+    ),
     lines: [
       "Sin pagar una herramienta de gestión de proyectos aparte.",
       <>
         BaseHub es la plataforma de seguimiento e implementación de Base Core,
         <br /> incluida en tu proyecto.
       </>,
-      <>
-        Estado en tiempo real, tarea por tarea,
-        <br /> área por área.
-      </>,
+      "Estado en tiempo real, tarea por tarea, área por área.",
     ] as readonly ReactNode[],
     cta: "CONOCE BASEHUB",
     href: "/basehub",
   },
   en: {
     kicker: "BaseHub",
-    title: "Your project, in one place",
+    title: (
+      <>
+        Your project,
+        <br /> in one place.
+      </>
+    ),
     lines: [
       "No separate project management tool to pay for.",
       "BaseHub is Base Core's own tracking and implementation platform, included with your project.",
@@ -63,11 +70,12 @@ export default function BaseHubTeaser({
       />
       <span aria-hidden="true" className="absolute inset-0 bg-navy opacity-[0.82]" />
       <div className="container-bc relative text-center">
-        {/* Kicker set in the exact type of the "BaseHub" wordmark on
-            /basehub's "Qué es" cajón (font-sans/DM Sans, semibold,
-            tracking-tight, 48/56px) — not a smaller caption above the
-            title, the wordmark itself, at the cajón's own size. */}
-        <span className="mb-[10px] block font-sans text-[48px] font-semibold tracking-tight text-white md:text-[56px]">
+        {/* Kicker set in the type of the "BaseHub" wordmark on /basehub's
+            "Qué es" cajón (font-sans/DM Sans, semibold, tracking-tight) —
+            not a smaller caption above the title, the wordmark itself. 10%
+            larger than that cajón's own 48/56px (53/62px) per feedback that
+            this teaser's kicker should read bigger than the one there. */}
+        <span className="mb-[10px] block font-sans text-[53px] font-semibold tracking-tight text-white md:text-[62px]">
           {t.kicker}
         </span>
         <SectionHeading

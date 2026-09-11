@@ -95,9 +95,11 @@ export default function BaseHubPageEn() {
           </span>
         }
         title={["Your project,", "in one place."]}
+        titleClassName="!font-bold"
         lines={[
           "No separate project management tool to pay for.",
-          "BaseHub is Base Core's own tracking and implementation platform, included with your project. Real-time status, task by task, area by area.",
+          "BaseHub is Base Core's own tracking and implementation platform, included with your project.",
+          "Real-time status, task by task, area by area.",
         ]}
         image="/images/tableros-reporting-base-core-sales-1.webp"
         overlayOpacity={0.82}
