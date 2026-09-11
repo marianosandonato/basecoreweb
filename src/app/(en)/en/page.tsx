@@ -284,11 +284,15 @@ export default function HomePageEn() {
       </section>
 
       {/* ── Methodology ──────────────────────────────────────────────────── */}
-      <section
-        className="bg-cover bg-center bg-no-repeat pb-[70px] pt-[80px] dt:bg-fixed dt:pb-[90px] dt:pt-[110px]"
-        style={{ backgroundImage: "url(/images/footer-base-core-sales.webp)" }}
-      >
-        <div className="container-bc px-0">
+      <section className="relative overflow-hidden pb-[70px] pt-[80px] dt:pb-[90px] dt:pt-[110px]">
+        <Image
+          src="/images/footer-base-core-sales.webp"
+          alt=""
+          fill
+          sizes="(max-width: 1199px) 100vw, 1200px"
+          className="object-cover object-center"
+        />
+        <div className="container-bc relative px-0">
           <div className="px-[15px]">
             <SectionHeading
               eyebrow="How we work"
@@ -320,10 +324,14 @@ export default function HomePageEn() {
 
       {/* ── Strategic Partner / Not-a-Numb3r ──────────────────────────────── */}
       <section className="relative z-[1] md:flex">
-        <div
-          className="relative bg-cover bg-left bg-no-repeat px-[15px] pb-[80px] pt-[60px] max-md:bg-top md:w-1/2"
-          style={{ backgroundImage: "url(/images/MARKETING-BASECORE.webp)" }}
-        >
+        <div className="relative overflow-hidden px-[15px] pb-[80px] pt-[60px] md:w-1/2">
+          <Image
+            src="/images/MARKETING-BASECORE.webp"
+            alt=""
+            fill
+            sizes="(max-width: 1199px) 100vw, 1200px"
+            className="object-cover object-left max-md:object-top"
+          />
           <span aria-hidden="true" className="absolute inset-0 bg-black opacity-[0.74]" />
           <div className="relative flex h-full min-h-[300px] flex-col items-center justify-center gap-[18px] text-center">
             <Image
@@ -383,7 +391,10 @@ export default function HomePageEn() {
         {/* max-md:pl removed (punto 12 fix): see the ES Home's own note -- same
             asymmetric-padding shift as the Marketing cajón, plus the bigger
             offender, `pr-[50px]` below, scoped to md: so it no longer pushes
-            centerOnMobile's centered block off-true-center on mobile. */}
+            centerOnMobile's centered block off-true-center on mobile.
+            NOT migrated to next/image -- see the ES Home's own note on why
+            (object-position has no usable panning room here; it's a
+            visual/design call, not a mechanical migration). */}
         <div className="px-[15px] pb-[45px] dt:w-[45%] dt:py-[100px] dt:pl-[85px]">
           <SectionHeading
             eyebrow="RECRUITING: SALES FORCE"
@@ -402,10 +413,14 @@ export default function HomePageEn() {
       </section>
 
       {/* ── E-Book CTA ──────────────────────────────────────────────────── */}
-      <section
-        className="relative bg-cover bg-center bg-no-repeat pb-[70px] pt-[80px] dt:bg-fixed dt:pb-[75px] dt:pt-[90px]"
-        style={{ backgroundImage: "url(/images/base-core-sales-ebook.webp)" }}
-      >
+      <section className="relative overflow-hidden pb-[70px] pt-[80px] dt:pb-[75px] dt:pt-[90px]">
+        <Image
+          src="/images/base-core-sales-ebook.webp"
+          alt=""
+          fill
+          sizes="(max-width: 1199px) 100vw, 1200px"
+          className="object-cover object-center"
+        />
         <span aria-hidden="true" className="absolute inset-0 bg-navy opacity-[0.82]" />
         <div className="container-bc relative">
           <SectionHeading
