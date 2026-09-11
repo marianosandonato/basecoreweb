@@ -1,6 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Next resolves its own trailing-slash redirect before `redirects()` below
+  // or src/proxy.ts ever run, so there was no way to collapse the 3-redirect
+  // chain GSC flagged for /sales/ and /presales/ (see src/proxy.ts) without
+  // taking over trailing-slash handling ourselves. proxy.ts reproduces
+  // Next's default strip-the-slash behavior for every other route.
+  skipTrailingSlashRedirect: true,
+
   experimental: {
     // Required now that /(es) and /(en)/en are two separate root layouts
     // (see documentation/seo/plan-seo.md 1.18) -- Next.js has no single
