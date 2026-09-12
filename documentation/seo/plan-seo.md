@@ -1,8 +1,8 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`web-lead`, `seo-marketing`, `performance`) — confirmado el 3/9 que la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma, no de configuración), así que solo la sesión principal puede leer el artifact directo. Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/f6230fde-8996-4d03-ae8a-4211f111ed90
-> - Última sincronización: 2026-09-11
-> - Nota: este documento se reorganizó el 5/9 — ahora es el tablero activo (solo tareas pendientes/bloqueadas/en progreso en detalle). El registro completo de tareas ya resueltas vive en `documentation/seo/historial-seo.md`. El 11/9 cerró 1.14 (Core Web Vitals) del todo.
+> - Última sincronización: 2026-09-12
+> - Nota: este documento se reorganizó el 5/9 — ahora es el tablero activo (solo tareas pendientes/bloqueadas/en progreso en detalle). El registro completo de tareas ya resueltas vive en `documentation/seo/historial-seo.md`. El 11/9 cerró 1.14 (Core Web Vitals) del todo. El 12/9 se sumaron 1.23/1.24/1.25: las colas de performance que quedaban abiertas en el artifact Performance Web (no es uno de los tres artifacts SEO de esta regla de sincronización, así que no tiene espejo propio) pasan a trackearse acá — ese artifact deja de ser operativo y queda como historial técnico de performance de consulta.
 
 ---
 
@@ -14,9 +14,9 @@ basecoresales.com · auditoría & hoja de ruta
 
 Tablero activo: qué falta hacer, con el detalle completo solo de lo que sigue abierto. Las tareas ya resueltas quedan en la tabla de estado como una línea — el registro completo de cómo se resolvió cada una vive en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8), sin perder ni un dato.
 
-📋 [Ver Historial Técnico SEO (detalle de las 50 tareas ya resueltas)](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8)
+📋 [Ver Historial Técnico SEO (detalle de las 51 tareas ya resueltas)](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8)
 
-50 / 59 tareas · +1 en progreso (4.4) · +2 bloqueadas (4.1, 4.5)
+51 / 62 tareas · +1 en progreso (4.4) · +2 bloqueadas (4.1, 4.5)
 
 [Diagnóstico](#diagnostico)
 [Fase 1 · Técnico](#fase1)
@@ -54,11 +54,9 @@ Esto es lo que el sitio tiene implementado *hoy*.
 | Blog / contenido informativo | Hecho | 7 artículos publicados, carrusel en Home (3.4) |
 | /basehub + /en/basehub | Hecho | On-page, keywords, indexación y post de blog cerrados (Fase 7) |
 
-Fase 1
+## Fase 1 · Cimientos técnicos (on-page)
 
-## Cimientos técnicos (on-page)
-
-Cerrada del todo — 1.14 (Core Web Vitals) fue la última en confirmarse, el 11/9. Detalle completo de las 22 tareas resueltas en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8).
+Cerrada en lo esencial — 1.14 (Core Web Vitals) se confirmó el 11/9. Quedan dos colas menores de performance (1.24, 1.25) esperando datos reales de tráfico antes de poder decidir algo, y una (1.23) que se investigó y se cerró sin acción posible. Las tres nacen del seguimiento de performance que vive en el artifact [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929) — ahí está todo el detalle técnico (mediciones, commits, método); acá solo el estado. Detalle completo de las 22 tareas ya resueltas de esta fase en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8).
 
 | # | Tarea | Estado |
 | --- | --- | --- |
@@ -84,10 +82,27 @@ Cerrada del todo — 1.14 (Core Web Vitals) fue la última en confirmarse, el 11
 | 1.20 | Housekeeping técnico menor | Hecho |
 | 1.21 | Documento desincronizado | Hecho |
 | 1.22 | Bug de `<br/>` en tarjeta de cliente | Hecho |
+| 1.23 | JS legacy: polyfills de Next (25KB reportados por PSI) | Hecho |
+| 1.24 | Imágenes 2x-DPR (retina) | Pendiente, en pausa |
+| 1.25 | INP real de campo | Pendiente, esperando tráfico |
 
-Fase 2
+**1.24 — Imágenes 2x-DPR (retina)** · Pendiente, en pausa
 
-## Medición
+Lighthouse/PSI miden a 1x-DPR — si el sitio sirve imágenes de menor densidad de la que necesitan las pantallas retina de los visitantes reales, ese problema no es visible para la herramienta de referencia que usamos para medir todo lo demás.
+
+**Estado:** en pausa hasta tener datos reales de CrUX/GA4 por resolución de pantalla — sin eso, cualquier cambio sería a ciegas. Nadie en este equipo tiene acceso de API a GA4 para consultarlo directamente; requiere que Mariano lo revise en el dashboard o habilite acceso de lectura.
+
+**Para qué sirve:** nitidez de imagen en monitores de alta densidad, sin sumar peso innecesario en el resto.
+
+**1.25 — INP real de campo** · Pendiente, esperando tráfico
+
+INP (Interaction to Next Paint) reemplazó a FID como métrica de Core Web Vitals — mide qué tan rápido responde el sitio a una interacción real de un visitante, algo que un laboratorio no puede simular fielmente.
+
+**Estado:** instrumentado y funcionando (Next.js 16 trae `useReportWebVitals` integrado, sin librería aparte), enviando a GA4 desde el 5/9. Solo falta que se acumule tráfico real suficiente para que el dato signifique algo — el sitio es nuevo.
+
+**Para qué sirve:** confirmar con datos de campo (no solo de laboratorio) que la interactividad del sitio es buena para visitantes reales.
+
+## Fase 2 · Medición
 
 Cerrada del todo. Detalle completo en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8).
 
@@ -97,9 +112,7 @@ Cerrada del todo. Detalle completo en el [Historial Técnico SEO](https://claude
 | 2.2 | Verificar dominio en Search Console y enviar sitemap | Hecho |
 | 2.3 | Medir conversiones clave | Hecho |
 
-Fase 3
-
-## Palabras clave y contenido
+## Fase 3 · Palabras clave y contenido
 
 Cerrada del todo. Detalle completo (incluido el mapa de keywords por página) en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8) y el [Mapa de Keywords Basecore](https://claude.ai/code/artifact/2fb2b4bf-cd0c-41a4-a152-05098b5423f9).
 
@@ -116,9 +129,7 @@ Cerrada del todo. Detalle completo (incluido el mapa de keywords por página) en
 | 3.9 | Title de /blog sin keyword | Hecho |
 | 3.10 | H1 de /ebook y /en/ebook | Hecho |
 
-Fase 4
-
-## SEO local y autoridad
+## Fase 4 · SEO local y autoridad
 
 Base Core tiene presencia física en Barcelona y Buenos Aires — ventaja de SEO local que hoy no se está usando. La fase con más tareas activas del plan.
 
@@ -131,9 +142,7 @@ Base Core tiene presencia física en Barcelona y Buenos Aires — ventaja de SEO
 | 4.5 | Política de privacidad (GDPR/LOPDGDD) | Bloqueado |
 | 4.6 | Decisión de canal social | Pendiente |
 
-4.1 — Google Business Profile
-
-Bloqueado · en pausa, sin viaje previsto
+**4.1 — Google Business Profile** · Bloqueado · en pausa, sin viaje previsto
 
 Verificación de Buenos Aires rechazada (29/8): Google pidió cartelería del negocio, algo que no aplica a una ficha de zona de servicio. Google exige grabar el video de verificación en vivo desde el propio local, sin aceptar uno pregrabado — y Mariano ya no está en Buenos Aires. Barcelona (oficina activa, confirmada) tiene el mismo bloqueo de fondo: requiere estar físicamente ahí.
 
@@ -141,17 +150,13 @@ Verificación de Buenos Aires rechazada (29/8): Google pidió cartelería del ne
 
 **Para qué sirve:** aparecer en el mapa y en el bloque local de resultados; señal fuerte de "negocio real" para quien investiga antes de contratar.
 
-4.3 — Primeros enlaces entrantes (backlinks)
-
-Pendiente, en pausa
+**4.3 — Primeros enlaces entrantes (backlinks)** · Pendiente, en pausa
 
 Dominio nuevo, sin enlaces externos todavía. El plan original apuntaba a not-a-numb3r.com, pero ya no tiene sentido (ver 3.2). Puntos de partida a evaluar: directorios de consultoría/negocio en España y Argentina, menciones en medios/newsletters del rubro.
 
 **Para qué sirve:** una de las señales más fuertes de autoridad para Google.
 
-4.4 — Testimonios y prueba social
-
-En progreso · desarrollado, pendiente de decisión
+**4.4 — Testimonios y prueba social** · En progreso · desarrollado, pendiente de decisión
 
 Barfer, Don Seitán y W Profesional dieron el OK para un testimonio, sin saber qué escribir — Mariano pidió redactarlo junto con el equipo. `seo-marketing` investigó buenas prácticas (estructura antes/durante/después, sin superlativos genéricos) y redactó 3 copys en ES/EN basados solo en el servicio real prestado a cada cliente (sin métricas inventadas). Atribución con nombre de pila + cargo, sin apellido en los 3 — decisión deliberada pareja (uno de los clientes es familiar del dueño de Base Core).
 
@@ -163,9 +168,7 @@ Barfer, Don Seitán y W Profesional dieron el OK para un testimonio, sin saber q
 
 **Para qué sirve:** señal directa de "esto ya funcionó para alguien", clave para el desafío de credibilidad del negocio.
 
-4.5 — Política de privacidad y consentimiento (GDPR/LOPDGDD)
-
-Bloqueado · requiere expertise legal externa
+**4.5 — Política de privacidad y consentimiento (GDPR/LOPDGDD)** · Bloqueado · requiere expertise legal externa
 
 Cero rutas legales, cero menciones a privacidad/GDPR, ningún checkbox de consentimiento. En España, GDPR (Art. 13) + LOPDGDD exige aviso de privacidad y consentimiento inequívoco para procesar datos de formularios — obligación legal, no recomendación.
 
@@ -173,17 +176,13 @@ Cero rutas legales, cero menciones a privacidad/GDPR, ningún checkbox de consen
 
 **Para qué sirve:** cierra un riesgo de cumplimiento real.
 
-4.6 — Decisión de canal social: no activar Instagram/LinkedIn de empresa
-
-Pendiente · decisión tomada, sin ejecutar
+**4.6 — Decisión de canal social: no activar Instagram/LinkedIn de empresa** · Pendiente · decisión tomada, sin ejecutar
 
 Instagram (@basecoresales) prácticamente inactivo (41 seguidores, 1 post); LinkedIn de empresa sin poder confirmar actividad. Decisión ya tomada, con research citado (Edelman-LinkedIn B2B Thought Leadership Impact Report): no activar ninguno de los dos todavía — reforzar el LinkedIn **personal** de Mariano con contenido educativo, más sistematizar pedidos de referidos específicos.
 
 **Para qué sirve:** en consultoría B2B de alto involucramiento, un perfil corporativo casi vacío resta confianza en vez de sumarla.
 
-Fase 5
-
-## Mantenimiento continuo
+## Fase 5 · Mantenimiento continuo
 
 El SEO no es un proyecto que se termina — esto es lo que se revisa de forma recurrente. Único ítem cerrado (5.4) tiene detalle en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8).
 
@@ -194,9 +193,7 @@ El SEO no es un proyecto que se termina — esto es lo que se revisa de forma re
 | 5.3 | Evaluar el gate del e-book | Pendiente |
 | 5.4 | Re-correr auditoría SEO/accesibilidad | Hecho |
 
-5.1 — Revisión mensual de posiciones y tráfico
-
-Pendiente, en pausa
+**5.1 — Revisión mensual de posiciones y tráfico** · Pendiente, en pausa
 
 Revisar en Search Console qué términos traen impresiones/clics, y en GA4 qué páginas generan más contacto. `scripts/seo/gsc.py` ya da acceso por comando al lado de Search Console.
 
@@ -204,17 +201,13 @@ Revisar en Search Console qué términos traen impresiones/clics, y en GA4 qué 
 
 **Para qué sirve:** detectar qué contenido funciona y qué páginas no reciben visitas.
 
-5.2 — Actualización periódica de contenido
-
-Pendiente, tarea recurrente
+**5.2 — Actualización periódica de contenido** · Pendiente, tarea recurrente
 
 Sumar artículos nuevos al blog y refrescar las páginas de servicio con datos o ejemplos nuevos cada pocos meses. Sin acción puntual — es un hábito a sostener, no una tarea que se cierra una vez.
 
 **Para qué sirve:** Google favorece sitios que se mantienen activos.
 
-5.3 — Evaluar el gate del e-book y el campo WhatsApp obligatorio
-
-Pendiente, ya no bloqueado
+**5.3 — Evaluar el gate del e-book y el campo WhatsApp obligatorio** · Pendiente, ya no bloqueado
 
 `whatsapp` es `required` en ambos formularios; `email` no lo es. Hipótesis: agrega fricción evitable a un lead magnet de bajo compromiso. Antes bloqueado hasta tener datos reales de 2.3 (conversiones medidas) — ese punto ya cerró, así que esto puede evaluarse cuando se decida.
 
@@ -222,9 +215,7 @@ Pendiente, ya no bloqueado
 
 **Para qué sirve:** reducir fricción en la conversión del lead magnet.
 
-Fase 6
-
-## Posicionamiento en buscadores de IA (AEO/GEO)
+## Fase 6 · Posicionamiento en buscadores de IA (AEO/GEO)
 
 4 de 5 tareas cerradas el 31/8 — detalle en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8). Solo 6.5 sigue activo.
 
@@ -236,13 +227,11 @@ Fase 6
 | 6.4 | Archivo /llms.txt | Hecho |
 | 6.5 | Seguimiento manual de visibilidad en IA | Pendiente, recurrente |
 
-6.5 — Seguimiento manual de visibilidad en IA
-
-Primera ronda hecha, repetir mensualmente
+**6.5 — Seguimiento manual de visibilidad en IA** · Primera ronda hecha, repetir mensualmente
 
 Sin herramientas pagas todavía (Otterly, Peec AI) — con el volumen de tráfico actual no se justifican. En su lugar: una vez por mes, probar en ChatGPT/Perplexity/Google 5-10 búsquedas reales de las páginas de servicio y del blog, y anotar si Base Core aparece citado.
 
-Primera ronda (5/9) — resultado
+*Primera ronda (5/9) — resultado:*
 
 ```
 1 de 8 queries con citación real: "cómo calificar leads B2B" citó
@@ -257,9 +246,7 @@ esperable para un dominio nuevo.
 
 **Qué NO hacer acá** (Google lo marca como contraproducente): no escribir una versión del contenido "para IA" separada de la que lee una persona, no trocear los artículos pensando en snippets, no bloquear los bots de IA para "proteger" el contenido de entrenamiento.
 
-Fase 7
-
-## BaseHub en el sitio
+## Fase 7 · BaseHub en el sitio
 
 Cerrada del todo el 5/9 — `/basehub` y `/en/basehub` en producción desde el 1/9, sin ningún pendiente propio. Detalle completo en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8).
 
@@ -275,14 +262,16 @@ Cerrada del todo el 5/9 — `/basehub` y `/en/basehub` en producción desde el 1
 | 7.8 | Evaluar un artículo de blog relacionado | Hecho |
 | 7.9 | H1 rompe el texto plano | Hecho |
 
-### Por dónde seguir
+## Por dónde seguir
 
-Fases 1, 2, 3, 6 y 7 quedaron cerradas — sin ningún pendiente técnico ni de contenido abierto salvo lo que se detalla abajo. Toda la cronología de cómo se llegó hasta acá vive en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8), no en este documento.
+Fases 2, 3, 6 y 7 quedaron cerradas del todo; Fase 1 quedó cerrada en lo esencial, con solo dos colas menores de performance abiertas. Toda la cronología de cómo se llegó hasta acá vive en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8) (SEO general) y en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929) (performance específicamente), no en este documento.
 
 Lo activo hoy, en orden de qué depende de qué:
 
-* **4.4 — Testimonios:** copy escrito y aprobado, sección implementada y probada en preview (rama `feat/client-testimonials`) — a la espera de que Mariano decida mergear a producción.
-* **4.1 (GBP), 4.3 (backlinks), 4.6 (LinkedIn/referidos), 5.1 (revisión mensual), 5.2 (contenido periódico), 5.3 (gate del e-book), 6.5 (visibilidad IA):** todos en pausa por decisión explícita — ninguno bloqueado por otro, se retoman cuando decidas.
-* **4.5 — GDPR:** bloqueado hasta tener texto legal revisado por alguien con expertise real en protección de datos española/argentina.
+- **4.4 — Testimonios:** copy escrito y aprobado, sección implementada y probada en preview (rama `feat/client-testimonials`) — a la espera de que Mariano decida mergear a producción.
+- **4.1 (GBP), 4.3 (backlinks), 4.6 (LinkedIn/referidos), 5.1 (revisión mensual), 5.2 (contenido periódico), 5.3 (gate del e-book), 6.5 (visibilidad IA), 1.24 (imágenes 2x-DPR), 1.25 (INP de campo):** todos en pausa por decisión explícita o esperando datos/tráfico — ninguno bloqueado por otro, se retoman cuando corresponda.
+- **4.5 — GDPR:** bloqueado hasta tener texto legal revisado por alguien con expertise real en protección de datos española/argentina.
 
-Última actualización: 2026-09-11 (1.14 cerrado: Core Web Vitals confirmado + error de redirección de GSC corregido) · se irá marcando como Hecho a medida que avancemos.
+---
+
+Última actualización: 2026-09-12 (sumadas 1.23/1.24/1.25: las colas de performance que quedaban en el artifact Performance Web pasan a trackearse acá, ese artifact deja de ser operativo y queda como historial técnico de consulta) · se irá marcando como Hecho a medida que avancemos.
