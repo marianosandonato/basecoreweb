@@ -380,12 +380,15 @@ export default function HomePageEn() {
       <BaseHubTeaser lang="en" />
 
       {/* ── Recruiting ──────────────────────────────────────────────────── */}
+      {/* sizes is 100vw unconditionally, see the ES Home's own note on why:
+          no container-bc wrapper here, so capping at 1200px made Next serve
+          a downscaled, visibly softer image on wide screens (PR #32 preview). */}
       <section className="relative z-[1] overflow-hidden dt:flex">
         <Image
           src="/images/Fondo-Base-Core-01.webp"
           alt=""
           fill
-          sizes="(max-width: 1199px) 100vw, 1200px"
+          sizes="100vw"
           className="object-cover object-right"
         />
         <div className="relative px-[15px] pb-0 pt-[70px] md:pb-[80px] md:pt-[60px] dt:w-[55%] dt:py-0">

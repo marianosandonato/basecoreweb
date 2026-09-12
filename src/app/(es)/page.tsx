@@ -409,13 +409,20 @@ export default function HomePage() {
 
       {/* ── Recruiting (#e610736) ────────────────────────────────────────
           One photo, no overlay: dark on the left, light on the right where the
-          text sits. 55/45 split. */}
+          text sits. 55/45 split.
+          sizes is 100vw unconditionally (not capped to 1200px like the other
+          migrated backgrounds): this section has no container-bc wrapper, so
+          it spans the full viewport width on wide screens -- capping sizes
+          here made Next request a downscaled 1200px variant and stretch it,
+          visibly softening the photo (caught visually on the PR #32
+          preview). The other 8 backgrounds are correctly capped because
+          their boxes are actually capped at 1200px. */}
       <section className="relative z-[1] min-h-[640px] overflow-hidden dt:flex dt:min-h-0">
         <Image
           src="/images/Fondo-Base-Core-01.webp"
           alt=""
           fill
-          sizes="(max-width: 1199px) 100vw, 1200px"
+          sizes="100vw"
           className="object-cover object-right"
         />
         {/* Left column is empty — it only holds the 160px spacer */}
