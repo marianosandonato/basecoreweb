@@ -235,9 +235,10 @@ export default function HomePageEn() {
             <ProcessImageStack />
           </div>
 
-          {/* dt:self-start (updated 12/9, was dt:self-end + dt:pb-0) -- mirrors
-              the ES Home's own fix, see that file for the full note. */}
-          <div className="px-[15px] pb-[15px] text-center md:pb-[45px] md:text-left dt:self-start">
+          {/* dt:flex dt:flex-col dt:justify-center dt:self-stretch (updated
+              12/9, was dt:self-start, before that dt:self-end + dt:pb-0) --
+              mirrors the ES Home's own fix, see that file for the full note. */}
+          <div className="px-[15px] pb-[15px] text-center md:pb-[45px] md:text-left dt:flex dt:flex-col dt:justify-center dt:self-stretch">
             <h3 className="mb-[12px] font-heading text-[18px] font-medium leading-[24px] text-heading md:text-[20px] md:leading-[32px]">
               We implement processes that drive your company&apos;s growth, help you get
               organized, and increase your sales.

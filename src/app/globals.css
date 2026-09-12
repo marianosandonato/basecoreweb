@@ -268,26 +268,38 @@
   transform: translateY(-50%);
 }
 
-/* Offsets and type below are NOT a linear scale of the old 350px values --
-   the >=768 and >=1024 breakpoints already prove these per-breakpoint values
-   were independently tuned (e.g. the title offset barely moves between 350px
-   and 550px boxes: -45 -> -44), so scaling mobile's own numbers by 1.4x would
-   have just reproduced the old cramped RATIO in a taller box. Instead these
-   interpolate ~70% of the way from the old mobile values toward the >=768
-   values (490 sits 70% of the way from 350 to 550), which both spaces the
-   three layers out more generously and nudges type size proportionally
-   larger -- verified in the browser at 390/412px to confirm no wrapping
-   regressions on "Consultoría Comercial y Marketing". */
+/* Offsets re-tuned again (12/9, same day, second round): the first pass
+   above centred the *cluster* better in the box but kept title/tagline/
+   button nearly as tight against each other as the original -45/+52/+102
+   set (measured live: only 16px between title and tagline, 29.5px between
+   tagline and button, at 390-412px). The user asked specifically for more
+   air BETWEEN the three, not just a taller box. Because these `top: calc(50%
+   ± Npx)` values position each layer's CENTRE (the `translateY(-50%)` above
+   does the rest), and the title's own rendered height flips between 3 lines
+   (390-~650px, 138px tall at 40/46) and 2 lines (down to 92px, from roughly
+   650px up to the 768px handoff), the title offset is the one that has to
+   move the most to open up real space below a 3-line title without pushing
+   the button past the box: -44 -> -75 lifts the title so its OWN bottom
+   edge sits close to the box's own centre instead of ~25px past it. Tagline
+   moves up slightly (+53 -> +40) to keep pace; button barely moves (+118 ->
+   +117), since it was already reasonably placed. Verified live: the
+   title-tagline gap goes from 16px to 34px at 390/412px (3-line title) and
+   is even bigger (57px) at 767px (2-line title, more natural room); the
+   tagline-button gap goes from 29.5px to 41.5px at every mobile width
+   (that gap only depends on the tagline/button offsets and their own fixed
+   line-heights, so it doesn't shift with the title's line count). Margins
+   above the title and below the button both land in the 55-105px range
+   across 390-767px -- comfortable, and never the tightest gap in the stack. */
 .hero-title-layer {
-  top: calc(50% - 44px);
+  top: calc(50% - 75px);
 }
 
 .hero-tagline-layer {
-  top: calc(50% + 53px);
+  top: calc(50% + 40px);
 }
 
 .hero-button-layer {
-  top: calc(50% + 118px);
+  top: calc(50% + 117px);
 }
 
 .hero-title {

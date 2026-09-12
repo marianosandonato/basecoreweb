@@ -243,22 +243,30 @@ export default function HomePage() {
           {/* dt:self-start (updated 12/9, was dt:self-end + dt:pb-0): this
               column's text is much shorter than column 1 (bullets+button),
               which sets the grid row's height via the grid's own
-              `items-center`. The previous self-end fix (see git history)
-              anchored this text to the row's BOTTOM -- which happened to
-              land it almost exactly level with the image column, which is
-              itself vertically centred in the same tall row (both ended up
-              starting around the same y). That's what read as "this text
-              starts where the photo starts" instead of lining up with
-              column 1's own text, which starts at the row's TOP. self-start
-              fixes that by top-aligning this column with column 1 instead
-              -- both now start reading at the same height. This doesn't
-              reopen the ~284px gap the old fix solved: that gap was owned by
-              the SECTION's own bottom padding + this column's own bottom
-              padding stacking with the next section's top padding, not by
-              which end of the (fixed-height, column-1-driven) row this
-              column's short content sits against -- re-verified live after
-              this change, see the ES Home's task notes. */}
-          <div className="px-[15px] pb-[15px] text-center md:pb-[45px] md:text-left dt:self-start">
+              `items-center`. self-start (12/9, superseded 12/9 same day) had
+              top-aligned this column with column 1's own top -- fixing the
+              "starts where the photo starts" issue -- but the user then
+              asked for this text to be vertically CENTRED against column 1's
+              own text block specifically: top reference = column 1's
+              `.heading-line` dashes, bottom reference = column 1's own
+              button, EXCLUDING column 1's trailing `pb-[45px]` (that's its
+              own cajón margin, not part of the block being centred against).
+              A plain `dt:self-center` would centre against the FULL row
+              height instead, which is taller than that reference range by
+              exactly column 1's own pb-45 -- so it would land ~22px low.
+              Fix: stretch this column to the row's full height (`self-stretch`,
+              same height as column 1's own box, since column 1 is what sets
+              the row height in the first place) and give it the SAME
+              `pb-[45px]` column 1 already carries (already true above, via
+              `md:pb-[45px]` with no dt: override) -- then `flex flex-col
+              justify-center` centres this column's own content inside the
+              box that padding leaves (0 to rowHeight-45px), which is exactly
+              column 1's [heading-line top, button bottom] range. No magic
+              pixel offset, so it holds at any width where the two columns'
+              content heights are what was measured (confirmed live at
+              1280px and 1440px, where `.container-bc`'s 1200px cap keeps
+              both columns' text wrapping identical either way). */}
+          <div className="px-[15px] pb-[15px] text-center md:pb-[45px] md:text-left dt:flex dt:flex-col dt:justify-center dt:self-stretch">
             <h3 className="mb-[12px] font-heading text-[18px] font-medium leading-[24px] text-heading md:text-[20px] md:leading-[32px]">
               Implementamos procesos para impulsar el desarrollo de tu empresa, organizarla
               y aumentar sus ventas.
