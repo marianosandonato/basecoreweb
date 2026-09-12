@@ -198,26 +198,16 @@ export default function HomePageEn() {
           50px top/bottom, matching the cycle pages' Etapas/Puestos boxes.
           Three columns: text, the shrunk image composition centred, then
           the "full cycle" copy. */}
-      {/* dt:pb-0 (punto 15 fix) -- see the ES Home's own note. */}
-      <section className="pt-[50px] pb-[20px] md:pb-[50px] dt:pb-0">
+      {/* dt:pb-0 (punto 15 fix) + dt:pt-[70px] xl:pt-[90px] (12/9 re-check,
+          task 2c) -- mirrors the ES Home's own fix, see that file for the
+          full note. */}
+      <section className="pt-[50px] pb-[20px] md:pb-[50px] dt:pb-0 dt:pt-[70px] xl:pt-[90px]">
         <div className="container-bc grid items-center dt:grid-cols-3">
           {/* text-center/md:text-left (#7 ajustes estéticos, punto 6): mirrors
               the ES Home's own fix — see that file for the full note. */}
           <div className="px-[15px] pb-[45px] text-center md:text-left">
-            {/* Mobile-only flat image. `sizes` was "100vw" but the image
-                never spans the full viewport: it sits inside `.container-bc`
-                (15px each side) *and* this div's own `px-[15px]` (another
-                15px each side), so real display width is `100vw - 60px`. Same
-                fix and measurement as the ES Home (`src/app/page.tsx`). */}
-            <Image
-              src="/images/Process-as-a-Service.jpg"
-              alt="Process as a Service"
-              width={850}
-              height={567}
-              sizes="(max-width: 767px) calc(100vw - 60px), 100vw"
-              className="mb-[40px] mt-[15px] h-auto w-full md:hidden"
-            />
-
+            {/* Mobile-only flat image removed (12/9) -- mirrors the ES Home's
+                own fix, see that file for the full note. */}
             <SectionHeading
               eyebrow="About Us"
               title="Process as a Service"
@@ -245,8 +235,10 @@ export default function HomePageEn() {
             <ProcessImageStack />
           </div>
 
-          {/* dt:self-end + dt:pb-0 (punto 15 fix) -- see the ES Home's own note. */}
-          <div className="px-[15px] pb-[15px] text-center md:pb-[45px] md:text-left dt:self-end dt:pb-0">
+          {/* dt:flex dt:flex-col dt:justify-center dt:self-stretch (updated
+              12/9, was dt:self-start, before that dt:self-end + dt:pb-0) --
+              mirrors the ES Home's own fix, see that file for the full note. */}
+          <div className="px-[15px] pb-[15px] text-center md:pb-[45px] md:text-left dt:flex dt:flex-col dt:justify-center dt:self-stretch">
             <h3 className="mb-[12px] font-heading text-[18px] font-medium leading-[24px] text-heading md:text-[20px] md:leading-[32px]">
               We implement processes that drive your company&apos;s growth, help you get
               organized, and increase your sales.
