@@ -380,22 +380,23 @@ export default function HomePageEn() {
       <BaseHubTeaser lang="en" />
 
       {/* ── Recruiting ──────────────────────────────────────────────────── */}
-      <section
-        className="relative z-[1] bg-cover bg-right bg-no-repeat dt:flex dt:bg-fixed"
-        style={{ backgroundImage: "url(/images/Fondo-Base-Core-01.webp)" }}
-      >
-        <div className="px-[15px] pb-0 pt-[70px] md:pb-[80px] md:pt-[60px] dt:w-[55%] dt:py-0">
+      <section className="relative z-[1] overflow-hidden dt:flex">
+        <Image
+          src="/images/Fondo-Base-Core-01.webp"
+          alt=""
+          fill
+          sizes="(max-width: 1199px) 100vw, 1200px"
+          className="object-cover object-right"
+        />
+        <div className="relative px-[15px] pb-0 pt-[70px] md:pb-[80px] md:pt-[60px] dt:w-[55%] dt:py-0">
           <div className="h-[10px] dt:h-[160px]" />
         </div>
 
         {/* max-md:pl removed (punto 12 fix): see the ES Home's own note -- same
             asymmetric-padding shift as the Marketing cajón, plus the bigger
             offender, `pr-[50px]` below, scoped to md: so it no longer pushes
-            centerOnMobile's centered block off-true-center on mobile.
-            NOT migrated to next/image -- see the ES Home's own note on why
-            (object-position has no usable panning room here; it's a
-            visual/design call, not a mechanical migration). */}
-        <div className="px-[15px] pb-[45px] dt:w-[45%] dt:py-[100px] dt:pl-[85px]">
+            centerOnMobile's centered block off-true-center on mobile. */}
+        <div className="relative px-[15px] pb-[45px] dt:w-[45%] dt:py-[100px] dt:pl-[85px]">
           <SectionHeading
             eyebrow="RECRUITING: SALES FORCE"
             title="We support you in sourcing and selecting the right talent for your business."
