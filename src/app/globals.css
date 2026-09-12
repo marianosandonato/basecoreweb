@@ -249,11 +249,15 @@
  *   < 778        -57 /  16 /  75           38 / 20 / 14   45 / 20 / 40
  * ------------------------------------------------------------------------ */
 
-/* Below the slider's 480px breakpoint Rev Slider scales the module height with
-   the viewport rather than holding 350px: measured 284 at 390, i.e. 350 x
-   (390/480). 350/480 = 0.729167. */
+/* Mobile box raised ~40% (350 -> 490, request from 12/9) because the original
+   height left the title/tagline/button cramped against each other below 768.
+   Below the slider's original 480px breakpoint Rev Slider scaled the module
+   height with the viewport rather than holding a fixed px value; that same
+   proportional behaviour is preserved here, just scaled by the same 1.4x
+   factor (350/480 = 0.729167 -> 490/480 = 1.020833, i.e. 102.0833vw). At a
+   390px viewport that's ~398px (was 284px). */
 .hero {
-  height: min(350px, 72.9167vw);
+  height: min(490px, 102.0833vw);
 }
 
 /* Positioning lives on the wrapper so the entrance animations, which also use
@@ -264,32 +268,42 @@
   transform: translateY(-50%);
 }
 
+/* Offsets and type below are NOT a linear scale of the old 350px values --
+   the >=768 and >=1024 breakpoints already prove these per-breakpoint values
+   were independently tuned (e.g. the title offset barely moves between 350px
+   and 550px boxes: -45 -> -44), so scaling mobile's own numbers by 1.4x would
+   have just reproduced the old cramped RATIO in a taller box. Instead these
+   interpolate ~70% of the way from the old mobile values toward the >=768
+   values (490 sits 70% of the way from 350 to 550), which both spaces the
+   three layers out more generously and nudges type size proportionally
+   larger -- verified in the browser at 390/412px to confirm no wrapping
+   regressions on "Consultoría Comercial y Marketing". */
 .hero-title-layer {
-  top: calc(50% - 45px);
+  top: calc(50% - 44px);
 }
 
 .hero-tagline-layer {
-  top: calc(50% + 52px);
+  top: calc(50% + 53px);
 }
 
 .hero-button-layer {
-  top: calc(50% + 102px);
+  top: calc(50% + 118px);
 }
 
 .hero-title {
-  font-size: 38px;
-  line-height: 45px;
+  font-size: 40px;
+  line-height: 46px;
 }
 
 .hero-tagline {
   font-size: 20px;
-  line-height: 20px;
+  line-height: 24px;
 }
 
 .hero-button {
   font-size: 14px;
-  line-height: 40px;
-  padding-inline: 15px;
+  line-height: 47px;
+  padding-inline: 20px;
 }
 
 /* 768, not 778: Elementor's tablet floor. At 778 the hero stayed 350px for the
