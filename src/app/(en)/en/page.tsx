@@ -389,6 +389,7 @@ export default function HomePageEn() {
           alt=""
           fill
           sizes="100vw"
+          quality={90}
           className="object-cover object-right"
         />
         <div className="relative px-[15px] pb-0 pt-[70px] md:pb-[80px] md:pt-[60px] dt:w-[55%] dt:py-0">

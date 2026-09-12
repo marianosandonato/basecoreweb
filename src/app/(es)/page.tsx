@@ -423,6 +423,7 @@ export default function HomePage() {
           alt=""
           fill
           sizes="100vw"
+          quality={90}
           className="object-cover object-right"
         />
         {/* Left column is empty — it only holds the 160px spacer */}

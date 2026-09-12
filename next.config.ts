@@ -8,6 +8,17 @@ const nextConfig: NextConfig = {
   // Next's default strip-the-slash behavior for every other route.
   skipTrailingSlashRedirect: true,
 
+  images: {
+    // Next 16 requires an explicit allowlist for `quality` -- unconfigured,
+    // every next/image on the site (not just this one) is silently clamped
+    // to 75. Added 90 for Recruiting (src/app/(es)/page.tsx and friends):
+    // at the default 75, the re-encode was visibly softer than the original
+    // CSS background on the PR #32 preview -- a person's face shows
+    // compression artifacts a lot more than the site's other backgrounds
+    // do. 75 stays the default for every other <Image> (untouched).
+    qualities: [75, 90],
+  },
+
   experimental: {
     // Required now that /(es) and /(en)/en are two separate root layouts
     // (see documentation/seo/plan-seo.md 1.18) -- Next.js has no single
