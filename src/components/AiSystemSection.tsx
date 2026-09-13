@@ -42,7 +42,7 @@ const copy = {
     eyebrow: "METODOLOGÍA PROPIA DE IA",
     title: "BaseCore AI System",
     intro: "Agentes de IA que investigan, deciden y proponen antes de ejecutar.",
-    agentsBadge: "HOY, EN PRODUCCIÓN",
+    agentsBadge: "AGENTES EN PRODUCCIÓN",
     agents: [
       {
         title: "Tecnología",
@@ -114,7 +114,7 @@ const copy = {
     eyebrow: "OUR OWN AI METHODOLOGY",
     title: "BaseCore AI System",
     intro: "AI agents that research, decide, and propose before acting.",
-    agentsBadge: "LIVE TODAY",
+    agentsBadge: "AGENTS IN PRODUCTION",
     agents: [
       {
         title: "Technology",
