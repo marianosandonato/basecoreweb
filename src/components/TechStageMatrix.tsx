@@ -31,10 +31,7 @@ type Row = {
  */
 const copy = {
   es: {
-    eyebrow: "TECNOLOGÍA POR ETAPA",
-    title: "La misma tecnología, en todo el ciclo comercial",
-    intro:
-      "Aplicamos IA, automatización, software a medida y CRM de forma transversal en marketing, preventa, venta y posventa.",
+    title: ["La misma tecnología,", "en todo el ciclo comercial"] as const,
     caption:
       "Tabla: capacidades de tecnología (IA, automatización, software a medida, CRM) aplicadas a marketing, preventa, venta y posventa.",
     corner: "Capacidad",
@@ -88,10 +85,7 @@ const copy = {
     ] satisfies readonly Row[],
   },
   en: {
-    eyebrow: "TECHNOLOGY BY STAGE",
-    title: "The same technology, across your entire sales cycle",
-    intro:
-      "We apply AI, automation, custom software, and CRM across marketing, presales, sales, and post-sales.",
+    title: ["The same technology,", "across your entire sales cycle"] as const,
     caption:
       "Table: technology capabilities (AI, automation, custom software, CRM) applied to marketing, presales, sales, and post-sales.",
     corner: "Capability",
@@ -153,9 +147,13 @@ export default function TechStageMatrix({ lang = "es" }: { lang?: Lang }) {
     <>
       <section className="container-bc py-[10px]">
         <SectionHeading
-          eyebrow={t.eyebrow}
-          title={t.title}
-          description={t.intro}
+          title={
+            <>
+              {t.title[0]}
+              <br />
+              {t.title[1]}
+            </>
+          }
           maxWidth={720}
           className="mx-auto"
         />
