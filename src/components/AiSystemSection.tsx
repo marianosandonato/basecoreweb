@@ -12,15 +12,12 @@ type Capability = {
   tool?: string;
 };
 
-/** One line inside an agent card: the specialization (shown bold) and what it covers. */
-type AgentRole = {
-  name: string;
-  description: string;
-};
-
+/** One branch (rama) of the "Agentes en producción" block: a title and the
+ * plain names of the agents that exist in it — no descriptions (10/9
+ * request: the previous name+paragraph version read as a wall of text). */
 type AgentGroup = {
   title: string;
-  roles: readonly AgentRole[];
+  roles: readonly string[];
 };
 
 type WorkflowStep = {
@@ -29,15 +26,12 @@ type WorkflowStep = {
 };
 
 /**
- * "BaseCore AI System" — /tecnologia's own methodology cajón, between "Módulos"
- * and the BaseHub teaser (see that page for placement).
+ * "BaseCore AI System" — /tecnologia's own methodology cajón, between
+ * TechStageMatrix and the BaseHub teaser (see that page for placement).
  *
- * Structure (top to bottom): intro (one line, no eyebrow) -> Sistema de
- * análisis (3 plain cards, no photos -- this is informational, not a
- * marketing flip-box) -> Agentes en producción (the most important block,
- * navy cards so it reads with more weight than the white cards above it;
- * 5 categories laid out 2 on top (Tecnología, Marketing) + 3 below
- * (Preventa, Venta, Posventa)) -> Workflow
+ * Structure (top to bottom): eyebrow/title/intro -> "HOY, EN PRODUCCIÓN"
+ * badge -> Agentes en producción (5 navy branch cards, names only, no
+ * title of its own) -> Sistema de análisis (3 plain white cards) -> Workflow
  * (an 8-step process, title+description per step) -> "El mismo método,
  * adaptado a tus procesos" (visually distinct dashed/soft offer box — see
  * the file's comment above that block for why it must never look like the
@@ -48,6 +42,29 @@ const copy = {
     eyebrow: "METODOLOGÍA PROPIA DE IA",
     title: "BaseCore AI System",
     intro: "Agentes de IA que investigan, deciden y proponen antes de ejecutar.",
+    agentsBadge: "HOY, EN PRODUCCIÓN",
+    agents: [
+      {
+        title: "Tecnología",
+        roles: ["AI Systems", "Software Development", "Automation", "Integrations"],
+      },
+      {
+        title: "Marketing",
+        roles: ["Producto & Diseño", "SEO & Conversión", "Performance", "Social Content"],
+      },
+      {
+        title: "Preventa",
+        roles: ["Prospección & Research", "Lead Qualification", "Lead Routing & Booking"],
+      },
+      {
+        title: "Venta",
+        roles: ["Sales Follow-up", "Proposal & Quote", "Pipeline Intelligence"],
+      },
+      {
+        title: "Posventa",
+        roles: ["Customer Success", "Retention & Churn", "Renewals & Growth", "Customer Support"],
+      },
+    ] satisfies readonly AgentGroup[],
     capacidadesLabel: "SISTEMA DE ANÁLISIS",
     capacidades: [
       {
@@ -72,114 +89,6 @@ const copy = {
         tool: "Claude Mem",
       },
     ] satisfies readonly Capability[],
-    agentsBadge: "HOY, EN PRODUCCIÓN",
-    agentsTitle: "Los agentes que ya trabajan en Base Core",
-    agents: [
-      {
-        title: "Tecnología",
-        roles: [
-          {
-            name: "AI Systems",
-            description:
-              "Diseño e implementación de sistemas de agentes de IA para analizar, decidir y ejecutar procesos reales de negocio.",
-          },
-          {
-            name: "Software Development",
-            description:
-              "Desarrollo de software a medida para CRM, inventario, logística y operaciones. Desarrollo y evolución de BaseHub, la plataforma propia de seguimiento e implementación de proyectos.",
-          },
-          {
-            name: "Automation",
-            description:
-              "Diseño e implementación de automatizaciones y workflows para reducir tareas manuales y conectar procesos.",
-          },
-          {
-            name: "Integrations",
-            description:
-              "Integración de CRM, aplicaciones, APIs y fuentes de datos para conectar sistemas y centralizar información.",
-          },
-        ],
-      },
-      {
-        title: "Marketing",
-        roles: [
-          {
-            name: "Producto & Diseño",
-            description: "UX, UI, estructura y evolución de sitios y experiencias digitales",
-          },
-          {
-            name: "SEO & Conversión",
-            description: "Posicionamiento, keywords, contenido y optimización de conversión",
-          },
-          {
-            name: "Performance",
-            description: "Velocidad, rendimiento y Core Web Vitals",
-          },
-          {
-            name: "Social Content",
-            description:
-              "Estrategia y producción de contenido para redes y blogs, alineada a la marca y los objetivos del negocio",
-          },
-        ],
-      },
-      {
-        title: "Preventa",
-        roles: [
-          {
-            name: "Prospección & Research",
-            description: "Investigación de empresas, identificación de prospectos y enriquecimiento de información",
-          },
-          {
-            name: "Lead Qualification",
-            description: "Análisis de ICP, criterios de calificación, scoring y priorización de leads",
-          },
-          {
-            name: "Lead Routing & Booking",
-            description: "Asignación de oportunidades, seguimiento inicial y coordinación de reuniones comerciales",
-          },
-        ],
-      },
-      {
-        title: "Venta",
-        roles: [
-          {
-            name: "Sales Follow-up",
-            description: "Seguimiento de oportunidades, detección de negocios estancados y próximas acciones",
-          },
-          {
-            name: "Proposal & Quote",
-            description:
-              "Preparación de propuestas, presupuestos y respuestas comerciales a partir de información del negocio",
-          },
-          {
-            name: "Pipeline Intelligence",
-            description: "Análisis del pipeline, priorización de oportunidades, forecast y reporting comercial",
-          },
-        ],
-      },
-      {
-        title: "Posventa",
-        roles: [
-          {
-            name: "Customer Success",
-            description: "Seguimiento de clientes, tareas, hitos y estado de cada cuenta",
-          },
-          {
-            name: "Retention & Churn",
-            description: "Detección de señales de riesgo y priorización de acciones de retención",
-          },
-          {
-            name: "Renewals & Growth",
-            description: "Seguimiento de renovaciones, oportunidades de recompra, cross-sell y expansión",
-          },
-          {
-            name: "Customer Support",
-            description:
-              "Clasificación de consultas, respuestas iniciales y derivación de casos que requieren intervención humana",
-          },
-        ],
-      },
-    ] satisfies readonly AgentGroup[],
     workflowLabel: "CÓMO DECIDE ANTES DE EJECUTAR",
     workflowTitle: "Un mismo proceso, en cada tarea",
     workflow: [
@@ -205,6 +114,29 @@ const copy = {
     eyebrow: "OUR OWN AI METHODOLOGY",
     title: "BaseCore AI System",
     intro: "AI agents that research, decide, and propose before acting.",
+    agentsBadge: "LIVE TODAY",
+    agents: [
+      {
+        title: "Technology",
+        roles: ["AI Systems", "Software Development", "Automation", "Integrations"],
+      },
+      {
+        title: "Marketing",
+        roles: ["Product & Design", "SEO & Conversion", "Performance", "Social Content"],
+      },
+      {
+        title: "Presales",
+        roles: ["Prospecting & Research", "Lead Qualification", "Lead Routing & Booking"],
+      },
+      {
+        title: "Sales",
+        roles: ["Sales Follow-up", "Proposal & Quote", "Pipeline Intelligence"],
+      },
+      {
+        title: "Post-Sales",
+        roles: ["Customer Success", "Retention & Churn", "Renewals & Growth", "Customer Support"],
+      },
+    ] satisfies readonly AgentGroup[],
     capacidadesLabel: "ANALYSIS SYSTEM",
     capacidades: [
       {
@@ -229,112 +161,6 @@ const copy = {
         tool: "Claude Mem",
       },
     ] satisfies readonly Capability[],
-    agentsBadge: "LIVE TODAY",
-    agentsTitle: "The agents already working at Base Core",
-    agents: [
-      {
-        title: "Technology",
-        roles: [
-          {
-            name: "AI Systems",
-            description:
-              "Design and implementation of AI agent systems to analyze, decide, and execute real business processes.",
-          },
-          {
-            name: "Software Development",
-            description:
-              "Custom software development for CRM, inventory, logistics, and operations. Development and evolution of BaseHub, our own project tracking and implementation platform.",
-          },
-          {
-            name: "Automation",
-            description:
-              "Design and implementation of automations and workflows to reduce manual work and connect processes.",
-          },
-          {
-            name: "Integrations",
-            description:
-              "Integration of CRMs, applications, APIs, and data sources to connect systems and centralize information.",
-          },
-        ],
-      },
-      {
-        title: "Marketing",
-        roles: [
-          {
-            name: "Product & Design",
-            description: "UX, UI, structure and evolution of sites and digital experiences",
-          },
-          {
-            name: "SEO & Conversion",
-            description: "Rankings, keywords, content, and conversion optimization",
-          },
-          {
-            name: "Performance",
-            description: "Speed, performance, and Core Web Vitals",
-          },
-          {
-            name: "Social Content",
-            description:
-              "Content strategy and production for social and blogs, aligned with the brand and business goals",
-          },
-        ],
-      },
-      {
-        title: "Presales",
-        roles: [
-          {
-            name: "Prospecting & Research",
-            description: "Company research, prospect identification, and data enrichment",
-          },
-          {
-            name: "Lead Qualification",
-            description: "ICP analysis, qualification criteria, scoring, and lead prioritization",
-          },
-          {
-            name: "Lead Routing & Booking",
-            description: "Opportunity assignment, initial follow-up, and sales meeting coordination",
-          },
-        ],
-      },
-      {
-        title: "Sales",
-        roles: [
-          {
-            name: "Sales Follow-up",
-            description: "Opportunity tracking, stalled-deal detection, and next actions",
-          },
-          {
-            name: "Proposal & Quote",
-            description: "Preparing proposals, quotes, and commercial responses based on deal information",
-          },
-          {
-            name: "Pipeline Intelligence",
-            description: "Pipeline analysis, opportunity prioritization, forecasting, and sales reporting",
-          },
-        ],
-      },
-      {
-        title: "Post-Sales",
-        roles: [
-          {
-            name: "Customer Success",
-            description: "Tracking customers, tasks, milestones, and account status",
-          },
-          {
-            name: "Retention & Churn",
-            description: "Detecting risk signals and prioritizing retention actions",
-          },
-          {
-            name: "Renewals & Growth",
-            description: "Tracking renewals, repurchase opportunities, cross-sell, and expansion",
-          },
-          {
-            name: "Customer Support",
-            description: "Classifying inquiries, initial responses, and routing cases that need human intervention",
-          },
-        ],
-      },
-    ] satisfies readonly AgentGroup[],
     workflowLabel: "HOW IT DECIDES BEFORE ACTING",
     workflowTitle: "The same process, every time",
     workflow: [
@@ -360,20 +186,31 @@ const copy = {
 
 const eyebrowClass = "font-sans text-[14px] font-medium uppercase tracking-[1.5px] text-body";
 
-/** One navy card in the "Agentes en producción" grid: category title + its
- * specializations, each with the role name bold and its description below. */
-function AgentCard({ agent }: { agent: AgentGroup }) {
+/** One navy card in the "Agentes en producción" grid: a numbered badge (the
+ * same circle-with-number language the Workflow stepper below uses, so the
+ * two blocks read as one system) + the branch title, then its agent names
+ * as a wrap of plain pill chips — no per-agent description. Chips over a
+ * bulleted list keep the card scannable at a glance instead of reading like
+ * a résumé. */
+function AgentCard({ agent, index }: { agent: AgentGroup; index: number }) {
   return (
-    <div className="flex flex-col rounded-[8px] bg-navy p-[28px]">
-      <h4 className="font-heading text-[20px] font-bold leading-[1.3] text-white">{agent.title}</h4>
-      <ul className="mt-[16px] flex flex-col gap-[14px]">
-        {agent.roles.map((role) => (
-          <li key={role.name}>
-            <p className="font-sans text-[14px] font-bold leading-[1.5] text-white">{role.name}</p>
-            <p className="mt-[2px] font-sans text-[14px] leading-[1.7] text-muted">{role.description}</p>
-          </li>
+    <div className="flex flex-col rounded-[8px] bg-navy p-[24px]">
+      <div className="flex items-center gap-[12px]">
+        <span className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full border-2 border-primary font-heading text-[13px] font-bold text-white">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+        <h4 className="font-heading text-[18px] font-bold leading-[1.3] text-white">{agent.title}</h4>
+      </div>
+      <div className="mt-[18px] flex flex-wrap gap-[8px]">
+        {agent.roles.map((name) => (
+          <span
+            key={name}
+            className="rounded-full border border-white/15 bg-white/10 px-[12px] py-[6px] font-sans text-[13px] font-medium leading-[1.3] text-white"
+          >
+            {name}
+          </span>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
@@ -383,7 +220,9 @@ export default function AiSystemSection({ lang = "es" }: { lang?: Lang }) {
 
   return (
     <>
-      {/* Header + intro */}
+      {/* Header + intro + "HOY, EN PRODUCCIÓN" badge (the badge sits in
+          SectionHeading's `children` slot so it inherits the same centered,
+          max-width column as the intro right above it). */}
       <section className="container-bc py-[10px]">
         <SectionHeading
           eyebrow={t.eyebrow}
@@ -391,13 +230,32 @@ export default function AiSystemSection({ lang = "es" }: { lang?: Lang }) {
           description={t.intro}
           maxWidth={760}
           className="mx-auto"
-        />
+        >
+          <div className="mt-[20px]">
+            <span className="inline-block rounded-full bg-primary px-[14px] py-[5px] font-sans text-[12px] font-semibold uppercase tracking-[1px] text-white">
+              {t.agentsBadge}
+            </span>
+          </div>
+        </SectionHeading>
+      </section>
+
+      {/* Agentes en producción — five branch cards, names only (10/9: the
+          previous name+paragraph version read as a wall of text). No title
+          of its own anymore; the badge above already frames the block. One
+          responsive grid instead of the old 2-over-3 split, since chips are
+          light enough that an even row of five reads cleanly on desktop. */}
+      <section className="container-bc pt-[32px]">
+        <div className="grid gap-[16px] sm:grid-cols-2 dt:grid-cols-5">
+          {t.agents.map((agent, i) => (
+            <AgentCard key={agent.title} agent={agent} index={i} />
+          ))}
+        </div>
       </section>
 
       {/* Sistema de análisis — three plain (no-photo) cards: this is
           explanatory, not a teaser, so it deliberately skips the
           FlipCardGrid the Módulos cajón above just used. */}
-      <section className="container-bc pt-[40px]">
+      <section className="container-bc pt-[56px]">
         <p className={`text-center ${eyebrowClass} mb-[24px]`}>{t.capacidadesLabel}</p>
         <div className="grid gap-[20px] md:grid-cols-3">
           {t.capacidades.map((cap) => {
@@ -424,37 +282,6 @@ export default function AiSystemSection({ lang = "es" }: { lang?: Lang }) {
               </div>
             );
           })}
-        </div>
-      </section>
-
-      {/* Agentes en producción — the most important block: real, named
-          agents that exist today. Navy cards give it more visual weight than
-          the white Capacidades cards above, and the filled "HOY, EN
-          PRODUCCIÓN" badge above the title is the deliberate visual opposite
-          of the outlined "SISTEMAS DE IA PARA TU EMPRESA" badge on the offer
-          box below — solid = real and live, outlined = offer, never mixed
-          into the same list. Five categories, laid out 2-over-3 (Tecnología
-          + Marketing on top, Preventa/Venta/Posventa below) instead of one
-          even grid, since 5 doesn't split evenly. */}
-      <section className="container-bc pt-[56px]">
-        <div className="mx-auto max-w-[720px] text-center">
-          <span className="inline-block rounded-full bg-primary px-[14px] py-[5px] font-sans text-[12px] font-semibold uppercase tracking-[1px] text-white">
-            {t.agentsBadge}
-          </span>
-          <h3 className="mt-[14px] font-heading text-[28px] font-bold leading-[1.3] text-heading md:text-[32px]">
-            {t.agentsTitle}
-          </h3>
-        </div>
-
-        <div className="mt-[32px] grid gap-[20px] md:grid-cols-2">
-          {t.agents.slice(0, 2).map((agent) => (
-            <AgentCard key={agent.title} agent={agent} />
-          ))}
-        </div>
-        <div className="mt-[20px] grid gap-[20px] md:grid-cols-3">
-          {t.agents.slice(2).map((agent) => (
-            <AgentCard key={agent.title} agent={agent} />
-          ))}
         </div>
       </section>
 
