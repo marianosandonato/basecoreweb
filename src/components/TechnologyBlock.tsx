@@ -17,12 +17,13 @@ type Bullet = { label: string; text: string };
 const copy = {
   es: {
     label: "Tecnología",
-    eyebrow: "CRM e IA para Empresas",
+    eyebrow: "Convertimos tus procesos en sistemas",
     title: "IA + CRM",
     bullets: [
-      { label: "Agente Claude", text: "Agentes de IA para procesos comerciales" },
-      { label: "Claude Code", text: "Software y paneles de control a medida" },
-      { label: "CRM", text: "Implementación y configuración de tu CRM" },
+      { label: "IA", text: "Calificación de leads y señales de posventa" },
+      { label: "Automatización", text: "Marketing, ventas y CRM sin tareas manuales" },
+      { label: "Software a medida", text: "Sitios, dashboards y portales de clientes" },
+      { label: "CRM", text: "Implementación de HubSpot, Pipedrive, Zoho y más" },
     ],
     cta: "IMPLEMENTACIONES TECNOLÓGICAS",
     href: "/tecnologia",
@@ -32,37 +33,48 @@ const copy = {
       posventa: "Posventa",
       marketing: "Marketing",
     },
+    stageEyebrows: {
+      preventa: "Tecnología para acelerar la preventa",
+      venta: "Tecnología para vender más y mejor",
+      posventa: "Tecnología para retener y hacer crecer",
+      marketing: "Tecnología para escalar tu marketing",
+    },
     stageBullets: {
       preventa: [
-        { label: "Agente Claude", text: "Calificación y enriquecimiento de leads" },
-        { label: "Claude Code", text: "Scrapers de datos para nurturing" },
-        { label: "CRM", text: "Base de datos y oportunidades comerciales" },
+        { label: "IA", text: "Calificación y enriquecimiento de leads" },
+        { label: "Automatización", text: "Scoring, nurturing y asignación automática" },
+        { label: "Software a medida", text: "Prospección y enriquecimiento de datos" },
+        { label: "CRM", text: "Criterios de calificación y seguimiento" },
       ],
       venta: [
-        { label: "Agente Claude", text: "Seguimiento y análisis de oportunidades" },
-        { label: "Claude Code", text: "Tableros de pipeline, forecast y KPIs" },
-        { label: "CRM", text: "Etapas, criterios de avance y alertas" },
+        { label: "IA", text: "Seguimiento y análisis de oportunidades" },
+        { label: "Automatización", text: "Seguimiento, tareas y alertas automáticas" },
+        { label: "Software a medida", text: "Tableros de pipeline, forecast y KPIs" },
+        { label: "CRM", text: "Etapas, responsables y reporting comercial" },
       ],
       posventa: [
-        { label: "Agente Claude", text: "Detección de señales de churn y recompra" },
-        { label: "Claude Code", text: "Tableros de segmentación de cartera" },
-        { label: "CRM", text: "Contacto, renovaciones y seguimiento posventa" },
+        { label: "IA", text: "Detección de señales de churn y recompra" },
+        { label: "Automatización", text: "Renovaciones, recordatorios y retención" },
+        { label: "Software a medida", text: "Tableros de segmentación de cartera" },
+        { label: "CRM", text: "Planes de contacto e historial de clientes" },
       ],
       marketing: [
-        { label: "Agente Claude", text: "Generación y adaptación de contenido" },
-        { label: "Claude Code", text: "Sitios web, SEO y campañas" },
-        { label: "CRM", text: "Captación, campañas activas y leads" },
+        { label: "IA", text: "Contenidos generados y adaptados por canal" },
+        { label: "Automatización", text: "Captación, nurturing y seguimiento de leads" },
+        { label: "Software a medida", text: "Webs, landings y herramientas de marketing" },
+        { label: "CRM", text: "Leads, campañas y segmentación centralizados" },
       ],
     },
   },
   en: {
     label: "Technology",
-    eyebrow: "AI & CRM for Businesses",
+    eyebrow: "We turn your processes into systems",
     title: "AI + CRM",
     bullets: [
-      { label: "Claude Agent", text: "AI agents for commercial processes" },
-      { label: "Claude Code", text: "Custom software and dashboards" },
-      { label: "CRM", text: "CRM implementation and setup" },
+      { label: "AI", text: "Lead qualification and post-sale signals" },
+      { label: "Automation", text: "Marketing, sales, and CRM without manual tasks" },
+      { label: "Custom Software", text: "Websites, dashboards, and client portals" },
+      { label: "CRM", text: "HubSpot, Pipedrive, Zoho, and more" },
     ],
     cta: "TECHNOLOGY IMPLEMENTATIONS",
     href: "/en/tecnologia",
@@ -72,37 +84,48 @@ const copy = {
       posventa: "Post-Sales",
       marketing: "Marketing",
     },
+    stageEyebrows: {
+      preventa: "Technology to accelerate presales",
+      venta: "Technology to sell more and better",
+      posventa: "Technology to retain and grow clients",
+      marketing: "Technology to scale your marketing",
+    },
     stageBullets: {
       preventa: [
-        { label: "Claude Agent", text: "Lead scoring and enrichment" },
-        { label: "Claude Code", text: "Custom scrapers for nurturing" },
-        { label: "CRM", text: "Database and opportunity management" },
+        { label: "AI", text: "Lead scoring and enrichment" },
+        { label: "Automation", text: "Scoring, nurturing, and automatic assignment" },
+        { label: "Custom Software", text: "Prospecting and data enrichment" },
+        { label: "CRM", text: "Qualification criteria and follow-up" },
       ],
       venta: [
-        { label: "Claude Agent", text: "Opportunity follow-up and analysis" },
-        { label: "Claude Code", text: "Pipeline, forecast, and KPI dashboards" },
-        { label: "CRM", text: "Stage setup, advancement criteria, and alerts" },
+        { label: "AI", text: "Opportunity follow-up and analysis" },
+        { label: "Automation", text: "Follow-up, tasks, and automatic alerts" },
+        { label: "Custom Software", text: "Pipeline, forecast, and KPI dashboards" },
+        { label: "CRM", text: "Stages, owners, and sales reporting" },
       ],
       posventa: [
-        { label: "Claude Agent", text: "Churn-signal detection and win-back opportunities" },
-        { label: "Claude Code", text: "Portfolio segmentation dashboards" },
-        { label: "CRM", text: "Contact plans, renewals, and follow-up" },
+        { label: "AI", text: "Churn-signal detection and win-back opportunities" },
+        { label: "Automation", text: "Renewals, reminders, and retention" },
+        { label: "Custom Software", text: "Portfolio segmentation dashboards" },
+        { label: "CRM", text: "Contact plans and client history" },
       ],
       marketing: [
-        { label: "Claude Agent", text: "Content generation and repurposing" },
-        { label: "Claude Code", text: "Websites, SEO, and campaigns" },
-        { label: "CRM", text: "Acquisition channels, campaigns, and leads" },
+        { label: "AI", text: "Content generated and adapted by channel" },
+        { label: "Automation", text: "Acquisition, nurturing, and lead follow-up" },
+        { label: "Custom Software", text: "Websites, landing pages, and marketing tools" },
+        { label: "CRM", text: "Leads, campaigns, and segmentation, centralized" },
       ],
     },
   },
 } as const;
 
 /**
- * Three fixed pillars, always in the same order (Claude agent / Claude Code /
- * CRM) across the generic copy and all four stages -- so the icon can be
- * mapped by bullet index instead of carried in the data. Hand-drawn with
- * plain primitives (circles/lines, no borrowed icon-font path data) so the
- * shape is exactly what's specified, nothing recalled from memory.
+ * Four fixed pillars, always in the same order (IA / Automatización /
+ * Software a medida / CRM) across the generic copy and all four stages -- so
+ * the icon can be mapped by bullet index instead of carried in the data.
+ * Hand-drawn with plain primitives (circles/lines/arcs, no borrowed icon-font
+ * path data) so the shape is exactly what's specified, nothing recalled from
+ * memory.
  */
 function AgentIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -120,6 +143,29 @@ function AgentIcon(props: SVGProps<SVGSVGElement>) {
       <circle cx="12" cy="5" r="2" fill="currentColor" stroke="none" />
       <circle cx="5.5" cy="19" r="2" fill="currentColor" stroke="none" />
       <circle cx="18.5" cy="19" r="2" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+/** Two arced arrows chasing each other into a closed loop -- a hand-drawn
+    take on the familiar "sync"/refresh glyph, standing in for continuous,
+    unattended automation (as opposed to the one-off agent actions AgentIcon
+    represents). Same primitives family as its siblings: arcs + short
+    straight arrowhead strokes, no filled shapes. */
+function AutomationIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.6}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3M19.5 12a7.5 7.5 0 0 1-12.8 5.3" />
+      <path d="M17.3 3.3v3.6h-3.6M6.7 20.7v-3.6h3.6" />
     </svg>
   );
 }
@@ -160,7 +206,7 @@ function CrmIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-const bulletIcons = [AgentIcon, CodeIcon, CrmIcon] as const;
+const bulletIcons = [AgentIcon, AutomationIcon, CodeIcon, CrmIcon] as const;
 
 /**
  * "Tecnología / IA + CRM" — full-bleed photo, logo on the left and the
@@ -172,14 +218,25 @@ const bulletIcons = [AgentIcon, CodeIcon, CrmIcon] as const;
  * the cycle name under the "Tecnología" logo lockup; omit it (home page) to
  * keep the original generic copy.
  *
- * Visual redesign (9/2026): the 3 bullets used to be plain checklist text
+ * Visual redesign (9/2026): the bullets used to be plain checklist text
  * (small check icon + bold inline tool-name prefix) directly on the photo --
  * flagged as "too much text, not visual enough". They now sit inside a
  * frosted glass panel (bg-white/75 + backdrop-blur, doesn't hide the photo,
  * just grounds the text on its own surface) as icon-tile rows: a distinct
- * hand-drawn icon per pillar (agent network / code brackets / CRM stack) in
- * a navy tile, a small tag with the tool name, and the outcome copy below --
- * replacing the old bold-prefix-inline pattern instead of just restyling it.
+ * hand-drawn icon per pillar (agent network / sync loop / code brackets /
+ * CRM stack) in a navy tile, a small tag with the pillar name, and the
+ * outcome copy below -- replacing the old bold-prefix-inline pattern instead
+ * of just restyling it.
+ *
+ * Copy pass (9/2026, second round): expanded from 3 pillars (Agente Claude /
+ * Claude Code / CRM) to 4 (IA / Automatización / Software a medida / CRM) --
+ * "Automatización" was missing as its own line even though the block always
+ * covered it implicitly. Each page also gets its own eyebrow instead of one
+ * generic line shared by all five placements; no intro paragraph was added
+ * between the title and the panel (evaluated and dropped -- the eyebrow +
+ * four scannable rows already carry the page-specific context, and a
+ * sentence in between would repeat the row copy right above it while
+ * breaking the direct title-to-panel rhythm the visual redesign relies on).
  */
 export default function TechnologyBlock({
   lang = "es",
@@ -189,6 +246,7 @@ export default function TechnologyBlock({
   stage?: Stage;
 }) {
   const t = copy[lang];
+  const eyebrow = stage ? t.stageEyebrows[stage] : t.eyebrow;
   const bullets: readonly Bullet[] = stage ? t.stageBullets[stage] : t.bullets;
 
   return (
@@ -229,7 +287,7 @@ export default function TechnologyBlock({
               column's text-center just because the column changed. Needs its
               own opt-in to actually center below `md`. */}
           <SectionHeading
-            eyebrow={t.eyebrow}
+            eyebrow={eyebrow}
             title={t.title}
             align="left"
             centerOnMobile
@@ -244,25 +302,30 @@ export default function TechnologyBlock({
             eyebrowClassName="mb-[15px]"
           />
 
-          {/* Feature panel (visual redesign): one frosted card holding the 3
+          {/* Feature panel (visual redesign): one frosted card holding the 4
               pillars, always left-aligned regardless of the column's own
-              mobile centering -- icon+text rows don't read well centered. */}
+              mobile centering -- icon+text rows don't read well centered.
+              Row padding/icon size trimmed from the original 3-row build
+              (was px-[18/22] py-[14/16], 38px tile, 14px gap) so a 4th row
+              doesn't make the card disproportionately tall, especially on
+              mobile -- verified with Playwright against the approved 3-row
+              version so density reads as "one family", not just "smaller". */}
           <div className="flex w-full flex-col divide-y divide-line/60 overflow-hidden rounded-[14px] border border-line/70 bg-white/75 text-left shadow-[0_10px_30px_-12px_rgba(0,41,75,0.28)] backdrop-blur-sm">
             {bullets.map(({ label, text }, index) => {
               const Icon = bulletIcons[index];
               return (
                 <div
                   key={label}
-                  className="flex items-start gap-[14px] px-[18px] py-[14px] md:px-[22px] md:py-[16px]"
+                  className="flex items-start gap-[12px] px-[18px] py-[11px] md:px-[20px] md:py-[13px]"
                 >
-                  <span className="mt-[1px] flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-[10px] bg-navy text-white">
-                    <Icon className="h-[18px] w-[18px]" />
+                  <span className="mt-[1px] flex h-[32px] w-[32px] shrink-0 items-center justify-center rounded-[9px] bg-navy text-white">
+                    <Icon className="h-[16px] w-[16px]" />
                   </span>
                   <div className="text-left">
-                    <p className="font-sans text-[11px] font-semibold uppercase leading-[1.4] tracking-[1px] text-primary">
+                    <p className="font-sans text-[10px] font-semibold uppercase leading-[1.4] tracking-[1px] text-primary">
                       {label}
                     </p>
-                    <p className="mt-[2px] font-sans text-[15px] leading-[1.5] text-body md:text-[16px]">
+                    <p className="mt-[2px] font-sans text-[14px] leading-[1.45] text-body md:text-[15px]">
                       {text}
                     </p>
                   </div>
@@ -271,10 +334,11 @@ export default function TechnologyBlock({
             })}
           </div>
 
-          {/* bullets-to-button gap (spacing polish): matches the section's
-              own bottom padding above, so the button sits as far from the
-              bullets as it does from the cajón's foot. */}
-          <div className="mt-[45px] dt:mt-[70px]">
+          {/* bullets-to-button gap (spacing polish): trimmed from the
+              original 3-row build's mt-[45px]/[70px] (which matched the
+              section's own bottom padding) to keep the section's total
+              height in check now that the panel itself grew by a row. */}
+          <div className="mt-[35px] dt:mt-[55px]">
             {/* max-md: the label ("IMPLEMENTACIONES TECNOLÓGICAS") is wider
                 than the mobile column, so it always wraps -- and an
                 inline-block box that wraps naturally claims the *full*
