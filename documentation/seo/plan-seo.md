@@ -2,7 +2,7 @@
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/f6230fde-8996-4d03-ae8a-4211f111ed90
 > - Última sincronización: 2026-09-13
-> - Nota: este documento se reorganizó el 5/9 — ahora es el tablero activo (solo tareas pendientes/bloqueadas/en progreso en detalle). El registro completo de tareas ya resueltas vive en `documentation/seo/historial-seo.md`. El 13/9: 4.3 y 4.4 pasan a Bloqueado (decisión de Mariano, a resolver más adelante); 1.24, 1.25 y 5.3 pasan a En curso (Mariano pidió avanzar, agentes `performance` y `seo-marketing` trabajando).
+> - Nota: este documento se reorganizó el 5/9 — ahora es el tablero activo (solo tareas pendientes/bloqueadas/en progreso en detalle). El registro completo de tareas ya resueltas vive en `documentation/seo/historial-seo.md` (SEO general) o en `Performance Web` (tareas de performance, sin espejo propio). El 13/9: 4.3 y 4.4 pasan a Bloqueado (decisión de Mariano, a resolver más adelante); 1.24 se investiga y cierra Hecho sin cambios de código (`next/image` ya resolvía retina); 1.25 se confirma Bloqueado por falta de acceso a la API de GA4; 5.3 avanza a PR #37, a la espera de que Mariano lo apruebe.
 
 ---
 
@@ -14,9 +14,9 @@ basecoresales.com · auditoría & hoja de ruta
 
 Tablero activo: qué falta hacer, con el detalle completo solo de lo que sigue abierto. Las tareas ya resueltas quedan en la tabla de estado como una línea — el registro completo de cómo se resolvió cada una vive en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8), sin perder ni un dato.
 
-📋 [Ver Historial Técnico SEO (detalle de las 51 tareas ya resueltas)](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8)
+📋 [Ver Historial Técnico SEO (detalle de las 52 tareas ya resueltas)](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8)
 
-51 / 62 tareas · +3 en curso (1.24, 1.25, 5.3) · +4 bloqueadas (4.1, 4.3, 4.4, 4.5)
+52 / 62 tareas · +1 en curso (5.3) · +5 bloqueadas (1.25, 4.1, 4.3, 4.4, 4.5)
 
 [Diagnóstico](#diagnostico)
 [Fase 1 · Técnico](#fase1)
@@ -56,7 +56,7 @@ Esto es lo que el sitio tiene implementado *hoy*.
 
 ## Fase 1 · Cimientos técnicos (on-page)
 
-Cerrada en lo esencial — 1.14 (Core Web Vitals) se confirmó el 11/9. Quedan dos colas menores de performance (1.24, 1.25) — Mariano pidió avanzar con ambas el 13/9, en curso. Las tres nacen del seguimiento de performance que vive en el artifact [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929) — ahí está todo el detalle técnico (mediciones, commits, método); acá solo el estado. Detalle completo de las 22 tareas ya resueltas de esta fase en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8).
+Cerrada en lo esencial — 1.14 (Core Web Vitals) se confirmó el 11/9. Mariano pidió avanzar el 13/9 con las dos colas que quedaban: 1.24 (retina) se investigó a fondo y cerró sin acción de código — `next/image` ya lo resolvía; 1.25 (INP de campo) se confirmó bloqueado por falta total de acceso a la API de GA4, no solo por tráfico. Detalle técnico completo de ambas (y de 1.23) en el artifact [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929). Detalle completo del resto de las tareas ya resueltas de esta fase en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8).
 
 | # | Tarea | Estado |
 | --- | --- | --- |
@@ -83,22 +83,14 @@ Cerrada en lo esencial — 1.14 (Core Web Vitals) se confirmó el 11/9. Quedan d
 | 1.21 | Documento desincronizado | Hecho |
 | 1.22 | Bug de `<br/>` en tarjeta de cliente | Hecho |
 | 1.23 | JS legacy: polyfills de Next (25KB reportados por PSI) | Hecho |
-| 1.24 | Imágenes 2x-DPR (retina) | En curso |
-| 1.25 | INP real de campo | En curso |
+| 1.24 | Imágenes 2x-DPR (retina) | Hecho |
+| 1.25 | INP real de campo | Bloqueado |
 
-**1.24 — Imágenes 2x-DPR (retina)** · En curso
-
-Lighthouse/PSI miden a 1x-DPR — si el sitio sirve imágenes de menor densidad de la que necesitan las pantallas retina de los visitantes reales, ese problema no es visible para la herramienta de referencia que usamos para medir todo lo demás.
-
-**Estado (13/9):** Mariano pidió avanzar — pasa de "en pausa" a en curso, agente `performance` investigando qué es accionable sin acceso directo a GA4/CrUX por resolución.
-
-**Para qué sirve:** nitidez de imagen en monitores de alta densidad, sin sumar peso innecesario en el resto.
-
-**1.25 — INP real de campo** · En curso
+**1.25 — INP real de campo** · Bloqueado · sin acceso a GA4
 
 INP (Interaction to Next Paint) reemplazó a FID como métrica de Core Web Vitals — mide qué tan rápido responde el sitio a una interacción real de un visitante, algo que un laboratorio no puede simular fielmente.
 
-**Estado (13/9):** instrumentado y funcionando (Next.js 16 trae `useReportWebVitals` integrado, sin librería aparte), enviando a GA4 desde el 5/9. Mariano pidió avanzar — agente `performance` revisando si ya hay tráfico suficiente para decir algo.
+**Estado (13/9):** instrumentado y funcionando (Next.js 16 trae `useReportWebVitals` integrado, sin librería aparte), enviando a GA4 desde el 5/9. Confirmado que no hay ninguna vía de acceso a la API de GA4 en este repo (el único script de Google APIs, `scripts/seo/gsc.py`, está scopeado solo a Search Console) — bloqueado por acceso, no solo por tráfico. Necesita que Mariano comparta el dato del dashboard directamente o habilite una credencial de lectura de GA4.
 
 **Para qué sirve:** confirmar con datos de campo (no solo de laboratorio) que la interactividad del sitio es buena para visitantes reales.
 
@@ -209,13 +201,11 @@ Sumar artículos nuevos al blog y refrescar las páginas de servicio con datos o
 
 **Para qué sirve:** Google favorece sitios que se mantienen activos.
 
-**5.3 — Evaluar el gate del e-book y el campo WhatsApp obligatorio** · En curso
+**5.3 — Evaluar el gate del e-book y el campo WhatsApp obligatorio** · En curso · PR abierto
 
-`whatsapp` es `required` en ambos formularios; `email` no lo es. Hipótesis: agrega fricción evitable a un lead magnet de bajo compromiso. Antes bloqueado hasta tener datos reales de 2.3 (conversiones medidas) — ese punto ya cerró, así que esto puede evaluarse cuando se decida.
+`whatsapp` era `required` en el formulario de e-book (único componente, usado por ES/EN); `email` no lo era — al revés de lo esperado para un lead magnet de bajo compromiso. Hallazgo no anticipado: esto permitía descargar el e-book sin dejar ningún email de contacto.
 
-**Estado (13/9):** Mariano pidió avanzar — agente `seo-marketing` evaluando qué campos son realmente necesarios y proponiendo un gate más liviano.
-
-**Propuesta:** decidir qué campos son realmente necesarios, evaluar A/B test de un gate más liviano (nombre + email), sumar un adelanto de contenido en `/ebook`.
+**Estado (13/9):** `seo-marketing` investigó el código real (`EbookForm.tsx` + `/api/ebook`), decidió con criterio de CRO y abrió [PR #37](https://github.com/marianosandonato/basecoreweb/pull/37): `whatsapp` pasa a opcional, `email` pasa a obligatorio (junto con nombre y empresa, que se mantienen). El adelanto de contenido en `/ebook` quedó evaluado pero no implementado en este PR (fuera del alcance del gate) — hay material real del índice del e-book ya extraído para una futura iteración. `tsc`/`eslint`/`build` limpios, verificado visual y funcionalmente. PR marcado como preview, sin mergear — a la espera de que Mariano lo revise y apruebe.
 
 **Para qué sirve:** reducir fricción en la conversión del lead magnet.
 
@@ -235,7 +225,7 @@ Sumar artículos nuevos al blog y refrescar las páginas de servicio con datos o
 
 Sin herramientas pagas todavía (Otterly, Peec AI) — con el volumen de tráfico actual no se justifican. En su lugar: una vez por mes, probar en ChatGPT/Perplexity/Google 5-10 búsquedas reales de las páginas de servicio y del blog, y anotar si Base Core aparece citado.
 
-*Primera ronda (5/9) — resultado:*
+Primera ronda (5/9) — resultado
 
 ```
 1 de 8 queries con citación real: "cómo calificar leads B2B" citó
@@ -268,14 +258,12 @@ Cerrada del todo el 5/9 — `/basehub` y `/en/basehub` en producción desde el 1
 
 ## Por dónde seguir
 
-Fases 2, 3, 6 y 7 quedaron cerradas del todo; Fase 1 quedó cerrada en lo esencial, con solo dos colas menores de performance abiertas. Toda la cronología de cómo se llegó hasta acá vive en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8) (SEO general) y en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929) (performance específicamente), no en este documento.
+Fases 2, 3, 6 y 7 quedaron cerradas del todo; Fase 1 quedó cerrada en lo esencial, con solo una cola de performance abierta (1.25, bloqueada). Toda la cronología de cómo se llegó hasta acá vive en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8) (SEO general) y en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929) (performance específicamente), no en este documento.
 
 Lo activo hoy, en orden de qué depende de qué:
 
-- **1.24 (imágenes 2x-DPR), 1.25 (INP de campo), 5.3 (gate del e-book):** en curso (13/9) — Mariano pidió avanzar con las tres, agentes especializados (`performance`, `seo-marketing`) trabajando.
-- **4.1 (GBP), 4.3 (backlinks), 4.4 (testimonios), 4.5 (GDPR):** bloqueadas — 4.1 sin viaje previsto, 4.3 y 4.4 a la espera de que Mariano decida más adelante si avanza (13/9), 4.5 sin expertise legal disponible.
+- **5.3 (gate del e-book):** en curso — [PR #37](https://github.com/marianosandonato/basecoreweb/pull/37) abierto (email obligatorio, WhatsApp opcional), a la espera de que Mariano lo revise y apruebe para mergear.
+- **4.1 (GBP), 4.3 (backlinks), 4.4 (testimonios), 4.5 (GDPR), 1.25 (INP de campo):** bloqueadas — 4.1 sin viaje previsto, 4.3 y 4.4 a la espera de que Mariano decida más adelante si avanza (13/9), 4.5 sin expertise legal disponible, 1.25 sin ninguna vía de acceso a la API de GA4 en el repo (13/9).
 - **4.6 (LinkedIn/referidos), 5.1 (revisión mensual), 5.2 (contenido periódico), 6.5 (visibilidad IA):** en pausa por decisión explícita o esperando datos/tráfico — ninguno bloqueado por otro, se retoman cuando corresponda.
 
----
-
-Última actualización: 2026-09-13 (4.3 y 4.4 pasan a Bloqueado por pedido de Mariano — decide más adelante si avanza con backlinks y con el merge de testimonios; 1.24, 1.25 y 5.3 pasan de en pausa/pendiente a En curso, agentes especializados trabajando) · se irá marcando como Hecho a medida que avancemos.
+Última actualización: 2026-09-13 (4.3 y 4.4 pasan a Bloqueado por pedido de Mariano — decide más adelante si avanza con backlinks y con el merge de testimonios; 1.24 se investiga y cierra Hecho sin cambios de código — `next/image` ya resolvía retina; 1.25 se confirma Bloqueado por falta de acceso a la API de GA4; 5.3 avanza a PR #37, a la espera de aprobación) · se irá marcando como Hecho a medida que avancemos.
