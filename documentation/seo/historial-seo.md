@@ -2,7 +2,7 @@
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8
 > - Última sincronización: 2026-09-13
-> - Nota: documento nuevo, creado el 5/9 al separar el detalle histórico del Plan de SEO (`documentation/seo/plan-seo.md`), que ahora es el tablero activo. El 11/9 se sumó el cierre de 1.14 (Core Web Vitals). El 13/9 se sumó el cierre de 5.3 (gate del e-book, PR #37).
+> - Nota: documento nuevo, creado el 5/9 al separar el detalle histórico del Plan de SEO (`documentation/seo/plan-seo.md`), que ahora es el tablero activo. El 11/9 se sumó el cierre de 1.14 (Core Web Vitals). El 13/9 se sumó el cierre de 5.3 (gate del e-book, PR #37) y se corrigió la tabla de keywords EN de 3.1 (estaba desactualizada respecto al código real) tras una auditoría de SEO de alcance completo.
 
 ---
 
@@ -397,6 +397,8 @@ Hecho · validado con Keyword Planner 30/8
 
 Mapa direccional inicial (sin volúmenes) ya usado para reescribir title/meta/H1 de las 7 páginas. Validado con Keyword Planner el 30/8: sí hay diferencia real de volumen entre España y Argentina en el cluster de procesos/gestión de ventas — el copy prioriza los términos que se sostienen fuertes en ambos mercados. Detalle completo, con decisión por keyword, en el [Mapa de Keywords Basecore](https://claude.ai/code/artifact/2fb2b4bf-cd0c-41a4-a152-05098b5423f9).
 
+**Corrección de documentación (13/9, auditoría SEO de alcance completo):** las keywords EN marcadas "pendiente" más abajo (Home, Preventa, Marketing, Tecnología) no tienen validación de *volumen* propia vía Keyword Planner — eso sigue siendo cierto — pero ya están **implementadas en el copy real de producción** desde hace semanas, confirmado en título/meta/H1 de las 6 páginas EN (ej. Preventa EN ya usa "B2B Lead Generation & Appointment Setting", Tecnología EN ya usa "AI & CRM for Businesses"). "Pendiente" se refiere solo a la validación de volumen, nunca significó que el sitio no tuviera esas keywords implementadas.
+
 #### Home
 
 ES · validado 30/8
@@ -782,5 +784,6 @@ El registro día a día de cómo se llegó al estado actual — el "Por dónde s
 14. **5/9, reorganización del documento:** el Plan de SEO pasó de un único documento de 58 tareas a esta separación entre tablero activo (Plan de SEO) e historial permanente (este documento) — a pedido de Mariano, para que el documento vivo sea fácil de leer y actualizar sin perder ningún registro.
 15. **11/9, cierre de 1.14:** PSI real confirma Mobile 88 estable (TBT 40ms, el mejor de la serie) — se cierran de una tacada 4 PRs (redirect de GSC en `/sales/`/`/presales/`, bundle-split de `blogSlugPairs`, 3 de 4 fondos migrados a `next/image`, lazy-load de `LanguageBanner`/`EbookForm`) y se corrige en el momento un bug de encuadre que uno de esos mismos PRs había introducido sin querer en `/marketing` (mismo bug que ya se había revertido en Home, pero se pasó por alto que el commit traído también tocaba esa página). Fase 1 queda cerrada del todo. Detalle técnico completo en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929).
 16. **13/9:** Mariano pide avanzar con 1.24, 1.25 y 5.3, y pasar 4.3/4.4 a Bloqueado (decide más adelante si avanza con backlinks y con el merge de testimonios). `performance` cierra 1.24 (retina) leyendo el código fuente de Next — `next/image` ya lo resolvía, sin acción de código — y confirma 1.25 (INP) genuinamente bloqueado por falta total de acceso a la API de GA4 en el repo, no solo por tráfico. `seo-marketing` cierra 5.3: PR #37 (email obligatorio, WhatsApp opcional en el gate del e-book), revisado y mergeado a producción el mismo día.
+17. **13/9, auditoría de SEO y performance de alcance completo:** a pedido de Mariano, `seo-marketing` y `performance` auditan todo el sitio (ES/EN) con mirada fresca, apoyándose en un reporte real de PageSpeed Insights de Home. Resultado: 6 pendientes nuevos sumados al Plan de SEO (1.26 cap de `sizes` en el hero de Home, 1.27 `quality` de logos, 5.5 bug de `<br/>` en TechStageMatrix, 5.6 jerarquía de headings en BaseCore AI System, 5.7 H3 duplicado en ServiceCards, 5.8 `lastModified` de sitemap) — todos revisados por Mariano y aprobados para resolver a partir del 14/9. De paso, la auditoría de SEO detectó y corrigió acá mismo un gap de documentación: la tabla de keywords EN de 3.1 (ver nota arriba) decía "pendiente" de forma ambigua sobre contenido que en realidad ya estaba implementado en producción.
 
-Historial Técnico SEO · Base Core · creado el 5 de septiembre de 2026, a partir del Plan de SEO original · actualizado el 13 de septiembre (cierre de 5.3) · espejo de trabajo en `documentation/seo/historial-seo.md`
+Historial Técnico SEO · Base Core · creado el 5 de septiembre de 2026, a partir del Plan de SEO original · actualizado el 13 de septiembre (cierre de 5.3; corrección de la tabla de keywords EN en 3.1 tras la auditoría de alcance completo) · espejo de trabajo en `documentation/seo/historial-seo.md`

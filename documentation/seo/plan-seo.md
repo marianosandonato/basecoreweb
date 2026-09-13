@@ -2,7 +2,7 @@
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/f6230fde-8996-4d03-ae8a-4211f111ed90
 > - Última sincronización: 2026-09-13
-> - Nota: este documento se reorganizó el 5/9 — ahora es el tablero activo (solo tareas pendientes/bloqueadas/en progreso en detalle). El registro completo de tareas ya resueltas vive en `documentation/seo/historial-seo.md` (SEO general) o en `Performance Web` (tareas de performance, sin espejo propio). El 13/9: 4.3 y 4.4 pasan a Bloqueado (decisión de Mariano, a resolver más adelante); 1.24 cierra Hecho sin cambios de código (`next/image` ya resolvía retina); 1.25 se confirma Bloqueado por falta de acceso a la API de GA4; 5.3 cierra Hecho — PR #37 revisado, aprobado y mergeado a producción.
+> - Nota: este documento se reorganizó el 5/9 — ahora es el tablero activo (solo tareas pendientes/bloqueadas/en progreso en detalle). El registro completo de tareas ya resueltas vive en `documentation/seo/historial-seo.md` (SEO general) o en `Performance Web` (tareas de performance, sin espejo propio). El 13/9, además del cierre de 4.3/4.4/1.24/1.25/5.3, una auditoría de SEO y performance de alcance completo sumó 6 pendientes nuevos (1.26, 1.27, 5.5, 5.6, 5.7, 5.8) a resolver a partir de mañana.
 
 ---
 
@@ -16,7 +16,7 @@ Tablero activo: qué falta hacer, con el detalle completo solo de lo que sigue a
 
 📋 [Ver Historial Técnico SEO (detalle de las 53 tareas ya resueltas)](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8)
 
-53 / 62 tareas · +5 bloqueadas (1.25, 4.1, 4.3, 4.4, 4.5)
+53 / 68 tareas · +5 bloqueadas (1.25, 4.1, 4.3, 4.4, 4.5)
 
 [Diagnóstico](#diagnostico)
 [Fase 1 · Técnico](#fase1)
@@ -56,7 +56,7 @@ Esto es lo que el sitio tiene implementado *hoy*.
 
 ## Fase 1 · Cimientos técnicos (on-page)
 
-Cerrada en lo esencial — 1.14 (Core Web Vitals) se confirmó el 11/9. Mariano pidió avanzar el 13/9 con las dos colas que quedaban: 1.24 (retina) se investigó a fondo y cerró sin acción de código — `next/image` ya lo resolvía; 1.25 (INP de campo) se confirmó bloqueado por falta total de acceso a la API de GA4, no solo por tráfico. Detalle técnico completo de ambas (y de 1.23) en el artifact [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929). Detalle completo del resto de las tareas ya resueltas de esta fase en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8).
+Cerrada en lo esencial — 1.14 (Core Web Vitals) se confirmó el 11/9. 1.24 (retina) se investigó a fondo y cerró sin acción de código — `next/image` ya lo resolvía; 1.25 (INP de campo) se confirmó bloqueado por falta total de acceso a la API de GA4. La auditoría de performance de alcance completo del 13/9 sumó dos pendientes nuevos (1.26, 1.27) a partir de un reporte real de PageSpeed Insights. Detalle técnico completo en el artifact [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929). Detalle completo del resto de las tareas ya resueltas de esta fase en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8).
 
 | # | Tarea | Estado |
 | --- | --- | --- |
@@ -85,6 +85,8 @@ Cerrada en lo esencial — 1.14 (Core Web Vitals) se confirmó el 11/9. Mariano 
 | 1.23 | JS legacy: polyfills de Next (25KB reportados por PSI) | Hecho |
 | 1.24 | Imágenes 2x-DPR (retina) | Hecho |
 | 1.25 | INP real de campo | Bloqueado |
+| 1.26 | Cap de `sizes` en el hero de Home | Pendiente |
+| 1.27 | Bajar `quality` en logos (Header/Footer) | Pendiente |
 
 **1.25 — INP real de campo** · Bloqueado · sin acceso a GA4
 
@@ -93,6 +95,22 @@ INP (Interaction to Next Paint) reemplazó a FID como métrica de Core Web Vital
 **Estado (13/9):** instrumentado y funcionando (Next.js 16 trae `useReportWebVitals` integrado, sin librería aparte), enviando a GA4 desde el 5/9. Confirmado que no hay ninguna vía de acceso a la API de GA4 en este repo (el único script de Google APIs, `scripts/seo/gsc.py`, está scopeado solo a Search Console) — bloqueado por acceso, no solo por tráfico. Necesita que Mariano comparta el dato del dashboard directamente o habilite una credencial de lectura de GA4.
 
 **Para qué sirve:** confirmar con datos de campo (no solo de laboratorio) que la interactividad del sitio es buena para visitantes reales.
+
+**1.26 — Cap de `sizes` en el hero de Home** · Pendiente
+
+Encontrado en la auditoría de performance de alcance completo del 13/9, a partir de un reporte real de PageSpeed Insights (Home, mobile 78 / desktop 94 — "Improve image delivery", ~107KB de ahorro estimado en desktop). El hero de Home (`src/app/(es)/page.tsx:147` y `src/app/(en)/en/page.tsx:166`, el LCP de la página) es la única imagen full-bleed del sitio que quedó sin el cap `sizes="(max-width: 1199px) 100vw, 1200px"` que ya tiene el resto (Footer, PageHero, TechnologyBlock, ContactSection, BaseHubTeaser, ServiceCyclePage). Confirmado en vivo: a 1350px de ancho pide la variante de 1920w en vez de 1200w — la fuente es 1917×1264 para un área mostrada de 1337×880.
+
+**Nota menor relacionada:** el hero de `/contacto` y `/ebook` (`Breadcrumb.tsx:71`) tiene el mismo `sizes="100vw"` sin cap, pero la fuente es liviana (26.8KB) — ahorro marginal, se suma a la misma tarea por consistencia.
+
+**Para qué sirve:** reducir el peso del LCP de la página de mayor tráfico del sitio, mismo patrón ya verificado sin riesgo visual en 5+ lugares.
+
+**1.27 — Bajar `quality` en logos (Header/Footer)** · Pendiente
+
+Encontrado en la misma auditoría del 13/9. Ningún `<Image>` del repo define `quality` explícito (todos corren en el default de Next, 75). El reporte de PageSpeed marcó 2 logos con margen de compresión (~26.5KB combinados) — candidatos más probables: el logo de header desktop (PNG 923×923, `Header.tsx:229`) y el logo de footer/mobile (webp). Al ser arte de logo (plano, sin degradés finos), tolera compresión más agresiva que una foto sin que se note.
+
+**Antes de aplicar:** verificar visualmente (no a ciegas) que un `quality` más bajo (punto de partida sugerido: 60) no genere artifacts en el texto pequeño del logo.
+
+**Para qué sirve:** el logo de header sale en todas las páginas del sitio — el ahorro se repite en cada carga.
 
 ## Fase 2 · Medición
 
@@ -178,7 +196,7 @@ Instagram (@basecoresales) prácticamente inactivo (41 seguidores, 1 post); Link
 
 ## Fase 5 · Mantenimiento continuo
 
-El SEO no es un proyecto que se termina — esto es lo que se revisa de forma recurrente. 5.3 y 5.4, ya cerrados, tienen detalle en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8).
+El SEO no es un proyecto que se termina — esto es lo que se revisa de forma recurrente. 5.3 y 5.4, ya cerrados, tienen detalle en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8). La auditoría de SEO de alcance completo del 13/9 sumó 4 pendientes nuevos (5.5-5.8), todos ligados al trío de cajones nuevos de `/tecnologia` más un patrón heredado nunca revisado.
 
 | # | Tarea | Estado |
 | --- | --- | --- |
@@ -186,6 +204,10 @@ El SEO no es un proyecto que se termina — esto es lo que se revisa de forma re
 | 5.2 | Actualización periódica de contenido | Pendiente |
 | 5.3 | Evaluar el gate del e-book | Hecho |
 | 5.4 | Re-correr auditoría SEO/accesibilidad | Hecho |
+| 5.5 | Bug de `<br/>` sin espacio en TechStageMatrix | Pendiente |
+| 5.6 | Jerarquía de headings salteada en BaseCore AI System | Pendiente |
+| 5.7 | H3 duplicado por tarjeta en ServiceCards | Pendiente |
+| 5.8 | Corregir `lastModified` de sitemap | Pendiente |
 
 **5.1 — Revisión mensual de posiciones y tráfico** · Pendiente, en pausa
 
@@ -200,6 +222,34 @@ Revisar en Search Console qué términos traen impresiones/clics, y en GA4 qué 
 Sumar artículos nuevos al blog y refrescar las páginas de servicio con datos o ejemplos nuevos cada pocos meses. Sin acción puntual — es un hábito a sostener, no una tarea que se cierra una vez.
 
 **Para qué sirve:** Google favorece sitios que se mantienen activos.
+
+**5.5 — Bug de `<br/>` sin espacio en TechStageMatrix** · Pendiente
+
+Encontrado en la auditoría de SEO de alcance completo del 13/9 — misma familia que 3 bugs ya corregidos antes (1.17, 1.22, 7.9). En `src/components/TechStageMatrix.tsx:153-158`, el título se arma concatenando las dos mitades con un `<br />` entre medio, sin espacio real después del salto de línea. Confirmado en vivo con Playwright, en ambos idiomas: ES `/tecnologia` da `textContent` "La misma tecnología,en todo el ciclo comercial"; EN `/en/tecnologia` da "The same technology,across your entire sales cycle". Contenido nuevo del 13/9, nunca había pasado por una auditoría.
+
+**Para qué sirve:** el nombre accesible/textContent no debe concatenar palabras (mismo criterio que los 3 casos anteriores).
+
+**5.6 — Jerarquía de headings salteada en BaseCore AI System** · Pendiente
+
+Encontrado en la misma auditoría. En `/tecnologia` y `/en/tecnologia`, la sección "BaseCore AI System" salta de H2 directo a H4 (las 5 tarjetas "Agentes en producción" usan `<h4>` en `AiSystemSection.tsx:202`) sin H3 intermedio, y luego vuelve a H3 para "Investigación en tiempo real"/"Un mismo proceso, en cada tarea". Secuencia real medida: H2 → H4×5 → H3×5. No rompe nada visualmente, pero es una mala práctica de accesibilidad/SEO. Contenido nuevo del 13/9 (rediseño de agentes), nunca auditado.
+
+**Fix sugerido:** bajar las 5 tarjetas a H3, o insertar un H3 propio para "Agentes en producción" antes de ellas.
+
+**Para qué sirve:** una jerarquía de encabezados lógica ayuda a Google y a lectores de pantalla a entender la estructura de la página.
+
+**5.7 — H3 duplicado por tarjeta en ServiceCards** · Pendiente
+
+Encontrado en la misma auditoría — patrón heredado del theme original, nunca señalado antes (no es contenido nuevo). `src/components/ServiceCards.tsx` renderiza el título de cada tarjeta dos veces como `<h3>`: una en la caja blanca visible y otra dentro de la capa de hover, que está siempre presente en el DOM (sin `aria-hidden`, sin `sr-only`) y solo se oculta visualmente al no estar en hover. Confirmado en vivo en Home ("Ciclos de Venta"): la lista de headings trae "Preventa"/"Preventa", "Venta"/"Venta", "Posventa"/"Posventa" duplicados. El mismo componente se reutiliza en las 5 páginas de ciclo (sección "Puestos"), así que el patrón se repite ahí también.
+
+**Fix sugerido:** agregar `aria-hidden="true"` a la capa de hover completa, o bajar su título a un elemento no-heading con `aria-hidden`.
+
+**Para qué sirve:** un lector de pantalla no debería anunciar cada título dos veces al navegar por encabezados.
+
+**5.8 — Corregir `lastModified` de sitemap** · Pendiente
+
+Encontrado en la misma auditoría. `src/app/sitemap.ts` trae un comentario explícito de mantener `lastModified` al día en cada cambio de copy real, pero no se cumplió en los commits recientes: `/tecnologia` y `/en/tecnologia` siguen en "2026-09-05" pese a los 3 rediseños del 13/9 (TechStageMatrix, Agentes en producción, TechnologyBlock); `/marketing`, `/en/marketing` y las 3 páginas de ciclo siguen en "2026-08-30" pese al rediseño de `TechnologyBlock` del 13/9 (afecta su copy visible); Home sigue en "2026-09-05" pese al cambio de hero mobile + cajón "Nosotros" del 12/9.
+
+**Para qué sirve:** no es un error técnico grave (Google no penaliza fechas viejas), pero socava la señal de frescura real que el propio código dice perseguir — housekeeping de bajo esfuerzo, mismo criterio que 1.20.
 
 ## Fase 6 · Posicionamiento en buscadores de IA (AEO/GEO)
 
@@ -250,11 +300,12 @@ Cerrada del todo el 5/9 — `/basehub` y `/en/basehub` en producción desde el 1
 
 ## Por dónde seguir
 
-Fases 2, 3, 5 (salvo mantenimiento recurrente), 6 y 7 quedaron cerradas del todo o en lo esencial; Fase 1 quedó cerrada en lo esencial, con solo una cola de performance abierta (1.25, bloqueada). Toda la cronología de cómo se llegó hasta acá vive en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8) (SEO general) y en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929) (performance específicamente), no en este documento.
+Fases 2, 3, 5 (salvo mantenimiento recurrente y los 4 hallazgos nuevos de la auditoría), 6 y 7 quedaron cerradas del todo o en lo esencial; Fase 1 quedó cerrada en lo esencial, con una cola de performance bloqueada (1.25) y dos pendientes nuevos (1.26, 1.27). Toda la cronología de cómo se llegó hasta acá vive en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8) (SEO general) y en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929) (performance específicamente), no en este documento.
 
 Lo activo hoy, en orden de qué depende de qué:
 
+- **1.26 (cap de sizes en el hero de Home), 1.27 (quality de logos), 5.5 (bug de <br/> en TechStageMatrix), 5.6 (jerarquía de headings en BaseCore AI System), 5.7 (H3 duplicado en ServiceCards), 5.8 (lastModified de sitemap):** Pendiente — 6 hallazgos nuevos de la auditoría de SEO y performance de alcance completo del 13/9, priorizados por Mariano para empezar a resolver mañana. Sin bloqueos entre sí.
 - **4.1 (GBP), 4.3 (backlinks), 4.4 (testimonios), 4.5 (GDPR), 1.25 (INP de campo):** bloqueadas — 4.1 sin viaje previsto, 4.3 y 4.4 a la espera de que Mariano decida más adelante si avanza (13/9), 4.5 sin expertise legal disponible, 1.25 sin ninguna vía de acceso a la API de GA4 en el repo (13/9).
 - **4.6 (LinkedIn/referidos), 5.1 (revisión mensual), 5.2 (contenido periódico), 6.5 (visibilidad IA):** en pausa por decisión explícita o esperando datos/tráfico — ninguno bloqueado por otro, se retoman cuando corresponda.
 
-Última actualización: 2026-09-13 (4.3 y 4.4 pasan a Bloqueado por pedido de Mariano — decide más adelante si avanza con backlinks y con el merge de testimonios; 1.24 se investiga y cierra Hecho sin cambios de código — `next/image` ya resolvía retina; 1.25 se confirma Bloqueado por falta de acceso a la API de GA4; 5.3 cierra Hecho — PR #37 revisado, aprobado y mergeado a producción) · se irá marcando como Hecho a medida que avancemos.
+Última actualización: 2026-09-13 (auditoría de SEO y performance de alcance completo: se suman 6 pendientes nuevos — 1.26, 1.27, 5.5, 5.6, 5.7, 5.8 — a resolver a partir de mañana; ver también el cierre de 4.3/4.4/1.24/1.25/5.3 antes en el día) · se irá marcando como Hecho a medida que avancemos.
