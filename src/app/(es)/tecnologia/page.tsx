@@ -10,6 +10,7 @@ import FlipCardGrid from "@/components/FlipCardGrid";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceJsonLd from "@/components/ServiceJsonLd";
+import TechStageMatrix from "@/components/TechStageMatrix";
 import { TECNOLOGIA_GRID } from "@/content/flipGrids";
 import type { FlipCardData } from "@/content/types";
 
@@ -220,8 +221,14 @@ export default function TecnologiaPage() {
           the teaser's photo below it). */}
       <div className="h-[50px]" aria-hidden="true" />
 
-      {/* "BaseCore AI System" — the AI methodology cajón, between Soluciones
-          and the BaseHub teaser. Self-contained (own header, spacer at the end). */}
+      {/* "La misma tecnología, en todo el ciclo comercial" — matrix cajón
+          (stages x capabilities), between Soluciones and BaseCore AI System.
+          Self-contained (own header, spacer at the end). */}
+      <TechStageMatrix lang="es" />
+
+      {/* "BaseCore AI System" — the AI methodology cajón, between the matrix
+          above and the BaseHub teaser. Self-contained (own header, spacer at
+          the end). */}
       <AiSystemSection lang="es" />
 
       {/* /tecnologia has no TechnologyBlock/Recruiting cajones of its own (it
