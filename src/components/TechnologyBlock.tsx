@@ -20,10 +20,10 @@ const copy = {
     eyebrow: "Convertimos tus procesos en sistemas",
     title: "IA + CRM",
     bullets: [
-      { label: "IA", text: "Calificación de leads y señales de posventa" },
+      { label: "IA", text: "Agentes que apoyan toda tu operación comercial." },
       { label: "Automatización", text: "Marketing, ventas y CRM sin tareas manuales" },
       { label: "Software a medida", text: "Sitios, dashboards y portales de clientes" },
-      { label: "CRM", text: "Implementación de HubSpot, Pipedrive, Zoho y más" },
+      { label: "CRM", text: "Implementación de HubSpot, Pipedrive, Zoho, entre otros" },
     ],
     cta: "IMPLEMENTACIONES TECNOLÓGICAS",
     href: "/tecnologia",
@@ -41,19 +41,19 @@ const copy = {
     },
     stageBullets: {
       preventa: [
-        { label: "IA", text: "Calificación y enriquecimiento de leads" },
+        { label: "IA", text: "Agentes de calificación y enriquecimiento de leads" },
         { label: "Automatización", text: "Scoring, nurturing y asignación automática" },
         { label: "Software a medida", text: "Prospección y enriquecimiento de datos" },
-        { label: "CRM", text: "Criterios de calificación y seguimiento" },
+        { label: "CRM", text: "Gestión de leads, calificación y seguimiento" },
       ],
       venta: [
-        { label: "IA", text: "Seguimiento y análisis de oportunidades" },
+        { label: "IA", text: "Agentes de análisis y mejora de abordaje" },
         { label: "Automatización", text: "Seguimiento, tareas y alertas automáticas" },
         { label: "Software a medida", text: "Tableros de pipeline, forecast y KPIs" },
-        { label: "CRM", text: "Etapas, responsables y reporting comercial" },
+        { label: "CRM", text: "Funnels, responsables y reporting comercial" },
       ],
       posventa: [
-        { label: "IA", text: "Detección de señales de churn y recompra" },
+        { label: "IA", text: "Agentes de gestión en churn y recompra" },
         { label: "Automatización", text: "Renovaciones, recordatorios y retención" },
         { label: "Software a medida", text: "Tableros de segmentación de cartera" },
         { label: "CRM", text: "Planes de contacto e historial de clientes" },
@@ -71,10 +71,10 @@ const copy = {
     eyebrow: "We turn your processes into systems",
     title: "AI + CRM",
     bullets: [
-      { label: "AI", text: "Lead qualification and post-sale signals" },
+      { label: "AI", text: "Agents that support your entire sales operation." },
       { label: "Automation", text: "Marketing, sales, and CRM without manual tasks" },
       { label: "Custom Software", text: "Websites, dashboards, and client portals" },
-      { label: "CRM", text: "HubSpot, Pipedrive, Zoho, and more" },
+      { label: "CRM", text: "HubSpot, Pipedrive, Zoho, and others" },
     ],
     cta: "TECHNOLOGY IMPLEMENTATIONS",
     href: "/en/tecnologia",
@@ -92,19 +92,19 @@ const copy = {
     },
     stageBullets: {
       preventa: [
-        { label: "AI", text: "Lead scoring and enrichment" },
+        { label: "AI", text: "Lead qualification and enrichment agents" },
         { label: "Automation", text: "Scoring, nurturing, and automatic assignment" },
         { label: "Custom Software", text: "Prospecting and data enrichment" },
-        { label: "CRM", text: "Qualification criteria and follow-up" },
+        { label: "CRM", text: "Lead management, qualification, and follow-up" },
       ],
       venta: [
-        { label: "AI", text: "Opportunity follow-up and analysis" },
+        { label: "AI", text: "Analysis and approach-improvement agents" },
         { label: "Automation", text: "Follow-up, tasks, and automatic alerts" },
         { label: "Custom Software", text: "Pipeline, forecast, and KPI dashboards" },
-        { label: "CRM", text: "Stages, owners, and sales reporting" },
+        { label: "CRM", text: "Funnels, owners, and sales reporting" },
       ],
       posventa: [
-        { label: "AI", text: "Churn-signal detection and win-back opportunities" },
+        { label: "AI", text: "Churn and win-back management agents" },
         { label: "Automation", text: "Renewals, reminders, and retention" },
         { label: "Custom Software", text: "Portfolio segmentation dashboards" },
         { label: "CRM", text: "Contact plans and client history" },
@@ -322,7 +322,7 @@ export default function TechnologyBlock({
                     <Icon className="h-[16px] w-[16px]" />
                   </span>
                   <div className="text-left">
-                    <p className="font-sans text-[10px] font-semibold uppercase leading-[1.4] tracking-[1px] text-primary">
+                    <p className="font-sans text-[15px] font-semibold uppercase leading-[1.4] tracking-[1px] text-primary md:text-[16px]">
                       {label}
                     </p>
                     <p className="mt-[2px] font-sans text-[14px] leading-[1.45] text-body md:text-[15px]">
