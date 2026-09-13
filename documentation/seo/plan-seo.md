@@ -2,7 +2,7 @@
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/f6230fde-8996-4d03-ae8a-4211f111ed90
 > - Última sincronización: 2026-09-13
-> - Nota: este documento se reorganizó el 5/9 — ahora es el tablero activo (solo tareas pendientes/bloqueadas/en progreso en detalle). El registro completo de tareas ya resueltas vive en `documentation/seo/historial-seo.md` (SEO general) o en `Performance Web` (tareas de performance, sin espejo propio). El 13/9: 4.3 y 4.4 pasan a Bloqueado (decisión de Mariano, a resolver más adelante); 1.24 se investiga y cierra Hecho sin cambios de código (`next/image` ya resolvía retina); 1.25 se confirma Bloqueado por falta de acceso a la API de GA4; 5.3 avanza a PR #37, a la espera de que Mariano lo apruebe.
+> - Nota: este documento se reorganizó el 5/9 — ahora es el tablero activo (solo tareas pendientes/bloqueadas/en progreso en detalle). El registro completo de tareas ya resueltas vive en `documentation/seo/historial-seo.md` (SEO general) o en `Performance Web` (tareas de performance, sin espejo propio). El 13/9: 4.3 y 4.4 pasan a Bloqueado (decisión de Mariano, a resolver más adelante); 1.24 cierra Hecho sin cambios de código (`next/image` ya resolvía retina); 1.25 se confirma Bloqueado por falta de acceso a la API de GA4; 5.3 cierra Hecho — PR #37 revisado, aprobado y mergeado a producción.
 
 ---
 
@@ -14,9 +14,9 @@ basecoresales.com · auditoría & hoja de ruta
 
 Tablero activo: qué falta hacer, con el detalle completo solo de lo que sigue abierto. Las tareas ya resueltas quedan en la tabla de estado como una línea — el registro completo de cómo se resolvió cada una vive en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8), sin perder ni un dato.
 
-📋 [Ver Historial Técnico SEO (detalle de las 52 tareas ya resueltas)](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8)
+📋 [Ver Historial Técnico SEO (detalle de las 53 tareas ya resueltas)](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8)
 
-52 / 62 tareas · +1 en curso (5.3) · +5 bloqueadas (1.25, 4.1, 4.3, 4.4, 4.5)
+53 / 62 tareas · +5 bloqueadas (1.25, 4.1, 4.3, 4.4, 4.5)
 
 [Diagnóstico](#diagnostico)
 [Fase 1 · Técnico](#fase1)
@@ -178,13 +178,13 @@ Instagram (@basecoresales) prácticamente inactivo (41 seguidores, 1 post); Link
 
 ## Fase 5 · Mantenimiento continuo
 
-El SEO no es un proyecto que se termina — esto es lo que se revisa de forma recurrente. Único ítem cerrado (5.4) tiene detalle en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8).
+El SEO no es un proyecto que se termina — esto es lo que se revisa de forma recurrente. 5.3 y 5.4, ya cerrados, tienen detalle en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8).
 
 | # | Tarea | Estado |
 | --- | --- | --- |
 | 5.1 | Revisión mensual de posiciones y tráfico | Pendiente |
 | 5.2 | Actualización periódica de contenido | Pendiente |
-| 5.3 | Evaluar el gate del e-book | En curso |
+| 5.3 | Evaluar el gate del e-book | Hecho |
 | 5.4 | Re-correr auditoría SEO/accesibilidad | Hecho |
 
 **5.1 — Revisión mensual de posiciones y tráfico** · Pendiente, en pausa
@@ -200,14 +200,6 @@ Revisar en Search Console qué términos traen impresiones/clics, y en GA4 qué 
 Sumar artículos nuevos al blog y refrescar las páginas de servicio con datos o ejemplos nuevos cada pocos meses. Sin acción puntual — es un hábito a sostener, no una tarea que se cierra una vez.
 
 **Para qué sirve:** Google favorece sitios que se mantienen activos.
-
-**5.3 — Evaluar el gate del e-book y el campo WhatsApp obligatorio** · En curso · PR abierto
-
-`whatsapp` era `required` en el formulario de e-book (único componente, usado por ES/EN); `email` no lo era — al revés de lo esperado para un lead magnet de bajo compromiso. Hallazgo no anticipado: esto permitía descargar el e-book sin dejar ningún email de contacto.
-
-**Estado (13/9):** `seo-marketing` investigó el código real (`EbookForm.tsx` + `/api/ebook`), decidió con criterio de CRO y abrió [PR #37](https://github.com/marianosandonato/basecoreweb/pull/37): `whatsapp` pasa a opcional, `email` pasa a obligatorio (junto con nombre y empresa, que se mantienen). El adelanto de contenido en `/ebook` quedó evaluado pero no implementado en este PR (fuera del alcance del gate) — hay material real del índice del e-book ya extraído para una futura iteración. `tsc`/`eslint`/`build` limpios, verificado visual y funcionalmente. PR marcado como preview, sin mergear — a la espera de que Mariano lo revise y apruebe.
-
-**Para qué sirve:** reducir fricción en la conversión del lead magnet.
 
 ## Fase 6 · Posicionamiento en buscadores de IA (AEO/GEO)
 
@@ -258,12 +250,11 @@ Cerrada del todo el 5/9 — `/basehub` y `/en/basehub` en producción desde el 1
 
 ## Por dónde seguir
 
-Fases 2, 3, 6 y 7 quedaron cerradas del todo; Fase 1 quedó cerrada en lo esencial, con solo una cola de performance abierta (1.25, bloqueada). Toda la cronología de cómo se llegó hasta acá vive en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8) (SEO general) y en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929) (performance específicamente), no en este documento.
+Fases 2, 3, 5 (salvo mantenimiento recurrente), 6 y 7 quedaron cerradas del todo o en lo esencial; Fase 1 quedó cerrada en lo esencial, con solo una cola de performance abierta (1.25, bloqueada). Toda la cronología de cómo se llegó hasta acá vive en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8) (SEO general) y en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929) (performance específicamente), no en este documento.
 
 Lo activo hoy, en orden de qué depende de qué:
 
-- **5.3 (gate del e-book):** en curso — [PR #37](https://github.com/marianosandonato/basecoreweb/pull/37) abierto (email obligatorio, WhatsApp opcional), a la espera de que Mariano lo revise y apruebe para mergear.
 - **4.1 (GBP), 4.3 (backlinks), 4.4 (testimonios), 4.5 (GDPR), 1.25 (INP de campo):** bloqueadas — 4.1 sin viaje previsto, 4.3 y 4.4 a la espera de que Mariano decida más adelante si avanza (13/9), 4.5 sin expertise legal disponible, 1.25 sin ninguna vía de acceso a la API de GA4 en el repo (13/9).
 - **4.6 (LinkedIn/referidos), 5.1 (revisión mensual), 5.2 (contenido periódico), 6.5 (visibilidad IA):** en pausa por decisión explícita o esperando datos/tráfico — ninguno bloqueado por otro, se retoman cuando corresponda.
 
-Última actualización: 2026-09-13 (4.3 y 4.4 pasan a Bloqueado por pedido de Mariano — decide más adelante si avanza con backlinks y con el merge de testimonios; 1.24 se investiga y cierra Hecho sin cambios de código — `next/image` ya resolvía retina; 1.25 se confirma Bloqueado por falta de acceso a la API de GA4; 5.3 avanza a PR #37, a la espera de aprobación) · se irá marcando como Hecho a medida que avancemos.
+Última actualización: 2026-09-13 (4.3 y 4.4 pasan a Bloqueado por pedido de Mariano — decide más adelante si avanza con backlinks y con el merge de testimonios; 1.24 se investiga y cierra Hecho sin cambios de código — `next/image` ya resolvía retina; 1.25 se confirma Bloqueado por falta de acceso a la API de GA4; 5.3 cierra Hecho — PR #37 revisado, aprobado y mergeado a producción) · se irá marcando como Hecho a medida que avancemos.

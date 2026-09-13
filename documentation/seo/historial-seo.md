@@ -1,8 +1,8 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`web-lead`, `seo-marketing`, `performance`) — confirmado el 3/9 que la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma, no de configuración), así que solo la sesión principal puede leer el artifact directo. Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8
-> - Última sincronización: 2026-09-11
-> - Nota: documento nuevo, creado el 5/9 al separar el detalle histórico del Plan de SEO (`documentation/seo/plan-seo.md`), que ahora es el tablero activo. El 11/9 se sumó el cierre de 1.14 (Core Web Vitals).
+> - Última sincronización: 2026-09-13
+> - Nota: documento nuevo, creado el 5/9 al separar el detalle histórico del Plan de SEO (`documentation/seo/plan-seo.md`), que ahora es el tablero activo. El 11/9 se sumó el cierre de 1.14 (Core Web Vitals). El 13/9 se sumó el cierre de 5.3 (gate del e-book, PR #37).
 
 ---
 
@@ -634,7 +634,21 @@ Fase 5
 
 ## Mantenimiento continuo
 
-Único ítem cerrado de esta fase — los demás (5.1, 5.2, 5.3) siguen activos en el Plan de SEO.
+5.3 y 5.4 cerrados — los demás (5.1, 5.2) siguen activos en el Plan de SEO.
+
+5.3 — Evaluar el gate del e-book y el campo WhatsApp obligatorio
+
+Hecho · mergeado 13/9 (PR #37)
+
+`whatsapp` era `required` en el formulario de e-book (`EbookForm.tsx`, único componente, usado por `/ebook` y `/en/ebook` vía el prop `lang`); `email` no lo era, ni en el cliente ni en la validación server-side de `/api/ebook` — al revés de lo esperado para un lead magnet de bajo compromiso. Hallazgo no anticipado por el plan original: esto permitía descargar el e-book sin dejar ningún email de contacto.
+
+**Decisión (13/9, `seo-marketing`):** con criterio de CRO (cada campo tiene costo de conversión; el teléfono debe hacerse opcional en un lead magnet de bajo compromiso), `whatsapp` pasa a opcional — no se elimina, sigue capturando el dato de los leads más calificados que lo completan igual, sin costo de fricción para el resto. `email` pasa a obligatorio (junto con `nombre` y `empresa`, que se mantienen sin cambios) — es el campo mínimo indispensable de cualquier lead magnet, el canal real de entrega/seguimiento.
+
+**Adelanto de contenido en `/ebook`** (parte de la propuesta original del plan): evaluado, no implementado — fuera del alcance acotado de este cambio (solo el gate del formulario). Se extrajo igual el índice real del e-book con `markitdown` (7 secciones: segmentación del ciclo comercial, preventa, IA en preventa, automatización, el puente hacia la venta, errores comunes, panorama de IA) — material genuino disponible para una futura iteración, sin necesidad de nueva investigación.
+
+**Implementado:** `src/components/EbookForm.tsx` + `src/app/api/ebook/route.ts` — solo atributos `required` movidos, sin tocar clases de layout. PR #37, verificado con `tsc`/`eslint`/`build` y funcionalmente (`form.checkValidity()`: válido sin WhatsApp, inválido sin email, ES y EN). Mergeado a `master` y confirmado en producción el 13/9 (`whatsapp.required === false`, `email.required === true`).
+
+**Para qué sirve:** reducir fricción en la conversión del lead magnet sin perder el dato mínimo indispensable para hacer seguimiento real.
 
 5.4 — Re-correr auditoría SEO/accesibilidad con `seo-marketing`
 
@@ -767,5 +781,6 @@ El registro día a día de cómo se llegó al estado actual — el "Por dónde s
 13. **5/9, cierre de 7.8:** publicado el séptimo post del blog, sobre "PMO". Fase 7 queda sin ningún pendiente propio.
 14. **5/9, reorganización del documento:** el Plan de SEO pasó de un único documento de 58 tareas a esta separación entre tablero activo (Plan de SEO) e historial permanente (este documento) — a pedido de Mariano, para que el documento vivo sea fácil de leer y actualizar sin perder ningún registro.
 15. **11/9, cierre de 1.14:** PSI real confirma Mobile 88 estable (TBT 40ms, el mejor de la serie) — se cierran de una tacada 4 PRs (redirect de GSC en `/sales/`/`/presales/`, bundle-split de `blogSlugPairs`, 3 de 4 fondos migrados a `next/image`, lazy-load de `LanguageBanner`/`EbookForm`) y se corrige en el momento un bug de encuadre que uno de esos mismos PRs había introducido sin querer en `/marketing` (mismo bug que ya se había revertido en Home, pero se pasó por alto que el commit traído también tocaba esa página). Fase 1 queda cerrada del todo. Detalle técnico completo en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929).
+16. **13/9:** Mariano pide avanzar con 1.24, 1.25 y 5.3, y pasar 4.3/4.4 a Bloqueado (decide más adelante si avanza con backlinks y con el merge de testimonios). `performance` cierra 1.24 (retina) leyendo el código fuente de Next — `next/image` ya lo resolvía, sin acción de código — y confirma 1.25 (INP) genuinamente bloqueado por falta total de acceso a la API de GA4 en el repo, no solo por tráfico. `seo-marketing` cierra 5.3: PR #37 (email obligatorio, WhatsApp opcional en el gate del e-book), revisado y mergeado a producción el mismo día.
 
-Historial Técnico SEO · Base Core · creado el 5 de septiembre de 2026, a partir del Plan de SEO original · espejo de trabajo en `documentation/seo/historial-seo.md`
+Historial Técnico SEO · Base Core · creado el 5 de septiembre de 2026, a partir del Plan de SEO original · actualizado el 13 de septiembre (cierre de 5.3) · espejo de trabajo en `documentation/seo/historial-seo.md`
