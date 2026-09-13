@@ -167,13 +167,13 @@ export default function TechStageMatrix({ lang = "es" }: { lang?: Lang }) {
       <section className="container-bc pt-[40px]">
         <div className="overflow-hidden rounded-[12px] border border-line">
           <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-left">
+            <table className="w-full border-collapse text-center">
               <caption className="sr-only">{t.caption}</caption>
               <thead>
                 <tr>
                   <th
                     scope="col"
-                    className="sticky left-0 z-[2] min-w-[130px] border-r border-white/15 bg-navy px-[18px] py-[16px] align-bottom font-sans text-[11px] font-semibold uppercase tracking-[1.5px] text-muted md:px-[24px] md:py-[20px]"
+                    className="sticky left-0 z-[2] min-w-[130px] border-r border-white/15 bg-navy px-[18px] py-[16px] align-middle font-sans text-[11px] font-semibold uppercase tracking-[1.5px] text-muted md:px-[24px] md:py-[20px]"
                   >
                     {t.corner}
                   </th>
@@ -181,7 +181,7 @@ export default function TechStageMatrix({ lang = "es" }: { lang?: Lang }) {
                     <th
                       key={stage}
                       scope="col"
-                      className="min-w-[150px] bg-navy px-[18px] py-[16px] align-bottom font-heading text-[15px] font-bold uppercase tracking-[0.5px] text-white md:px-[24px] md:py-[20px] md:text-[18px]"
+                      className="min-w-[150px] bg-navy px-[18px] py-[16px] align-middle font-heading text-[15px] font-bold uppercase tracking-[0.5px] text-white md:px-[24px] md:py-[20px] md:text-[18px]"
                     >
                       {stage}
                     </th>
@@ -196,7 +196,7 @@ export default function TechStageMatrix({ lang = "es" }: { lang?: Lang }) {
                     <tr key={row.label}>
                       <th
                         scope="row"
-                        className={`sticky left-0 z-[1] min-w-[130px] border-t border-r border-line px-[18px] py-[16px] text-left font-heading text-[13px] font-bold tracking-[0.3px] md:px-[24px] md:py-[20px] md:text-[15px] ${rowBg} ${
+                        className={`sticky left-0 z-[1] min-w-[130px] border-t border-r border-line px-[18px] py-[16px] text-center align-middle font-heading text-[13px] font-bold tracking-[0.3px] md:px-[24px] md:py-[20px] md:text-[15px] ${rowBg} ${
                           isFirst ? "text-primary" : "text-heading"
                         }`}
                       >
@@ -205,7 +205,7 @@ export default function TechStageMatrix({ lang = "es" }: { lang?: Lang }) {
                       {row.cells.map((cell, j) => (
                         <td
                           key={j}
-                          className={`min-w-[150px] border-t border-line px-[18px] py-[16px] font-sans text-[13.5px] leading-[1.6] text-body md:px-[24px] md:py-[20px] md:text-[15px] ${rowBg}`}
+                          className={`min-w-[150px] border-t border-line px-[18px] py-[16px] align-middle font-sans text-[13.5px] leading-[1.6] text-body md:px-[24px] md:py-[20px] md:text-[15px] ${rowBg}`}
                         >
                           {cell}
                         </td>
