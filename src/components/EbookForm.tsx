@@ -153,11 +153,12 @@ export default function EbookForm({
       <label htmlFor="ebook-whatsapp" className="sr-only">
         {t.whatsapp}
       </label>
-      <input required id="ebook-whatsapp" name="whatsapp" placeholder={t.whatsapp} className={fieldCls} />
+      <input id="ebook-whatsapp" name="whatsapp" placeholder={t.whatsapp} className={fieldCls} />
       <label htmlFor="ebook-email" className="sr-only">
         {t.email}
       </label>
       <input
+        required
         type="email"
         id="ebook-email"
         name="email"

@@ -44,10 +44,10 @@ export async function POST(request: Request) {
 
   const nombre = data.nombre?.trim();
   const empresa = data.empresa?.trim();
-  const whatsapp = data.whatsapp?.trim();
-  if (!nombre || !empresa || !whatsapp) {
+  const email = data.email?.trim();
+  if (!nombre || !empresa || !email) {
     return Response.json(
-      { error: "Nombre, empresa y WhatsApp son obligatorios." },
+      { error: "Nombre, empresa y email son obligatorios." },
       { status: 400 },
     );
   }
@@ -67,8 +67,8 @@ export async function POST(request: Request) {
     ["Nombre", nombre],
     ["Apellidos", data.apellidos],
     ["Empresa", empresa],
-    ["WhatsApp", whatsapp],
-    ["Email", data.email],
+    ["WhatsApp", data.whatsapp],
+    ["Email", email],
     ["Idioma del E-Book", data.idioma],
   ];
 
@@ -88,7 +88,7 @@ export async function POST(request: Request) {
   const { error } = await resend.emails.send({
     from: `Base Core Sales <${from}>`,
     to,
-    replyTo: data.email?.trim() || undefined,
+    replyTo: email,
     subject: `Descarga E-Book: ${nombre} (${empresa})`,
     html,
   });
