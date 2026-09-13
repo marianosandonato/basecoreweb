@@ -45,6 +45,7 @@ type WorkflowStep = {
  */
 const copy = {
   es: {
+    eyebrow: "METODOLOGÍA PROPIA DE IA",
     title: "BaseCore AI System",
     intro: "Agentes de IA que investigan, deciden y proponen antes de ejecutar.",
     capacidadesLabel: "SISTEMA DE ANÁLISIS",
@@ -201,6 +202,7 @@ const copy = {
     extensionCta: "CONVERSEMOS SOBRE TU EQUIPO",
   },
   en: {
+    eyebrow: "OUR OWN AI METHODOLOGY",
     title: "BaseCore AI System",
     intro: "AI agents that research, decide, and propose before acting.",
     capacidadesLabel: "ANALYSIS SYSTEM",
@@ -384,6 +386,7 @@ export default function AiSystemSection({ lang = "es" }: { lang?: Lang }) {
       {/* Header + intro */}
       <section className="container-bc py-[10px]">
         <SectionHeading
+          eyebrow={t.eyebrow}
           title={t.title}
           description={t.intro}
           maxWidth={760}
