@@ -1,8 +1,8 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`web-lead`, `seo-marketing`, `performance`) — confirmado el 3/9 que la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma, no de configuración), así que solo la sesión principal puede leer el artifact directo. Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/f6230fde-8996-4d03-ae8a-4211f111ed90
-> - Última sincronización: 2026-09-12
-> - Nota: este documento se reorganizó el 5/9 — ahora es el tablero activo (solo tareas pendientes/bloqueadas/en progreso en detalle). El registro completo de tareas ya resueltas vive en `documentation/seo/historial-seo.md`. El 11/9 cerró 1.14 (Core Web Vitals) del todo. El 12/9 se sumaron 1.23/1.24/1.25: las colas de performance que quedaban abiertas en el artifact Performance Web (no es uno de los tres artifacts SEO de esta regla de sincronización, así que no tiene espejo propio) pasan a trackearse acá — ese artifact deja de ser operativo y queda como historial técnico de performance de consulta.
+> - Última sincronización: 2026-09-13
+> - Nota: este documento se reorganizó el 5/9 — ahora es el tablero activo (solo tareas pendientes/bloqueadas/en progreso en detalle). El registro completo de tareas ya resueltas vive en `documentation/seo/historial-seo.md`. El 13/9: 4.3 y 4.4 pasan a Bloqueado (decisión de Mariano, a resolver más adelante); 1.24, 1.25 y 5.3 pasan a En curso (Mariano pidió avanzar, agentes `performance` y `seo-marketing` trabajando).
 
 ---
 
@@ -16,7 +16,7 @@ Tablero activo: qué falta hacer, con el detalle completo solo de lo que sigue a
 
 📋 [Ver Historial Técnico SEO (detalle de las 51 tareas ya resueltas)](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8)
 
-51 / 62 tareas · +1 en progreso (4.4) · +2 bloqueadas (4.1, 4.5)
+51 / 62 tareas · +3 en curso (1.24, 1.25, 5.3) · +4 bloqueadas (4.1, 4.3, 4.4, 4.5)
 
 [Diagnóstico](#diagnostico)
 [Fase 1 · Técnico](#fase1)
@@ -56,7 +56,7 @@ Esto es lo que el sitio tiene implementado *hoy*.
 
 ## Fase 1 · Cimientos técnicos (on-page)
 
-Cerrada en lo esencial — 1.14 (Core Web Vitals) se confirmó el 11/9. Quedan dos colas menores de performance (1.24, 1.25) esperando datos reales de tráfico antes de poder decidir algo, y una (1.23) que se investigó y se cerró sin acción posible. Las tres nacen del seguimiento de performance que vive en el artifact [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929) — ahí está todo el detalle técnico (mediciones, commits, método); acá solo el estado. Detalle completo de las 22 tareas ya resueltas de esta fase en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8).
+Cerrada en lo esencial — 1.14 (Core Web Vitals) se confirmó el 11/9. Quedan dos colas menores de performance (1.24, 1.25) — Mariano pidió avanzar con ambas el 13/9, en curso. Las tres nacen del seguimiento de performance que vive en el artifact [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929) — ahí está todo el detalle técnico (mediciones, commits, método); acá solo el estado. Detalle completo de las 22 tareas ya resueltas de esta fase en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8).
 
 | # | Tarea | Estado |
 | --- | --- | --- |
@@ -83,22 +83,22 @@ Cerrada en lo esencial — 1.14 (Core Web Vitals) se confirmó el 11/9. Quedan d
 | 1.21 | Documento desincronizado | Hecho |
 | 1.22 | Bug de `<br/>` en tarjeta de cliente | Hecho |
 | 1.23 | JS legacy: polyfills de Next (25KB reportados por PSI) | Hecho |
-| 1.24 | Imágenes 2x-DPR (retina) | Pendiente, en pausa |
-| 1.25 | INP real de campo | Pendiente, esperando tráfico |
+| 1.24 | Imágenes 2x-DPR (retina) | En curso |
+| 1.25 | INP real de campo | En curso |
 
-**1.24 — Imágenes 2x-DPR (retina)** · Pendiente, en pausa
+**1.24 — Imágenes 2x-DPR (retina)** · En curso
 
 Lighthouse/PSI miden a 1x-DPR — si el sitio sirve imágenes de menor densidad de la que necesitan las pantallas retina de los visitantes reales, ese problema no es visible para la herramienta de referencia que usamos para medir todo lo demás.
 
-**Estado:** en pausa hasta tener datos reales de CrUX/GA4 por resolución de pantalla — sin eso, cualquier cambio sería a ciegas. Nadie en este equipo tiene acceso de API a GA4 para consultarlo directamente; requiere que Mariano lo revise en el dashboard o habilite acceso de lectura.
+**Estado (13/9):** Mariano pidió avanzar — pasa de "en pausa" a en curso, agente `performance` investigando qué es accionable sin acceso directo a GA4/CrUX por resolución.
 
 **Para qué sirve:** nitidez de imagen en monitores de alta densidad, sin sumar peso innecesario en el resto.
 
-**1.25 — INP real de campo** · Pendiente, esperando tráfico
+**1.25 — INP real de campo** · En curso
 
 INP (Interaction to Next Paint) reemplazó a FID como métrica de Core Web Vitals — mide qué tan rápido responde el sitio a una interacción real de un visitante, algo que un laboratorio no puede simular fielmente.
 
-**Estado:** instrumentado y funcionando (Next.js 16 trae `useReportWebVitals` integrado, sin librería aparte), enviando a GA4 desde el 5/9. Solo falta que se acumule tráfico real suficiente para que el dato signifique algo — el sitio es nuevo.
+**Estado (13/9):** instrumentado y funcionando (Next.js 16 trae `useReportWebVitals` integrado, sin librería aparte), enviando a GA4 desde el 5/9. Mariano pidió avanzar — agente `performance` revisando si ya hay tráfico suficiente para decir algo.
 
 **Para qué sirve:** confirmar con datos de campo (no solo de laboratorio) que la interactividad del sitio es buena para visitantes reales.
 
@@ -137,8 +137,8 @@ Base Core tiene presencia física en Barcelona y Buenos Aires — ventaja de SEO
 | --- | --- | --- |
 | 4.1 | Google Business Profile | Bloqueado |
 | 4.2 | Consistencia NAP (nombre/dirección/teléfono) | Hecho |
-| 4.3 | Primeros enlaces entrantes (backlinks) | Pendiente |
-| 4.4 | Testimonios y prueba social | En progreso |
+| 4.3 | Primeros enlaces entrantes (backlinks) | Bloqueado |
+| 4.4 | Testimonios y prueba social | Bloqueado |
 | 4.5 | Política de privacidad (GDPR/LOPDGDD) | Bloqueado |
 | 4.6 | Decisión de canal social | Pendiente |
 
@@ -150,19 +150,21 @@ Verificación de Buenos Aires rechazada (29/8): Google pidió cartelería del ne
 
 **Para qué sirve:** aparecer en el mapa y en el bloque local de resultados; señal fuerte de "negocio real" para quien investiga antes de contratar.
 
-**4.3 — Primeros enlaces entrantes (backlinks)** · Pendiente, en pausa
+**4.3 — Primeros enlaces entrantes (backlinks)** · Bloqueado · decisión pendiente de Mariano
 
 Dominio nuevo, sin enlaces externos todavía. El plan original apuntaba a not-a-numb3r.com, pero ya no tiene sentido (ver 3.2). Puntos de partida a evaluar: directorios de consultoría/negocio en España y Argentina, menciones en medios/newsletters del rubro.
 
+**Estado (13/9):** pasa a Bloqueado — Mariano decidirá más adelante si avanza con backlinks o no, sin fecha definida.
+
 **Para qué sirve:** una de las señales más fuertes de autoridad para Google.
 
-**4.4 — Testimonios y prueba social** · En progreso · desarrollado, pendiente de decisión
+**4.4 — Testimonios y prueba social** · Bloqueado · decisión pendiente de Mariano
 
 Barfer, Don Seitán y W Profesional dieron el OK para un testimonio, sin saber qué escribir — Mariano pidió redactarlo junto con el equipo. `seo-marketing` investigó buenas prácticas (estructura antes/durante/después, sin superlativos genéricos) y redactó 3 copys en ES/EN basados solo en el servicio real prestado a cada cliente (sin métricas inventadas). Atribución con nombre de pila + cargo, sin apellido en los 3 — decisión deliberada pareja (uno de los clientes es familiar del dueño de Base Core).
 
 **Implementado (6/9):** nueva sección "Testimonios" en el Home (ES/EN), debajo del carrusel de logos — grid de 3 tarjetas (cita + logo + nombre + rol), sin schema.org Review/AggregateRating (Google no muestra estrellas en reseñas "self-serving" publicadas por la propia empresa). Código completo en la rama `feat/client-testimonials` (commit `4c62ac7`), verificado con tsc/lint/build y revisado visualmente (desktop/mobile, ES/EN) en un preview de Vercel.
 
-**Estado:** a pedido de Mariano queda así — desarrollado y probado, pero sin mergear a `master` ni pushear a producción, a la espera de que decida si avanza. No hay apuro: la rama y el preview no afectan producción ni se autoborran.
+**Estado (13/9):** pasa a Bloqueado explícitamente — sigue desarrollado y probado, sin mergear a `master` ni pushear a producción, hasta que Mariano decida más adelante si avanza. No hay apuro: la rama y el preview no afectan producción ni se autoborran.
 
 **Matiz de encaje:** la tensión "prueba social B2C vs. posicionamiento B2B" está acotada a `/preventa` (única página donde "B2B" es keyword validada) — ninguno de estos 3 testimonios se usó ahí. Sigue faltando la reseña en Google Business Profile (bloqueada, ver 4.1).
 
@@ -190,7 +192,7 @@ El SEO no es un proyecto que se termina — esto es lo que se revisa de forma re
 | --- | --- | --- |
 | 5.1 | Revisión mensual de posiciones y tráfico | Pendiente |
 | 5.2 | Actualización periódica de contenido | Pendiente |
-| 5.3 | Evaluar el gate del e-book | Pendiente |
+| 5.3 | Evaluar el gate del e-book | En curso |
 | 5.4 | Re-correr auditoría SEO/accesibilidad | Hecho |
 
 **5.1 — Revisión mensual de posiciones y tráfico** · Pendiente, en pausa
@@ -207,9 +209,11 @@ Sumar artículos nuevos al blog y refrescar las páginas de servicio con datos o
 
 **Para qué sirve:** Google favorece sitios que se mantienen activos.
 
-**5.3 — Evaluar el gate del e-book y el campo WhatsApp obligatorio** · Pendiente, ya no bloqueado
+**5.3 — Evaluar el gate del e-book y el campo WhatsApp obligatorio** · En curso
 
 `whatsapp` es `required` en ambos formularios; `email` no lo es. Hipótesis: agrega fricción evitable a un lead magnet de bajo compromiso. Antes bloqueado hasta tener datos reales de 2.3 (conversiones medidas) — ese punto ya cerró, así que esto puede evaluarse cuando se decida.
+
+**Estado (13/9):** Mariano pidió avanzar — agente `seo-marketing` evaluando qué campos son realmente necesarios y proponiendo un gate más liviano.
 
 **Propuesta:** decidir qué campos son realmente necesarios, evaluar A/B test de un gate más liviano (nombre + email), sumar un adelanto de contenido en `/ebook`.
 
@@ -268,10 +272,10 @@ Fases 2, 3, 6 y 7 quedaron cerradas del todo; Fase 1 quedó cerrada en lo esenci
 
 Lo activo hoy, en orden de qué depende de qué:
 
-- **4.4 — Testimonios:** copy escrito y aprobado, sección implementada y probada en preview (rama `feat/client-testimonials`) — a la espera de que Mariano decida mergear a producción.
-- **4.1 (GBP), 4.3 (backlinks), 4.6 (LinkedIn/referidos), 5.1 (revisión mensual), 5.2 (contenido periódico), 5.3 (gate del e-book), 6.5 (visibilidad IA), 1.24 (imágenes 2x-DPR), 1.25 (INP de campo):** todos en pausa por decisión explícita o esperando datos/tráfico — ninguno bloqueado por otro, se retoman cuando corresponda.
-- **4.5 — GDPR:** bloqueado hasta tener texto legal revisado por alguien con expertise real en protección de datos española/argentina.
+- **1.24 (imágenes 2x-DPR), 1.25 (INP de campo), 5.3 (gate del e-book):** en curso (13/9) — Mariano pidió avanzar con las tres, agentes especializados (`performance`, `seo-marketing`) trabajando.
+- **4.1 (GBP), 4.3 (backlinks), 4.4 (testimonios), 4.5 (GDPR):** bloqueadas — 4.1 sin viaje previsto, 4.3 y 4.4 a la espera de que Mariano decida más adelante si avanza (13/9), 4.5 sin expertise legal disponible.
+- **4.6 (LinkedIn/referidos), 5.1 (revisión mensual), 5.2 (contenido periódico), 6.5 (visibilidad IA):** en pausa por decisión explícita o esperando datos/tráfico — ninguno bloqueado por otro, se retoman cuando corresponda.
 
 ---
 
-Última actualización: 2026-09-12 (sumadas 1.23/1.24/1.25: las colas de performance que quedaban en el artifact Performance Web pasan a trackearse acá, ese artifact deja de ser operativo y queda como historial técnico de consulta) · se irá marcando como Hecho a medida que avancemos.
+Última actualización: 2026-09-13 (4.3 y 4.4 pasan a Bloqueado por pedido de Mariano — decide más adelante si avanza con backlinks y con el merge de testimonios; 1.24, 1.25 y 5.3 pasan de en pausa/pendiente a En curso, agentes especializados trabajando) · se irá marcando como Hecho a medida que avancemos.
