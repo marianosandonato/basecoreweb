@@ -167,7 +167,7 @@ export default function BaseHubPageEn() {
           the feature cards, same 40px-ish rhythm as the gap above/below the
           Pilares/Módulos grids elsewhere on the site. */}
       <section className="container-bc pb-[10px] pt-[10px]">
-        <BaseHubMockup alt="BaseHub dashboard showing progress across a project's six areas" />
+        <BaseHubMockup lang="en" />
       </section>
 
       {/* Feature grid — the 5 real features, two columns on desktop. 50px
