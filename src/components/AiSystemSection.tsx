@@ -32,12 +32,12 @@ type WorkflowStep = {
  * "BaseCore AI System" — /tecnologia's own methodology cajón, between "Módulos"
  * and the BaseHub teaser (see that page for placement).
  *
- * Structure (top to bottom): intro (two paragraphs) -> Sistema de análisis (3
- * plain cards, no photos -- this is informational, not a marketing flip-box)
- * -> Criterios de decisión (intro line + a 3x2 pill grid) -> Agentes en
- * producción (the most important block, navy cards so it reads with more
- * weight than the white cards above it; 5 categories laid out 2 on top
- * (Tecnología, Marketing) + 3 below (Preventa, Venta, Posventa)) -> Workflow
+ * Structure (top to bottom): intro (one line, no eyebrow) -> Sistema de
+ * análisis (3 plain cards, no photos -- this is informational, not a
+ * marketing flip-box) -> Agentes en producción (the most important block,
+ * navy cards so it reads with more weight than the white cards above it;
+ * 5 categories laid out 2 on top (Tecnología, Marketing) + 3 below
+ * (Preventa, Venta, Posventa)) -> Workflow
  * (an 8-step process, title+description per step) -> "El mismo método,
  * adaptado a tus procesos" (visually distinct dashed/soft offer box — see
  * the file's comment above that block for why it must never look like the
@@ -45,12 +45,8 @@ type WorkflowStep = {
  */
 const copy = {
   es: {
-    eyebrow: "METODOLOGÍA PROPIA DE IA",
     title: "BaseCore AI System",
-    introLines: [
-      "Agentes de IA que investigan, deciden y proponen antes de ejecutar.",
-      "Un sistema diseñado para convertir procesos reales de tu empresa en sistemas inteligentes:\nanaliza el contexto, busca información, evalúa alternativas y ejecuta con criterio.",
-    ] as readonly string[],
+    intro: "Agentes de IA que investigan, deciden y proponen antes de ejecutar.",
     capacidadesLabel: "SISTEMA DE ANÁLISIS",
     capacidades: [
       {
@@ -75,20 +71,8 @@ const copy = {
         tool: "Claude Mem",
       },
     ] satisfies readonly Capability[],
-    skillsLabel: "CRITERIOS DE DECISIÓN",
-    skillsIntro:
-      "Cada agente tiene responsabilidades, conocimientos y criterios específicos para decidir cómo abordar una tarea. Cada uno está diseñado para resolver un tipo de problema.",
-    skills: [
-      "SEO y conversión",
-      "Diseño e identidad visual",
-      "Seguridad",
-      "Priorización y planificación",
-      "Buenas prácticas",
-      "Competencia",
-    ],
     agentsBadge: "HOY, EN PRODUCCIÓN",
     agentsTitle: "Los agentes que ya trabajan en Base Core",
-    agentsIntro: "Agentes especializados, coordinados entre sí, en uso real todos los días:",
     agents: [
       {
         title: "Tecnología",
@@ -217,12 +201,8 @@ const copy = {
     extensionCta: "CONVERSEMOS SOBRE TU EQUIPO",
   },
   en: {
-    eyebrow: "OUR OWN AI METHODOLOGY",
     title: "BaseCore AI System",
-    introLines: [
-      "AI agents that research, decide, and propose before acting.",
-      "A system designed to turn your company's real processes into intelligent systems:\nit analyzes context, gathers information, weighs alternatives, and acts with judgment.",
-    ] as readonly string[],
+    intro: "AI agents that research, decide, and propose before acting.",
     capacidadesLabel: "ANALYSIS SYSTEM",
     capacidades: [
       {
@@ -247,20 +227,8 @@ const copy = {
         tool: "Claude Mem",
       },
     ] satisfies readonly Capability[],
-    skillsLabel: "DECISION CRITERIA",
-    skillsIntro:
-      "Every agent has specific responsibilities, knowledge, and criteria to decide how to approach a task. Each one is designed to solve one type of problem.",
-    skills: [
-      "SEO and conversion",
-      "Design and visual identity",
-      "Security",
-      "Prioritization and planning",
-      "Best practices",
-      "Competitive awareness",
-    ],
     agentsBadge: "LIVE TODAY",
     agentsTitle: "The agents already working at Base Core",
-    agentsIntro: "Specialized agents, coordinated with each other, in real use every day:",
     agents: [
       {
         title: "Technology",
@@ -390,25 +358,6 @@ const copy = {
 
 const eyebrowClass = "font-sans text-[14px] font-medium uppercase tracking-[1.5px] text-body";
 
-/**
- * Renders `text`, turning any embedded "\n" into a hard `<br />` — used for
- * copy that has a deliberate manual line break (see introLines above),
- * unlike the rest of the paragraphs here which just wrap by width.
- */
-function TextWithBreaks({ text }: { text: string }) {
-  const lines = text.split("\n");
-  return (
-    <>
-      {lines.map((line, i) => (
-        <span key={i}>
-          {line}
-          {i < lines.length - 1 && <br />}
-        </span>
-      ))}
-    </>
-  );
-}
-
 /** One navy card in the "Agentes en producción" grid: category title + its
  * specializations, each with the role name bold and its description below. */
 function AgentCard({ agent }: { agent: AgentGroup }) {
@@ -435,17 +384,8 @@ export default function AiSystemSection({ lang = "es" }: { lang?: Lang }) {
       {/* Header + intro */}
       <section className="container-bc py-[10px]">
         <SectionHeading
-          eyebrow={t.eyebrow}
           title={t.title}
-          description={
-            <>
-              {t.introLines.map((line, i) => (
-                <p key={i} className={i > 0 ? "mt-[16px]" : undefined}>
-                  <TextWithBreaks text={line} />
-                </p>
-              ))}
-            </>
-          }
+          description={t.intro}
           maxWidth={760}
           className="mx-auto"
         />
@@ -484,29 +424,6 @@ export default function AiSystemSection({ lang = "es" }: { lang?: Lang }) {
         </div>
       </section>
 
-      {/* Criterios de decisión — an intro line explaining that each agent
-          has its own decision criteria, followed by a fixed 3-per-row pill
-          grid. Six pills now (used to be five): a plain flex-wrap row would
-          let width decide where it breaks (4-and-1 on the previous five-pill
-          version), so this uses an explicit 3-column grid to keep it a
-          deliberate 3-over-3 instead. */}
-      <section className="container-bc pt-[36px]">
-        <p className={`text-center ${eyebrowClass} mb-[16px]`}>{t.skillsLabel}</p>
-        <p className="mx-auto max-w-[640px] text-center font-sans text-[15px] leading-[1.8] text-body">
-          {t.skillsIntro}
-        </p>
-        <div className="mx-auto mt-[20px] grid max-w-[760px] grid-cols-1 gap-[10px] sm:grid-cols-3">
-          {t.skills.map((skill) => (
-            <span
-              key={skill}
-              className="rounded-full border border-line bg-white px-[18px] py-[9px] text-center font-sans text-[14px] font-medium text-navy"
-            >
-              {skill}
-            </span>
-          ))}
-        </div>
-      </section>
-
       {/* Agentes en producción — the most important block: real, named
           agents that exist today. Navy cards give it more visual weight than
           the white Capacidades cards above, and the filled "HOY, EN
@@ -524,7 +441,6 @@ export default function AiSystemSection({ lang = "es" }: { lang?: Lang }) {
           <h3 className="mt-[14px] font-heading text-[28px] font-bold leading-[1.3] text-heading md:text-[32px]">
             {t.agentsTitle}
           </h3>
-          <p className="mt-[10px] font-sans text-[16px] leading-[1.8] text-body">{t.agentsIntro}</p>
         </div>
 
         <div className="mt-[32px] grid gap-[20px] md:grid-cols-2">
