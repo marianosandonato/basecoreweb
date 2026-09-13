@@ -97,7 +97,8 @@ export default function BaseHubPageEn() {
         title={["Your project,", "in one place."]}
         lines={[
           "No separate project management tool to pay for.",
-          "BaseHub is Base Core's own tracking and implementation platform, included with your project. Real-time status, task by task, area by area.",
+          "BaseHub is Base Core's own tracking and implementation platform, included with your project.",
+          "Real-time status, task by task, area by area.",
         ]}
         image="/images/tableros-reporting-base-core-sales-1.webp"
         overlayOpacity={0.82}
@@ -138,12 +139,13 @@ export default function BaseHubPageEn() {
               align="left"
               centerOnMobile
               dark
+              showLine={false}
               maxWidth={800}
               className="mb-[16px] w-full"
             />
             <p className="font-sans text-[18px] leading-[1.8] text-muted">
               When Base Core kicks off your project, it&apos;s organized inside BaseHub: your own
-              dashboard showing the development status of the areas we&apos;ll work on together.
+              <br /> dashboard showing the development status of your business&apos;s areas.
             </p>
           </div>
         </div>
@@ -194,7 +196,7 @@ export default function BaseHubPageEn() {
         <div className="container-bc text-center">
           <SectionHeading
             title="Start your implementation with BaseHub included"
-            description="Book a free assessment and we'll show you what your project looks like organized in BaseHub from day one."
+            description="You don't need to pay for another tool to manage your project. BaseHub is included with your implementation so you and your team can track progress, tasks, and results in one place."
             dark
             showLine={false}
             maxWidth={700}

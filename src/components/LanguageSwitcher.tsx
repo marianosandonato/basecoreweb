@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { routeMap, type Lang } from "@/lib/site";
-import { blogSlugPairs } from "@/content/blog/posts";
+import { blogSlugPairs } from "@/content/blog/slugs";
 
 /** Remembers an explicit choice so proxy.ts can honor it on return visits. */
 function rememberLang(lang: Lang) {

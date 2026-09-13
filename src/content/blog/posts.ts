@@ -74,11 +74,10 @@ export const blogPosts: readonly BlogEntry[] = [
   },
 ];
 
-/** Lightweight slug pairs only — safe to import from a client component (LanguageSwitcher). */
-export const blogSlugPairs: readonly { es: string; en: string }[] = blogPosts.map((p) => ({
-  es: p.esSlug,
-  en: p.enSlug,
-}));
+// Lightweight es<->en slug pairs live in `./slugs.ts`, not here — that module
+// avoids importing the full post bodies, so client components (like
+// LanguageSwitcher) that only need slugs don't pull ~120KB of copy into
+// their bundle. Keep the two lists in sync when posts are added/reordered.
 
 export function getBlogPost(lang: "es" | "en", slug: string): BlogPost | undefined {
   const entry = blogPosts.find((p) => (lang === "es" ? p.esSlug : p.enSlug) === slug);

@@ -229,7 +229,19 @@ export default function MarketingPage() {
 
       {/* Recruiting — same construction as the cycle pages' Recruiting
           section (ServiceCyclePage #27c2ba5f), copy adapted from "fuerza de
-          ventas" to marketing. */}
+          ventas" to marketing.
+          NOT on next/image (reverted): background-size:cover computes
+          "cover" against the viewport when paired with dt:bg-fixed, while
+          next/image's fill+object-cover computes it against this box --
+          and this box's aspect ratio is close enough to the photo's own
+          (1920x1267) that object-position has essentially no panning room
+          to compensate for the resulting zoom mismatch (confirmed
+          empirically on the identical Home section: tested object-right,
+          60%, 20%, all visually identical, all cropping the man's head at
+          the left edge). Fixing this needs either a re-cropped source
+          asset or a conscious call to accept the tighter zoom -- a design
+          decision, not a mechanical migration. See the Home page's own
+          Recruiting section for the same note. */}
       <section
         className="relative z-[1] min-h-[640px] bg-cover bg-right bg-no-repeat dt:flex dt:min-h-0 dt:bg-fixed"
         style={{ backgroundImage: "url(/images/Fondo-Base-Core-01.webp)" }}

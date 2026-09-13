@@ -249,11 +249,15 @@
  *   < 778        -57 /  16 /  75           38 / 20 / 14   45 / 20 / 40
  * ------------------------------------------------------------------------ */
 
-/* Below the slider's 480px breakpoint Rev Slider scales the module height with
-   the viewport rather than holding 350px: measured 284 at 390, i.e. 350 x
-   (390/480). 350/480 = 0.729167. */
+/* Mobile box raised ~40% (350 -> 490, request from 12/9) because the original
+   height left the title/tagline/button cramped against each other below 768.
+   Below the slider's original 480px breakpoint Rev Slider scaled the module
+   height with the viewport rather than holding a fixed px value; that same
+   proportional behaviour is preserved here, just scaled by the same 1.4x
+   factor (350/480 = 0.729167 -> 490/480 = 1.020833, i.e. 102.0833vw). At a
+   390px viewport that's ~398px (was 284px). */
 .hero {
-  height: min(350px, 72.9167vw);
+  height: min(490px, 102.0833vw);
 }
 
 /* Positioning lives on the wrapper so the entrance animations, which also use
@@ -264,32 +268,54 @@
   transform: translateY(-50%);
 }
 
+/* Offsets re-tuned again (12/9, same day, second round): the first pass
+   above centred the *cluster* better in the box but kept title/tagline/
+   button nearly as tight against each other as the original -45/+52/+102
+   set (measured live: only 16px between title and tagline, 29.5px between
+   tagline and button, at 390-412px). The user asked specifically for more
+   air BETWEEN the three, not just a taller box. Because these `top: calc(50%
+   ± Npx)` values position each layer's CENTRE (the `translateY(-50%)` above
+   does the rest), and the title's own rendered height flips between 3 lines
+   (390-~650px, 138px tall at 40/46) and 2 lines (down to 92px, from roughly
+   650px up to the 768px handoff), the title offset is the one that has to
+   move the most to open up real space below a 3-line title without pushing
+   the button past the box: -44 -> -75 lifts the title so its OWN bottom
+   edge sits close to the box's own centre instead of ~25px past it. Tagline
+   moves up slightly (+53 -> +40) to keep pace; button barely moves (+118 ->
+   +117), since it was already reasonably placed. Verified live: the
+   title-tagline gap goes from 16px to 34px at 390/412px (3-line title) and
+   is even bigger (57px) at 767px (2-line title, more natural room); the
+   tagline-button gap goes from 29.5px to 41.5px at every mobile width
+   (that gap only depends on the tagline/button offsets and their own fixed
+   line-heights, so it doesn't shift with the title's line count). Margins
+   above the title and below the button both land in the 55-105px range
+   across 390-767px -- comfortable, and never the tightest gap in the stack. */
 .hero-title-layer {
-  top: calc(50% - 45px);
+  top: calc(50% - 75px);
 }
 
 .hero-tagline-layer {
-  top: calc(50% + 52px);
+  top: calc(50% + 40px);
 }
 
 .hero-button-layer {
-  top: calc(50% + 102px);
+  top: calc(50% + 117px);
 }
 
 .hero-title {
-  font-size: 38px;
-  line-height: 45px;
+  font-size: 40px;
+  line-height: 46px;
 }
 
 .hero-tagline {
   font-size: 20px;
-  line-height: 20px;
+  line-height: 24px;
 }
 
 .hero-button {
   font-size: 14px;
-  line-height: 40px;
-  padding-inline: 15px;
+  line-height: 47px;
+  padding-inline: 20px;
 }
 
 /* 768, not 778: Elementor's tablet floor. At 778 the hero stayed 350px for the

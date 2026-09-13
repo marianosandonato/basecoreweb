@@ -1,8 +1,8 @@
 import Script from "next/script";
+import DynamicLanguageBanner from "@/components/DynamicLanguageBanner";
 import Footer from "@/components/Footer";
 import GtmLoader from "@/components/GtmLoader";
 import Header from "@/components/Header";
-import LanguageBanner from "@/components/LanguageBanner";
 import WebVitals from "@/components/WebVitals";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { site } from "@/lib/site";
@@ -51,7 +51,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       <main className="flex-1">{children}</main>
       <Footer />
       <WhatsAppButton />
-      <LanguageBanner />
+      <DynamicLanguageBanner />
       <WebVitals />
     </>
   );

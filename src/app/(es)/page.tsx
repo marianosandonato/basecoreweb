@@ -185,7 +185,16 @@ export default function HomePage() {
           (py-[90px] at xl:) -- letting Empresas alone own the gap between
           them, instead of both sides padding independently, is what
           actually makes that gap equal its own bottom margin as asked. */}
-      <section className="pt-[50px] pb-[20px] md:pb-[50px] dt:pb-0">
+      {/* dt:pt-[70px] xl:pt-[90px] (12/9 re-check, task 2c): re-verifying the
+          punto 15 fix live turned up a second, separate imbalance it never
+          targeted -- this section's own TOP gap (from the hero, driven by
+          the flat pt-[50px] below) vs. its bottom gap (now owned entirely by
+          Empresas' own opening padding, per the note above) measured 50px
+          vs 90px live at >=1280, i.e. the bottom margin was 80% bigger than
+          the top one. Mirroring Empresas' own two-tier pt schedule here
+          (md:py-70/xl:py-90) makes this section's own top gap track that
+          same value at every dt+ width instead of just at one breakpoint. */}
+      <section className="pt-[50px] pb-[20px] md:pb-[50px] dt:pb-0 dt:pt-[70px] xl:pt-[90px]">
         <div className="container-bc grid items-center dt:grid-cols-3">
           {/* text-center/md:text-left (#7 ajustes estéticos, punto 6): this
               column is the site's "cajón descriptivo" pattern (dashes,
@@ -194,25 +203,15 @@ export default function HomePage() {
               /basehub and the cycle pages. Desktop keeps the original
               left-aligned layout. */}
           <div className="px-[15px] pb-[45px] text-center md:text-left">
-            {/* Mobile-only flat image (#0144309). `sizes` was "100vw" but the
-                image never spans the full viewport: it sits inside
-                `.container-bc` (15px each side) *and* this div's own
-                `px-[15px]` (another 15px each side), so real display width is
-                `100vw - 60px`. On a 412px-wide mobile viewport (Moto G Power,
-                PSI's mobile emulation) that's 352px displayed vs the 412px
-                `100vw` was telling the browser to plan for -- at DPR 1.75
-                that picked the 750w srcset candidate (25.2KB) instead of the
-                640w one (21.2KB) that the true 352px display width needs.
-                Confirmed against prod's own `_next/image` endpoint. */}
-            <Image
-              src="/images/Process-as-a-Service.jpg"
-              alt="Proceso como servicio"
-              width={850}
-              height={567}
-              sizes="(max-width: 767px) calc(100vw - 60px), 100vw"
-              className="mb-[40px] mt-[15px] h-auto w-full md:hidden"
-            />
-
+            {/* Mobile-only flat image removed (12/9): the user asked for it
+                gone with nothing in its place. Its own `mt-[15px]` had been
+                the only thing separating the section's `pt-[50px]` from the
+                heading below (65px combined) -- without it the heading now
+                sits at the section's own 50px top padding alone, which
+                matches the plain `pt-[50px]`/`py-[50px]` several other Home
+                sections (Ciclos de Venta, etc.) use as their sole top gap
+                before a SectionHeading, so no extra compensation was added;
+                confirmed by eye it doesn't read as glued to the header. */}
             <SectionHeading
               eyebrow="Nosotros"
               title="Proceso como servicio"
@@ -241,20 +240,33 @@ export default function HomePage() {
             <ProcessImageStack />
           </div>
 
-          {/* dt:self-end + dt:pb-0 (punto 15 fix): this column's text is much
-              shorter than column 1 (bullets+button), which sets the grid
-              row's height. With the grid's own `items-center`, the text sat
-              vertically centered in the tall row -- floating with dead
-              space both above and below it (measured live: ~284px before
-              "Nuestro trabajo" on desktop; mobile unaffected, dt:grid-cols-3
-              only applies at that breakpoint). self-end closes the space
-              below; dt:pb-0 removes this column's own bottom padding so it
-              sits flush with the row's true bottom instead of floating
-              45px above it -- the section below (dt:pb-0 on the section
-              itself, see above) then owns the entire gap via its own
-              opening padding, which is already symmetric with its own
-              closing padding, instead of three paddings stacking. */}
-          <div className="px-[15px] pb-[15px] text-center md:pb-[45px] md:text-left dt:self-end dt:pb-0">
+          {/* dt:self-start (updated 12/9, was dt:self-end + dt:pb-0): this
+              column's text is much shorter than column 1 (bullets+button),
+              which sets the grid row's height via the grid's own
+              `items-center`. self-start (12/9, superseded 12/9 same day) had
+              top-aligned this column with column 1's own top -- fixing the
+              "starts where the photo starts" issue -- but the user then
+              asked for this text to be vertically CENTRED against column 1's
+              own text block specifically: top reference = column 1's
+              `.heading-line` dashes, bottom reference = column 1's own
+              button, EXCLUDING column 1's trailing `pb-[45px]` (that's its
+              own cajón margin, not part of the block being centred against).
+              A plain `dt:self-center` would centre against the FULL row
+              height instead, which is taller than that reference range by
+              exactly column 1's own pb-45 -- so it would land ~22px low.
+              Fix: stretch this column to the row's full height (`self-stretch`,
+              same height as column 1's own box, since column 1 is what sets
+              the row height in the first place) and give it the SAME
+              `pb-[45px]` column 1 already carries (already true above, via
+              `md:pb-[45px]` with no dt: override) -- then `flex flex-col
+              justify-center` centres this column's own content inside the
+              box that padding leaves (0 to rowHeight-45px), which is exactly
+              column 1's [heading-line top, button bottom] range. No magic
+              pixel offset, so it holds at any width where the two columns'
+              content heights are what was measured (confirmed live at
+              1280px and 1440px, where `.container-bc`'s 1200px cap keeps
+              both columns' text wrapping identical either way). */}
+          <div className="px-[15px] pb-[15px] text-center md:pb-[45px] md:text-left dt:flex dt:flex-col dt:justify-center dt:self-stretch">
             <h3 className="mb-[12px] font-heading text-[18px] font-medium leading-[24px] text-heading md:text-[20px] md:leading-[32px]">
               Implementamos procesos para impulsar el desarrollo de tu empresa, organizarla
               y aumentar sus ventas.
@@ -307,13 +319,17 @@ export default function HomePage() {
       {/* ── Metodología (#a72b136) ────────────────────────────────────────
           Skyscraper photo, fixed on desktop. The Elementor overlay is #00294B
           at alpha 0, so the photo is deliberately untinted. */}
-      <section
-        className="bg-cover bg-center bg-no-repeat pb-[70px] pt-[80px] dt:bg-fixed dt:pb-[90px] dt:pt-[110px]"
-        style={{ backgroundImage: "url(/images/footer-base-core-sales.webp)" }}
-      >
+      <section className="relative overflow-hidden pb-[70px] pt-[80px] dt:pb-[90px] dt:pt-[110px]">
+        <Image
+          src="/images/footer-base-core-sales.webp"
+          alt=""
+          fill
+          sizes="(max-width: 1199px) 100vw, 1200px"
+          className="object-cover object-center"
+        />
         {/* Inner-section grids span the full 1200px container (no 15px inset),
             so the 10px cell padding yields 280px cards at x=134 like the original. */}
-        <div className="container-bc px-0">
+        <div className="container-bc relative px-0">
           <div className="px-[15px]">
             <SectionHeading
               eyebrow="Cómo trabajamos"
@@ -346,10 +362,14 @@ export default function HomePage() {
       {/* ── Partner Estratégico / Not-a-Numb3r (#5f421622) ────────────────
           Full-bleed 50/50: photo + black 74% on the left, solid navy on the right. */}
       <section className="relative z-[1] md:flex">
-        <div
-          className="relative bg-cover bg-left bg-no-repeat px-[15px] pb-[80px] pt-[60px] max-md:bg-top md:w-1/2"
-          style={{ backgroundImage: "url(/images/MARKETING-BASECORE.webp)" }}
-        >
+        <div className="relative overflow-hidden px-[15px] pb-[80px] pt-[60px] md:w-1/2">
+          <Image
+            src="/images/MARKETING-BASECORE.webp"
+            alt=""
+            fill
+            sizes="(max-width: 1199px) 100vw, 1200px"
+            className="object-cover object-left max-md:object-top"
+          />
           <span aria-hidden="true" className="absolute inset-0 bg-black opacity-[0.74]" />
           <div className="relative flex h-full min-h-[300px] flex-col items-center justify-center gap-[18px] text-center">
             <Image
@@ -418,7 +438,17 @@ export default function HomePage() {
             unconditional so it also shifted centerOnMobile's centered block
             ~25px left on mobile once added. Scoped to md: (only where the
             layout is no longer centered) so mobile centers true and desktop
-            keeps its original spacing. */}
+            keeps its original spacing.
+            NOT migrated to next/image like the other 3 sections below (see
+            perf-plan pendientes): background-size:cover + bg-fixed sizes
+            "cover" against the *viewport*, while next/image's fill+object-cover
+            sizes it against this box -- and this box's aspect ratio is close
+            enough to the photo's own (1920x1267) that object-position has
+            almost no panning room to compensate for the resulting zoom
+            mismatch (confirmed empirically, not just in theory: tested
+            object-right, 60%, 20%, all visually identical). Fixing this needs
+            either a re-cropped source asset or accepting the tighter zoom --
+            a visual/design call, not a mechanical migration. */}
         <div className="px-[15px] pb-[45px] dt:w-[45%] dt:py-[100px] dt:pl-[85px]">
           <SectionHeading
             eyebrow="RECRUITING: FUERZA DE VENTAS"
@@ -437,10 +467,14 @@ export default function HomePage() {
       </section>
 
       {/* ── E-Book CTA (#1ee6de6) ────────────────────────────────────────── */}
-      <section
-        className="relative bg-cover bg-center bg-no-repeat pb-[70px] pt-[80px] dt:bg-fixed dt:pb-[75px] dt:pt-[90px]"
-        style={{ backgroundImage: "url(/images/base-core-sales-ebook.webp)" }}
-      >
+      <section className="relative overflow-hidden pb-[70px] pt-[80px] dt:pb-[75px] dt:pt-[90px]">
+        <Image
+          src="/images/base-core-sales-ebook.webp"
+          alt=""
+          fill
+          sizes="(max-width: 1199px) 100vw, 1200px"
+          className="object-cover object-center"
+        />
         <span aria-hidden="true" className="absolute inset-0 bg-navy opacity-[0.82]" />
         <div className="container-bc relative">
           <SectionHeading

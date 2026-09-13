@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { nav, navEn, site, siteEn, type Lang } from "@/lib/site";
-import EbookForm from "./EbookForm";
+import DynamicEbookForm from "./DynamicEbookForm";
 import SectionHeading from "./SectionHeading";
 import { CheckCircleIcon, LinkedinIcon } from "./icons";
 
@@ -156,7 +156,7 @@ export default function EbookSection({ lang = "es" }: { lang?: Lang }) {
             descriptionClassName="!pt-[10px] md:!pt-[15px]"
           />
           <div className="border-x border-b border-t-4 border-solid border-line border-t-primary px-[15px] py-[30px] dt:p-[45px]">
-            <EbookForm lang={lang} file={t.file} fileName={t.fileName} />
+            <DynamicEbookForm lang={lang} file={t.file} fileName={t.fileName} />
           </div>
         </div>
       </div>

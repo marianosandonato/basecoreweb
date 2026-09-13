@@ -19,7 +19,11 @@ import Button from "./Button";
  */
 type Props = {
   title: string[];
-  lines: readonly string[];
+  /** Usually plain strings, one per `<p>` — a line can also be a JSX
+      fragment with a manual `<br />` (e.g. /basehub's own hero) when a
+      paragraph needs a break at a specific word instead of wherever the
+      viewport happens to wrap it. */
+  lines: readonly React.ReactNode[];
   image: string;
   /** Optional content rendered above the h1 (e.g. a product wordmark/logo).
       Shares the title's own fade-in timing since it introduces the title
@@ -40,6 +44,12 @@ type Props = {
       only when the source photo is already <=1200px wide, where the cap
       would be a byte-for-byte no-op (e.g. /basehub — see its own comment). */
   sizes?: string;
+  /** Per-call override for the h1 (e.g. a bold weight on /basehub's own
+      hero, where the title needs more visual weight than the Montserrat
+      300 every other PageHero page keeps). Use `!`-prefixed utilities to
+      win over the base classes below — same convention as SectionHeading's
+      own `titleClassName`. */
+  titleClassName?: string;
 };
 
 export default function PageHero({
@@ -50,6 +60,7 @@ export default function PageHero({
   cta,
   overlayOpacity = 0.14,
   sizes = "(max-width: 1199px) 100vw, 1200px",
+  titleClassName = "",
 }: Props) {
   return (
     <section className="relative">
@@ -85,7 +96,9 @@ export default function PageHero({
 
         {beforeTitle && <div className="animate-hero-title mb-[20px]">{beforeTitle}</div>}
 
-        <h1 className="animate-hero-title font-montserrat text-[35px] font-light leading-[42px] text-white md:text-[50px] md:leading-[59px]">
+        <h1
+          className={`animate-hero-title font-montserrat text-[35px] font-light leading-[42px] text-white md:text-[50px] md:leading-[59px] ${titleClassName}`}
+        >
           {/* The original's h1 is one text run that re-wraps; the line breaks
               only exist because of the desktop width. So the parts flow inline
               below 1025 and become hard breaks from there up. */}
@@ -98,8 +111,8 @@ export default function PageHero({
         </h1>
 
         <div className="animate-hero-tagline mt-[20px] max-w-[859px] font-sans text-[18px] leading-[32.4px] text-white">
-          {lines.map((line) => (
-            <p key={line}>{line}</p>
+          {lines.map((line, i) => (
+            <p key={i}>{line}</p>
           ))}
         </div>
 

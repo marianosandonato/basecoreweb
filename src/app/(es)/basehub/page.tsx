@@ -96,7 +96,11 @@ export default function BaseHubPage() {
         title={["Tu proyecto,", "en un solo lugar."]}
         lines={[
           "Sin pagar una herramienta de gestión de proyectos aparte.",
-          "BaseHub es la plataforma de seguimiento e implementación de Base Core, incluida en tu proyecto. Estado en tiempo real, tarea por tarea, área por área.",
+          <>
+            BaseHub es la plataforma de seguimiento e implementación de Base Core,
+            <br /> incluida en tu proyecto.
+          </>,
+          "Estado en tiempo real, tarea por tarea, área por área.",
         ]}
         image="/images/tableros-reporting-base-core-sales-1.webp"
         overlayOpacity={0.82}
@@ -139,12 +143,13 @@ export default function BaseHubPage() {
               align="left"
               centerOnMobile
               dark
+              showLine={false}
               maxWidth={800}
               className="mb-[16px] w-full"
             />
             <p className="font-sans text-[18px] leading-[1.8] text-muted">
               Cuando Base Core arranca tu proyecto, lo organiza en BaseHub: un tablero propio
-              donde ves el estado de desarrollo de las áreas que trabajaremos juntos.
+              <br /> donde ves el estado de desarrollo de las áreas de tu negocio.
             </p>
           </div>
         </div>
@@ -193,7 +198,13 @@ export default function BaseHubPage() {
         <div className="container-bc text-center">
           <SectionHeading
             title="Empieza tu implementación con BaseHub incluido"
-            description="Agenda un relevamiento gratuito y te mostramos cómo se ve tu proyecto organizado en BaseHub desde el primer día."
+            description={
+              <>
+                No necesitás pagar otra herramienta para gestionar tu proyecto.
+                <br /> BaseHub está incluido en tu implementación para que vos y tu equipo
+                <br /> puedan seguir avances, tareas y resultados en un solo lugar.
+              </>
+            }
             dark
             showLine={false}
             maxWidth={700}
