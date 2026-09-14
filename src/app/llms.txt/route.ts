@@ -51,6 +51,8 @@ export async function GET() {
 
 > ${site.description}
 
+Also known as: Base Core
+
 Founded by ${site.founder.name} (${site.founder.role} / ${siteEn.founderRole}) -- ${site.founder.linkedin}
 
 ## Servicios (Español)
