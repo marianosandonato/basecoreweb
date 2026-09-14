@@ -8,6 +8,21 @@ const nextConfig: NextConfig = {
   // Next's default strip-the-slash behavior for every other route.
   skipTrailingSlashRedirect: true,
 
+  // Next 16 breaking change vs. prior versions: `images.qualities` now
+  // defaults to `[75]` only, and the built-in image loader silently clamps
+  // any `quality` prop to the closest value in this list (see
+  // node_modules/next/dist/shared/lib/find-closest-quality.js) -- it does
+  // NOT error, so a `quality={60}` on an <Image> with no matching config
+  // here quietly becomes 75 with no visible sign anything is wrong. Confirmed
+  // live: the optimizer endpoint 400s a `q=60` request outright when this
+  // array doesn't allow it. 75 stays first so every other <Image> in the
+  // site (still on the implicit default) keeps its exact current output;
+  // 60 is added only for the two logo images (Header.tsx, Footer.tsx) that
+  // explicitly opt into it -- see documentation/seo/plan-seo.md 1.27.
+  images: {
+    qualities: [60, 75],
+  },
+
   experimental: {
     // Required now that /(es) and /(en)/en are two separate root layouts
     // (see documentation/seo/plan-seo.md 1.18) -- Next.js has no single

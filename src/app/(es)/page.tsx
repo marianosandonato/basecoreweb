@@ -144,7 +144,7 @@ export default function HomePage() {
             fill
             priority
             fetchPriority="high"
-            sizes="100vw"
+            sizes="(max-width: 1199px) 100vw, 1200px"
             className="object-cover object-center"
           />
         </div>
