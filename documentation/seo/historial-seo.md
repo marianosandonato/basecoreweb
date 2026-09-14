@@ -1,7 +1,7 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`web-lead`, `seo-marketing`, `performance`) — confirmado el 3/9 que la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma, no de configuración), así que solo la sesión principal puede leer el artifact directo. Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8
-> - Última sincronización: 2026-09-13
+> - Última sincronización: 2026-09-14
 > - Nota: documento nuevo, creado el 5/9 al separar el detalle histórico del Plan de SEO (`documentation/seo/plan-seo.md`), que ahora es el tablero activo. El 11/9 se sumó el cierre de 1.14 (Core Web Vitals). El 13/9 se sumó el cierre de 5.3 (gate del e-book, PR #37) y se corrigió la tabla de keywords EN de 3.1 (estaba desactualizada respecto al código real) tras una auditoría de SEO de alcance completo.
 
 ---
@@ -636,7 +636,7 @@ Fase 5
 
 ## Mantenimiento continuo
 
-5.3 y 5.4 cerrados — los demás (5.1, 5.2) siguen activos en el Plan de SEO.
+5.3, 5.4 y 5.5-5.8 cerrados — solo 5.1 y 5.2 siguen activos en el Plan de SEO.
 
 5.3 — Evaluar el gate del e-book y el campo WhatsApp obligatorio
 
@@ -659,6 +659,46 @@ Hecho · corrida 5/9
 Única auditoría completa desde que `seo-marketing.md` recibió la regla "no inventes keywords/volúmenes/resultados de clientes" desde el arranque. Resultado: cerró 1.21 del todo (3 casos nuevos de meta description), encontró y resolvió 1.22 (bug de W Profesional) por cuenta propia, y confirmó el alcance real de 1.18.
 
 **Para qué sirve:** validó los fixes del día con mirada fresca y confirmó que el resto seguía resuelto (1.17, 7.9, 1.19, 1.15, 3.9, 1.20).
+
+5.5 — Bug de `<br/>` sin espacio en TechStageMatrix
+
+Hecho · mergeado 14/9 (PR #39)
+
+Misma familia que 1.17, 1.22 y 7.9 — el título de `TechStageMatrix.tsx` (matriz de `/tecnologia`) concatenaba las dos mitades con un `<br />` entre medio sin espacio real después del salto de línea, dando `textContent` "...tecnología,en todo..." (ES) / "...technology,across..." (EN) en vez de leer con un espacio real.
+
+**Implementado:** en `TechStageMatrix.tsx:154-157`, el JSX pasa de `<>{t.title[0]}<br />{t.title[1]}</>` a `<>{t.title[0]}<br /> {t.title[1]}</>` — un espacio literal antes de la segunda expresión, sin tocar el salto de línea visual (JSX colapsa el espacio en blanco entre etiquetas, pero preserva uno explícito después de `<br />`). Verificado con Playwright en ambos idiomas: `textContent` ahora trae el espacio real.
+
+**Para qué sirve:** el nombre accesible/textContent no debe concatenar palabras.
+
+5.6 — Jerarquía de headings salteada en BaseCore AI System
+
+Hecho · mergeado 14/9 (PR #39)
+
+En `/tecnologia` y `/en/tecnologia`, la sección "BaseCore AI System" saltaba de H2 directo a H4 (las 5 tarjetas "Agentes en producción" en `AiSystemSection.tsx`) sin H3 intermedio, y volvía a H3 para las secciones siguientes — secuencia real medida H2 → H4×5 → H3×5.
+
+**Implementado:** las 5 `AgentCard` pasan de `<h4>` a `<h3>` (mismas clases Tailwind, sin cambio visual) en `AiSystemSection.tsx`. Secuencia final: H2 ("BaseCore AI System") → H3×5 (tarjetas de agentes) → H3×3 (Sistema de análisis de capacidades) → H3 (título del Workflow) → H3 (oferta de extensión) — sin ningún nivel salteado.
+
+**Para qué sirve:** una jerarquía de encabezados lógica ayuda a Google y a lectores de pantalla a entender la estructura de la página.
+
+5.7 — H3 duplicado por tarjeta en ServiceCards
+
+Hecho · mergeado 14/9 (PR #39)
+
+Patrón heredado del theme original, nunca señalado antes. `ServiceCards.tsx` renderizaba el título de cada tarjeta dos veces como `<h3>`: uno en la caja blanca visible y otro en la capa de hover, siempre presente en el DOM (solo oculta visualmente sin hover) — confirmado en Home ("Ciclos de Venta") y en la sección "Puestos" de las 5 páginas de ciclo.
+
+**Implementado:** la capa de hover ganó `aria-hidden="true"` en el wrapper Y su título bajó de `<h3>` a `<p>` (mismas clases) — hicieron falta los dos cambios juntos, porque `aria-hidden` solo no alcanza para sacarlo de un `querySelectorAll('h3')` (solo lo saca del árbol de accesibilidad, no del DOM que consultan las herramientas de auditoría de headings).
+
+**Para qué sirve:** un lector de pantalla, o cualquier herramienta que navegue por encabezados, no debería encontrar cada título duplicado.
+
+5.8 — Corregir `lastModified` de sitemap
+
+Hecho · mergeado 14/9 (PR #39)
+
+`src/app/sitemap.ts` traía fechas `lastModified` desactualizadas: `/tecnologia`+EN seguían en "2026-09-05" pese a 3 rediseños del 13/9; `/marketing`+EN y las 3 páginas de ciclo (`/preventa`, `/venta`, `/posventa`)+EN seguían en "2026-08-30" pese al rediseño de `TechnologyBlock` del 13/9; Home+EN seguía en "2026-09-05" pese al cambio de hero mobile + cajón "Nosotros" del 12/9.
+
+**Implementado:** las 12 entradas ES+EN afectadas se corrigieron a la fecha real de su último cambio de copy visible, verificada con `git log --follow` (no asumida): Home/`/en` → 2026-09-13 (el rediseño de `TechnologyBlock` del 13/9 también afecta Home); Marketing y las 3 páginas de ciclo+EN → 2026-09-13; Tecnología+EN → 2026-09-13. Verificado contra `/sitemap.xml` en producción tras el deploy.
+
+**Para qué sirve:** no es un error técnico grave, pero mantiene la señal de frescura real que el propio código dice perseguir.
 
 Fase 6
 
@@ -785,5 +825,6 @@ El registro día a día de cómo se llegó al estado actual — el "Por dónde s
 15. **11/9, cierre de 1.14:** PSI real confirma Mobile 88 estable (TBT 40ms, el mejor de la serie) — se cierran de una tacada 4 PRs (redirect de GSC en `/sales/`/`/presales/`, bundle-split de `blogSlugPairs`, 3 de 4 fondos migrados a `next/image`, lazy-load de `LanguageBanner`/`EbookForm`) y se corrige en el momento un bug de encuadre que uno de esos mismos PRs había introducido sin querer en `/marketing` (mismo bug que ya se había revertido en Home, pero se pasó por alto que el commit traído también tocaba esa página). Fase 1 queda cerrada del todo. Detalle técnico completo en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929).
 16. **13/9:** Mariano pide avanzar con 1.24, 1.25 y 5.3, y pasar 4.3/4.4 a Bloqueado (decide más adelante si avanza con backlinks y con el merge de testimonios). `performance` cierra 1.24 (retina) leyendo el código fuente de Next — `next/image` ya lo resolvía, sin acción de código — y confirma 1.25 (INP) genuinamente bloqueado por falta total de acceso a la API de GA4 en el repo, no solo por tráfico. `seo-marketing` cierra 5.3: PR #37 (email obligatorio, WhatsApp opcional en el gate del e-book), revisado y mergeado a producción el mismo día.
 17. **13/9, auditoría de SEO y performance de alcance completo:** a pedido de Mariano, `seo-marketing` y `performance` auditan todo el sitio (ES/EN) con mirada fresca, apoyándose en un reporte real de PageSpeed Insights de Home. Resultado: 6 pendientes nuevos sumados al Plan de SEO (1.26 cap de `sizes` en el hero de Home, 1.27 `quality` de logos, 5.5 bug de `<br/>` en TechStageMatrix, 5.6 jerarquía de headings en BaseCore AI System, 5.7 H3 duplicado en ServiceCards, 5.8 `lastModified` de sitemap) — todos revisados por Mariano y aprobados para resolver a partir del 14/9. De paso, la auditoría de SEO detectó y corrigió acá mismo un gap de documentación: la tabla de keywords EN de 3.1 (ver nota arriba) decía "pendiente" de forma ambigua sobre contenido que en realidad ya estaba implementado en producción.
+18. **14/9, cierre de los 6 hallazgos del 13/9:** `seo-marketing` resuelve 5.5-5.8 en un solo PR (#39, `3ecc125`) y `performance` resuelve 1.26-1.27 en otro (#40, `121df4f`) — ambos en preview de Vercel, revisados y aprobados por Mariano, y mergeados a `master` el mismo día. Deploy a producción confirmado (Vercel `success`). Fase 1 queda con una sola cola abierta (1.25, bloqueada por acceso a GA4); Fase 5 queda sin ningún pendiente puntual, solo las 2 tareas recurrentes (5.1, 5.2).
 
-Historial Técnico SEO · Base Core · creado el 5 de septiembre de 2026, a partir del Plan de SEO original · actualizado el 13 de septiembre (cierre de 5.3; corrección de la tabla de keywords EN en 3.1 tras la auditoría de alcance completo) · espejo de trabajo en `documentation/seo/historial-seo.md`
+Historial Técnico SEO · Base Core · creado el 5 de septiembre de 2026, a partir del Plan de SEO original · actualizado el 14 de septiembre (cierre de 5.5, 5.6, 5.7, 5.8 — PR #39) · espejo de trabajo en `documentation/seo/historial-seo.md`
