@@ -2,7 +2,7 @@
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/f6230fde-8996-4d03-ae8a-4211f111ed90
 > - Última sincronización: 2026-09-14
-> - Nota: este documento se reorganizó el 5/9 — ahora es el tablero activo (solo tareas pendientes/bloqueadas/en progreso en detalle). El registro completo de tareas ya resueltas vive en `documentation/seo/historial-seo.md` (SEO general) o en `Performance Web` (tareas de performance, sin espejo propio). El 14/9 se cerraron los 6 hallazgos de la auditoría del 13/9 (1.26, 1.27, 5.5, 5.6, 5.7, 5.8), deployados a producción y verificados; el mismo día se resolvió también el acceso a GA4 para 1.25, que pasa de Bloqueado a En progreso (esperando acumular tráfico nuevo, ya que la custom dimension registrada no es retroactiva). También el 14/9 se abrió la Fase 8 "Base Core en motores de búsqueda": 8.1 (naming) en pausa, y 8.2 (visibilidad de marca) con el análisis de seo-marketing ya entregado — hay competencia real por el término "Base Core" (Base Power, empresa de baterías con ronda de US$1.000M), Mariano confirmó avanzar con #1, #2 y #4 (mergeados y confirmados en producción), bloqueó #7. Tras un segundo análisis con evidencia (BaseCore ya es marca registrada de otra empresa), Mariano cierra 8.1 sin avanzar con el naming. Se abre 1.28 en Fase 1: seguimiento recurrente de performance con PageSpeed Insights.
+> - Nota: este documento se reorganizó el 5/9 — ahora es el tablero activo (solo tareas pendientes/bloqueadas/en progreso en detalle). El registro completo de tareas ya resueltas vive en `documentation/seo/historial-seo.md` (SEO general) o en `Performance Web` (tareas de performance, sin espejo propio). El 14/9 se cerraron los 6 hallazgos de la auditoría del 13/9 (1.26, 1.27, 5.5, 5.6, 5.7, 5.8), deployados a producción y verificados; el mismo día se resolvió también el acceso a GA4 para 1.25, que pasa de Bloqueado a En progreso (esperando acumular tráfico nuevo, ya que la custom dimension registrada no es retroactiva). También el 14/9 se abrió la Fase 8 "Base Core en motores de búsqueda": 8.1 (naming) en pausa, y 8.2 (visibilidad de marca) con el análisis de seo-marketing ya entregado — hay competencia real por el término "Base Core" (Base Power, empresa de baterías con ronda de US$1.000M), Mariano confirmó avanzar con #1, #2 y #4 (mergeados y confirmados en producción), bloqueó #7. Tras un segundo análisis con evidencia (BaseCore ya es marca registrada de otra empresa), Mariano cierra 8.1 sin avanzar con el naming. Se abre 1.28 en Fase 1: seguimiento recurrente de performance con PageSpeed Insights — reporte de Home ya analizado por performance, 3 hallazgos listos para confirmar mañana, sin implementar nada hoy.
 
 ---
 
@@ -90,7 +90,7 @@ Cerrada en lo esencial — 1.14 (Core Web Vitals) se confirmó el 11/9. 1.24 (re
 | 1.25 | INP real de campo | En progreso |
 | 1.26 | Cap de `sizes` en el hero de Home | Hecho |
 | 1.27 | Bajar `quality` en logos (Header/Footer) | Hecho |
-| 1.28 | Performance con PageSpeed Insights (mobile/desktop, recurrente) | Pendiente |
+| 1.28 | Performance con PageSpeed Insights (mobile/desktop, recurrente) | Pendiente · 3 hallazgos, a retomar mañana |
 
 1.25 — INP real de campo
 
@@ -106,13 +106,64 @@ INP (Interaction to Next Paint) reemplazó a FID como métrica de Core Web Vital
 
 1.28 — Performance con PageSpeed Insights (mobile/desktop)
 
-Pendiente · esperando el análisis de Mariano
+Pendiente · 3 hallazgos listos para confirmar, a retomar mañana
 
 Tarea nueva (14/9), recurrente — no se cierra de una vez como 1.14, sino que se va revisando cada vez que aparece un reporte nuevo de PageSpeed Insights. 1.14 ya dejó Mobile en 88 y Desktop en 93-98 (confirmado 11/9), pero Mariano señala que sigue habiendo "ruidos" puntuales en mobile y desktop que vale la pena seguir bajando.
 
 **Mecánica:** Mariano pasa un reporte de PSI nuevo, `performance` lo analiza y propone hallazgos concretos con impacto estimado, se listan acá con su estado, y se resuelven de a uno (mismo criterio que 1.26/1.27, no cambios especulativos sin medir antes/después con PSI real).
 
-**Estado (14/9):** sección creada, esperando que Mariano comparta el análisis de PSI más reciente para identificar qué hallazgos puntuales conviene resolver.
+Reporte PSI de Home, 14/9 17:25 — resultados
+
+```
+Mobile:  Performance 87 · Accessibility 100 · Best Practices 100 · SEO 100
+         FCP 2.0s · LCP 3.8s · TBT 70ms · CLS 0.003 · SI 3.1s
+Desktop: Performance 98 · FCP 0.5s · LCP 0.9s · TBT 20ms · CLS 0.001 · SI 1.3s
+```
+
+**Análisis de `performance` (14/9), contra código real + inspección en vivo de producción con Playwright — nada implementado, esperando confirmación de Mariano mañana:**
+
+Nuevo y accionable
+
+```
+1. Falta `sizes` en el logo de TechnologyBlock.tsx (alt="Base Core",
+   140/190px) — confirmado en vivo: sin ese prop, Next.js pide el
+   candidato de 1920px de ancho para un logo que se ve a 190px. Fix:
+   copiar el mismo `sizes="(min-width: 768px) 190px, 140px"` que ya
+   usa el logo gemelo del Home. Esfuerzo bajo, riesgo cero.
+   Bonus: AboutLogoBlock.tsx (usado en 5 páginas más) tiene el mismo
+   bug, mismo fix de una línea — resolver junto si se aprueba éste.
+
+2. Logo 200x200 del Header (desktop) — la cifra de PSI no coincide
+   con lo medido en vivo (ya tiene quality={60} desde el PR #40 de
+   1.27). Probablemente el reporte es de antes de que ese deploy se
+   propagara del todo. Antes de tocar quality de nuevo: correr un PSI
+   nuevo para confirmar si sigue flaggeado.
+
+3. Animación del hero (panzoom, 10s, único candidato a "animación no
+   compositada" que marca PSI) — el código ya usa transform puro, no
+   hay certeza de que el fix resuelva el finding sin ver la traza
+   cruda de Lighthouse. Experimento barato: agregar
+   `will-change: transform` a .animate-hero-panzoom y remedir.
+```
+
+Ya resuelto o fuera de alcance del repo, sin acción
+
+```
+- JS legacy (polyfills, ~25 KiB): mismo hallazgo de siempre, ya
+  decidido ignorar (1.23), sin nada nuevo que lo contradiga.
+- JS no usado de GTM (~70 KiB): ya diferido fuera del critical path
+  (1.14) — lo que queda es inherente a la librería de Google.
+- Fuentes en la cadena crítica (reey_regular, Sora_200): ya tienen
+  preload:false + display:swap desde el 5/9, decisión ya tomada.
+- Scripts de Cloudflare (beacon.min.js, email-decode, /cdn-cgi/rum):
+  cero referencias en el repo — features del borde de Cloudflare, no
+  algo que Vercel despliegue. Ajustar cache TTL es config de
+  Cloudflare, no código.
+- Long main-thread tasks (4 mobile/3 desktop): TBT ya en 70ms/20ms,
+  muy por debajo del umbral — no amerita perseguirlo.
+```
+
+**Orden sugerido para retomar mañana:** 1) fix de `sizes` en TechnologyBlock.tsx + AboutLogoBlock.tsx (nuevo, bajo esfuerzo, sin riesgo) — 2) re-correr PSI post-deploy de 1.27 para confirmar el logo del Header antes de tocar `quality` — 3) experimento `will-change` en el panzoom del hero.
 
 **Para qué sirve:** Core Web Vitals es señal directa de ranking de Google, y la primera impresión real de cualquier visitante — bajar "ruido" de performance no tiene techo fijo, siempre hay margen de mejora incremental.
 
@@ -357,7 +408,7 @@ Fases 2, 3, 5 (salvo mantenimiento recurrente), 6 y 7 quedaron cerradas del todo
 
 Lo activo hoy, en orden de qué depende de qué:
 
-* **1.28 (performance con PageSpeed Insights):** tarea nueva — esperando que Mariano comparta el análisis de PSI más reciente para identificar hallazgos concretos.
+* **1.28 (performance con PageSpeed Insights):** reporte de Home ya analizado por `performance` — 3 hallazgos concretos listos para confirmar (fix de `sizes` en TechnologyBlock/AboutLogoBlock, re-chequeo del logo del Header, experimento de `will-change` en el hero). Mariano pide dejarlo para mañana, sin implementar nada hoy.
 * **8.2 (visibilidad de marca "Base Core" en buscadores):** #1, #2 y #4 en producción ([PR #41](https://github.com/marianosandonato/basecoreweb/pull/41), mergeado y verificado en vivo el 14/9). #7 bloqueada por decisión de Mariano (no tocar copy visible); #5 y #6 siguen dependiendo de 4.1 y 4.3.
 * **4.1 (GBP), 4.3 (backlinks), 4.4 (testimonios), 4.5 (GDPR):** bloqueadas — 4.1 sin viaje previsto, 4.3 y 4.4 a la espera de que Mariano decida más adelante si avanza (13/9), 4.5 sin expertise legal disponible.
 * **1.25 (INP de campo):** ya no bloqueada — acceso a GA4 resuelto el 14/9 (service account, custom dimension registrada, script `scripts/seo/ga4.py` funcionando con datos reales). En progreso, esperando que se acumule tráfico posterior al registro de la custom dimension (no es retroactiva).
@@ -365,4 +416,4 @@ Lo activo hoy, en orden de qué depende de qué:
 
 Con 4 tareas bloqueadas dependiendo de decisiones externas, 1.25 esperando solo tráfico, 1.28 y 8.2 esperando insumos de Mariano, no queda ningún pendiente propio sin dueño para retomar mañana sin una nueva instrucción de Mariano.
 
-Última actualización: 2026-09-14 (8.1 cerrada — Mariano decide no avanzar con el naming, análisis completo movido al Historial; 8.2 con #1/#2 (PR #41) en producción, #4 establecido, #7 bloqueada; se abre 1.28, seguimiento recurrente de performance con PageSpeed Insights, esperando el próximo análisis de Mariano; antes, el mismo día, se resolvió el acceso a GA4 para 1.25 y se cerraron los 6 hallazgos de la auditoría del 13/9) · se irá marcando como Hecho a medida que avancemos.
+Última actualización: 2026-09-14 (1.28: reporte de PSI de Home analizado por `performance`, 3 hallazgos listos para confirmar — sin implementar, a retomar mañana; 8.1 cerrada — Mariano decide no avanzar con el naming, análisis completo movido al Historial; 8.2 con #1/#2 (PR #41) en producción, #4 establecido, #7 bloqueada; antes, el mismo día, se resolvió el acceso a GA4 para 1.25 y se cerraron los 6 hallazgos de la auditoría del 13/9) · se irá marcando como Hecho a medida que avancemos.
