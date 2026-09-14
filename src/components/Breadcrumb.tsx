@@ -68,7 +68,7 @@ export default function Breadcrumb({
           fill
           priority
           fetchPriority="high"
-          sizes="100vw"
+          sizes="(max-width: 1199px) 100vw, 1200px"
           className="object-cover object-center"
         />
         {/* .container is 1200 with 12px padding; the inner is padded 160/0/120

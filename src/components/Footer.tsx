@@ -155,6 +155,7 @@ export default function Footer() {
                   width={lang === "en" ? 1792 : 1781}
                   height={2000}
                   sizes="290px"
+                  quality={60}
                   className="mx-auto h-auto w-full max-w-[290px]"
                 />
               </Link>

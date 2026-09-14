@@ -230,6 +230,7 @@ export default function Header() {
                   alt={site.name}
                   width={200}
                   height={200}
+                  quality={60}
                   className="mx-auto h-[200px] w-[200px]"
                 />
               </Link>
