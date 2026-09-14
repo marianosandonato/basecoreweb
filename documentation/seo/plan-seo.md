@@ -2,11 +2,11 @@
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/f6230fde-8996-4d03-ae8a-4211f111ed90
 > - Última sincronización: 2026-09-14
-> - Nota: este documento se reorganizó el 5/9 — ahora es el tablero activo (solo tareas pendientes/bloqueadas/en progreso en detalle). El registro completo de tareas ya resueltas vive en `documentation/seo/historial-seo.md` (SEO general) o en `Performance Web` (tareas de performance, sin espejo propio). El 14/9 se cerraron los 6 hallazgos de la auditoría del 13/9 (1.26, 1.27, 5.5, 5.6, 5.7, 5.8), deployados a producción y verificados.
+> - Nota: este documento se reorganizó el 5/9 — ahora es el tablero activo (solo tareas pendientes/bloqueadas/en progreso en detalle). El registro completo de tareas ya resueltas vive en `documentation/seo/historial-seo.md` (SEO general) o en `Performance Web` (tareas de performance, sin espejo propio). El 14/9 se cerraron los 6 hallazgos de la auditoría del 13/9 (1.26, 1.27, 5.5, 5.6, 5.7, 5.8), deployados a producción y verificados; el mismo día se resolvió también el acceso a GA4 para 1.25, que pasa de Bloqueado a En progreso (esperando acumular tráfico nuevo, ya que la custom dimension registrada no es retroactiva).
 
 ---
 
-Plan SEO Base Core
+Plan de SEO de Base Core
 
 basecoresales.com · auditoría & hoja de ruta
 
@@ -16,7 +16,7 @@ Tablero activo: qué falta hacer, con el detalle completo solo de lo que sigue a
 
 📋 [Ver Historial Técnico SEO (detalle de las 59 tareas ya resueltas)](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8)
 
-59 / 68 tareas · +5 bloqueadas (1.25, 4.1, 4.3, 4.4, 4.5)
+59 / 68 tareas · 1 en progreso (1.25) · +4 bloqueadas (4.1, 4.3, 4.4, 4.5)
 
 [Diagnóstico](#diagnostico)
 [Fase 1 · Técnico](#fase1)
@@ -58,7 +58,7 @@ Fase 1
 
 ## Cimientos técnicos (on-page)
 
-Cerrada en lo esencial — 1.14 (Core Web Vitals) se confirmó el 11/9. 1.24 (retina) se investigó a fondo y cerró sin acción de código — `next/image` ya lo resolvía; 1.25 (INP de campo) sigue bloqueado por falta total de acceso a la API de GA4. 1.26 y 1.27, encontrados en la auditoría de performance del 13/9, se resolvieron el 14/9. Detalle técnico completo en el artifact [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929). Detalle completo del resto de las tareas ya resueltas de esta fase en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8).
+Cerrada en lo esencial — 1.14 (Core Web Vitals) se confirmó el 11/9. 1.24 (retina) se investigó a fondo y cerró sin acción de código — `next/image` ya lo resolvía; 1.25 (INP de campo) ya tiene acceso a GA4 resuelto el 14/9 — queda en progreso, esperando acumular tráfico nuevo. 1.26 y 1.27, encontrados en la auditoría de performance del 13/9, se resolvieron el 14/9. Detalle técnico completo en el artifact [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929). Detalle completo del resto de las tareas ya resueltas de esta fase en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8).
 
 | # | Tarea | Estado |
 | --- | --- | --- |
@@ -86,15 +86,19 @@ Cerrada en lo esencial — 1.14 (Core Web Vitals) se confirmó el 11/9. 1.24 (re
 | 1.22 | Bug de `<br/>` en tarjeta de cliente | Hecho |
 | 1.23 | JS legacy: polyfills de Next (25KB reportados por PSI) | Hecho |
 | 1.24 | Imágenes 2x-DPR (retina) | Hecho |
-| 1.25 | INP real de campo | Bloqueado |
+| 1.25 | INP real de campo | En progreso |
 | 1.26 | Cap de `sizes` en el hero de Home | Hecho |
 | 1.27 | Bajar `quality` en logos (Header/Footer) | Hecho |
 
-**1.25 — INP real de campo** · Bloqueado · sin acceso a GA4
+1.25 — INP real de campo
+
+En progreso · esperando tráfico
 
 INP (Interaction to Next Paint) reemplazó a FID como métrica de Core Web Vitals — mide qué tan rápido responde el sitio a una interacción real de un visitante, algo que un laboratorio no puede simular fielmente.
 
-**Estado (13/9):** instrumentado y funcionando (Next.js 16 trae `useReportWebVitals` integrado, sin librería aparte), enviando a GA4 desde el 5/9. Confirmado que no hay ninguna vía de acceso a la API de GA4 en este repo (el único script de Google APIs, `scripts/seo/gsc.py`, está scopeado solo a Search Console) — bloqueado por acceso, no solo por tráfico. Necesita que Mariano comparta el dato del dashboard directamente o habilite una credencial de lectura de GA4.
+**Acceso a GA4 resuelto (14/9):** se creó una service account de solo lectura (`ga4-readonly@basecore-seo.iam.gserviceaccount.com`, rol Viewer en la propiedad GA4) y se agregó `scripts/seo/ga4.py` — CLI que consulta la GA4 Data API para traer la distribución real de `metric_rating` (good/needs-improvement/poor) de LCP/CLS/INP, ya que GA4 no expone percentiles p75 por API para custom dimensions. Verificado funcionando con el Property ID real (`550444799`): 381 eventos LCP, 374 CLS, 128 INP en los últimos 28 días.
+
+**Por qué sigue en progreso, no Hecho:** la custom dimension `metric_rating` se registró en GA4 Admin recién el 14/9, y no es retroactiva — el 100% del tráfico de los últimos 28 días (previo al registro) muestra `(not set)` para esa dimensión. Necesita tráfico nuevo, posterior al registro, para traer rating real. Sin fecha estimada — depende del volumen de visitas orgánico del sitio.
 
 **Para qué sirve:** confirmar con datos de campo (no solo de laboratorio) que la interactividad del sitio es buena para visitantes reales.
 
@@ -144,7 +148,9 @@ Base Core tiene presencia física en Barcelona y Buenos Aires — ventaja de SEO
 | 4.5 | Política de privacidad (GDPR/LOPDGDD) | Bloqueado |
 | 4.6 | Decisión de canal social | Pendiente |
 
-**4.1 — Google Business Profile** · Bloqueado · en pausa, sin viaje previsto
+4.1 — Google Business Profile
+
+Bloqueado · en pausa, sin viaje previsto
 
 Verificación de Buenos Aires rechazada (29/8): Google pidió cartelería del negocio, algo que no aplica a una ficha de zona de servicio. Google exige grabar el video de verificación en vivo desde el propio local, sin aceptar uno pregrabado — y Mariano ya no está en Buenos Aires. Barcelona (oficina activa, confirmada) tiene el mismo bloqueo de fondo: requiere estar físicamente ahí.
 
@@ -152,7 +158,9 @@ Verificación de Buenos Aires rechazada (29/8): Google pidió cartelería del ne
 
 **Para qué sirve:** aparecer en el mapa y en el bloque local de resultados; señal fuerte de "negocio real" para quien investiga antes de contratar.
 
-**4.3 — Primeros enlaces entrantes (backlinks)** · Bloqueado · decisión pendiente de Mariano
+4.3 — Primeros enlaces entrantes (backlinks)
+
+Bloqueado · decisión pendiente de Mariano
 
 Dominio nuevo, sin enlaces externos todavía. El plan original apuntaba a not-a-numb3r.com, pero ya no tiene sentido (ver 3.2). Puntos de partida a evaluar: directorios de consultoría/negocio en España y Argentina, menciones en medios/newsletters del rubro.
 
@@ -160,7 +168,9 @@ Dominio nuevo, sin enlaces externos todavía. El plan original apuntaba a not-a-
 
 **Para qué sirve:** una de las señales más fuertes de autoridad para Google.
 
-**4.4 — Testimonios y prueba social** · Bloqueado · decisión pendiente de Mariano
+4.4 — Testimonios y prueba social
+
+Bloqueado · decisión pendiente de Mariano
 
 Barfer, Don Seitán y W Profesional dieron el OK para un testimonio, sin saber qué escribir — Mariano pidió redactarlo junto con el equipo. `seo-marketing` investigó buenas prácticas (estructura antes/durante/después, sin superlativos genéricos) y redactó 3 copys en ES/EN basados solo en el servicio real prestado a cada cliente (sin métricas inventadas). Atribución con nombre de pila + cargo, sin apellido en los 3 — decisión deliberada pareja (uno de los clientes es familiar del dueño de Base Core).
 
@@ -172,7 +182,9 @@ Barfer, Don Seitán y W Profesional dieron el OK para un testimonio, sin saber q
 
 **Para qué sirve:** señal directa de "esto ya funcionó para alguien", clave para el desafío de credibilidad del negocio.
 
-**4.5 — Política de privacidad y consentimiento (GDPR/LOPDGDD)** · Bloqueado · requiere expertise legal externa
+4.5 — Política de privacidad y consentimiento (GDPR/LOPDGDD)
+
+Bloqueado · requiere expertise legal externa
 
 Cero rutas legales, cero menciones a privacidad/GDPR, ningún checkbox de consentimiento. En España, GDPR (Art. 13) + LOPDGDD exige aviso de privacidad y consentimiento inequívoco para procesar datos de formularios — obligación legal, no recomendación.
 
@@ -180,7 +192,9 @@ Cero rutas legales, cero menciones a privacidad/GDPR, ningún checkbox de consen
 
 **Para qué sirve:** cierra un riesgo de cumplimiento real.
 
-**4.6 — Decisión de canal social: no activar Instagram/LinkedIn de empresa** · Pendiente · decisión tomada, sin ejecutar
+4.6 — Decisión de canal social: no activar Instagram/LinkedIn de empresa
+
+Pendiente · decisión tomada, sin ejecutar
 
 Instagram (@basecoresales) prácticamente inactivo (41 seguidores, 1 post); LinkedIn de empresa sin poder confirmar actividad. Decisión ya tomada, con research citado (Edelman-LinkedIn B2B Thought Leadership Impact Report): no activar ninguno de los dos todavía — reforzar el LinkedIn **personal** de Mariano con contenido educativo, más sistematizar pedidos de referidos específicos.
 
@@ -203,7 +217,9 @@ El SEO no es un proyecto que se termina — esto es lo que se revisa de forma re
 | 5.7 | H3 duplicado por tarjeta en ServiceCards | Hecho |
 | 5.8 | Corregir `lastModified` de sitemap | Hecho |
 
-**5.1 — Revisión mensual de posiciones y tráfico** · Pendiente, en pausa
+5.1 — Revisión mensual de posiciones y tráfico
+
+Pendiente, en pausa
 
 Revisar en Search Console qué términos traen impresiones/clics, y en GA4 qué páginas generan más contacto. `scripts/seo/gsc.py` ya da acceso por comando al lado de Search Console.
 
@@ -211,7 +227,9 @@ Revisar en Search Console qué términos traen impresiones/clics, y en GA4 qué 
 
 **Para qué sirve:** detectar qué contenido funciona y qué páginas no reciben visitas.
 
-**5.2 — Actualización periódica de contenido** · Pendiente, tarea recurrente
+5.2 — Actualización periódica de contenido
+
+Pendiente, tarea recurrente
 
 Sumar artículos nuevos al blog y refrescar las páginas de servicio con datos o ejemplos nuevos cada pocos meses. Sin acción puntual — es un hábito a sostener, no una tarea que se cierra una vez.
 
@@ -231,7 +249,9 @@ Fase 6
 | 6.4 | Archivo /llms.txt | Hecho |
 | 6.5 | Seguimiento manual de visibilidad en IA | Pendiente, recurrente |
 
-**6.5 — Seguimiento manual de visibilidad en IA** · Primera ronda hecha, repetir mensualmente
+6.5 — Seguimiento manual de visibilidad en IA
+
+Primera ronda hecha, repetir mensualmente
 
 Sin herramientas pagas todavía (Otterly, Peec AI) — con el volumen de tráfico actual no se justifican. En su lugar: una vez por mes, probar en ChatGPT/Perplexity/Google 5-10 búsquedas reales de las páginas de servicio y del blog, y anotar si Base Core aparece citado.
 
@@ -270,13 +290,14 @@ Cerrada del todo el 5/9 — `/basehub` y `/en/basehub` en producción desde el 1
 
 ### Por dónde seguir
 
-Fases 2, 3, 5 (salvo mantenimiento recurrente), 6 y 7 quedaron cerradas del todo o en lo esencial; Fase 1 quedó cerrada en lo esencial, con una sola cola de performance bloqueada (1.25) — los 6 hallazgos de la auditoría del 13/9 (1.26, 1.27, 5.5-5.8) se resolvieron y deployaron el 14/9. Toda la cronología de cómo se llegó hasta acá vive en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8) (SEO general) y en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929) (performance específicamente), no en este documento.
+Fases 2, 3, 5 (salvo mantenimiento recurrente), 6 y 7 quedaron cerradas del todo o en lo esencial; Fase 1 quedó cerrada en lo esencial, con una sola cola de performance en progreso (1.25, esperando tráfico) — los 6 hallazgos de la auditoría del 13/9 (1.26, 1.27, 5.5-5.8) se resolvieron y deployaron el 14/9. Toda la cronología de cómo se llegó hasta acá vive en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8) (SEO general) y en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929) (performance específicamente), no en este documento.
 
 Lo activo hoy, en orden de qué depende de qué:
 
-* **4.1 (GBP), 4.3 (backlinks), 4.4 (testimonios), 4.5 (GDPR), 1.25 (INP de campo):** bloqueadas — 4.1 sin viaje previsto, 4.3 y 4.4 a la espera de que Mariano decida más adelante si avanza (13/9), 4.5 sin expertise legal disponible, 1.25 sin ninguna vía de acceso a la API de GA4 en el repo (13/9).
+* **4.1 (GBP), 4.3 (backlinks), 4.4 (testimonios), 4.5 (GDPR):** bloqueadas — 4.1 sin viaje previsto, 4.3 y 4.4 a la espera de que Mariano decida más adelante si avanza (13/9), 4.5 sin expertise legal disponible.
+* **1.25 (INP de campo):** ya no bloqueada — acceso a GA4 resuelto el 14/9 (service account, custom dimension registrada, script `scripts/seo/ga4.py` funcionando con datos reales). En progreso, esperando que se acumule tráfico posterior al registro de la custom dimension (no es retroactiva).
 * **4.6 (LinkedIn/referidos), 5.1 (revisión mensual), 5.2 (contenido periódico), 6.5 (visibilidad IA):** en pausa por decisión explícita o esperando datos/tráfico — ninguno bloqueado por otro, se retoman cuando corresponda.
 
-Con las 5 tareas bloqueadas dependiendo de datos o decisiones externas, y el resto del tablero al día, no queda ningún pendiente activo propio para retomar mañana sin una nueva auditoría o una instrucción nueva de Mariano.
+Con 4 tareas bloqueadas dependiendo de decisiones externas y 1.25 esperando solo tráfico, y el resto del tablero al día, no queda ningún pendiente activo propio para retomar mañana sin una nueva auditoría o una instrucción nueva de Mariano.
 
-Última actualización: 2026-09-14 (se cierran los 6 hallazgos de la auditoría del 13/9 — 1.26, 1.27 vía PR #40; 5.5, 5.6, 5.7, 5.8 vía PR #39 — ambos deployados a producción y verificados) · se irá marcando como Hecho a medida que avancemos.
+Última actualización: 2026-09-14 (se resuelve el acceso a GA4 para 1.25 — service account + custom dimension + script `scripts/seo/ga4.py`, ahora en progreso esperando tráfico; antes, el mismo día, se cerraron los 6 hallazgos de la auditoría del 13/9 — 1.26, 1.27 vía PR #40; 5.5, 5.6, 5.7, 5.8 vía PR #39 — ambos deployados a producción y verificados) · se irá marcando como Hecho a medida que avancemos.
