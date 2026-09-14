@@ -199,7 +199,7 @@ function AgentCard({ agent, index }: { agent: AgentGroup; index: number }) {
         <span className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full border-2 border-primary font-heading text-[13px] font-bold text-white">
           {String(index + 1).padStart(2, "0")}
         </span>
-        <h4 className="font-heading text-[18px] font-bold leading-[1.3] text-white">{agent.title}</h4>
+        <h3 className="font-heading text-[18px] font-bold leading-[1.3] text-white">{agent.title}</h3>
       </div>
       <div className="mt-[18px] flex flex-wrap gap-[8px]">
         {agent.roles.map((name) => (

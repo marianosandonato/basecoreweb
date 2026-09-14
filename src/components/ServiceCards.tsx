@@ -86,8 +86,15 @@ export default function ServiceCards({
               </div>
             </div>
 
-            {/* Hover layer */}
-            <div className="service-card-hover absolute inset-x-0 top-0 z-[9] flex h-[calc(100%-30px)] items-center text-center">
+            {/* Hover layer — aria-hidden: it's a purely visual reveal of the
+                same title (plus role list) already announced by the h3 in
+                the white box above, always present in the DOM regardless of
+                hover state. Without aria-hidden a screen reader navigating
+                by heading hears every card's title twice (seo-plan 5.7). */}
+            <div
+              aria-hidden="true"
+              className="service-card-hover absolute inset-x-0 top-0 z-[9] flex h-[calc(100%-30px)] items-center text-center"
+            >
               <div className="absolute inset-0 z-[6]">
                 <Image
                   src={card.image}
@@ -100,9 +107,9 @@ export default function ServiceCards({
               </div>
               <div className="relative z-[9] mx-auto max-w-[280px] px-[15px] py-[20px]">
                 {Icon && <Icon className="mx-auto block text-[62px] text-white" />}
-                <h3 className="my-[18px] font-heading text-[22px] font-bold leading-[1.3] text-white">
+                <p className="my-[18px] font-heading text-[22px] font-bold leading-[1.3] text-white">
                   {card.title}
-                </h3>
+                </p>
                 {card.roles.map((role) => (
                   <div
                     key={role}
