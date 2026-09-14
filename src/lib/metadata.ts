@@ -52,6 +52,7 @@ export const professionalServiceJsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: site.shortName,
+  alternateName: "Base Core",
   url: site.url,
   logo: `${site.url}/images/LOGO-BASE-CORE-SALES-CON-SLOGAN.png`,
   description: site.description,
