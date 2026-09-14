@@ -5,9 +5,41 @@ import ContactForm from "./ContactForm";
 import SectionHeading from "./SectionHeading";
 import { CheckCircleIcon, LinkedinIcon } from "./icons";
 
-/** Marketing/Preventa/Venta/Posventa/Tecnología — same order and labels as `nav`/`navEn`. */
-const cycleLinks = nav.slice(1, 6);
-const cycleLinksEn = navEn.slice(1, 6);
+/** Tecnología/Marketing/Preventa/Venta/Posventa — same 5 items as `nav`/`navEn`
+ * (labels/hrefs sourced from there, not duplicated by hand), reordered per
+ * direct request so Tecnología leads instead of sitting last. Looked up by
+ * href rather than a raw slice/index so this doesn't silently drift if
+ * `nav`'s own order ever changes for an unrelated reason. */
+const byHref = (href: string) => nav.find((item) => item.href === href)!;
+const cycleLinks = ["/tecnologia", "/marketing", "/preventa", "/venta", "/posventa"].map(byHref);
+
+const byHrefEn = (href: string) => navEn.find((item) => item.href === href)!;
+const cycleLinksEn = [
+  "/en/tecnologia",
+  "/en/marketing",
+  "/en/presales",
+  "/en/sales",
+  "/en/post-sales",
+].map(byHrefEn);
+
+/** One row of the cycle list — shared by the desktop single column and the
+ * two mobile columns so the markup isn't duplicated three times. 32.4px
+ * rows (the original's items measure 32 tall), text starting at 28px: a
+ * 23px icon box plus 5px of text padding on the original, 16px icon plus a
+ * 12px gap here. */
+function renderCycleItem(item: { label: string; href: string }) {
+  return (
+    <li
+      key={item.href}
+      className="flex items-start gap-[12px] font-sans text-[17px] font-medium leading-[32.4px] text-navy"
+    >
+      <CheckCircleIcon className="mt-[8px] shrink-0 text-[16px] text-primary" />
+      <Link href={item.href} className="transition-colors hover:text-primary">
+        {item.label}
+      </Link>
+    </li>
+  );
+}
 
 const copy = {
   es: {
@@ -108,7 +140,7 @@ export default function ContactSection({
               href={site.meetingUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-[15px] inline-block w-auto rounded-[4px] bg-primary px-[24px] py-[12px] font-heading text-[14px] font-bold uppercase leading-[22px] tracking-[2px] text-white transition-colors duration-300 hover:bg-[rgba(0,0,0,0.77)] md:px-[30px] md:py-[18px]"
+              className="mt-[22px] inline-block w-auto rounded-[4px] bg-primary px-[24px] py-[12px] font-heading text-[14px] font-bold uppercase leading-[22px] tracking-[2px] text-white transition-colors duration-300 hover:bg-[rgba(0,0,0,0.77)] md:mt-[15px] md:px-[30px] md:py-[18px]"
             >
               {t.scheduleButton}
             </a>
@@ -117,9 +149,9 @@ export default function ContactSection({
           {/* Signature + LinkedIn (#a3d8b65) — a 3-column inner section,
               72% / 10% / 17.3% of 570 with 10px column padding, so the icon
               sits at x=560 rather than flush right. The third column is empty. */}
-          <div className="py-[10px] max-md:flex max-md:items-center max-md:gap-4 md:flex">
+          <div className="pb-[10px] pt-[22px] md:pt-[10px] max-md:flex max-md:items-center max-md:gap-4 md:flex">
             <div className="md:w-[71.93%] md:px-[10px]">
-              <p className="pb-[18px] leading-[32.4px] md:pb-[50px]">
+              <p className="leading-[32.4px] md:pb-[50px]">
                 <span className="font-signature text-[18px] text-primary md:text-[24px]">
                   {site.founder.name}
                 </span>{" "}
@@ -176,22 +208,14 @@ export default function ContactSection({
               />
             </div>
             <div className="mt-[30px] pb-[40px] md:mt-0 md:w-[56.316%] md:pb-0">
-              <ul>
-                {items.map((item) => (
-                  /* 32.4px rows (the original's items measure 32 tall), and the
-                     text starts at 28px: a 23px icon box plus 5px of text
-                     padding on the original, 16px icon plus a 12px gap here. */
-                  <li
-                    key={item.href}
-                    className="flex items-start gap-[12px] font-sans text-[17px] font-medium leading-[32.4px] text-navy"
-                  >
-                    <CheckCircleIcon className="mt-[8px] shrink-0 text-[16px] text-primary" />
-                    <Link href={item.href} className="transition-colors hover:text-primary">
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              {/* Mobile: 2 columns (Tecnología+Marketing left, Preventa/Venta/
+                  Posventa right) instead of one 5-row stack — direct request.
+                  Desktop keeps the original single column, just reordered. */}
+              <div className="flex gap-x-[24px] md:hidden">
+                <ul className="flex-1">{items.slice(0, 2).map(renderCycleItem)}</ul>
+                <ul className="flex-1">{items.slice(2, 5).map(renderCycleItem)}</ul>
+              </div>
+              <ul className="hidden md:block">{items.map(renderCycleItem)}</ul>
             </div>
           </div>
         </div>
