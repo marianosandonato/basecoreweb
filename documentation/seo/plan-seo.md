@@ -2,7 +2,7 @@
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/f6230fde-8996-4d03-ae8a-4211f111ed90
 > - Última sincronización: 2026-09-14
-> - Nota: este documento se reorganizó el 5/9 — ahora es el tablero activo (solo tareas pendientes/bloqueadas/en progreso en detalle). El registro completo de tareas ya resueltas vive en `documentation/seo/historial-seo.md` (SEO general) o en `Performance Web` (tareas de performance, sin espejo propio). El 14/9 se cerraron los 6 hallazgos de la auditoría del 13/9 (1.26, 1.27, 5.5, 5.6, 5.7, 5.8), deployados a producción y verificados; el mismo día se resolvió también el acceso a GA4 para 1.25, que pasa de Bloqueado a En progreso (esperando acumular tráfico nuevo, ya que la custom dimension registrada no es retroactiva). También el 14/9 se abrió la Fase 8 "Base Core en motores de búsqueda": 8.1 (naming) en pausa, y 8.2 (visibilidad de marca) con el análisis de seo-marketing ya entregado — hay competencia real por el término "Base Core" (Base Power, empresa de baterías con ronda de US$1.000M), Mariano confirmó avanzar con #1, #2 y #4: #1/#2 (alternateName + alias en llms.txt, PR #41) mergeados y confirmados en vivo en basecoresales.com; #4 (chequeo mensual) establecido con primera lectura de referencia.
+> - Nota: este documento se reorganizó el 5/9 — ahora es el tablero activo (solo tareas pendientes/bloqueadas/en progreso en detalle). El registro completo de tareas ya resueltas vive en `documentation/seo/historial-seo.md` (SEO general) o en `Performance Web` (tareas de performance, sin espejo propio). El 14/9 se cerraron los 6 hallazgos de la auditoría del 13/9 (1.26, 1.27, 5.5, 5.6, 5.7, 5.8), deployados a producción y verificados; el mismo día se resolvió también el acceso a GA4 para 1.25, que pasa de Bloqueado a En progreso (esperando acumular tráfico nuevo, ya que la custom dimension registrada no es retroactiva). También el 14/9 se abrió la Fase 8 "Base Core en motores de búsqueda": 8.1 (naming) en pausa, y 8.2 (visibilidad de marca) con el análisis de seo-marketing ya entregado — hay competencia real por el término "Base Core" (Base Power, empresa de baterías con ronda de US$1.000M), Mariano confirmó avanzar con #1, #2 y #4 (mergeados y confirmados en producción), bloqueó #7. Tras un segundo análisis con evidencia (BaseCore ya es marca registrada de otra empresa), Mariano cierra 8.1 sin avanzar con el naming. Se abre 1.28 en Fase 1: seguimiento recurrente de performance con PageSpeed Insights.
 
 ---
 
@@ -14,9 +14,9 @@ basecoresales.com · auditoría & hoja de ruta
 
 Tablero activo: qué falta hacer, con el detalle completo solo de lo que sigue abierto. Las tareas ya resueltas quedan en la tabla de estado como una línea — el registro completo de cómo se resolvió cada una vive en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8), sin perder ni un dato.
 
-📋 [Ver Historial Técnico SEO (detalle de las 59 tareas ya resueltas)](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8)
+📋 [Ver Historial Técnico SEO (detalle de las 60 tareas ya resueltas)](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8)
 
-59 / 70 tareas · 1 en progreso (1.25) · +4 bloqueadas (4.1, 4.3, 4.4, 4.5) · Fase 8 nueva (8.1, 8.2)
+60 / 71 tareas · 2 en progreso (1.25, 8.2) · +4 bloqueadas (4.1, 4.3, 4.4, 4.5) · 1.28 nueva (performance)
 
 [Diagnóstico](#diagnostico)
 [Fase 1 · Técnico](#fase1)
@@ -59,7 +59,7 @@ Fase 1
 
 ## Cimientos técnicos (on-page)
 
-Cerrada en lo esencial — 1.14 (Core Web Vitals) se confirmó el 11/9. 1.24 (retina) se investigó a fondo y cerró sin acción de código — `next/image` ya lo resolvía; 1.25 (INP de campo) ya tiene acceso a GA4 resuelto el 14/9 — queda en progreso, esperando acumular tráfico nuevo. 1.26 y 1.27, encontrados en la auditoría de performance del 13/9, se resolvieron el 14/9. Detalle técnico completo en el artifact [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929). Detalle completo del resto de las tareas ya resueltas de esta fase en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8).
+Cerrada en lo esencial — 1.14 (Core Web Vitals) se confirmó el 11/9. 1.24 (retina) se investigó a fondo y cerró sin acción de código — `next/image` ya lo resolvía; 1.25 (INP de campo) ya tiene acceso a GA4 resuelto el 14/9 — queda en progreso, esperando acumular tráfico nuevo. 1.26 y 1.27, encontrados en la auditoría de performance del 13/9, se resolvieron el 14/9. 1.28 es nueva (14/9): seguimiento recurrente de performance con PageSpeed Insights, esperando el próximo análisis de Mariano. Detalle técnico completo en el artifact [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929). Detalle completo del resto de las tareas ya resueltas de esta fase en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8).
 
 | # | Tarea | Estado |
 | --- | --- | --- |
@@ -90,6 +90,7 @@ Cerrada en lo esencial — 1.14 (Core Web Vitals) se confirmó el 11/9. 1.24 (re
 | 1.25 | INP real de campo | En progreso |
 | 1.26 | Cap de `sizes` en el hero de Home | Hecho |
 | 1.27 | Bajar `quality` en logos (Header/Footer) | Hecho |
+| 1.28 | Performance con PageSpeed Insights (mobile/desktop, recurrente) | Pendiente |
 
 1.25 — INP real de campo
 
@@ -102,6 +103,18 @@ INP (Interaction to Next Paint) reemplazó a FID como métrica de Core Web Vital
 **Por qué sigue en progreso, no Hecho:** la custom dimension `metric_rating` se registró en GA4 Admin recién el 14/9, y no es retroactiva — el 100% del tráfico de los últimos 28 días (previo al registro) muestra `(not set)` para esa dimensión. Necesita tráfico nuevo, posterior al registro, para traer rating real. Sin fecha estimada — depende del volumen de visitas orgánico del sitio.
 
 **Para qué sirve:** confirmar con datos de campo (no solo de laboratorio) que la interactividad del sitio es buena para visitantes reales.
+
+1.28 — Performance con PageSpeed Insights (mobile/desktop)
+
+Pendiente · esperando el análisis de Mariano
+
+Tarea nueva (14/9), recurrente — no se cierra de una vez como 1.14, sino que se va revisando cada vez que aparece un reporte nuevo de PageSpeed Insights. 1.14 ya dejó Mobile en 88 y Desktop en 93-98 (confirmado 11/9), pero Mariano señala que sigue habiendo "ruidos" puntuales en mobile y desktop que vale la pena seguir bajando.
+
+**Mecánica:** Mariano pasa un reporte de PSI nuevo, `performance` lo analiza y propone hallazgos concretos con impacto estimado, se listan acá con su estado, y se resuelven de a uno (mismo criterio que 1.26/1.27, no cambios especulativos sin medir antes/después con PSI real).
+
+**Estado (14/9):** sección creada, esperando que Mariano comparta el análisis de PSI más reciente para identificar qué hallazgos puntuales conviene resolver.
+
+**Para qué sirve:** Core Web Vitals es señal directa de ranking de Google, y la primera impresión real de cualquier visitante — bajar "ruido" de performance no tiene techo fijo, siempre hay margen de mejora incremental.
 
 Fase 2
 
@@ -293,65 +306,63 @@ Fase 8
 
 ## Base Core en motores de búsqueda
 
-Fase nueva, abierta el 14/9. Dos temas relacionados pero separados: una decisión de naming en pausa, y un problema de visibilidad de marca que Mariano detectó y quiere resolver con prioridad.
+Fase abierta el 14/9. 8.1 se cerró el mismo día (decisión tomada: no avanzar) — detalle completo en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8). 8.2 sigue activa.
 
 | # | Tarea | Estado |
 | --- | --- | --- |
-| 8.1 | Decisión de naming: "Base Core" vs "BaseCore" | Pendiente, en pausa |
+| 8.1 | Decisión de naming: "Base Core" vs "BaseCore" | Hecho |
 | 8.2 | Visibilidad de marca: no aparece buscando "Base Core" solo | En progreso · #1/#2/#4 en producción |
 
-8.1 — Decisión de naming: "Base Core" vs "BaseCore"
+8.2 — Visibilidad de marca: no aparece buscando "Base Core" solo
 
-Pendiente · en pausa, decisión de Mariano
+En progreso · #1/#2/#4 en producción, #7 bloqueado
 
-Mariano propuso unificar todo el copy del sitio a "BaseCore" (junto, B y C mayúscula) en vez de "Base Core" (separado). Antes de tocar nada, se relevaron los 46 lugares del código donde aparece "Base Core" separado (40 de copy visible, 6 comentarios internos) y se analizó la implicancia real.
+Mariano detectó que buscando "Base Core" solo en Google, el sitio no aparece — solo aparece buscando "Base Core Sales" completo. Le preocupa que gente que solo recuerda "Base Core" no pueda encontrar la página, y quiere entender también cómo lo manejarían los buscadores de IA (ChatGPT, Perplexity, etc.) ante la misma búsqueda.
 
-**Hallazgos del análisis (14/9):** no hay riesgo de ranking — "Base Core"/"BaseCore" nunca fue investigado como keyword en el [Mapa de Keywords](https://claude.ai/code/artifact/2fb2b4bf-cd0c-41a4-a152-05098b5423f9), no es un término de búsqueda genérica. El riesgo real es de consistencia de entidad (E-E-A-T/NAP): si el sitio cambia pero LinkedIn (`linkedin.com/company/base-core/`), el nombre de la propiedad de GA4 ("Base Core Sales") y la futura Google Business Profile (4.1, bloqueada) siguen con el nombre viejo, se fragmenta la señal de marca en vez de reforzarla. Verificado en el código: ningún H1 usa "Base Core"; sí lo usan 2 H2 (subtítulos del post de blog "PMO", ES/EN). El `` y el JSON-LD de las 16 páginas salen de una sola fuente (<code>site.ts</code>) — se actualizarían solos. Los otros ~37 casos (alt text, meta description de /basehub, footer, e-book, teasers) requieren edición manual uno por uno. Cero backlinks todavía (4.3 bloqueada) — es el momento más barato para hacer este cambio, si se hace.</p>
-<p><strong>Decisión (14/9):</strong> Mariano pide dejarlo en pausa por ahora, sin implementar nada — queda documentado acá para retomar cuando decida.</p>
-<p><strong>Para qué sirve:</strong> tener registrada la implicancia completa antes de decidir, sin tener que re-investigar desde cero la próxima vez que se retome.</p>
-</div>
-<div class="task">
-<div class="task-top"><div class="task-title">8.2 — Visibilidad de marca: no aparece buscando "Base Core" solo</div><span class="chip progress"><span class="dot"></span>En progreso · #1/#2/#4 en producción, #7 bloqueado</span></div>
-<p>Mariano detectó que buscando "Base Core" solo en Google, el sitio no aparece — solo aparece buscando "Base Core Sales" completo. Le preocupa que gente que solo recuerda "Base Core" no pueda encontrar la página, y quiere entender también cómo lo manejarían los buscadores de IA (ChatGPT, Perplexity, etc.) ante la misma búsqueda.</p>
-<p><strong>Análisis de <code>seo-marketing</code> (14/9):</strong> el término desnudo "Base Core" tiene competencia real y grande — <strong>Base Power</strong>, empresa estadounidense de baterías domésticas, lanzó en agosto de 2026 un producto llamado "Base Core" junto con una ronda Serie D de US$1.000M y cobertura masiva de prensa (Business Wire, WSJ, Yahoo Finance). También compiten un personaje de videojuego, una plataforma de trading (BASECORE) y un theme de Drupal. Contra Base Power específicamente no hay acción de SEO propio que gane ese término en el corto/mediano plazo — es una diferencia de escala estructural, no un problema de configuración.</p>
-<p><strong>Con contexto de negocio, el sitio sí aparece</strong> (2º resultado buscando "Base Core consultoría"). Dato duro de Search Console (<code>scripts/seo/gsc.py analytics</code>, 90 días): la query exacta "base core" tiene 33 impresiones con posición promedio <strong>4.1</strong> — no está ausente del índice, pierde visibilidad porque Base Power ocupa los primeros lugares con noticias recientes. Muestra chica (52 consultas totales en 90 días, dominio nuevo).</p>
-<p><strong>La causa que sí es resoluble:</strong> el sitio nunca declara "Base Core" como alias en ningún lugar máquina-legible — `site.shortName` en `src/lib/site.ts` es siempre "Base Core Sales" completo (title, JSON-LD `ProfessionalService.name`, Open Graph, encabezado de `/llms.txt`), sin ningún campo `alternateName`. Confirmado también con IA: Perplexity, preguntado "¿Qué es Base Core?" sin contexto, no identificó ni a Base Power ni a Base Core Sales — la ambigüedad del término afecta igual a buscadores de IA, mismo mecanismo de fondo (falta de señal de alias + autoridad externa), no algo distinto a resolver.</p>
-<div class="exact-label">Recomendaciones priorizadas (ninguna implementada — esperando confirmar con cuáles avanzar)</div>
-<pre class="exact">1. alternateName: "Base Core" en el JSON-LD ProfessionalService — Bajo esfuerzo, accionable ya
-2. Alias "también conocida como Base Core" en /llms.txt — Bajo esfuerzo, accionable ya
-3. Bajar la expectativa de competir por el término desnudo — Decisión, no requiere trabajo
-contra Base Power
-4. Chequeo mensual de la query "base core" con gsc.py (junto — Bajo esfuerzo, accionable ya
-a 6.5)
-5. Definir ya el nombre exacto para GBP ("Base Core Sales", — Bajo esfuerzo, depende de 4.1 (bloqueada)
-no "Base Core")
-6. Usar "Base Core" como variante de anchor text al retomar — Esfuerzo medio, depende de 4.3 (bloqueada)
-backlinks
-7. Mención puntual de "Base Core" en copy acotado (footer/meta), — Esfuerzo bajo-medio, independiente
-sin tocar H1 ni mezclar con la decisión de naming de 8.1 pero separado de 8.1
+**Análisis de `seo-marketing` (14/9):** el término desnudo "Base Core" tiene competencia real y grande — **Base Power**, empresa estadounidense de baterías domésticas, lanzó en agosto de 2026 un producto llamado "Base Core" junto con una ronda Serie D de US$1.000M y cobertura masiva de prensa (Business Wire, WSJ, Yahoo Finance). También compiten un personaje de videojuego, una plataforma de trading (BASECORE) y un theme de Drupal. Contra Base Power específicamente no hay acción de SEO propio que gane ese término en el corto/mediano plazo — es una diferencia de escala estructural, no un problema de configuración.
+
+**Con contexto de negocio, el sitio sí aparece** (2º resultado buscando "Base Core consultoría"). Dato duro de Search Console (`scripts/seo/gsc.py analytics`, 90 días): la query exacta "base core" tiene 33 impresiones con posición promedio **4.1** — no está ausente del índice, pierde visibilidad porque Base Power ocupa los primeros lugares con noticias recientes. Muestra chica (52 consultas totales en 90 días, dominio nuevo).
+
+**La causa que sí es resoluble:** el sitio nunca declara "Base Core" como alias en ningún lugar máquina-legible — `site.shortName` en `src/lib/site.ts` es siempre "Base Core Sales" completo (title, JSON-LD `ProfessionalService.name`, Open Graph, encabezado de `/llms.txt`), sin ningún campo `alternateName`. Confirmado también con IA: Perplexity, preguntado "¿Qué es Base Core?" sin contexto, no identificó ni a Base Power ni a Base Core Sales — la ambigüedad del término afecta igual a buscadores de IA, mismo mecanismo de fondo (falta de señal de alias + autoridad externa), no algo distinto a resolver.
+
+Recomendaciones priorizadas (ninguna implementada — esperando confirmar con cuáles avanzar)
+
+```
+1. alternateName: "Base Core" en el JSON-LD ProfessionalService  — Bajo esfuerzo, accionable ya
+2. Alias "también conocida como Base Core" en /llms.txt          — Bajo esfuerzo, accionable ya
+3. Bajar la expectativa de competir por el término desnudo        — Decisión, no requiere trabajo
+   contra Base Power
+4. Chequeo mensual de la query "base core" con gsc.py (junto      — Bajo esfuerzo, accionable ya
+   a 6.5)
+5. Definir ya el nombre exacto para GBP ("Base Core Sales",       — Bajo esfuerzo, depende de 4.1 (bloqueada)
+   no "Base Core")
+6. Usar "Base Core" como variante de anchor text al retomar       — Esfuerzo medio, depende de 4.3 (bloqueada)
+   backlinks
+7. Mención puntual de "Base Core" en copy acotado (footer/meta),  — Esfuerzo bajo-medio, independiente
+   sin tocar H1 ni mezclar con la decisión de naming de 8.1        pero separado de 8.1
+
 No recomendado por ahora: Wikidata/Wikipedia (se rechazaría, falta
-notoriedad con fuentes secundarias independientes).</pre>
-<p><strong>Implementado y en producción (14/9):</strong> Mariano confirmó avanzar con #1, #2 y #4 (invisibles/sin riesgo, sin dependencias). #1 y #2 — <code>alternateName: "Base Core"</code> en el JSON-LD <code>ProfessionalService</code> y la línea "Also known as: Base Core" en <code>/llms.txt</code> — mergeados vía <a href="https://github.com/marianosandonato/basecoreweb/pull/41" target="\_blank" rel="noopener">PR #41</a>, verificado con tsc/eslint/build, con <code>next start</code> local, y confirmado en vivo contra <code>basecoresales.com</code> (ES y EN): `alternateName` presente en el JSON-LD, línea nueva en `/llms.txt`, y `name` principal ("Base Core Sales") intacto sin cambios. #4 (chequeo mensual de la query "base core") queda establecido junto a 5.1/6.5; primera lectura de referencia (14/9, <code>gsc.py analytics --days 90 --query "base core"</code>): 30 impresiones en Home (posición 3.7), 2 en /contacto (9.5) y 3 en /en (8.3) — línea de base para comparar en el próximo chequeo.</p>
-<p><strong>Sin implementar:</strong> #3 (bajar expectativa, ya incorporado al análisis, sin acción pendiente), #5 y #6 (dependen de 4.1 y 4.3, bloqueadas — quedan documentadas como qué hacer cuando se desbloqueen, sin acción disponible hoy). <strong>#7 — Bloqueada (14/9):</strong> Mariano decide no avanzar con ninguna mención de "Base Core" en copy visible — cualquier cosa que toque texto del sitio queda descartada para esta tarea.</p>
-<p><strong>Para qué sirve:</strong> que cualquiera que conozca el negocio como "Base Core" (sin el "Sales") pueda encontrar el sitio igual, dentro de lo que es realmente posible frente a la competencia por el término.</p>
-</div>
-</section>
-<!-- ============ POR DÓNDE SEGUIR ============ -->
-<div class="callout" id="seguir">
-<h3>Por dónde seguir</h3>
-<p>Fases 2, 3, 5 (salvo mantenimiento recurrente), 6 y 7 quedaron cerradas del todo o en lo esencial; Fase 1 quedó cerrada en lo esencial, con una sola cola de performance en progreso (1.25, esperando tráfico) — los 6 hallazgos de la auditoría del 13/9 (1.26, 1.27, 5.5-5.8) se resolvieron y deployaron el 14/9. Fase 8 es nueva, abierta el mismo día. Toda la cronología de cómo se llegó hasta acá vive en el <a href="https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8">Historial Técnico SEO</a> (SEO general) y en <a href="https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929">Performance Web</a> (performance específicamente), no en este documento.</p>
-<p>Lo activo hoy, en orden de qué depende de qué:</p>
-<ul>
-<li><strong>8.2 (visibilidad de marca "Base Core" en buscadores):</strong> #1, #2 y #4 en producción (<a href="https://github.com/marianosandonato/basecoreweb/pull/41" target="\_blank" rel="noopener">PR #41</a>, mergeado y verificado en vivo el 14/9). #7 bloqueada por decisión de Mariano (no tocar copy visible); #5 y #6 siguen dependiendo de 4.1 y 4.3.</li>
-<li><strong>4.1 (GBP), 4.3 (backlinks), 4.4 (testimonios), 4.5 (GDPR):</strong> bloqueadas — 4.1 sin viaje previsto, 4.3 y 4.4 a la espera de que Mariano decida más adelante si avanza (13/9), 4.5 sin expertise legal disponible.</li>
-<li><strong>8.1 (naming "Base Core" vs "BaseCore"):</strong> en pausa por decisión explícita de Mariano (14/9) — análisis completo ya hecho y documentado, sin implementar nada hasta que decida retomarlo.</li>
-<li><strong>1.25 (INP de campo):</strong> ya no bloqueada — acceso a GA4 resuelto el 14/9 (service account, custom dimension registrada, script <code>scripts/seo/ga4.py</code> funcionando con datos reales). En progreso, esperando que se acumule tráfico posterior al registro de la custom dimension (no es retroactiva).</li>
-<li><strong>4.6 (LinkedIn/referidos), 5.1 (revisión mensual), 5.2 (contenido periódico), 6.5 (visibilidad IA):</strong> en pausa por decisión explícita o esperando datos/tráfico — ninguno bloqueado por otro, se retoman cuando corresponda.</li>
-</ul>
-<p>Con 4 tareas bloqueadas dependiendo de decisiones externas, 1.25 esperando solo tráfico, 8.1 en pausa por decisión de Mariano y 8.2 en análisis activo, no queda ningún pendiente propio sin dueño para retomar mañana sin una nueva instrucción de Mariano.</p>
-</div>
-<footer class="note">
-Última actualización: 2026-09-14 (Fase 8 "Base Core en motores de búsqueda": 8.1 naming en pausa (Mariano pide retomar el análisis), 8.2 con #1/#2 (PR #41) en producción, #4 establecido, y #7 bloqueada por decisión de no tocar copy visible; antes, el mismo día, se resolvió el acceso a GA4 para 1.25 y se cerraron los 6 hallazgos de la auditoría del 13/9) · se irá marcando como Hecho a medida que avancemos.
-</footer>
-</div>
-</body></html>
+notoriedad con fuentes secundarias independientes).
+```
+
+**Implementado y en producción (14/9):** Mariano confirmó avanzar con #1, #2 y #4 (invisibles/sin riesgo, sin dependencias). #1 y #2 — `alternateName: "Base Core"` en el JSON-LD `ProfessionalService` y la línea "Also known as: Base Core" en `/llms.txt` — mergeados vía [PR #41](https://github.com/marianosandonato/basecoreweb/pull/41), verificado con tsc/eslint/build, con `next start` local, y confirmado en vivo contra `basecoresales.com` (ES y EN): `alternateName` presente en el JSON-LD, línea nueva en `/llms.txt`, y `name` principal ("Base Core Sales") intacto sin cambios. #4 (chequeo mensual de la query "base core") queda establecido junto a 5.1/6.5; primera lectura de referencia (14/9, `gsc.py analytics --days 90 --query "base core"`): 30 impresiones en Home (posición 3.7), 2 en /contacto (9.5) y 3 en /en (8.3) — línea de base para comparar en el próximo chequeo.
+
+**Sin implementar:** #3 (bajar expectativa, ya incorporado al análisis, sin acción pendiente), #5 y #6 (dependen de 4.1 y 4.3, bloqueadas — quedan documentadas como qué hacer cuando se desbloqueen, sin acción disponible hoy). **#7 — Bloqueada (14/9):** Mariano decide no avanzar con ninguna mención de "Base Core" en copy visible — cualquier cosa que toque texto del sitio queda descartada para esta tarea.
+
+**Para qué sirve:** que cualquiera que conozca el negocio como "Base Core" (sin el "Sales") pueda encontrar el sitio igual, dentro de lo que es realmente posible frente a la competencia por el término.
+
+### Por dónde seguir
+
+Fases 2, 3, 5 (salvo mantenimiento recurrente), 6 y 7 quedaron cerradas del todo o en lo esencial; Fase 1 tiene dos colas abiertas (1.25 en progreso esperando tráfico, 1.28 nueva esperando el próximo análisis de PSI) — los 6 hallazgos de la auditoría del 13/9 (1.26, 1.27, 5.5-5.8) se resolvieron y deployaron el 14/9. Fase 8 (abierta el 14/9): 8.1 ya se cerró, 8.2 sigue activa. Toda la cronología de cómo se llegó hasta acá vive en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8) (SEO general) y en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929) (performance específicamente), no en este documento.
+
+Lo activo hoy, en orden de qué depende de qué:
+
+* **1.28 (performance con PageSpeed Insights):** tarea nueva — esperando que Mariano comparta el análisis de PSI más reciente para identificar hallazgos concretos.
+* **8.2 (visibilidad de marca "Base Core" en buscadores):** #1, #2 y #4 en producción ([PR #41](https://github.com/marianosandonato/basecoreweb/pull/41), mergeado y verificado en vivo el 14/9). #7 bloqueada por decisión de Mariano (no tocar copy visible); #5 y #6 siguen dependiendo de 4.1 y 4.3.
+* **4.1 (GBP), 4.3 (backlinks), 4.4 (testimonios), 4.5 (GDPR):** bloqueadas — 4.1 sin viaje previsto, 4.3 y 4.4 a la espera de que Mariano decida más adelante si avanza (13/9), 4.5 sin expertise legal disponible.
+* **1.25 (INP de campo):** ya no bloqueada — acceso a GA4 resuelto el 14/9 (service account, custom dimension registrada, script `scripts/seo/ga4.py` funcionando con datos reales). En progreso, esperando que se acumule tráfico posterior al registro de la custom dimension (no es retroactiva).
+* **4.6 (LinkedIn/referidos), 5.1 (revisión mensual), 5.2 (contenido periódico), 6.5 (visibilidad IA):** en pausa por decisión explícita o esperando datos/tráfico — ninguno bloqueado por otro, se retoman cuando corresponda.
+
+Con 4 tareas bloqueadas dependiendo de decisiones externas, 1.25 esperando solo tráfico, 1.28 y 8.2 esperando insumos de Mariano, no queda ningún pendiente propio sin dueño para retomar mañana sin una nueva instrucción de Mariano.
+
+Última actualización: 2026-09-14 (8.1 cerrada — Mariano decide no avanzar con el naming, análisis completo movido al Historial; 8.2 con #1/#2 (PR #41) en producción, #4 establecido, #7 bloqueada; se abre 1.28, seguimiento recurrente de performance con PageSpeed Insights, esperando el próximo análisis de Mariano; antes, el mismo día, se resolvió el acceso a GA4 para 1.25 y se cerraron los 6 hallazgos de la auditoría del 13/9) · se irá marcando como Hecho a medida que avancemos.

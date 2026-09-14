@@ -2,7 +2,7 @@
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8
 > - Última sincronización: 2026-09-14
-> - Nota: documento nuevo, creado el 5/9 al separar el detalle histórico del Plan de SEO (`documentation/seo/plan-seo.md`), que ahora es el tablero activo. El 11/9 se sumó el cierre de 1.14 (Core Web Vitals). El 13/9 se sumó el cierre de 5.3 (gate del e-book, PR #37) y se corrigió la tabla de keywords EN de 3.1 (estaba desactualizada respecto al código real) tras una auditoría de SEO de alcance completo. El 14/9 se sumaron a la cronología la caída de VM que interrumpió la guía de acceso a GA4 para 1.25, y el cierre posterior de esa Fase B (service account, custom dimension, Property ID, script `scripts/seo/ga4.py`).
+> - Nota: documento nuevo, creado el 5/9 al separar el detalle histórico del Plan de SEO (`documentation/seo/plan-seo.md`), que ahora es el tablero activo. El 11/9 se sumó el cierre de 1.14 (Core Web Vitals). El 13/9 se sumó el cierre de 5.3 (gate del e-book, PR #37) y se corrigió la tabla de keywords EN de 3.1 (estaba desactualizada respecto al código real) tras una auditoría de SEO de alcance completo. El 14/9 se sumaron a la cronología la caída de VM que interrumpió la guía de acceso a GA4 para 1.25, el cierre posterior de esa Fase B, y la Fase 8 completa (8.1 cerrada sin avanzar con el naming "Base Core" -> "BaseCore" tras encontrar que la forma junta ya es una marca registrada de otra empresa).
 
 ---
 
@@ -23,6 +23,7 @@ Detalle completo de cada tarea del [Plan de SEO](https://claude.ai/code/artifact
 [Fase 5 · Mantenimiento](#fase5)
 [Fase 6 · Buscadores de IA](#fase6)
 [Fase 7 · BaseHub](#fase7)
+[Fase 8 · Base Core en buscadores](#fase8)
 [Cronología completa](#cronologia)
 
 Fase 1
@@ -804,6 +805,34 @@ Resuelto 5/9
 
 Documentado por `performance`, señalado "fuera de scope" y nunca trasladado hasta el 4/9. Mismo bug que 1.17: `<br />` pegado daba "Tu implementación, visiblede principio a fin" / "visiblefrom day one". Mismo fix — espacio real, sin tocar el salto visual.
 
+Fase 8
+
+## Base Core en motores de búsqueda
+
+Fase abierta el 14/9. 8.1 (decisión de naming) se cerró el mismo día sin implementar nada. 8.2 (visibilidad de marca) sigue activa — su detalle en progreso vive en el [Plan de SEO](https://claude.ai/code/artifact/f6230fde-8996-4d03-ae8a-4211f111ed90), no acá.
+
+8.1 — Decisión de naming: "Base Core" vs "BaseCore"
+
+Cerrada 14/9 · decisión: no avanzar
+
+Mariano propuso unificar todo el copy del sitio de "Base Core" (separado) a "BaseCore" (junto, B y C mayúscula). Antes de tocar nada se relevaron los 46 lugares del código con "Base Core" separado: 40 de copy visible (títulos, meta descriptions, alt text, footer, e-book, teasers de BaseHub, 2 H2 de blog) y 6 comentarios internos de desarrollador.
+
+Hallazgos del primer análisis (14/9)
+
+No hay riesgo de ranking directo: "Base Core"/"BaseCore" nunca fue investigado como keyword en el [Mapa de Keywords](https://claude.ai/code/artifact/2fb2b4bf-cd0c-41a4-a152-05098b5423f9) — es término de marca, no genérico. Verificado en el código: ningún H1 usa "Base Core"; sí lo usan 2 H2 (subtítulos del post de blog "PMO", ES/EN). El `<title>` y el JSON-LD de las 16 páginas salen de una sola fuente (`site.ts`) — se actualizarían solos; los otros ~37 casos requerirían edición manual uno por uno. Riesgo real identificado: consistencia de entidad (E-E-A-T/NAP) si el sitio cambia pero LinkedIn (`linkedin.com/company/base-core/`), el nombre de la propiedad de GA4 y la futura Google Business Profile (4.1, bloqueada) siguen con el nombre viejo. Cero backlinks todavía (4.3 bloqueada) — sería el momento más barato para hacerlo, si se hiciera.
+
+**Mariano pide pausa (14/9, primera vuelta):** no avanzar todavía, sin descartarlo — análisis documentado para no re-investigar si se retomaba.
+
+Segundo análisis, con evidencia adicional (14/9, tras cerrar 8.2 #1/#2)
+
+Antes de decidir del todo, Mariano pidió una recomendación con evidencia sobre si "Base Core" o "BaseCore" es más probable que la gente busque, y si el copy visible es independiente de eso. Hallazgo clave, nuevo respecto al primer análisis: **"BaseCore" (junto) ya está tomado por otra empresa, y registrado** — `basecore.co` es BaseCore™, fabricante de geoceldas y estabilización de suelos para construcción, con sitio propio y LinkedIn activos. Es decir, pasar a la forma junta no saca al negocio de una colisión de nombre — la cambia: hoy comparte "Base Core" con Base Power (baterías domésticas, ronda Serie D de US$1.000M, ver 8.2); pasaría a compartir cadena exacta con una marca ya registrada (™) en otro rubro, lo que además de ser un problema de SEO es potencialmente un tema legal de trademark.
+
+No hay evidencia real (Google Trends, Keyword Planner, ni casos comparables como Basecamp/Mailchimp/Dropbox) de que una forma sea más probable que la otra para que la gente la tipee — esas marcas *eligieron* la forma junta como decisión de branding, no está probado que la gente las escriba juntas por instinto al oírlas por primera vez. El mecanismo de `alternateName` + alias en `/llms.txt` (ya implementado en 8.2) sostiene razonablemente bien que se siga encontrando el sitio buscando "Base Core" aunque el copy mostrara "BaseCore" — Google tiene capacidad documentada de reconciliar palabras compuestas pegadas con su forma separada. Pero mostrar una *tercera* grafía que no coincide ni con el `name` principal del schema ("Base Core Sales") ni con el `alternateName` ("Base Core") sería una variante más para que Google concilie, no una simplificación — el riesgo no es "que no te encuentren", es fragmentar la entidad en 3 formas simultáneas sin nexo declarado entre sí, justo lo contrario de lo que 8.1 buscaba lograr.
+
+**Decisión final (14/9):** Mariano cierra 8.1 sin avanzar — no hay evidencia que respalde el cambio, el argumento de "diferenciarse de Base Power" se cae al chocar con BaseCore™, y la necesidad real de negocio (que lo encuentren buscando "Base Core") ya está resuelta por 8.2. Nota para el futuro: si en algún momento se quisiera avanzar por preferencia de marca (no de SEO), la única forma prolija sería declarar "Base Core" en algún punto mínimo de copy visible para no fragmentar la entidad — lo cual chocaría con la decisión ya tomada en 8.2 #7 (no tocar copy visible con "Base Core"). Ambas decisiones tironean en direcciones opuestas; quedó señalado para quien retome el tema.
+
+**Para qué sirve:** registrar la implicancia completa y la evidencia real detrás de una decisión de marca, para no tener que re-investigar desde cero si el tema vuelve a aparecer.
+
 ## Cronología completa
 
 El registro día a día de cómo se llegó al estado actual — el "Por dónde seguir" original del Plan de SEO, movido acá en su totalidad para no repetirlo en el documento activo.
@@ -828,5 +857,8 @@ El registro día a día de cómo se llegó al estado actual — el "Por dónde s
 18. **14/9, cierre de los 6 hallazgos del 13/9:** `seo-marketing` resuelve 5.5-5.8 en un solo PR (#39, `3ecc125`) y `performance` resuelve 1.26-1.27 en otro (#40, `121df4f`) — ambos en preview de Vercel, revisados y aprobados por Mariano, y mergeados a `master` el mismo día. Deploy a producción confirmado (Vercel `success`). Fase 1 queda con una sola cola abierta (1.25, bloqueada por acceso a GA4); Fase 5 queda sin ningún pendiente puntual, solo las 2 tareas recurrentes (5.1, 5.2).
 19. **14/9, sesión interrumpida por caída de la VM:** a media guía de acceso a GA4 para 1.25 (creación de proyecto GCP, service account `ga4-readonly`, generación de key), la sesión se corta. Mariano confirma que llegó hasta crear la service account y descargar la key, pero el archivo de key y una captura del chat no habían llegado a guardarse en disco todavía — se pierden con la caída. Retomado en una sesión nueva: se re-verifican los 4 primeros pasos (API habilitada, service account, key), confirmado indirectamente vía un `PERMISSION_DENIED` de la GA4 Data API (en vez de un error de "API deshabilitada") contra un Property ID de prueba.
 20. **14/9, cierre de la Fase B de acceso a GA4:** Mariano completa el resto de la guía — Viewer access a la service account en la propiedad GA4, custom dimension de evento `metric_rating` registrada, y Property ID real (`550444799`). `scripts/seo/ga4.py` (creado en la sesión anterior, quedó sin commitear) corre contra datos reales: 381 eventos LCP, 374 CLS, 128 INP en 28 días. Se encuentra y corrige un bug menor del script (no reconocía el literal `"(not set)"` que devuelve GA4 para dimensiones sin dato, mostraba el desglose en blanco en vez de "(sin registrar)") — commit `c4aabf4`. 1.25 pasa de Bloqueado a En progreso: el acceso ya funciona, pero como la custom dimension no es retroactiva, todo el tráfico de los últimos 28 días (previo al registro de hoy) trae `(not set)` — falta acumular tráfico nuevo para tener rating real.
+21. **14/9, Mariano pide unificar "Base Core" a "BaseCore" en todo el copy:** se abre la Fase 8. Antes de tocar nada se releva el código (46 hallazgos) y se analiza la implicancia — sin riesgo de ranking, pero con riesgo de fragmentar la entidad de marca si no se actualiza también LinkedIn/GA4/GBP. Mariano pide pausa (8.1).
+22. **14/9, Mariano reporta que "Base Core" solo no lo encuentra en Google:** se abre 8.2. `seo-marketing` investiga con búsqueda real y encuentra que el término compite con Base Power (baterías domésticas, ronda Serie D de US$1.000M, producto lanzado en agosto llamado "Base Core"). Recomienda 7 acciones priorizadas; Mariano confirma avanzar con #1 (`alternateName` en JSON-LD), #2 (alias en `/llms.txt`) y #4 (chequeo mensual con `gsc.py`) — bloquea #7 (no tocar copy visible). #1 y #2 se implementan, pasan por PR #41 (código de sitio, no docs) y se mergean y verifican en vivo contra `basecoresales.com` el mismo día.
+23. **14/9, cierre de 8.1:** antes de decidir del todo, Mariano pide una segunda vuelta de análisis con evidencia sobre qué forma es más probable que la gente busque. `seo-marketing` encuentra un dato nuevo: "BaseCore" (junto) ya es una marca registrada (BaseCore™, geoceldas, `basecore.co`) — pasar a esa forma no resuelve la colisión de nombre, la cambia por una potencialmente con implicancia legal de trademark. Sin evidencia real de que una forma sea más buscada que la otra. Mariano cierra 8.1 sin avanzar. Se abre 1.28 (Fase 1): seguimiento recurrente de performance con PageSpeed Insights, esperando el próximo análisis de Mariano.
 
-Historial Técnico SEO · Base Core · creado el 5 de septiembre de 2026, a partir del Plan de SEO original · actualizado el 14 de septiembre (cronología: caída de VM y cierre de la Fase B de acceso a GA4 para 1.25) · espejo de trabajo en `documentation/seo/historial-seo.md`
+Historial Técnico SEO · Base Core · creado el 5 de septiembre de 2026, a partir del Plan de SEO original · actualizado el 14 de septiembre (Fase 8 nueva, 8.1 cerrada — decisión de no unificar el naming a "BaseCore") · espejo de trabajo en `documentation/seo/historial-seo.md`
