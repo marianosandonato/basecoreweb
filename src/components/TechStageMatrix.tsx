@@ -153,8 +153,7 @@ export default function TechStageMatrix({ lang = "es" }: { lang?: Lang }) {
           title={
             <>
               {t.title[0]}
-              <br />
-              {t.title[1]}
+              <br /> {t.title[1]}
             </>
           }
           maxWidth={720}

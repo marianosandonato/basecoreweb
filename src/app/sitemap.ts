@@ -13,12 +13,12 @@ import { blogPosts } from "@/content/blog/posts";
  * history) — bump it in the same change that next edits a page's copy.
  */
 const pairs: { es: string; en: string; lastModified: string }[] = [
-  { es: "", en: "/en", lastModified: "2026-09-05" }, // Home: Metodología H2 (seo-plan 3.7)
-  { es: "/preventa", en: "/en/presales", lastModified: "2026-09-05" }, // e-book cross-link (3.8)
-  { es: "/venta", en: "/en/sales", lastModified: "2026-09-05" }, // e-book cross-link (3.8)
-  { es: "/posventa", en: "/en/post-sales", lastModified: "2026-08-30" }, // 2 párrafos nuevos (3.3)
-  { es: "/marketing", en: "/en/marketing", lastModified: "2026-08-30" }, // 3.3 + encuadre 3.6
-  { es: "/tecnologia", en: "/en/tecnologia", lastModified: "2026-09-05" }, // OG image (1.20)
+  { es: "", en: "/en", lastModified: "2026-09-13" }, // TechnologyBlock copy real del dueño (5.8, #36) — más reciente que el hero mobile + cajón Nosotros del 12/9
+  { es: "/preventa", en: "/en/presales", lastModified: "2026-09-13" }, // TechnologyBlock copy real del dueño, vía ServiceCyclePage (5.8, #36)
+  { es: "/venta", en: "/en/sales", lastModified: "2026-09-13" }, // TechnologyBlock copy real del dueño, vía ServiceCyclePage (5.8, #36)
+  { es: "/posventa", en: "/en/post-sales", lastModified: "2026-09-13" }, // TechnologyBlock copy real del dueño, vía ServiceCyclePage (5.8, #36)
+  { es: "/marketing", en: "/en/marketing", lastModified: "2026-09-13" }, // TechnologyBlock copy real del dueño (5.8, #36)
+  { es: "/tecnologia", en: "/en/tecnologia", lastModified: "2026-09-13" }, // 3 rediseños: TechStageMatrix (#22), Agentes en producción (#34), TechnologyBlock (#36) (5.8)
   { es: "/basehub", en: "/en/basehub", lastModified: "2026-09-05" }, // <br/> textContent fix (7.9)
   { es: "/contacto", en: "/en/contact", lastModified: "2026-09-04" }, // form <label>s (1.19)
   { es: "/ebook", en: "/en/ebook", lastModified: "2026-09-05" }, // H1 rewrite (3.10)
