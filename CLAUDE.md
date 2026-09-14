@@ -24,6 +24,7 @@ Antes de tocar cualquier tarea de SEO, leer estos dos documentos (fuente de verd
 
 - **BaseHub en el sitio** — https://claude.ai/code/artifact/732c517a-8ea1-4176-a9e5-fdcb0aa2e1d7 — brief y plan para promocionar BaseHub (la plataforma de seguimiento de Base Core, repo separado en `~/GitHub/basehub`) como sección/página en basecoreweb. En definición, sin implementar todavía — leer antes de retomar el tema.
 - **Plan Social Media** — https://claude.ai/code/artifact/26b56c60-5c7c-4697-87ff-7b91b9c015bb — auditoría de `social-content` (4/9) con público, pilares y 3 direcciones de contenido para LinkedIn. En definición, ninguna dirección elegida todavía — leer antes de retomar el tema o de producir contenido de redes.
+- **Auditoría de Marca de Base Core** — https://claude.ai/code/artifact/47aedb68-5cab-48da-9797-11eb0df79f28 — continuación legal/societaria de la tarea 8.1 del Plan de SEO (14/9): riesgo de disputa con BaseCore™ y Base Power, registro de marca en INPI/OEPM/EUIPO, viabilidad de dar de alta una sociedad (AR/ES) y nombre de fantasía vs. razón social. Referenciada como tarea 8.3 del Plan de SEO. Esperando decisión de Mariano sobre el plan de acción — no es asesoría legal, el primer paso recomendado requiere un agente de la propiedad industrial real. Sin espejo en `documentation/seo/` (no es uno de los tres artifacts SEO con esa regla) — accesible solo desde la sesión principal, igual que los demás artifacts de este documento.
 
 ## Documentos archivados (no consultar como fuente activa)
 

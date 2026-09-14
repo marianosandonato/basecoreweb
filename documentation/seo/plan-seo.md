@@ -2,7 +2,7 @@
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/f6230fde-8996-4d03-ae8a-4211f111ed90
 > - Última sincronización: 2026-09-14
-> - Nota: este documento se reorganizó el 5/9 — ahora es el tablero activo (solo tareas pendientes/bloqueadas/en progreso en detalle). El registro completo de tareas ya resueltas vive en `documentation/seo/historial-seo.md` (SEO general) o en `Performance Web` (tareas de performance, sin espejo propio). El 14/9 se cerraron los 6 hallazgos de la auditoría del 13/9 (1.26, 1.27, 5.5, 5.6, 5.7, 5.8), deployados a producción y verificados; el mismo día se resolvió también el acceso a GA4 para 1.25, que pasa de Bloqueado a En progreso (esperando acumular tráfico nuevo, ya que la custom dimension registrada no es retroactiva). También el 14/9 se abrió la Fase 8 "Base Core en motores de búsqueda": 8.1 (naming) en pausa, y 8.2 (visibilidad de marca) con el análisis de seo-marketing ya entregado — hay competencia real por el término "Base Core" (Base Power, empresa de baterías con ronda de US$1.000M), Mariano confirmó avanzar con #1, #2 y #4 (mergeados y confirmados en producción), bloqueó #7. Tras un segundo análisis con evidencia (BaseCore ya es marca registrada de otra empresa), Mariano cierra 8.1 sin avanzar con el naming. Se abre 1.28 en Fase 1: seguimiento recurrente de performance con PageSpeed Insights — reporte de Home ya analizado por performance, 3 hallazgos listos para confirmar mañana, sin implementar nada hoy.
+> - Nota: este documento se reorganizó el 5/9 — ahora es el tablero activo (solo tareas pendientes/bloqueadas/en progreso en detalle). El registro completo de tareas ya resueltas vive en `documentation/seo/historial-seo.md` (SEO general) o en `Performance Web` (tareas de performance, sin espejo propio). El 14/9 se cerraron los 6 hallazgos de la auditoría del 13/9 (1.26, 1.27, 5.5, 5.6, 5.7, 5.8), deployados a producción y verificados; el mismo día se resolvió también el acceso a GA4 para 1.25, que pasa de Bloqueado a En progreso (esperando acumular tráfico nuevo, ya que la custom dimension registrada no es retroactiva). También el 14/9 se abrió la Fase 8 "Base Core en motores de búsqueda": 8.1 (naming) cerrada sin avanzar (BaseCore ya es marca registrada de otra empresa), 8.2 (visibilidad de marca) con #1/#2/#4 en producción, #7 bloqueado. A pedido de Mariano se sumó 8.3 (auditoría de marca: registro, riesgo legal y sociedad) — research completo entregado, artifact dedicado publicado ([Auditoría de Marca de Base Core](https://claude.ai/code/artifact/47aedb68-5cab-48da-9797-11eb0df79f28)), esperando que Mariano lo revise y confirme con qué pasos del plan de acción avanzar.
 
 ---
 
@@ -16,7 +16,7 @@ Tablero activo: qué falta hacer, con el detalle completo solo de lo que sigue a
 
 📋 [Ver Historial Técnico SEO (detalle de las 60 tareas ya resueltas)](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8)
 
-60 / 71 tareas · 2 en progreso (1.25, 8.2) · +4 bloqueadas (4.1, 4.3, 4.4, 4.5) · 1.28 nueva (performance)
+60 / 72 tareas · 2 en progreso (1.25, 8.2) · +4 bloqueadas (4.1, 4.3, 4.4, 4.5) · 1.28 y 8.3 nuevas
 
 [Diagnóstico](#diagnostico)
 [Fase 1 · Técnico](#fase1)
@@ -357,12 +357,13 @@ Fase 8
 
 ## Base Core en motores de búsqueda
 
-Fase abierta el 14/9. 8.1 se cerró el mismo día (decisión tomada: no avanzar) — detalle completo en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8). 8.2 sigue activa.
+Fase abierta el 14/9. 8.1 se cerró el mismo día (decisión tomada: no avanzar) — detalle completo en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8). 8.2 y 8.3 siguen activas.
 
 | # | Tarea | Estado |
 | --- | --- | --- |
 | 8.1 | Decisión de naming: "Base Core" vs "BaseCore" | Hecho |
 | 8.2 | Visibilidad de marca: no aparece buscando "Base Core" solo | En progreso · #1/#2/#4 en producción |
+| 8.3 | Auditoría de marca: registro, riesgo legal y sociedad | Pendiente · esperando decisión de Mariano |
 
 8.2 — Visibilidad de marca: no aparece buscando "Base Core" solo
 
@@ -402,18 +403,35 @@ notoriedad con fuentes secundarias independientes).
 
 **Para qué sirve:** que cualquiera que conozca el negocio como "Base Core" (sin el "Sales") pueda encontrar el sitio igual, dentro de lo que es realmente posible frente a la competencia por el término.
 
+8.3 — Auditoría de marca: registro, riesgo legal y sociedad
+
+Pendiente · esperando decisión de Mariano
+
+Mariano pidió ir más a fondo que 8.1/8.2: no SEO, sino la pregunta de negocio — ¿el nombre "Base Core" se puede conservar a futuro?, ¿hay que registrarlo?, ¿hay riesgo real de disputa legal con BaseCore™ (geoceldas) o Base Power?, ¿conviene dar de alta una sociedad?, ¿esa sociedad debería llevar otra razón social y usar "Base Core" solo como nombre de fantasía?
+
+**Research (14/9):** confirmado que la marca primaria de Base Power ("BASE POWER", no "Base Core") quedó **abandonada** en USPTO por no presentar declaración de uso — nunca llegó a registro. BaseCore™ (geoceldas, basecore.co) usa `™` sin evidencia de registro concedido, en un rubro (construcción) y clase Niza distintos de consultoría (35). Ningún buscador oficial de marcas (INPI, OEPM, EUIPO, USPTO, WIPO) es accesible por herramientas automatizadas — el riesgo se estima "bajo" con la evidencia disponible, pero sin la certeza que solo da una búsqueda profesional de antecedentes.
+
+**Recomendación del análisis:** conservar "Base Core" (refuerza la decisión ya tomada en 8.1); registrar la marca en INPI (Argentina, ~USD 52 por 2 clases) y OEPM (España, ~211 €) a nombre de Mariano como persona física — no hace falta sociedad para eso; tratar la constitución de una sociedad (SAS en Argentina, SL en España) como decisión aparte, de facturación/fiscal, no de protección de marca; si se constituye, usar "Base Core" como nombre de fantasía/nombre comercial con una razón social distinta es totalmente viable en los dos países.
+
+Detalle completo — panorama competitivo, costos y plazos de registro en AR/ES/UE, comparación de sociedades, mecánica legal del nombre de fantasía y plan de acción priorizado en 8 pasos — en el artifact dedicado: [Auditoría de Marca de Base Core](https://claude.ai/code/artifact/47aedb68-5cab-48da-9797-11eb0df79f28).
+
+**Sin implementar:** esto no es asesoría legal — antes de presentar cualquier solicitud de marca o constituir una sociedad, el análisis recomienda pasar por un agente de la propiedad industrial/abogado de marcas (mismo criterio que 4.5, GDPR). Esperando que Mariano revise la auditoría completa y confirme con qué pasos del plan de acción avanzar.
+
+**Para qué sirve:** saber si "Base Core" es un nombre en el que vale la pena seguir invirtiendo (SEO, contenido, marca) o si conviene resolver algo antes de seguir construyendo sobre él.
+
 ### Por dónde seguir
 
-Fases 2, 3, 5 (salvo mantenimiento recurrente), 6 y 7 quedaron cerradas del todo o en lo esencial; Fase 1 tiene dos colas abiertas (1.25 en progreso esperando tráfico, 1.28 nueva esperando el próximo análisis de PSI) — los 6 hallazgos de la auditoría del 13/9 (1.26, 1.27, 5.5-5.8) se resolvieron y deployaron el 14/9. Fase 8 (abierta el 14/9): 8.1 ya se cerró, 8.2 sigue activa. Toda la cronología de cómo se llegó hasta acá vive en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8) (SEO general) y en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929) (performance específicamente), no en este documento.
+Fases 2, 3, 5 (salvo mantenimiento recurrente), 6 y 7 quedaron cerradas del todo o en lo esencial; Fase 1 tiene dos colas abiertas (1.25 en progreso esperando tráfico, 1.28 nueva esperando el próximo análisis de PSI) — los 6 hallazgos de la auditoría del 13/9 (1.26, 1.27, 5.5-5.8) se resolvieron y deployaron el 14/9. Fase 8 (abierta el 14/9): 8.1 ya se cerró, 8.2 y 8.3 siguen activas. Toda la cronología de cómo se llegó hasta acá vive en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8) (SEO general) y en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929) (performance específicamente), no en este documento.
 
 Lo activo hoy, en orden de qué depende de qué:
 
 * **1.28 (performance con PageSpeed Insights):** reporte de Home ya analizado por `performance` — 3 hallazgos concretos listos para confirmar (fix de `sizes` en TechnologyBlock/AboutLogoBlock, re-chequeo del logo del Header, experimento de `will-change` en el hero). Mariano pide dejarlo para mañana, sin implementar nada hoy.
 * **8.2 (visibilidad de marca "Base Core" en buscadores):** #1, #2 y #4 en producción ([PR #41](https://github.com/marianosandonato/basecoreweb/pull/41), mergeado y verificado en vivo el 14/9). #7 bloqueada por decisión de Mariano (no tocar copy visible); #5 y #6 siguen dependiendo de 4.1 y 4.3.
+* **8.3 (auditoría de marca: registro, riesgo legal y sociedad):** research completo entregado (14/9), artifact dedicado publicado — esperando que Mariano lo revise y confirme con qué pasos del plan de acción avanzar (búsqueda profesional de antecedentes es el primer paso, antes de cualquier registro).
 * **4.1 (GBP), 4.3 (backlinks), 4.4 (testimonios), 4.5 (GDPR):** bloqueadas — 4.1 sin viaje previsto, 4.3 y 4.4 a la espera de que Mariano decida más adelante si avanza (13/9), 4.5 sin expertise legal disponible.
 * **1.25 (INP de campo):** ya no bloqueada — acceso a GA4 resuelto el 14/9 (service account, custom dimension registrada, script `scripts/seo/ga4.py` funcionando con datos reales). En progreso, esperando que se acumule tráfico posterior al registro de la custom dimension (no es retroactiva).
 * **4.6 (LinkedIn/referidos), 5.1 (revisión mensual), 5.2 (contenido periódico), 6.5 (visibilidad IA):** en pausa por decisión explícita o esperando datos/tráfico — ninguno bloqueado por otro, se retoman cuando corresponda.
 
-Con 4 tareas bloqueadas dependiendo de decisiones externas, 1.25 esperando solo tráfico, 1.28 y 8.2 esperando insumos de Mariano, no queda ningún pendiente propio sin dueño para retomar mañana sin una nueva instrucción de Mariano.
+Con 4 tareas bloqueadas dependiendo de decisiones externas, 1.25 esperando solo tráfico, 1.28, 8.2 y 8.3 esperando insumos/decisiones de Mariano, no queda ningún pendiente propio sin dueño para retomar mañana sin una nueva instrucción de Mariano.
 
-Última actualización: 2026-09-14 (1.28: reporte de PSI de Home analizado por `performance`, 3 hallazgos listos para confirmar — sin implementar, a retomar mañana; 8.1 cerrada — Mariano decide no avanzar con el naming, análisis completo movido al Historial; 8.2 con #1/#2 (PR #41) en producción, #4 establecido, #7 bloqueada; antes, el mismo día, se resolvió el acceso a GA4 para 1.25 y se cerraron los 6 hallazgos de la auditoría del 13/9) · se irá marcando como Hecho a medida que avancemos.
+Última actualización: 2026-09-14 (8.3 nueva: auditoría de marca completa — registro en INPI/OEPM, riesgo legal frente a BaseCore™ y Base Power, viabilidad de sociedad y nombre de fantasía — artifact dedicado publicado, esperando revisión de Mariano; antes, el mismo día: 1.28 con reporte de PSI de Home analizado por `performance`, 3 hallazgos listos para confirmar — sin implementar, a retomar mañana; 8.1 cerrada — Mariano decide no avanzar con el naming, análisis completo movido al Historial; 8.2 con #1/#2 (PR #41) en producción, #4 establecido, #7 bloqueada; antes de eso, se resolvió el acceso a GA4 para 1.25 y se cerraron los 6 hallazgos de la auditoría del 13/9) · se irá marcando como Hecho a medida que avancemos.
