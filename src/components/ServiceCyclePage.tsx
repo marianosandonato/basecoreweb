@@ -233,7 +233,7 @@ export default function ServiceCyclePage({
           />
           <span aria-hidden="true" className="absolute inset-0 bg-navy opacity-[0.82]" />
           <div className="container-bc relative py-[10px] text-center">
-            <h2 className="mx-auto max-w-[900px] font-heading text-[26px] font-bold leading-[40px] text-white md:text-[40px] md:leading-[50px] dt:text-[60px] dt:leading-[68px]">
+            <h2 className="mx-auto max-w-[900px] font-heading text-[26px] font-bold leading-[40px] text-white md:text-[40px] md:leading-[50px] dt:text-[45px] dt:leading-[58px]">
               {t.nextCycleTitle}
             </h2>
             <SquareCta href={data.nextCycle.href} className="mt-[35px]">

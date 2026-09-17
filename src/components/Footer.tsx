@@ -175,7 +175,7 @@ export default function Footer() {
                     <li key={s.href} className="max-[767px]:text-center">
                       <Link
                         href={s.href}
-                        className="font-sans text-[16px] leading-[32.4px] text-[#C5D2DD] transition-colors hover:text-white"
+                        className="font-sans text-[18px] leading-[32.4px] text-[#C5D2DD] transition-colors hover:text-white"
                       >
                         {s.label}
                       </Link>
