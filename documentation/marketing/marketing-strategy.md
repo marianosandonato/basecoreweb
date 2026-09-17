@@ -1,8 +1,8 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`social-content`, `seo-marketing`, `web-lead`) — la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma). Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/artifact/5nEdULGfDWCWES17cpptDp
-> - Última sincronización: 2026-09-17
-> - Nota: este documento reemplaza y renombra el artifact "Plan Social Media" (creado 4/9). Fusiona esa auditoría con dos borradores de referencia (Plan de Marketing y Plan de Social Media, hechos por Mariano con ChatGPT, no definitivos) más verificación real contra el sitio, el Plan de SEO y los perfiles sociales en vivo. Estado al 17/9: la decisión de dirección de contenido (A/B/C, ver Fase 2) sigue sin tomar — carry-over del 4/9.
+> - Última sincronización: 2026-09-18
+> - Nota: este documento reemplaza y renombra el artifact "Plan Social Media" (creado 4/9). Fusiona esa auditoría con dos borradores de referencia (Plan de Marketing y Plan de Social Media, hechos por Mariano con ChatGPT, no definitivos) más verificación real contra el sitio, el Plan de SEO y los perfiles sociales en vivo. Estado al 18/9: Mariano compartió el estado real de su LinkedIn personal logueado (F2.1/F2.2/F2.7 actualizados con datos confirmados: About y Featured no existen, headline es solo "Strategic Consulting", cero posts recientes, Open to Work activo). La decisión de dirección de contenido (A/B/C, ver Fase 2) sigue sin tomar — carry-over del 4/9.
 
 ---
 
@@ -16,7 +16,7 @@ Plan único de marketing y preventa de Base Core — fusiona el Plan de Social M
 
 Tablero activo · 1 decisión central sin tomar
 
-**34**
+**37**
 accionables
 
 **3**
@@ -80,9 +80,9 @@ La sección Intro de facebook.com/basecore muestra el texto "base-core" pero el 
 
 **Quién lo hace:** Mariano, directo en Facebook.
 
-#### 1.3 LinkedIn personal: ubicación ambigua
+#### 1.3 LinkedIn personal: el perfil se contradice a sí mismo en ubicación
 
-El perfil indexado de Mariano declara "Greater Buenos Aires, Argentina", mientras Base Core se presenta con sede en Barcelona y el sitio apunta a España + Latinoamérica. Puede ser intencional (Mariano opera desde ahí), pero si no está resuelto a propósito genera ambigüedad sobre desde dónde opera la consultoría — se resuelve junto con el headline en F2.1.
+Confirmado en vivo (18/9): el encabezado del perfil dice **"Greater Buenos Aires"**, pero la propia experiencia de "Founder · Base Core" un poco más abajo dice **"Barcelona, Catalonia, Spain · Remote"**. No es un dato viejo del índice — es el perfil de hoy contradiciéndose a sí mismo entre dos secciones. Se resuelve junto con el headline y el About en F2.1–F2.2: no hace falta elegir una sola ciudad, alcanza con una frase que explique el alcance ("consultoría con base en Barcelona, operando también desde Argentina, para clientes en España y Latinoamérica").
 
 Fase 2
 
@@ -98,14 +98,29 @@ Canal ya decidido como prioritario (Plan de SEO, 4.6) y confirmado por la audito
 | 2.4 | Publicar los 3 reciclajes de blog ya identificados (CRM, calificación de leads, churn) | Pendiente |
 | 2.5 | Producir el primer caso anónimo original (pilar 04) | Pendiente |
 | 2.6 | Sistematizar pedidos de referidos (segunda mitad de la decisión 4.6, nunca ejecutada) | Pendiente |
+| 2.7 | Revisar "Open to Work" y reordenar skills destacados | Pendiente |
 
-#### 2.1–2.2 Perfil: headline, About, Featured, banner
+#### 2.1–2.2 Perfil: headline, About, Featured, banner — confirmado en vivo el 18/9
 
-Lo único verificable sin login hoy es que el headline indexado dice *"Founder / Strategic Consulting"* — un cargo, no una propuesta de valor. About, Featured y banner no se pudieron auditar desde afuera (LinkedIn bloquea todo sin sesión): Mariano tiene que revisarlos él mismo, logueado, antes de que nadie pueda decir con certeza qué falta ahí.
+Mariano compartió el estado real, logueado. Es más urgente de lo que la auditoría externa podía ver:
+
+* **Headline hoy:** *"Strategic Consulting"* — ni siquiera menciona "Founder" ni Base Core. Ningún gancho, ninguna audiencia.
+* **About: no existe.** LinkedIn le está mostrando a Mariano el propio prompt de "Write a summary to highlight your personality or work experience" — la sección está vacía, no débil.
+* **Featured: no existe.** No aparece entre las secciones del perfil (Experience, Education, Skills, Recommendations, Courses, Languages, Interests) — nunca se creó.
+* **Actividad: cero posts recientes.** El propio widget del perfil dice "You haven't posted yet" — el único post que existe es el de fundación de Base Core (agosto 2022), tres años sin publicar nada más. Coherente con 0 post impressions en los últimos 7 días.
+* **Foto de perfil:** recorte pequeño de una foto suya dando una charla (la misma que usa como banner) — el banner en sí es bueno (lo muestra como expositor/referente), pero el recorte circular de perfil se lee mal en miniatura. Vale la pena una foto de perfil aparte, más clara a tamaño chico.
+
+Para cuando se escriba (fuera del alcance de esta sesión, es redacción de copy):
 
 * Headline → qué hace Base Core + para quién (pyme) + diferencial (proceso antes que herramienta), no un cargo genérico.
-* About → problema que resuelve → metodología (Diagnóstico → Plan de Ruta → Implementación → Mejora continua) → capacidades → CTA a agendar relevamiento.
-* Featured → link al sitio, al e-book, y al primer caso/artículo publicado una vez que exista.
+* About → problema que resuelve → metodología (Diagnóstico → Plan de Ruta → Implementación → Mejora continua) → capacidades → CTA a agendar relevamiento. Resolver ahí también la ambigüedad de ubicación (ver F1.3).
+* Featured → link al sitio, al e-book, y al primer caso/artículo publicado una vez que exista (F2.4/F2.5).
+
+#### 2.7 Open to Work y skills destacados
+
+El perfil tiene activo **"Open to Work" (visible solo a recruiters)** con una lista de roles genéricos de empleado (Commercial Consultant, Business Process Consultant, Sales Manager, Commercial Director, Business Process Manager) — no es público para cualquier visitante, pero es una señal que choca con la narrativa de founder si en algún momento se filtra o si Mariano ya no quiere esa opcionalidad. Decisión simple: mantenerlo (opcionalidad real) o apagarlo (coherencia total con el posicionamiento de founder) — no hay una respuesta correcta, es una preferencia de Mariano.
+
+Aparte, los skills con más endosos hoy son **Inglés** y **Microsoft Word** — nada de ventas, consultoría comercial o CRM aparece entre los primeros. Reordenar los "pinned skills" para que las 3 fijadas arriba sean relevantes a Base Core (ej. Consultoría Comercial, CRM, Estrategia de Ventas) es una edición de minutos con impacto directo en cómo se lee el perfil de un vistazo.
 
 #### Pendiente de tu decisión — dirección de contenido (carry-over del 4/9)
 
@@ -185,12 +200,17 @@ El problema prioritario del diagnóstico (ver [Diagnóstico](#diagnostico)): baj
 | 5.1 | Publicar los 3 testimonios ya redactados e implementados (Barfer, Don Seitán, W Profesional) | Bloqueado |
 | 5.2 | Conseguir 1–2 case studies completos (contexto → problema → análisis → implementación → resultado) | Pendiente |
 | 5.3 | Reseña en Google Business Profile | Bloqueado |
+| 5.4 | Pedir recomendaciones de LinkedIn a 1–2 clientes actuales de Base Core | Pendiente |
 
 #### 5.1 Testimonios: listos, sin publicar
 
 Ya redactados en ES/EN, implementados como sección "Testimonios" en el Home (rama `feat/client-testimonials`, commit `4c62ac7`), verificados con tsc/lint/build y revisados visualmente. Bloqueado desde el 13/9 — Mariano decide cuándo mergear a producción. Detalle completo (por qué esa redacción, por qué sin apellido, por qué sin schema Review) vive en el Plan de SEO, tarea 4.4 — no se duplica acá.
 
 **Por qué importa para marketing y no solo para SEO:** es la palanca de prueba social de mayor impacto y menor costo disponible hoy — está lista, solo falta la decisión de mergear.
+
+#### 5.4 Recomendaciones de LinkedIn
+
+El perfil ya tiene 4 recomendaciones recibidas, pero son de ex-reportes directos (hablan de liderazgo de equipo), no de clientes de Base Core — no sirven como prueba social B2B frente a un prospecto. Pedirle una recomendación corta a 1–2 de los mismos clientes que ya dieron el OK para el testimonio del sitio (Barfer, Don Seitán, W Profesional — ver 5.1) es la forma más barata de sumar prueba social directamente donde vive el LinkedIn personal, sin depender de que se mergee nada al sitio.
 
 #### 5.2 Case studies
 
@@ -474,4 +494,4 @@ Aplicado acá: cada pieza de contenido pasa por TRIAGE (qué problema del compra
 
 × Duplicar en este documento el detalle técnico que ya vive en el Plan de SEO o en la Auditoría de Marca — linkear, no repetir.
 
-Marketing Strategy Basecore · Base Core · actualizado el 17 de septiembre de 2026, fusionando el Plan Social Media (creado 4/9, auditoría `social-content`) con los borradores de referencia de Mariano (ChatGPT) y verificaciones propias · agentes: `social-content` (auditoría en vivo de LinkedIn/Instagram/Facebook, 17/9), `seo-marketing` (cruce con Plan de SEO y Mapa de Keywords, 17/9) · memoria: `.agents/product-marketing.md`, `documentation/seo/plan-seo.md`, `documentation/seo/mapa-keywords.md` · espejo de trabajo: `documentation/marketing/marketing-strategy.md`
+Marketing Strategy Basecore · Base Core · actualizado el 18 de septiembre de 2026, fusionando el Plan Social Media (creado 4/9, auditoría `social-content`) con los borradores de referencia de Mariano (ChatGPT) y verificaciones propias · agentes: `social-content` (auditoría en vivo de LinkedIn/Instagram/Facebook, 17/9), `seo-marketing` (cruce con Plan de SEO y Mapa de Keywords, 17/9) · F2.1/F2.2/F2.7 actualizados el 18/9 con datos reales que Mariano compartió logueado (headline, About inexistente, Featured inexistente, actividad, Open to Work, skills) · memoria: `.agents/product-marketing.md`, `documentation/seo/plan-seo.md`, `documentation/seo/mapa-keywords.md` · espejo de trabajo: `documentation/marketing/marketing-strategy.md`
