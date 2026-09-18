@@ -2,13 +2,25 @@ import type { Metadata } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
 import ContactSection from "@/components/ContactSection";
 
+const title = "Diagnóstico Gratuito";
+const description =
+  "Solicita un diagnóstico gratuito: dejanos tus datos y te proponemos un plan de ruta para mejorar tus procesos y metodologías.";
+
 export const metadata: Metadata = {
-  title: "Diagnóstico Gratuito",
-  description:
-    "Solicita un diagnóstico gratuito: dejanos tus datos y te proponemos un plan de ruta para mejorar tus procesos y metodologías.",
+  title,
+  description,
   alternates: {
     canonical: "/contacto",
     languages: { es: "/contacto", en: "/en/contact", "x-default": "/contacto" },
+  },
+  openGraph: {
+    locale: "es_ES",
+    title,
+    description,
+    // breadcrumb.jpg is /contacto's own hero/LCP image (Breadcrumb variant="hero",
+    // shared with /ebook) — reused here instead of the generic Home image, same
+    // pattern as every other service/landing page (own hero photo as og:image).
+    images: ["/images/breadcrumb.jpg"],
   },
 };
 
