@@ -294,3 +294,45 @@ para SEO.**
   el artifact recién publicado — conserva intacto el trabajo que la otra
   sesión ya había hecho ahí el mismo día (reorden de "Activo hoy",
   seguimiento de 8.2).
+
+## Fase 6 — Performance
+
+3 hallazgos: `perf-hero-tecnologia`, `perf-cloudflare-script`,
+`perf-psi-pendiente`. Mismo criterio que Fase 5: el Plan de SEO ya es
+dueño de performance desde el 12/9 (Fase 1, tareas 1.23+) — se migra en
+vez de implementar acá, pero investigando primero en vez de mover los 3
+hallazgos tal cual.
+
+**`perf-hero-tecnologia` — el hallazgo original estaba mal etiquetado.**
+La auditoría lo describía como "imagen hero (LCP)" de /tecnologia
+(bg-5.jpg, 68KB vs 4.7-37KB del resto). Revisando
+`src/app/(es)/tecnologia/page.tsx`: esa imagen es el fondo de
+`ContactSection`, la sección de contacto al FINAL de la página — no la
+imagen hero. El hero real usa `PageHero` (componente compartido), ya
+cubierto por 1.26/1.27. Al no ser LCP, no hace falta comparar calidad ni
+generar el preview de Vercel que se había pedido — se cierra directo en
+el Plan de SEO como tarea **1.36, Hecho** (sin abrir tarea activa).
+
+**`perf-cloudflare-script` y `perf-psi-pendiente` ya tenían dueño en
+1.28** (la tarea recurrente de performance con PageSpeed Insights):
+- El script de Cloudflare (email-decode, sin async/defer) es el MISMO
+  hallazgo que 1.28 ya tenía cerrado desde el 14/9 en su lista "Ya
+  resuelto o fuera de alcance" — cero referencias en el repo, feature
+  del borde de Cloudflare. No se abrió tarea nueva.
+- El pedido de dar acceso a una API key para consultar PSI/CrUX de
+  forma autónoma (en vez de reportes manuales) se agregó como nota
+  dentro de la misma 1.28 — pendiente de que el usuario defina la API
+  (PageSpeed Insights API o sumar CrUX History) y comparta la key.
+
+**Estado: HECHO.** Plan de SEO: 1.28 actualizada con las dos notas, 1.36
+agregada como Hecho. Auditoría Final: los 3 ítems pasan a "OK" con nota
+explicando la migración/investigación y apuntando a la tarea
+correspondiente. `documentation/seo/plan-seo.md` resincronizado.
+
+## Fase 7 en adelante
+
+Sin empezar — arranca cuando el usuario confirme el resumen de Fase 6 y
+dé luz verde a Accesibilidad (fase 7 según el orden del artifact). Ojo:
+`acc-puestos-inaccesible` ya quedó parcialmente resuelto como efecto
+colateral de la Fase 2 (Flip Cards) — hace falta verificar qué falta,
+no asumir que ya está cerrado del todo.
