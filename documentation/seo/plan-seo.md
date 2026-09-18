@@ -2,7 +2,7 @@
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/f6230fde-8996-4d03-ae8a-4211f111ed90
 > - Última sincronización: 2026-09-18
-> - Nota: 9 hallazgos SEO + 3 de Performance de la Auditoría Final de UX/diseño (14-18/9) se migraron acá el 18/9, a pedido de Mariano, para no pisar el seguimiento con dos artifacts sobre el mismo tema (regla Camino B). SEO: Fase 1 suma 1.29-1.35, Fase 3 suma 3.11 y 3.12, con la propuesta exacta de copy ya resuelta en 1.33/1.34/1.35. Performance: 1.28 sumó la automatización de PSI/CrUX que pidió Mariano (API key) + la nota de que el script de Cloudflare ya estaba cerrado ahí; 1.36 se cerró directo (Hecho) — la imagen que la auditoría marcaba como "hero" de /tecnologia resultó ser el fondo de la sección de Contacto, no la imagen real de LCP.
+> - Nota: 9 hallazgos SEO + 3 de Performance de la Auditoría Final de UX/diseño (14-18/9) se migraron acá el 18/9. Además, Mariano generó su propia API key de PageSpeed Insights — nuevo script `scripts/seo/psi.py` (mismo patrón que `ga4.py`/`gsc.py`, credencial fuera del repo) consulta la API directo, sin depender de reportes manuales. La primera corrida real encontró una regresión de LCP en mobile de Home (~3.8s → ~5.0-5.2s desde el 14/9, consistente en dos corridas) — anotada en 1.28, sin investigar la causa todavía.
 
 ---
 
@@ -45,11 +45,11 @@ INP (Interaction to Next Paint) reemplazó a FID como métrica de Core Web Vital
 
 1.28 — Performance con PageSpeed Insights (mobile/desktop)
 
-Pendiente · 3 hallazgos listos para confirmar, a retomar mañana
+Pendiente · API de PSI automatizada, señal de regresión de LCP mobile (18/9)
 
 Tarea nueva (14/9), recurrente — no se cierra de una vez como 1.14, sino que se va revisando cada vez que aparece un reporte nuevo de PageSpeed Insights. 1.14 ya dejó Mobile en 88 y Desktop en 93-98 (confirmado 11/9), pero Mariano señala que sigue habiendo "ruidos" puntuales en mobile y desktop que vale la pena seguir bajando.
 
-**Mecánica:** Mariano pasa un reporte de PSI nuevo, `performance` lo analiza y propone hallazgos concretos con impacto estimado, se listan acá con su estado, y se resuelven de a uno (mismo criterio que 1.26/1.27, no cambios especulativos sin medir antes/después con PSI real).
+**Mecánica (actualizada 18/9):** ya no depende de que Mariano pase un reporte a mano — `scripts/seo/psi.py` consulta la PageSpeed Insights API directo (API key de Mariano, guardada fuera del repo en `~/.config/basecoreweb-seo/psi-api-key`, mismo patrón que GA4/GSC). `performance` corre `uv run scripts/seo/psi.py check --url <url> --strategy mobile|desktop|both` cuando haga falta, sin esperar un reporte manual. Mismo criterio que antes: hallazgos concretos con impacto estimado, se resuelven de a uno, no cambios especulativos sin medir antes/después con PSI real (mismo criterio que 1.26/1.27).
 
 Reporte PSI de Home, 14/9 17:25 — resultados
 
@@ -57,6 +57,26 @@ Reporte PSI de Home, 14/9 17:25 — resultados
 Mobile:  Performance 87 · Accessibility 100 · Best Practices 100 · SEO 100
          FCP 2.0s · LCP 3.8s · TBT 70ms · CLS 0.003 · SI 3.1s
 Desktop: Performance 98 · FCP 0.5s · LCP 0.9s · TBT 20ms · CLS 0.001 · SI 1.3s
+```
+
+Reporte PSI de Home, 18/9 — vía psi.py (dos corridas de mobile, para descartar ruido de laboratorio)
+
+```
+Mobile (corrida 1): Performance 65 · Accessibility 100 · Best Practices 100 · SEO 100
+                    FCP 2.8s · LCP 5.0s · TBT 310ms · CLS 0.003 · SI 6.5s
+Mobile (corrida 2): Performance 74 · Accessibility 100 · Best Practices 100 · SEO 100
+                    FCP 2.8s · LCP 5.2s · TBT 70ms · CLS 0.003 · SI 4.1s
+Desktop:            Performance 97 · Accessibility 100 · Best Practices 100 · SEO 100
+                    FCP 0.8s · LCP 1.2s · TBT 50ms · CLS 0 · SI 1.1s
+
+Lectura: Performance/TBT tienen ruido normal de laboratorio entre
+corridas (65 vs 74, TBT 310ms vs 70ms) — no es señal por sí solo.
+Pero FCP (2.8s, antes 2.0s) y sobre todo LCP (5.0-5.2s, antes 3.8s)
+salieron CONSISTENTES en las dos corridas — eso sí es señal real de
+regresión en mobile desde el 14/9, no ruido. Desktop se mantiene en
+línea con el baseline (97 vs 98). Sin investigar la causa todavía —
+queda pendiente de que Mariano confirme si quiere que se investigue
+ahora o se acumule con el resto de 1.28.
 ```
 
 **Análisis de `performance` (14/9), contra código real + inspección en vivo de producción con Playwright — nada implementado, esperando confirmación de Mariano mañana:**
@@ -471,7 +491,7 @@ Cerrada en lo esencial — 1.14 (Core Web Vitals) se confirmó el 11/9. 1.24 (re
 | 1.25 | INP real de campo | En progreso |
 | 1.26 | Cap de `sizes` en el hero de Home | Hecho |
 | 1.27 | Bajar `quality` en logos (Header/Footer) | Hecho |
-| 1.28 | Performance con PageSpeed Insights (mobile/desktop, recurrente) | Pendiente · 3 hallazgos, a retomar mañana |
+| 1.28 | Performance con PageSpeed Insights (mobile/desktop, recurrente) | Pendiente · API de PSI automatizada, señal de regresión de LCP mobile (18/9) |
 | 1.29 | Title de /en sin sufijo de marca | Pendiente |
 | 1.30 | /contacto sin Open Graph / Twitter Card propio | Pendiente |
 | 1.31 | Breadcrumb dice "Home" en inglés en páginas ES | Pendiente |
@@ -634,4 +654,4 @@ Fase abierta el 14/9. 8.1 se cerró el mismo día (decisión tomada: no avanzar)
 | 8.2 | Visibilidad de marca: no aparece buscando "Base Core" solo | En progreso · #1/#2/#4 en producción, #8-#11 nuevas |
 | 8.3 | Auditoría de marca: registro, riesgo legal y sociedad | Pendiente · esperando decisión de Mariano |
 
-Última actualización: 2026-09-18 (los 3 hallazgos de Performance de la Auditoría Final de UX/diseño se sumaron a 1.28 — dos ya tenían dueño ahí (el script de Cloudflare ya estaba cerrado en la lista de "fuera de alcance", y el pedido de API key para PSI/CrUX autónomo se agregó como nota a la misma tarea recurrente) y el tercero, 1.36, se verificó como mal etiquetado (no es la imagen hero/LCP real de /tecnologia, sino el fondo de la sección de Contacto) y se cerró directo sin abrir tarea activa. Antes, ese mismo día: 9 hallazgos SEO de la Auditoría Final de UX/diseño migrados acá a pedido de Mariano, para no pisar el seguimiento con dos artifacts distintos sobre el mismo tema — Fase 1 suma 1.29-1.35, Fase 3 suma 3.11 y 3.12; en 1.33, 1.34 y 1.35 la migración ya incluye la propuesta exacta de copy que Mariano había pedido ver antes de decidir, en vez de dejarla pendiente; el artifact de origen queda con esos 9 ítems marcados como resueltos/migrados, sin duplicar el detalle). Antes, ese mismo día (reorden a pedido de Mariano: nueva sección "Activo hoy" arriba de todo con el detalle completo de cada tarea Pendiente/En progreso agrupado por fase — las tareas Bloqueadas se quedan documentadas en su fase de origen, sin subir; se sacó la sección "Por dónde seguir" del final por quedar redundante con la nueva sección de arriba; cada fase conserva intacta su tabla de estado). Antes, el mismo día: 8.2: auditoría de seguimiento a pedido de Mariano — verificado en vivo que alternateName/llms.txt siguen en producción, comparación de GSC contra la línea de base del 14/9 (movimiento leve y positivo, sin evidencia causal por la ventana corta), nueva línea de base para la query "basecore" sin espacio, SERP y Perplexity sin cambio respecto al 14/9, y 4 recomendaciones nuevas —#8 a #11— sin implementar, esperando confirmar con cuáles avanzar; antes, el 14/9: 8.3 nueva (auditoría de marca completa — registro en INPI/OEPM, riesgo legal frente a BaseCore™ y Base Power, viabilidad de sociedad y nombre de fantasía — artifact dedicado publicado, esperando revisión de Mariano); 1.28 con reporte de PSI de Home analizado por `performance`, 3 hallazgos listos para confirmar — sin implementar, a retomar mañana; 8.1 cerrada — Mariano decide no avanzar con el naming, análisis completo movido al Historial; 8.2 con #1/#2 (PR #41) en producción, #4 establecido, #7 bloqueada; antes de eso, se resolvió el acceso a GA4 para 1.25 y se cerraron los 6 hallazgos de la auditoría del 13/9 · se irá marcando como Hecho a medida que avancemos.
+Última actualización: 2026-09-18 (1.28: Mariano generó su propia API key de PageSpeed Insights — nuevo script scripts/seo/psi.py consulta la API directo, sin depender de reportes manuales; primera corrida real encontró una regresión de LCP en mobile de Home, ~3.8s a ~5.0-5.2s desde el 14/9, consistente en dos corridas — sin investigar la causa todavía, esperando confirmación de Mariano. Antes, ese mismo día: los 3 hallazgos de Performance de la Auditoría Final de UX/diseño se sumaron a 1.28 — dos ya tenían dueño ahí (el script de Cloudflare ya estaba cerrado en la lista de "fuera de alcance", y el pedido de API key para PSI/CrUX autónomo se agregó como nota a la misma tarea recurrente) y el tercero, 1.36, se verificó como mal etiquetado (no es la imagen hero/LCP real de /tecnologia, sino el fondo de la sección de Contacto) y se cerró directo sin abrir tarea activa. Antes, ese mismo día: 9 hallazgos SEO de la Auditoría Final de UX/diseño migrados acá a pedido de Mariano, para no pisar el seguimiento con dos artifacts distintos sobre el mismo tema — Fase 1 suma 1.29-1.35, Fase 3 suma 3.11 y 3.12; en 1.33, 1.34 y 1.35 la migración ya incluye la propuesta exacta de copy que Mariano había pedido ver antes de decidir, en vez de dejarla pendiente; el artifact de origen queda con esos 9 ítems marcados como resueltos/migrados, sin duplicar el detalle). Antes, ese mismo día (reorden a pedido de Mariano: nueva sección "Activo hoy" arriba de todo con el detalle completo de cada tarea Pendiente/En progreso agrupado por fase — las tareas Bloqueadas se quedan documentadas en su fase de origen, sin subir; se sacó la sección "Por dónde seguir" del final por quedar redundante con la nueva sección de arriba; cada fase conserva intacta su tabla de estado). Antes, el mismo día: 8.2: auditoría de seguimiento a pedido de Mariano — verificado en vivo que alternateName/llms.txt siguen en producción, comparación de GSC contra la línea de base del 14/9 (movimiento leve y positivo, sin evidencia causal por la ventana corta), nueva línea de base para la query "basecore" sin espacio, SERP y Perplexity sin cambio respecto al 14/9, y 4 recomendaciones nuevas —#8 a #11— sin implementar, esperando confirmar con cuáles avanzar; antes, el 14/9: 8.3 nueva (auditoría de marca completa — registro en INPI/OEPM, riesgo legal frente a BaseCore™ y Base Power, viabilidad de sociedad y nombre de fantasía — artifact dedicado publicado, esperando revisión de Mariano); 1.28 con reporte de PSI de Home analizado por `performance`, 3 hallazgos listos para confirmar — sin implementar, a retomar mañana; 8.1 cerrada — Mariano decide no avanzar con el naming, análisis completo movido al Historial; 8.2 con #1/#2 (PR #41) en producción, #4 establecido, #7 bloqueada; antes de eso, se resolvió el acceso a GA4 para 1.25 y se cerraron los 6 hallazgos de la auditoría del 13/9 · se irá marcando como Hecho a medida que avancemos.

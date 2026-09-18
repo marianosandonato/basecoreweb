@@ -387,6 +387,12 @@ artifact:
   en otro lado: `sp-h1-home`, `ux-logos-gap`, `perf-cloudflare-script`
   (este último ya cerrado en 1.28 desde el 14/9).
 
-**Pendiente real, fuera de este repo:** que el usuario defina la API de
-PSI/CrUX (1.28 del Plan de SEO) para que `performance` pueda consultar
-Core Web Vitals sin depender de reportes manuales.
+**Actualización (18/9, posterior al cierre):** el usuario generó su propia
+API key de PageSpeed Insights y la guardó en
+`~/.config/basecoreweb-seo/psi-api-key`. Se agregó `scripts/seo/psi.py`
+(commit `61931b6`, mismo patrón que `ga4.py`/`gsc.py`) y quedó verificado
+contra basecoresales.com real. La primera corrida encontró una regresión
+real de LCP en mobile de Home (~3.8s → ~5.0-5.2s desde el 14/9,
+consistente en dos corridas, no ruido de laboratorio) — anotada en la
+tarea 1.28 del Plan de SEO, sin investigar la causa todavía. Con esto,
+el único pendiente que quedaba fuera de este repo también se resolvió.
