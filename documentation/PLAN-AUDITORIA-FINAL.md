@@ -120,6 +120,55 @@ viejo con `.next` builds indexados, no de este cambio). Sin verificación
 interactiva en navegador real (sandbox de Chromium no disponible en este
 entorno) — el usuario verifica siguiendo la nota de cada ítem en el artifact.
 
+### Corrección (18/9): el fix de arriba no alcanzaba — causa raíz real encontrada
+
+Mariano probó en su iPhone real y el captcha seguía sin funcionar. El fix de
+`dd8392f` solo cubría fallos que Turnstile reporta con sus propios callbacks
+(`error-callback`/`timeout-callback`) — pero el caso real no dispara
+ninguno de los dos.
+
+**Investigación (`/investigate`):** reproducido con Playwright headless
+(`--no-sandbox`, emulación iPhone 13 y desktop) contra basecoresales.com en
+producción: el pedido interno de Turnstile a
+`challenges.cloudflare.com/cdn-cgi/challenge-platform/...` se aborta con
+warning "No available adapters", igual en mobile que en desktop headless —
+eso descartó la hipótesis "es específico de mobile" (es Cloudflare
+detectando automatización, funcionando como debería). El dato real vino de
+Mariano: en su iPhone/Safari real el checkbox aparece pero queda girando
+para siempre, sin el link de reintentar. Confirmado por research (Cloudflare
+Community + foros de Apple): es un conflicto **documentado y sin resolver**
+entre Turnstile e **iCloud Private Relay / "Evitar rastreo entre sitios"**
+de Safari — el challenge administrado queda colgado sin disparar ningún
+callback de error, por eso el fix anterior no lo detectaba.
+
+**Decisión de Mariano:** no se puede arreglar Turnstile desde acá (no
+depende de nuestro código ni es controlable desde el visitante). Se acepta
+más riesgo de spam a cambio de no perder ningún lead real: si el widget
+queda confirmado colgado (temporizador propio de 12s, independiente de los
+callbacks de Turnstile), el formulario se habilita para enviar sin token
+verificado, con el honeypot existente como único filtro anti-spam para ese
+caso puntual.
+
+**Estado: HECHO, sin commitear todavía.**
+- `src/components/Turnstile.tsx`: nuevo prop `onStuck` que avisa al padre
+  apenas se confirma el cuelgue (timer propio, o los callbacks de Turnstile
+  cuando sí disparan) — ya no depende de que Cloudflare reporte el error.
+- `src/components/ContactForm.tsx` + `src/components/EbookForm.tsx`: nuevo
+  estado `captchaStuck`; el botón de submit se habilita si hay token real
+  **o** si el widget quedó confirmado colgado. Mensaje inline (ES/EN)
+  explicando que puede enviar igual.
+- `src/lib/turnstile.ts`: `verifyTurnstile` ahora falla abierto (`true`)
+  cuando no llega ningún token (antes rechazaba con 400) — un token que sí
+  llega se sigue validando estrictamente contra la API de Cloudflare, sin
+  cambios ahí.
+- Verificado end-to-end con Playwright local (`npm run dev`, viewport
+  mobile 390×844, site key real de Vercel): botón deshabilitado en t=0,
+  mensaje "No pudimos verificar..." visible y botón habilitado en t=13s,
+  POST a `/api/contact` pasa la verificación de captcha (llega hasta el
+  chequeo de `RESEND_API_KEY`, que no está configurado en local — esperado).
+- `npx tsc --noEmit` y `npx eslint` limpios en los 4 archivos tocados;
+  `npm run build` completo sin errores.
+
 ## Fase 2 en adelante
 
 Sin empezar — arranca cuando el usuario confirme este resumen y de luz

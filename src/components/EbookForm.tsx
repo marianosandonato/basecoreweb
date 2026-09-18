@@ -29,6 +29,8 @@ const copy = {
     defaultError: "No se pudo procesar la descarga.",
     errorAlsoText: "También puedes escribirnos por",
     errorOrText: "o a",
+    captchaStuckMessage: "No pudimos verificar la seguridad automáticamente — podés descargar igual.",
+    captchaRetryLabel: "Reintentar la verificación",
   },
   en: {
     name: "FIRST NAME",
@@ -44,6 +46,8 @@ const copy = {
     defaultError: "We couldn't process the download.",
     errorAlsoText: "You can also reach us on",
     errorOrText: "or at",
+    captchaStuckMessage: "We couldn't verify the security check automatically — you can still download it.",
+    captchaRetryLabel: "Retry verification",
   },
 } as const;
 
@@ -78,6 +82,7 @@ export default function EbookForm({
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [captchaStuck, setCaptchaStuck] = useState(false);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -172,6 +177,9 @@ export default function EbookForm({
             siteKey={TURNSTILE_SITE_KEY}
             onVerify={setCaptchaToken}
             onExpire={() => setCaptchaToken(null)}
+            onStuck={() => setCaptchaStuck(true)}
+            stuckMessage={t.captchaStuckMessage}
+            retryLabel={t.captchaRetryLabel}
           />
         </div>
       )}
@@ -179,7 +187,7 @@ export default function EbookForm({
       <div className="pt-0 sm:col-span-2 md:pt-[13px]">
         <button
           type="submit"
-          disabled={status === "sending" || (Boolean(TURNSTILE_SITE_KEY) && !captchaToken)}
+          disabled={status === "sending" || (Boolean(TURNSTILE_SITE_KEY) && !captchaToken && !captchaStuck)}
           /* 18 + 22 + 18 = 58px, the original's `btn-cta` line-height. */
           className="w-auto rounded-[4px] bg-primary px-[24px] py-[12px] font-heading text-[14px] font-bold uppercase leading-[22px] tracking-[2px] text-white transition-colors duration-300 hover:bg-[rgba(0,0,0,0.77)] disabled:cursor-not-allowed disabled:opacity-60 md:px-[30px] md:py-[18px]"
         >

@@ -12,11 +12,14 @@ declare global {
 }
 
 const SCRIPT_SRC = "https://challenges.cloudflare.com/turnstile/v0/api.js";
-// How long to wait, after the widget mounts, before offering a manual
-// "reintentar" escape hatch. Covers the two real-device failure modes found
-// in mobile QA: the challenge silently hangs in "verifying" forever, or the
-// script/iframe never loads at all (blocked by a content blocker or a flaky
-// mobile connection) so the container stays empty with nothing to tap.
+// How long to wait, after the widget mounts, before treating it as stuck.
+// Covers the real-device failure modes found in mobile QA: iOS Safari with
+// iCloud Private Relay or "Prevent Cross-Site Tracking" makes the managed
+// challenge hang in "verifying" forever with no error/timeout callback at
+// all (a documented Cloudflare/Safari conflict, not something fixable from
+// here) — plus the script/iframe never loading (content blocker, flaky
+// connection). Either way the visitor is stuck looking at a dead widget, so
+// `onStuck` tells the parent form to stop requiring a token.
 const STUCK_TIMEOUT_MS = 12_000;
 
 let scriptPromise: Promise<void> | null = null;
@@ -44,11 +47,16 @@ export default function Turnstile({
   siteKey,
   onVerify,
   onExpire,
-  retryLabel = "¿No cargó la verificación? Reintentar",
+  onStuck,
+  stuckMessage = "No pudimos verificar la seguridad automáticamente — podés enviar el formulario igual.",
+  retryLabel = "Reintentar la verificación",
 }: {
   siteKey: string;
   onVerify: (token: string) => void;
   onExpire?: () => void;
+  /** Fires once the widget is confirmed stuck (see STUCK_TIMEOUT_MS above) — the parent form should stop requiring a token past this point. */
+  onStuck?: () => void;
+  stuckMessage?: string;
   retryLabel?: string;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -62,9 +70,13 @@ export default function Turnstile({
     if (!container) return;
     setStuck(false);
 
-    const stuckTimer = window.setTimeout(() => {
-      if (!cancelled) setStuck(true);
-    }, STUCK_TIMEOUT_MS);
+    function markStuck() {
+      if (cancelled) return;
+      setStuck(true);
+      onStuck?.();
+    }
+
+    const stuckTimer = window.setTimeout(markStuck, STUCK_TIMEOUT_MS);
 
     function clearWidget() {
       if (widgetIdRef.current && window.turnstile) {
@@ -90,21 +102,13 @@ export default function Turnstile({
               onExpire?.();
             },
             // Both a network/render failure and an interactive-challenge
-            // timeout leave the checkbox unusable — surface the same
-            // "reintentar" escape hatch instead of leaving the form stuck.
-            "error-callback": () => {
-              if (cancelled) return;
-              setStuck(true);
-            },
-            "timeout-callback": () => {
-              if (cancelled) return;
-              setStuck(true);
-            },
+            // timeout leave the checkbox unusable — same fallback as the
+            // silent Safari hang the stuckTimer above catches.
+            "error-callback": markStuck,
+            "timeout-callback": markStuck,
           });
         })
-        .catch(() => {
-          if (!cancelled) setStuck(true);
-        });
+        .catch(markStuck);
     }
 
     // Defer fetching/executing the Turnstile script (and its CPU cost) until
@@ -143,13 +147,16 @@ export default function Turnstile({
     <div>
       <div ref={containerRef} />
       {stuck && (
-        <button
-          type="button"
-          onClick={() => setRetryCount((n) => n + 1)}
-          className="mt-2 text-sm font-medium text-primary underline"
-        >
-          {retryLabel}
-        </button>
+        <p className="mt-2 text-sm text-body">
+          {stuckMessage}{" "}
+          <button
+            type="button"
+            onClick={() => setRetryCount((n) => n + 1)}
+            className="font-medium text-primary underline"
+          >
+            {retryLabel}
+          </button>
+        </p>
       )}
     </div>
   );
