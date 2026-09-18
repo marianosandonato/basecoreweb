@@ -23,15 +23,18 @@ import {
 } from "@/components/icons";
 
 /**
- * "/en" is a child route segment of the root layout (unlike "/", which
- * shares the root layout's own segment and so is exempt from its title
- * template — see node_modules/next/dist/docs' generate-metadata.md, the
- * "title.template ... not the segment it's defined in" note). So `title`
- * here gets " – Base Core Sales" appended by the root template automatically;
- * only the openGraph title needs it spelled out, since OG fields aren't templated.
+ * (1.29 fix, 18/9) "/en" is NOT a child route segment of the root layout —
+ * `(en)/en/layout.tsx` is itself a root layout (sibling to `(es)/layout.tsx`,
+ * not nested under it, see that file's own comment and plan-seo.md 1.18) and
+ * it resolves to the very same "/en" segment as this page.tsx. Per
+ * node_modules/next/dist/docs' generate-metadata.md: "title.template defined
+ * in layout.js will not apply to a title defined in a page.js of the same
+ * route segment" — so the root template never reached this page, exactly
+ * like "/" is exempt from `(es)/layout.tsx`'s template. The title here must
+ * spell out the full " – Base Core Sales" suffix, same pattern as the ES
+ * Home (`(es)/page.tsx`).
  */
-const homeTitle = "Commercial Consulting for Small Business";
-const homeOgTitle = `${homeTitle} – Base Core Sales`;
+const homeTitle = "Commercial Consulting for Small Business – Base Core Sales";
 const homeDescription =
   "Commercial consulting for small businesses in Spain & Latin America: sales, prospecting, retention and marketing as a service. We build productive foundations.";
 
@@ -45,7 +48,7 @@ export const metadata: Metadata = {
   openGraph: {
     locale: "en_US",
     url: `${site.url}/en`,
-    title: homeOgTitle,
+    title: homeTitle,
     description: homeDescription,
     images: ["/images/basecoresales-slide-marketing-espana-1.jpg"],
   },
