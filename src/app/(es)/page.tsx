@@ -319,7 +319,7 @@ export default function HomePage() {
       {/* ── Metodología (#a72b136) ────────────────────────────────────────
           Skyscraper photo, fixed on desktop. The Elementor overlay is #00294B
           at alpha 0, so the photo is deliberately untinted. */}
-      <section className="relative overflow-hidden pb-[70px] pt-[80px] dt:pb-[90px] dt:pt-[110px]">
+      <section className="relative overflow-hidden pb-[70px] pt-[80px] dt:py-[90px]">
         <Image
           src="/images/footer-base-core-sales.webp"
           alt=""
