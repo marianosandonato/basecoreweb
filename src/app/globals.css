@@ -176,8 +176,25 @@
     opacity 0.5s 0.2s;
 }
 
-.flip-box:not(.flip-box--slide-up):hover .flip-box__back,
-.flip-box:not(.flip-box--slide-up):focus-within .flip-box__back {
+/* :hover scoped to real hover-capable pointers (a mouse) — on touch,
+   tapping an element leaves it matching :hover with no "unhover" gesture
+   to clear it ("sticky hover", confirmed live: it's what made the second
+   tap look like it did nothing even after the tap-to-close fix below
+   correctly cleared :focus-within and .flip-box--open). Touch/keyboard
+   drive the open state exclusively through :focus-within/.flip-box--open
+   instead, which JS (useFlipTeaser's blur-on-close) can actually control. */
+@media (hover: hover) {
+  .flip-box:not(.flip-box--slide-up):hover .flip-box__back {
+    opacity: 1;
+    transform: scale(1);
+    transition:
+      transform 0.7s,
+      opacity 0.5s;
+  }
+}
+
+.flip-box:not(.flip-box--slide-up):focus-within .flip-box__back,
+.flip-box:not(.flip-box--slide-up).flip-box--open .flip-box__back {
   opacity: 1;
   transform: scale(1);
   transition:
@@ -198,24 +215,38 @@
   transition: transform 0.6s ease-in-out;
 }
 
-.flip-box--slide-up:hover .flip-box__back,
-.flip-box--slide-up:focus-within .flip-box__back {
+@media (hover: hover) {
+  .flip-box--slide-up:hover .flip-box__back {
+    transform: translateY(0);
+  }
+}
+
+.flip-box--slide-up:focus-within .flip-box__back,
+.flip-box--slide-up.flip-box--open .flip-box__back {
   transform: translateY(0);
 }
 
 /* Scroll-triggered teaser (mobile/touch only, added by FlipBox.tsx via
-   IntersectionObserver): mirrors the hover/focus-within end state above so
-   the reveal looks identical to a manual flip, just auto-triggered once per
-   card. `will-change` lives here rather than on the base rule so it's only
-   paid for during the few seconds the class is present. */
+   IntersectionObserver): re-arms every time a card re-enters the viewport
+   (not just once per page load), so it stays useful whether the visitor
+   scrolls down or back up. Its own (slower, delay-free) transition —
+   instead of inheriting the snappier tap/hover one — makes an *automatic*
+   reveal read as a gentle appearance rather than a sudden pop mid-scroll;
+   a real tap still gets the original, more immediate timing. `will-change`
+   lives here rather than on the base rule so it's only paid for during the
+   few seconds the class is present. */
 .flip-box:not(.flip-box--slide-up).flip-box--auto-reveal .flip-box__back {
   opacity: 1;
   transform: scale(1);
+  transition:
+    transform 1s ease-out,
+    opacity 0.9s ease-out;
   will-change: transform, opacity;
 }
 
 .flip-box--slide-up.flip-box--auto-reveal .flip-box__back {
   transform: translateY(0);
+  transition: transform 0.9s ease-out;
   will-change: transform;
 }
 
@@ -228,10 +259,30 @@
   transition: all 0.35s 0.1s;
 }
 
-.service-card:hover .service-card-hover,
-.service-card:focus-within .service-card-hover {
+/* :hover scoped to real hover-capable pointers — see the identical note on
+   .flip-box above (sticky hover on touch defeats the tap-to-close JS). */
+@media (hover: hover) {
+  .service-card:hover .service-card-hover {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.service-card:focus-within .service-card-hover,
+.service-card--open .service-card-hover {
   opacity: 1;
   transform: scale(1);
+}
+
+/* Scroll-triggered teaser, same mechanism as .flip-box--auto-reveal above
+   (see useFlipTeaser.ts) — its own slower, delay-free transition makes an
+   *automatic* reveal read as a gentle appearance rather than a sudden pop
+   mid-scroll; a real tap/hover still gets the snappier timing above. */
+.service-card--auto-reveal .service-card-hover {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 0.9s ease-out;
+  will-change: transform, opacity;
 }
 
 /* ---------------------------------------------------------------------------

@@ -169,7 +169,70 @@ caso puntual.
 - `npx tsc --noEmit` y `npx eslint` limpios en los 4 archivos tocados;
   `npm run build` completo sin errores.
 
-## Fase 2 en adelante
+## Fase 2 — Flip Cards
 
-Sin empezar — arranca cuando el usuario confirme este resumen y de luz
-verde a Flip Cards (fase 2 según el orden del artifact).
+Cubre los 5 hallazgos de la categoría: `fc-tap-no-cierra`,
+`fc-auto-reveal-scroll`, `fc-backface-overflow-venta`,
+`fc-servicecards-sin-teaser`, `fc-aria-expanded`.
+
+**`fc-tap-no-cierra` (el segundo tap no revertía el flip) — causa raíz
+real:** no era solo `:focus-within` sin toggle — reproducido con Playwright
+(emulación táctil real, iPhone 13) contra el dev server: el elemento
+tapeado queda además pegado en `:hover` ("sticky hover", un comportamiento
+real y documentado de navegadores en touch — sin gesto de "unhover", el
+`:hover` no se limpia solo). Mi primer intento de fix (toggle + `blur()`)
+limpiaba `:focus-within` correctamente pero el CSS seguía abriendo la card
+por `:hover`. Fix real: todas las reglas `:hover` de `.flip-box` y
+`.service-card` ahora viven adentro de `@media (hover: hover)`, así que en
+touch (`hover: none`) nunca aplican — el estado abierto/cerrado en touch y
+teclado queda 100% controlado por `:focus-within`/la clase `--open`, que sí
+puede togglear JS. Verificado con Playwright: opacity de la cara trasera
+en 0 (cerrada) después del segundo tap, con `document.activeElement` ya no
+apuntando a la card.
+
+**`fc-auto-reveal-scroll` + `fc-backface-overflow-venta` (auto-flip
+inconsistente/abrupto, se pierde al scrollear para arriba):** reescrito
+para que el `IntersectionObserver` no se desconecte después del primer
+disparo — se re-arma cada vez que la card vuelve a cruzar el 60% visible,
+scrolleando en cualquier dirección. Menos abrupto: el teaser automático
+ahora tiene su propia transición (más lenta, sin delay) en vez de heredar
+la del tap/hover manual. Verificado con Playwright: dispara al entrar en
+viewport, revierte solo, y vuelve a disparar si se scrollea fuera y de
+nuevo adentro.
+
+**`fc-servicecards-sin-teaser` (pedido: sumar el mismo mecanismo a
+ServiceCards):** hecho — mismo hook compartido (`useFlipTeaser.ts`, nuevo)
+que usa FlipBox, aplicado a `ServiceCards`. De paso, esto hizo falta
+resolverlo para las cards de "Puestos" (sin `href`, antes ni siquiera eran
+`tabIndex`-ables): ahora son focosables/tapeables con el mismo toggle —
+efecto colateral necesario, no buscado, que probablemente adelanta buena
+parte de `acc-puestos-inaccesible` (Fase 7); se deja la verificación final
+de esa fase para cuando le toque el turno, no se la da por cerrada acá.
+
+**`fc-aria-expanded` (opcional, P3) — evaluado y no implementado:** agregar
+`aria-expanded` sobre `role="group"` es una combinación de ARIA inválida
+(el linter de accesibilidad la marca: `jsx-a11y/role-supports-aria-props`).
+Arreglarlo bien implicaría cambiar el rol a `button` + agregar soporte de
+teclado (Enter/Espacio) para no quedar peor que antes — alcance
+desproporcionado para un hallazgo marcado como opcional/impacto bajo en el
+propio artifact. Queda sin tocar; se puede retomar como su propio pedido
+si en algún momento se prioriza.
+
+**Refactor de paso:** `ServiceCards.tsx` se dividió en un Server Component
+(resuelve el ícono de cada card a JSX) + `ServiceCard.tsx` cliente (la
+parte interactiva) — Next.js no deja pasar una referencia a función (el
+ícono) de servidor a cliente sin resolverla antes.
+
+**Verificación:** `npx tsc --noEmit`, `npx eslint` y `npm run build`
+limpios. Probado end-to-end con Playwright (emulación táctil real) contra
+el dev server local: tap-to-close, teaser repetible en ambas direcciones
+de scroll, y el toggle de Puestos, los tres confirmados funcionando — no
+solo "compila", se verificó el comportamiento real.
+
+**Estado: HECHO, sin commitear todavía — falta el resumen al usuario y su
+confirmación antes de pushear a producción.**
+
+## Fase 3 en adelante
+
+Sin empezar — arranca cuando el usuario confirme el resumen de Fase 2 y dé
+luz verde a Responsive (fase 3 según el orden del artifact).

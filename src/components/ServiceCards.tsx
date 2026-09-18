@@ -1,7 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
 import type { ComponentType, SVGProps } from "react";
 import type { PuestoCardData } from "@/content/types";
+import ServiceCard from "./ServiceCard";
 
 type Card = PuestoCardData & {
   href?: string;
@@ -32,7 +31,11 @@ type Props = {
  * backed by a 38x38 #EDF3F6 square offset -15px.
  *
  * On hover a layer covering `calc(100% - 30px)` zooms in from scale(.9) with
- * the same photo behind a #00294B @ 80% tint.
+ * the same photo behind a #00294B @ 80% tint. See ServiceCard.tsx for the
+ * interactive (tap-to-close + scroll-in teaser) part of each card — this
+ * component stays a Server Component on purpose and resolves `card.icon`
+ * (a component reference) to JSX here, since a component reference itself
+ * can't cross into a Client Component as a prop.
  */
 export default function ServiceCards({
   cards,
@@ -48,89 +51,17 @@ export default function ServiceCards({
     <div className={`flex flex-wrap ${className}`}>
       {cards.map((card) => {
         const Icon = card.icon;
-
-        const inner = (
-          // `overflow-hidden` matches `.gsc-services-group .service-item` and is
-          // load-bearing: without it the content box's 30px bottom margin collapses
-          // out of the article, so the hover layer (height: 100% - 30px) ends up
-          // 30px short and leaves a strip of the white box showing.
-          <article className="service-card relative overflow-hidden">
-            {/* Photo */}
-            <div className="relative aspect-[370/280] w-full overflow-hidden">
-              <Image
-                src={card.image}
-                alt={card.title}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 370px"
-                className="object-cover"
-              />
-            </div>
-
-            {/* White content box, pulled up over the photo */}
-            <div className="relative z-[9] -mt-[40px] mb-[30px] ml-[20px] mr-[20px] bg-white px-[30px] pb-[25px] pt-[30px] shadow-[0_0_30px_0_rgba(0,0,0,0.06)]">
-              <div className="flex items-center justify-between">
-                <h3 className="-mt-[6px] pr-[10px] font-heading text-[20px] font-bold leading-[26px] text-heading">
-                  {card.title}
-                </h3>
-                {Icon && (
-                  // 60px tall, not 58: the original's icon is an <i> whose line box
-                  // is 58x60, and that extra 2px is part of the 116px box height.
-                  <span className="relative flex h-[60px] shrink-0 items-center">
-                    <span
-                      aria-hidden="true"
-                      className="absolute left-[-15px] top-0 z-[1] h-[38px] w-[38px] bg-soft"
-                    />
-                    <Icon className="relative z-[2] block text-[58px] text-primary" />
-                  </span>
-                )}
-              </div>
-            </div>
-
-            {/* Hover layer — aria-hidden: it's a purely visual reveal of the
-                same title (plus role list) already announced by the h3 in
-                the white box above, always present in the DOM regardless of
-                hover state. Without aria-hidden a screen reader navigating
-                by heading hears every card's title twice (seo-plan 5.7). */}
-            <div
-              aria-hidden="true"
-              className="service-card-hover absolute inset-x-0 top-0 z-[9] flex h-[calc(100%-30px)] items-center text-center"
-            >
-              <div className="absolute inset-0 z-[6]">
-                <Image
-                  src={card.image}
-                  alt=""
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 370px"
-                  className="object-cover"
-                />
-                <span className="absolute inset-0 z-[1] bg-navy/80" />
-              </div>
-              <div className="relative z-[9] mx-auto max-w-[280px] px-[15px] py-[20px]">
-                {Icon && <Icon className="mx-auto block text-[62px] text-white" />}
-                <p className="my-[18px] font-heading text-[22px] font-bold leading-[1.3] text-white">
-                  {card.title}
-                </p>
-                {card.roles.map((role) => (
-                  <div
-                    key={role}
-                    className="font-sans text-[15px] leading-[18px] text-white opacity-[0.82]"
-                  >
-                    {role}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </article>
-        );
-
-        return card.href ? (
-          <Link key={card.title} href={card.href} className={`block px-[15px] ${cellClass}`}>
-            {inner}
-          </Link>
-        ) : (
-          <div key={card.title} className={`px-[15px] ${cellClass}`}>
-            {inner}
-          </div>
+        return (
+          <ServiceCard
+            key={card.title}
+            title={card.title}
+            image={card.image}
+            roles={card.roles}
+            href={card.href}
+            cellClass={cellClass}
+            icon={Icon ? <Icon className="relative z-[2] block text-[58px] text-primary" /> : null}
+            hoverIcon={Icon ? <Icon className="mx-auto block text-[62px] text-white" /> : null}
+          />
         );
       })}
     </div>
