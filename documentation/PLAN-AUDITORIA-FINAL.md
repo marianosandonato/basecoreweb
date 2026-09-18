@@ -329,10 +329,64 @@ agregada como Hecho. Auditoría Final: los 3 ítems pasan a "OK" con nota
 explicando la migración/investigación y apuntando a la tarea
 correspondiente. `documentation/seo/plan-seo.md` resincronizado.
 
-## Fase 7 en adelante
+## Fase 7 — Accesibilidad
 
-Sin empezar — arranca cuando el usuario confirme el resumen de Fase 6 y
-dé luz verde a Accesibilidad (fase 7 según el orden del artifact). Ojo:
-`acc-puestos-inaccesible` ya quedó parcialmente resuelto como efecto
-colateral de la Fase 2 (Flip Cards) — hace falta verificar qué falta,
-no asumir que ya está cerrado del todo.
+Único hallazgo: `acc-puestos-inaccesible` (P1). La Fase 2 ya había
+resuelto la mitad del problema como efecto colateral (las cards de
+"Puestos" pasaron a ser tocables/enfocables), pero verificando el código
+de nuevo (no se asumió cerrado) apareció la otra mitad sin resolver: el
+contenido real — los nombres de los roles, ej. "Inbound Sales
+Representative" — seguía con `aria-hidden="true"` permanente en la capa
+de hover de `ServiceCard.tsx`, así que nunca llegaba a un lector de
+pantalla sin importar el foco. Exactamente lo que pedía el hallazgo.
+
+**Fix:** para cards sin link (como "Puestos", que no tienen una página
+propia donde ese contenido viva en otro lado), se agrega una lista
+`sr-only` con los roles — visualmente oculta pero presente en el árbol
+de accesibilidad. Las cards con link (ej. "Ciclos" del Home) no la
+necesitan: la página enlazada es el contenido real, la card es solo un
+teaser visual.
+
+**Verificado con Playwright:** el texto real de los roles aparece en el
+DOM (sr-only, clip 1×1px), y el tap-to-open/close de la Fase 2 sigue
+funcionando sin regresión — sin cambio visual (screenshot comparado).
+`tsc`/`eslint`/`build` limpios.
+
+**Estado: HECHO, commit `8851d29`, pusheado y confirmado en producción**
+(clase `sr-only` presente en el HTML servido por basecoresales.com/preventa).
+Auditoría Final: `acc-puestos-inaccesible` pasa a "sin revisar" (es un
+cambio de código real, a diferencia de las migraciones de SEO/Performance
+que fueron solo documentación) con nota de cómo chequearlo con teclado +
+lector de pantalla.
+
+## Las 7 fases — cerradas
+
+Con esta, las 7 fases del artifact **Auditoría Final Base Core** quedan
+resueltas (implementadas, migradas al dueño correcto, o verificadas como
+falso positivo/decisión ya tomada, según el caso). Detalle completo de
+cada fase más arriba en este documento. Los 25 hallazgos originales del
+artifact:
+
+- **9** implementados con código real y verificados (Playwright y/o
+  producción): `sp-h2-squarecta`, `sp-footer-mobile`,
+  `sp-inconsistencia-home` (el outlier de Metodología), `fc-tap-no-cierra`,
+  `fc-auto-reveal-scroll`, `fc-backface-overflow-venta`,
+  `fc-servicecards-sin-teaser`, `resp-turnstile-warnings` (causa raíz
+  real, no la hipótesis inicial), `acc-puestos-inaccesible`.
+- **10** migrados a Plan de SEO, su dueño correcto para SEO y Performance
+  desde el 12/9 — sin duplicar seguimiento: los 9 de SEO (Fase 1 suma
+  1.29-1.35, Fase 3 suma 3.11-3.12, con la propuesta exacta de copy ya
+  resuelta en 3 de ellos) más `perf-psi-pendiente` (anotado en la tarea
+  recurrente 1.28).
+- **2** verificados como falsos positivos del artifact original, sin
+  cambio de código necesario: `resp-tabla-sticky`, `perf-hero-tecnologia`
+  (este último cerrado como 1.36 en el Plan de SEO).
+- **1** evaluado y descartado por desproporción de alcance:
+  `fc-aria-expanded`.
+- **3** explícitamente "no tocar" por decisión del usuario o ya resueltos
+  en otro lado: `sp-h1-home`, `ux-logos-gap`, `perf-cloudflare-script`
+  (este último ya cerrado en 1.28 desde el 14/9).
+
+**Pendiente real, fuera de este repo:** que el usuario defina la API de
+PSI/CrUX (1.28 del Plan de SEO) para que `performance` pueda consultar
+Core Web Vitals sin depender de reportes manuales.
