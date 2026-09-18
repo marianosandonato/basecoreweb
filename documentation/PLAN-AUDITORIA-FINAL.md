@@ -95,9 +95,32 @@ performance en juego, no arriesgado bajarlo a 90 para que empareje con
 Empresas/TechnologyBlock/BaseHubTeaser/Blog (todas 90/90) — pero es un
 cambio visual, así que se ejecuta recién con el OK explícito del usuario.
 
-**Estado: en espera de confirmación del usuario para ejecutar.**
+**Estado: HECHO, commit `dd8392f`.** Usuario confirmó "sí, bajalo a 90px".
+`dt:pt-[110px]` → `dt:py-[90px]` en la sección Metodología de Home.
+`sp-inconsistencia-home` pasado de "No" a "sin revisar" en el artifact con
+nota de cómo chequear (v11 del artifact).
+
+## Adelanto fuera de orden — bug real de Turnstile en mobile
+
+El usuario pidió priorizar `resp-turnstile-warnings` (fase Responsive) antes
+de terminar Spacing/Flip Cards, por su impacto real: en mobile el widget de
+Turnstile podía quedar colgado para siempre (script bloqueado, challenge sin
+resolver, o error de render) sin ningún mensaje ni forma de reintentar — el
+formulario de contacto quedaba roto en ese caso.
+
+**Estado: HECHO, commit `dd8392f`.** `src/components/Turnstile.tsx`:
+`error-callback`/`timeout-callback` de Turnstile + catch en la carga del
+script + link "¿No cargó la verificación? Reintentar" a los 12s que remonta
+el widget. `resp-turnstile-warnings` pasado de "No" a "sin revisar" en el
+artifact con nota de cómo chequear (v11 del artifact).
+
+`npm run lint`/`npx tsc --noEmit`/`npm run build` limpios para los dos
+archivos tocados (el ruido de lint del resto del repo viene de un worktree
+viejo con `.next` builds indexados, no de este cambio). Sin verificación
+interactiva en navegador real (sandbox de Chromium no disponible en este
+entorno) — el usuario verifica siguiendo la nota de cada ítem en el artifact.
 
 ## Fase 2 en adelante
 
-Sin empezar — se define el alcance de cada una al cerrar la anterior,
-según lo que el usuario confirme en Fase 1.
+Sin empezar — arranca cuando el usuario confirme este resumen y de luz
+verde a Flip Cards (fase 2 según el orden del artifact).
