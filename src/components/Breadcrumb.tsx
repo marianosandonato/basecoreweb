@@ -37,13 +37,14 @@ export default function Breadcrumb({
   path?: string;
 }) {
   const homeHref = lang === "en" ? "/en" : "/";
+  const homeLabel = lang === "en" ? "Home" : "Inicio";
 
   const breadcrumbJsonLd = path
     ? {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: `${site.url}${homeHref}` },
+          { "@type": "ListItem", position: 1, name: homeLabel, item: `${site.url}${homeHref}` },
           { "@type": "ListItem", position: 2, name: current, item: `${site.url}${path}` },
         ],
       }
@@ -94,7 +95,7 @@ export default function Breadcrumb({
             <ol className="flex items-center rounded-t-[10px] bg-white px-[25px] pb-[22px] pt-[25px] absolute bottom-0 right-0 font-sans text-[15px] font-bold leading-[15px]">
               <li className="px-[10px]">
                 <Link href={homeHref} className="text-heading transition-colors hover:text-primary">
-                  Home
+                  {homeLabel}
                 </Link>
               </li>
               {/* The separator sits inside the 20px the two items' padding
@@ -130,7 +131,7 @@ export default function Breadcrumb({
         <ol className="flex items-center gap-2 text-sm text-white/80">
           <li>
             <Link href={homeHref} className="transition-colors hover:text-primary">
-              Home
+              {homeLabel}
             </Link>
           </li>
           <li aria-hidden>›</li>
