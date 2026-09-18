@@ -2,7 +2,7 @@
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/f6230fde-8996-4d03-ae8a-4211f111ed90
 > - Última sincronización: 2026-09-18
-> - Nota: 9 hallazgos SEO + 3 de Performance de la Auditoría Final de UX/diseño (14-18/9) se migraron acá el 18/9. Además, Mariano generó su propia API key de PageSpeed Insights — nuevo script `scripts/seo/psi.py` (mismo patrón que `ga4.py`/`gsc.py`, credencial fuera del repo) consulta la API directo, sin depender de reportes manuales. La primera corrida real encontró una regresión de LCP en mobile de Home (~3.8s → ~5.0-5.2s desde el 14/9, consistente en dos corridas) — anotada en 1.28, sin investigar la causa todavía.
+> - Nota: se agregó la tarea 1.37 (18/9) — fix real de Turnstile atascado por el conflicto iCloud Private Relay/ITP en /contacto, ya deployado a producción (commit a7b6948), queda Pendiente hasta que Mariano lo confirme en su iPhone real.
 
 ---
 
@@ -12,7 +12,7 @@ Tablero activo: lo que está Pendiente o En progreso vive arriba de todo, agrupa
 
 📋 [Ver Historial Técnico SEO (detalle de las 60 tareas ya resueltas)](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8)
 
-61 / 82 tareas · 2 en progreso (1.25, 8.2) · +4 bloqueadas (4.1, 4.3, 4.4, 4.5) · 10 nuevas migradas de la Auditoría Final (1.29–1.36, 3.11–3.12)
+61 / 83 tareas · 2 en progreso (1.25, 8.2) · +4 bloqueadas (4.1, 4.3, 4.4, 4.5) · 10 nuevas migradas de la Auditoría Final (1.29–1.36, 3.11–3.12) + 1.37 nueva (fix de Turnstile)
 
 [Activo hoy](#activo)
 [Diagnóstico](#diagnostico)
@@ -254,6 +254,22 @@ Propuesta (sin implementar)
 
 **Migrado (18/9)** de la Auditoría Final de UX/diseño, con la propuesta que Mariano había pedido ya resuelta acá.
 
+1.37 — Turnstile queda colgado en iOS (iCloud Private Relay / ITP) en /contacto
+
+Pendiente · esperando confirmación en iPhone real
+
+Hallazgo original (Auditoría Final, cat. Responsive): en /contacto, el widget de Cloudflare Turnstile podía quedar "verificando" para siempre en iPhones con iCloud Private Relay / "Evitar rastreo entre sitios" activado, sin disparar ningún callback de error propio del widget. Confirmado por foros de Apple y de Cloudflare: es un conflicto conocido y sin resolución del lado de Cloudflare, no un bug de nuestro código.
+
+**Fix real (18/9), ya deployado a producción:**
+
+* `Turnstile.tsx` tiene ahora su propio temporizador (`onStuck`, 12s) que no depende de que Cloudflare avise ningún error.
+* `ContactForm.tsx` y `EbookForm.tsx` habilitan el botón de envío si el widget queda confirmado colgado, con un mensaje visible explicando que se puede enviar igual.
+* `turnstile.ts` (servidor) ya no rechaza cuando no llega token — el honeypot existente queda como filtro anti-spam para ese caso puntual. Si sí llega un token, se sigue validando estricto como siempre.
+
+Verificado end-to-end local (Playwright, viewport mobile, site key real): botón deshabilitado en t=0, habilitado + mensaje visible en t=13s, el POST pasa la verificación de captcha. Confirmado en producción (basecoresales.com) que el JS deployado ya tiene el string del mensaje nuevo. Commit: `a7b6948`.
+
+**Por qué sigue Pendiente, no Hecho:** falta que Mariano lo confirme en su iPhone real con Private Relay activado — a los ~12 segundos debería aparecer "No pudimos verificar la seguridad automáticamente" y el botón ENVIAR MENSAJE debería habilitarse igual.
+
 ### Fase 3 · Palabras clave y contenido
 
 3.11 — Keyword validada "customer success" ausente del title/H1 de /posventa
@@ -460,7 +476,7 @@ Fase 1
 
 ## Cimientos técnicos (on-page)
 
-Cerrada en lo esencial — 1.14 (Core Web Vitals) se confirmó el 11/9. 1.24 (retina) se investigó a fondo y cerró sin acción de código — `next/image` ya lo resolvía; 1.25 (INP de campo) ya tiene acceso a GA4 resuelto el 14/9 — queda en progreso, esperando acumular tráfico nuevo. 1.26 y 1.27, encontrados en la auditoría de performance del 13/9, se resolvieron el 14/9. 1.28 es nueva (14/9): seguimiento recurrente de performance con PageSpeed Insights, esperando el próximo análisis de Mariano. 1.29-1.35 son nuevas (18/9), migradas desde la Auditoría Final de UX/diseño para no duplicar seguimiento SEO en dos artifacts — detalle completo de cada una en "Activo hoy". 1.36 (18/9, también migrada de esa auditoría, ahí era `perf-hero-tecnologia`) se cerró directo sin tarea activa: la imagen que marcaba como "hero (LCP)" de /tecnologia (bg-5.jpg, 68KB) es en realidad el fondo de la sección de Contacto al final de la página — no la imagen visible al cargar, así que no pesa en el LCP real. El hero real de /tecnologia usa el componente PageHero compartido, ya cubierto por 1.26/1.27. Sigue como CSS background a propósito (decisión ya tomada en PLAN-VERCEL.md: solo los heroes reales pasan a next/image, el resto de fondos se queda así). Detalle técnico de performance completo en el artifact [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929). Detalle completo del resto de las tareas ya resueltas de esta fase en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8).
+Cerrada en lo esencial — 1.14 (Core Web Vitals) se confirmó el 11/9. 1.24 (retina) se investigó a fondo y cerró sin acción de código — `next/image` ya lo resolvía; 1.25 (INP de campo) ya tiene acceso a GA4 resuelto el 14/9 — queda en progreso, esperando acumular tráfico nuevo. 1.26 y 1.27, encontrados en la auditoría de performance del 13/9, se resolvieron el 14/9. 1.28 es nueva (14/9): seguimiento recurrente de performance con PageSpeed Insights, esperando el próximo análisis de Mariano. 1.29-1.35 son nuevas (18/9), migradas desde la Auditoría Final de UX/diseño para no duplicar seguimiento SEO en dos artifacts — detalle completo de cada una en "Activo hoy". 1.36 (18/9, también migrada de esa auditoría, ahí era `perf-hero-tecnologia`) se cerró directo sin tarea activa: la imagen que marcaba como "hero (LCP)" de /tecnologia (bg-5.jpg, 68KB) es en realidad el fondo de la sección de Contacto al final de la página — no la imagen visible al cargar, así que no pesa en el LCP real. El hero real de /tecnologia usa el componente PageHero compartido, ya cubierto por 1.26/1.27. Sigue como CSS background a propósito (decisión ya tomada en PLAN-VERCEL.md: solo los heroes reales pasan a next/image, el resto de fondos se queda así). 1.37 es nueva (18/9): fix real de Turnstile atascado por el conflicto Private Relay/ITP de iOS en /contacto, ya deployado a producción — queda Pendiente hasta que Mariano lo confirme en su iPhone real. Detalle técnico de performance completo en el artifact [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929). Detalle completo del resto de las tareas ya resueltas de esta fase en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8).
 
 | # | Tarea | Estado |
 | --- | --- | --- |
@@ -500,6 +516,7 @@ Cerrada en lo esencial — 1.14 (Core Web Vitals) se confirmó el 11/9. 1.24 (re
 | 1.34 | Title de /en/presales cerca del límite | Pendiente · propuesta lista |
 | 1.35 | 4 meta descriptions cortas | Pendiente · propuesta lista |
 | 1.36 | Imagen de fondo de ContactSection en /tecnologia, mal etiquetada como "hero" | Hecho |
+| 1.37 | Turnstile colgado en iOS (Private Relay/ITP) en /contacto | Pendiente · esperando confirmación en iPhone real |
 
 Fase 2
 
