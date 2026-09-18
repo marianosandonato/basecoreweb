@@ -229,10 +229,41 @@ el dev server local: tap-to-close, teaser repetible en ambas direcciones
 de scroll, y el toggle de Puestos, los tres confirmados funcionando — no
 solo "compila", se verificó el comportamiento real.
 
-**Estado: HECHO, sin commitear todavía — falta el resumen al usuario y su
-confirmación antes de pushear a producción.**
+**Estado: HECHO, commit `9ef3ca8`, pusheado y confirmado en producción.**
+Usuario confirmó por su cuenta el estado del artifact (5/5 items en "sin
+revisar").
 
-## Fase 3 en adelante
+## Fase 3 — Responsive
 
-Sin empezar — arranca cuando el usuario confirme el resumen de Fase 2 y dé
-luz verde a Responsive (fase 3 según el orden del artifact).
+2 hallazgos: `resp-turnstile-warnings` (ya resuelto fuera de orden, ver
+más arriba) y `resp-tabla-sticky`.
+
+**`resp-tabla-sticky` — falso positivo del artifact, sin cambio de
+código.** El hallazgo decía que la primera columna ("Capacidad") de la
+tabla de /tecnologia no era sticky en mobile. Revisando
+`src/components/TechStageMatrix.tsx` y su historial de git: la columna
+tiene `sticky left-0` desde el commit ORIGINAL que creó el componente
+(`6214384`), documentado ahí mismo como decisión explícita ("Primera
+columna (capacidad) sticky... para quedar fija en el scroll horizontal
+mobile"). Nunca se sacó. Verificado en vivo con Playwright (emulación
+iPhone, scroll horizontal real de 200px sobre la tabla): la columna
+mantiene su posición X exacta, sticky funcionando como se documentó desde
+el día 1.
+
+**Estado: verificado, sin cambio necesario.** Se marca "sin revisar" en
+el artifact igual que un hallazgo resuelto, con nota explicando que no
+hizo falta tocar nada — para mantener el mismo circuito de revisión del
+usuario sin importar si hubo código de por medio o no.
+
+## Fase 4 — UX/UI
+
+Único hallazgo, `ux-logos-gap`, ya cerrado por decisión explícita del
+usuario ("es intencional, dejar como está") antes de arrancar esta ronda
+de fases — nada que hacer, nada que republicar.
+
+## Fase 5 en adelante
+
+Sin empezar — arranca cuando el usuario confirme el resumen de Fases 3/4
+y dé luz verde a SEO (fase 5 según el orden del artifact). Ojo: los
+hallazgos de SEO se cruzan primero contra `documentation/seo/plan-seo.md`
+(ver nota de arquitectura arriba) antes de tocar código.
