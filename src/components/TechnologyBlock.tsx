@@ -266,6 +266,7 @@ export default function TechnologyBlock({
             alt="Base Core"
             width={900}
             height={927}
+            sizes="(min-width: 768px) 190px, 140px"
             className="h-auto w-[140px] md:w-[190px]"
           />
           <div className="flex flex-col items-center gap-[4px]">

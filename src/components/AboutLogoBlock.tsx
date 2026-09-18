@@ -32,6 +32,7 @@ export default function AboutLogoBlock({
         alt="Base Core"
         width={900}
         height={927}
+        sizes="257px"
         className="h-auto w-[189px] md:w-[257px]"
       />
       <span
