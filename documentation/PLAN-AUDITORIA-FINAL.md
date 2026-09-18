@@ -261,9 +261,36 @@ usuario sin importar si hubo código de por medio o no.
 usuario ("es intencional, dejar como está") antes de arrancar esta ronda
 de fases — nada que hacer, nada que republicar.
 
-## Fase 5 en adelante
+## Fase 5 — SEO
 
-Sin empezar — arranca cuando el usuario confirme el resumen de Fases 3/4
-y dé luz verde a SEO (fase 5 según el orden del artifact). Ojo: los
-hallazgos de SEO se cruzan primero contra `documentation/seo/plan-seo.md`
-(ver nota de arquitectura arriba) antes de tocar código.
+9 hallazgos: `seo-en-title`, `seo-contacto-og`, `seo-breadcrumb-home-en`,
+`seo-blog-h2`, `seo-posventa-keyword`, `seo-tecnologia-keyword-dilucion`,
+`seo-basehub-longitud`, `seo-presales-en-longitud`, `seo-meta-cortas`.
+
+**Decisión del usuario (18/9): no implementar desde acá.** El sitio ya
+tiene un Plan de SEO propio (artifact dedicado, fuente de verdad para
+SEO, mirror en `documentation/seo/plan-seo.md`) con su propia numeración
+de fases y tareas activas — implementar estos 9 hallazgos desde la
+Auditoría Final hubiera duplicado seguimiento entre dos artifacts sobre
+el mismo tema (viola la regla "Camino B" que ese documento ya usa: un
+solo dueño por dato). En vez de codear, se migraron los 9 hallazgos.
+
+**Estado: HECHO, migración completa, sin código tocado en este repo
+para SEO.**
+- **Plan de SEO** (artifact + espejo): 9 tareas nuevas agregadas — Fase 1
+  suma 1.29-1.35, Fase 3 suma 3.11-3.12. En 1.33 (title/description de
+  /basehub), 1.34 (title de /en/presales) y 1.35 (4 meta descriptions
+  cortas) la migración ya incluye la propuesta exacta de copy con
+  antes/después que el usuario había pedido ver antes de decidir — no
+  quedó como pendiente sin resolver, solo sin implementar en código
+  (son cambios de metadata, no de copy visible en la página).
+- **Auditoría Final** (este artifact): los 9 ítems pasan a "OK" (los 3
+  que estaban en "No" con la pregunta pendiente se resuelven a OK, ya
+  que la pregunta se contestó como parte de la migración) con nota
+  explicando la migración y el número de tarea correspondiente en el
+  Plan de SEO — no se usa "sin revisar" acá porque no hay nada que
+  chequear en el sitio en vivo, es un movimiento de documentación.
+- `documentation/seo/plan-seo.md` resincronizado con `markitdown` desde
+  el artifact recién publicado — conserva intacto el trabajo que la otra
+  sesión ya había hecho ahí el mismo día (reorden de "Activo hoy",
+  seguimiento de 8.2).
