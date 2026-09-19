@@ -1,8 +1,8 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`web-lead`, `seo-marketing`, `performance`) — confirmado el 3/9 que la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma, no de configuración), así que solo la sesión principal puede leer el artifact directo. Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8
-> - Última sincronización: 2026-09-14
-> - Nota: documento nuevo, creado el 5/9 al separar el detalle histórico del Plan de SEO (`documentation/seo/plan-seo.md`), que ahora es el tablero activo. El 11/9 se sumó el cierre de 1.14 (Core Web Vitals). El 13/9 se sumó el cierre de 5.3 (gate del e-book, PR #37) y se corrigió la tabla de keywords EN de 3.1 (estaba desactualizada respecto al código real) tras una auditoría de SEO de alcance completo. El 14/9 se sumaron a la cronología la caída de VM que interrumpió la guía de acceso a GA4 para 1.25, el cierre posterior de esa Fase B, y la Fase 8 completa (8.1 cerrada sin avanzar con el naming "Base Core" -> "BaseCore" tras encontrar que la forma junta ya es una marca registrada de otra empresa).
+> - Última sincronización: 2026-09-18
+> - Nota: sesión posterior del 18/9 — se movió acá el detalle completo de 1.29-1.35 y 1.38, sacado del Plan de SEO que ahora solo mantiene la fila de tabla en Hecho. De las 9 tareas migradas ese día desde la Auditoría Final, solo 1.37 sigue sin cerrar.
 
 ---
 
@@ -350,6 +350,185 @@ Misma familia que 1.17/7.9: en `ClientCard.tsx`, la tarjeta de "W Profesional Ha
 
 **Para qué sirve:** el nombre accesible/textContent no debe concatenar palabras.
 
+1.29 — Title de /en sin sufijo de marca
+
+Hecho · resuelto 18/9
+
+Hallazgo migrado el 18/9 desde la Auditoría Final de UX/diseño: el `<title>` de `/en` (Home en inglés) era "Commercial Consulting for Small Business" — sin el sufijo " – Base Core Sales" que sí llevan las otras 7 páginas EN y la Home ES. El comentario original en `src/app/(en)/en/page.tsx:25-32` tenía la premisa invertida (asumía que el `title.template` del root layout debía aplicarse).
+
+**Causa real, confirmada contra la documentación de Next.js del propio repo** (`node_modules/next/dist/docs`, requisito de `documentation/AGENTS.md` por ser una versión con cambios respecto al conocimiento de entrenamiento): `(en)/en/layout.tsx` no es un layout hijo que cuelgue del root layout ES — es en sí mismo un root layout (`<html lang="en">`, `<body>`), hermano de `(es)/layout.tsx`, no anidado bajo él. Ese root layout resuelve exactamente al mismo segmento de URL (`/en`) que su propio `page.tsx`. Según `generate-metadata.md` (línea 287 de la doc de Next): *"title.template defined in layout.js will not apply to a title defined in a page.js of the same route segment"* — mismo motivo exacto por el que "/" está exenta del template de `(es)/layout.tsx`, y por el que la Home ES ya resolvía esto con el título hardcodeado (ver 1.1). Las otras 7 páginas EN sí son hijas reales del segmento `/en`, por eso a ellas sí les aplica el template.
+
+**Implementado:** en `src/app/(en)/en/page.tsx`, `homeTitle` pasa a ser el string completo `"Commercial Consulting for Small Business – Base Core Sales"` (mismo patrón que la Home ES) — se eliminó la variable separada `homeOgTitle` (ya no hacía falta, el título completo sirve para `title` y `openGraph.title` por igual) y se reescribió el comentario para documentar la causa real.
+
+**Verificación:** `tsc --noEmit` y `eslint` limpios, `npm run build` exitoso (42 páginas). En vivo (`next start` local): `/en` → título corregido con sufijo; confirmado sin regresión en `/` (ES), `/en/marketing` y `/venta`.
+
+**Commit:** `44cf2da`, pusheado a `master`.
+
+**Para qué sirve:** consistencia de marca en el resultado de búsqueda — todas las páginas del sitio deben identificarse con el sufijo " – Base Core Sales", sin excepción no intencional.
+
+1.30 — /contacto sin Open Graph / Twitter Card propio
+
+Hecho · resuelto 18/9
+
+Hallazgo migrado el 18/9 desde la Auditoría Final de UX/diseño: `src/app/(es)/contacto/page.tsx` no declaraba bloque `openGraph`/`twitter` propio — heredaba el genérico del Home ("Base Core – Consultoría Comercial y Marketing") al compartir el link. Asimetría real: `/en/contact` sí declaraba el suyo ("Free Diagnostic").
+
+**Implementado:** bloque `openGraph` agregado a `/contacto`, reusando el title/description que la página ya tenía en su `metadata` (sin inventar copy nuevo) — "Diagnóstico Gratuito" / "Solicita un diagnóstico gratuito: dejanos tus datos y te proponemos un plan de ruta para mejorar tus procesos y metodologías" — con `locale: es_ES` (igual que las 8 páginas de referencia) e imagen `/images/breadcrumb.jpg`, la imagen hero/LCP real que ya renderiza la página vía `Breadcrumb variant="hero"` (compartida con `/ebook`) — no una imagen genérica ni inventada.
+
+**Sobre `twitter`, verificado, no es una regresión:** las etiquetas `twitter:*` de `/contacto` siguen heredando el bloque genérico del Home, pero es el comportamiento site-wide existente — confirmado que ninguna de las 8 páginas de referencia (preventa/venta/posventa/marketing/tecnologia/basehub/blog/ebook, ni `/en/contact`) declara bloque `twitter` propio tampoco. Next.js hace merge shallow por campo top-level, sin fallback automático de `openGraph` a `twitter` (confirmado contra `node_modules/next/dist/docs`). Si se quisiera Twitter Card propio por página, sería una tarea nueva de alcance sitio-completo, no específica de `/contacto`.
+
+**Hallazgo colateral, sin acción (fuera de alcance de esta tarea):** `/en/contact` usa una imagen distinta a su par ES para OG (`basecoresales-slide-marketing-espana-1.jpg`, la genérica del Home, en vez de `breadcrumb.jpg`) — es la única asimetría imagen-por-imagen del sitio entre pares ES/EN, que en las otras 8 páginas comparten exactamente la misma imagen. Queda señalado como posible ítem de limpieza futuro.
+
+**Verificación:** `tsc --noEmit` y `eslint` limpios, `npm run build` exitoso (`/contacto` sigue estático). En vivo (`next start` + `curl`): `og:title`/`og:description`/`og:locale`/`og:image` de `/contacto` ahora propios y distintos del Home; confirmado sin regresión en `/`, `/preventa` y `/en/contact`.
+
+**Commit:** `91ad85c`, pusheado a `master`.
+
+**Para qué sirve:** que compartir el link de `/contacto` en WhatsApp/LinkedIn muestre una vista previa propia de la página, no la genérica del Home.
+
+1.31 — Breadcrumb dice "Home" en inglés en las 9 páginas ES
+
+Hecho · resuelto 18/9
+
+Hallazgo migrado el 18/9 desde la Auditoría Final de UX/diseño: `src/components/Breadcrumb.tsx` hardcodeaba el string "Home" en ambas variantes (texto visible del link y el `name` del `BreadcrumbList` en JSON-LD), sin usar el prop `lang` que ya recibía (y sí usaba correctamente para construir el `href`). Se veía en las 9 páginas ES que usan el breadcrumb: /preventa, /venta, /posventa, /marketing, /tecnologia, /basehub, /blog, /contacto, /ebook.
+
+**Implementado:** se agregó una constante `homeLabel = lang === "en" ? "Home" : "Inicio"`, mismo patrón condicional que ya usaba el componente para `homeHref`. Se reemplazaron las 3 ocurrencias hardcodeadas: el `name` del `BreadcrumbList.itemListElement[0]` en el JSON-LD, el texto visible de la variante `"hero"` (usada en /contacto y /ebook), y el texto visible de la variante `"bar"` (usada en las otras 7 páginas).
+
+Cambios exactos en src/components/Breadcrumb.tsx
+
+```
+JSON-LD (antes):    name: "Home"
+JSON-LD (después):  name: homeLabel
+
+Variante "hero" (antes):    Home
+Variante "hero" (después):  {homeLabel}
+
+Variante "bar" (antes):     Home
+Variante "bar" (después):   {homeLabel}
+```
+
+**Verificación:** `tsc --noEmit` y `eslint` limpios, `npm run build` exitoso (42 páginas). En vivo (`next start` + Playwright): `/preventa` y `/contacto` muestran "Inicio" en texto visible y JSON-LD; `/en/presales` y `/en/contact` siguen mostrando "Home" sin regresión.
+
+**Commit:** `5207030`, pusheado a `master`.
+
+**Hallazgo colateral, abierto como tarea nueva (1.38):** el mismo patrón de bug existe en el nav principal del Header (`src/lib/site.ts`, líneas 40 y 53) — el array de nav items en español también hardcodea `{ label: "Home", href: "/" }`. Fuera del alcance de esta tarea (acotada a `Breadcrumb.tsx`), se abre aparte para no mezclar el cambio.
+
+**Para qué sirve:** consistencia de idioma en toda la página — un visitante en una página ES no debería ver "Home" en inglés en la navegación.
+
+1.38 — Nav principal (Header) dice "Home" en inglés en las páginas ES
+
+Hecho · abierta y resuelta 18/9
+
+Encontrado el 18/9 por `seo-marketing` al verificar 1.31 — mismo patrón de bug, componente distinto: `src/lib/site.ts:40` (array `nav` en español, usado por `headerNav`) hardcodeaba `{ label: "Home", href: "/" }` en vez de "Inicio", visible en el menú superior de todas las páginas ES.
+
+**Implementado:** `src/lib/site.ts:40`, `label: "Home"` → `label: "Inicio"`. No se tocó `navEn` (línea 53, `{ label: "Home", href: "/en" }`), que debe seguir en inglés. El `href` de ambos arrays quedó intacto.
+
+**Verificación:** `tsc --noEmit`, `eslint` y `npm run build` limpios. En vivo (Playwright, menú móvil): `/preventa` y `/contacto` muestran "Inicio" como primer item, resto del menú (Marketing, Venta, Tecnología, BaseHub, Blog, Contacto) sin cambios; `/en/presales` y `/en/contact` siguen mostrando "Home" sin regresión. Confirmado que el Breadcrumb (1.31) y el logo (`aria-label` "Base Core – Inicio"/"Base Core – Home", derivado de otro lado) ya estaban correctos y no se vieron afectados. Sin otros usos del mismo patrón en el resto del código.
+
+**Commit:** `65edacd`, pusheado a `master`.
+
+**Para qué sirve:** mismo que 1.31 — consistencia de idioma en la navegación, ahora también en el menú principal, no solo en el breadcrumb.
+
+1.32 — /blog salta de H1 a H3 sin H2 intermedio
+
+Hecho · resuelto 18/9
+
+Hallazgo migrado el 18/9 desde la Auditoría Final de UX/diseño: `BlogListPage.tsx` (compartido por /blog y /en/blog) renderiza el H1 de la página y pasa directo a los `<h3>` de cada `BlogCard` en la grilla, sin H2 intermedio.
+
+**Implementado:** se agregó un H2 nuevo antes de la grilla, usando el mismo componente `SectionHeading` que ya renderiza el H1 de la página, con el mismo patrón eyebrow+título que ya usan la sección "Metodología" de Home (ver 3.7) y "Etapas" de las páginas de ciclo. Se prefirió esta opción a bajar los `<h3>` de las cards a H2, porque `BlogCard` usa H3 para el mismo dato semántico (título del post dentro de una card) en dos variantes (destacada y normal) — bajarlo habría sido más invasivo y menos consistente con el resto del sitio, que reserva el H2 para el título de sección por encima de una grilla, no para el título de cada card individual.
+
+Texto agregado
+
+```
+ES: eyebrow "ARTÍCULOS"  + H2 "Últimos artículos"
+EN: eyebrow "ARTICLES"   + H2 "Latest articles"
+```
+
+No son keywords de investigación (copy estructural/navegacional entre secciones, no términos que compitan por posicionamiento propio) — no se validaron contra el Mapa de Keywords por ese motivo.
+
+**Verificación:** `tsc --noEmit`, `eslint` y `npm run build` limpios (7 posts en ambos idiomas generados sin warnings). En vivo (Playwright + medición de bounding boxes): secuencia H1 → H2 → H3 confirmada en /blog y /en/blog, sin overlap ni salto (30px de espaciado entre H2 y grilla, mismo criterio que otras secciones).
+
+**Commit:** `b0be1e5`, pusheado a `master`.
+
+**Para qué sirve:** una jerarquía de encabezados lógica ayuda a Google y a lectores de pantalla a entender la estructura de la página.
+
+1.33 — Title/description de /basehub exceden el largo cómodo para SERP
+
+Hecho · resuelto 18/9
+
+Hallazgo migrado el 18/9 desde la Auditoría Final de UX/diseño: title 61 caracteres, description 167 — ambos superan ~60/~160, riesgo de truncamiento en el resultado de Google. Es metadata invisible en la página — ni el title ni la description del `<head>` aparecen en el cuerpo visible de /basehub, solo cambia lo que Google muestra en el resultado de búsqueda.
+
+**Decisión de Mariano:** entre las dos alternativas propuestas (50 vs. 47 caracteres), eligió la de 50 — **"BaseHub: Plataforma de Proyectos"** — por mantener la palabra "Plataforma", consistente con cómo se describe BaseHub en el resto del sitio ("la plataforma de seguimiento e implementación de proyectos").
+
+Cambio aplicado en src/app/(es)/basehub/page.tsx
+
+```
+Title (61 → 50):
+  "BaseHub: Plataforma de Gestión de Proyectos" + sufijo
+  → "BaseHub: Plataforma de Proyectos" + sufijo
+
+Description (167 → 155):
+  "BaseHub: la plataforma de seguimiento e implementación de
+  proyectos de Base Core, incluida en tu consultoría. Sin pagar
+  una herramienta de gestión de proyectos aparte."
+  →
+  "BaseHub: la plataforma de seguimiento e implementación de
+  proyectos de Base Core, incluida en tu consultoría — sin pagar
+  una herramienta de gestión aparte."
+```
+
+**Implementado:** solo la página en español (`/en/basehub` no estaba en el alcance, su title/description no fueron señalados como largos). `openGraph.title`/`openGraph.description` y el JSON-LD de `ServiceJsonLd` reusan las mismas constantes `title`/`description` — quedaron consistentes sin tocarlos aparte.
+
+**Verificación:** `tsc --noEmit`, `eslint` y `npm run build` limpios. En vivo (build de producción + `next start`, HTML real servido): `<title>` "BaseHub: Plataforma de Proyectos – Base Core Sales" = **50 caracteres**; `<meta name="description">` = **155 caracteres**, ambos exactos a lo confirmado. H1 real ("Tu proyecto, en un solo lugar.") y el resto del contenido visible sin cambios.
+
+**Commit:** `47bd5ab`, pusheado a `master`.
+
+**Para qué sirve:** que Google no trunque el resultado de búsqueda a mitad de palabra.
+
+1.34 — Title de /en/presales, cerca del límite de largo
+
+Cerrada 18/9 · sin cambio
+
+Hallazgo migrado el 18/9 desde la Auditoría Final de UX/diseño: title "B2B Lead Generation & Appointment Setting" + sufijo " – Base Core Sales". Medido directo: 41 + 18 = **59 caracteres** (la Auditoría Final había anotado 63 — pequeña diferencia de conteo, no cambia la conclusión).
+
+**Decisión de Mariano:** cerrar sin cambio. 59 caracteres ya está dentro del rango seguro de ~60 que recomienda Google. La única forma de bajarlo más sería sacar "& Appointment Setting", pero esa frase es keyword validada en el Mapa de Keywords — no se justifica sacrificarla por margen extra que no hace falta.
+
+**Para qué sirve:** registrar que se midió y evaluó, para no re-investigar este title si el tema vuelve a aparecer.
+
+1.35 — 4 meta descriptions por debajo de ~120 caracteres
+
+Hecho · resuelto 18/9
+
+Hallazgo migrado el 18/9 desde la Auditoría Final de UX/diseño: /blog (110), /en/blog (114), /en/contact (113) y /en/marketing (116) — no era error, dejaban espacio sin aprovechar en el resultado de Google (rango cómodo: 140-160). Es metadata invisible en la página, ninguna de las 4 aparece en el cuerpo visible.
+
+Cambio aplicado (las 4 son const description reusada por metadata + openGraph, y en /en/marketing también por ServiceJsonLd)
+
+```
+/blog (110 → 158):
+  "Artículos sobre procesos comerciales, CRM y tecnología
+  aplicada a ventas para pymes en España y Latinoamérica. Guías
+  de marketing, preventa, venta y posventa."
+
+/en/blog (114 → 151):
+  "Articles on sales processes, CRM, and technology for small
+  businesses in Spain and Latin America. Guides on marketing,
+  presales, sales, and post-sales."
+
+/en/contact (113 → 154):
+  "Book a free diagnostic: share your details and we'll propose
+  a roadmap to improve your commercial processes and
+  methodology, from marketing to post-sales."
+
+/en/marketing (116 → 150):
+  "Marketing consulting for small business: branding, SEO,
+  social media, paid advertising, graphic design, and websites,
+  built for your full sales cycle."
+```
+
+**Verificación:** `tsc --noEmit`, `eslint` y `npm run build` limpios. En vivo (build de producción + `next start`, HTML real servido): 158/151/154/150 caracteres exactos, coincidiendo con lo confirmado. H1 de las 4 páginas sin cambios.
+
+**Commit:** `f823002`, pusheado a `master`.
+
+**Para qué sirve:** aprovechar el espacio disponible en el resultado de Google para dar más contexto antes del clic.
+
 Fase 2
 
 ## Medición
@@ -633,6 +812,65 @@ EN nuevo: Free guide: how to build a sales process from scratch
 
 **Para qué sirve:** cierra el gap entre lo investigado y lo que el sitio muestra.
 
+3.11 — Keyword validada "customer success" ausente del title/H1 de /posventa
+
+Hecho · resuelto 18/9
+
+Hallazgo migrado el 18/9 desde la Auditoría Final de UX/diseño: title "Fidelización y Retención de Clientes" / H1 "¿Buscas fidelizar y retener a tus clientes?" — sin la keyword secundaria validada "customer success". Mismo patrón en `/en/post-sales`. El Mapa de Keywords ya marcaba esto como ganancia de bajo esfuerzo, sin implementar.
+
+**Decisión de Mariano:** sumar la keyword al H1 (no solo al title/meta) — más peso de posicionamiento, aunque implica tocar el copy visible de la página.
+
+H1 antes/después
+
+```
+ES: "¿Buscas fidelizar y retener a tus clientes?"
+    → "¿Buscas fidelizar clientes y fortalecer tu customer success?"
+
+EN: "Looking to retain and build customer loyalty?"
+    → "Looking to retain customers and strengthen your customer success?"
+```
+
+**Razonamiento de la redacción:** mismo patrón de pregunta en dos líneas que usan /preventa y /venta. Se conservó la keyword primaria de la página (fidelización/retención) — el concepto no desapareció, sigue en el cuerpo (bullet "Retención y fidelización de clientes" / "Customer retention & loyalty", sección "Retención"/"Retention"), solo se recorta del H1 para hacer lugar a la keyword nueva sin sobrecargar la línea. Se usó "fortalecer"/"strengthen" en vez de "mejorar"/"improve" para no repetir el verbo que ya usa el subtítulo inmediato ("Mejorá la experiencia..."/"Improve your customers' experience."). También se agregó el objeto explícito "clientes"/"customers" al verbo "fidelizar"/"retain", que en el EN original quedaba elíptico.
+
+**Confirmado contra el Mapa de Keywords** (sección 8.4 y sección Inglés): "customer success" es la misma frase, sin traducir, validada en ambos idiomas con números idénticos (100-1.000 de volumen, competencia Baja, España y Argentina) — sin discrepancia ES/EN a resolver.
+
+**Verificación:** `tsc --noEmit`, `eslint` y `npm run build` limpios. En vivo (Playwright): H1 real servido en `/posventa` y `/en/post-sales` coincide exactamente con lo redactado; subtítulo/cuerpo siguiente confirmado coherente, sin redundancia.
+
+**Commit:** `fb9cfba`, pusheado a `master`. Archivos: `src/content/posventa.ts`, `src/content/posventa.en.ts`.
+
+**Para qué sirve:** sumar match textual exacto con una keyword secundaria validada de bajo esfuerzo, sin perder la keyword primaria ya presente.
+
+3.12 — Frase exacta de keyword diluida por la conjunción "e"/"&" en /tecnologia
+
+Hecho · resuelto 18/9
+
+Hallazgo migrado el 18/9 desde la Auditoría Final de UX/diseño: title/description "CRM e IA para Empresas" / "AI & CRM for Businesses" — el Mapa de Keywords valida "CRM para empresas" e "IA para empresas" (ES) / "AI for businesses" (EN) como frases exactas separadas, y la conjunción diluye el match textual exacto de ambas.
+
+**Decisión de Mariano:** sumar ambas frases exactas una vez cada una en el cuerpo, sin tocar el title/description (se mantiene el copy actual).
+
+Cambio aplicado (bloque "Qué hacemos", src/app/(es)/tecnologia/page.tsx y su par EN)
+
+```
+ES: "Más de la mitad de las implementaciones de CRM falla..."
+    → "...implementaciones de CRM para empresas falla..."
+    "Implementar IA no es sumar una herramienta más..."
+    → "Implementar IA para empresas no es sumar..."
+
+EN: "Implementing AI isn't just adding another tool..."
+    → "Implementing AI for businesses isn't just adding..."
+    (no se sumó "CRM for businesses" — no es frase validada en
+    el Mapa de Keywords para EN, solo "AI for businesses" es
+    primaria; "CRM consulting" es la secundaria de CRM)
+```
+
+Cambio mínimo invasivo: inserción de dos-tres palabras por oración en párrafos ya existentes, sin contenido nuevo, cada frase aparece una sola vez por idioma — sin keyword stuffing.
+
+**Verificación:** `tsc --noEmit`, `eslint` y `npm run build` limpios. En vivo (HTML servido con `next start`): confirmadas "CRM para empresas" e "IA para empresas" en /tecnologia, "AI for businesses" en /en/tecnologia (sin "CRM for businesses"); title/description verificados intactos en ambos idiomas.
+
+**Commit:** `de94b2e`, pusheado a `master`.
+
+**Para qué sirve:** sumar match textual exacto de dos keywords validadas sin tocar el copy de metadata ya decidido.
+
 Fase 5
 
 ## Mantenimiento continuo
@@ -860,5 +1098,7 @@ El registro día a día de cómo se llegó al estado actual — el "Por dónde s
 21. **14/9, Mariano pide unificar "Base Core" a "BaseCore" en todo el copy:** se abre la Fase 8. Antes de tocar nada se releva el código (46 hallazgos) y se analiza la implicancia — sin riesgo de ranking, pero con riesgo de fragmentar la entidad de marca si no se actualiza también LinkedIn/GA4/GBP. Mariano pide pausa (8.1).
 22. **14/9, Mariano reporta que "Base Core" solo no lo encuentra en Google:** se abre 8.2. `seo-marketing` investiga con búsqueda real y encuentra que el término compite con Base Power (baterías domésticas, ronda Serie D de US$1.000M, producto lanzado en agosto llamado "Base Core"). Recomienda 7 acciones priorizadas; Mariano confirma avanzar con #1 (`alternateName` en JSON-LD), #2 (alias en `/llms.txt`) y #4 (chequeo mensual con `gsc.py`) — bloquea #7 (no tocar copy visible). #1 y #2 se implementan, pasan por PR #41 (código de sitio, no docs) y se mergean y verifican en vivo contra `basecoresales.com` el mismo día.
 23. **14/9, cierre de 8.1:** antes de decidir del todo, Mariano pide una segunda vuelta de análisis con evidencia sobre qué forma es más probable que la gente busque. `seo-marketing` encuentra un dato nuevo: "BaseCore" (junto) ya es una marca registrada (BaseCore™, geoceldas, `basecore.co`) — pasar a esa forma no resuelve la colisión de nombre, la cambia por una potencialmente con implicancia legal de trademark. Sin evidencia real de que una forma sea más buscada que la otra. Mariano cierra 8.1 sin avanzar. Se abre 1.28 (Fase 1): seguimiento recurrente de performance con PageSpeed Insights, esperando el próximo análisis de Mariano.
+24. **18/9, migración de 9 hallazgos desde la Auditoría Final de UX/diseño:** a pedido de Mariano, para no pisar el seguimiento con dos artifacts sobre el mismo tema, se suman al Plan de SEO 1.29-1.35 (Fase 1) y 3.11-3.12 (Fase 3) — el artifact de origen queda con esos ítems marcados como resueltos/migrados.
+25. **18/9, sesión posterior — cierre de 1.28 (ronda del día) y 1.29:** `performance` investiga la regresión de LCP mobile detectada más temprano ese mismo día (3.8s → 5.0-5.2s) y la desestima con evidencia — 9 corridas frescas con cache-busting dan 3.9-5.5s con el mismo código, sin ningún commit del rango 14-18/9 que toque el critical path de Home; concluye que es ruido de laboratorio de PSI en la simulación de throttling mobile, no una regresión real, y corrige el criterio a 4-5 corridas frescas antes de declarar señal de ahora en más. De paso resuelve los 3 hallazgos que quedaban del 14/9 (`sizes` en TechnologyBlock.tsx/AboutLogoBlock.tsx, confirmación de que el logo del Header ya no necesita cambios, y el hallazgo de animación no compositada — mal atribuido al panzoom del hero, la traza real de Lighthouse apuntaba al botón de WhatsApp transicionando `bottom`, corregido). Commit `a00ddcc`. 1.28 sigue Pendiente por ser tarea recurrente. Aparte, `seo-marketing` cierra 1.29: confirma que el root layout de `(en)/en` resuelve el mismo segmento que su `page.tsx` (documentado en `node_modules/next/dist/docs`), mismo motivo por el que Next.js no aplicaba `title.template` ahí, e implementa el título completo hardcodeado. Commit `44cf2da`. Ambas verificadas y deployadas a producción. Después, `seo-marketing` cierra 1.30: agrega bloque `openGraph` propio a `/contacto` (title/description ya existentes de la página, imagen `breadcrumb.jpg` que ya usa como hero real) — confirma que el gap de `twitter` no es una regresión sino comportamiento site-wide (ninguna de las 8 páginas de referencia lo declara). Commit `91ad85c`. Después, `seo-marketing` cierra 1.31: corrige `Breadcrumb.tsx` para usar "Inicio" en vez de "Home" hardcodeado en las 9 páginas ES (texto visible + JSON-LD), mismo condicional por `lang` que ya usaba el componente para el `href`. Commit `5207030`. De paso encuentra el mismo bug en el nav principal del Header (`src/lib/site.ts`), fuera del alcance de 1.31 — se abre como 1.38 nueva. Mariano decide resolverla en el momento en vez de dejarla pendiente: `seo-marketing` aplica el mismo fix (label "Home"→"Inicio" en el array ES de `site.ts`), verificado sin regresión. Commit `65edacd`. 1.38 queda abierta y cerrada el mismo día. Después, `seo-marketing` cierra 1.32: agrega un H2 ("Últimos artículos"/"Latest articles") antes de la grilla de posts en /blog y /en/blog, mismo componente `SectionHeading` y patrón eyebrow+H2 que ya usa la sección "Metodología" de Home — preferido a bajar los H3 de las cards, que cumplen otra función semántica. Commit `b0be1e5`. Después, Mariano elige entre las dos alternativas de 1.33 ("BaseHub: Plataforma de Proyectos", 50 caracteres, sobre la de 47) por mantener "Plataforma" — `seo-marketing` implementa ese title más la description acortada a 155 caracteres en `/basehub` (ES), verificado en vivo sin regresión en H1/contenido. Commit `47bd5ab`. Después, Mariano cierra 1.34 sin cambio: el title de /en/presales ya mide 59 caracteres con sufijo, dentro del rango seguro — la única forma de bajarlo más sacrificaría una keyword validada, no se justifica. Después, `seo-marketing` cierra 1.35: amplía las 4 meta descriptions cortas al copy exacto que Mariano confirmó (158/151/154/150 caracteres), verificado sin regresión. Commit `f823002`. Con esto, la Fase 1 queda sin pendientes propios salvo 1.25 (en progreso) y 1.37 (esperando confirmación de Mariano en iPhone) — de las 9 tareas migradas el 18/9 desde la Auditoría Final (1.29-1.37), solo 1.37 sigue sin cerrar. Después, Mariano decide sumar "customer success" al H1 de /posventa (3.11, más peso de posicionamiento) en vez de dejarla solo en metadata — `seo-marketing` reescribe el H1 en ES y EN, confirmado contra el Mapa de Keywords, verificado sin perder la keyword primaria de la página. Commit `fb9cfba`. Después, `seo-marketing` cierra 3.12: suma "CRM para empresas"/"IA para empresas" (ES) y "AI for businesses" (EN) como frases exactas en párrafos ya existentes de /tecnologia, sin tocar title/description. Commit `de94b2e`. Con esto, Fase 3 queda cerrada del todo.
 
-Historial Técnico SEO · Base Core · creado el 5 de septiembre de 2026, a partir del Plan de SEO original · actualizado el 14 de septiembre (Fase 8 nueva, 8.1 cerrada — decisión de no unificar el naming a "BaseCore") · espejo de trabajo en `documentation/seo/historial-seo.md`
+Historial Técnico SEO · Base Core · creado el 5 de septiembre de 2026, a partir del Plan de SEO original · actualizado el 18 de septiembre, sesión posterior (1.29-1.35, 1.38, 3.11 y 3.12 movidas acá — de las tareas migradas ese día desde la Auditoría Final, solo 1.37 sigue sin cerrar; Fase 3 queda cerrada del todo) · antes, el mismo día: migración de 9 hallazgos SEO desde la Auditoría Final de UX/diseño (1.29-1.35, 3.11-3.12) · antes: 14 de septiembre (Fase 8 nueva, 8.1 cerrada — decisión de no unificar el naming a "BaseCore") · espejo de trabajo en `documentation/seo/historial-seo.md`

@@ -396,3 +396,49 @@ real de LCP en mobile de Home (~3.8s → ~5.0-5.2s desde el 14/9,
 consistente en dos corridas, no ruido de laboratorio) — anotada en la
 tarea 1.28 del Plan de SEO, sin investigar la causa todavía. Con esto,
 el único pendiente que quedaba fuera de este repo también se resolvió.
+
+## Cabo suelto encontrado y cerrado (19/9)
+
+Al revisar si el artifact podía archivarse del todo, apareció una nota de
+Mariano en `sp-inconsistencia-home` que nunca se había convertido en
+tarea: agregada DESPUÉS del `[Implementado 18/9]` que bajó el padding de
+"Nuestra metodología" de Home, decía *"ENCONTRE DOS MARGENES QUE ESTAN MAL
+Y NO RESPETA LOS CRITERIOS DE TODA LA PAGINA, EN PREVENTA VENTA Y POSVENTA
+EN EL CAJON DE ETAPAS TIENEN UN MARGEN SUPERIOR MUY CHICO"* — el `estado`
+del ítem en el artifact se había quedado en `"no"` desde la decisión
+macro original, así que esta nota puntual quedó sin retomar en el cierre
+del 18/9.
+
+**Resuelto (19/9), `web-lead`, commit `d93b6a1`:** el cajón "Etapas" de
+`ServiceCyclePage.tsx` (compartido por /preventa, /venta, /posventa y sus
+pares EN) tenía su `SectionHeading` sin margen inferior propio — 10px
+reales de aire antes del grid de flip cards, medido en vivo. Se usó como
+referencia la sección "Puestos" de la misma página (mismo patrón
+eyebrow+H2+grid, ya documentada en el código como intencionalmente pareja
+a Etapas), que usa `className="mb-[20px]"` — se agregó el mismo valor al
+`SectionHeading` de Etapas. Verificado con `tsc`/`eslint`/`build` limpios
+y confirmación visual (Playwright, incluido el grid de 2 filas de
+/venta/posventa, sin reintroducir el bug histórico de stacking de esa
+sección).
+
+**Hallazgo colateral revisado (19/9) — no reproduce, sin acción:** el
+mismo patrón (`py-[10px]` en la sección) se había señalado en
+`/marketing`, sección "Pilares comunicacionales"
+(`src/app/(es)/marketing/page.tsx:207`). Medido en vivo con Playwright
+(`getBoundingClientRect`, mobile 390px y desktop 1440px): el
+`SectionHeading` de esa sección **ya tiene `mb-[16px]`** propio (a
+diferencia de Home/Etapas, que no tenían ningún margen), y la sección
+siguiente (`FlipCardGrid`) suma su propio `pt-[40px]` — gap real medido:
+**66px** en ambos viewports, muy por encima del piso de ~20px que fijaron
+los dos fixes de hoy. Confirmado también con capturas visuales. No se
+tocó código — no había nada que arreglar.
+
+## Estado final (19/9)
+
+Con esto, los **25 hallazgos originales quedan cerrados del todo, sin
+ningún cabo suelto** — el artifact **Auditoría Final Base Core**
+(https://claude.ai/code/artifact/dc919209-ee50-4b8a-9588-1e176c511faf) ya
+no tiene nada pendiente que consultar. No está linkeado a ningún proceso
+automático (ni en `CLAUDE.md` ni en la config de ningún agente) — este
+archivo (`documentation/PLAN-AUDITORIA-FINAL.md`) es el único puntero que
+queda, y pasa a ser registro histórico, no un tracker activo.

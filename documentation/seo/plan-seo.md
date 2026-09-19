@@ -2,9 +2,14 @@
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/f6230fde-8996-4d03-ae8a-4211f111ed90
 > - Última sincronización: 2026-09-18
+> - Nota: sesión posterior del 18/9 — de las 9 tareas migradas ese día desde la Auditoría Final (1.29-1.37), 8 quedaron cerradas (1.29-1.35, más 1.38 nueva encontrada y resuelta en el camino); solo 1.37 sigue sin cerrar, esperando que Mariano la confirme en su iPhone. Fase 1 queda sin pendientes propios salvo 1.25 (en progreso) y 1.37.
 > - Nota: se agregó la tarea 1.37 (18/9) — fix real de Turnstile atascado por el conflicto iCloud Private Relay/ITP en /contacto, ya deployado a producción (commit a7b6948), queda Pendiente hasta que Mariano lo confirme en su iPhone real.
 
 ---
+
+Plan SEO
+
+basecoresales.com · auditoría & hoja de ruta
 
 # Plan de SEO de Base Core
 
@@ -12,7 +17,7 @@ Tablero activo: lo que está Pendiente o En progreso vive arriba de todo, agrupa
 
 📋 [Ver Historial Técnico SEO (detalle de las 60 tareas ya resueltas)](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8)
 
-61 / 83 tareas · 2 en progreso (1.25, 8.2) · +4 bloqueadas (4.1, 4.3, 4.4, 4.5) · 10 nuevas migradas de la Auditoría Final (1.29–1.36, 3.11–3.12) + 1.37 nueva (fix de Turnstile)
+71 / 84 tareas · 2 en progreso (1.25, 8.2) · +4 bloqueadas (4.1, 4.3, 4.4, 4.5) · Fase 1 y 3 sin pendientes propios (18/9, sesión posterior)
 
 [Activo hoy](#activo)
 [Diagnóstico](#diagnostico)
@@ -45,7 +50,7 @@ INP (Interaction to Next Paint) reemplazó a FID como métrica de Core Web Vital
 
 1.28 — Performance con PageSpeed Insights (mobile/desktop)
 
-Pendiente · API de PSI automatizada, señal de regresión de LCP mobile (18/9)
+Pendiente, tarea recurrente · ronda del 18/9 cerrada (regresión desestimada, 3 hallazgos resueltos)
 
 Tarea nueva (14/9), recurrente — no se cierra de una vez como 1.14, sino que se va revisando cada vez que aparece un reporte nuevo de PageSpeed Insights. 1.14 ya dejó Mobile en 88 y Desktop en 93-98 (confirmado 11/9), pero Mariano señala que sigue habiendo "ruidos" puntuales en mobile y desktop que vale la pena seguir bajando.
 
@@ -124,135 +129,37 @@ Ya resuelto o fuera de alcance del repo, sin acción
 
 **Orden sugerido para retomar mañana:** 1) fix de `sizes` en TechnologyBlock.tsx + AboutLogoBlock.tsx (nuevo, bajo esfuerzo, sin riesgo) — 2) re-correr PSI post-deploy de 1.27 para confirmar el logo del Header antes de tocar `quality` — 3) experimento `will-change` en el panzoom del hero.
 
+**Resolución de la ronda del 18/9 (sesión siguiente), por `performance` — regresión de LCP investigada + los 3 hallazgos de arriba resueltos:**
+
+**Regresión de LCP mobile (3.8s → 5.0-5.2s) — investigada y desestimada, no confirmada como causada por código.** `git log --since="2026-09-14" --until="2026-09-19"` no muestra ningún commit que toque el elemento LCP real (`src/app/(es)/page.tsx:137-150`, imagen del hero) ni el critical path de arranque de Home. 9 corridas frescas de mobile (cache-busting por query string, necesario porque PSI sirve el mismo reporte cacheado sin eso) dieron un rango de **3.9-5.5s con el mismo código y mismo TTFB** (`x-vercel-cache: HIT` constante) — consistente con ruido de laboratorio de PSI en la simulación de throttling mobile, no con una regresión real. Desktop se mantuvo estable en 97-99 en todas las corridas. **Criterio corregido de ahora en más:** las 2 corridas del 18/9 no eran suficientes para declarar señal — usar 4-5 corridas frescas antes de declarar cualquier cambio futuro como regresión o mejora real de LCP mobile. Sin datos de campo (CrUX) todavía para contrastar — `originLoadingExperience` vacío por tráfico insuficiente, chequear en la próxima ronda.
+
+**1. `sizes` en TechnologyBlock.tsx + AboutLogoBlock.tsx — implementado.** Mismo fix de una línea en los dos (`sizes="(min-width: 768px) 190px, 140px"` y `sizes="257px"` respectivamente), verificado en vivo en /marketing y /tecnologia.
+
+**2. Logo 200x200 del Header — confirmado que no hace falta ningún cambio.** PSI real de hoy: `uses-responsive-images`/`uses-optimized-images`/`modern-image-formats` con `score=None` (sin hallazgos) — `quality={60}` del PR #40 ya lo resolvió.
+
+**3. Animación no compositada — el hallazgo original estaba mal atribuido, corregido con la traza real.** La traza cruda de Lighthouse (`non-composited-animations`) apuntaba a `body.flex > a.fixed`, `nodeLabel: "WhatsApp us"` — **no era el panzoom del hero** (que ya usa `transform` puro y nunca estuvo mal). Causa real: `WhatsAppButton.tsx` transicionaba `bottom` (propiedad de layout) junto con `transform` para deslizarse cuando cambia `--lang-banner-height`. Fix: sacar `bottom` de la transición, dejar solo `transition-transform`. Confirmado con la API cruda de PSI: `non-composited-animations` pasó de `score=1` a `score=None`. Efecto colateral menor aceptado: el botón salta en vez de deslizarse solo en la visita donde cambia el banner de idioma. No se aplicó el experimento `will-change` original porque, con la traza real en mano, el hero nunca fue el elemento flageado.
+
+Métricas antes/después (ronda 18/9)
+
+```
+Baseline 14/9 17:25 — Mobile: Performance 87 · FCP 2.0s · LCP 3.8s · TBT 70ms
+Regresión 18/9 (2 corridas) — Mobile LCP: 5.0s / 5.2s (Performance 65/74, ruido ya señalado)
+Pre-fix, 6 corridas frescas — Mobile LCP: 5.3 / 4.1 / 3.9 / 4.5 / 4.1 / 5.5s
+Post-fix (sizes + WhatsApp), 3 corridas frescas — Mobile LCP: 3.9 / 4.7 / 4.1s
+Desktop, post-fix: Performance 99 · FCP 0.5s · LCP 0.9s · TBT 40ms · CLS 0
+```
+
+El ruido de LCP mobile (3.9-5.5s) es prácticamente igual antes y después de los 3 fixes — esperable, ninguno toca el elemento LCP. No hay evidencia de que estos cambios hayan movido el LCP; sí hay evidencia dura (API cruda de PSI) de que resolvieron sus propios hallazgos puntuales.
+
+**Commit:** `a00ddcc` — pusheado a `master`, deployado y verificado en vivo. Archivos: `TechnologyBlock.tsx`, `AboutLogoBlock.tsx`, `WhatsAppButton.tsx`. Verificado con tsc/eslint/build antes de commitear.
+
+**Pendiente para la próxima ronda:** nada nuevo con riesgo/ambigüedad. Seguir el hábito de medir LCP mobile con 4-5 corridas frescas (no 1-2), y chequear si ya hay datos de campo CrUX (`originLoadingExperience`, hoy vacío por poco tráfico). `unused-javascript` (GTM + chunk propio) sigue apareciendo en el audit, ya descartado/fuera de alcance en rondas previas — no se reabrió.
+
 **Automatización pedida por Mariano (18/9), migrada desde la Auditoría Final de UX/diseño (era `perf-psi-pendiente` ahí):** en vez de pasar reportes de PSI a mano cada vez, ofreció dar acceso a una API key para que `performance` pueda consultar Core Web Vitals de forma autónoma cuando haga falta, sin depender de que Mariano genere y pegue el reporte. Pendiente: definir con Mariano cuál API (PageSpeed Insights API, más simple de dar de alta, o sumar CrUX History API para series históricas) y que genere/comparta la key — una vez configurada, este mecanismo (Mariano pasa reporte → `performance` analiza) pasa a ser autoservicio.
 
 **Nota (18/9):** el hallazgo `perf-cloudflare-script` de la misma auditoría (script de Cloudflare sin async/defer) es el mismo caso que "Scripts de Cloudflare" en la lista de arriba — cero referencias en el repo, feature del borde de Cloudflare que Vercel no despliega. Ya cerrado acá, sin tarea nueva.
 
 **Para qué sirve:** Core Web Vitals es señal directa de ranking de Google, y la primera impresión real de cualquier visitante — bajar "ruido" de performance no tiene techo fijo, siempre hay margen de mejora incremental.
-
-1.29 — Title de /en sin sufijo de marca
-
-Pendiente
-
-El `<title>` de `/en` (Home en inglés) es "Commercial Consulting for Small Business" — sin el sufijo " – Base Core Sales" que sí llevan las otras 7 páginas EN y la Home ES. El propio comentario en `src/app/(en)/en/page.tsx:25-32` documenta el comportamiento esperado (el `title.template` del root layout debería aplicarse porque `/en` no es el segmento raíz), pero en producción pasa lo contrario.
-
-**Recomendación:** investigar por qué `title.template` no se aplica a este segmento (posible causa: `/en` comparte segmento con su propio root layout, igual que "/" con el suyo, invalidando la premisa del comentario) y corregir para que incluya el sufijo, igual que el resto del sitio.
-
-**Migrado (18/9):** hallazgo de la Auditoría Final de UX/diseño (14-18/9), movido acá para no duplicar seguimiento SEO en dos artifacts (regla Camino B) — en el artifact de origen queda marcado como resuelto/migrado.
-
-1.30 — /contacto sin Open Graph / Twitter Card propio
-
-Pendiente
-
-`src/app/(es)/contacto/page.tsx` no declara bloque `openGraph`/`twitter` propio — hereda el genérico del Home ("Base Core – Consultoría Comercial y Marketing") al compartir el link. Asimetría real: `/en/contact` sí declara el suyo ("Free Diagnostic").
-
-**Recomendación:** agregar `openGraph`/`twitter` específicos, mismo patrón que preventa/venta/posventa/marketing/tecnologia/basehub/blog/ebook.
-
-**Migrado (18/9)** de la Auditoría Final de UX/diseño.
-
-1.31 — Breadcrumb dice "Home" en inglés en las 9 páginas ES
-
-Pendiente
-
-`src/components/Breadcrumb.tsx` hardcodea el string "Home" en ambas variantes (texto visible y `BreadcrumbList` del JSON-LD, líneas 46/97/133), sin usar el prop `lang` que ya recibe (y sí usa correctamente para el `href`). Se ve en /preventa, /venta, /posventa, /marketing, /tecnologia, /basehub, /blog, /contacto, /ebook.
-
-**Recomendación:** traducir a "Inicio" cuando `lang === "es"`, en el texto del link y en el `name` del JSON-LD.
-
-**Migrado (18/9)** de la Auditoría Final de UX/diseño.
-
-1.32 — /blog salta de H1 a H3 sin H2 intermedio
-
-Pendiente
-
-`BlogListPage.tsx` renderiza el H1 y pasa directo a los `<h3>` de cada `BlogCard` — mismo patrón en /blog y /en/blog.
-
-**Recomendación:** agregar un H2 antes de la grilla ("Últimos artículos"/"Latest articles"), o bajar los títulos de las tarjetas a H2.
-
-**Migrado (18/9)** de la Auditoría Final de UX/diseño.
-
-1.33 — Title/description de /basehub exceden el largo cómodo para SERP
-
-Pendiente · propuesta lista, esperando confirmar con Mariano
-
-Title 61 caracteres, description 167 — ambos superan ~60/~160, riesgo de truncamiento en el resultado de Google. Mariano pidió ver la propuesta exacta de acortado antes de aplicar, y entender si el cambio se ve en la página o es solo metadata.
-
-**Es metadata invisible en la página:** ni el title ni la description de `<head>` aparecen en el cuerpo visible de /basehub — el H1 de la página es otro texto, sin tocar. Solo cambia lo que Google muestra en el resultado de búsqueda y lo que se ve al compartir el link.
-
-Propuesta (sin implementar)
-
-```
-Title actual (61):  "BaseHub: Plataforma de Gestión de Proyectos" + sufijo
-Title propuesto (50): "BaseHub: Plataforma de Proyectos" + sufijo
-  (o, más corto, 47): "BaseHub: Gestión de Proyectos" + sufijo
-
-Description actual (167):
-  "BaseHub: la plataforma de seguimiento e implementación de
-  proyectos de Base Core, incluida en tu consultoría. Sin pagar
-  una herramienta de gestión de proyectos aparte."
-
-Description propuesta (155):
-  "BaseHub: la plataforma de seguimiento e implementación de
-  proyectos de Base Core, incluida en tu consultoría — sin pagar
-  una herramienta de gestión aparte."
-```
-
-**Para qué sirve:** que Google no trunque el resultado de búsqueda a mitad de palabra.
-
-**Migrado (18/9)** de la Auditoría Final de UX/diseño, con la propuesta que Mariano había pedido ya resuelta acá.
-
-1.34 — Title de /en/presales, cerca del límite de largo
-
-Pendiente · propuesta lista, esperando confirmar con Mariano
-
-Title: "B2B Lead Generation & Appointment Setting" + sufijo " – Base Core Sales". Medido directo: 41 + 18 = **59 caracteres** (la Auditoría Final había anotado 63 — pequeña diferencia de conteo, no cambia la conclusión). 59 ya está dentro del rango seguro de ~60 que recomienda Google.
-
-**Es metadata invisible en la página:** mismo caso que 1.33 — el H1 real de /en/presales no cambia, solo lo que se ve en el resultado de Google.
-
-Conclusión
-
-```
-Title actual, medido: 59 caracteres con sufijo — ya seguro.
-No hace falta acortarlo. Si Mariano igual prefiere más margen,
-la única forma de bajarlo más es sacar "& Appointment Setting",
-pero esa frase es keyword validada en el Mapa de Keywords — no
-se recomienda sacarla solo por unos caracteres de margen extra.
-```
-
-**Migrado (18/9)** de la Auditoría Final de UX/diseño, con la medición que Mariano había pedido ya resuelta acá — recomendación: cerrar sin cambio.
-
-1.35 — 4 meta descriptions por debajo de ~120 caracteres
-
-Pendiente · propuesta lista, esperando confirmar con Mariano
-
-/blog (110), /en/blog (114), /en/contact (113) y /en/marketing (116) — no es error, dejan espacio sin aprovechar en el resultado de Google (rango cómodo: 140-160). Mariano pidió ver la propuesta exacta de qué agregar antes de aplicar, y confirmar que es solo metadata.
-
-**Es metadata invisible en la página:** las 4 son `const description` de `<head>` — ninguna aparece en el cuerpo visible de esas 4 páginas.
-
-Propuesta (sin implementar)
-
-```
-/blog (110 → 158):
-  "Artículos sobre procesos comerciales, CRM y tecnología
-  aplicada a ventas para pymes en España y Latinoamérica. Guías
-  de marketing, preventa, venta y posventa."
-
-/en/blog (114 → 151):
-  "Articles on sales processes, CRM, and technology for small
-  businesses in Spain and Latin America. Guides on marketing,
-  presales, sales, and post-sales."
-
-/en/contact (113 → 154):
-  "Book a free diagnostic: share your details and we'll propose
-  a roadmap to improve your commercial processes and
-  methodology, from marketing to post-sales."
-
-/en/marketing (116 → 150):
-  "Marketing consulting for small business: branding, SEO,
-  social media, paid advertising, graphic design, and websites,
-  built for your full sales cycle."
-```
-
-**Migrado (18/9)** de la Auditoría Final de UX/diseño, con la propuesta que Mariano había pedido ya resuelta acá.
 
 1.37 — Turnstile queda colgado en iOS (iCloud Private Relay / ITP) en /contacto
 
@@ -269,28 +176,6 @@ Hallazgo original (Auditoría Final, cat. Responsive): en /contacto, el widget d
 Verificado end-to-end local (Playwright, viewport mobile, site key real): botón deshabilitado en t=0, habilitado + mensaje visible en t=13s, el POST pasa la verificación de captcha. Confirmado en producción (basecoresales.com) que el JS deployado ya tiene el string del mensaje nuevo. Commit: `a7b6948`.
 
 **Por qué sigue Pendiente, no Hecho:** falta que Mariano lo confirme en su iPhone real con Private Relay activado — a los ~12 segundos debería aparecer "No pudimos verificar la seguridad automáticamente" y el botón ENVIAR MENSAJE debería habilitarse igual.
-
-### Fase 3 · Palabras clave y contenido
-
-3.11 — Keyword validada "customer success" ausente del title/H1 de /posventa
-
-Pendiente
-
-Title "Fidelización y Retención de Clientes" / H1 "¿Buscas fidelizar y retener a tus clientes?" — sin la keyword secundaria validada. Mismo patrón en `/en/post-sales`. El Mapa de Keywords ya marca esto como ganancia de bajo esfuerzo, sin implementar.
-
-**Recomendación:** sumar "customer success" al H1 o al title en ambos idiomas.
-
-**Migrado (18/9)** de la Auditoría Final de UX/diseño.
-
-3.12 — Frase exacta de keyword diluida por la conjunción "e"/"&" en /tecnologia
-
-Pendiente
-
-Title/description: "CRM e IA para Empresas" / "AI & CRM for Businesses" — el Mapa de Keywords valida "CRM para empresas" e "IA para empresas" (ES) / "AI for businesses" (EN) como frases exactas separadas, y se pierde el match textual exacto de ambas.
-
-**Recomendación:** evaluar sumar ambas frases exactas una vez cada una en cuerpo/H2, sin tocar el title si se prefiere mantener el copy actual — impacto bajo.
-
-**Migrado (18/9)** de la Auditoría Final de UX/diseño.
 
 ### Fase 4 · SEO local y autoridad
 
@@ -476,7 +361,7 @@ Fase 1
 
 ## Cimientos técnicos (on-page)
 
-Cerrada en lo esencial — 1.14 (Core Web Vitals) se confirmó el 11/9. 1.24 (retina) se investigó a fondo y cerró sin acción de código — `next/image` ya lo resolvía; 1.25 (INP de campo) ya tiene acceso a GA4 resuelto el 14/9 — queda en progreso, esperando acumular tráfico nuevo. 1.26 y 1.27, encontrados en la auditoría de performance del 13/9, se resolvieron el 14/9. 1.28 es nueva (14/9): seguimiento recurrente de performance con PageSpeed Insights, esperando el próximo análisis de Mariano. 1.29-1.35 son nuevas (18/9), migradas desde la Auditoría Final de UX/diseño para no duplicar seguimiento SEO en dos artifacts — detalle completo de cada una en "Activo hoy". 1.36 (18/9, también migrada de esa auditoría, ahí era `perf-hero-tecnologia`) se cerró directo sin tarea activa: la imagen que marcaba como "hero (LCP)" de /tecnologia (bg-5.jpg, 68KB) es en realidad el fondo de la sección de Contacto al final de la página — no la imagen visible al cargar, así que no pesa en el LCP real. El hero real de /tecnologia usa el componente PageHero compartido, ya cubierto por 1.26/1.27. Sigue como CSS background a propósito (decisión ya tomada en PLAN-VERCEL.md: solo los heroes reales pasan a next/image, el resto de fondos se queda así). 1.37 es nueva (18/9): fix real de Turnstile atascado por el conflicto Private Relay/ITP de iOS en /contacto, ya deployado a producción — queda Pendiente hasta que Mariano lo confirme en su iPhone real. Detalle técnico de performance completo en el artifact [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929). Detalle completo del resto de las tareas ya resueltas de esta fase en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8).
+Cerrada en lo esencial — 1.14 (Core Web Vitals) se confirmó el 11/9. 1.24 (retina) se investigó a fondo y cerró sin acción de código — `next/image` ya lo resolvía; 1.25 (INP de campo) ya tiene acceso a GA4 resuelto el 14/9 — queda en progreso, esperando acumular tráfico nuevo. 1.26 y 1.27, encontrados en la auditoría de performance del 13/9, se resolvieron el 14/9. 1.28 es recurrente: la ronda del 18/9 cerró con la regresión de LCP mobile desestimada (ruido de laboratorio de PSI, no una regresión real) y sus 3 hallazgos pendientes resueltos — detalle completo en "Activo hoy", sigue Pendiente por ser tarea sin cierre único. 1.29-1.35 y 1.38 (title de /en sin sufijo; OG/Twitter de /contacto; Breadcrumb y nav del Header en español; H2 faltante en /blog; title/description de /basehub; title de /en/presales cerrado sin cambio; 4 meta descriptions cortas) se cerraron el 18/9, detalle movido al Historial Técnico SEO — de las 9 tareas migradas de la Auditoría Final (1.29-1.37), solo 1.37 queda sin cerrar del todo, esperando que Mariano lo confirme en su iPhone. 1.36 (18/9, también migrada de esa auditoría, ahí era `perf-hero-tecnologia`) se cerró directo sin tarea activa: la imagen que marcaba como "hero (LCP)" de /tecnologia (bg-5.jpg, 68KB) es en realidad el fondo de la sección de Contacto al final de la página — no la imagen visible al cargar, así que no pesa en el LCP real. El hero real de /tecnologia usa el componente PageHero compartido, ya cubierto por 1.26/1.27. Sigue como CSS background a propósito (decisión ya tomada en PLAN-VERCEL.md: solo los heroes reales pasan a next/image, el resto de fondos se queda así). 1.37 es nueva (18/9): fix real de Turnstile atascado por el conflicto Private Relay/ITP de iOS en /contacto, ya deployado a producción — queda Pendiente hasta que Mariano lo confirme en su iPhone real. Detalle técnico de performance completo en el artifact [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929). Detalle completo del resto de las tareas ya resueltas de esta fase en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8).
 
 | # | Tarea | Estado |
 | --- | --- | --- |
@@ -507,16 +392,17 @@ Cerrada en lo esencial — 1.14 (Core Web Vitals) se confirmó el 11/9. 1.24 (re
 | 1.25 | INP real de campo | En progreso |
 | 1.26 | Cap de `sizes` en el hero de Home | Hecho |
 | 1.27 | Bajar `quality` en logos (Header/Footer) | Hecho |
-| 1.28 | Performance con PageSpeed Insights (mobile/desktop, recurrente) | Pendiente · API de PSI automatizada, señal de regresión de LCP mobile (18/9) |
-| 1.29 | Title de /en sin sufijo de marca | Pendiente |
-| 1.30 | /contacto sin Open Graph / Twitter Card propio | Pendiente |
-| 1.31 | Breadcrumb dice "Home" en inglés en páginas ES | Pendiente |
-| 1.32 | /blog salta de H1 a H3 sin H2 | Pendiente |
-| 1.33 | Title/description largos de /basehub | Pendiente · propuesta lista |
-| 1.34 | Title de /en/presales cerca del límite | Pendiente · propuesta lista |
-| 1.35 | 4 meta descriptions cortas | Pendiente · propuesta lista |
+| 1.28 | Performance con PageSpeed Insights (mobile/desktop, recurrente) | Pendiente · ronda del 18/9 cerrada |
+| 1.29 | Title de /en sin sufijo de marca | Hecho |
+| 1.30 | /contacto sin Open Graph / Twitter Card propio | Hecho |
+| 1.31 | Breadcrumb dice "Home" en inglés en páginas ES | Hecho |
+| 1.32 | /blog salta de H1 a H3 sin H2 | Hecho |
+| 1.33 | Title/description largos de /basehub | Hecho |
+| 1.34 | Title de /en/presales cerca del límite | Hecho |
+| 1.35 | 4 meta descriptions cortas | Hecho |
 | 1.36 | Imagen de fondo de ContactSection en /tecnologia, mal etiquetada como "hero" | Hecho |
 | 1.37 | Turnstile colgado en iOS (Private Relay/ITP) en /contacto | Pendiente · esperando confirmación en iPhone real |
+| 1.38 | Nav principal (Header) dice "Home" en inglés en páginas ES | Hecho |
 
 Fase 2
 
@@ -534,7 +420,7 @@ Fase 3
 
 ## Palabras clave y contenido
 
-Cerrada en lo esencial — 3.11 y 3.12 son nuevas (18/9), migradas desde la Auditoría Final de UX/diseño, sin implementar. Detalle completo de esas dos en "Activo hoy". El resto de la fase, y el mapa de keywords por página, en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8) y el [Mapa de Keywords Basecore](https://claude.ai/code/artifact/2fb2b4bf-cd0c-41a4-a152-05098b5423f9).
+Cerrada del todo — 3.11 y 3.12 (18/9, migradas de la Auditoría Final) se cerraron el mismo día, detalle movido al Historial Técnico SEO. El resto de la fase, y el mapa de keywords por página, en el [Historial Técnico SEO](https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8) y el [Mapa de Keywords Basecore](https://claude.ai/code/artifact/2fb2b4bf-cd0c-41a4-a152-05098b5423f9).
 
 | # | Tarea | Estado |
 | --- | --- | --- |
@@ -548,8 +434,8 @@ Cerrada en lo esencial — 3.11 y 3.12 son nuevas (18/9), migradas desde la Audi
 | 3.8 | Enlaces internos hacia /ebook | Hecho |
 | 3.9 | Title de /blog sin keyword | Hecho |
 | 3.10 | H1 de /ebook y /en/ebook | Hecho |
-| 3.11 | Keyword "customer success" ausente en /posventa | Pendiente |
-| 3.12 | Keyword diluida por "e"/"&" en /tecnologia | Pendiente |
+| 3.11 | Keyword "customer success" ausente en /posventa | Hecho |
+| 3.12 | Keyword diluida por "e"/"&" en /tecnologia | Hecho |
 
 Fase 4
 
@@ -671,4 +557,4 @@ Fase abierta el 14/9. 8.1 se cerró el mismo día (decisión tomada: no avanzar)
 | 8.2 | Visibilidad de marca: no aparece buscando "Base Core" solo | En progreso · #1/#2/#4 en producción, #8-#11 nuevas |
 | 8.3 | Auditoría de marca: registro, riesgo legal y sociedad | Pendiente · esperando decisión de Mariano |
 
-Última actualización: 2026-09-18 (1.28: Mariano generó su propia API key de PageSpeed Insights — nuevo script scripts/seo/psi.py consulta la API directo, sin depender de reportes manuales; primera corrida real encontró una regresión de LCP en mobile de Home, ~3.8s a ~5.0-5.2s desde el 14/9, consistente en dos corridas — sin investigar la causa todavía, esperando confirmación de Mariano. Antes, ese mismo día: los 3 hallazgos de Performance de la Auditoría Final de UX/diseño se sumaron a 1.28 — dos ya tenían dueño ahí (el script de Cloudflare ya estaba cerrado en la lista de "fuera de alcance", y el pedido de API key para PSI/CrUX autónomo se agregó como nota a la misma tarea recurrente) y el tercero, 1.36, se verificó como mal etiquetado (no es la imagen hero/LCP real de /tecnologia, sino el fondo de la sección de Contacto) y se cerró directo sin abrir tarea activa. Antes, ese mismo día: 9 hallazgos SEO de la Auditoría Final de UX/diseño migrados acá a pedido de Mariano, para no pisar el seguimiento con dos artifacts distintos sobre el mismo tema — Fase 1 suma 1.29-1.35, Fase 3 suma 3.11 y 3.12; en 1.33, 1.34 y 1.35 la migración ya incluye la propuesta exacta de copy que Mariano había pedido ver antes de decidir, en vez de dejarla pendiente; el artifact de origen queda con esos 9 ítems marcados como resueltos/migrados, sin duplicar el detalle). Antes, ese mismo día (reorden a pedido de Mariano: nueva sección "Activo hoy" arriba de todo con el detalle completo de cada tarea Pendiente/En progreso agrupado por fase — las tareas Bloqueadas se quedan documentadas en su fase de origen, sin subir; se sacó la sección "Por dónde seguir" del final por quedar redundante con la nueva sección de arriba; cada fase conserva intacta su tabla de estado). Antes, el mismo día: 8.2: auditoría de seguimiento a pedido de Mariano — verificado en vivo que alternateName/llms.txt siguen en producción, comparación de GSC contra la línea de base del 14/9 (movimiento leve y positivo, sin evidencia causal por la ventana corta), nueva línea de base para la query "basecore" sin espacio, SERP y Perplexity sin cambio respecto al 14/9, y 4 recomendaciones nuevas —#8 a #11— sin implementar, esperando confirmar con cuáles avanzar; antes, el 14/9: 8.3 nueva (auditoría de marca completa — registro en INPI/OEPM, riesgo legal frente a BaseCore™ y Base Power, viabilidad de sociedad y nombre de fantasía — artifact dedicado publicado, esperando revisión de Mariano); 1.28 con reporte de PSI de Home analizado por `performance`, 3 hallazgos listos para confirmar — sin implementar, a retomar mañana; 8.1 cerrada — Mariano decide no avanzar con el naming, análisis completo movido al Historial; 8.2 con #1/#2 (PR #41) en producción, #4 establecido, #7 bloqueada; antes de eso, se resolvió el acceso a GA4 para 1.25 y se cerraron los 6 hallazgos de la auditoría del 13/9 · se irá marcando como Hecho a medida que avancemos.
+Última actualización: 2026-09-18 (sesión posterior: 3.12 — `seo-marketing` suma "CRM para empresas" e "IA para empresas" (ES) y "AI for businesses" (EN) como frases exactas, una vez cada una, en párrafos ya existentes del bloque "Qué hacemos" de /tecnologia y /en/tecnologia — cambio mínimo invasivo, título/description sin tocar (decisión ya tomada). No se sumó "CRM for businesses" en EN: no es keyword validada en el Mapa de Keywords. Verificado en vivo sin redundancia. Commit `de94b2e`. Con esto, Fase 3 queda cerrada del todo. Antes, ese mismo día: 3.11 — Mariano decide sumar la keyword al H1 (más peso de posicionamiento, aunque toca copy visible) en vez de dejarla solo en metadata. `seo-marketing` reescribe el H1 de /posventa ("¿Buscas fidelizar clientes y fortalecer tu customer success?") y /en/post-sales ("Looking to retain customers and strengthen your customer success?"), confirmado contra el Mapa de Keywords que "customer success" es la misma frase validada en ES y EN (100-1.000 volumen, competencia Baja). Verificado en vivo sin perder el concepto de retención/fidelización, que sigue en el cuerpo de la página. Commit `fb9cfba`. Antes, ese mismo día: 1.35 — `seo-marketing` amplía las 4 meta descriptions cortas (/blog, /en/blog, /en/contact, /en/marketing) al copy exacto que Mariano confirmó, quedando en 158/151/154/150 caracteres — verificado en vivo, `openGraph`/JSON-LD reusan la misma constante donde aplica, sin regresión en H1 ni contenido visible. Commit `f823002`. Con esto, la Fase 1 queda sin pendientes propios salvo 1.25 (en progreso, esperando tráfico) y 1.37 (esperando confirmación de Mariano en su iPhone) — las 9 tareas migradas el 18/9 desde la Auditoría Final de UX/diseño (1.29-1.37) quedan todas resueltas salvo esa última. Antes, ese mismo día: 1.34 — Mariano confirma cerrar sin cambio: el title de /en/presales ya mide 59 caracteres con sufijo, dentro del rango seguro de ~60; la única forma de bajarlo más sería sacar "& Appointment Setting", pero es keyword validada en el Mapa de Keywords, no se justifica sacrificarla por margen extra que no hace falta. Sin cambio de código. Antes, ese mismo día: 1.33 — Mariano eligió "BaseHub: Plataforma de Proyectos" (50 caracteres, sobre la alternativa de 47) por mantener "Plataforma", consistente con cómo se describe BaseHub en el resto del sitio; `seo-marketing` implementó ese title + la description acortada a 155 caracteres en `src/app/(es)/basehub/page.tsx` — `openGraph`/JSON-LD reusan las mismas constantes, quedaron consistentes sin tocarlos aparte. Verificado en vivo: title 50 caracteres exactos con sufijo, description 155, H1/contenido visible sin cambios. Commit `47bd5ab`. Antes, ese mismo día: 1.32 — `seo-marketing` agrega un H2 ("Últimos artículos"/"Latest articles", con eyebrow) antes de la grilla de posts en /blog y /en/blog, mismo componente `SectionHeading` y patrón eyebrow+H2 que ya usa la sección "Metodología" de Home — prefirió esto a bajar los H3 de las cards, para no perder la semántica de título-por-card. Verificado sin overlap ni regresión visual. Commit `b0be1e5`. Antes, ese mismo día: 1.38 — `seo-marketing` corrige el mismo bug que 1.31 pero en el nav principal del Header (`src/lib/site.ts:40`), label "Home"→"Inicio" en el array ES, sin tocar el array EN. Verificado sin regresión en el resto del menú (ES y EN) ni en el Breadcrumb/logo, ya correctos por separado. Commit `65edacd`. Tarea abierta y cerrada el mismo día. Antes, ese mismo día: 1.31 — `seo-marketing` corrige `Breadcrumb.tsx` para usar "Inicio" en vez de "Home" hardcodeado en las 9 páginas ES (texto visible + JSON-LD), mismo condicional por `lang` que ya usaba el componente para el `href`. Verificado sin regresión en EN. Commit `5207030`. De paso encontró el mismo bug en el nav principal del Header (`src/lib/site.ts`), fuera del alcance de 1.31 — se abre como 1.38 nueva, sin implementar. Antes, ese mismo día: 1.30 — `seo-marketing` agregó bloque `openGraph` propio a /contacto (title/description ya existentes de la página, imagen `/images/breadcrumb.jpg` que ya usa la página como hero real) — heredaba el genérico del Home. Verificado en vivo sin regresión en Home/preventa/en-contact. Commit `91ad85c`. Nota: `twitter:\*` sigue heredado del Home en /contacto, pero es el comportamiento site-wide — ninguna de las 8 páginas de referencia declara bloque `twitter` propio, no es una regresión de esta tarea. Hallazgo colateral sin acción: `/en/contact` usa una imagen distinta a su par ES para OG (única asimetría imagen-por-imagen del sitio), fuera de alcance de esta tarea. Antes, ese mismo día: 1.28 y 1.29 resueltas en esta ronda. 1.28 — `performance` investigó la regresión de LCP mobile detectada más temprano ese día y la desestimó con evidencia (9 corridas frescas con cache-busting dieron 3.9-5.5s con el mismo código, sin ningún commit del rango 14-18/9 que toque el critical path de Home; conclusión: ruido de laboratorio de PSI, no regresión real — criterio corregido a 4-5 corridas frescas antes de declarar señal de ahora en más) y resolvió los 3 hallazgos que quedaban del 14/9: `sizes` en TechnologyBlock.tsx/AboutLogoBlock.tsx, confirmación de que el logo del Header ya no necesita cambios, y el hallazgo de animación no compositada — mal atribuido al panzoom del hero, la traza real de Lighthouse apuntaba al botón de WhatsApp transicionando `bottom`, corregido. Commit `a00ddcc`, deployado y verificado. Sigue Pendiente por ser tarea recurrente. 1.29 — `seo-marketing` confirmó la causa real (root layout de `(en)/en` resuelve el mismo segmento que su `page.tsx`, mismo motivo por el que Next.js no aplica `title.template` ahí, documentado en `node\_modules/next/dist/docs`) e implementó el título completo hardcodeado, mismo patrón que la Home ES. Commit `44cf2da`, deployado y verificado sin regresión en otras páginas — movida a Hecho, detalle completo en el Historial Técnico SEO. Antes, ese mismo día: 1.28: Mariano generó su propia API key de PageSpeed Insights — nuevo script scripts/seo/psi.py consulta la API directo, sin depender de reportes manuales; primera corrida real encontró una regresión de LCP en mobile de Home, ~3.8s a ~5.0-5.2s desde el 14/9, consistente en dos corridas — sin investigar la causa todavía, esperando confirmación de Mariano. Antes, ese mismo día: los 3 hallazgos de Performance de la Auditoría Final de UX/diseño se sumaron a 1.28 — dos ya tenían dueño ahí (el script de Cloudflare ya estaba cerrado en la lista de "fuera de alcance", y el pedido de API key para PSI/CrUX autónomo se agregó como nota a la misma tarea recurrente) y el tercero, 1.36, se verificó como mal etiquetado (no es la imagen hero/LCP real de /tecnologia, sino el fondo de la sección de Contacto) y se cerró directo sin abrir tarea activa. Antes, ese mismo día: 9 hallazgos SEO de la Auditoría Final de UX/diseño migrados acá a pedido de Mariano, para no pisar el seguimiento con dos artifacts distintos sobre el mismo tema — Fase 1 suma 1.29-1.35, Fase 3 suma 3.11 y 3.12; en 1.33, 1.34 y 1.35 la migración ya incluye la propuesta exacta de copy que Mariano había pedido ver antes de decidir, en vez de dejarla pendiente; el artifact de origen queda con esos 9 ítems marcados como resueltos/migrados, sin duplicar el detalle). Antes, ese mismo día (reorden a pedido de Mariano: nueva sección "Activo hoy" arriba de todo con el detalle completo de cada tarea Pendiente/En progreso agrupado por fase — las tareas Bloqueadas se quedan documentadas en su fase de origen, sin subir; se sacó la sección "Por dónde seguir" del final por quedar redundante con la nueva sección de arriba; cada fase conserva intacta su tabla de estado). Antes, el mismo día: 8.2: auditoría de seguimiento a pedido de Mariano — verificado en vivo que alternateName/llms.txt siguen en producción, comparación de GSC contra la línea de base del 14/9 (movimiento leve y positivo, sin evidencia causal por la ventana corta), nueva línea de base para la query "basecore" sin espacio, SERP y Perplexity sin cambio respecto al 14/9, y 4 recomendaciones nuevas —#8 a #11— sin implementar, esperando confirmar con cuáles avanzar; antes, el 14/9: 8.3 nueva (auditoría de marca completa — registro en INPI/OEPM, riesgo legal frente a BaseCore™ y Base Power, viabilidad de sociedad y nombre de fantasía — artifact dedicado publicado, esperando revisión de Mariano); 1.28 con reporte de PSI de Home analizado por `performance`, 3 hallazgos listos para confirmar — sin implementar, a retomar mañana; 8.1 cerrada — Mariano decide no avanzar con el naming, análisis completo movido al Historial; 8.2 con #1/#2 (PR #41) en producción, #4 establecido, #7 bloqueada; antes de eso, se resolvió el acceso a GA4 para 1.25 y se cerraron los 6 hallazgos de la auditoría del 13/9 · se irá marcando como Hecho a medida que avancemos.
