@@ -7,9 +7,13 @@ import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceJsonLd from "@/components/ServiceJsonLd";
 
-const title = "BaseHub: Plataforma de Gestión de Proyectos";
+// Title/description kept under ~60/~160 chars for SERP display (plan-seo.md
+// 1.33) -- "Plataforma" stays (not "Gestión de Proyectos") to match how
+// BaseHub is described elsewhere on the site: "la plataforma de seguimiento
+// e implementación de proyectos".
+const title = "BaseHub: Plataforma de Proyectos";
 const description =
-  "BaseHub: la plataforma de seguimiento e implementación de proyectos de Base Core, incluida en tu consultoría. Sin pagar una herramienta de gestión de proyectos aparte.";
+  "BaseHub: la plataforma de seguimiento e implementación de proyectos de Base Core, incluida en tu consultoría — sin pagar una herramienta de gestión aparte.";
 
 export const metadata: Metadata = {
   title,
