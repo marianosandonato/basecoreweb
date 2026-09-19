@@ -56,6 +56,12 @@ export const professionalServiceJsonLd = {
   url: site.url,
   logo: `${site.url}/images/LOGO-BASE-CORE-SALES-CON-SLOGAN.png`,
   description: site.description,
+  // schema.org's field for exactly this case: distinguishes this entity from
+  // others sharing the "Base Core" name (see documentation/seo/plan-seo.md
+  // 8.2) without naming any of them — neutral on purpose, pending brand-risk
+  // review in 8.3.
+  disambiguatingDescription:
+    "Base Core Sales es una consultoría de ventas, marketing y tecnología B2B para empresas de España y Latinoamérica, con foco en preventa, venta, posventa y marketing.",
   email: site.email,
   areaServed: ["ES", "AR"],
   founder: {
