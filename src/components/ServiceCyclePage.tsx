@@ -142,7 +142,18 @@ export default function ServiceCyclePage({
       <section className="py-[10px]">
         {!data.about && <div className="h-[50px]" aria-hidden="true" />}
         <div className="px-[15px]">
-          <SectionHeading eyebrow={data.etapas.eyebrow} title={t.etapas} maxWidth={800} />
+          {/* mb-[20px] (auditoría final, nota de spacing post-18/9): sin esto
+              el título quedaba a ~10px de la primera fila de flip cards, un
+              margen superior mucho más chico que el que separa "Puestos" (el
+              cajón más comparable de la misma página, mismo patrón eyebrow +
+              H2 + grid) de sus tarjetas -- ese usa el mismo mb-[20px] más
+              abajo en este archivo. */}
+          <SectionHeading
+            eyebrow={data.etapas.eyebrow}
+            title={t.etapas}
+            maxWidth={800}
+            className="mb-[20px]"
+          />
         </div>
       </section>
 
