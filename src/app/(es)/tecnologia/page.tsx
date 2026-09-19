@@ -176,16 +176,16 @@ export default function TecnologiaPage() {
 
           <div className="text-center">
             <p className="font-sans text-[18px] leading-[1.8] text-muted">
-              Más de la mitad de las implementaciones de CRM falla por falta
-              de adopción, roles poco claros o flujos que nunca se
-              ordenaron. Un CRM no ordena un proceso comercial, lo refleja.
+              Más de la mitad de las implementaciones de CRM para empresas
+              falla por falta de adopción, roles poco claros o flujos que
+              nunca se ordenaron. Un CRM no ordena un proceso comercial, lo refleja.
               Por eso definimos el proceso{" "}
               <strong className="font-bold text-white">antes de implementar</strong>{" "}
               la herramienta.
             </p>
             <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-muted">
-              Implementar IA no es sumar una herramienta más: es delegar
-              decisiones. Todas requieren un{" "}
+              Implementar IA para empresas no es sumar una herramienta más: es
+              delegar decisiones. Todas requieren un{" "}
               <strong className="font-bold text-white">criterio</strong>{" "}
               que hoy vive en la cabeza de alguien de tu equipo. Nuestro
               trabajo es hacerlo explícito antes de automatizarlo.

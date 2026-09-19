@@ -182,8 +182,8 @@ export default function TechnologyPage() {
               the tool.
             </p>
             <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-muted">
-              Implementing AI isn&apos;t just adding another tool: it&apos;s
-              delegating decisions. Each one requires a{" "}
+              Implementing AI for businesses isn&apos;t just adding another
+              tool: it&apos;s delegating decisions. Each one requires a{" "}
               <strong className="font-bold text-white">criterion</strong>{" "}
               that today lives in someone&apos;s head on your team. Our job
               is to make it explicit before automating it.
