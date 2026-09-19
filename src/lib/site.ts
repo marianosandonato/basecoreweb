@@ -37,7 +37,7 @@ export const site = {
 // display lives in headerNav below, built from these same entries so
 // labels/hrefs never drift.
 export const nav = [
-  { label: "Home", href: "/" },
+  { label: "Inicio", href: "/" },
   { label: "Marketing", href: "/marketing" },
   { label: "Preventa", href: "/preventa" },
   { label: "Venta", href: "/venta" },
