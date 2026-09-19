@@ -16,7 +16,7 @@ import { site } from "@/lib/site";
 
 const title = "Marketing Consulting for Small Business";
 const description =
-  "Marketing consulting for small business: branding, SEO, social media, paid advertising, graphic design and websites.";
+  "Marketing consulting for small business: branding, SEO, social media, paid advertising, graphic design, and websites, built for your full sales cycle.";
 
 export const metadata: Metadata = {
   title,

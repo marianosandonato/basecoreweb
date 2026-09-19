@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 const title = "Commercial Management & CRM Blog";
 const ogTitle = `${title} – ${site.shortName}`;
 const description =
-  "Articles on sales processes, CRM, and technology applied to sales for small businesses in Spain and Latin America.";
+  "Articles on sales processes, CRM, and technology for small businesses in Spain and Latin America. Guides on marketing, presales, sales, and post-sales.";
 
 export const metadata: Metadata = {
   title,

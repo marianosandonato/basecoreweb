@@ -4,7 +4,7 @@ import { blogPosts } from "@/content/blog/posts";
 
 const title = "Blog de Gestión Comercial y CRM";
 const description =
-  "Artículos sobre procesos comerciales, CRM y tecnología aplicada a ventas para pymes en España y Latinoamérica.";
+  "Artículos sobre procesos comerciales, CRM y tecnología aplicada a ventas para pymes en España y Latinoamérica. Guías de marketing, preventa, venta y posventa.";
 
 export const metadata: Metadata = {
   title,

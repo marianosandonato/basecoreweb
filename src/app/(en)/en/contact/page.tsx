@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
 
 const title = "Free Diagnostic";
 const description =
-  "Book a free diagnostic: share your details and we'll propose a roadmap to improve your processes and methodology.";
+  "Book a free diagnostic: share your details and we'll propose a roadmap to improve your commercial processes and methodology, from marketing to post-sales.";
 
 export const metadata: Metadata = {
   title,
