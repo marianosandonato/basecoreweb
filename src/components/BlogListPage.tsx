@@ -12,6 +12,8 @@ const copy = {
     title: "Recursos para vender mejor",
     description:
       "Artículos sobre procesos comerciales, CRM y tecnología aplicada a ventas — sin relleno, con datos.",
+    gridEyebrow: "ARTÍCULOS",
+    gridTitle: "Últimos artículos",
   },
   en: {
     breadcrumbLabel: "Blog",
@@ -19,6 +21,8 @@ const copy = {
     title: "Resources to sell better",
     description:
       "Articles on sales processes, CRM, and technology applied to sales — no filler, just data.",
+    gridEyebrow: "ARTICLES",
+    gridTitle: "Latest articles",
   },
 } as const;
 
@@ -44,6 +48,16 @@ export default function BlogListPage({
           as="h1"
           maxWidth={700}
           className="mb-[50px]"
+        />
+
+        {/* H2 above the card grid (SEO 1.32) — avoids jumping straight from the
+            H1 to each BlogCard's H3, same eyebrow+title pattern as the Home
+            "Metodología" heading and the cycle pages' "Etapas" heading. */}
+        <SectionHeading
+          eyebrow={t.gridEyebrow}
+          title={t.gridTitle}
+          maxWidth={700}
+          className="mb-[30px]"
         />
 
         <div className="grid grid-cols-1 gap-[30px] md:grid-cols-2 xl:grid-cols-3">
