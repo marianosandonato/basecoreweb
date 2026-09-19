@@ -55,7 +55,7 @@ const copy = {
     contacto: "Contacto",
     contactanos: "Contactanos",
     dondeEstamos: "Dónde estamos",
-    rights: `Base Core Sales © ${yearRange} Todos los Derechos Reservados`,
+    rights: `Base Core © ${yearRange} Todos los Derechos Reservados`,
   },
   en: {
     homeLabel: "Base Core – Home",
@@ -63,7 +63,7 @@ const copy = {
     contacto: "Contact",
     contactanos: "Contact us",
     dondeEstamos: "Where we are",
-    rights: `Base Core Sales © ${yearRange} All Rights Reserved`,
+    rights: `Base Core © ${yearRange} All Rights Reserved`,
   },
 } as const;
 
