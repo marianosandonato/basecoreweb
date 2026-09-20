@@ -34,6 +34,20 @@ type Props = {
   /** Every page uses the original's 14% tint; /tecnologia's busier AI photo
       needs a bit more to keep the title readable, so this can override it. */
   overlayOpacity?: number;
+  /** Every page uses the navy tint; override only when the tint's COLOR
+      itself is wrong for the photo, not just its opacity — see
+      imageClassName below for why /marketing needs both. */
+  overlayColorClassName?: string;
+  /** CSS filter utilities applied straight to the hero <Image>, for
+      correcting a source photo's own color cast (as opposed to
+      overlayOpacity/overlayColorClassName, which only tint what's already
+      there). /marketing's photo measured far more blue-saturated than every
+      other PageHero photo (0.53 vs. 0.18-0.35) — three rounds of lowering
+      the navy overlay's opacity (0.14 -> 0.112 -> 0.08) kept reading "too
+      blue" because the overlay was never the dominant source of the blue,
+      the photo itself was. Confirmed by swapping the overlay to plain black
+      at the same opacity: still read just as blue. */
+  imageClassName?: string;
   /** Same 1200/1920 `deviceSizes` gap fixed in TechnologyBlock (see that file's
       comment): Next's default jump from 1200 to 1920 with no step between
       means any 1x-DPR desktop in the 1201-1920px range requests the 1920w
@@ -59,6 +73,8 @@ export default function PageHero({
   beforeTitle,
   cta,
   overlayOpacity = 0.14,
+  overlayColorClassName = "bg-[#01294B]",
+  imageClassName = "",
   sizes = "(max-width: 1199px) 100vw, 1200px",
   titleClassName = "",
 }: Props) {
@@ -74,11 +90,11 @@ export default function PageHero({
         priority
         fetchPriority="high"
         sizes={sizes}
-        className="object-cover object-center"
+        className={`object-cover object-center ${imageClassName}`}
       />
       <span
         aria-hidden="true"
-        className="absolute inset-0 bg-[#01294B]"
+        className={`absolute inset-0 ${overlayColorClassName}`}
         style={{ opacity: overlayOpacity }}
       />
       <div className="relative flex min-h-[482px] flex-col items-center justify-center px-[15px] pb-[70px] text-center md:h-screen md:min-h-0 md:pb-0">

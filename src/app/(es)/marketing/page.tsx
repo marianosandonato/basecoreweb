@@ -137,11 +137,15 @@ export default function MarketingPage() {
       <Breadcrumb current="Marketing" path="/marketing" />
 
       {/* Hero (#6be773a9) — same 100vh `height-full` section as the cycle pages.
-          overlayOpacity: 0.08 (Mariano, 19-20/9 — the photo read as "very
-          blue"/barely visible at the default 0.14 tint; a first cut to 0.112
-          still read as too blue on review, dropped further to 0.08). Only
-          this call site: every other PageHero page keeps 0.14 (or its own
-          explicit override), see PageHero.tsx. */}
+          Ronda 3 (Mariano, 19-20/9): two rounds of lowering the navy overlay's
+          opacity (0.14 -> 0.112 -> 0.08) still read as "too blue" — measured
+          the photo itself (avg RGB saturation 0.53 vs. 0.18-0.35 on every
+          other PageHero photo) and confirmed the overlay was never the
+          dominant source of the blue. Fix: saturate/brighten the photo
+          itself via imageClassName, and swap the overlay from navy to a
+          light neutral black (contrast for the H1, no added tint). Only
+          this call site: every other PageHero page keeps the navy default,
+          see PageHero.tsx. */}
       <PageHero
         title={["¿Buscas potenciar tu", "marketing digital?"]}
         lines={[
@@ -150,7 +154,9 @@ export default function MarketingPage() {
         ]}
         image="/images/marketing-slide-base-core-sales.jpg"
         cta={{ label: "AGENDAR RELEVAMIENTO", href: "#contacto" }}
-        overlayOpacity={0.08}
+        imageClassName="saturate-[.45] brightness-[1.12]"
+        overlayColorClassName="bg-black"
+        overlayOpacity={0.1}
       />
 
       {/* "Qué hacemos" (replica of the cycle pages' about block,

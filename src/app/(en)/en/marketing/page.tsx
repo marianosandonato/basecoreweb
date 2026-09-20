@@ -132,8 +132,9 @@ export default function MarketingPageEn() {
       <ServiceJsonLd name={title} description={description} path="/en/marketing" />
       <Breadcrumb current="Marketing" lang="en" path="/en/marketing" />
 
-      {/* overlayOpacity: 0.08 — see the ES /marketing page for why (same
-          photo, same call site, dropped further after review). */}
+      {/* imageClassName/overlayColorClassName/overlayOpacity — see the ES
+          /marketing page for why (same photo, same call site, root cause is
+          the photo's own color, not the overlay). */}
       <PageHero
         title={["Looking to boost your", "digital marketing?"]}
         lines={[
@@ -142,7 +143,9 @@ export default function MarketingPageEn() {
         ]}
         image="/images/marketing-slide-base-core-sales.jpg"
         cta={{ label: "BOOK A DISCOVERY CALL", href: "#contacto" }}
-        overlayOpacity={0.08}
+        imageClassName="saturate-[.45] brightness-[1.12]"
+        overlayColorClassName="bg-black"
+        overlayOpacity={0.1}
       />
 
       {/* "What We Do" (replica of the cycle pages' about block) — text,
