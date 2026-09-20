@@ -134,13 +134,22 @@ export default function ServiceCyclePage({
       )}
 
       {/* "Etapas" heading (#41a6ea0c) — full-width section, centred text.
-          50px gap from the hero image, matching the 50px foot below the
-          flip-card grid — same on every cycle page and on /marketing.
-          When the "Qué hacemos" block runs first, its own bottom padding
-          already provides that gap, so the extra 50px spacer here would
-          double it up. */}
+          The unconditional 50px spacer before the section (not gated behind
+          `data.about`, which is true on all 6 pages this component renders)
+          matches the top margin every other cajón on the site uses right
+          after its own "Qué hacemos" navy block — see /tecnologia's and
+          /marketing's identical "h-[50px] spacer + py-[10px] section" pairing
+          right after their own about block. Measured live (Playwright,
+          bounding boxes, navy section's own bottom edge to the "Etapas"/
+          "Soluciones" h2's top): /preventa was 56.4px at both 1280 and 390 —
+          identical at both widths since these are all fixed-px paddings, not
+          responsive — because the spacer here never rendered (`data.about`
+          is true on all 6 pages). /tecnologia's equivalent gap (same "Qué
+          hacemos" block, same spacer-then-py-[10px]-section pairing) is
+          106.4px. After removing the `!data.about` gate, /preventa now
+          measures 106.4px too, an exact match. */}
+      <div className="h-[50px]" aria-hidden="true" />
       <section className="py-[10px]">
-        {!data.about && <div className="h-[50px]" aria-hidden="true" />}
         <div className="px-[15px]">
           {/* mb-[20px] (auditoría final, nota de spacing post-18/9): sin esto
               el título quedaba a ~10px de la primera fila de flip cards, un
