@@ -1,11 +1,11 @@
-> **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`web-lead`, `seo-marketing`, `performance`) — confirmado el 3/9 que la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma, no de configuración), así que solo la sesión principal puede leer el artifact directo. Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
+> **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`web-lead`, `seo-marketing`, `performance`) — confirmado el 3/9 que la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma, no de configuración), así que solo la sesión principal puede leer el artifact directo. Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia. Nota técnica: desde el 20/9 el artifact tiene un widget interactivo de revisión (botones OK/No/Sin revisar + aclaración + resumen + "Guardar revisión") en 1.39-1.41, con self-publish vía la capability `artifact` — ese widget es JS puro y no se refleja en este espejo de texto plano (siempre muestra el estado por default, "Sin revisar"); el estado real que Mariano haya marcado sólo se ve abriendo el artifact.
 >
 > - Fuente de verdad: https://claude.ai/artifact/XPrZBTCe2b7tvbzzNuf1GT
 > - Última sincronización: 2026-09-20
-> - Nota: 8.2 — #10 (ficha de Crunchbase) diagnosticado del todo: con el navegador compartido liberado, Playwright confirmó que crunchbase.com/organization/base-core devuelve un challenge de Cloudflare (403) incluso a un browser real — no es un problema de herramientas, es un bot-check que ningún cliente automatizado pasa. Queda para que Mariano la revise manualmente. De la ronda de 5 recomendaciones de 8.2 solo quedan #9 y #11, ambas esperando una acción de Mariano (no de código).
-> - Nota anterior (mismo día): documento renombrado de "Plan de SEO de Base Core" a "BaseCoreWeb: SEO y Performance" (20/9, a pedido de Mariano) — pasa a ser también el tablero de hallazgos de UI/UX del sitio, ya que la Auditoría Final quedó archivada y cerrada del todo el 19/9. Se suman 1.39-1.41 (Fase 1): margen superior corto del cajón "Etapas" en preventa/venta/posventa, overlay azul del hero de /marketing, y el bug de flip cards (hover/clic en desktop, primer tap en mobile) ya trabajado antes en la Auditoría Final. Los 3 implementados por `web-lead`, verificados por la sesión principal (Playwright para lo visual/desktop; revisión de código para el tap táctil en mobile, no emulable en este entorno), commits `9ccbf6f`/`f2fdf02`/`4561e89`, en producción — quedan Pendiente de revisión hasta que Mariano confirme.
+> - Nota: se agregó revisión interactiva (OK/No/Sin revisar + aclaración + resumen + botón "Guardar revisión") a los 3 hallazgos de UI/UX de 1.39-1.41, a pedido de Mariano, siguiendo el mismo patrón que usaba el artifact discontinuado "Auditoría Final Base Core". Mariano puede marcar su veredicto por hallazgo directo en el artifact; la sesión principal lee esos veredictos la próxima vez que abra el artifact y actualiza el plan (mueve a Hecho, documenta en el Historial) según corresponda.
 
 ---
+
 BaseCoreWeb: SEO y Performance
 
 basecoresales.com · auditoría & hoja de ruta
@@ -178,7 +178,7 @@ Verificado end-to-end local (Playwright, viewport mobile, site key real): botón
 
 1.39 — Margen superior corto en el cajón "Etapas" (preventa/venta/posventa)
 
-Pendiente de revisión · implementado y en producción
+Sin revisar
 
 Mariano reportó (19-20/9), navegando el sitio, que el margen superior del cajón "Etapas" en /preventa, /venta y /posventa (y sus pares EN) no respetaba el margen superior que usa el resto de los cajones del sitio — un problema distinto al que ya se había cerrado esa misma tarde (el gap entre el heading "Etapas" y las flip cards debajo, commit `d93b6a1`, ver más arriba).
 
@@ -190,7 +190,7 @@ Mariano reportó (19-20/9), navegando el sitio, que el margen superior del cajó
 
 1.40 — Overlay azul del hero de /marketing tapaba demasiado la imagen
 
-Pendiente de revisión · implementado y en producción
+Sin revisar
 
 Mariano reportó (19-20/9) que la imagen del hero de /marketing quedaba dominada por el overlay navy semitransparente encima — demasiado oscuro, le sacaba presencia a la foto.
 
@@ -200,7 +200,7 @@ Mariano reportó (19-20/9) que la imagen del hero de /marketing quedaba dominada
 
 1.41 — Flip cards: hover/clic en desktop y primer tap en mobile
 
-Pendiente de revisión · implementado y en producción
+Sin revisar
 
 Mariano reportó (19-20/9) la reaparición de un bug de flip cards ya trabajado antes en la Auditoría Final. En desktop: al sacar el cursor, algunas cards quedaban trabadas mostrando el dorso, y el clic no hacía nada. En mobile: el auto-flip al hacer scroll funciona bien, pero el primer tap no flipeaba la card — recién el segundo. Afecta toda flip card sin redireccionamiento: Home (metodología), /marketing (pilares comunicacionales), /preventa /venta /posventa (etapas y puestos), /tecnologia (soluciones).
 
@@ -469,9 +469,9 @@ Cerrada en lo esencial — 1.14 (Core Web Vitals) se confirmó el 11/9. 1.24 (re
 | 1.36 | Imagen de fondo de ContactSection en /tecnologia, mal etiquetada como "hero" | Hecho |
 | 1.37 | Turnstile colgado en iOS (Private Relay/ITP) en /contacto | Pendiente · esperando confirmación en iPhone real |
 | 1.38 | Nav principal (Header) dice "Home" en inglés en páginas ES | Hecho |
-| 1.39 | Margen superior corto en el cajón "Etapas" (preventa/venta/posventa) | Pendiente de revisión |
-| 1.40 | Overlay azul del hero de /marketing tapaba demasiado la imagen | Pendiente de revisión |
-| 1.41 | Flip cards: hover/clic en desktop y primer tap en mobile | Pendiente de revisión |
+| 1.39 | Margen superior corto en el cajón "Etapas" (preventa/venta/posventa) | Sin revisar |
+| 1.40 | Overlay azul del hero de /marketing tapaba demasiado la imagen | Sin revisar |
+| 1.41 | Flip cards: hover/clic en desktop y primer tap en mobile | Sin revisar |
 
 Fase 2
 
