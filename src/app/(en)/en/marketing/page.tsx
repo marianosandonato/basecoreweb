@@ -132,6 +132,8 @@ export default function MarketingPageEn() {
       <ServiceJsonLd name={title} description={description} path="/en/marketing" />
       <Breadcrumb current="Marketing" lang="en" path="/en/marketing" />
 
+      {/* overlayOpacity: 0.112, 20% relative off PageHero's 0.14 default —
+          see the ES /marketing page for why (same photo, same call site). */}
       <PageHero
         title={["Looking to boost your", "digital marketing?"]}
         lines={[
@@ -140,6 +142,7 @@ export default function MarketingPageEn() {
         ]}
         image="/images/marketing-slide-base-core-sales.jpg"
         cta={{ label: "BOOK A DISCOVERY CALL", href: "#contacto" }}
+        overlayOpacity={0.112}
       />
 
       {/* "What We Do" (replica of the cycle pages' about block) — text,
