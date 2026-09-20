@@ -54,7 +54,7 @@ export default function FlipBox({
   effect = "zoom-in",
   label,
 }: Props) {
-  const { rootRef, open, handleActivate } = useFlipTeaser<HTMLDivElement>("flip-box--auto-reveal");
+  const { rootRef, open, flipHandlers } = useFlipTeaser<HTMLDivElement>("flip-box--auto-reveal");
 
   return (
     <div
@@ -64,7 +64,7 @@ export default function FlipBox({
       tabIndex={0}
       role="group"
       aria-label={label}
-      onClick={handleActivate}
+      {...flipHandlers}
     >
       {/* Front */}
       <div className="flip-box__layer" style={{ backgroundColor: frontColor }}>

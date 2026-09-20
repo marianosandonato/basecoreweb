@@ -31,20 +31,26 @@ type Props = {
  * to reveal or dismiss the hover layer on mobile/keyboard at all.
  */
 export default function ServiceCard({ title, image, roles, href, cellClass, icon, hoverIcon }: Props) {
-  const { rootRef, open, handleActivate } = useFlipTeaser<HTMLElement>("service-card--auto-reveal");
+  const { rootRef, open, flipHandlers } = useFlipTeaser<HTMLElement>("service-card--auto-reveal");
 
   const inner = (
     // `overflow-hidden` matches `.gsc-services-group .service-item` and is
     // load-bearing: without it the content box's 30px bottom margin collapses
     // out of the article, so the hover layer (height: 100% - 30px) ends up
     // 30px short and leaves a strip of the white box showing.
+    //
+    // Cards WITH href keep the plain CSS `:hover`/`:focus-within` reveal
+    // (`service-card--linked` in globals.css) — a click there navigates away,
+    // so there's nothing for a JS toggle to do. Hrefless cards (e.g.
+    // "Puestos") use `flipHandlers` instead: see useFlipTeaser.ts for why a
+    // JS-driven toggle replaces CSS hover/focus for those.
     <article
       ref={rootRef}
-      className={`service-card relative overflow-hidden ${open ? "service-card--open" : ""}`}
+      className={`service-card relative overflow-hidden ${href ? "service-card--linked" : "cursor-pointer"} ${open ? "service-card--open" : ""}`}
       tabIndex={href ? undefined : 0}
       role={href ? undefined : "group"}
       aria-label={href ? undefined : title}
-      onClick={href ? undefined : handleActivate}
+      {...(href ? {} : flipHandlers)}
     >
       {/* Photo */}
       <div className="relative aspect-[370/280] w-full overflow-hidden">

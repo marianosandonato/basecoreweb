@@ -4,17 +4,35 @@ import { useEffect, useRef, useState } from "react";
 
 /**
  * Shared behaviour behind every "flip on hover, focus, or tap" card on the
- * site (FlipBox, ServiceCards): the CSS drives :hover/:focus-within as
- * always, this hook adds the two things CSS alone can't do on a touch
- * device — a real open/close toggle, and a scroll-triggered teaser so a
- * fast scroller notices the back face exists.
+ * site (FlipBox, ServiceCards) that doesn't redirect on click. Cards WITH a
+ * link/redirect (e.g. the home page's "Ciclos" cards) don't use the
+ * `flipHandlers` this hook returns — they keep the plain CSS
+ * `:hover`/`:focus-within` reveal scoped to `.service-card--linked` in
+ * globals.css, since a click there navigates away and there's no toggle to
+ * conflict with.
  *
- * Tap-to-close: a tapped touch element stays focused after a second tap
- * (the browser doesn't blur it just because it was clicked again), so
- * :focus-within alone makes the reveal a one-way flip on mobile — only
- * focusing something else closes it. `open` + `handleActivate` add an
- * explicit toggle: opening works exactly like :focus-within already did,
- * but closing also calls `.blur()` so :focus-within actually clears.
+ * For hrefless cards, everything is driven by real state instead of CSS
+ * pseudo-classes, on purpose: CSS `:hover`/`:focus-within` used to be an
+ * independent trigger for the same visual, and a mouse click's incidental
+ * focus (or the hover itself) can't be "closed" by a click — the pseudo-class
+ * keeps the back face showing regardless of what React state says, which is
+ * exactly the bug this replaces (stuck-open after mouseleave; a click that
+ * visibly does nothing). `open` is that single source of truth now:
+ *
+ *   mouseenter/focus (hover-capable pointers only) -> open = true
+ *   mouseleave/blur  (hover-capable pointers only) -> open = false, always
+ *   click            (any pointer)                 -> open = !open
+ *
+ * Gating the hover/focus pair to `isHoverCapableRef` (a real mouse, checked
+ * once via matchMedia) keeps touch devices out of this path entirely: a tap
+ * only ever runs `handleActivate`, one event, one toggle — no race with a
+ * synthetic hover/focus event that a touchscreen's first tap can also fire.
+ *
+ * `handleActivate` skips its own `.blur()` on hover-capable pointers: a
+ * clicked element that's still focused doesn't refire `focus` on the next
+ * click, which is what let a stale focus event re-open the card between two
+ * clicks in a row. Touch still blurs on close, same as before — its own
+ * focus/blur handling is gated off above, so there is nothing to refight.
  *
  * Scroll-in teaser: each time the element crosses 60% visible (not just
  * once per page load — re-arms every time it re-enters, scrolling up or
@@ -46,6 +64,7 @@ function reserveTeaserDelay(): number {
 export function useFlipTeaser<T extends HTMLElement>(autoRevealClass: string) {
   const rootRef = useRef<T>(null);
   const isOpenRef = useRef(false); // mirrors `open` for the effect's closures below
+  const isHoverCapableRef = useRef(false); // real mouse+fine pointer, checked once on mount
   const suppressTeaserRef = useRef(false); // true while the user is engaging (mid-teaser touch/focus, or the card is explicitly open)
   const teaserTimers = useRef<{ open: number | null; close: number | null }>({ open: null, close: null });
   const [open, setOpen] = useState(false);
@@ -66,12 +85,41 @@ export function useFlipTeaser<T extends HTMLElement>(autoRevealClass: string) {
         suppressTeaserRef.current = true;
         clearTeaserTimers();
         rootRef.current?.classList.remove(autoRevealClass);
-      } else {
+      } else if (!isHoverCapableRef.current) {
+        // Touch only — see the file header for why hover-capable pointers
+        // skip this (it's what let a stale focus event re-open the card
+        // between two clicks in a row).
         rootRef.current?.blur();
       }
       return next;
     });
   }
+
+  // Hover-capable-only: mouseenter/focus open, mouseleave/blur always close.
+  // Gated so a touchscreen's first tap (which can fire a synthetic focus
+  // alongside its click) never races handleActivate's own toggle above.
+  function handlePointerEnter() {
+    if (!isHoverCapableRef.current) return;
+    isOpenRef.current = true;
+    setOpen(true);
+  }
+  function handlePointerLeave() {
+    if (!isHoverCapableRef.current) return;
+    isOpenRef.current = false;
+    setOpen(false);
+  }
+
+  const flipHandlers = {
+    onMouseEnter: handlePointerEnter,
+    onMouseLeave: handlePointerLeave,
+    onFocus: handlePointerEnter,
+    onBlur: handlePointerLeave,
+    onClick: handleActivate,
+  } as const;
+
+  useEffect(() => {
+    isHoverCapableRef.current = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  }, []);
 
   useEffect(() => {
     const el = rootRef.current;
@@ -130,5 +178,5 @@ export function useFlipTeaser<T extends HTMLElement>(autoRevealClass: string) {
     };
   }, [autoRevealClass]);
 
-  return { rootRef, open, handleActivate } as const;
+  return { rootRef, open, handleActivate, flipHandlers } as const;
 }

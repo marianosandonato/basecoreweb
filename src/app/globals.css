@@ -176,24 +176,13 @@
     opacity 0.5s 0.2s;
 }
 
-/* :hover scoped to real hover-capable pointers (a mouse) — on touch,
-   tapping an element leaves it matching :hover with no "unhover" gesture
-   to clear it ("sticky hover", confirmed live: it's what made the second
-   tap look like it did nothing even after the tap-to-close fix below
-   correctly cleared :focus-within and .flip-box--open). Touch/keyboard
-   drive the open state exclusively through :focus-within/.flip-box--open
-   instead, which JS (useFlipTeaser's blur-on-close) can actually control. */
-@media (hover: hover) {
-  .flip-box:not(.flip-box--slide-up):hover .flip-box__back {
-    opacity: 1;
-    transform: scale(1);
-    transition:
-      transform 0.7s,
-      opacity 0.5s;
-  }
-}
-
-.flip-box:not(.flip-box--slide-up):focus-within .flip-box__back,
+/* No plain `:hover`/`:focus-within` trigger here on purpose — every FlipBox
+   is hrefless, so the whole reveal (hover, focus, and click-to-toggle alike)
+   is driven by `.flip-box--open`, set by useFlipTeaser's `flipHandlers`. A
+   CSS `:hover` rule alongside that state used to fight it: hovering forced
+   the back face open regardless of what a click had just set, which is what
+   made a click look like it did nothing and left cards stuck open after the
+   mouse left (see useFlipTeaser.ts). */
 .flip-box:not(.flip-box--slide-up).flip-box--open .flip-box__back {
   opacity: 1;
   transform: scale(1);
@@ -215,13 +204,7 @@
   transition: transform 0.6s ease-in-out;
 }
 
-@media (hover: hover) {
-  .flip-box--slide-up:hover .flip-box__back {
-    transform: translateY(0);
-  }
-}
-
-.flip-box--slide-up:focus-within .flip-box__back,
+/* Same reasoning as the zoom-in variant above — `.flip-box--open` alone. */
 .flip-box--slide-up.flip-box--open .flip-box__back {
   transform: translateY(0);
 }
@@ -259,16 +242,21 @@
   transition: all 0.35s 0.1s;
 }
 
-/* :hover scoped to real hover-capable pointers — see the identical note on
-   .flip-box above (sticky hover on touch defeats the tap-to-close JS). */
+/* `.service-card--linked` (cards WITH href, e.g. the home page's "Ciclos")
+   keep the plain CSS reveal — a click there navigates away, so there's no
+   JS toggle for :hover/:focus-within to fight. Hrefless cards (e.g.
+   "Puestos") skip these two rules entirely and rely only on
+   `.service-card--open` below, set by useFlipTeaser's `flipHandlers` — see
+   the identical note on .flip-box above for why a plain :hover rule can't
+   coexist with a click-driven toggle on the same element. */
 @media (hover: hover) {
-  .service-card:hover .service-card-hover {
+  .service-card--linked:hover .service-card-hover {
     opacity: 1;
     transform: scale(1);
   }
 }
 
-.service-card:focus-within .service-card-hover,
+.service-card--linked:focus-within .service-card-hover,
 .service-card--open .service-card-hover {
   opacity: 1;
   transform: scale(1);
