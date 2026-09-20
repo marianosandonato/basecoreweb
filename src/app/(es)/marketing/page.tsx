@@ -137,10 +137,11 @@ export default function MarketingPage() {
       <Breadcrumb current="Marketing" path="/marketing" />
 
       {/* Hero (#6be773a9) — same 100vh `height-full` section as the cycle pages.
-          overlayOpacity: 0.112, 20% relative off PageHero's 0.14 default
-          (Mariano, 19/9 — the photo read as "very blue"/barely visible at the
-          default tint). Only this call site: every other PageHero page keeps
-          0.14 (or its own explicit override), see PageHero.tsx. */}
+          overlayOpacity: 0.08 (Mariano, 19-20/9 — the photo read as "very
+          blue"/barely visible at the default 0.14 tint; a first cut to 0.112
+          still read as too blue on review, dropped further to 0.08). Only
+          this call site: every other PageHero page keeps 0.14 (or its own
+          explicit override), see PageHero.tsx. */}
       <PageHero
         title={["¿Buscas potenciar tu", "marketing digital?"]}
         lines={[
@@ -149,7 +150,7 @@ export default function MarketingPage() {
         ]}
         image="/images/marketing-slide-base-core-sales.jpg"
         cta={{ label: "AGENDAR RELEVAMIENTO", href: "#contacto" }}
-        overlayOpacity={0.112}
+        overlayOpacity={0.08}
       />
 
       {/* "Qué hacemos" (replica of the cycle pages' about block,
