@@ -4,6 +4,12 @@
 
 MarkItDown (Microsoft, instalado vía pipx) está disponible como comando `markitdown` — convierte PDF/Word/Excel/PowerPoint/imágenes a Markdown. Uso: `markitdown archivo.pdf -o archivo.md`.
 
+## Regla general de artifacts (todas las sesiones, no solo SEO)
+
+**Nunca cambiar el nombre/`<title>` de un artifact existente al republicarlo, salvo pedido explícito de Mariano en esa misma conversación.** Pasó más de una vez (el artifact ahora llamado "BaseCoreWeb: SEO y Performance" apareció listado como "plan-seo-update2" y, de nuevo, con otro nombre genérico en una ronda posterior) que una sesión republicó el HTML sin preservar el `<title>` real — probablemente porque el archivo local que se pasó a `file_path` no tenía la etiqueta `<title>` (o tenía una distinta, tipo nombre de archivo de scratchpad), y la plataforma usa esa etiqueta (o, si falta, el nombre del archivo) para el nombre mostrado en el listado. Mariano lo notó y tuvo que pedir la corrección — no debería volver a pasar.
+
+**Antes de cualquier `Artifact` → `publish` sobre una URL existente:** confirmar que el archivo local que se va a publicar tiene, en su `<title>`, exactamente el mismo nombre que el artifact ya tiene en producción (leído en esa misma sesión antes de editar) — nunca un nombre de archivo de scratchpad, un placeholder, ni una "mejora" del nombre por iniciativa propia. Si además se pasa el parámetro `title` a la tool, que sea ese mismo nombre exacto, nunca uno distinto. Renombrar un artifact es una decisión de Mariano, explícita, en el momento — no un efecto colateral de editar su contenido.
+
 ## Documentos SEO vigentes
 
 Antes de tocar cualquier tarea de SEO, leer estos dos documentos (fuente de verdad del estado actual, no reconstruir de memoria):
