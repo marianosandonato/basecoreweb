@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { nav, navEn, site, siteEn, type Lang } from "@/lib/site";
-import ContactForm from "./ContactForm";
+import ContactForm from "./ContactFormLazy";
 import SectionHeading from "./SectionHeading";
 import { CheckCircleIcon, LinkedinIcon } from "./icons";
 

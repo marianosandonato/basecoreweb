@@ -47,6 +47,11 @@ export default function Header() {
   const lang = pathname.startsWith("/en") ? "en" : "es";
   const items = lang === "en" ? headerNavEn : headerNav;
   const homeHref = lang === "en" ? "/en" : "/";
+  // Header renders in every page's initial viewport, so its Links prefetch
+  // on load by default. The logo Link's href equals the current page when
+  // already on Home — prefetching the page you're already viewing is pure
+  // waste (perf/1.28, 21/9: measured contributing to LCP mobile contention).
+  const isHome = pathname === homeHref;
   const homeLabel = lang === "en" ? "Base Core – Home" : "Base Core – Inicio";
   const openMenuLabel = lang === "en" ? "Open menu" : "Abrir menú";
   const closeMenuLabel = lang === "en" ? "Close menu" : "Cerrar menú";
@@ -224,7 +229,7 @@ export default function Header() {
         <div className="mt-[58px]">
           <div className="container-bc px-0">
             <div className="w-1/4 px-[15px] pt-[3px]">
-              <Link href={homeHref} aria-label={homeLabel} className="block">
+              <Link href={homeHref} aria-label={homeLabel} className="block" prefetch={isHome ? false : undefined}>
                 <Image
                   src="/images/logotipo-base-core-sales-marketing-espana-latam.png"
                   alt={site.name}
@@ -275,7 +280,7 @@ export default function Header() {
         {/* Logo + hamburger */}
         <div className="px-[20px] py-[20px]">
           <div className="flex items-center justify-between">
-            <Link href={homeHref} aria-label={homeLabel} className="w-1/2">
+            <Link href={homeHref} aria-label={homeLabel} className="w-1/2" prefetch={isHome ? false : undefined}>
               <Image
                 src="/images/logo-movil-base-core-sales.webp"
                 alt={lang === "en" ? siteEn.name : site.name}

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import BaseHubTeaser from "@/components/BaseHubTeaser";
-import BlogCarousel from "@/components/BlogCarousel";
+import BlogCarousel from "@/components/BlogCarouselLazy";
 import Button from "@/components/Button";
 import CheckList from "@/components/CheckList";
-import ClientsCarousel from "@/components/ClientsCarousel";
+import ClientsCarousel from "@/components/ClientsCarouselLazy";
 import ContactSection from "@/components/ContactSection";
 import MethodologyGrid, { type MethodologyStep } from "@/components/MethodologyGrid";
 import ProcessImageStack from "@/components/ProcessImageStack";
