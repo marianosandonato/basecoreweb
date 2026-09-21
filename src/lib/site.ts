@@ -14,7 +14,7 @@ export const site = {
   phoneArgentina: { display: "+54 11 5564-3798", tel: "+541155643798" },
   whatsappUrl: "https://wa.me/5491155643798",
   meetingUrl: "https://meetings-eu1.hubspot.com/msandonato",
-  location: "Barcelona - Bs.As.",
+  location: "Bs.As. - Barcelona",
   founder: {
     name: "Mariano Sandonato",
     role: "Fundador",
