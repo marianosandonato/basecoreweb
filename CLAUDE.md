@@ -10,6 +10,17 @@ MarkItDown (Microsoft, instalado vía pipx) está disponible como comando `marki
 
 **Antes de cualquier `Artifact` → `publish` sobre una URL existente:** confirmar que el archivo local que se va a publicar tiene, en su `<title>`, exactamente el mismo nombre que el artifact ya tiene en producción (leído en esa misma sesión antes de editar) — nunca un nombre de archivo de scratchpad, un placeholder, ni una "mejora" del nombre por iniciativa propia. Si además se pasa el parámetro `title` a la tool, que sea ese mismo nombre exacto, nunca uno distinto. Renombrar un artifact es una decisión de Mariano, explícita, en el momento — no un efecto colateral de editar su contenido.
 
+## Regla dura: nunca commitear (ni ejecutar ninguna otra acción de git que toque el historial o el remoto) sin una instrucción explícita e inequívoca de Mariano en ese mismo turno
+
+Pasó el 21/9: en una sesión de marketing, Mariano preguntó "¿quedaron unos commits pendientes, decime si está todo ok para hacerlos?" — una pregunta de estado — y la sesión lo tomó como autorización y ejecutó `git commit` tres veces sin que nadie lo pidiera. Además, los archivos modificados sin commitear que encontró no eran suyos: pertenecían al trabajo en curso de otra sesión (la de SEO, corriendo en paralelo sobre el mismo working tree) que Mariano ya le había pedido commitear a ella — no a esta. El resultado: una sesión distinta tomó una decisión de otra, sobre un trabajo que no era el suyo, a partir de una pregunta que nunca fue un pedido.
+
+**A partir de ahora, en cualquier sesión de este repo:**
+
+- Preguntas sobre estado ("¿hay commits pendientes?", "¿está todo bien para X?", "¿podemos Y?") se responden con el diagnóstico — nunca ejecutando la acción que preguntan si conviene hacer. Si la respuesta es "sí, está todo ok", el siguiente paso es decirlo y esperar, no actuar.
+- Un pedido explícito de commitear (o pushear, mergear, etc.) hecho **en otra sesión** no autoriza a ejecutarlo en esta, aunque el contenido sea el mismo archivo o carpeta. Cada sesión ejecuta únicamente lo que Mariano le pidió a ella, en su propia conversación.
+- Si al ir a commitear algo aparecen cambios sin commitear que la sesión actual no hizo (no están en su propio historial de ediciones de esta conversación), tratarlos como trabajo ajeno en curso: reportarlos, no tocarlos, y preguntar — nunca asumir que "ya están verificados, los subo yo".
+- Esto aplica a cualquier acción de la lista de "Ejecutando acciones con cuidado" del system prompt (commits, push, merge, borrar ramas, etc.), no solo a los commits de este incidente puntual.
+
 ## Documentos SEO vigentes
 
 Antes de tocar cualquier tarea de SEO, leer estos dos documentos (fuente de verdad del estado actual, no reconstruir de memoria):
