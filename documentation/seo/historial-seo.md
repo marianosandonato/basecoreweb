@@ -1,8 +1,8 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`web-lead`, `seo-marketing`, `performance`) — confirmado el 3/9 que la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma, no de configuración), así que solo la sesión principal puede leer el artifact directo. Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8
-> - Última sincronización: 2026-09-20
-> - Nota: se mueve acá 1.40 (overlay de /marketing) — 3 rondas, causa real era el color de la propia foto, no el overlay; fix con filtro de color + overlay neutro, confirmado por Mariano en preview de Vercel. De paso, se documenta que el Plan de SEO sacó su widget de revisión interactiva (ver nota en ese espejo).
+> - Última sincronización: 2026-09-21
+> - Nota: consolidación del artifact Performance Web (ahora eliminado) — se agregan 1.23, 1.24, 1.25, 1.26, 1.27 con detalle técnico completo, se enriquece 1.14 con la cronología punto a punto y el cierre de sus 2 hallazgos abiertos (Recruiting, JS bundle), y una nota de método para performance.
 
 ---
 
@@ -244,7 +244,7 @@ Cambio aplicado en src/lib/site.ts
 
 Hecho · confirmado 11/9
 
-Regresión detectada 4/9 (Mobile Performance 95→57-60, LCP a 10-13s). Recuperación en 16 commits repartidos en 3 días, cada uno medido con PSI real antes de sumar el siguiente — cronología completa, gráfico y método de medición en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929), que sigue siendo el documento vivo para el detalle técnico de CWV (no se duplica acá).
+Regresión detectada 4/9 (Mobile Performance 95→57-60, LCP a 10-13s). Recuperación en 16 commits repartidos en 3 días, cada uno medido con PSI real antes de sumar el siguiente. Detalle completo consolidado acá el 21/9 desde el artifact `Performance Web`, que quedó sin contenido propio y se archivó del todo.
 
 Progresión medida con PSI real
 
@@ -255,13 +255,35 @@ TBT mobile:                                       40ms (11/9, el mejor de toda l
 Desktop Performance: 93-98, estable en toda la serie
 ```
 
-**Fixes principales:** Turnstile diferido a `IntersectionObserver` (mayor impacto individual, TBT 1.9s→70ms), `sizes` corregido en logos/imágenes, `preload:false` en fuentes no críticas, migración de 9 imágenes de fondo CSS a `next/image`, INP instrumentado a GA4, Google Tag Manager sacado del critical path (2 iteraciones — la primera mejoró LCP pero rompió TBT por competir con el prefetch de `<Link>`), `experimental.inlineCss` para eliminar el request bloqueante del CSS global, bundle-split de `blogSlugPairs` (sacó ~80KB del chunk de `LanguageSwitcher`), y lazy-load de `LanguageBanner`/`EbookForm` con `next/dynamic`.
+Cronología punto a punto (Mobile Performance, PSI real salvo donde se indica)
 
-**De paso, un bug de indexación relacionado:** Google Search Console marcó "Redirect error" en `/sales/` y `/presales/` (mail del 7/9) por una cadena de 3 redirects (Cloudflare apex→www + el redirect automático de barra final de Next + el redirect del slug legacy) — un salto más que el resto del sitio. Resuelto el 11/9 moviendo el manejo de la barra final a `src/proxy.ts` con `skipTrailingSlashRedirect`, colapsando la cadena a los mismos 2 saltos del resto de las páginas.
+```
+29/8            95  (línea de base, antes de la regresión)
+4/9             58  (regresión detectada, 95→58)
+5/9 tarde       84  (post: Turnstile diferido + sizes de logos + preload:false + imagen Tecnología a next/image)
+5/9 tarde       88  (misma tanda, corrida siguiente)
+5/9 noche       69  (post: deviceSizes cap + INP a GA4 + PageHero) — arranca la investigación de 3 días
+5/9 noche       65
+5/9 noche       69
+6/9 tarde       83  (post: primer intento de GTM con requestIdleCallback — mejor LCP de la serie, TBT se dispara)
+6/9 tarde       64
+6/9 tarde       68
+6/9 noche       84  (post: fix de GTM v2, espera de 2s antes del idle callback — TBT confirmado ok)
+6/9 noche       71
+6/9 noche       83
+6/9 noche       84  (post: 8 imágenes de fondo restantes a next/image — sin regresión)
+11/9            88  (PSI real independiente, confirma inlineCss sin regresión — cierre de la tarea)
+```
 
-**Investigado y descartado en el camino** (con su propia prueba, no una suposición): el componente `WebVitals` como causa de varianza, la región de Vercel (nunca fue Sydney, era el POP de caché), el caching de Cloudflare, una supuesta regresión de código (bisect real: +1.3% de peso, dentro del ruido), y Lighthouse CLI de este sandbox como fuente de medición (10-50× más ruido que señal real, PSI real siempre gana).
+**Fixes principales:** Turnstile diferido a `IntersectionObserver` (mayor impacto individual, TBT 1.9s→70ms), `sizes` corregido en logos/imágenes (carrusel de clientes 28.6KB→5.7KB por logo mobile; imagen "Proceso como servicio" de Home no contaba el padding real de la sección), `preload:false` en fuentes `sora`/`reey` no críticas, migración de 9 imágenes de fondo CSS a `next/image` (Tecnología primero, después 8 más: Footer, BaseHubTeaser, ServiceCyclePage x2, ContactSection x3, FlipBox x2 — todas capadas al mismo `sizes` de 1200px), INP instrumentado a GA4 (`useReportWebVitals` nativo de Next 16, +3KB gzip), Google Tag Manager sacado del critical path (2 iteraciones — la primera mejoró LCP pero rompió TBT por competir con el prefetch de `<Link>`, que también usa `requestIdleCallback` sin timeout; la segunda esperó 2s fijos antes del idle callback, TBT 1268ms→633ms bajo contención), `experimental.inlineCss` para eliminar el request bloqueante del CSS global, bundle-split de `blogSlugPairs` (sacó ~80KB del chunk de `LanguageSwitcher`, que importaba el cuerpo completo de los posts solo para resolver el slug ES/EN), y lazy-load de `LanguageBanner`/`EbookForm` con `next/dynamic`.
 
-**Sigue abierto, sin bloquear el cierre de esta tarea** (tracking vivo en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929)): migrar la sección "Recruiting" (Home + `/marketing`) a `next/image` necesita re-recortar el asset fuente o aceptar un zoom más cerrado — no es un fix de código, es una decisión de diseño. El JS sin usar del bundle propio (28KB) no se toca sin un bundle-analyzer real. Ninguno de los dos es una regresión ni bloquea nada más.
+**De paso, un bug de indexación relacionado:** Google Search Console marcó "Redirect error" en `/sales/` y `/presales/` (mail del 7/9) por una cadena de 3 redirects (Cloudflare apex→www + el redirect automático de barra final de Next + el redirect del slug legacy) — un salto más que el resto del sitio. Resuelto el 11/9 moviendo el manejo de la barra final a `src/proxy.ts` con `skipTrailingSlashRedirect`, colapsando la cadena a los mismos 2 saltos del resto de las páginas. De paso, casi se pisa la lógica de redirect de idioma que ya vivía en ese mismo archivo — detectado a tiempo con `git status` antes de escribir.
+
+**Investigado y descartado en el camino** (con su propia prueba, no una suposición): el componente `WebVitals` como causa de varianza (A/B 5 vs. 5 corridas: 87.6 vs 84.8, dentro del ruido); la región de Vercel (nunca fue Sydney, era el POP de caché de `x-vercel-id`, la región real es `iad1`); el caching de Cloudflare (`cf-cache-status: DYNAMIC` es default esperado, no config rota); una supuesta regresión de código (bisect real con 3 builds en `git worktree` aislados: +1.3% de peso, dentro del ruido — la varianza del propio sandbox compartido, 35-87 puntos en 5 corridas del mismo build, resultó mayor que cualquier diferencia real entre versiones); Lighthouse CLI de este sandbox como fuente de medición (10-50× más ruido que señal real, PSI real siempre gana); y el bug de encuadre de `object-cover` sospechado en `ServiceCyclePage.tsx` (verificado con capturas a 1280-1920px en /preventa, /venta, /posventa: sin problema, esa foto tenía margen de sobra).
+
+**JS sin usar del bundle propio (28KB) — medido con la herramienta real (12/9), no a ojo.** Corrido `npx next experimental-analyze` (Next.js Bundle Analyzer nativo sobre Turbopack, disponible desde 16.1) sobre el build de producción. Route Home: 392KB comprimido, 242 módulos client — 293KB (75%) es framework de Next.js/React, no recortable sin sacar el framework. El código propio (`src/`) pesa apenas 51KB, mayormente `icons.tsx` y `globals.css` inlineado (ya explicado por `inlineCss`). Ningún módulo de terceros pesado escondido en `Header`/`Footer`/`WhatsAppButton`/`AppShell`. Cerrado sin acción — nada seguro para recortar.
+
+**Recruiting (Home + `/marketing`): decisión final, se queda en CSS `background-image`.** PR #32 (12/9) probó migrar a `next/image` y resolvió dos de las tres objeciones sobre un preview real — el recorte que preocupaba no era visible para Mariano, y la pérdida de nitidez se corrigió ajustando `sizes`/`quality` — pero el bloqueante real no tiene arreglo limpio: el fondo usa `background-attachment: fixed` para el efecto de scroll parallax en desktop, una propiedad exclusiva de CSS `background-image` sin equivalente nativo en `next/image`. Replicarlo a mano por scroll vía JS sería el mismo tipo de hack frágil que ya causó el incidente de GTM, para una imagen que ni siquiera es el LCP de la página. PR cerrado sin mergear — decisión a propósito, no un pendiente.
 
 **Para qué sirve:** Core Web Vitals es señal directa de ranking de Google, y la primera impresión real de cualquier visitante.
 
@@ -349,6 +371,66 @@ Resuelto 5/9, vía auditoría 5.4
 Misma familia que 1.17/7.9: en `ClientCard.tsx`, la tarjeta de "W Profesional Hair Therapy" (único cliente con `nameSecondLine`) renderizaba `textContent` "W ProfesionalHair Therapy" sin espacio. Resuelto con el mismo fix. La auditoría revisó el resto del árbol: `PageHero.tsx` ya resuelto de origen; `FlipCardGrid.tsx` tiene la misma vulnerabilidad latente pero no se dispara hoy (riesgo a futuro, sin acción). También se arreglaron 2 casos menores (`<br/>` pegado a punto y seguido) en Home y `ContactSection.tsx`, de menor severidad pero igual de aplicable.
 
 **Para qué sirve:** el nombre accesible/textContent no debe concatenar palabras.
+
+1.23 — JS legacy: polyfills de Next (25KB reportados por PSI)
+
+Hecho · confirmado falso positivo, cerrado sin acción (12/9)
+
+La auditoría de PageSpeed marcaba "JavaScript legacy" por un chunk de polyfills de ~25KB. Investigado a fondo contra la doc oficial de Next 16 (`node_modules/next/dist/docs/03-architecture/supported-browsers.md`): "Next.js will only load these polyfills for browsers that require them. The majority of the web traffic globally will not download these polyfills."
+
+**Confirmado en el build real:** `build-manifest.json` declara ese chunk (`polyfillFiles`) con el atributo `nomodule` — cualquier navegador moderno (Chrome/Firefox/Safari/Edge de los últimos años) directamente no lo descarga ni lo ejecuta. Lighthouse/PSI lo marca igual porque esa auditoría analiza el manifest de build, no el tráfico de red real — es un falso positivo conocido de esa auditoría contra Next.js, no un bug del sitio.
+
+**Cerrado sin acción de código:** no hay bytes reales que un visitante moderno pague por esto, y no hay ninguna acción de código que tenga sentido tomar.
+
+**Para qué sirve:** evita perseguir un número de auditoría que no representa una experiencia real degradada.
+
+1.24 — Imágenes 2x-DPR (retina)
+
+Hecho · cerrado sin acción de código (13/9)
+
+Tarea bloqueada originalmente por falta de datos reales de resolución de pantalla de los visitantes (GA4/CrUX). A pedido explícito de Mariano de avanzar igual, se investigó leyendo el código fuente real de Next 16.2.10 (`node_modules/next/dist/shared/lib/get-img-props.js`, función `getWidths`, y `image-config.js`) en vez de esperar el dato que faltaba.
+
+**Hallazgos:** (1) `next.config.ts` no sobreescribe `deviceSizes`/`imageSizes` — quedan en los defaults de Next (hasta 3840px), con margen de sobra sobre el hero full-bleed más ancho del sitio (cap de 1200px vía `sizes` ⇒ 2x=2400, 3x=3600, ambos por debajo de 3840); (2) cero `<img>` crudos en `src/` — todo pasa por `next/image`; (3) los usos con `fill` (la mayoría de las imágenes grandes: `PageHero`, `TechnologyBlock`, `ClientCard`, `BlogCard`, `ServiceCards`, `BaseHubMockup`, `EbookSection`) tienen un `sizes` calculado con precisión contra el layout real, lo que hace que Next genere un `srcset` completo — el navegador elige la candidata correcta según su propio DPR real, sin que el sitio necesite saber la resolución de cada visitante; (4) los pocos usos sin `sizes` (imágenes de tamaño fijo, ej. el isotipo en `TechnologyBlock.tsx`/`AboutLogoBlock.tsx`) igual generan candidatas 1x/2x automáticamente — Next deliberadamente no ofrece 3x ahí, con un comentario en su propio código fuente citando research de Twitter Engineering ("even true 3x resolution screens are wasteful as the human eye cannot see that level of detail").
+
+**Cerrado sin acción de código** — nada de esto dependía del dato de resolución real que originalmente bloqueaba la tarea; `next/image` ya lo resuelve por diseño.
+
+**Hallazgo colateral, fuera de alcance, sin urgencia:** el isotipo de Base Core se declara con dimensión intrínseca 900×927 pero se renderiza a 140-257px sin `sizes` — sobre-provisiona bytes en pantallas no-retina (el sentido inverso al de esta tarea), anotado para una futura revisión de peso.
+
+**Para qué sirve:** confirma que las pantallas de alta densidad (retina) ya ven imágenes nítidas sin pagar peso de más en pantallas normales.
+
+1.25 — INP real de campo
+
+Hecho · cerrada 21/9
+
+Instrumentado y funcionando desde el 5/9 (`14172da` — Next.js 16 trae `useReportWebVitals` integrado, sin librería aparte, +3KB gzip medidos), enviando LCP/CLS/INP a GA4. Confirmado el 13/9 que no existía ninguna vía de acceso a la GA4 Data API en este repo — `scripts/seo/gsc.py` (único script de Google APIs existente) estaba scopeado solo a Search Console, sin cliente ni credencial de `analyticsdata`, y ningún MCP de Analytics registrado. Bloqueada por acceso, no solo por tráfico.
+
+**Acceso resuelto (14/9):** Mariano completó la guía de acceso a GA4 (proyecto GCP, service account `ga4-readonly`, Viewer access en la propiedad, custom dimension de evento `metric_rating` registrada, Property ID `550444799`). `scripts/seo/ga4.py` corrió contra datos reales por primera vez: 381 eventos LCP, 374 CLS, 128 INP en 28 días — pero como la custom dimension no es retroactiva, todo ese tráfico traía `(not set)` en el rating. Tarea pasa a En progreso: falta acumular tráfico nuevo posterior al registro.
+
+**Cierre (21/9):** con una semana de tráfico posterior al registro de la custom dimension, `scripts/seo/ga4.py webvitals --days 7` trajo 42 eventos INP con rating real (de 57 totales, el resto todavía `(not set)` de tráfico previo al corte): 41 good (71.9%) y 1 needs-improvement (1.8%) — 97.6% de lo medido. Supera con margen el umbral de 75% "good" que usa Core Web Vitals para dar una métrica por aprobada. Mariano confirmó cerrarla con este resultado — el objetivo era confirmar con datos de campo que la interactividad es buena, no medir un p75 exacto (GA4 tampoco lo expone vía API para custom dimensions).
+
+**Para qué sirve:** el dato de campo real (visitantes reales) es el que Google usa para rankear — más confiable que cualquier corrida de laboratorio (PSI/Lighthouse).
+
+1.26 — Cap de `sizes` en el hero de Home (y hero secundario de Contacto/E-Book)
+
+Hecho · PR #40, 14/9
+
+Encontrado en la auditoría de performance de alcance completo del 13/9 (PageSpeed real: Home mobile 78 / desktop 94, "Improve image delivery", ~107KB de ahorro estimado en desktop). El hero de Home (`src/app/(es)/page.tsx:147` y su espejo `(en)/en/page.tsx:166`, el elemento LCP de la página) era la única imagen full-bleed del sitio sin el cap `sizes="(max-width: 1199px) 100vw, 1200px"` que ya tenía el resto (Footer, PageHero, TechnologyBlock, ContactSection, BaseHubTeaser, ServiceCyclePage) — a 1350px de ancho pedía la variante de 1920w en vez de 1200w, con fuente 1917×1264 para un área mostrada de 1337×880.
+
+**Implementado:** mismo cap de `sizes` aplicado a las 2 páginas del hero de Home; de paso, el hero de `/contacto`/`/ebook` (`Breadcrumb.tsx:71`) recibió el mismo cap por consistencia (fuente liviana, ahorro marginal). Commit `121df4f`, PR #40.
+
+**Para qué sirve:** que el elemento LCP de la página más visitada del sitio no pida una imagen más pesada de la que realmente se muestra.
+
+1.27 — Bajar `quality` en logos de Header/Footer
+
+Hecho · PR #40, 14/9
+
+Encontrado en la misma auditoría del 13/9. Ningún `<Image>` del repo definía `quality` explícito (todos corrían en el default de Next, 75); PageSpeed marcó 2 logos con margen de compresión (~26.5KB combinados) — logo de header desktop (PNG 923×923) y logo de footer/mobile (webp), ambos arte de logo plano que tolera compresión más agresiva que una foto sin notarse.
+
+**Implementado:** `quality={60}` agregado a ambos `<Image>` (`Header.tsx`, `Footer.tsx`), verificado visualmente antes de aplicar que no genera artifacts en el texto pequeño del logo. Requirió sumar `images: { qualities: [60, 75] }` en `next.config.ts` — Next 16 clampea silenciosamente cualquier `quality` no declarado en el allowlist al valor permitido más cercano, sin error; se dejó 75 primero en el array para que el resto de los `<Image>` del sitio, sin `quality` explícito, mantenga exactamente su output actual. Commit `121df4f`, PR #40.
+
+**Para qué sirve:** bajar peso en dos assets que toleran compresión agresiva sin afectar assets fotográficos del resto del sitio.
+
+**Método de medición de performance, para la próxima vez** (consolidado del extinto artifact Performance Web, 21/9): PSI real, nunca Lighthouse CLI de un sandbox compartido (10-50× más ruido que señal). Mínimo 5 corridas, mirar la mediana — la varianza documentada de este sitio en PSI (58 a 95 con el mismo código) hace que 2-3 corridas no separen señal de ruido. Medir LCP y TBT juntos — ya hubo un fix que mejoró uno y rompió el otro sin notarse hasta la corrida siguiente. Para bundle JS, usar `npx next experimental-analyze` (nativo desde Next 16.1) antes de opinar. Antes de asumir que algo depende de un dato externo que falta, leer el código fuente real primero (así se cerró 1.24, retina). Trabajo de performance en ramas propias, no directo en `master`, con varias sesiones en simultáneo. Verificación visual propia antes de pushear cambios de CSS/imágenes — un pixel-diff propio detectó el corrimiento de encuadre de Recruiting que la validación por rects no vio. Un cherry-pick de rama vieja no alcanza con "aplica sin conflictos" — revisar `git show <commit> --stat` completo antes de darlo por cerrado.
 
 1.29 — Title de /en sin sufijo de marca
 
@@ -609,7 +691,7 @@ Tarea nueva el 14/9, recurrente — no se cerraba de una vez como 1.14, sino que
 
 **Mecánica (actualizada 18/9):** dejó de depender de que Mariano pasara un reporte a mano — `scripts/seo/psi.py` consulta la PageSpeed Insights API directo (API key de Mariano, guardada fuera del repo en `~/.config/basecoreweb-seo/psi-api-key`, mismo patrón que GA4/GSC). `performance` corre `uv run scripts/seo/psi.py check --url <url> --strategy mobile|desktop|both` cuando hace falta, sin esperar un reporte manual.
 
-Reporte PSI de Home, 14/9 17:25 — resultados:
+Reporte PSI de Home, 14/9 17:25 — resultados
 
 ```
 Mobile:  Performance 87 · Accessibility 100 · Best Practices 100 · SEO 100
@@ -632,7 +714,7 @@ Desktop, post-fix: Performance 99 · LCP 0.9s
 
 Validado con evidencia determinística (bytes reales de archivo, no el score ruidoso de PSI): los chunks de los 3 componentes dejaron de aparecer en cualquier `<script src>` eager del HTML. JS eager bajó 15,7KB (-2,2%) en Home y 7,2KB (-1%) en /contacto. Confirmado en producción tras el deploy: Mobile, 5 corridas frescas, avg 74 — prácticamente igual al baseline de antes de los fixes (avg 74) — la mejora de bytes no alcanzó a moverse por encima del ruido normal de PSI (±10-15 puntos).
 
-**GTM y fuentes investigados a pedido de Mariano ("explorá pero no rompas nada") — ya estaban optimizados, no se tocó nada.** `GtmLoader.tsx` (dos commits del 5-6/9, `cc6c0a5`/`01528e2`) ya diferían la librería de 166KB con `requestIdleCallback` + timeout de 2.5s, ya había descartado explícitamente `next/script lazyOnload` (sin garantía de cuándo carga) y diferir por interacción del usuario (un page_view que rebota antes de cargar es un dato perdido para siempre). Confirmado que GTM ya carga después del LCP (~2500ms vs. ~2370ms de LCP) — no compite por el elemento crítico. `src/lib/fonts.ts` ya tenía `preload:false` desde el 5/9 en las 2 fuentes no necesarias arriba del fold (`reey`, `sora`); las 3 restantes (`gilmer`, `dmSans`, `montserrat`) son necesarias para el H1/botón del hero — diferirlas causaría FOUT en el elemento LCP mismo.
+**GTM y fuentes investigados a pedido de Mariano ("explorá pero no rompas nada") — ya estaban optimizados, no se tocó nada.** `GtmLoader.tsx` (dos commits del 5-6/9, `cc6c0a5`/`01528e2`) ya diferían la librería de 166KB con `requestIdleCallback` + timeout de 2.5s, ya había descartado explícitamente `next/script lazyOnload` (sin garantía de cuándo carga) y diferir por interacción del usuario (un page\_view que rebota antes de cargar es un dato perdido para siempre). Confirmado que GTM ya carga después del LCP (~2500ms vs. ~2370ms de LCP) — no compite por el elemento crítico. `src/lib/fonts.ts` ya tenía `preload:false` desde el 5/9 en las 2 fuentes no necesarias arriba del fold (`reey`, `sora`); las 3 restantes (`gilmer`, `dmSans`, `montserrat`) son necesarias para el H1/botón del hero — diferirlas causaría FOUT en el elemento LCP mismo.
 
 **Cierre final (21/9):** Mariano confirma no seguir persiguiendo el objetivo de +90 en el score de laboratorio — el dato de campo real (1.25, 97,6% INP good) ya muestra buen rendimiento donde Google realmente mide para ranking, y lo que queda de peso (runtime de React/Next, GTM ya diferido al máximo razonable, 3 fuentes necesarias arriba del fold) es costo estructural de la arquitectura, no fruta madura sin tocar. La tarea se da por cerrada y se reemplaza por **5.9 — Performance con PageSpeed Mensual**, un chequeo recurrente sin objetivo activo de score.
 
@@ -1174,7 +1256,7 @@ Fase 8
 
 ## Base Core en motores de búsqueda
 
-Fase abierta el 14/9. 8.1 (decisión de naming) se cerró el mismo día sin implementar nada. 8.2 (visibilidad de marca) sigue activa — su detalle en progreso vive en el [Plan de SEO](https://claude.ai/artifact/XPrZBTCe2b7tvbzzNuf1GT), no acá.
+Fase abierta el 14/9. 8.1 (decisión de naming) se cerró el mismo día sin implementar nada. 8.2 (visibilidad de marca) se cerró del todo el 21/9 — detalle completo abajo. 8.3 (auditoría de marca) sigue activa — su detalle en progreso vive en el [Plan de SEO](https://claude.ai/artifact/XPrZBTCe2b7tvbzzNuf1GT), no acá.
 
 8.1 — Decisión de naming: "Base Core" vs "BaseCore"
 
@@ -1198,6 +1280,96 @@ No hay evidencia real (Google Trends, Keyword Planner, ni casos comparables como
 
 **Para qué sirve:** registrar la implicancia completa y la evidencia real detrás de una decisión de marca, para no tener que re-investigar desde cero si el tema vuelve a aparecer.
 
+8.2 — Visibilidad de marca: no aparece buscando "Base Core" solo
+
+Cerrada 21/9 · las 11 recomendaciones resueltas
+
+Mariano detectó que buscando "Base Core" solo en Google, el sitio no aparecía — solo aparecía buscando "Base Core Sales" completo. Le preocupaba que gente que solo recuerda "Base Core" no pudiera encontrar la página, y quería entender también cómo lo manejarían los buscadores de IA (ChatGPT, Perplexity, etc.) ante la misma búsqueda.
+
+**Análisis de `seo-marketing` (14/9):** el término desnudo "Base Core" tiene competencia real y grande — **Base Power**, empresa estadounidense de baterías domésticas, lanzó en agosto de 2026 un producto llamado "Base Core" junto con una ronda Serie D de US$1.000M y cobertura masiva de prensa (Business Wire, WSJ, Yahoo Finance). También compiten un personaje de videojuego, una plataforma de trading (BASECORE) y un theme de Drupal. Contra Base Power específicamente no había acción de SEO propio capaz de ganar ese término en el corto/mediano plazo — diferencia de escala estructural, no un problema de configuración.
+
+**Con contexto de negocio, el sitio sí aparecía** (2º resultado buscando "Base Core consultoría"). Dato duro de Search Console (`scripts/seo/gsc.py analytics`, 90 días): la query exacta "base core" tenía 33 impresiones con posición promedio **4.1** — no estaba ausente del índice, perdía visibilidad porque Base Power ocupaba los primeros lugares con noticias recientes. Muestra chica (52 consultas totales en 90 días, dominio nuevo).
+
+**La causa que sí era resoluble:** el sitio nunca declaraba "Base Core" como alias en ningún lugar máquina-legible — `site.shortName` en `src/lib/site.ts` era siempre "Base Core Sales" completo (title, JSON-LD `ProfessionalService.name`, Open Graph, encabezado de `/llms.txt`), sin ningún campo `alternateName`. Confirmado también con IA: Perplexity, preguntado "¿Qué es Base Core?" sin contexto, no identificaba ni a Base Power ni a Base Core Sales — la ambigüedad del término afectaba igual a buscadores de IA, mismo mecanismo de fondo (falta de señal de alias + autoridad externa).
+
+Recomendaciones priorizadas (14/9)
+
+```
+1. alternateName: "Base Core" en el JSON-LD ProfessionalService  — Bajo esfuerzo, accionable ya
+2. Alias "también conocida como Base Core" en /llms.txt          — Bajo esfuerzo, accionable ya
+3. Bajar la expectativa de competir por el término desnudo        — Decisión, no requiere trabajo
+   contra Base Power
+4. Chequeo mensual de la query "base core" con gsc.py (junto      — Bajo esfuerzo, accionable ya
+   a 6.5)
+5. Definir ya el nombre exacto para GBP ("Base Core Sales",       — Bajo esfuerzo, depende de 4.1 (bloqueada)
+   no "Base Core")
+6. Usar "Base Core" como variante de anchor text al retomar       — Esfuerzo medio, depende de 4.3 (bloqueada)
+   backlinks
+7. Mención puntual de "Base Core" en copy acotado (footer/meta),  — Esfuerzo bajo-medio, independiente
+   sin tocar H1 ni mezclar con la decisión de naming de 8.1        pero separado de 8.1
+
+No recomendado: Wikidata/Wikipedia (se rechazaría, falta
+notoriedad con fuentes secundarias independientes).
+```
+
+**Implementado y en producción (14/9):** Mariano confirmó avanzar con #1, #2 y #4 (invisibles/sin riesgo, sin dependencias). #1 y #2 — `alternateName: "Base Core"` en el JSON-LD `ProfessionalService` y la línea "Also known as: Base Core" en `/llms.txt` — mergeados vía [PR #41](https://github.com/marianosandonato/basecoreweb/pull/41), verificado con tsc/eslint/build y confirmado en vivo contra `basecoresales.com` (ES y EN). #7 quedó Bloqueada (14/9): Mariano decidió no avanzar con ninguna mención de "Base Core" en copy visible.
+
+**Auditoría de seguimiento (18/9):** se verificó en vivo que `alternateName` y la línea de `/llms.txt` seguían en producción sin regresión. Hallazgo nuevo: el `sameAs` del JSON-LD ya apuntaba a [linkedin.com/company/base-core](https://linkedin.com/company/base-core/), Instagram y Facebook — señal de entidad propia ya existente. Comparación GSC 14/9 vs. 18/9: Home 30→34 impresiones (pos 3.7→3.6), /contacto estable, /en 3→5 impresiones (pos 8.3→7.6) — movimiento leve, no evidencia causal en una ventana de 4 días. SERP y Perplexity sin cambio: Google seguía dominado por Base Power y BaseCore™ para "base core"/"basecore" sin contexto. 4 recomendaciones nuevas (#8-#11) quedaron sin implementar, esperando confirmar con Mariano.
+
+**Ronda del 19/9 — Mariano avanza con las 5 recomendaciones pendientes, incluida #7 (reabierta a propósito):** **#8** — `disambiguatingDescription` agregado al JSON-LD `professionalServiceJsonLd` (`src/lib/metadata.ts`), sin nombrar a Base Power ni a BaseCore™. Commit `fbcad13`. **#7** (reabierta) — en vez de "también conocida como Base Core", Mariano reemplazó directo "Base Core Sales" por "Base Core" en la línea de copyright del footer (ES/EN), ya que el logo justo arriba sigue diciendo "Base Core Sales". Commit `2376868`.
+
+**#9 — hecho (20/9).** Mariano importó la propiedad a Bing Webmaster Tools directo desde Google Search Console y confirmó el dominio dado de alta; el sitemap se cargó manual porque no se importó automático, quedando en "Processing".
+
+**#11 — hecho (21/9), con copy final distinto al propuesto el 18/9, y una corrección de grafía en el camino.** En vez de una frase corta de desambiguación en los perfiles de empresa, Mariano definió un perfil completo de LinkedIn personal centrado en "Base Core" como marca (headline "Fundador de Base Core", about, role description) y la descripción de la página de empresa. **Corrección:** el copy pegado originalmente usaba "BaseCore" junto — la grafía que 8.1 había decidido evitar por colisión con BaseCore™ (geoceldas, marca registrada). Señalado antes de cerrar la tarea; Mariano corrigió en LinkedIn a "Base Core" separado. Alcance real distinto del pedido original (que apuntaba a perfiles de empresa con frase explícita de equivalencia con "Base Core Sales", no al perfil personal) — se cerró igual porque la estrategia completa de canales pasó a gestionarse desde el [Plan de Marketing/Social](https://claude.ai/artifact/5nEdULGfDWCWES17cpptDp).
+
+Copy final usado (21/9) — LinkedIn personal (headline + about) y página de empresa
+
+```
+Headline:
+  Fundador de Base Core | Te acompañamos en atraer, calificar,
+  cerrar y fidelizar a tus clientes.
+
+About:
+  Luego de relevar y entender tu situación actual, te acompaño en
+  ordenar la forma en que se consiguen, atienden y mantienen tus
+  clientes. A partir de ahí, armamos juntos un plan claro, con pasos
+  y fechas concretas, y acompaño su puesta en marcha de principio a
+  fin, ajustando el rumbo con el tiempo.
+
+  Incorporo a su vez, tecnología, incluida IA, para que estos
+  procesos funcionen de forma más simple y ordenada, sin depender de
+  una sola persona ni de la memoria de nadie.
+
+  Si tu empresa vende de forma inconsistente, pierde clientes
+  después de cerrarlos, o no tiene claro cómo conseguir más,
+  escribime y coordinamos una charla sin costo para revisar tu
+  situación.
+
+Role description (Fundador, Base Core — perfil personal):
+  En Base Core ayudamos a las pymes a ordenar su proceso comercial
+  de punta a punta. El marketing ATRAE. La preventa CALIFICA. La
+  venta CIERRA. La posventa FIDELIZA. Trabajamos las cuatro etapas
+  como un proceso unificado, en vez de intervenciones aisladas de
+  distintos proveedores. El trabajo combina diagnóstico y ejecución:
+  un relevamiento gratuito inicial, un plan de ruta con plazos
+  concretos y acompañamiento en la implementación, con sprints
+  semanales y un project leader asignado. Sumamos tecnología e IA
+  aplicada (CRM, automatizaciones, agentes) y damos acceso a
+  BaseHub, nuestra plataforma propia de seguimiento de proyectos,
+  sin costo adicional. Te invito a agendar un encuentro para
+  conocernos!
+
+Página de empresa (about):
+  Mismo texto que el role description de arriba, en tono de "nosotros"
+  ("Te invitamos" en vez de "Te invito").
+```
+
+**#10 — hecho (21/9).** Diagnosticado el 20/9 que Crunchbase bloquea cualquier cliente automatizado con un challenge de Cloudflare (403, Ray ID `a3dcc9e7ea25d717`), incluso a un browser real con JS habilitado — no un problema de reintentos, sino un bot-check sin solución automatizable. Mariano navegó `crunchbase.com/organization/base-core` directo con su propio browser (21/9) y confirmó que la ficha la ocupa **BaseCore™**, la empresa de geoceldas y estabilización de suelos de Scottsdale, Arizona (`basecore.co`) — la misma entidad de terceros ya identificada en el análisis de 8.1/8.2, no Base Power. Legal Name "BaseCore", CB Rank 1162954, rubro Manufacturing. No hay nada que reclamar: la ficha pertenece a otra empresa real en un rubro distinto, no a Base Core Sales.
+
+**Cierre de 8.2 (21/9):** con las 11 recomendaciones resueltas (#1, #2, #4, #7, #8, #9, #10, #11 implementadas o confirmadas; #3 incorporada al análisis como decisión, sin acción; #5 y #6 documentadas para cuando se desbloqueen 4.1/4.3), la tarea pasa de En progreso a Hecho.
+
+**Para qué sirve:** que cualquiera que conozca el negocio como "Base Core"/"BaseCore" (sin el "Sales") pueda encontrarlo igual, dentro de lo que es realmente posible frente a la competencia por el término — y de paso, un perfil de LinkedIn completo en vez de uno vacío, que ya era un objetivo de 4.6.
+
 ## Cronología completa
 
 El registro día a día de cómo se llegó al estado actual — el "Por dónde seguir" original del Plan de SEO, movido acá en su totalidad para no repetirlo en el documento activo.
@@ -1216,7 +1388,7 @@ El registro día a día de cómo se llegó al estado actual — el "Por dónde s
 12. **5/9, cierre de 1.18:** reestructuración a route groups (`(es)`/`(en)`), verificado con `curl` y Playwright. Fase 1 queda sin ningún pendiente técnico abierto.
 13. **5/9, cierre de 7.8:** publicado el séptimo post del blog, sobre "PMO". Fase 7 queda sin ningún pendiente propio.
 14. **5/9, reorganización del documento:** el Plan de SEO pasó de un único documento de 58 tareas a esta separación entre tablero activo (Plan de SEO) e historial permanente (este documento) — a pedido de Mariano, para que el documento vivo sea fácil de leer y actualizar sin perder ningún registro.
-15. **11/9, cierre de 1.14:** PSI real confirma Mobile 88 estable (TBT 40ms, el mejor de la serie) — se cierran de una tacada 4 PRs (redirect de GSC en `/sales/`/`/presales/`, bundle-split de `blogSlugPairs`, 3 de 4 fondos migrados a `next/image`, lazy-load de `LanguageBanner`/`EbookForm`) y se corrige en el momento un bug de encuadre que uno de esos mismos PRs había introducido sin querer en `/marketing` (mismo bug que ya se había revertido en Home, pero se pasó por alto que el commit traído también tocaba esa página). Fase 1 queda cerrada del todo. Detalle técnico completo en [Performance Web](https://claude.ai/code/artifact/63c7e1d6-16c6-4b2c-8259-186ea93a6929).
+15. **11/9, cierre de 1.14:** PSI real confirma Mobile 88 estable (TBT 40ms, el mejor de la serie) — se cierran de una tacada 4 PRs (redirect de GSC en `/sales/`/`/presales/`, bundle-split de `blogSlugPairs`, 3 de 4 fondos migrados a `next/image`, lazy-load de `LanguageBanner`/`EbookForm`) y se corrige en el momento un bug de encuadre que uno de esos mismos PRs había introducido sin querer en `/marketing` (mismo bug que ya se había revertido en Home, pero se pasó por alto que el commit traído también tocaba esa página). Fase 1 queda cerrada del todo. Detalle técnico completo consolidado en la tarea 1.14, arriba.
 16. **13/9:** Mariano pide avanzar con 1.24, 1.25 y 5.3, y pasar 4.3/4.4 a Bloqueado (decide más adelante si avanza con backlinks y con el merge de testimonios). `performance` cierra 1.24 (retina) leyendo el código fuente de Next — `next/image` ya lo resolvía, sin acción de código — y confirma 1.25 (INP) genuinamente bloqueado por falta total de acceso a la API de GA4 en el repo, no solo por tráfico. `seo-marketing` cierra 5.3: PR #37 (email obligatorio, WhatsApp opcional en el gate del e-book), revisado y mergeado a producción el mismo día.
 17. **13/9, auditoría de SEO y performance de alcance completo:** a pedido de Mariano, `seo-marketing` y `performance` auditan todo el sitio (ES/EN) con mirada fresca, apoyándose en un reporte real de PageSpeed Insights de Home. Resultado: 6 pendientes nuevos sumados al Plan de SEO (1.26 cap de `sizes` en el hero de Home, 1.27 `quality` de logos, 5.5 bug de `<br/>` en TechStageMatrix, 5.6 jerarquía de headings en BaseCore AI System, 5.7 H3 duplicado en ServiceCards, 5.8 `lastModified` de sitemap) — todos revisados por Mariano y aprobados para resolver a partir del 14/9. De paso, la auditoría de SEO detectó y corrigió acá mismo un gap de documentación: la tabla de keywords EN de 3.1 (ver nota arriba) decía "pendiente" de forma ambigua sobre contenido que en realidad ya estaba implementado en producción.
 18. **14/9, cierre de los 6 hallazgos del 13/9:** `seo-marketing` resuelve 5.5-5.8 en un solo PR (#39, `3ecc125`) y `performance` resuelve 1.26-1.27 en otro (#40, `121df4f`) — ambos en preview de Vercel, revisados y aprobados por Mariano, y mergeados a `master` el mismo día. Deploy a producción confirmado (Vercel `success`). Fase 1 queda con una sola cola abierta (1.25, bloqueada por acceso a GA4); Fase 5 queda sin ningún pendiente puntual, solo las 2 tareas recurrentes (5.1, 5.2).
@@ -1229,5 +1401,6 @@ El registro día a día de cómo se llegó al estado actual — el "Por dónde s
 25. **19-20/9, Mariano reporta 3 hallazgos de UI/UX navegando el sitio, y el Plan de SEO se renombra:** se abren 1.39 (margen del cajón "Etapas"), 1.40 (overlay del hero de /marketing) y 1.41 (flip cards) — mismo rol que antes cubría la Auditoría Final, ya archivada. El documento pasa a llamarse "BaseCoreWeb: SEO y Performance" y suma un widget de revisión interactiva (OK/No/Sin revisar + aclaración) por hallazgo, con self-publish del propio artifact. Mariano revisa los 3: OK a 1.39 y 1.41 sin aclaración — se cierran acá, detalle completo arriba. 1.40 vuelve con nota ("sigue estando muy azul, corregir") — se compara 0.06/0.08/0.112 en vivo con Playwright y se baja el overlay a 0.08 (commit `cc7cb8e`), queda de nuevo en revisión en el Plan de SEO.
 26. **18/9, sesión posterior — cierre de 1.28 (ronda del día) y 1.29:** `performance` investiga la regresión de LCP mobile detectada más temprano ese mismo día (3.8s → 5.0-5.2s) y la desestima con evidencia — 9 corridas frescas con cache-busting dan 3.9-5.5s con el mismo código, sin ningún commit del rango 14-18/9 que toque el critical path de Home; concluye que es ruido de laboratorio de PSI en la simulación de throttling mobile, no una regresión real, y corrige el criterio a 4-5 corridas frescas antes de declarar señal de ahora en más. De paso resuelve los 3 hallazgos que quedaban del 14/9 (`sizes` en TechnologyBlock.tsx/AboutLogoBlock.tsx, confirmación de que el logo del Header ya no necesita cambios, y el hallazgo de animación no compositada — mal atribuido al panzoom del hero, la traza real de Lighthouse apuntaba al botón de WhatsApp transicionando `bottom`, corregido). Commit `a00ddcc`. 1.28 sigue Pendiente por ser tarea recurrente. Aparte, `seo-marketing` cierra 1.29: confirma que el root layout de `(en)/en` resuelve el mismo segmento que su `page.tsx` (documentado en `node_modules/next/dist/docs`), mismo motivo por el que Next.js no aplicaba `title.template` ahí, e implementa el título completo hardcodeado. Commit `44cf2da`. Ambas verificadas y deployadas a producción. Después, `seo-marketing` cierra 1.30: agrega bloque `openGraph` propio a `/contacto` (title/description ya existentes de la página, imagen `breadcrumb.jpg` que ya usa como hero real) — confirma que el gap de `twitter` no es una regresión sino comportamiento site-wide (ninguna de las 8 páginas de referencia lo declara). Commit `91ad85c`. Después, `seo-marketing` cierra 1.31: corrige `Breadcrumb.tsx` para usar "Inicio" en vez de "Home" hardcodeado en las 9 páginas ES (texto visible + JSON-LD), mismo condicional por `lang` que ya usaba el componente para el `href`. Commit `5207030`. De paso encuentra el mismo bug en el nav principal del Header (`src/lib/site.ts`), fuera del alcance de 1.31 — se abre como 1.38 nueva. Mariano decide resolverla en el momento en vez de dejarla pendiente: `seo-marketing` aplica el mismo fix (label "Home"→"Inicio" en el array ES de `site.ts`), verificado sin regresión. Commit `65edacd`. 1.38 queda abierta y cerrada el mismo día. Después, `seo-marketing` cierra 1.32: agrega un H2 ("Últimos artículos"/"Latest articles") antes de la grilla de posts en /blog y /en/blog, mismo componente `SectionHeading` y patrón eyebrow+H2 que ya usa la sección "Metodología" de Home — preferido a bajar los H3 de las cards, que cumplen otra función semántica. Commit `b0be1e5`. Después, Mariano elige entre las dos alternativas de 1.33 ("BaseHub: Plataforma de Proyectos", 50 caracteres, sobre la de 47) por mantener "Plataforma" — `seo-marketing` implementa ese title más la description acortada a 155 caracteres en `/basehub` (ES), verificado en vivo sin regresión en H1/contenido. Commit `47bd5ab`. Después, Mariano cierra 1.34 sin cambio: el title de /en/presales ya mide 59 caracteres con sufijo, dentro del rango seguro — la única forma de bajarlo más sacrificaría una keyword validada, no se justifica. Después, `seo-marketing` cierra 1.35: amplía las 4 meta descriptions cortas al copy exacto que Mariano confirmó (158/151/154/150 caracteres), verificado sin regresión. Commit `f823002`. Con esto, la Fase 1 queda sin pendientes propios salvo 1.25 (en progreso) y 1.37 (esperando confirmación de Mariano en iPhone) — de las 9 tareas migradas el 18/9 desde la Auditoría Final (1.29-1.37), solo 1.37 sigue sin cerrar. Después, Mariano decide sumar "customer success" al H1 de /posventa (3.11, más peso de posicionamiento) en vez de dejarla solo en metadata — `seo-marketing` reescribe el H1 en ES y EN, confirmado contra el Mapa de Keywords, verificado sin perder la keyword primaria de la página. Commit `fb9cfba`. Después, `seo-marketing` cierra 3.12: suma "CRM para empresas"/"IA para empresas" (ES) y "AI for businesses" (EN) como frases exactas en párrafos ya existentes de /tecnologia, sin tocar title/description. Commit `de94b2e`. Con esto, Fase 3 queda cerrada del todo.
 27. **20/9, cierre de 1.37:** Mariano prueba el fix del 18/9 en dos iPhones reales — el suyo (captcha resuelto normal) y el de su pareja (captcha quedó sin poder comprobarse, apareció el cartel de fallback a los ~12s, envió el formulario igual y ambos emails de notificación llegaron a la casilla). Confirma en vivo tanto el flujo normal como el escenario del conflicto de iCloud Private Relay que originó el hallazgo. De las 9 tareas migradas el 18/9 desde la Auditoría Final (1.29-1.37), no queda ninguna sin cerrar.
+28. **21/9, cierre de 8.2:** Mariano revisó personalmente `crunchbase.com/organization/base-core` (bloqueado para cualquier cliente automatizado por un challenge de Cloudflare desde el 20/9) y confirmó que la ficha pertenece a BaseCore™ (geoceldas, Scottsdale AZ) — no a Base Power ni a Base Core Sales. Sin nada que reclamar, la tarea se cierra con las 11 recomendaciones resueltas.
 
-Historial Técnico SEO · Base Core · creado el 5 de septiembre de 2026, a partir del Plan de SEO original · actualizado el 21 de septiembre (4.6 movida acá — Mariano revierte la decisión del 5/9 de no activar canales secundarios; LinkedIn empresa, Instagram y Facebook pasan a desarrollo urgente, gestionado desde el Plan de Marketing/Social, no acá — primera tarea de una nueva Fase 4 en este documento) · antes, el mismo día: 1.28 movida acá del todo — Mariano decidió no seguir persiguiendo el objetivo de mobile +90 en el score de laboratorio de PSI; queda reemplazada por 5.9 en el Plan de SEO, un chequeo mensual recurrente sin objetivo activo de score) · antes: 20 de septiembre (1.40 movida acá — el overlay de /marketing necesitó una 3ra ronda: medido el color de las 5 fotos de hero, la de /marketing resultó la más saturada de azul con diferencia, así que el overlay nunca fue la causa principal; fix real con filtro de color sobre la propia imagen + overlay neutro, confirmado por Mariano en un preview de Vercel y llevado a producción. De paso se retiró el widget de revisión interactiva del Plan de SEO — duplicaba el archivo y dejaba una línea sin poder leer, forzando un publish con `force` en otra sesión; el veredicto de revisión se registra por chat de acá en más) · antes, el mismo día: 1.37, 1.39 y 1.41 movidas acá — 1.37 confirmada por Mariano en iPhone real; 1.39 y 1.41 marcadas OK en el (todavía vigente en ese momento) widget de revisión interactiva del Plan de SEO, ahora "BaseCoreWeb: SEO y Performance" · antes: 18 de septiembre, sesión posterior (1.29-1.35, 1.38, 3.11 y 3.12 movidas acá) · antes, el mismo día: migración de 9 hallazgos SEO desde la Auditoría Final de UX/diseño (1.29-1.35, 3.11-3.12) · antes: 14 de septiembre (Fase 8 nueva, 8.1 cerrada — decisión de no unificar el naming a "BaseCore") · espejo de trabajo en `documentation/seo/historial-seo.md`
+Historial Técnico SEO · Base Core · creado el 5 de septiembre de 2026, a partir del Plan de SEO original · actualizado el 21 de septiembre (consolidación del artifact Performance Web: se suman acá el detalle completo de 1.23-1.27, la cronología punto a punto de la regresión de Core Web Vitals, el cierre de los dos hallazgos que 1.14 tenía abiertos — Recruiting se queda en CSS a propósito, JS sin usar del bundle propio medido y sin acción — y una nota de método para la próxima medición de performance; el artifact Performance Web quedó sin contenido propio y se eliminó) · antes, el mismo día: 8.2 movida acá del todo — cerrada tras confirmar que la ficha de crunchbase.com/organization/base-core la ocupa BaseCore™, geoceldas de Scottsdale AZ, no Base Power; detalle completo de las 11 recomendaciones en la Fase 8) · antes, el mismo día: 4.6 movida acá — Mariano revierte la decisión del 5/9 de no activar canales secundarios; LinkedIn empresa, Instagram y Facebook pasan a desarrollo urgente, gestionado desde el Plan de Marketing/Social, no acá — primera tarea de una nueva Fase 4 en este documento · antes, el mismo día: 1.28 movida acá del todo — Mariano decidió no seguir persiguiendo el objetivo de mobile +90 en el score de laboratorio de PSI; queda reemplazada por 5.9 en el Plan de SEO, un chequeo mensual recurrente sin objetivo activo de score) · antes: 20 de septiembre (1.40 movida acá — el overlay de /marketing necesitó una 3ra ronda: medido el color de las 5 fotos de hero, la de /marketing resultó la más saturada de azul con diferencia, así que el overlay nunca fue la causa principal; fix real con filtro de color sobre la propia imagen + overlay neutro, confirmado por Mariano en un preview de Vercel y llevado a producción. De paso se retiró el widget de revisión interactiva del Plan de SEO — duplicaba el archivo y dejaba una línea sin poder leer, forzando un publish con `force` en otra sesión; el veredicto de revisión se registra por chat de acá en más) · antes, el mismo día: 1.37, 1.39 y 1.41 movidas acá — 1.37 confirmada por Mariano en iPhone real; 1.39 y 1.41 marcadas OK en el (todavía vigente en ese momento) widget de revisión interactiva del Plan de SEO, ahora "BaseCoreWeb: SEO y Performance" · antes: 18 de septiembre, sesión posterior (1.29-1.35, 1.38, 3.11 y 3.12 movidas acá) · antes, el mismo día: migración de 9 hallazgos SEO desde la Auditoría Final de UX/diseño (1.29-1.35, 3.11-3.12) · antes: 14 de septiembre (Fase 8 nueva, 8.1 cerrada — decisión de no unificar el naming a "BaseCore") · espejo de trabajo en `documentation/seo/historial-seo.md`
