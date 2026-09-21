@@ -1,8 +1,8 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`social-content`, `seo-marketing`, `web-lead`) — la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma). Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/artifact/5nEdULGfDWCWES17cpptDp
-> - Última sincronización: 2026-09-21 (v7)
-> - Nota: reestructurado el 21/9 con el mismo criterio "Activo hoy" que usa el Plan de SEO — lo Pendiente/En progreso con detalle vive arriba de todo, agrupado por fase; cada fase abajo conserva su tabla de estado completa pero sin repetir narrativa (solo las tareas Bloqueadas mantienen detalle breve en su fase); las tareas Hecho quedan solo como línea de tabla. Estado al 21/9: Fase 1 (higiene) cerrada 1.1–1.3, reabierta con dos hallazgos nuevos de la auditoría de Facebook (1.4 dirección, 1.5 post roto). Fase 2: 2.1/2.2 cerradas. **Fase 3 reprioritizada por decisión de Mariano:** LinkedIn empresa, Instagram y Facebook pasan de "pausa consciente" a desarrollo urgente (en ese orden de prioridad), con auditoría exhaustiva y plan de desarrollo propio para cada uno; X/Twitter, TikTok y Reddit pasan a Bloqueado. La decisión de dirección de contenido de LinkedIn personal (F2.3) sigue siendo el único bloqueo real del plan.
+> - Última sincronización: 2026-09-21 (v8)
+> - Nota: Mariano resuelve 2.3 (dirección de contenido) con la recomendación del análisis del 4/9 — eje **B — diagnóstico en público**, con **A — reciclaje de blog** como motor de arranque y **C — eje BaseHub/IA** dosificado dentro de los casos; video queda fuera del arranque. Desbloquea 2.4, 2.5, 4.1 y 4.3. 2.3 pasa de Bloqueado a Hecho; "bloqueados por decisión de Mariano" baja de 7 a 6.
 
 ---
 
@@ -14,7 +14,7 @@ Base Core · marketing & desarrollo comercial
 
 Plan único de marketing y preventa de Base Core — fusiona el Plan de Social Media (auditoría `social-content` del 4/9) con los dos borradores de referencia que armó Mariano con ChatGPT, corregidos y verificados contra el estado real del sitio, del Plan de SEO y de los perfiles sociales en vivo (17/9/2026).
 
-Tablero activo · 1 decisión central sin tomar
+Tablero activo · dirección de contenido resuelta (21/9), foco en ejecución
 
 **37**
 accionables
@@ -22,7 +22,7 @@ accionables
 **5**
 higiene inmediata
 
-**7**
+**6**
 bloqueados por decisión de Mariano
 
 **9**
@@ -81,11 +81,11 @@ Acción: borrar el post, o como mínimo publicar contenido nuevo que lo saque de
 
 #### 2.4 Publicar los 3 reciclajes de blog ya identificados
 
-Depende de que se resuelva 2.3 (dirección de contenido). Una vez elegida, el primer paso es reciclar el post de blog "¿Qué CRM elegir para una pyme?" — el de mejor tasa de citación en motores de IA (ver F8.2) — como primer post nativo de LinkedIn personal.
+Dirección de contenido resuelta (2.3, 21/9): eje en **B — diagnóstico en público**, con reciclaje de blog (A) como motor de arranque y sin video por ahora. El primer paso es reciclar el post de blog "¿Qué CRM elegir para una pyme?" — el de mejor tasa de citación en motores de IA (ver F8.2) — como primer post nativo de LinkedIn personal.
 
 #### 2.5 Producir el primer caso anónimo original (pilar 04)
 
-También depende de 2.3. Es la pieza de mayor peso para credibilidad según el análisis de pilares (ver [Pilares y formatos](#pilares)): un caso anónimo con estructura problema → diagnóstico → decisión → resultado, sin nombrar clientes.
+Con la dirección ya resuelta (2.3 — eje B), es la pieza de mayor peso para credibilidad según el análisis de pilares (ver [Pilares y formatos](#pilares)): un caso anónimo con estructura problema → diagnóstico → decisión → resultado, sin nombrar clientes.
 
 #### 2.6 Sistematizar pedidos de referidos
 
@@ -115,7 +115,7 @@ Aparte, los skills con más endosos hoy son **Inglés** y **Microsoft Word** —
 
 **Puntos de mejora:** bio mínima, sin categoría de negocio ni contacto directo — todo depende de un clic extra al Linktree, que además reparte la atención en 4 links y muestra "Discover more" con perfiles de terceros sin relación. Un solo post de más de 3 años transmite abandono a quien llega desde el sitio (el ícono de Instagram del sitio sí apunta bien acá). Sin Reels, sin Stories destacadas. No está confirmado si la cuenta es un perfil profesional de Meta (necesario para métricas y pauta futura) — revisar logueado.
 
-**Plan de desarrollo:** contenido visual primero, texto de apoyo después — no una copia de LinkedIn. Tres formatos con sentido para esta plataforma: carruseles con los frameworks ya validados (ATRAE/CALIFICA/CIERRA/FIDELIZA, BANT/MEDDIC, el ciclo Preventa-Venta-Posventa) rediseñados como pieza visual; Reels cortos (30-60s) explicando un concepto simple o alguna estadística ya citada en el sitio; Stories con preguntas de una sola respuesta ("¿Tu equipo usa CRM?") para generar el primer engagement real. Bio: agregar categoría de negocio y reemplazar el Linktree por un único link directo (agenda de HubSpot o sitio) mientras la base de seguidores sea chica. Cadencia sugerida: la más baja de los tres canales, una pieza por semana alcanza para un fundador solo. Cualquier video que se grabe acá es reusable si F2.3 termina sumando video al personal.
+**Plan de desarrollo:** contenido visual primero, texto de apoyo después — no una copia de LinkedIn. Tres formatos con sentido para esta plataforma: carruseles con los frameworks ya validados (ATRAE/CALIFICA/CIERRA/FIDELIZA, BANT/MEDDIC, el ciclo Preventa-Venta-Posventa) rediseñados como pieza visual; Reels cortos (30-60s) explicando un concepto simple o alguna estadística ya citada en el sitio; Stories con preguntas de una sola respuesta ("¿Tu equipo usa CRM?") para generar el primer engagement real. Bio: agregar categoría de negocio y reemplazar el Linktree por un único link directo (agenda de HubSpot o sitio) mientras la base de seguidores sea chica. Cadencia sugerida: la más baja de los tres canales, una pieza por semana alcanza para un fundador solo. 2.3 se resolvió sin video por ahora — cualquier video que se grabe igual acá queda como banco reusable si más adelante se suma video al personal.
 
 **Antes de producir nada:** confirmar la cuenta profesional de Meta, y actualizar el tagline a la versión vigente en cualquier pieza gráfica nueva.
 
@@ -137,7 +137,7 @@ No existe ningún canal de YouTube de Base Core ni de Mariano hoy (confirmado po
 
 #### 4.1 Definir cadencia sostenible para un fundador solo
 
-Depende de 2.3 (dirección elegida) y del stack de 4.2. Arrancar 1-2 posts/semana en LinkedIn personal; cadencias distintas y más bajas para Instagram y Facebook (ver 3.2 y 3.3).
+Dirección ya elegida (2.3, 21/9) — depende solo del stack de 4.2. Arrancar 1-2 posts/semana en LinkedIn personal; cadencias distintas y más bajas para Instagram y Facebook (ver 3.2 y 3.3).
 
 #### 4.2 Stack mínimo de producción
 
@@ -145,13 +145,13 @@ Sin sumar herramientas por sumar — lo que ya tenemos (Claude, Perplexity) más
 
 * **Research/guion:** Perplexity + Claude (ya en uso en este mismo workflow).
 * **Diseño de carrusel/documento:** Canva o Figma.
-* **Grabación/edición de video** (si F2.3 suma video): teléfono + micrófono simple, CapCut o Descript para editar/subtitular.
+* **Grabación/edición de video** — no necesario por ahora (2.3 resuelta sin video, 21/9); si más adelante se suma, teléfono + micrófono simple, CapCut o Descript para editar/subtitular.
 * **Programación:** Buffer o Metricool — a evaluar recién cuando la cadencia sea sostenida, no antes.
 * **Analítica:** LinkedIn Analytics nativo + GA4 (ya instalado) para medir el tráfico de vuelta al sitio.
 
 #### 4.3 Calendario editorial del mes 1
 
-Se arma recién cuando 2.3 esté resuelto. El mes 1 combina los 3 reciclajes de blog (2.4) con el primer caso original (2.5), más el arranque de contenido visual en Instagram (3.2).
+Ya puede armarse — 2.3 resuelta el 21/9. El mes 1 combina los 3 reciclajes de blog (2.4) con el primer caso original (2.5), más el arranque de contenido visual en Instagram (3.2).
 
 #### 4.4 Una idea, múltiples salidas
 
@@ -177,12 +177,6 @@ No hay ninguna herramienta de email marketing implementada — hoy los leads que
 
 No implementado — hoy no hay CRM propio con reglas de scoring, solo HubSpot Meetings para agendar. El modelo propuesto en el borrador (Fit 50% + Intent 30% + Behaviour 20%, con umbrales 0-39 nurturing / 40-69 MQL / 70-100 preventa) es una buena primera versión manual, pero depende de tener antes 6.3/6.4 funcionando y volumen de leads suficiente para que el scoring tenga sentido. No es una prioridad de los primeros 90 días.
 
-#### Pendiente de tu decisión — dirección de contenido de LinkedIn personal (carry-over del 4/9)
-
-Sigue siendo el único bloqueo de decisión real de todo el plan: sin dirección elegida, 2.4 y 2.5 no arrancan. El análisis del 4/9 (detalle completo en [Pilares y formatos](#pilares)) sugirió **B — el diagnóstico en público** (casos anónimos, con A — reciclaje de blog — como motor táctico de bajo costo, y C — eje en BaseHub/IA — dosificado dentro de los casos, nunca como pilar aparte).
-
-**Segunda decisión, ligada a la primera:** qué peso le das a video. El análisis del 4/9 lo dejó como "exploratorio, no prioritario al arrancar"; el borrador de referencia que trajiste sugiere 50% video / 35% texto / 15% casos, con Mariano grabándose a cámara (no un avatar de IA). Si elegís empezar solo con texto + carrusel (formato ya validado, cero fricción de producción) y sumar video más adelante, F2.4/F2.5 arrancan ya.
-
 Fase 1
 
 ### Higiene inmediata
@@ -207,11 +201,15 @@ Canal ya decidido como prioritario (Plan de SEO, 4.6) y confirmado por la audito
 | --- | --- | --- |
 | 2.1 | Reescribir headline (qué hace + para quién + diferencial) | Hecho |
 | 2.2 | Revisar y reescribir About / Featured / banner | Hecho |
-| 2.3 | Elegir dirección de contenido (A / B / C) y peso de video | Bloqueado |
+| 2.3 | Elegir dirección de contenido (A / B / C) y peso de video | Hecho |
 | 2.4 | Publicar los 3 reciclajes de blog ya identificados (CRM, calificación de leads, churn) | Pendiente |
 | 2.5 | Producir el primer caso anónimo original (pilar 04) | Pendiente |
 | 2.6 | Sistematizar pedidos de referidos (segunda mitad de la decisión 4.6, nunca ejecutada) | Pendiente |
 | 2.7 | Revisar "Open to Work" y reordenar skills destacados | Pendiente |
+
+#### 2.3 Dirección de contenido — resuelta
+
+Decidido por Mariano el 21/9, con la recomendación del análisis del 4/9: eje en **B — diagnóstico en público** (casos anónimos, problema → diagnóstico → decisión → resultado, sin nombrar clientes), con **A — reciclaje de blog** como motor táctico de arranque y **C — eje BaseHub/IA** dosificado dentro de los casos, nunca como pilar aparte. Video queda fuera del arranque — se empieza solo con texto nativo + carrusel/documento (formatos ya validados, cero fricción de producción); se reevalúa sumarlo más adelante, nunca con avatar de IA. Desbloquea 2.4, 2.5, 4.1 y 4.3.
 
 Fase 3
 
@@ -239,7 +237,7 @@ Fase 4
 
 ### Sistema de producción de contenido
 
-Cómo se produce, no qué se dice (eso vive en F2.3 y en Pilares y formatos). Todo depende de la dirección elegida en F2.3.
+Cómo se produce, no qué se dice (eso vive en F2.3, resuelta el 21/9, y en Pilares y formatos).
 
 | # | Tarea | Estado |
 | --- | --- | --- |
@@ -280,7 +278,7 @@ Lo que hoy existe en el sitio (formulario de contacto, WhatsApp, agenda vía Hub
 | # | Tarea | Estado |
 | --- | --- | --- |
 | 6.1 | Formulario de contacto + botón de WhatsApp + agenda HubSpot | Hecho |
-| 6.2 | Eventos de conversión en GA4 (generate\_lead, file\_download) | Hecho |
+| 6.2 | Eventos de conversión en GA4 (generate_lead, file_download) | Hecho |
 | 6.3 | Newsletter mensual ("Una observación comercial") | Pendiente |
 | 6.4 | Workflows de email marketing (nuevo lead / nurturing / reactivación) | Pendiente |
 | 6.5 | Lead scoring y routing automático (Fit/Intent/Behaviour) | Pendiente |
@@ -350,7 +348,7 @@ Secuencia de las fases de arriba — no agrega tareas nuevas, ordena las que ya 
 #### Días 0–30 · Fundación
 
 * F1: cerrar 1.4/1.5 (higiene de Facebook)
-* F2.3: dirección de contenido elegida
+* F2.3: dirección de contenido elegida (hecho 21/9)
 * F3.1–3.3: arrancar desarrollo de LinkedIn empresa, Instagram y Facebook (higiene + primeras publicaciones)
 * F2.4: 3 reciclajes de blog publicados
 * F4.1–F4.3: cadencia y calendario mes 1
@@ -390,12 +388,12 @@ Problemas prioritarios
 * **Baja prueba social** — 5 logos B2C/retail sin resultado cuantificado; 3 testimonios listos pero sin publicar (F5.1).
 * **Canales secundarios sin desarrollar** — LinkedIn empresa, Instagram y Facebook con perfiles funcionales pero sin actividad ni cadencia; ahora en desarrollo urgente (F3.1–3.3).
 * **Falta de sistema de nurturing** — sin newsletter, sin email marketing, sin scoring (F6).
-* **Contenido no convertido en máquina de demanda** — 5 pilares definidos desde el 4/9, sin producción sostenida todavía porque la dirección (F2.3) sigue sin elegirse.
+* **Contenido no convertido en máquina de demanda** — 5 pilares definidos desde el 4/9, dirección ya elegida (F2.3, 21/9), sin producción sostenida todavía porque falta ejecutar.
 * **Tracking comercial incompleto** — instrumentación de analítica lista (F8.3), pero sin CRM/scoring que conecte marketing con oportunidades reales.
 
 Diagnóstico definitivo
 
-El perfil personal de Mariano en LinkedIn ya está resuelto (F1, F2). El foco ahora es doble: **elegir una dirección de contenido y ejecutarla** (F2.3, el único bloqueo real que queda), y **desarrollar en serio los tres canales secundarios** (LinkedIn empresa, Instagram, Facebook — F3.1–3.3), además de destrabar los activos de prueba social ya terminados (testimonios, F5.1).
+El perfil personal de Mariano en LinkedIn ya está resuelto (F1, F2), incluida la dirección de contenido (F2.3, 21/9: eje B, sin video por ahora). El foco ahora es doble: **ejecutar esa dirección** (2.4, 2.5), y **desarrollar en serio los tres canales secundarios** (LinkedIn empresa, Instagram, Facebook — F3.1–3.3), además de destrabar los activos de prueba social ya terminados (testimonios, F5.1).
 
 ### Investigación de mercado y competencia
 
@@ -486,7 +484,7 @@ CRM/IA aplicada a proceso comercial, nunca "la herramienta resuelve todo". Secun
 
 #### Formatos base
 
-Texto nativo (1.000–1.500 caracteres, sin link en el cuerpo) y documento/carrusel como los dos formatos de arranque, sin fricción de producción. Video queda como decisión abierta de peso (ver F2.3) — si se suma, formato corto (30-90s) hablando directo a cámara, estructura Hook → Problema → Diagnóstico → Idea → Conclusión, más un "Deep Dive" quincenal de 5-10 min si eventualmente hay YouTube (F3.4). Newsletter de LinkedIn mensual para reciclar el blog hacia quien ya sigue.
+Texto nativo (1.000–1.500 caracteres, sin link en el cuerpo) y documento/carrusel como los dos formatos de arranque, sin fricción de producción — la decisión de F2.3 (21/9) confirma este arranque sin video. Si más adelante se suma video: formato corto (30-90s) hablando directo a cámara, estructura Hook → Problema → Diagnóstico → Idea → Conclusión, más un "Deep Dive" quincenal de 5-10 min si eventualmente hay YouTube (F3.4). Newsletter de LinkedIn mensual para reciclar el blog hacia quien ya sigue.
 
 #### Temas a evitar
 
@@ -531,4 +529,4 @@ Aplicado acá: cada pieza de contenido pasa por TRIAGE (qué problema del compra
 
 × Duplicar en este documento el detalle técnico que ya vive en el Plan de SEO o en la Auditoría de Marca — linkear, no repetir.
 
-Marketing Strategy Basecore · Base Core · actualizado el 21 de septiembre de 2026, fusionando el Plan Social Media (creado 4/9, auditoría `social-content`) con los borradores de referencia de Mariano (ChatGPT) y verificaciones propias · agentes: `social-content` (auditoría en vivo de LinkedIn/Instagram/Facebook, 17/9 y 21/9), `seo-marketing` (cruce con Plan de SEO y Mapa de Keywords, 17/9), `web-lead` (redacción de Overview/headline/About de LinkedIn, 21/9) · 21/9: reestructurado con el criterio "Activo hoy" del Plan de SEO; F1 completa (1.1–1.3) más dos hallazgos nuevos de higiene en Facebook (1.4, 1.5); F2.1/F2.2 resueltos; Fase 3 reprioritizada — LinkedIn empresa, Instagram y Facebook pasan a desarrollo urgente (3.1–3.3) con auditoría y plan de desarrollo propios, X/Twitter/TikTok/Reddit pasan a Bloqueado · memoria: `.agents/product-marketing.md`, `documentation/seo/plan-seo.md`, `documentation/seo/mapa-keywords.md` · espejo de trabajo: `documentation/marketing/marketing-strategy.md`
+Marketing Strategy Basecore · Base Core · actualizado el 21 de septiembre de 2026, fusionando el Plan Social Media (creado 4/9, auditoría `social-content`) con los borradores de referencia de Mariano (ChatGPT) y verificaciones propias · agentes: `social-content` (auditoría en vivo de LinkedIn/Instagram/Facebook, 17/9 y 21/9), `seo-marketing` (cruce con Plan de SEO y Mapa de Keywords, 17/9), `web-lead` (redacción de Overview/headline/About de LinkedIn, 21/9) · 21/9: reestructurado con el criterio "Activo hoy" del Plan de SEO; F1 completa (1.1–1.3) más dos hallazgos nuevos de higiene en Facebook (1.4, 1.5); F2.1/F2.2 resueltos; Fase 3 reprioritizada — LinkedIn empresa, Instagram y Facebook pasan a desarrollo urgente (3.1–3.3) con auditoría y plan de desarrollo propios, X/Twitter/TikTok/Reddit pasan a Bloqueado · 21/9, sesión posterior: Mariano resuelve 2.3 con la recomendación del análisis del 4/9 — eje B (diagnóstico en público), A (reciclaje de blog) como motor de arranque, C (BaseHub/IA) dosificado, sin video por ahora; desbloquea 2.4, 2.5, 4.1 y 4.3 · memoria: `.agents/product-marketing.md`, `documentation/seo/plan-seo.md`, `documentation/seo/mapa-keywords.md` · espejo de trabajo: `documentation/marketing/marketing-strategy.md`
