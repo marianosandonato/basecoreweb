@@ -27,7 +27,20 @@ export default function EsRootLayout({
 }>) {
   return (
     <html lang="es" className={`${fontVariables} h-full antialiased`}>
-      <body className="flex min-h-full flex-col">
+      {/*
+        pb-[var(--lang-banner-height,0px)]: LanguageBanner.tsx is `fixed
+        bottom-0` and sets this var via ResizeObserver while visible (0px
+        otherwise). Without this, a page whose content doesn't already
+        overflow the viewport by the banner's height has nowhere to scroll
+        the banner clear of -- the last section (or, on a short page, real
+        content well above the footer) stays permanently covered. Reserving
+        the space here guarantees there's always room to scroll it into view.
+        No transition: same non-composited-layout reasoning as the WhatsApp
+        button's bottom offset (see WhatsAppButton.tsx) -- an instant jump
+        beats animating a layout property, and this only fires on the rare
+        visit where the banner toggles.
+      */}
+      <body className="flex min-h-full flex-col pb-[var(--lang-banner-height,0px)]">
         <AppShell>{children}</AppShell>
       </body>
     </html>

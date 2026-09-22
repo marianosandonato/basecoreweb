@@ -27,7 +27,12 @@ export default function EnRootLayout({
 }>) {
   return (
     <html lang="en" className={`${fontVariables} h-full antialiased`}>
-      <body className="flex min-h-full flex-col">
+      {/*
+        pb-[var(--lang-banner-height,0px)]: see the (es) root layout's
+        comment on this same class -- LanguageBanner.tsx is shared between
+        both root layouts via AppShell, so both need the reserved space.
+      */}
+      <body className="flex min-h-full flex-col pb-[var(--lang-banner-height,0px)]">
         <AppShell>{children}</AppShell>
       </body>
     </html>
