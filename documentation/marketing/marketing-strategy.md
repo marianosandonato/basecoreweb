@@ -1,8 +1,8 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`social-content`, `seo-marketing`, `web-lead`) — la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma). Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/artifact/5nEdULGfDWCWES17cpptDp
-> - Última sincronización: 2026-09-21 (v8)
-> - Nota: Mariano resuelve 2.3 (dirección de contenido) con la recomendación del análisis del 4/9 — eje **B — diagnóstico en público**, con **A — reciclaje de blog** como motor de arranque y **C — eje BaseHub/IA** dosificado dentro de los casos; video queda fuera del arranque. Desbloquea 2.4, 2.5, 4.1 y 4.3. 2.3 pasa de Bloqueado a Hecho; "bloqueados por decisión de Mariano" baja de 7 a 6.
+> - Última sincronización: 2026-09-21 (v9)
+> - Nota: Mariano confirma hechas 1.4 y 1.5 (higiene de Facebook) — Fase 1 queda cerrada del todo. Sigue vigente la resolución de 2.3 (dirección de contenido): eje **B — diagnóstico en público**, con **A — reciclaje de blog** como motor de arranque y **C — eje BaseHub/IA** dosificado dentro de los casos; video queda fuera del arranque.
 
 ---
 
@@ -60,22 +60,6 @@ Cada fase mantiene su tabla de estado completa (incluidas las tareas Bloqueadas)
 ### Activo hoy
 
 Todo lo que está Pendiente o En progreso y tiene detalle propio, agrupado por fase. Reorganizado el 21/9 con el mismo criterio que ya usa el Plan de SEO.
-
-#### Fase 1 · Higiene inmediata
-
-#### 1.4 Corregir la dirección de Facebook (Barcelona → Buenos Aires)
-
-Hallazgo de la auditoría del 21/9 (`social-content`): la ficha de facebook.com/basecore carga "Barcelona, Spain" como dirección — contradice la unificación en Buenos Aires ya resuelta en LinkedIn personal (F1.3) y ya visible en LinkedIn empresa (que muestra La Pampa 3000, 1428, Buenos Aires). Nadie tocó este campo cuando se hizo esa corrección; no es una repetición de 1.3, es un canal que había quedado afuera.
-
-**Quién lo hace:** Mariano, directo en Facebook (Configuración de la Página → Información de contacto).
-
-#### 1.5 Resolver el post roto de Facebook (preview cacheada de LinkedIn)
-
-El único post existente en la página (20/10/2022, "Síguenos en Linkedin") enlaza mediante una tarjeta de vista previa a la página de empresa de LinkedIn, pero esa tarjeta quedó cacheada con la descripción vieja y rota de 2022 ("...Nos orientamos a Preventa, Venta, Posventa y Marketing. Co..." — el punto exacto donde antes empezaba "Contamos con nuestra agencia de marketing: NaN"). Es la única pieza de contenido visible de la página y hoy empuja tráfico afuera con una preview rota.
-
-Acción: borrar el post, o como mínimo publicar contenido nuevo que lo saque del tope de la página — la preview cacheada vieja no se puede editar desde este lado.
-
-**Quién lo hace:** Mariano, directo en Facebook.
 
 #### Fase 2 · LinkedIn personal de Mariano
 
@@ -181,15 +165,15 @@ Fase 1
 
 ### Higiene inmediata
 
-Defectos concretos en canales existentes — arreglos de minutos, sin necesitar decisión de estrategia. Reabierta el 21/9 con dos hallazgos nuevos de la auditoría de Facebook.
+Defectos concretos en canales existentes — arreglos de minutos, sin necesitar decisión de estrategia. Reabierta el 21/9 con dos hallazgos nuevos de la auditoría de Facebook, cerrada del todo el mismo día.
 
 | # | Tarea | Estado |
 | --- | --- | --- |
 | 1.1 | Corregir el texto roto ("NaN") en el About de LinkedIn empresa | Hecho |
 | 1.2 | Corregir el link a LinkedIn roto en la página de Facebook | Hecho |
 | 1.3 | Resolver la contradicción de ubicación en LinkedIn personal | Hecho |
-| 1.4 | Corregir la dirección de Facebook (Barcelona → Buenos Aires) | Pendiente |
-| 1.5 | Resolver el post roto de Facebook (preview cacheada de LinkedIn) | Pendiente |
+| 1.4 | Corregir la dirección de Facebook (Barcelona → Buenos Aires) | Hecho |
+| 1.5 | Resolver el post roto de Facebook (preview cacheada de LinkedIn) | Hecho |
 
 Fase 2
 
@@ -347,7 +331,7 @@ Secuencia de las fases de arriba — no agrega tareas nuevas, ordena las que ya 
 
 #### Días 0–30 · Fundación
 
-* F1: cerrar 1.4/1.5 (higiene de Facebook)
+* F1: cerrar 1.4/1.5 (higiene de Facebook) — hecho 21/9
 * F2.3: dirección de contenido elegida (hecho 21/9)
 * F3.1–3.3: arrancar desarrollo de LinkedIn empresa, Instagram y Facebook (higiene + primeras publicaciones)
 * F2.4: 3 reciclajes de blog publicados
@@ -529,4 +513,4 @@ Aplicado acá: cada pieza de contenido pasa por TRIAGE (qué problema del compra
 
 × Duplicar en este documento el detalle técnico que ya vive en el Plan de SEO o en la Auditoría de Marca — linkear, no repetir.
 
-Marketing Strategy Basecore · Base Core · actualizado el 21 de septiembre de 2026, fusionando el Plan Social Media (creado 4/9, auditoría `social-content`) con los borradores de referencia de Mariano (ChatGPT) y verificaciones propias · agentes: `social-content` (auditoría en vivo de LinkedIn/Instagram/Facebook, 17/9 y 21/9), `seo-marketing` (cruce con Plan de SEO y Mapa de Keywords, 17/9), `web-lead` (redacción de Overview/headline/About de LinkedIn, 21/9) · 21/9: reestructurado con el criterio "Activo hoy" del Plan de SEO; F1 completa (1.1–1.3) más dos hallazgos nuevos de higiene en Facebook (1.4, 1.5); F2.1/F2.2 resueltos; Fase 3 reprioritizada — LinkedIn empresa, Instagram y Facebook pasan a desarrollo urgente (3.1–3.3) con auditoría y plan de desarrollo propios, X/Twitter/TikTok/Reddit pasan a Bloqueado · 21/9, sesión posterior: Mariano resuelve 2.3 con la recomendación del análisis del 4/9 — eje B (diagnóstico en público), A (reciclaje de blog) como motor de arranque, C (BaseHub/IA) dosificado, sin video por ahora; desbloquea 2.4, 2.5, 4.1 y 4.3 · memoria: `.agents/product-marketing.md`, `documentation/seo/plan-seo.md`, `documentation/seo/mapa-keywords.md` · espejo de trabajo: `documentation/marketing/marketing-strategy.md`
+Marketing Strategy Basecore · Base Core · actualizado el 21 de septiembre de 2026, fusionando el Plan Social Media (creado 4/9, auditoría `social-content`) con los borradores de referencia de Mariano (ChatGPT) y verificaciones propias · agentes: `social-content` (auditoría en vivo de LinkedIn/Instagram/Facebook, 17/9 y 21/9), `seo-marketing` (cruce con Plan de SEO y Mapa de Keywords, 17/9), `web-lead` (redacción de Overview/headline/About de LinkedIn, 21/9) · 21/9: reestructurado con el criterio "Activo hoy" del Plan de SEO; F1 completa (1.1–1.3) más dos hallazgos nuevos de higiene en Facebook (1.4, 1.5); F2.1/F2.2 resueltos; Fase 3 reprioritizada — LinkedIn empresa, Instagram y Facebook pasan a desarrollo urgente (3.1–3.3) con auditoría y plan de desarrollo propios, X/Twitter/TikTok/Reddit pasan a Bloqueado · 21/9, sesión posterior: Mariano resuelve 2.3 con la recomendación del análisis del 4/9 — eje B (diagnóstico en público), A (reciclaje de blog) como motor de arranque, C (BaseHub/IA) dosificado, sin video por ahora; desbloquea 2.4, 2.5, 4.1 y 4.3 · 21/9, más tarde: Mariano confirma hechos 1.4 y 1.5 — Fase 1 queda cerrada del todo · memoria: `.agents/product-marketing.md`, `documentation/seo/plan-seo.md`, `documentation/seo/mapa-keywords.md` · espejo de trabajo: `documentation/marketing/marketing-strategy.md`
