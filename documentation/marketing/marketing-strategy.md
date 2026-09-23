@@ -1,516 +1,1432 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`social-content`, `seo-marketing`, `web-lead`) — la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma). Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/artifact/5nEdULGfDWCWES17cpptDp
-> - Última sincronización: 2026-09-21 (v9)
-> - Nota: Mariano confirma hechas 1.4 y 1.5 (higiene de Facebook) — Fase 1 queda cerrada del todo. Sigue vigente la resolución de 2.3 (dirección de contenido): eje **B — diagnóstico en público**, con **A — reciclaje de blog** como motor de arranque y **C — eje BaseHub/IA** dosificado dentro de los casos; video queda fuera del arranque.
+> - Última sincronización: 2026-09-23 (v11)
+> - Nota: v11 reestructurado con el brief de Mariano (23/9): Parte 1 = fases accionables F1 Higiene · F2 Social Media preparación · F3 Social Media exposición · F4 Diseño gráfico · F5 Organización de leads · F6 Campañas · F7 Prueba social · F8 Paid · F9 SEO · F10 Marca. Parte 2 = Diagnóstico de marketing D1-D13 (informativo). Auditoría con navegador logueado en IG/FB/LinkedIn. Hallazgos clave: formularios del sitio no llegan a HubSpot (Resend→email), LinkedIn personal sin publicar desde dic 2022, Página LinkedIn 0 posts, IG ya es Empresa, IG ya conectado a la Página en Business Suite. Tabla de renumeración v10→v11 al final.
 
 ---
 
 Marketing Strategy Basecore
 
-Base Core · marketing & desarrollo comercial
+Base Core · marketing, marca y pilares comunicacionales
 
 # Marketing Strategy Basecore
 
-Plan único de marketing y preventa de Base Core — fusiona el Plan de Social Media (auditoría `social-content` del 4/9) con los dos borradores de referencia que armó Mariano con ChatGPT, corregidos y verificados contra el estado real del sitio, del Plan de SEO y de los perfiles sociales en vivo (17/9/2026).
+Plan único de marketing y desarrollo comercial de Base Core. Arriba, las **fases accionables**: Social Media (preparación y exposición), Diseño gráfico, Organización de leads y Campañas, más prueba social, paid, SEO y marca. Abajo, el **diagnóstico de marketing** como material de referencia. Auditoría del 23/9 con navegador en vivo y sesión iniciada en Instagram, Facebook y LinkedIn, hecha por `social-content`, `seo-marketing` y `web-lead`.
 
-Tablero activo · dirección de contenido resuelta (21/9), foco en ejecución
+Fase 2 · Preparación en curso — primer punto: bio de Instagram
 
-**37**
+**97**
 accionables
 
-**5**
-higiene inmediata
+**68**
+pendientes o futuras
 
-**6**
-bloqueados por decisión de Mariano
+**8**
+decisiones de Mariano
 
-**9**
+**10**
 fases
 
-Accionables
+**16**
+competidores relevados
+
+Parte 1 · Accionables
+[Decisiones](#decisiones)
 [Activo hoy](#activo)
 [F1 Higiene](#f1)
-[F2 LinkedIn Mariano](#f2)
-[F3 Canales secundarios](#f3)
-[F4 Producción de contenido](#f4)
-[F5 Prueba social](#f5)
-[F6 Demanda y nurturing](#f6)
-[F7 Paid media](#f7)
-[F8 SEO / AI Search / Analytics](#f8)
-[F9 Marca y naming](#f9)
-[Roadmap 90 días](#roadmap)
-Análisis y resultados
-[Diagnóstico](#diagnostico)
-[Mercado y competencia](#mercado)
-[ICP y buyer persona](#icp)
-[Posicionamiento y marca](#posicionamiento)
-[Concepto creativo](#creativo)
-[Pilares y formatos](#pilares)
-[Objetivos y KPIs](#kpis)
-[Sistema de control](#sistema)
-[Errores a evitar](#evitar)
+[F2 Social: preparación](#f2)
+[F3 Social: exposición](#f3)
+[F4 Diseño gráfico](#f4)
+[F5 Organización de leads](#f5)
+[F6 Campañas](#f6)
+[F7 Prueba social](#f7)
+[F8 Paid media](#f8)
+[F9 SEO / AI Search](#f9)
+[F10 Marca y naming](#f10)
+[Roadmap](#roadmap)
+Parte 2 · Diagnóstico de marketing
+[Estado de canales](#d-estado)
+[Plan de trabajo](#d1)
+[Objetivos y métricas](#d2)
+[Mercado](#d3)
+[Competencia](#d4)
+[Público objetivo](#d5)
+[Buyer personas](#d6)
+[Propuesta de valor](#d7)
+[Posicionamiento](#d8)
+[Desarrollo de marca](#d9)
+[Identidad corporativa](#d10)
+[Concepto comunicacional](#d11)
+[Estrategia creativa](#d12)
+[Manual de marca](#d13)
+[Renumeración](#renumeracion)
+
+Fase 2 · ahora
+
+#### Social Media: preparación
+
+Instagram (bio primero) → Facebook espejo → Página de LinkedIn. Contenido semilla, copy y protocolo de comunidad. **Sin** salir a buscar seguidores. En paralelo: F4 Diseño, F5 captura de leads y F6 configuración de campañas.
+
+se cumple el umbral 2.18 →
+
+Fase 3 · después
+
+#### Social Media: exposición
+
+Primer post en el LinkedIn personal de Mariano, después 2 por semana traccionando el blog. Luego, adquisición de seguidores en Instagram, Facebook y la Página. Se activan las secuencias de email.
 
 Parte 1
 
 ## Accionables
 
-Cada fase mantiene su tabla de estado completa (incluidas las tareas Bloqueadas). El detalle de lo Pendiente o En progreso vive en [Activo hoy](#activo), arriba de todo, agrupado por fase — no se repite en la fase de origen. Las tareas Bloqueadas conservan su detalle breve en su propia fase, no en Activo hoy. Las tareas Hecho aparecen solo como una línea en la tabla, sin narrativa.
+Mismo criterio que el Plan de SEO: el detalle de lo Pendiente vive en [Activo hoy](#activo), agrupado por fase y en orden de ejecución. Cada fase más abajo tiene su tabla de estado completa. Lo Bloqueado mantiene su detalle breve en su fase y lo Hecho queda como una línea en la tabla. En vivo 23/9 marca los datos vistos hoy con sesión iniciada.
+
+#### Ocho decisiones que son de Mariano
+
+1. **Bio de Instagram** (2.1): 4 opciones. Recomendada la D, la del método.
+2. **Criterio de ubicación** (1.7): el sitio dice "Bs.As. - Barcelona", Instagram solo Barcelona y Facebook se contradice. Recomendado: "Buenos Aires · Barcelona", igual en todos lados.
+3. **Tipografía para piezas** (4.2): verificar si la licencia de Gilmer permite subirla a Canva. Si no, usar Jost.
+4. **Reels de voz en off en Instagram** (2.9). Recomendado: sí, 1 en el contenido semilla.
+5. **A qué LinkedIn apuntan los links** (1.6): el contacto de Facebook lleva a tu perfil personal y el sitio, a la Página. Recomendado: la Página desde Facebook e Instagram; el personal, sumado en el footer del sitio.
+6. **"Open to Work"** (3.0e): no se pudo ver desde el navegador. Mantener o apagar antes de la exposición.
+7. **Logo del schema del sitio con el tagline viejo "CREAMOS"** (4.1): ¿se suma como tarea al Plan de SEO, que es el documento dueño?
+8. **Herramienta de email y modelo de scoring** (6.1 y 5.11): HubSpot gratis/Starter o Brevo. Y definir si el scoring de leads inbound es el mismo que el del Plan de Prospección (Fit/Intent/Behaviour) o uno propio.
 
 ### Activo hoy
 
-Todo lo que está Pendiente o En progreso y tiene detalle propio, agrupado por fase. Reorganizado el 21/9 con el mismo criterio que ya usa el Plan de SEO.
+Todo lo Pendiente, en orden de ejecución. Cada tarjeta trae una checklist, el porqué y cuándo se da por hecha.
 
-#### Fase 2 · LinkedIn personal de Mariano
+Fase 1 · Higiene (reabierta el 23/9)
 
-#### 2.4 Publicar los 3 reciclajes de blog ya identificados
+#### 1.6 El LinkedIn del contacto de Facebook apunta a tu perfil personal En vivo 23/9
 
-Dirección de contenido resuelta (2.3, 21/9): eje en **B — diagnóstico en público**, con reciclaje de blog (A) como motor de arranque y sin video por ahora. El primer paso es reciclar el post de blog "¿Qué CRM elegir para una pyme?" — el de mejor tasa de citación en motores de IA (ver F8.2) — como primer post nativo de LinkedIn personal.
+En "Información de contacto → Medios sociales", Facebook enlaza a `linkedin.com/in/marianosandonato` y no a `linkedin.com/company/base-core`. El link ya no está roto (1.2), pero lleva al lugar equivocado para una Página de empresa.
 
-#### 2.5 Producir el primer caso anónimo original (pilar 04)
+* Cambiarlo por la Página de LinkedIn (decisión 5).
 
-Con la dirección ya resuelta (2.3 — eje B), es la pieza de mayor peso para credibilidad según el análisis de pilares (ver [Pilares y formatos](#pilares)): un caso anónimo con estructura problema → diagnóstico → decisión → resultado, sin nombrar clientes.
+**Hecho cuando:** el ícono de LinkedIn de la Página de Facebook abre la Página de empresa.
 
-#### 2.6 Sistematizar pedidos de referidos
+#### 1.7 Ubicación inconsistente entre canales En vivo 23/9
 
-La mitad de la decisión 4.6 (Plan de SEO) que nunca se ejecutó: reforzar LinkedIn personal *más* sistematizar pedidos de referidos específicos a clientes y contactos existentes. Hoy no hay ningún proceso para esto — ni un momento definido en el ciclo de venta/posventa para pedirlo, ni una plantilla de mensaje.
+* **Instagram:** dirección de negocio "Barcelona, Spain", sin calle. Instagram avisa que falta una dirección válida.
+* **Facebook:** "Datos personales" dice Buenos Aires, pero el campo con el pin del mapa sigue en Barcelona. La corrección de 1.4 quedó a medias.
+* **Sitio (footer):** "Dónde estamos: Bs.As. - Barcelona".
 
-#### 2.7 Open to Work y skills destacados
+* Aplicar el mismo criterio en todos los canales (decisión 2). Donde el campo acepte una sola ciudad, poner la sede legal y nombrar la otra en la bio o la intro.
 
-El perfil tiene activo **"Open to Work" (visible solo a recruiters)** con una lista de roles genéricos de empleado (Commercial Consultant, Business Process Consultant, Sales Manager, Commercial Director, Business Process Manager) — no es público para cualquier visitante, pero es una señal que choca con la narrativa de founder si en algún momento se filtra o si Mariano ya no quiere esa opcionalidad. Decisión simple: mantenerlo (opcionalidad real) o apagarlo (coherencia total con el posicionamiento de founder) — no hay una respuesta correcta, es una preferencia de Mariano.
+**Hecho cuando:** el sitio, Instagram, Facebook y LinkedIn dicen lo mismo.
 
-Aparte, los skills con más endosos hoy son **Inglés** y **Microsoft Word** — nada de ventas, consultoría comercial o CRM aparece entre los primeros. Reordenar los "pinned skills" para que las 3 fijadas arriba sean relevantes a Base Core (ej. Consultoría Comercial, CRM, Estrategia de Ventas) es una edición de minutos con impacto directo en cómo se lee el perfil de un vistazo.
+#### 1.8 Los mensajes de Instagram no llegan a la bandeja de Business Suite En vivo 23/9
 
-#### Fase 3 · Canales secundarios
+Meta Business Suite muestra una alerta: los mensajes de Instagram no van a estar en la bandeja unificada hasta que confirmes que quienes administran la Página también pueden administrar los mensajes de Instagram.
 
-#### 3.1 LinkedIn empresa — desarrollo urgente (prioridad 1)
+* Business Suite → aceptar ese permiso. Es un clic y hace posible atender los DMs desde un solo lugar (protocolo 2.17).
 
-**Estado verificado en vivo (21/9):** 56 seguidores, sin cambio desde el 17/9. Industria "Business Consulting and Services", 2-10 empleados, fundada en 2022. El About roto ya está corregido y visible públicamente (F1.1). Dato nuevo: la ficha muestra Buenos Aires como sede, con dirección específica (La Pampa 3000, 1428) — no estaba documentado que la empresa, además del perfil personal, ya dice Buenos Aires. El índice externo de Google todavía no recrawleó: una búsqueda trae una copia cacheada con "Barcelona" y el texto viejo del About — se corrige solo con tiempo y más actividad en la página, no requiere acción directa. Banner, foto de perfil y Featured no se pudieron confirmar sin sesión (LinkedIn bloquea el preview público a esos datos) — Mariano tiene que revisarlos logueado.
+Fase 2 · Social Media: preparación de canales secundarios
 
-**Puntos de mejora:** sin publicaciones verificables — quien llega desde el sitio (el ícono de LinkedIn del header/footer apunta acá, no al perfil personal) encuentra una página sin actividad. Ningún testimonio ni prueba social visible. Sin sección de empleos, un hueco notorio dado que Base Core vende recruiting como servicio.
+Auditoría y optimización de perfiles
 
-**Plan de desarrollo:** primero, higiene — Mariano revisa logueado banner/foto/Featured, igual que ya hizo en el personal. Después, tres usos concretos para este canal, sin copiar el tono personal de Mariano (diagnóstico en primera persona, ese es el pilar del personal): resharear los mejores posts personales con un comentario corto propio; publicar carruseles/documentos de catálogo educativo por etapa del ciclo (Preventa, Venta, Posventa, Marketing, Tecnología), reciclando páginas de servicio y los 7 posts de blog ya validados; publicar los 3 testimonios (F5.1) apenas se destraben en el sitio. Cadencia sugerida: 2-4 publicaciones por mes, canal de refuerzo, no motor. Relevante para más adelante: esta página es la identidad de anunciante que usa LinkedIn Ads (F7) — tenerla lista antes de esa fase.
+#### 2.1 Perfil y bio de Instagram Primer punto
 
-**Decisión abierta, no para resolver sola:** hoy el sitio linkea solo a esta página de empresa en header/footer, no al perfil personal de Mariano. Vale la pena decidir si conviene un doble link (empresa + personal) ahora que se invierte en desarrollarla — no se tocó nada todavía, es una pregunta para Mariano.
+En vivo 23/9 Ya está resuelto: cuenta profesional **Empresa**, categoría "Consulting agency", botones de **email** (info@basecoresales.com) y **WhatsApp Business** verificado. Queda pendiente: la bio ("Consultoría Comercial y Marketing", 33 caracteres), el campo Nombre ("Base Core", sin keyword), el link (Linktree de 2022) y la dirección (1.7).
 
-#### 3.2 Instagram (@basecoresales) — desarrollo urgente (prioridad 2)
+* **Campo Nombre** (Instagram lo usa en la búsqueda): `Base Core · Consultoría B2B` (27 caracteres).
+* **Bio:** una de estas cuatro, todas ≤150 caracteres:
 
-**Estado verificado en vivo (21/9):** 41 seguidores, 7 following, sin cambio desde el 17/9. Bio: "Consultoría Comercial y Marketing", sin ubicación ni contacto propio. Un solo link (linktr.ee/basecore, creado octubre 2022) que reparte tráfico en 4 destinos: sitio, WhatsApp, LinkedIn empresa y Facebook — todos con URLs correctas hoy. Un único post, del 27 de agosto de 2022 (isotipo del árbol + "BASE CORE, CREAMOS BASES PRODUCTIVAS", 26 likes, 0 comentarios) — el isotipo coincide con el del sitio actual, pero el tagline quedó desactualizado (el sitio dice hoy "Creando Bases Productivas", en gerundio).
+D · El método · recomendada145 car.
 
-**Puntos de mejora:** bio mínima, sin categoría de negocio ni contacto directo — todo depende de un clic extra al Linktree, que además reparte la atención en 4 links y muestra "Discover more" con perfiles de terceros sin relación. Un solo post de más de 3 años transmite abandono a quien llega desde el sitio (el ícono de Instagram del sitio sí apunta bien acá). Sin Reels, sin Stories destacadas. No está confirmado si la cuenta es un perfil profesional de Meta (necesario para métricas y pauta futura) — revisar logueado.
+```
+Ordenamos tu proceso comercial.
+Marketing ATRAE · Preventa CALIFICA
+Venta CIERRA · Posventa FIDELIZA
+Pymes de España y LatAm ↓ diagnóstico gratis
+```
 
-**Plan de desarrollo:** contenido visual primero, texto de apoyo después — no una copia de LinkedIn. Tres formatos con sentido para esta plataforma: carruseles con los frameworks ya validados (ATRAE/CALIFICA/CIERRA/FIDELIZA, BANT/MEDDIC, el ciclo Preventa-Venta-Posventa) rediseñados como pieza visual; Reels cortos (30-60s) explicando un concepto simple o alguna estadística ya citada en el sitio; Stories con preguntas de una sola respuesta ("¿Tu equipo usa CRM?") para generar el primer engagement real. Bio: agregar categoría de negocio y reemplazar el Linktree por un único link directo (agenda de HubSpot o sitio) mientras la base de seguidores sea chica. Cadencia sugerida: la más baja de los tres canales, una pieza por semana alcanza para un fundador solo. 2.3 se resolvió sin video por ahora — cualquier video que se grabe igual acá queda como banco reusable si más adelante se suma video al personal.
+B · Ciclo comercial108 car.
 
-**Antes de producir nada:** confirmar la cuenta profesional de Meta, y actualizar el tagline a la versión vigente en cualquier pieza gráfica nueva.
+```
+Tu proceso comercial, ordenado: preventa, venta, posventa y marketing. Consultoría B2B para pymes ES/LatAm ↓
+```
 
-#### 3.3 Facebook — desarrollo urgente (prioridad 3, menor inversión de tiempo)
+A · Funcional141 car.
 
-**Estado verificado en vivo (21/9):** 2 seguidores, 0 siguiendo, sin cambio desde el 17/9. Categoría "Consulting agency". Contacto correcto y funcionando: WhatsApp/teléfono, email, sitio. Horario "Always open" (genérico). 0 reseñas. El fix de higiene del 21/9 (F1.2, link a LinkedIn) está bien aplicado — apunta al perfil personal, y el link de Instagram también es correcto. **Hallazgo nuevo:** la dirección cargada dice "Barcelona, Spain" — contradice la unificación en Buenos Aires ya resuelta (ver F1.4). El único post enlaza con una preview cacheada rota de la página de LinkedIn (ver F1.5). Foto de perfil y portada comparten el mismo isotipo y tagline desactualizado ("Creamos", no "Creando") que Instagram.
+```
+Consultoría comercial para pymes de España y LatAm. Preventa, venta, posventa y marketing con proceso, no solo consejos. Diagnóstico gratis ↓
+```
 
-**Puntos de mejora:** además de la dirección y el post roto (ya trackeados como higiene en F1.4/F1.5), cero señal de prueba social, mismo tagline desactualizado que Instagram.
+C · Proceso como servicio120 car.
 
-**Plan de desarrollo:** el objetivo acá no es un canal editorial propio — es tener una ficha funcional por dos razones concretas: aparece en búsquedas locales de Google/Maps para quien busca "Base Core", y Meta Business Suite necesita una Página de Facebook activa y vinculada para poder correr pauta en Instagram más adelante (F7) — no se puede anunciar en Instagram sin esto. Primero, higiene (F1.4/F1.5), sin producir contenido nuevo todavía. Después, la forma más barata de mantener la página viva es crosspostear el mismo contenido visual que se produzca para Instagram, sin calendario propio — cadencia mínima de los tres canales.
+```
+No vendemos consejos, implementamos procesos. Consultoría comercial y marketing para pymes ES/LatAm ↓ Diagnóstico gratis
+```
 
-**Más adelante:** evaluar gestionar Instagram y Facebook juntos desde Meta Business Suite, una vez que Instagram tenga cadencia sostenida.
+* **Link:** reemplazar el Linktree (reparte en 4 destinos y muestra perfiles de terceros) por **un link directo** al sitio o a la agenda. Se edita desde la app del celular. Más adelante, links múltiples nativos (hasta 5), no Linktree.
+* **Foto:** el isotipo del árbol solo, 1080×1080, cuando esté el asset de 4.1.
+* **Post de 2022** ("Nace Base Core!", etiquetado en Barcelona): archivarlo (no borrarlo) al publicar el primer post semilla.
 
-#### 3.4 YouTube: prioridad 2 del borrador de referencia
+**Por qué la D:** los que crecen en Instagram (Signos, NA+) ponen su método con nombre en la bio. Base Core tiene uno que hoy no aparece en ninguna red.
 
-No existe ningún canal de YouTube de Base Core ni de Mariano hoy (confirmado por research directo el 17/9). El borrador de referencia lo propone como "biblioteca de autoridad" — videos de 5-12 min indexados y buscables, no un canal de creador tradicional. Tiene sentido más adelante (ver [Roadmap](#roadmap)), nunca antes de que los tres canales de desarrollo urgente (3.1-3.3) tengan cadencia sostenida y de tener un stack de producción de video ya rodado.
+**Hecho cuando:** la bio, el nombre, el link y la dirección están publicados.
 
-#### Fase 4 · Sistema de producción de contenido
+#### 2.2 Página de Facebook
 
-#### 4.1 Definir cadencia sostenible para un fundador solo
+En vivo 23/9 2 seguidores, categoría "Agencia consultora", botón de **WhatsApp activo**, un solo post (el de 2022, fijado), 0 reseñas. Mariano es el único administrador humano.
 
-Dirección ya elegida (2.3, 21/9) — depende solo del stack de 4.2. Arrancar 1-2 posts/semana en LinkedIn personal; cadencias distintas y más bajas para Instagram y Facebook (ver 3.2 y 3.3).
+* **Intro:** la misma bio elegida en 2.1 (hoy copia la frase genérica).
+* **Horario real:** hoy dice "Siempre abierto".
+* **Servicios:** las 5 unidades del sitio (Preventa, Venta, Posventa, Marketing, Tecnología).
+* **Portada** 1640×624 y foto de perfil, desde F4 (4.5).
 
-#### 4.2 Stack mínimo de producción
+**Hecho cuando:** alguien que solo ve la Página entiende qué hace Base Core y puede escribir en un clic.
 
-Sin sumar herramientas por sumar — lo que ya tenemos (Claude, Perplexity) más lo mínimo nuevo:
+#### 2.3 Página de LinkedIn: campos
 
-* **Research/guion:** Perplexity + Claude (ya en uso en este mismo workflow).
-* **Diseño de carrusel/documento:** Canva o Figma.
-* **Grabación/edición de video** — no necesario por ahora (2.3 resuelta sin video, 21/9); si más adelante se suma, teléfono + micrófono simple, CapCut o Descript para editar/subtitular.
-* **Programación:** Buffer o Metricool — a evaluar recién cuando la cadencia sea sostenida, no antes.
-* **Analítica:** LinkedIn Analytics nativo + GA4 (ya instalado) para medir el tráfico de vuelta al sitio.
+En vivo 23/9 Ya resuelto: el **About es bueno** (711 caracteres, incluye ATRAE/CALIFICA/CIERRA/FIDELIZA y BaseHub), está activo el **botón** "Visit website" (sin Premium), el logo está cargado y figura **1 empleado**. Queda pendiente:
 
-#### 4.3 Calendario editorial del mes 1
+* **Tagline** (hoy "Consultoría Comercial y Marketing"): *Consultoría comercial B2B para pymes de España y LatAm*.
+* **Especialidades:** las 5 actuales son informales (`consultoría, ventas, marketingdigital, procesos, mentoring`). Reemplazarlas por: Consultoría Comercial, Preventa, Gestión de Ventas, Posventa, Customer Success, Marketing B2B, CRM, Automatización con IA, PMO, Recruiting Comercial, Pymes.
+* **About:** sumar "basecoresales.com" en el cierre.
+* Evaluar cambiar el botón a "Contact us" apuntando a /contacto.
+* **Banner:** vacío, sale de F4 (4.5).
 
-Ya puede armarse — 2.3 resuelta el 21/9. El mes 1 combina los 3 reciclajes de blog (2.4) con el primer caso original (2.5), más el arranque de contenido visual en Instagram (3.2).
+#### 2.4 LinkedIn personal: lo que falta antes de exponer
 
-#### 4.4 Una idea, múltiples salidas
+En vivo 23/9 Headline, About (primera persona, sin tono de catálogo), Featured (sitio + e-book + blog), experiencia y formación: completos y bien escritos. Las 5 aptitudes que encabezan la lista ya son de consultoría (Business Process Design, Management Consulting…). 1.631 seguidores. Lo que falta:
 
-Ejemplo concreto con contenido que ya existe: *"¿Qué CRM elegir para una pyme?"* (post de blog ya publicado, con mejor tasa de citación en motores de IA — ver [F8](#f8)) → post nativo de LinkedIn (texto, sin link en el cuerpo) → carrusel/documento con el framework de decisión → mención en la newsletter mensual (F6.1) una vez que exista. Evita crear 5 ideas nuevas por semana.
+* **Banner:** es una imagen genérica de 2020, anterior a Base Core. Reemplazarlo por uno de marca (4.5).
+* **Idioma de las aptitudes:** el perfil está en español y las aptitudes en inglés. Opcional: "Consultoría Comercial", "Diseño de Procesos Comerciales".
+* **Featured:** sumar el primer post nativo apenas exista (3.1).
+* "Open to Work": decisión 6.
 
-#### Fase 5 · Prueba social
+Estrategia de contenidos
 
-#### 5.2 Case studies
+#### 2.6 Grid semilla de Instagram: 12 publicaciones y 3 fijadas
 
-Formato de tres niveles, del más simple al más completo: **testimonio** (problema + experiencia + resultado) → **caso breve** (problema → diagnóstico → solución → resultado) → **case study** completo (contexto → problema → análisis → implementación → resultado → aprendizaje). Prioridad: conseguir autorización de 2–3 clientes para ir más allá del testimonio de una línea. Sin esto, los logos actuales (5, todos B2C/retail, ninguno confirmado como caso citable con métricas) no alcanzan como prueba suficiente.
+Entre 9 y 12 publicaciones es el mínimo para que un perfil nuevo no parezca abandonado. Nueve reciclan contenido que ya existe. Las captions, listas para pegar, están en 2.12.
 
-#### 5.4 Recomendaciones de LinkedIn
+| # | Pieza | Formato |
+| --- | --- | --- |
+| 1 | Presentación — **fijada** | Imagen |
+| 2 | El ciclo ATRAE → CALIFICA → CIERRA → FIDELIZA — **fijada** | Carrusel diagrama |
+| 3 | ¿Qué CRM elegir para una pyme? | Carrusel |
+| 4 | Cómo calificar leads B2B | Carrusel |
+| 5 | Seguimiento comercial | Carrusel |
+| 6 | Cómo prevenir el churn | Carrusel |
+| 7 | Estrategia de marketing para pymes | Carrusel |
+| 8 | PMO sin PMO propia | Carrusel |
+| 9 | Qué automatizar con IA (y qué no) | Carrusel |
+| 10 | Error al calificar leads | Reel de voz en off |
+| 11 | E-book "Proceso de Ventas desde Cero" — **fijada** | Imagen |
+| 12 | Invitación al diagnóstico gratuito | Cita/dato |
 
-El perfil ya tiene 4 recomendaciones recibidas, pero son de ex-reportes directos (hablan de liderazgo de equipo), no de clientes de Base Core — no sirven como prueba social B2B frente a un prospecto. Pedirle una recomendación corta a 1–2 de los mismos clientes que ya dieron el OK para el testimonio del sitio (Barfer, Don Seitán, W Profesional — ver 5.1) es la forma más barata de sumar prueba social directamente donde vive el LinkedIn personal, sin depender de que se mergee nada al sitio.
+* Formato 4:5 (1080×1350) y lo importante dentro del centro 3:4, que es como se ve el grid. NA+ pasó de 1:1 (2024) a 4:5 (2026).
+* Ritmo de preparación: 1-2 por semana. Se replican solas en Facebook (2.15).
 
-#### Fase 6 · Demanda, captación y nurturing
+**Hecho cuando:** las 12 están publicadas y las 3 fijadas.
 
-#### 6.3–6.4 Newsletter y email marketing: no existen todavía
+#### 2.7 Historias destacadas: 5 carpetas
 
-No hay ninguna herramienta de email marketing implementada — hoy los leads que llegan por formulario van a un email/HubSpot, sin secuencia automática. Para poder ejecutar la newsletter mensual propuesta ("Una observación comercial": problema → diagnóstico → análisis → framework → aplicación) y los 3 workflows del borrador de referencia (nuevo lead, nurturing, reactivación) hace falta primero elegir una herramienta (el propio HubSpot ya en uso para meetings tiene tier de email marketing; evaluar antes de sumar una plataforma nueva).
+* **Empezá acá** · **Servicios** (una por unidad) · **Método** (Diagnóstico → Plan de Ruta → Estrategia y sprint → Mejora continua) · **Recursos** (e-book, blog) · **FAQ** (cómo es el diagnóstico gratuito, a quién le sirve).
+* Más adelante, **Clientes** (cuando se destraben los testimonios, 7.1).
 
-#### 6.5 Lead scoring y routing
+**Referencia en vivo:** RMG tiene 7 destacadas (¿LO SABES?, BLOG, NOSOTROS, FORMACIÓN, ESTRATEGIA, VENTAS, DIGITAL); Signos, 6 (Podcast, Testimonios, Nosotros, Servicios, Consultas, Sesiones). Es el estándar del sector.
 
-No implementado — hoy no hay CRM propio con reglas de scoring, solo HubSpot Meetings para agendar. El modelo propuesto en el borrador (Fit 50% + Intent 30% + Behaviour 20%, con umbrales 0-39 nurturing / 40-69 MQL / 70-100 preventa) es una buena primera versión manual, pero depende de tener antes 6.3/6.4 funcionando y volumen de leads suficiente para que el scoring tenga sentido. No es una prioridad de los primeros 90 días.
+**Hecho cuando:** las 5 existen con portada de marca y al menos 3 historias cada una.
+
+#### 2.8 Historias: ritmo bajo en preparación
+
+* Cada post del grid, compartido en historias con un dato extra. De 3 a 5 historias, 1-2 veces por semana, con un sticker de pregunta ("¿Tu equipo usa CRM?"). En Fase 3 pasa a casi diario.
+
+#### 2.9 Reel de voz en off Decisión 4
+
+El formato que menos producción pide: la voz de Mariano sobre 3-5 pantallas de texto, reutilizando el guion de un carrusel. Otras opciones: grabación de pantalla narrada o manos + escritorio. Nunca avatar de IA.
+
+**Por qué:** En vivo 23/9 la mayoría del grid de Signos (16.800 seguidores, el que más creció en Instagram) son Reels verticales, no carruseles.
+
+**Hecho cuando:** hay 1 Reel publicado con la voz real de Mariano y subtítulos.
+
+#### 2.10 Contenido semilla de la Página de LinkedIn: 8 a 12 publicaciones
+
+En vivo 23/9 La Página tiene **0 publicaciones en total**. En los últimos 7 días apareció 13 veces en búsquedas (+117%) y no sumó seguidores nuevos.
+
+* 1 presentación · 1 documento del ciclo (**fijado**) · 5 documentos-catálogo, uno por unidad · 2 reciclajes de blog · 1 del método · 1 invitación al diagnóstico.
+* Formato estrella: **documento PDF** 1080×1350, de 6 a 12 láminas. Tono de catálogo, no de primera persona.
+* Ritmo: 2-4 por semana hasta llegar al piso. No activar todavía la newsletter de la Página ni crear Showcase Pages.
+
+Copywriting
+
+#### 2.11 Guía de copy por canal
+
+| Canal | Hook | Largo | CTA | Tono |
+| --- | --- | --- | --- | --- |
+| **LinkedIn personal** | Afirmación contraintuitiva: "Tu CRM no está desordenado. Tu proceso no está definido." | 1.000-1.500 caracteres, párrafos de 1-2 líneas | 70-80% sin link; el link, en el primer comentario | Primera persona, diagnóstico. Nunca "aprendí que…" |
+| **Página de LinkedIn** | El título del documento: qué problema resuelve esa unidad | Como el About actual | "Agendá tu diagnóstico en basecoresales.com", solo al cierre | Catálogo, sin la voz de Mariano |
+| **Instagram** | La keyword en las primeras palabras, como problema o beneficio, no como anuncio | 3-6 líneas + CTA; el carrusel lleva el desarrollo | Alternar "Guardá este post" / "Diagnóstico gratis, link en bio" | Directo, con datos |
+| **Facebook** | Espejo de Instagram. Si se ajusta a mano: igual que Instagram, sin hashtags. | | | |
+
+**Estructura del caso anónimo** (pilar 04): síntoma que parecía el problema → diagnóstico real → decisión → resultado (solo cifras verificadas con el cliente) → tesis que le sirva a cualquiera.
+
+**Hecho cuando:** la guía está en el manual de marca (sección 8) y se usa en las piezas semilla.
+
+#### 2.12 Captions de los 12 posts semilla (listas para pegar)
+
+Redactadas por `social-content` con la voz de Base Core: la keyword al inicio, 4-8 hashtags variados y el alt text escrito a mano.
+
+Ver las 12 captions
+
+###### #1 Presentación (fijada)
+
+```
+Consultoría comercial para pymes de España y LatAm.
+
+No vendemos consejos sueltos: ordenamos el ciclo completo. El marketing ATRAE. La preventa CALIFICA. La venta CIERRA. La posventa FIDELIZA.
+
+Empezamos con un diagnóstico gratuito. El link, en la bio.
+```
+
+#ConsultoríaComercial #ProcesoComercial #PymesEspaña #PymesLatam #VentasB2B · Alt: "Presentación de Base Core: isotipo del árbol sobre fondo navy con el tagline Creando Bases Productivas."
+
+###### #2 El ciclo (fijada)
+
+```
+Un proceso comercial tiene cuatro etapas, no una.
+
+Marketing ATRAE. Preventa CALIFICA. Venta CIERRA. Posventa FIDELIZA.
+
+La mayoría de las pymes solo trabaja una o dos. Las otras quedan libradas a la memoria de una persona, y ahí es donde se pierden las oportunidades.
+
+Deslizá para ver cómo se conectan.
+```
+
+#ProcesoComercial #Preventa #Posventa #CRM #ConsultoríaB2B · Alt: "Carrusel con el framework de cuatro etapas: Marketing ATRAE, Preventa CALIFICA, Venta CIERRA, Posventa FIDELIZA."
+
+###### #3 ¿Qué CRM elegir para una pyme?
+
+```
+Más de la mitad de las implementaciones de CRM fracasa. Casi nunca es culpa del software.
+
+HubSpot, Zoho, Bitrix24, Pipedrive o Salesforce: comparamos precio, funciones y para qué equipo sirve cada uno.
+
+Pero antes de elegir: el CRM no arregla un proceso comercial. Lo refleja.
+
+El comparativo completo, en el blog (link en bio).
+```
+
+#CRM #HubSpot #PymesB2B #TecnologíaComercial · Alt: "Carrusel comparando cinco CRM por precio y funciones para pymes."
+
+###### #4 Cómo calificar leads B2B
+
+```
+Perseguir un lead que nunca iba a comprar sale más caro que perderlo.
+
+BANT, MEDDIC, CHAMP: tres formas de responder una sola pregunta antes de invertir tiempo. ¿Esta persona tiene motivo, autoridad y momento real para avanzar?
+
+Guardá este post para la próxima vez que dudes a quién llamar primero.
+```
+
+#LeadsB2B #BANT #MEDDIC #CalificaciónDeLeads #VentasB2B · Alt: "Carrusel con el framework BANT para calificar leads B2B."
+
+###### #5 Seguimiento comercial
+
+```
+La mayoría de los negocios no se pierden en la negociación. Se pierden en el silencio de después.
+
+Un prospecto interesado deja de tener noticias y da por hecho que no era prioridad para nadie.
+
+Eso no es falta de seguimiento. Es falta de proceso: nadie definió cuándo, cómo ni quién debía volver a escribirle.
+
+Cómo armar esa cadencia, en el blog (link en bio).
+```
+
+#SeguimientoComercial #ProcesoDeVenta #PipelineDeVentas #VentasB2B
+
+###### #6 Cómo prevenir el churn
+
+```
+Retener un cliente cuesta hasta 7 veces menos que conseguir uno nuevo.
+
+Aun así, la mayoría de las pymes se entera de que un cliente se iba recién cuando ya avisó.
+
+Las señales aparecen semanas antes: caída en el uso, quejas sin respuesta clara, cambio de interlocutor que nadie notó.
+
+Las 5 señales completas, en el blog.
+```
+
+#Churn #Posventa #CustomerSuccess #RetenciónDeClientes #Fidelización
+
+###### #7 Estrategia de marketing para pymes
+
+```
+"Estrategia de marketing" no es estar en redes ni subir contenido seguido. Eso es táctica.
+
+Estrategia es decidir a quién le vas a hablar, con qué mensaje y por qué canales, antes de producir un solo contenido.
+
+El error más común: invertir directo en publicar, sin resolver antes esa decisión.
+
+Cómo se arma bien, en el blog.
+```
+
+#EstrategiaDeMarketing #MarketingParaPymes #Posicionamiento #MarketingDigital
+
+###### #8 PMO
+
+```
+Casi nadie que busca "PMO" en Google quiere montar un departamento nuevo.
+
+Lo que realmente busca es no depender de la memoria de una persona para saber en qué estado está cada proyecto.
+
+Eso se resuelve sin PMO propia, sin presupuesto de U$S500.000 ni equipo de 8 personas.
+
+Cómo lo resolvemos en cada proyecto, en el blog.
+```
+
+#PMO #GestiónDeProyectos #PymesB2B #BaseHub
+
+###### #9 Qué automatizar con IA
+
+```
+Un asistente que resume llamadas. Un bot que responde el primer mensaje. Un forecast que se arma solo.
+
+El problema casi nunca es la tecnología. Es automatizar por moda antes de preguntarse dónde el error se nota a tiempo y dónde no.
+
+Prospección, calificación, seguimiento: dónde conviene automatizar y dónde no, en el blog.
+```
+
+#IAparaVentas #AutomatizaciónComercial #CRM #TecnologíaB2B
+
+###### #10 Reel de voz en off
+
+```
+Un error que vemos seguido en pymes: calificar un lead una sola vez, al principio, y no revisar si la respuesta cambió con el tiempo.
+
+30 segundos sobre por qué eso cuesta más caro de lo que parece.
+```
+
+#VentasB2B #LeadsB2B #ProcesoComercial
+
+###### #11 E-book (fijada)
+
+```
+¿Por dónde arrancar si tu pyme no tiene ningún proceso de ventas todavía?
+
+Armamos una guía gratuita con los primeros pasos: por qué la preventa importa tanto como la venta, y cómo evitar los errores más comunes al empezar de cero.
+
+Descargala gratis. Link en la bio.
+```
+
+#EbookGratis #ProcesoDeVentas #Preventa #PymesB2B
+
+###### #12 Diagnóstico gratuito
+
+```
+Antes de venderte nada, te proponemos entender qué está pasando.
+
+Un diagnóstico gratuito de tu proceso comercial: dónde se pierden oportunidades, qué etapa falta y por dónde empezar.
+
+Sin costo, sin compromiso. Agendalo desde el link en la bio.
+```
+
+#DiagnósticoGratuito #ConsultoríaComercial #PymesEspaña #PymesLatam
+
+**Antes de publicar:** confirmá que las cifras ("hasta 7 veces menos", "más de la mitad fracasa") son las mismas que cita el blog, con su fuente.
+
+Producción de contenido
+
+#### 2.13 Stack de producción y "una idea, cuatro salidas"
+
+* **Research y guion:** Perplexity + Claude. **Diseño:** Canva con Brand Kit (4.2). **Reels:** teléfono + micrófono simple, y CapCut o Descript para subtitular.
+* **Reciclaje:** una sesión de guion por semana alimenta los cuatro canales: blog → carrusel de Instagram (se replica en Facebook) → documento para la Página de LinkedIn → texto nativo en el personal (en Fase 3) → Reel opcional.
+
+#### 2.14 Calendario de producción de la preparación
+
+Semanas 1-2: bases (2.1-2.4, 4.1-4.4). Semanas 3-5: 12 posts de Instagram + 8-12 de la Página + destacadas. Ver [Roadmap](#roadmap).
+
+Programación de publicaciones
+
+#### 2.15 Sincronizar Instagram → Facebook
+
+En vivo 23/9 **Paso 1 hecho:** Instagram ya está conectado a la Página en Meta Business Suite (aparecen como el combo "Base Core, basecoresales"). El estado del interruptor que comparte publicaciones, historias y Reels no se pudo leer: la versión web de Meta da error y ese ajuste solo se maneja desde la app.
+
+* App de Instagram → ☰ → Centro de cuentas → Compartir entre perfiles → destino "Página Base Core" → activar **por separado** Publicaciones, Historias y Reels.
+* Prueba: un post, un Reel y una historia deben aparecer en la **Página**, no en el perfil personal. Los carruseles a veces no se replican: revisar cada uno. Lo ya publicado no se sincroniza hacia atrás.
+
+#### 2.16 Herramienta y horarios de publicación
+
+**Herramienta:** Meta Business Suite (gratis, ya conectado) para Instagram y Facebook. En LinkedIn se publica en el momento, porque con este volumen no hace falta programador. Buffer o Metricool, recién después de 4-8 semanas de cadencia sostenida.
+
+| Canal | Días | Hora Argentina | Hora España |
+| --- | --- | --- | --- |
+| LinkedIn personal | Martes y jueves | 9:00-10:00 | 13:00-14:00 |
+| Página de LinkedIn | 2-4 por mes, otro día que el personal | 9:00-10:00 | 13:00-14:00 |
+| Instagram (feed) | 1 por semana (preparación) | 18:00-19:00 | 22:00-23:00 |
+| Instagram (historias) | 3-5 días | media mañana + última hora | tarde + noche |
+
+Argentina va 4-5 horas detrás de España, según el horario de verano europeo. La tabla elige las franjas en que se solapan los dos mercados. Reajustar con los Insights propios después de 2-3 meses.
+
+Community management
+
+#### 2.17 Protocolo de comunidad (listo antes del primer post)
+
+| Interacción | Respuesta |
+| --- | --- |
+| DM en Instagram o Facebook | Menos de 24 h hábiles (ideal: el mismo día) |
+| Comentario en un post propio | Menos de 24 h hábiles, siempre con algo más que "gracias" |
+| Mención de terceros | Menos de 48 h |
+
+Plantillas de respuesta y reglas
+
+**DM preguntando precio o servicios:** "¡Hola [nombre]! Gracias por escribir. Para darte una respuesta concreta necesitamos entender tu situación: te propongo un diagnóstico gratuito de 30 minutos [link]. Si preferís, contame acá qué es lo que más te está costando hoy en lo comercial y te oriento."
+
+**Pregunta técnica en un comentario:** responderla ahí mismo, corta y concreta (le sirve a quien lea), y ofrecer seguir por DM para el caso puntual.
+
+**Comentario positivo:** "¡Gracias [nombre]! ¿Qué parte del proceso comercial te genera más dolor de cabeza hoy? Puede ser el próximo tema." Nunca un corazón solo.
+
+**Crítica de buena fe:** responder el argumento concreto, con datos, sin ponerse a la defensiva. Nunca borrarla.
+
+**Spam:** ocultar y bloquear. **Agresión sin argumento:** una sola respuesta breve si hace falta aclarar un hecho, después no alimentar. Borrar solo si viola las normas de la plataforma.
+
+**Pasar a WhatsApp:** después de 2-3 idas y vueltas, o apenas pregunte precio o plazos. "Para no perdernos nada en los comentarios, ¿te escribo por WhatsApp?" **Pasar a reunión:** apenas confirme interés. El diagnóstico gratuito es la instancia de calificación, no hace falta calificar del todo por chat.
+
+* Cargar las plantillas como respuestas guardadas en Business Suite y como respuestas rápidas en WhatsApp Business (6.7).
+
+Cierre de la preparación
+
+#### 2.18 Umbral "listo para exponer": criterio de salida de Fase 2
+
+| Canal | Contenido mínimo | Perfil mínimo |
+| --- | --- | --- |
+| **Instagram** | 12 posts, 3 fijados, 5 destacadas, 1 Reel | Bio, nombre, link directo, dirección |
+| **Facebook** | Sincronización probada, 4-6 piezas replicadas | Intro, horario, servicios, portada |
+| **Página de LinkedIn** | 8-12 posts, documento fijado | Tagline, especialidades, banner |
+| **LinkedIn personal** | — | Banner de marca |
+| **Soporte** | Plantillas 4.4, protocolo 2.17 | Formularios llegando a HubSpot (5.1) |
+
+**Por qué se incluye la captura de leads:** si la exposición trae consultas y siguen llegando solo como emails sueltos, no hay forma de medir qué canal funciona.
+
+Fase 3 · Social Media: exposición — arranca al cumplir 2.18
+
+#### 3.1 Volver a publicar en LinkedIn personal En vivo 23/9
+
+El último post original es de diciembre de 2022 ("I've started my personal project by founding Base Core!", 28 reacciones). Desde entonces hay unos 3 años sin publicar, y el perfil muestra "You haven't posted yet" en la actividad reciente. El plan anterior hablaba de "subir la cadencia", pero en realidad hay que reactivar el perfil.
+
+* El primer post es el reciclaje "¿Qué CRM elegir para una pyme?" (el contenido que más cita la IA), en texto nativo, sin link en el cuerpo.
+* Fijarlo en Featured cuando tenga tracción.
+
+**Hecho cuando:** hay un post nuevo visible en "Actividad".
+
+#### 3.2 Cadencia y rutina de comentarios
+
+* **2 posts por semana** (martes y jueves, 2.16) durante 8-12 semanas.
+* **15-20 minutos por día comentando:** una lista de 30-50 perfiles del ICP, 5-8 comentarios por día, 4-5 días por semana. Entre 2 y 5 líneas con una observación propia.
+
+**Referencia en vivo:** Ainhoa Gómez (Biwott, 22.667 seguidores) publica casi a diario y consigue 29-56 reacciones y 14-25 comentarios por post. Construir audiencia en LinkedIn lleva volumen y constancia.
+
+#### 3.3 Primeros 6 posts
+
+| # | Post | Eje |
+| --- | --- | --- |
+| 1 | ¿Qué CRM elegir para una pyme? (es 3.1) | A |
+| 2 | Cómo calificar leads B2B, con MQL → SQL (tema de 2022) | A |
+| 3 | **Primer caso anónimo** | B |
+| 4 | Por qué separar preventa, venta y posventa (el diferencial de 2022) | B |
+| 5 | Tu cartera vale más que tus leads: prevenir el churn | A + B |
+| 6 | Segundo caso anónimo, con BaseHub/IA dentro del caso | B + C |
+
+**Por qué este eje:** entre los 16 referentes relevados, nadie hace "diagnóstico en público" con casos estructurados ni cuenta el ciclo separado (ver [Competencia](#d4)).
+
+#### 3.4 Tráfico al blog y medición
+
+* 70-80% de los posts sin link (el link va en el primer comentario); 20-30% con link cuando el objetivo es el clic.
+* UTM en cada link (`utm_source=linkedin&utm_medium=social&utm_campaign=…`) para leerlos en GA4 y en HubSpot (5.2).
+
+#### 3.5 Del personal a la Página y a Instagram
+
+* El personal opina; la Página es catálogo. No publicar el mismo reciclaje el mismo día en los dos.
+* Compartir 1-2 posts de la Página por mes con un comentario propio. Mencionar Instagram de vez en cuando.
+
+#### 3.6 Adquisición de seguidores en los secundarios
+
+* **1. Firma de email** con los 3 canales y UTM (pieza de 4.6).
+* **2. El sitio:** un bloque "Seguinos" al pie de cada post del blog.
+* **3. Desde el personal** (3.5).
+* **4. Créditos de invitación de la Página:** En vivo 23/9 50 de 50 disponibles, se renuevan el 1/10. Usarlos con contactos de afinidad real; los que aceptan devuelven el crédito.
+* **5. Comentarios del personal** (3.2).
+* **6. Colaboraciones en Instagram** con los clientes del testimonio (cuando se destrabe 7.1).
+
+#### 3.7 Metas de seguidores a 30, 60 y 90 días (orgánico)
+
+| Canal | Hoy (23/9) | 30 días | 60 días | 90 días |
+| --- | --- | --- | --- | --- |
+| LinkedIn personal | 1.631 | +30 a +80 | +70 a +180 | +120 a +300 |
+| Página de LinkedIn | 56 | +25 a +75 | +50 a +150 | +100 a +300 |
+| Instagram | 41 | +15 a +50 | +35 a +100 | +75 a +200 |
+| Facebook | 2 | +10 a +40 | +25 a +80 | +50 a +150 |
+
+Son rangos para planificar, no promesas. El KPI principal son las oportunidades ([Objetivos](#d2)).
+
+#### 3.8–3.10 Comunidad, cadencias y referidos en exposición
+
+* **3.8 Comunidad:** revisión diaria de DMs y comentarios con el protocolo 2.17. Historias de Instagram casi a diario, con encuestas.
+* **3.9 Cadencias de los secundarios:** Página de LinkedIn, 2-4 por mes; Instagram, 1 pieza por semana (carrusel o Reel); Facebook, solo sincronizado.
+* **3.10 Referidos:** definir en qué momento de la posventa se pide un referido y armar una plantilla corta. Es la mitad de la decisión 4.6 del Plan de SEO que nunca se ejecutó.
+
+Fase 4 · Diseño gráfico (en paralelo a la Fase 2)
+
+Diseño de identidad visual
+
+#### 4.1 Logos que faltan y tagline unificado
+
+El repo tiene 7 archivos de logo, pero ninguno es el isotipo solo en navy (el favicon está en negro y a 192 px), y no hay ningún SVG.
+
+* Isotipo del árbol en **navy #00294b** y en **blanco**, mínimo 1080×1080, fondo transparente. Una versión **monocromo**.
+* Vectorizar el isotipo y el logotipo a **SVG**.
+* Tagline: **"Creando Bases Productivas"** en todas las piezas nuevas. Todavía dicen "CREAMOS" el post de Instagram/Facebook y `LOGO-BASE-CORE-SALES-CON-SLOGAN.png`, el logo que el schema del sitio le muestra a Google (`src/lib/metadata.ts:57`): decisión 7.
+
+#### 4.2 Tipografía y Canva Brand Kit Decisión 3
+
+* Gilmer (títulos) + DM Sans (texto), como en el sitio En vivo 23/9. Gilmer está en el repo solo como `.woff2`, que Canva no acepta, y su licencia no está verificada para la nube: si no alcanza, usar **Jost** (gratis) solo en las piezas.
+* Brand Kit con los logos de 4.1, la paleta (navy #00294b, azul #056cb0, azul claro #4fa8e0, #1b1f2e, #edf3f6, blanco) y las fuentes.
+
+**Hecho cuando:** una plantilla nueva abre con la marca aplicada sin cargar nada a mano.
+
+Diseño de piezas gráficas
+
+#### 4.3 Dirección visual "Documental + dato"
+
+Foto real + franja navy + título en Gilmer/Jost: el mismo recurso del hero del sitio. Para los carruseles de frameworks, formato secundario **diagrama** (líneas azules sobre fondo claro). Así se diferencia de RMG (Playfair Display + Open Sans, look de "agencia editorial") y de los clichés de IA. Detalle en [Identidad corporativa](#d10).
+
+#### 4.4 Kit de plantillas mínimo
+
+* **1.** Foto de perfil 1080×1080 (Instagram + Facebook).
+* **2.** Plantilla cita/dato 1080×1350.
+* **3.** Plantilla carrusel/documento 1080×1350, de 7 a 9 láminas (portada con promesa → problema → error habitual → framework → pasos → ejemplo → resumen → CTA). Es la misma para Instagram y para los PDF de LinkedIn.
+* **4.** 5 portadas de destacadas (ícono sólido sobre navy, centrado en un círculo de ~600 px).
+* **5.** Portada de Reel y plantilla de historia 1080×1920, con el texto dentro del centro 1080×1420.
+
+#### 4.5 Banners y portadas
+
+* **Página de LinkedIn** 1128×191: hoy **vacío** En vivo 23/9. El beneficio + el ciclo + el isotipo.
+* **LinkedIn personal** 1584×396: hoy una imagen genérica de 2020. La misma familia visual que el de la Página, con tono personal.
+* **Portada de Facebook** 1640×624, con lo importante al centro.
+
+#### 4.6 Firma de email
+
+* HTML de ~600 px: isotipo navy (120-150 px), nombre y cargo, WhatsApp, y "Seguinos en LinkedIn / Instagram / Facebook" con UTM. Se puede armar con el generador gratuito de HubSpot. Destraba la táctica 1 de 3.6.
+
+Diseño de presentaciones y dossiers
+
+#### 4.8 Dossier comercial (10 láminas)
+
+Para primeras reuniones, sin personalizar: portada → el problema (el dueño que perdió visibilidad) → el método (relevamiento → plan → estrategia y sprint → mejora continua) → el ciclo ATRAE–FIDELIZA → las 5 unidades → tecnología (CRM, IA, BaseHub) → cómo se trabaja (sprints, project leader) → prueba social (cuando se destrabe 7.1) → sobre Mariano (foto documental) → CTA al diagnóstico gratuito.
+
+#### 4.9 Plantilla de propuesta comercial
+
+Se arma después del diagnóstico: cliente y fecha → qué se relevó → 3-5 hallazgos priorizados, en tono directo → plan de ruta con fases, plazos y entregables → alcance y **qué no incluye** → forma de trabajo → inversión (con el modelo real de cotización de Mariano) → próximos pasos y validez. En Canva o Google Docs, con los campos variables marcados.
+
+#### 4.10 Kit de ventas
+
+El contexto de 2022 lo pide explícitamente, y es la base para que en 2027 venda otro consultor además de Mariano:
+
+* Dossier (4.8) + un **one-pager** por unidad, para mandar por WhatsApp.
+* **Guion de la reunión de diagnóstico**: qué preguntar y en qué orden.
+* **Objeciones frecuentes** con respuesta (sale de las buyer personas, [D6](#d6)).
+* Plantilla de propuesta (4.9) y fichas de casos cortas cuando avance 7.2.
+
+**Hecho cuando:** se usó al menos una propuesta real con la plantilla nueva.
+
+Manual de marca
+
+#### 4.12 Producir el manual de marca
+
+El índice de 12 secciones y el estado de cada una están en [D13](#d13). v1, dentro de la Fase 2: marca en una página, logo, paleta, tipografía, aplicaciones en redes y guía de copy (2.11). v2: fotografía (con el hero de /tecnologia como ejemplo de qué evitar), aplicaciones en documentos (4.6, 4.8-4.10) e historial. Formatos: PDF de referencia + Canva Brand Kit.
+
+Fase 5 · Plan de organización de leads
+
+Captura de leads desde la web y las redes a HubSpot
+
+#### 5.1 Conectar los formularios del sitio con HubSpot Causa raíz
+
+Leído en el código 23/9 `ContactForm.tsx` → `/api/contact` y `EbookForm.tsx` → `/api/ebook` mandan cada lead por **Resend a un email** (info@basecoresales.com). **Nada llega a HubSpot**, que hoy solo se usa para la agenda (Meetings, región EU1). Por eso no hay forma de contar leads por mes, ni de saber de qué canal vienen, ni de puntuarlos.
+
+* Sumar en las dos rutas de API una llamada server-side a la **API de Contacts v3 de HubSpot** (con token privado), en paralelo al email de Resend, que queda como respaldo. El formulario visual no cambia: siguen igual los labels, Turnstile y el honeypot.
+* Mapear: nombre → `firstname`/`lastname`, empresa → `company`, email, WhatsApp → `phone`, servicio → `servicio_de_interes`, mensaje → nota del contacto.
+* Guardar los UTM de la sesión en el contacto (`fuente_del_lead`).
+* Cuando llegue la pauta: conectores nativos de Meta Lead Ads y LinkedIn Lead Gen hacia HubSpot (sin código).
+
+**Es un cambio de código en el repo:** se implementa con `web-lead`, con verificación en preview antes de producción.
+
+**Hecho cuando:** un formulario de prueba crea un contacto en HubSpot con fuente y UTM, y el email sigue llegando.
+
+#### 5.2 Campos mínimos por prospecto
+
+| Campo | Tipo | Obligatorio |
+| --- | --- | --- |
+| Empresa + dominio | Texto | Sí (deduplica) |
+| Nombre y apellido | Texto | Sí |
+| Cargo / rol | Lista | Para calificar |
+| Email | Email verificado (5.7) | Sí |
+| WhatsApp | Texto | Sí |
+| País / ciudad | Lista | Sí |
+| Fuente (`fuente_del_lead`) | Lista: Web-contacto / Web-ebook / LinkedIn personal / Instagram / Referido / Scraping / Ads | Sí |
+| Etapa (`etapa_del_ciclo`) | Nuevo → Calificando → Diagnóstico agendado → Propuesta → Cliente / Perdido | Sí (por defecto, Nuevo) |
+| Sector y tamaño (empleados) | Lista / rango | No |
+| Scoring | Número (5.11) | Se calcula |
+| Consentimiento de marketing + fecha | Checkbox | Sí, antes de cualquier envío |
+| Notas del diagnóstico | Texto largo | No |
+
+#### 5.3 Consentimiento en los formularios
+
+* Checkbox sin marcar ("Quiero recibir contenido de Base Core") + un texto que diga para qué se usan los datos (Ley 25.326) + link a la privacidad (RGPD). Se implementa junto con 5.1.
+
+Base para prospección
+
+#### 5.4 Identificación de empresas target
+
+Fuentes públicas verificadas por `seo-marketing`: **España**: Censo de Cámaras, BORME/OpenMercantil (constituciones y ampliaciones de capital como señal de crecimiento), ENISA (empresas financiadas), Empresite, Axesor, Informa, Startupxplore. **Argentina**: IGJ, Boletín Oficial, datos.gob.ar, CAC, CAME, UIA, Endeavor, ASEA, Crunchbase. **Ambos**: Google Maps.
+
+* Flujo: candidatos por rubro y ciudad → confirmar la entidad en el registro → priorizar señales de crecimiento → completar con la web → base (5.10).
+
+#### 5.5 Perfil del prospecto
+
+Una ficha por empresa con los campos de 5.2 + qué vende, a quién, tamaño aparente, si usa CRM o chat visible, quién decide y qué señal de crecimiento tiene. Junta 5.4, 5.8 y 5.9 en un solo registro.
+
+#### 5.6 Scrapers (sitios web, Google Maps y directorios; **nunca LinkedIn**)
+
+* **Herramienta:** Apify (actors de Google Maps y Website Content Crawler, pago por uso, ~US$5-30 por corrida de unos cientos de negocios, con crédito gratis mensual) u Outscraper (~US$0,5-2 cada 1.000 resultados). Un script propio recién cuando el volumen lo justifique.
+* **Qué extrae:** nombre, rubro, dirección, teléfono, web, reseñas (señal de actividad), email público, redes de la empresa.
+* **RGPD:** un contacto B2B público puede ampararse en el interés legítimo (art. 6.1.f), pero en el primer contacto hay que decir de dónde salió el dato y dar una baja simple. Nada de emails personales.
+
+#### 5.7 Validación de datos y verificación de emails
+
+* Scraper → formato → verificación por API → solo los "válidos" entran a HubSpot.
+* **ZeroBounce** (100 por mes gratis, los créditos no vencen) o **NeverBounce** (1.000 de prueba, ~US$8 cada 1.000). **Hunter.io** si además hay que *encontrar* el email de quien decide (US$34-104 por mes).
+* Deduplicar por dominio y normalizar los teléfonos (+34 / +54).
+
+#### 5.8–5.9 Tomadores de decisión e investigación de sitios y redes
+
+A mano: las páginas "Equipo" o "Nosotros" de cada empresa (en una pyme suele figurar el dueño), los administradores en BORME/IGJ, y las redes públicas de la *empresa*. Mirar a mano el perfil público de LinkedIn de una empresa es prospección normal; lo que no se hace es automatizarlo.
+
+#### 5.10 Armar la base de prospección
+
+El resultado de 5.4 a 5.9 con el esquema de 5.2, directamente en HubSpot (una vez hecho 5.1) con la fuente "Scraping". Mientras tanto, en una planilla intermedia con las mismas columnas.
+
+Scoring y nurturing
+
+#### 5.11 Scoring por reglas Decisión 8
+
+| Señal | Puntos |
+| --- | --- |
+| Empresa dentro del ICP (pyme o startup en crecimiento, ES o LatAm) | +20 |
+| Dueño, fundador o director comercial/marketing | +20 |
+| Completó el formulario de contacto | +15 |
+| Agendó el diagnóstico | +25 |
+| Interactuó con contenido (abrió 2 emails o más, comentó) | +10 |
+| Email verificado | +10 |
+
+60 o más: preventa activa · 30-59: nurturing · menos de 30: base fría. Se configura con el scoring manual de HubSpot (tiers bajos).
+
+**Superposición con el Plan de Prospección:** ese tablero ya tiene un modelo Fit/Intent/Behaviour para la prospección 1:1. Conviene decidir si hay un solo modelo o uno para inbound y otro para outbound, y en cualquier caso usar un único esquema de campos en HubSpot (5.2).
+
+Fase 6 · Campañas
+
+#### 6.1 Elegir la herramienta de email Decisión 8
+
+Primero, el email de HubSpot (gratis o Starter): un solo lugar para el contacto, el historial y el scoring, una vez hecho 5.1. Alternativa: **Brevo** (plan gratis generoso, europea, cumple RGPD por defecto) sincronizado con HubSpot.
+
+#### 6.2 Consentimiento y doble opt-in
+
+* Un solo estándar para los dos países: doble opt-in (email de confirmación), baja visible en cada envío y finalidad informada al pedir el dato. Cumple el RGPD y la Ley 25.326. Tiene que estar antes del primer envío.
+
+#### 6.3 Newsletter "Una observación comercial" (mensual)
+
+1. Apertura personal: algo que Mariano vio con un cliente o en el mercado (2-3 líneas).
+2. Desarrollo: el reciclaje del contenido más fuerte del mes, adaptado a email.
+3. Un dato con fuente.
+4. "Lo que estamos armando": BaseHub o novedades, dosificado.
+5. Un solo CTA: el diagnóstico gratuito.
+6. Pie: baja + los 3 canales.
+
+La estructura se deja lista en Fase 2 y la primera edición sale en Fase 3.
+
+#### 6.4–6.6 Secuencias de email
+
+| Secuencia | Disparador | Emails |
+| --- | --- | --- |
+| **6.4 Bienvenida** | Formulario o e-book | 1. "Recibimos tu mensaje, así seguimos" (enseguida) · 2. "Cómo pensamos un proceso comercial" (día 2-3) · 3. "¿Charlamos 30 minutos?" (día 5-7, si no agendó) |
+| **6.5 Nurturing** | Agendó o descargó y no avanzó | La newsletter mensual. Con volumen, sumar 2-3 emails por pilar (proceso invisible, lo que se pierde antes y después de la venta, demanda real). |
+| **6.6 Reactivación** | 60-90 días sin abrir | 1. "¿Seguís pensando en ordenar tu proceso comercial?" · 2. "Por si te sirve: [caso o dato]" (día 7) · 3. "Vamos a dejar de escribirte, salvo que nos digas" (día 14) |
+
+Se activan en Fase 3, con 5.1 y 6.1 resueltos.
+
+#### 6.7 Configurar WhatsApp Business
+
+En vivo 23/9 El número +54 9 11 5564-3798 figura como WhatsApp Business verificado en Instagram, y es el mismo del sitio y del botón de Facebook. Falta la configuración dentro de la app, que solo se ve desde el teléfono:
+
+* **Catálogo:** Preventa, Venta, Posventa, Marketing y "Diagnóstico gratuito" destacado.
+* **Respuestas rápidas** (precio, modalidad, plazos, cómo agendar) y las plantillas de 2.17.
+* **Etiquetas:** Nuevo contacto / Diagnóstico agendado / En seguimiento.
+* **Bienvenida:** "¡Hola! Gracias por escribirnos a Base Core. Te respondemos dentro de 24 h hábiles. Si querés adelantar, agendá tu diagnóstico gratuito: [link]". **Ausencia** fuera de horario.
+
+#### 6.8 Listas de difusión de WhatsApp (solo con opt-in)
+
+Nunca con contactos que no hayan aceptado mensajes masivos por WhatsApp. Pedirlo explícitamente ("¿querés que te avise cuando publiquemos algo sobre X?"). Va en Fase 3, después de 6.2.
+
+Fase 7 · Prueba social
+
+#### 7.2 Case studies
+
+Tres niveles: testimonio → caso breve → case study completo. Hace falta la autorización de 2-3 clientes. Es un diferencial comprobado: entre los competidores directos, solo RMG publica cifras (10.000 llamadas auditadas por año, clientes como Bankinter y ONCE).
+
+#### 7.4 Recomendaciones de LinkedIn de clientes
+
+En vivo 23/9 Mariano tiene 4 recomendaciones recibidas (de ex reportes, hablan de liderazgo) y 4 dadas. Pedirle una a 1-2 clientes del testimonio (Barfer, Don Seitán, W Profesional).
+
+#### 7.5 Prueba social en redes
+
+Destacada "Clientes" en Instagram (como NA+) y reseñas en Facebook, pedidas a los mismos clientes, con permiso para redes. Depende de 7.1.
+
+Fase 9 · SEO y AI Search (ángulo de marketing)
+
+#### 9.5 Base Core no aparece en las búsquedas genéricas SERP 23/9
+
+No aparece, ni en orgánico ni en pago, en "consultoría comercial" España, "consultoria comercial pymes", "consultora de ventas Buenos Aires" ni "consultoria comercial B2B". Sí aparecen, entre otros, SalesDose, Lidera tu Negocio ("Consultoría Comercial para Pymes B2B"), Olmos & Co ("Estructuramos el proceso comercial de empresas B2B… consultoría e IA… 90 días"), Consultora BPS y Tagta. Es un dato para el Plan de SEO, que es el dueño: refuerza la palanca de backlinks (9.3) y de contenido.
 
 Fase 1
 
 ### Higiene inmediata
 
-Defectos concretos en canales existentes — arreglos de minutos, sin necesitar decisión de estrategia. Reabierta el 21/9 con dos hallazgos nuevos de la auditoría de Facebook, cerrada del todo el mismo día.
+Defectos concretos en los canales existentes. Reabierta el 23/9 con tres hallazgos de la auditoría en vivo.
 
 | # | Tarea | Estado |
 | --- | --- | --- |
-| 1.1 | Corregir el texto roto ("NaN") en el About de LinkedIn empresa | Hecho |
-| 1.2 | Corregir el link a LinkedIn roto en la página de Facebook | Hecho |
-| 1.3 | Resolver la contradicción de ubicación en LinkedIn personal | Hecho |
-| 1.4 | Corregir la dirección de Facebook (Barcelona → Buenos Aires) | Hecho |
-| 1.5 | Resolver el post roto de Facebook (preview cacheada de LinkedIn) | Hecho |
+| 1.1 | Texto roto ("NaN") en el About de la Página de LinkedIn | Hecho |
+| 1.2 | Link roto a LinkedIn en Facebook | Hecho |
+| 1.3 | Ubicación del LinkedIn personal | Hecho |
+| 1.4 | Dirección de Facebook (Barcelona → Buenos Aires), a medias: ver 1.7 | Hecho |
+| 1.5 | Post roto de Facebook | Hecho |
+| 1.6 | El LinkedIn del contacto de Facebook apunta al perfil personal | Pendiente |
+| 1.7 | Ubicación inconsistente (Instagram, pin de Facebook, sitio) | Pendiente |
+| 1.8 | DMs de Instagram fuera de la bandeja de Business Suite | Pendiente |
 
 Fase 2
 
-### LinkedIn personal de Mariano
+### Social Media: preparación
 
-Canal ya decidido como prioritario (Plan de SEO, 4.6) y confirmado por la auditoría del 17/9: es el único activo social con números reales — 1.615 seguidores, 500+ conexiones.
+Instagram, Facebook y la Página de LinkedIn van a ser pilares de comunicación, pero hoy casi no tienen seguidores (41, 2 y 56). Primero se les pone identidad, contenido y reglas de operación; recién después se sale a buscar audiencia. Ordenada según los puntos de Social Media del brief.
 
-| # | Tarea | Estado |
-| --- | --- | --- |
-| 2.1 | Reescribir headline (qué hace + para quién + diferencial) | Hecho |
-| 2.2 | Revisar y reescribir About / Featured / banner | Hecho |
-| 2.3 | Elegir dirección de contenido (A / B / C) y peso de video | Hecho |
-| 2.4 | Publicar los 3 reciclajes de blog ya identificados (CRM, calificación de leads, churn) | Pendiente |
-| 2.5 | Producir el primer caso anónimo original (pilar 04) | Pendiente |
-| 2.6 | Sistematizar pedidos de referidos (segunda mitad de la decisión 4.6, nunca ejecutada) | Pendiente |
-| 2.7 | Revisar "Open to Work" y reordenar skills destacados | Pendiente |
+| # | Tarea | Punto del brief | Estado |
+| --- | --- | --- | --- |
+| 2.0a | Instagram: cuenta Empresa + botones de email y WhatsApp | Perfiles | Hecho |
+| 2.0b | Facebook: botón de WhatsApp | Perfiles | Hecho |
+| 2.0c | Página de LinkedIn: About, botón, logo, 1 empleado | Perfiles | Hecho |
+| 2.1 | Perfil y bio de Instagram **(primer punto)** | Perfiles | Pendiente |
+| 2.2 | Página de Facebook: intro, horario, servicios, portada | Perfiles | Pendiente |
+| 2.3 | Página de LinkedIn: tagline, especialidades, URL, banner | Perfiles | Pendiente |
+| 2.4 | LinkedIn personal: banner, idioma de aptitudes, Featured | Perfiles | Pendiente |
+| 2.5 | Elección de canales: Instagram, Facebook (espejo), Página y personal de LinkedIn | Canales | Hecho |
+| 2.5a | YouTube | Canales | Bloqueado |
+| 2.5b | X/Twitter (solo reservar el handle) | Canales | Bloqueado |
+| 2.5c | TikTok | Canales | Bloqueado |
+| 2.5d | Reddit (solo research) | Canales | Bloqueado |
+| 2.6 | Grid semilla de Instagram (12 posts y 3 fijados) | Contenidos | Pendiente |
+| 2.7 | 5 historias destacadas | Contenidos | Pendiente |
+| 2.8 | Historias con ritmo bajo | Contenidos | Pendiente |
+| 2.9 | Reel de voz en off (decisión 4) | Contenidos | Pendiente |
+| 2.10 | 8-12 posts semilla en la Página de LinkedIn | Contenidos | Pendiente |
+| 2.11 | Guía de copy por canal | Copywriting | Pendiente |
+| 2.12 | Captions de los 12 posts semilla (redactadas) | Copywriting | En progreso |
+| 2.13 | Stack de producción y reciclaje | Producción | Pendiente |
+| 2.14 | Calendario de producción (semanas 1-5) | Producción | Pendiente |
+| 2.15 | Sincronizar Instagram → Facebook (paso 1 hecho) | Programación | En progreso |
+| 2.16 | Herramienta y horarios de publicación | Programación | Pendiente |
+| 2.17 | Protocolo de community management | Community | Pendiente |
+| 2.18 | Umbral "listo para exponer" | Cierre | Pendiente |
 
-#### 2.3 Dirección de contenido — resuelta
+#### 2.5a–d Canales bloqueados
 
-Decidido por Mariano el 21/9, con la recomendación del análisis del 4/9: eje en **B — diagnóstico en público** (casos anónimos, problema → diagnóstico → decisión → resultado, sin nombrar clientes), con **A — reciclaje de blog** como motor táctico de arranque y **C — eje BaseHub/IA** dosificado dentro de los casos, nunca como pilar aparte. Video queda fuera del arranque — se empieza solo con texto nativo + carrusel/documento (formatos ya validados, cero fricción de producción); se reevalúa sumarlo más adelante, nunca con avatar de IA. Desbloquea 2.4, 2.5, 4.1 y 4.3.
+**YouTube**, bloqueado por decisión de Mariano (23/9): se retoma con los secundarios funcionando y un stack de video probado. **X:** si se retoma, solo reservar el handle (F10). **TikTok:** no está alineado con la voz de la marca. **Reddit:** solo para research. En vivo 23/9 Ningún competidor directo sostiene más de 2 canales con cadencia real, y Signos y NA+ ni siquiera tienen Página de Facebook.
 
 Fase 3
 
-### Canales secundarios
+### Social Media: exposición
 
-Reprioritizado el 21/9: LinkedIn empresa, Instagram y Facebook pasan de pausa consciente a desarrollo urgente, en ese orden — la auditoría de `social-content` (21/9) trae el estado real y un plan concreto para cada uno (ver [Activo hoy](#activo)). YouTube queda para más adelante; X/Twitter, TikTok y Reddit se mantienen bloqueados, sin desarrollo.
+La inicia el LinkedIn personal de Mariano, el único canal con audiencia real (1.631 seguidores). Después viene la adquisición de seguidores en los secundarios.
 
-| # | Canal / tarea | Estado |
+| # | Tarea | Estado |
 | --- | --- | --- |
-| 3.1 | LinkedIn empresa — desarrollo urgente (prioridad 1) | Pendiente |
-| 3.2 | Instagram — desarrollo urgente (prioridad 2) | Pendiente |
-| 3.3 | Facebook — desarrollo urgente (prioridad 3) | Pendiente |
-| 3.4 | YouTube — evaluar como biblioteca de autoridad a mediano plazo | Pendiente · futuro |
-| 3.5 | X/Twitter — reservar el handle, sin desarrollo | Bloqueado |
-| 3.6 | TikTok — no desarrollar | Bloqueado |
-| 3.7 | Reddit — solo como research, no publicación | Bloqueado |
-
-#### 3.5–3.7 X/Twitter, TikTok, Reddit — bloqueados, no se desarrollan
-
-Mariano decidió (21/9) no invertir en estos tres canales mientras se prioriza el desarrollo urgente de LinkedIn empresa, Instagram y Facebook (3.1–3.3). **X/Twitter:** sin cuenta hoy — la única acción pendiente si se retoma es reservar el handle por protección de marca (riesgo de homonimia con BaseCore™/Base Power, ver F9), sin asignarle contenido. **TikTok:** no se desarrolla, formato no alineado al brand voice actual. **Reddit:** se usa solo como fuente de research de mercado (ver [Mercado y competencia](#mercado)), nunca como canal de publicación.
-
-**Cuándo reabrir:** una vez que LinkedIn empresa, Instagram y Facebook tengan cadencia sostenida.
+| 3.0a | Headline del personal | Hecho |
+| 3.0b | About, Featured y experiencia del personal | Hecho |
+| 3.0c | Dirección de contenido: eje B, con A como motor y C dosificado | Hecho |
+| 3.0d | Aptitudes fijadas: el top 5 ya es de consultoría | Hecho |
+| 3.0e | "Open to Work" (decisión 6) | Pendiente |
+| 3.1 | Volver a publicar (último post: dic 2022) | Pendiente |
+| 3.2 | Cadencia de 2 por semana + rutina de comentarios | Pendiente |
+| 3.3 | Primeros 6 posts | Pendiente |
+| 3.4 | Links al blog + UTM | Pendiente |
+| 3.5 | Del personal a la Página y a Instagram | Pendiente |
+| 3.6 | 6 tácticas de adquisición de seguidores | Pendiente |
+| 3.7 | Metas a 30/60/90 días | Pendiente |
+| 3.8 | Community management en exposición | Pendiente |
+| 3.9 | Cadencias de los secundarios | Pendiente |
+| 3.10 | Referidos sistematizados | Pendiente |
 
 Fase 4
 
-### Sistema de producción de contenido
+### Diseño gráfico
 
-Cómo se produce, no qué se dice (eso vive en F2.3, resuelta el 21/9, y en Pilares y formatos).
+Corre en paralelo a la Fase 2: 4.1-4.5 son requisito para producir el contenido semilla. Ordenada según los puntos de Diseño gráfico del brief.
 
-| # | Tarea | Estado |
-| --- | --- | --- |
-| 4.1 | Definir cadencia sostenible para un fundador solo (arrancar 1–2 posts/semana) | Pendiente |
-| 4.2 | Armar stack mínimo de producción (research, guion, grabación/edición si aplica, diseño, programación) | Pendiente |
-| 4.3 | Calendario editorial del mes 1 (reciclajes de blog + 1 caso original) | Pendiente |
-| 4.4 | Sistema de reciclaje: una idea → múltiples formatos/canales | Pendiente |
+| # | Tarea | Punto del brief | Estado |
+| --- | --- | --- | --- |
+| 4.1 | Logos que faltan + tagline unificado | Identidad visual | Pendiente |
+| 4.2 | Tipografía + Canva Brand Kit | Identidad visual | Pendiente |
+| 4.3 | Dirección "Documental + dato" | Piezas gráficas | Pendiente |
+| 4.4 | Kit de plantillas mínimo (5 piezas) | Piezas gráficas | Pendiente |
+| 4.5 | Banners (Página y personal de LinkedIn) y portada de Facebook | Piezas gráficas | Pendiente |
+| 4.6 | Firma de email | Piezas gráficas | Pendiente |
+| 4.7 | Creatividades publicitarias (Meta y LinkedIn Ads) | Creatividades | Futuro · F8 |
+| 4.8 | Dossier comercial | Presentaciones | Pendiente |
+| 4.9 | Plantilla de propuesta comercial | Presentaciones | Pendiente |
+| 4.10 | Kit de ventas | Presentaciones | Pendiente |
+| 4.11 | Sistema de variantes creativas | Variantes | Futuro · F3 + 6 sem. |
+| 4.12 | Producción del manual de marca (v1/v2) | Manual | Pendiente |
+
+#### 4.7 Medidas de creatividades (dejarlas listas para F8)
+
+**Meta:** feed 4:5 (1440×1800 recomendado; 1080×1350 se acepta), historias/Reels 1440×2560 (o 1080×1920; dejar libre el 14% de arriba, el 20-35% de abajo y el 6% de cada lado), carrusel 1080×1080. Texto principal ~125 caracteres, título ~40. Poco texto dentro de la imagen, porque encarece el CPM. **LinkedIn:** 1200×628, 1200×1200 o 720×900 (mobile), carrusel 1080×1080. Intro ≤150 caracteres, porque cada "ver más" se cobra como clic.
+
+#### 4.11 Variantes creativas
+
+En este orden de impacto se varía: **hook** > formato > visual > cuerpo del texto. Se arranca con 2 variantes (nunca más de 3 con esta audiencia). Nombre de archivo: `2026-10-03_diagnostico-publico_hookA_linkedin-personal.png`. En orgánico se miden guardados y comentarios; en pauta, CTR y costo por resultado. Empieza después de 4-8 semanas de Fase 3.
+
+**Dependencia confirmada en vivo:** el hero de `/tecnologia` es un rostro robótico de stock con circuitería (`TECNOLOGIA-BASECORE.jpg`). Contradice la fotografía documental de la marca y refuerza el riesgo de confusión con BaseCore™/Base Power. El dueño es el artifact *Mejora Estética Web* (1.8); acá solo se usa como ejemplo de qué evitar en el manual.
 
 Fase 5
 
-### Prueba social
+### Plan de organización de leads
 
-El problema prioritario del diagnóstico (ver [Diagnóstico](#diagnostico)): baja prueba social. Dos de tres piezas ya están hechas y frenadas por decisión, no por trabajo pendiente.
+Hoy los leads llegan como emails sueltos. Primero se ordena la captura hacia HubSpot (5.1-5.3, parte del umbral de la Fase 2) y después se construye la base de prospección. Sin automatizar LinkedIn. El Plan de Prospección sigue siendo un tablero separado.
 
-| # | Tarea | Estado |
-| --- | --- | --- |
-| 5.1 | Publicar los 3 testimonios ya redactados e implementados (Barfer, Don Seitán, W Profesional) | Bloqueado |
-| 5.2 | Conseguir 1–2 case studies completos (contexto → problema → análisis → implementación → resultado) | Pendiente |
-| 5.3 | Reseña en Google Business Profile | Bloqueado |
-| 5.4 | Pedir recomendaciones de LinkedIn a 1–2 clientes actuales de Base Core | Pendiente |
+| # | Tarea | Punto del brief | Estado |
+| --- | --- | --- | --- |
+| 5.1 | Formularios del sitio → HubSpot (Contacts API) | Captura web/redes | Pendiente |
+| 5.2 | Campos mínimos y propiedades en HubSpot | Campos mínimos | Pendiente |
+| 5.3 | Consentimiento en los formularios | Validación de datos | Pendiente |
+| 5.4 | Identificación de empresas target | Empresas target | Pendiente |
+| 5.5 | Perfil del prospecto | Perfil del prospecto | Pendiente |
+| 5.6 | Scrapers (web, Google Maps, directorios) | Scrapers | Pendiente |
+| 5.7 | Validación de datos y verificación de emails | Validación / emails | Pendiente |
+| 5.8 | Tomadores de decisión | Decisores | Pendiente |
+| 5.9 | Investigación de sitios y redes | Investigación | Pendiente |
+| 5.10 | Armado de la base de prospección | Base | Pendiente |
+| 5.11 | Scoring por reglas (decisión 8) | Scoring | Pendiente |
+| 5.12 | Scoring predictivo | Scoring predictivo | Bloqueado |
+| 5.13 | Nurturing integrado (ver F6) | Nurturing | Pendiente |
 
-#### 5.1 Testimonios: listos, sin publicar
+#### 5.12 Scoring predictivo: bloqueado por datos y costo
 
-Ya redactados en ES/EN, implementados como sección "Testimonios" en el Home (rama `feat/client-testimonials`, commit `4c62ac7`), verificados con tsc/lint/build y revisados visualmente. Bloqueado desde el 13/9 — Mariano decide cuándo mergear a producción. Detalle completo (por qué esa redacción, por qué sin apellido, por qué sin schema Review) vive en el Plan de SEO, tarea 4.4 — no se duplica acá.
-
-**Por qué importa para marketing y no solo para SEO:** es la palanca de prueba social de mayor impacto y menor costo disponible hoy — está lista, solo falta la decisión de mergear.
-
-#### 5.3 Google Business Profile
-
-Bloqueado en el Plan de SEO (4.1) por requerir verificación presencial en Barcelona o Buenos Aires, sin viaje previsto. La reseña en GBP queda bloqueada por la misma razón — se retoma cuando haya un viaje, no antes.
+En HubSpot requiere Marketing Hub **Enterprise** (~US$3.600 por mes + onboarding), y ningún modelo predictivo funciona sin cientos de leads con resultado conocido. Esos datos todavía no existen porque los leads no se guardan en ningún sistema (5.1). **Cuándo reabrir:** con 6-12 meses de leads en HubSpot y la etapa final registrada (ganado o perdido).
 
 Fase 6
 
-### Demanda, captación y nurturing
+### Campañas
 
-Lo que hoy existe en el sitio (formulario de contacto, WhatsApp, agenda vía HubSpot, e-book) más lo que falta para cerrar el circuito Marketing → CRM → Preventa.
+Newsletters, email marketing y WhatsApp. En Fase 2 se deja todo configurado (herramienta, consentimiento, WhatsApp, estructura) y en Fase 3 se activa.
 
-| # | Tarea | Estado |
-| --- | --- | --- |
-| 6.1 | Formulario de contacto + botón de WhatsApp + agenda HubSpot | Hecho |
-| 6.2 | Eventos de conversión en GA4 (generate_lead, file_download) | Hecho |
-| 6.3 | Newsletter mensual ("Una observación comercial") | Pendiente |
-| 6.4 | Workflows de email marketing (nuevo lead / nurturing / reactivación) | Pendiente |
-| 6.5 | Lead scoring y routing automático (Fit/Intent/Behaviour) | Pendiente |
-| 6.6 | Backlinks (programa de autoridad externa) | Bloqueado |
-
-#### 6.6 Backlinks
-
-Bloqueado en el Plan de SEO (4.3) — decisión pendiente de Mariano sobre si avanza, sin fecha definida. Se marca acá porque es una palanca de demanda/autoridad, no solo técnica — el ángulo de marketing es forzar esa decisión, no volver a investigar de cero.
+| # | Tarea | Punto del brief | Estado |
+| --- | --- | --- | --- |
+| 6.0a | Formulario + WhatsApp + agenda de HubSpot en el sitio | — | Hecho |
+| 6.0b | Eventos de conversión en GA4 | — | Hecho |
+| 6.1 | Herramienta de email (decisión 8) | Email marketing | Pendiente |
+| 6.2 | Consentimiento y doble opt-in | Email marketing | Pendiente |
+| 6.3 | Newsletter "Una observación comercial" | Newsletters | Pendiente |
+| 6.4 | Secuencia de bienvenida | Email marketing | Pendiente |
+| 6.5 | Nurturing | Email marketing | Pendiente |
+| 6.6 | Reactivación | Email marketing | Pendiente |
+| 6.7 | Configuración de WhatsApp Business | WhatsApp | Pendiente |
+| 6.8 | Listas de difusión con opt-in | WhatsApp | Pendiente |
 
 Fase 7
 
-### Paid media
+### Prueba social
 
-Secuencial, no simultáneo — ninguna fase arranca antes de que la anterior tenga tracking + landing + CRM + nurturing + oferta funcionando. Hoy falta nurturing (F6.3/6.4) y scoring (F6.5): ninguna fase de paid debería arrancar todavía.
-
-| # | Fase | Estado |
+| # | Tarea | Estado |
 | --- | --- | --- |
-| 7.1 | Orgánico + SEO + LinkedIn (base antes de pagar nada) | En progreso · ver F2–F4 |
-| 7.2 | Google Ads (demanda existente) | Pendiente · futuro |
-| 7.3 | LinkedIn Ads (ICP B2B) | Pendiente · futuro |
-| 7.4 | Retargeting | Pendiente · futuro |
+| 7.1 | Publicar los 3 testimonios ya implementados (Barfer, Don Seitán, W Profesional) | Bloqueado |
+| 7.2 | 1-2 case studies completos | Pendiente |
+| 7.3 | Reseña en Google Business Profile | Bloqueado |
+| 7.4 | Recomendaciones de LinkedIn de clientes | Pendiente |
+| 7.5 | Prueba social en redes (destacada, reseñas) | Pendiente |
+
+#### 7.1 / 7.3 Bloqueados
+
+**7.1:** implementados en `feat/client-testimonials` (commit `4c62ac7`). Mariano decide cuándo mergear (Plan de SEO 4.4). Destraba 7.5, la táctica 6 de 3.6 y la lámina de prueba social del dossier. **7.3:** requiere verificación presencial (Plan de SEO 4.1).
 
 Fase 8
 
-### SEO, AI Search y Analytics
+### Paid media
 
-Dueño de este detalle: el [Plan de SEO de Base Core](documentation/seo/plan-seo.md). Acá va solo el ángulo de marketing — priorización y qué usar como insumo de contenido — sin repetir el trabajo técnico (regla "un dueño por dato").
+En secuencia: nada arranca sin tracking + CRM (5.1) + nurturing (6.4-6.6) + oferta. Requisitos que ya están En vivo 23/9: Instagram Empresa, Instagram conectado a la Página en Business Suite, Página de LinkedIn con admin. Las medidas de las creatividades están en 4.7.
 
-#### 8.1 SEO — qué ya está resuelto, qué falta destrabar
-
-60/72 tareas cerradas al 14/9. Fase 3 (keywords/contenido: 7 posts de blog, mapa de keywords validado con Google Keyword Planner real) y Fase 7 (BaseHub) están completas — el plan de marketing no necesita generar research nuevo ahí, solo linkear. Lo que sí queda es **destrabar dos palancas ya listas pero frenadas por decisión de negocio**: los 3 testimonios (F5.1) y la ronda de backlinks (F6.6) — ninguna es deuda técnica, las dos son decisiones de Mariano.
-
-#### 8.2 AI Search — la base ya está, el termómetro es 6.5
-
-Bots de IA sin bloquear, datos estructurados con autoría, firma visible del autor y `/llms.txt` ya en producción (Plan de SEO, Fase 6). La tarea recurrente 6.5 (probar 5-10 queries reales en ChatGPT/Perplexity y anotar si citan a Base Core) es el termómetro que este plan de marketing debería usar para decidir qué formatos escalar — primera ronda (5/9): 1 de 8 queries citó a Base Core (`/blog/como-calificar-leads-b2b`), justo el tipo de contenido que F2.4 propone reciclar primero. No hace falta crear un proceso de medición aparte.
-
-**Prueba anecdótica real:** un prospecto en Barcelona (Mathieu Camouilly) encontró Base Core preguntándole directamente a ChatGPT qué empresa sería compatible con su perfil — sin buscar "Base Core" por nombre. Es evidencia cualitativa de que la estrategia de AI Search ya está generando negocio real, no solo tráfico.
-
-#### 8.3 Analytics — instrumentación completa, dos lecturas en pausa por tráfico
-
-GA4 y Search Console instalados y en producción, eventos de conversión clave marcados (Plan de SEO, Fase 2, cerrada del todo). Dos piezas siguen en pausa esperando volumen, no trabajo pendiente: INP de campo (1.25) y la revisión mensual de posiciones (5.1) — el sitio es nuevo y no hay tráfico suficiente todavía. El plan de marketing no necesita instrumentar nada nuevo; sí conviene fijar un umbral de tráfico o una fecha en la que esas dos lecturas se vuelvan relevantes para reportar resultados de campaña.
-
-#### 8.4 Clusters de keywords para el calendario de redes
-
-Del Mapa de Keywords, los de mejor combinación volumen/intención para contenido de autoridad (no solo página de servicio):
-
-1. **Gestión / estrategia comercial** — sostenida en España y Argentina.
-2. **Customer success** — validada, competencia baja, sin usar todavía; ya hay contenido en /posventa convertible directo a post.
-3. **CRM / IA / automatización de procesos** — mejor relación volumen/competencia de todo el research.
-4. **PMO** — el mejor número del research (1.000-10.000, competencia baja), mejor como ángulo de blog/redes que de página de servicio; conecta con BaseHub.
-5. **Cómo calificar leads B2B** — ya con señal real de citación en IA (ver 8.2), el mejor candidato a repetirse como pilar.
+| # | Etapa | Estado |
+| --- | --- | --- |
+| 8.1 | Orgánico + SEO + LinkedIn (la base) | En progreso · F2–F3 |
+| 8.2 | Google Ads (demanda existente) | Futuro |
+| 8.3 | LinkedIn Ads (ICP B2B) | Futuro |
+| 8.4 | Retargeting (Meta + LinkedIn) | Futuro |
 
 Fase 9
 
+### SEO, AI Search y Analytics
+
+El dueño es el Plan de SEO (*BaseCoreWeb: SEO y Performance*). Acá va solo el ángulo de marketing.
+
+| # | Tarea | Estado |
+| --- | --- | --- |
+| 9.1 | Destrabar testimonios (7.1) y backlinks (9.3) | Bloqueado |
+| 9.2 | AI Search: seguir la tasa de citación (tarea 6.5 del Plan de SEO; 1 de 8 el 5/9) | Recurrente |
+| 9.3 | Backlinks (Plan de SEO 4.3) | Bloqueado |
+| 9.4 | Clusters para el calendario: gestión comercial, customer success, CRM/IA, PMO, calificar leads B2B | Hecho |
+| 9.5 | Visibilidad en búsquedas genéricas: hoy ausente (dato para el Plan de SEO) | Pendiente |
+
+**Prueba real de AI Search:** un prospecto en Barcelona encontró Base Core preguntándole a ChatGPT, sin buscar la marca por nombre.
+
+Fase 10
+
 ### Marca y naming
 
-Dueño de este detalle: la [Auditoría de Marca de Base Core](https://claude.ai/code/artifact/47aedb68-5cab-48da-9797-11eb0df79f28) (continuación de la tarea 8.3 del Plan de SEO). No se duplica acá — solo la dependencia que toca a cualquier pieza nueva de marketing/redes.
+El dueño del detalle legal es la [Auditoría de Marca de Base Core](https://claude.ai/code/artifact/47aedb68-5cab-48da-9797-11eb0df79f28).
 
-#### 9.1 Riesgo de homonimia — qué evitar en copy nuevo
+#### 10.1 Homonimia: qué evitar en piezas nuevas
 
-Hay riesgo de confusión con BaseCore™ (geoceldas) y con Base Power (batería doméstica, el mismo homónimo que apareció en el research de YouTube/X de F3). Cualquier pieza nueva de marketing (posts, carrusel, video, ads) debería evitar reforzar la ambigüedad — mismo criterio que la tarea 8.2 #7 del Plan de SEO (Mariano decidió no tocar copy visible del sitio por esto). Esperando que Mariano revise la auditoría completa y confirme con qué pasos avanzar antes de tomar ninguna decisión de naming en redes.
+Hay riesgo de confusión con BaseCore™ (geoceldas) y con Base Power (baterías). El **árbol** es el elemento gráfico que más diferencia: nada de íconos de "core", circuitos ni energía, y ningún copy tipo "Base Core + tecnología" sin el contexto de consultoría comercial. Sigue esperando la decisión de Mariano sobre la auditoría.
 
-### Roadmap de 90 días
+### Roadmap
 
-Secuencia de las fases de arriba — no agrega tareas nuevas, ordena las que ya existen.
+Las semanas son orientativas: lo que manda es el umbral 2.18.
 
-#### Días 0–30 · Fundación
+#### Semanas 1–2 · Bases
 
-* F1: cerrar 1.4/1.5 (higiene de Facebook) — hecho 21/9
-* F2.3: dirección de contenido elegida (hecho 21/9)
-* F3.1–3.3: arrancar desarrollo de LinkedIn empresa, Instagram y Facebook (higiene + primeras publicaciones)
-* F2.4: 3 reciclajes de blog publicados
-* F4.1–F4.3: cadencia y calendario mes 1
-* F5.1: decisión sobre mergear testimonios
+* Decisiones 1-5
+* 1.6-1.8 higiene
+* 2.1 bio de Instagram (primer punto)
+* 2.2-2.4 perfiles
+* 4.1-4.2 logos y Brand Kit
+* 2.15 sincronización (app)
+* 5.1-5.3 formularios → HubSpot
+* 6.7 WhatsApp Business
 
-#### Días 31–60 · Autoridad + demanda
+#### Semanas 3–5 · Contenido semilla
 
-* F2.5: primer caso original (pilar 04)
-* F2.6: referidos sistematizados
-* F3.1–3.3: cadencia sostenida en los tres canales
-* F6.3: elegir herramienta y arrancar newsletter
-* F5.2: primeros case studies en gestión
-* F3.4: evaluar arranque de YouTube si F3.1–3.3 ya funcionan
+* 4.3-4.6 plantillas, banners, firma
+* 2.6-2.10 grid, destacadas, Reel, Página
+* 2.16-2.17 programación y protocolo
+* 6.1-6.3 herramienta, opt-in, newsletter lista
+* 4.12 manual v1
+* Control del umbral 2.18
 
-#### Días 61–90 · Conversión
+#### Semanas 6–13 · Exposición
 
-* F6.4: workflows de email marketing
-* Optimización por datos reales (F8.3, cuando haya tráfico)
-* F6.5: primera versión manual de scoring, si hay volumen
-* F6.6/F8.1: revisar si se destraban backlinks
-* Recién acá evaluar F7.2 (Google Ads) — no antes
+* 3.1 volver a publicar
+* 3.2-3.5 2 por semana + comentarios
+* 3.6 adquisición (créditos 1/10)
+* 6.4-6.6 secuencias activas
+* 4.8-4.10 dossier, propuesta, kit de ventas
+* 5.4-5.10 primera base de prospección
+* Revisión de las metas de 3.7
 
 Parte 2
 
-## Análisis y resultados
+## Diagnóstico de marketing
 
-Diagnóstico, research y marco de referencia detrás de los accionables de arriba — no requieren una acción puntual por sí mismos. Donde ya existe un documento dueño de un dato (product-marketing.md, Plan de SEO, Auditoría de Marca), acá va el resumen con link, no la copia completa.
+Material de referencia, en el orden del brief. No requiere acciones por sí mismo: las acciones que surgen de acá están en la Parte 1. Donde ya existe un documento dueño (`product-marketing.md`, Plan de SEO, Auditoría de Marca), va un resumen con link.
 
-### Diagnóstico de situación
+### Estado de los canales al 23/9 En vivo
 
-Fortalezas
+| Canal | Seguidores | Publicaciones | Qué está bien | Qué falta |
+| --- | --- | --- | --- | --- |
+| **LinkedIn personal** | 1.631 | Última de dic 2022 | Headline, About, Featured, experiencia, aptitudes | Publicar; banner de 2020 |
+| **Página de LinkedIn** | 56 | 0 | About con el método, botón, logo, 1 empleado, 50 créditos | Tagline, especialidades, banner, contenido |
+| **Instagram** | 41 | 1 (2022) | Cuenta Empresa, email y WhatsApp verificados, conectado a Facebook | Bio, nombre, link, dirección, contenido |
+| **Facebook** | 2 | 1 (2022) | Botón de WhatsApp, único admin: Mariano | Intro, horario, pin, link de LinkedIn |
+| **Sitio** | — | 7 posts de blog | Sistema visual consistente, sin overflow en mobile | Formularios fuera de HubSpot; hero de /tecnologia |
 
-Posicionamiento comercial definido y ya documentado (`.agents/product-marketing.md`): ciclo completo Marketing → Preventa → Venta → Posventa, tecnología propia (BaseCore AI System, BaseHub en producción), 7 posts de blog con autoría visible, capacidad real de implementación.
+D1
 
-Problemas prioritarios
+### Plan de trabajo de marketing
 
-* **Baja prueba social** — 5 logos B2C/retail sin resultado cuantificado; 3 testimonios listos pero sin publicar (F5.1).
-* **Canales secundarios sin desarrollar** — LinkedIn empresa, Instagram y Facebook con perfiles funcionales pero sin actividad ni cadencia; ahora en desarrollo urgente (F3.1–3.3).
-* **Falta de sistema de nurturing** — sin newsletter, sin email marketing, sin scoring (F6).
-* **Contenido no convertido en máquina de demanda** — 5 pilares definidos desde el 4/9, dirección ya elegida (F2.3, 21/9), sin producción sostenida todavía porque falta ejecutar.
-* **Tracking comercial incompleto** — instrumentación de analítica lista (F8.3), pero sin CRM/scoring que conecte marketing con oportunidades reales.
+| Etapa | Duración orientativa | Depende de |
+| --- | --- | --- |
+| F1 Higiene | 1 semana (reabierta) | Decisiones 2 y 5 |
+| F2 Preparación + F4 Diseño + F5 captura + F6 configuración | 4-6 semanas en paralelo | Decisiones 1-4, 8 |
+| F3 Exposición + activar F6 | 8-13 semanas | Umbral 2.18 |
+| F5 base de prospección | Desde la semana 6 | 5.1, decisión 8 |
+| F7 Prueba social | Cuando se destrabe 7.1 | Mariano |
+| F8 Paid media | Después de la semana 13 | 5.1 + 6.4-6.6 + oferta |
+| F9 SEO / F10 Marca | Continuo | Plan de SEO / Auditoría de Marca |
 
-Diagnóstico definitivo
+D2
 
-El perfil personal de Mariano en LinkedIn ya está resuelto (F1, F2), incluida la dirección de contenido (F2.3, 21/9: eje B, sin video por ahora). El foco ahora es doble: **ejecutar esa dirección** (2.4, 2.5), y **desarrollar en serio los tres canales secundarios** (LinkedIn empresa, Instagram, Facebook — F3.1–3.3), además de destrabar los activos de prueba social ya terminados (testimonios, F5.1).
+### Objetivos y métricas
 
-### Investigación de mercado y competencia
+Objetivo de negocio (Mariano, 2022, vigente)
 
-Mercado objetivo: pymes de España y Latinoamérica con actividad comercial activa que necesitan ordenar, profesionalizar o escalar procesos — ya documentado en detalle en `.agents/product-marketing.md` (Target Audience, Jobs to be Done, Use Cases). No se repite acá.
+Llegar en **2027 al quiebre de capacidad operativa**: contratar un consultor comercial que tome proyectos e implementaciones, y que Mariano dedique la mayor parte de su tiempo al desarrollo comercial y la escalabilidad.
 
-#### Cuatro categorías de competencia
+Traducción a objetivos de marketing
 
-| Categoría | Qué vende |
-| --- | --- |
-| Consultoras comerciales | Estrategia / proceso |
-| Agencias de marketing | Demanda / adquisición |
-| Consultoras de CRM | Tecnología |
-| Agencias de IA | Automatización |
+* **O1 · Canales listos** (semana 6): se cumple el umbral 2.18 en los 4 canales.
+* **O2 · Autoridad** (90 días desde la Fase 3): 2 posts por semana sostenidos 12 semanas en el personal, medido en visitas al perfil y comentarios del ICP.
+* **O3 · Demanda medible** (desde 5.1): el 100% de los leads en HubSpot con fuente. Con 2 meses de datos, fijar la meta mensual de **diagnósticos agendados**: es la primera cifra real que hay que definir, y hoy no hay base para inventarla.
+* **O4 · Pipeline para contratar** (6-12 meses): definir cuántos proyectos simultáneos sostenidos justifican al consultor nuevo. Es una decisión de negocio (margen, carga) que se toma con los datos de O3.
 
-Posición de Base Core: **proceso comercial + marketing + CRM + IA + automatización**, cubriendo lo que cada categoría por separado deja afuera. Diferencial ya validado en `product-marketing.md`: "un CRM no ordena un proceso comercial, lo refleja" — no se implementa tecnología antes de entender el proceso.
+KPIs por nivel
 
-**Sistema de investigación permanente:** Search Console, búsquedas en buscadores tradicionales y de IA, LinkedIn, comunidades (Reddit — F3.7), conversaciones comerciales reales y competidores, revisados con la cadencia que defina F8.3 una vez que haya tráfico. Alimenta directamente F4 (contenido) y F8 (SEO).
+* **Preparación:** umbral por canal (sí/no), plantillas en uso, manual v1.
+* **Audiencia:** seguidores contra 3.7, alcance, guardados.
+* **Demanda:** leads por fuente (HubSpot), tráfico por UTM (GA4), tasa de conversión.
+* **Pipeline:** diagnósticos, propuestas, clientes, win rate. Distinguir MQL (marketing) de SQL (ventas), el tema que Mariano anotó en 2022.
+* **KPI principal:** oportunidades generadas por marketing, no seguidores.
 
-### ICP y buyer persona
+D3
 
-Ya documentado en `.agents/product-marketing.md` (Target Audience, Personas, Problems & Pain Points): dueño/fundador de pyme como buyer principal, director comercial/marketing como secundario. No se redefine acá — el aporte de este plan es traducirlo a un personaje de contenido:
+### Investigación de mercado
 
-#### "El dueño que perdió visibilidad"
+Pymes y startups en crecimiento de España y Latinoamérica. Las fuentes que se combinan: `.agents/product-marketing.md` (target, JTBD, objeciones), el Mapa de Keywords (volumen real de ES y AR) y la competencia en vivo (D4). La brecha que más se ve: **casi todo lo que aparece en Google por "consultoría comercial" en España son agencias de marketing** (ya lo notaba Mariano en 2022) o especialistas de un solo ciclo, y Base Core no aparece en ninguna de las 4 búsquedas genéricas.
 
-La empresa vende, pero el dueño siente que no controla cómo ocurre: "no sé dónde se pierden las oportunidades", "tenemos CRM pero nadie lo usa bien", "si una persona se va, perdemos información". Motivación: control, visibilidad, previsibilidad. Trigger de compra: crecimiento, pérdida de ventas, cambio de equipo, implementación fallida de CRM.
+D4
 
-### Propuesta de valor, posicionamiento y marca
+### Análisis de competencia
 
-Propuesta de valor, objeciones, brand voice y proof points están documentados en detalle en `.agents/product-marketing.md` (no se duplican). Territorio de marca ya validado ahí: **proceso antes que herramienta**.
+16 referentes: los 3 de Mariano (2022), 10 de la primera ronda y 3 que aparecieron en las búsquedas de hoy. Sesión iniciada en redes; los datos son del 23/9.
 
-#### Personalidad
+#### Los tres de Mariano, cuatro años después
 
-Consultiva + técnica + directa. No ser: gurú de LinkedIn, agencia creativa, "AI agency" genérica, ni vendedor de herramientas.
+| Competidor | Estado hoy | Redes |
+| --- | --- | --- |
+| **Solvely** | Sitio caído ("Pronto volveremos") desde hace al menos 3 meses (Wayback, 11/6). No es competencia activa. | No se encontraron |
+| **ToExecutive** | Se pasó a "Coaching, Consultoría & Bienestar" ejecutivo. La URL de consultoría comercial redirige al home. Cobra la primera consulta (100€ + IVA). | LinkedIn 182 · IG 53 (276 posts, 1 cada 3-6 semanas) |
+| **RMG** (Madrid) | **El rival real.** Auditoría comercial en 4-6 semanas, Sales Quality (más de 10.000 llamadas auditadas por año), mentorías (más de 12.000 por año). Clientes: Bankinter, ONCE, ALD. Agencia de 11-50 personas. | LinkedIn ~2.004 · IG 3.026, 7 destacadas; semanal de mayo a julio, en silencio desde el 10/7 |
 
-#### Riesgo de naming
+| Referente | Mercado | Posicionamiento | LinkedIn empresa | Founder | Instagram | Facebook |
+| --- | --- | --- | --- | --- | --- | --- |
+| **Signos Consulting** | AR | Marketing & tecnología, CRM + IA | 2.248 | — | **16.800** (mayoría Reels) | No existe |
+| **NA+ Consultora** | AR | Metodología "EN ACCIÓN" | 6.903 | — | 6.219 | No existe |
+| **Biwott** | ES | LinkedIn / social selling | 3.364 | 22.667 (casi diario) | — | — |
+| **Posizionate** | ES | HubSpot Diamond / RevOps | 5.106 | 4.878 | — | — |
+| **RevOps LATAM** | CL | RevOps as a service + podcast | 999 | 5.170 | 843 | Sí |
+| **Driven Biz** | AR | 100% outbound | 272 | 4.673 | — | — |
+| **Growth LinkedIn** | ES | Solo LinkedIn | 136 | 9.380 | — | — |
+| **Estrategicamente** | AR | Estrategia genérica | 156 | — | — | — |
+| **Gisela Moreno** | ES/LatAm | Fractional sales manager, voz personal | 3.170 | ~13.342 | — | — |
+| **Tristán Elósegui** | ES | Asesor de marketing, blog desde 2009 | — | 28.562 | 1.933 | — |
 
-Cualquier pieza de marketing nueva debe considerar la tensión de homonimia con BaseCore™ y Base Power — detalle completo y decisión pendiente en F9 / Auditoría de Marca.
+Vistos solo en las búsquedas, a vigilar: **Olmos & Co** (el discurso más parecido: proceso comercial B2B + IA, 90 días), **Lidera tu Negocio** ("Consultoría Comercial para Pymes B2B") y **SalesDose** (primer resultado en "consultoría comercial B2B").
 
-### Concepto de comunicación y estrategia creativa
+#### Matriz de posicionamiento
 
-Dos conceptos surgieron de fuentes distintas — no compiten, operan en capas distintas.
+IMPLEMENTACIÓN / EJECUCIÓN
+│
+RMG (Sales Quality) │ Driven Biz (outbound)
+Posizionate · RevOps LATAM│
+│ ● BASE CORE
+── UN SOLO CICLO ─────────────┼────── CICLO COMPLETO ──
+│
+Biwott · Growth LinkedIn │ Olmos & Co (discurso similar)
+Elósegui · Gisela Moreno │
+│
+ESTRATEGIA / DIAGNÓSTICO
 
-#### Capa estratégica
+Base Core es el único del panorama en el cuadrante "ciclo completo + implementación acompañada".
 
-**"Entender antes de automatizar."** Frase que ya conecta con el BaseCore AI System y con el posicionamiento general del negocio (diagnosticar antes de implementar). Es el principio que ordena qué servicios ofrecer y en qué orden.
+Lo que hace todo el sector
 
-#### Capa de contenido/voz
+* El founder supera a la Página: Biwott 22,7K contra 3,4K.
+* Manda LinkedIn. Instagram crece con Reels y carruseles educativos (Signos).
+* Los consolidados le ponen nombre a su método.
+* Nadie sostiene la cadencia todo el año, ni siquiera RMG.
+* Facebook es opcional: Signos y NA+ no tienen.
 
-**"Así pienso un problema comercial."** El concepto creativo específico para cómo Mariano se muestra en redes — mostrar razonamiento en vivo (diagnóstico en público, pilar 04), no dar consejos genéricos. Permite hablar de Marketing, Preventa, Venta, Posventa, CRM e IA sin que el contenido se lea como catálogo de servicios.
+Huecos para Base Core
 
-#### Regla de estrategia creativa
+* Nadie **separa los ciclos** preventa, venta y posventa.
+* Nadie hace **diagnóstico en público** con casos.
+* Casi nadie ofrece un **diagnóstico gratuito** (ToExecutive cobra 100€).
+* Solo RMG publica **cifras**.
+* Casi nadie habla a **España y LatAm** a la vez.
 
-Mostrar razonamiento, no dar consejos genéricos. Ejemplos de territorio: *"Tu CRM no está desordenado. Tu proceso no está definido."* / *"Más leads no solucionan un proceso comercial roto."* / *"Automatizar un proceso malo solamente automatiza el problema."*
+#### Identidad visual de la competencia
 
-### Pilares de contenido y formatos
+**RMG:** Playfair Display (serif) + Open Sans, texto casi negro, piezas tipo póster en 4:5. Look de agencia editorial. **Signos:** mayoría de Reels verticales. **NA+:** pasó de 1:1 a 4:5. **Copiar:** el método con nombre, testimonios en destacadas, formatos educativos. **Evitar:** robots y circuitos, stock de apretones de manos, contenido "meta" sobre cómo crecer en LinkedIn, dos perfiles personales en paralelo.
 
-Los 5 pilares se definieron el 4/9 (auditoría `social-content`) organizados alrededor de problemas del comprador, no de los nombres de servicio del sitio — para que LinkedIn no se lea como un menú resumido.
+D5
+
+### Público objetivo
+
+**Empresas en crecimiento de España y Latinoamérica** (pymes y startups que ya venden) cuyo dueño o mando estratégico siente que el crecimiento comercial depende de la memoria o el esfuerzo de una o dos personas. Necesitan potenciar ventas, armar estructura y consolidar y capacitar equipos comerciales. **Usuario:** dueños de startups y pymes, mandos estratégicos (contexto de Mariano, 2022).
+
+D6
+
+### Buyer personas
+
+##### Marcos
+
+Dueño que perdió visibilidad · pyme de 15-40 personas
+
+Dolor
+:   "No sé dónde se pierden las oportunidades." "Tenemos CRM y nadie lo usa."
+
+Trigger
+:   Crecimiento que el proceso no acompaña, se va una persona clave, falla un CRM.
+
+Objeción
+:   "¿Por qué no contrato un gerente comercial?" "Es caro para una pyme."
+
+Dónde está
+:   LinkedIn, WhatsApp de cámaras, boca a boca.
+
+Contenido
+:   Casos problema → decisión, comparativas de CRM.
+
+##### Julieta
+
+Directora comercial sin apoyo · pyme de 20-80 personas
+
+Dolor
+:   "El forecast no es confiable." "Cada vendedor vende a su manera."
+
+Trigger
+:   El dueño le pide previsibilidad, rotación de vendedores, CRM nuevo sin adopción.
+
+Objeción
+:   "¿Esto es para reemplazarme?" "Necesito adopción, no un PowerPoint."
+
+Dónde está
+:   LinkedIn (muy activa), webinars de HubSpot, comunidades de ventas.
+
+Contenido
+:   BANT/MEDDIC, MQL → SQL, alineación de marketing y ventas.
+
+##### Ramiro
+
+Fundador de startup en escalada · 10-50 personas
+
+Dolor
+:   "Vendía yo y funcionaba; con vendedores, bajó." "No sé armar la compensación."
+
+Trigger
+:   Ronda de inversión, primeros vendedores, los referidos no alcanzan.
+
+Objeción
+:   "Somos chicos para una consultoría." "Prefiero un senior de ventas."
+
+Dónde está
+:   Endeavor, aceleradoras, comunidades de founders, LinkedIn.
+
+Contenido
+:   Separar ciclos, primer equipo comercial, compensación por resultados.
+
+D7
+
+### Propuesta de valor
+
+*Para las pymes y startups en crecimiento de España y Latinoamérica que sienten que su crecimiento comercial depende de la memoria de una o dos personas, Base Core es la consultoría comercial que ordena preventa, venta, posventa y marketing como un solo proceso. A diferencia de contratar por separado un consultor de ventas, una agencia de marketing y un implementador de CRM que no se hablan entre sí, Base Core diagnostica gratis, implementa con plazos concretos y un project leader asignado, y entrega BaseHub (su plataforma de seguimiento) sin costo adicional.*
+
+D8
+
+### Posicionamiento
+
+El diferencial elegido: separar los ciclos de venta
+
+Preventa, venta y posventa tienen tiempos, focos y métricas propios. Se trabajan cada uno por separado y también se conectan con una mirada holística. Ninguno es menos importante que el otro.
+
+Dos apuestas (contexto 2022)
+
+* **La preventa también genera demanda:** junto con el marketing, prospectar y calificar trae oportunidades propias, no solo filtra las que llegan.
+* **La cartera es la fuente de rentabilidad más subestimada:** desarrollar las cuentas actuales, anticiparse al churn y detectar nuevas oportunidades rinde más que seguir cazando clientes nuevos.
+
+Paraguas: 360
+
+Desarrollo comercial + marketing + comunicación como un todo, con la tecnología (CRM, IA) como sostén y no como punto de partida: **proceso antes que herramienta**.
+
+D9
+
+### Desarrollo de marca
+
+#### Plataforma de marca
+
+**Nombre:** Base Core. **Tagline:** Creando Bases Productivas. **Promesa:** un proceso comercial que no dependa de la memoria de nadie. **Personalidad:** consultiva, técnica, directa, respaldada en datos. **No es:** un gurú de LinkedIn, una agencia creativa, una "AI agency" genérica ni un vendedor de herramientas.
+
+#### Pilares comunicacionales por canal
+
+**LinkedIn personal:** la voz, el diagnóstico en público. **Página de LinkedIn:** catálogo y método. **Instagram:** el método hecho visual. **Facebook:** presencia local, espejo. **Blog:** la profundidad, lo que cita la IA. **Newsletter:** la relación. **WhatsApp:** la conversación comercial.
+
+**Riesgo:** homonimia con BaseCore™ y Base Power (F10, Auditoría de Marca).
+
+D10
+
+### Identidad corporativa
+
+#### Sistema visual del sitio En vivo 23/9, idéntico al código
+
+Navy
+`#00294b`
+
+Azul marca
+`#056cb0`
+
+Azul hover
+`#04568d`
+
+Azul claro
+`#4fa8e0`
+
+Títulos
+`#1b1f2e`
+
+Fondo suave
+`#edf3f6`
+
+* **Paleta monocromática a propósito:** no sumar acentos cálidos. El azul claro se usa solo como texto sobre navy.
+* **Tipografía:** Gilmer (títulos, números, CTA) + DM Sans (texto). La firma manuscrita, solo en piezas firmadas por Mariano. Montserrat y Sora son restos del sitio y no pasan a las piezas.
+* **Fotografía:** documental, gente real en contextos reales de negocio. La excepción es el hero de /tecnologia.
+* **Iconografía:** sólida, de un color.
+* **Logos:** logotipo horizontal y apilado en navy y blanco. Faltan el isotipo solo, el monocromo y los SVG (4.1).
+
+#### Direcciones visuales evaluadas
+
+##### A · Navy editorial
+
+Muy "de la casa", pero el feed queda oscuro. Se usa como fondo de tarjetas.
+
+##### B · Diagrama
+
+Los frameworks dibujados. Formato secundario, para carruseles.
+
+##### C · Documental + dato Recomendada
+
+Foto real + franja navy + dato: el recurso del hero del sitio, con la cara de Mariano como prueba de credibilidad.
+
+#### Medidas por plataforma (2026)
+
+| Pieza | Medida | Nota |
+| --- | --- | --- |
+| Avatar de Instagram / Facebook | 1080×1080 | Círculo: isotipo dentro de ~700 px |
+| Post / carrusel de Instagram | 1080×1350 | El grid lo muestra en 3:4 |
+| Reel / historia | 1080×1920 | Texto dentro de 1080×1420 |
+| Portada de destacada | 1080×1920 | Círculo central de ~600 px |
+| Portada de Facebook | 1640×624 | En el celular, ~640×360 centrales |
+| Logo / banner de la Página de LinkedIn | 300×300 / 1128×191 | El banner hoy está vacío |
+| Banner del LinkedIn personal | 1584×396 | Hoy, imagen de 2020 |
+| Documento PDF de LinkedIn | 1080×1350 | Misma plantilla que el carrusel |
+
+D11
+
+### Concepto comunicacional
+
+**"Creando Bases Productivas"** describe la metodología: **relevamiento de la situación actual → plan de trabajo → estrategia y sprint → desarrollo de procesos con mejora continua**. El gerundio es intencional: construir bases es un proceso que no termina.
+
+**Capa estratégica:** "Entender antes de automatizar." **Capa de voz:** "Así pienso un problema comercial."
+
+**Mensajes clave (2022):** una base de procesos sólida para crecer rápido · separar los ciclos de venta · la preventa también genera demanda · objetivos claros y compensación por resultados · formación continua y un kit de ventas propio · desarrollar la cartera antes que perseguir leads · 360: desarrollo comercial + marketing + comunicación.
+
+D12
+
+### Estrategia creativa
+
+Regla: mostrar el razonamiento, no dar consejos genéricos. Frases de territorio: *"Tu CRM no está desordenado. Tu proceso no está definido."* · *"Más leads no solucionan un proceso comercial roto."* · *"Automatizar un proceso malo solamente automatiza el problema."*
 
 01
 
 #### El proceso invisible
 
-Cómo detectar que una venta depende de la memoria de una persona, no de un sistema.
+El *relevamiento*: mostrar que el problema es de proceso, no de esfuerzo.
 
 02
 
 #### Lo que se pierde antes y después de la venta
 
-Preventa mal calificada y posventa sin seguimiento.
+La preventa como generadora de demanda y la posventa (churn, cartera) como fuente de rentabilidad.
 
 03
 
 #### Demanda real vs. presencia de marca
 
-Marketing que produce reuniones con criterio, no solo estética.
+El *plan de trabajo*: ordenar antes de ejecutar. Calificación MQL → SQL.
 
 04
 
 #### Diagnóstico en público
 
-Casos anónimos, errores recurrentes, decisiones reales sin nombrar clientes. El pilar que más pesa para credibilidad.
+La *estrategia y sprint*, contada con casos reales. Es el pilar que más credibilidad da y el hueco del sector.
 
 05
 
 #### Tecnología con criterio
 
-CRM/IA aplicada a proceso comercial, nunca "la herramienta resuelve todo". Secundario, dosificado.
+La *mejora continua*: herramientas para la venta (CRM, prospección, IA) que sostienen el proceso. Dosificado.
 
-#### Formatos base
+#### Formatos por canal
 
-Texto nativo (1.000–1.500 caracteres, sin link en el cuerpo) y documento/carrusel como los dos formatos de arranque, sin fricción de producción — la decisión de F2.3 (21/9) confirma este arranque sin video. Si más adelante se suma video: formato corto (30-90s) hablando directo a cámara, estructura Hook → Problema → Diagnóstico → Idea → Conclusión, más un "Deep Dive" quincenal de 5-10 min si eventualmente hay YouTube (F3.4). Newsletter de LinkedIn mensual para reciclar el blog hacia quien ya sigue.
+| Canal | Principal | Secundario |
+| --- | --- | --- |
+| LinkedIn personal | Texto nativo de 1.000-1.500 caracteres | Documento |
+| Página de LinkedIn | Documento PDF de catálogo | Compartir del personal |
+| Instagram | Carrusel 4:5 | Reel de voz en off, historias |
+| Facebook | Espejo de Instagram | — |
+| Email | Newsletter mensual | Secuencias |
 
-#### Temas a evitar
+#### Temas y recursos a evitar
 
-× Motivación genérica de ventas sin tesis propia.
+× Motivación de ventas sin tesis, "5 tips para vender más".
 
-× Cifras o casos de cliente sin verificar con ese cliente.
+× Cifras o casos de clientes sin verificar con el cliente.
 
-× Estilo provocador/controversial sin tesis comercial — desalinea audiencia y no es el brand voice de Base Core.
+× Cerrar cada pieza con el CTA de agenda.
 
-× CTA de agenda como cierre por defecto — reduce la conversación a venta directa.
+× BaseHub en tono de lanzamiento de producto.
 
-× BaseHub en tono de lanzamiento de producto — su promoción sigue sin definir (ver plan "BaseHub en el sitio").
+× Un avatar de IA, robots, circuitos, stock de apretones de manos.
 
-× Avatar de IA hablando por Mariano — la voz y la cara principal deben ser reales si se suma video.
+× Salir a buscar seguidores antes del umbral 2.18; pautar antes de tener 5.1 y las secuencias de email.
 
-### Objetivos y KPIs
+D13
 
-| Objetivo | KPIs |
+### Manual de marca
+
+Especificación del manual. Su producción es la tarea 4.12.
+
+| # | Sección | Estado de partida | Versión |
+| --- | --- | --- | --- |
+| 1 | Introducción y para quién es | Nuevo | v2 |
+| 2 | La marca en una página | Sale de 4.2 | v1 |
+| 3 | Logo: versiones, zona de respeto, tamaño mínimo, usos incorrectos | Faltan los assets de 4.1 | v1 |
+| 4 | Paleta y combinaciones prohibidas | Casi completa | v1 |
+| 5 | Tipografía y jerarquía | Existe | v1 |
+| 6 | Fotografía (con el hero de /tecnologia como ejemplo a evitar) | Criterio sí, banco de fotos chico | v2 |
+| 7 | Iconografía | Existe | v2 |
+| 8 | Tono de voz + guía de copy (2.11) | Resumen de `product-marketing.md` | v1 |
+| 9 | Aplicaciones en redes (medidas, plantillas) | D10 + 4.4 | v1 |
+| 10 | Aplicaciones en documentos (firma, dossier, propuesta, kit) | 4.6, 4.8-4.10 | v2 |
+| 11 | Riesgos de marca | Link a la Auditoría de Marca | v2 |
+| 12 | Historial de versiones | Nuevo | v2 |
+
+### Renumeración del 23/9 (v10 → v11)
+
+| v10 | v11 |
 | --- | --- |
-| **Autoridad** | Branded search, LinkedIn profile views, comentarios cualificados, DMs, newsletter subscribers |
-| **Demanda** | Tráfico cualificado, leads, leads por canal, conversion rate |
-| **Pipeline** | Reuniones, diagnósticos, oportunidades, win rate, revenue generado |
-| **SEO / AI Search** | Impressions, clicks, keywords, tráfico orgánico, tasa de citación en IA (F8.2) |
+| 2.1 bio de Instagram | 2.1 (sin cambio) |
+| 2.2-2.4 identidad visual y plantillas | F4: 4.1-4.4 |
+| 2.5 grid / 2.6 destacadas / 2.7 historias / 2.8 Reel | 2.6 / 2.7 / 2.8 / 2.9 |
+| 2.9 sincronización / 2.10 Página de Facebook | 2.15 / 2.2 |
+| 2.11-2.12 Página de LinkedIn / 2.13 posts de la Página | 2.3 y 4.5 / 2.10 |
+| 2.14 manual de marca | 4.12 (producción) + D13 (especificación) |
+| 2.15-2.18 canales bloqueados | 2.5a-d |
+| 2.19 umbral | 2.18 |
+| 3.1 skills y Open to Work | 3.0d (Hecho) + 3.0e |
+| 3.8 referidos / 3.9-3.11 cadencias | 3.10 / 3.9 |
+| F4 Producción (4.1-4.3) | 2.13-2.14 |
+| F5 Prueba social / F6 Demanda / F7 Paid / F8 SEO / F9 Marca | F7 / F5 + F6 / F8 / F9 / F10 |
 
-**KPI principal:** marketing → oportunidades comerciales. No seguidores. La instrumentación para medir esto (Source → Content → Lead → MQL → Meeting → Opportunity → Revenue) depende de que F6.3–F6.5 existan — hoy solo están cubiertos los primeros dos eslabones (Source, Content vía GA4).
-
-### Sistema de control y mejora continua
-
-El mismo ciclo del `basecore-workflow` que ya usamos para SEO/desarrollo, aplicado a marketing — no es un sistema nuevo, es reutilizar el que ya funciona en este proyecto.
-
-1 TRIAGE · 2 OBSERVE · 3 MEMORY · 4 RESEARCH · 5 OBSERVATION · 6 SYNTHESIZE · 7 IDEATE · 8 DECIDE · 9 PLAN · 10 EXECUTE · 11 VALIDATE · 12 CRITIQUE · 13 ITERATE
-
-Aplicado acá: cada pieza de contenido pasa por TRIAGE (qué problema del comprador ataca) → RESEARCH si hace falta dato externo → SYNTHESIZE (facts/observations/inferences, igual que el Diagnóstico de arriba) → IDEATE 2-3 ángulos → DECIDE uno → EXECUTE (1 video/post + 1 derivado + 1 carrusel si aplica) → VALIDATE con comentarios/DMs/profile visits (no likes) → ITERATE duplicando lo que genera conversación real.
-
-### Errores a evitar
-
-× Invertir en paid media (F7) antes de tener nurturing y scoring (F6).
-
-× Crear contenido nuevo antes de reciclar los 7 posts del blog ya escritos y validados por keyword.
-
-× Perseguir viralidad o copiar el formato de "5 tips para vender más" — no es el brand voice de Base Core.
-
-× Duplicar en este documento el detalle técnico que ya vive en el Plan de SEO o en la Auditoría de Marca — linkear, no repetir.
-
-Marketing Strategy Basecore · Base Core · actualizado el 21 de septiembre de 2026, fusionando el Plan Social Media (creado 4/9, auditoría `social-content`) con los borradores de referencia de Mariano (ChatGPT) y verificaciones propias · agentes: `social-content` (auditoría en vivo de LinkedIn/Instagram/Facebook, 17/9 y 21/9), `seo-marketing` (cruce con Plan de SEO y Mapa de Keywords, 17/9), `web-lead` (redacción de Overview/headline/About de LinkedIn, 21/9) · 21/9: reestructurado con el criterio "Activo hoy" del Plan de SEO; F1 completa (1.1–1.3) más dos hallazgos nuevos de higiene en Facebook (1.4, 1.5); F2.1/F2.2 resueltos; Fase 3 reprioritizada — LinkedIn empresa, Instagram y Facebook pasan a desarrollo urgente (3.1–3.3) con auditoría y plan de desarrollo propios, X/Twitter/TikTok/Reddit pasan a Bloqueado · 21/9, sesión posterior: Mariano resuelve 2.3 con la recomendación del análisis del 4/9 — eje B (diagnóstico en público), A (reciclaje de blog) como motor de arranque, C (BaseHub/IA) dosificado, sin video por ahora; desbloquea 2.4, 2.5, 4.1 y 4.3 · 21/9, más tarde: Mariano confirma hechos 1.4 y 1.5 — Fase 1 queda cerrada del todo · memoria: `.agents/product-marketing.md`, `documentation/seo/plan-seo.md`, `documentation/seo/mapa-keywords.md` · espejo de trabajo: `documentation/marketing/marketing-strategy.md`
+Marketing Strategy Basecore · Base Core · actualizado el 23 de septiembre de 2026 (v11) · Reestructurado con el brief de Mariano: el diagnóstico de marketing pasa a la Parte 2; Social Media (preparación y exposición), Diseño gráfico, Organización de leads y Campañas son fases accionables. Contexto 2022 incorporado (objetivo 2027, target, comunicación, competidores) · Auditoría con navegador en vivo y sesión iniciada en Instagram, Facebook y LinkedIn, solo lectura, sin publicar ni interactuar: `social-content` (perfiles propios, social media, campañas), `seo-marketing` (competencia, búsquedas, diagnóstico, fuentes de empresas target), `web-lead` (verificaciones con clic, sitio, diseño gráfico, código de los formularios, leads) · Sin verificar: el interruptor de compartir Instagram → Facebook (solo desde la app) y "Open to Work" · Versiones anteriores: v10 (23/9, preparación y exposición), v9 (21/9) · Espejo de trabajo: `documentation/marketing/marketing-strategy.md`
