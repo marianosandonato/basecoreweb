@@ -56,7 +56,14 @@ const copy = {
 const inputCls =
   "w-full rounded-none border-0 bg-soft px-[15px] font-sans text-[14px] text-body placeholder:text-body focus:outline-none focus:ring-1 focus:ring-primary";
 
-const fieldCls = `${inputCls} h-[60px]`;
+const fieldCls = `${inputCls} h-[60px] peer`;
+
+/* Same floating label pattern as ContactForm (hallazgo 1.3/1.14): the label
+   sits where the placeholder used to (vertically centered, 14px) and floats
+   to the top of the same 60px box, shrinking, on focus or once the field has
+   a value. CSS-only via peer + :placeholder-shown, no JS. */
+const floatingLabelCls =
+  "pointer-events-none absolute left-[15px] top-1/2 -translate-y-1/2 font-sans text-[14px] text-body transition-all duration-150 ease-out motion-reduce:transition-none peer-focus:top-[10px] peer-focus:translate-y-0 peer-focus:text-[10px] peer-focus:tracking-[0.05em] peer-focus:text-primary peer-[&:not(:placeholder-shown)]:top-[10px] peer-[&:not(:placeholder-shown)]:translate-y-0 peer-[&:not(:placeholder-shown)]:text-[10px] peer-[&:not(:placeholder-shown)]:tracking-[0.05em]";
 
 function triggerDownload(file: string, fileName: string) {
   const link = document.createElement("a");
@@ -143,33 +150,43 @@ export default function EbookForm({
         className="hidden"
         aria-hidden="true"
       />
-      <label htmlFor="ebook-nombre" className="sr-only">
-        {t.name}
-      </label>
-      <input required id="ebook-nombre" name="nombre" placeholder={t.name} className={fieldCls} />
-      <label htmlFor="ebook-apellidos" className="sr-only">
-        {t.lastName}
-      </label>
-      <input id="ebook-apellidos" name="apellidos" placeholder={t.lastName} className={fieldCls} />
-      <label htmlFor="ebook-empresa" className="sr-only">
-        {t.company}
-      </label>
-      <input required id="ebook-empresa" name="empresa" placeholder={t.company} className={fieldCls} />
-      <label htmlFor="ebook-whatsapp" className="sr-only">
-        {t.whatsapp}
-      </label>
-      <input id="ebook-whatsapp" name="whatsapp" placeholder={t.whatsapp} className={fieldCls} />
-      <label htmlFor="ebook-email" className="sr-only">
-        {t.email}
-      </label>
-      <input
-        required
-        type="email"
-        id="ebook-email"
-        name="email"
-        placeholder={t.email}
-        className={`${fieldCls} sm:col-span-2`}
-      />
+      <div className="relative">
+        <input required id="ebook-nombre" name="nombre" placeholder=" " className={fieldCls} />
+        <label htmlFor="ebook-nombre" className={floatingLabelCls}>
+          {t.name}
+        </label>
+      </div>
+      <div className="relative">
+        <input id="ebook-apellidos" name="apellidos" placeholder=" " className={fieldCls} />
+        <label htmlFor="ebook-apellidos" className={floatingLabelCls}>
+          {t.lastName}
+        </label>
+      </div>
+      <div className="relative">
+        <input required id="ebook-empresa" name="empresa" placeholder=" " className={fieldCls} />
+        <label htmlFor="ebook-empresa" className={floatingLabelCls}>
+          {t.company}
+        </label>
+      </div>
+      <div className="relative">
+        <input id="ebook-whatsapp" name="whatsapp" placeholder=" " className={fieldCls} />
+        <label htmlFor="ebook-whatsapp" className={floatingLabelCls}>
+          {t.whatsapp}
+        </label>
+      </div>
+      <div className="relative sm:col-span-2">
+        <input
+          required
+          type="email"
+          id="ebook-email"
+          name="email"
+          placeholder=" "
+          className={fieldCls}
+        />
+        <label htmlFor="ebook-email" className={floatingLabelCls}>
+          {t.email}
+        </label>
+      </div>
 
       {TURNSTILE_SITE_KEY && (
         <div className="sm:col-span-2">
