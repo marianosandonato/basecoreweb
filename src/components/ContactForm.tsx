@@ -68,7 +68,38 @@ const copy = {
 const inputCls =
   "w-full rounded-none border-0 bg-soft px-[15px] font-sans text-[14px] text-body placeholder:text-body focus:outline-none focus:ring-1 focus:ring-primary";
 
-const fieldCls = `${inputCls} h-[60px]`;
+const fieldCls = `${inputCls} h-[60px] peer`;
+
+/* Floating label for the 60px single-line fields (input/select): sits where
+   the placeholder used to (vertically centered, 14px) and floats to the top
+   of the same box, shrinking, on focus or once the field has a value. Kept
+   inside the field's own height so it never touches the form's tuned
+   vertical rhythm (gap-y, field heights) — no layout changes needed. */
+const floatingLabelCls =
+  "pointer-events-none absolute left-[15px] top-1/2 -translate-y-1/2 font-sans text-[14px] text-body transition-all duration-150 ease-out motion-reduce:transition-none peer-focus:top-[10px] peer-focus:translate-y-0 peer-focus:text-[10px] peer-focus:tracking-[0.05em] peer-focus:text-primary peer-[&:not(:placeholder-shown)]:top-[10px] peer-[&:not(:placeholder-shown)]:translate-y-0 peer-[&:not(:placeholder-shown)]:text-[10px] peer-[&:not(:placeholder-shown)]:tracking-[0.05em]";
+
+/* Same idea for the select: options can't use :placeholder-shown, so
+   "has a value" is tracked in state (servicioFilled) instead of CSS.
+   The resting/filled position classes are mutually exclusive (never both
+   in the class list at once) so there's no same-specificity tie between
+   them; peer-focus, being a compound selector, safely overrides either
+   one to float the label while the field is focused. */
+const floatingSelectLabelCls = (filled: boolean) =>
+  [
+    "pointer-events-none absolute left-[15px] font-sans transition-all duration-150 ease-out motion-reduce:transition-none",
+    filled
+      ? "top-[10px] translate-y-0 text-[10px] tracking-[0.05em] text-body"
+      : "top-1/2 -translate-y-1/2 text-[14px] text-body",
+    "peer-focus:top-[10px] peer-focus:translate-y-0 peer-focus:text-[10px] peer-focus:tracking-[0.05em] peer-focus:text-primary",
+  ].join(" ");
+
+/* Textarea's placeholder sits top-left, same spot where typed text starts —
+   unlike the centered inputs, shrinking the label alone isn't enough: the
+   text would grow right underneath it. The textarea's own top padding grows
+   on focus/fill (see its className below) to make room, so the label only
+   needs to shrink in place. */
+const floatingTextareaLabelCls =
+  "pointer-events-none absolute left-[20px] top-[8px] font-sans text-[14px] text-body transition-all duration-150 ease-out motion-reduce:transition-none peer-focus:text-[10px] peer-focus:tracking-[0.05em] peer-focus:text-primary peer-[&:not(:placeholder-shown)]:text-[10px] peer-[&:not(:placeholder-shown)]:tracking-[0.05em]";
 
 export default function ContactForm({ lang = "es" }: { lang?: Lang }) {
   const t = copy[lang];
@@ -76,6 +107,9 @@ export default function ContactForm({ lang = "es" }: { lang?: Lang }) {
   const [error, setError] = useState<string | null>(null);
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [captchaStuck, setCaptchaStuck] = useState(false);
+  /* Presentational only (floating label for "Servicio") — the value itself
+     is still read from FormData on submit, same as every other field. */
+  const [servicioFilled, setServicioFilled] = useState(false);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -123,34 +157,45 @@ export default function ContactForm({ lang = "es" }: { lang?: Lang }) {
         className="hidden"
         aria-hidden="true"
       />
-      <label htmlFor="contact-nombre" className="sr-only">
-        {t.name}
-      </label>
-      <input required id="contact-nombre" name="nombre" placeholder={t.name} className={fieldCls} />
-      <label htmlFor="contact-apellidos" className="sr-only">
-        {t.lastName}
-      </label>
-      <input id="contact-apellidos" name="apellidos" placeholder={t.lastName} className={fieldCls} />
-      <label htmlFor="contact-empresa" className="sr-only">
-        {t.company}
-      </label>
-      <input required id="contact-empresa" name="empresa" placeholder={t.company} className={fieldCls} />
+      <div className="relative">
+        <input required id="contact-nombre" name="nombre" placeholder=" " className={fieldCls} />
+        <label htmlFor="contact-nombre" className={floatingLabelCls}>
+          {t.name}
+        </label>
+      </div>
+      <div className="relative">
+        <input id="contact-apellidos" name="apellidos" placeholder=" " className={fieldCls} />
+        <label htmlFor="contact-apellidos" className={floatingLabelCls}>
+          {t.lastName}
+        </label>
+      </div>
+      <div className="relative">
+        <input required id="contact-empresa" name="empresa" placeholder=" " className={fieldCls} />
+        <label htmlFor="contact-empresa" className={floatingLabelCls}>
+          {t.company}
+        </label>
+      </div>
       <div className="relative">
         <select
+          id="contact-servicio"
           name="servicio"
           defaultValue=""
           className={`${fieldCls} appearance-none pr-[15px]`}
-          aria-label={t.servicePlaceholder}
+          onChange={(e) => setServicioFilled(e.currentTarget.value !== "")}
         >
-          <option value="" disabled>
-            {t.servicePlaceholder}
-          </option>
+          {/* Empty text on purpose: the floating label below covers this
+              role visually now, so the native placeholder option no longer
+              needs to render its own copy of "SERVICIO"/"SERVICE". */}
+          <option value="" disabled></option>
           {t.services.map((s) => (
             <option key={s} value={s}>
               {s}
             </option>
           ))}
         </select>
+        <label htmlFor="contact-servicio" className={floatingSelectLabelCls(servicioFilled)}>
+          {t.servicePlaceholder}
+        </label>
         {/* Right gap mirrors the field's left padding (15px) — same distance
             the "SERVICIO" text keeps from the left edge. */}
         <svg
@@ -161,29 +206,33 @@ export default function ContactForm({ lang = "es" }: { lang?: Lang }) {
           <path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L241.03 381.476c-9.373 9.373-24.569 9.373-33.941 0z" />
         </svg>
       </div>
-      <label htmlFor="contact-whatsapp" className="sr-only">
-        {t.whatsapp}
-      </label>
-      <input required id="contact-whatsapp" name="whatsapp" placeholder={t.whatsapp} className={fieldCls} />
-      <label htmlFor="contact-email" className="sr-only">
-        {t.email}
-      </label>
-      <input type="email" id="contact-email" name="email" placeholder={t.email} className={fieldCls} />
+      <div className="relative">
+        <input required id="contact-whatsapp" name="whatsapp" placeholder=" " className={fieldCls} />
+        <label htmlFor="contact-whatsapp" className={floatingLabelCls}>
+          {t.whatsapp}
+        </label>
+      </div>
+      <div className="relative">
+        <input type="email" id="contact-email" name="email" placeholder=" " className={fieldCls} />
+        <label htmlFor="contact-email" className={floatingLabelCls}>
+          {t.email}
+        </label>
+      </div>
       {/* The textarea is 180px in the original too, but its wrapper measures 191:
           an inline-block in a block whose line-height is 32.4px leaves an 11px
           descender gap below it. That 11px is load-bearing for the 646px form
           height, so the wrapper reproduces it rather than absorbing it. */}
-      <div className="leading-[32.4px] sm:col-span-2">
-        <label htmlFor="contact-mensaje" className="sr-only">
-          {t.message}
-        </label>
+      <div className="relative leading-[32.4px] sm:col-span-2">
         <textarea
           id="contact-mensaje"
           name="mensaje"
-          placeholder={t.message}
+          placeholder=" "
           rows={5}
-          className={`${inputCls} h-[180px] resize-none px-[20px] py-[10px]`}
+          className={`${inputCls} peer h-[180px] resize-none px-[20px] py-[10px] transition-[padding] duration-150 ease-out motion-reduce:transition-none focus:pt-[24px] [&:not(:placeholder-shown)]:pt-[24px]`}
         />
+        <label htmlFor="contact-mensaje" className={floatingTextareaLabelCls}>
+          {t.message}
+        </label>
       </div>
       {TURNSTILE_SITE_KEY && (
         <div className="sm:col-span-2">
