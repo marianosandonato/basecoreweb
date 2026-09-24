@@ -295,7 +295,7 @@ export default function TechnologyBlock({
             showLine={false}
             maxWidth={800}
             className="mb-[18px] w-full"
-            titleClassName="!text-[45px] !leading-[1.3]"
+            titleClassName="!leading-[1.3]"
             // eyebrow-to-title gap (spacing polish): matches the 15px the
             // wrapping `className` already puts between title and bullets,
             // measured with Playwright -- eyebrow has no margin of its own
