@@ -66,7 +66,7 @@ const copy = {
 /* Contact Form 7 fields as themed on basecoresales.com: 60px tall, #EDF3F6 fill,
    square corners, no visible border, 15px inline padding, DM Sans 14px #7A838B. */
 const inputCls =
-  "w-full rounded-none border-0 bg-soft px-[15px] font-sans text-[14px] text-body placeholder:text-body focus:outline-none focus:ring-1 focus:ring-primary";
+  "w-full rounded-none border-0 bg-soft px-[15px] font-sans text-[14px] text-body placeholder:text-body focus:outline-none focus:ring-2 focus:ring-primary";
 
 const fieldCls = `${inputCls} h-[60px] peer`;
 
