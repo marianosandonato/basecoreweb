@@ -28,7 +28,6 @@ export default function EbookPage() {
         current="E-Book"
         variant="hero"
         path="/ebook"
-        title="Guía gratis: cómo armar tu proceso de ventas desde cero"
       />
       <EbookSection />
     </>

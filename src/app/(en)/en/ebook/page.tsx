@@ -31,7 +31,6 @@ export default function EbookPageEn() {
         variant="hero"
         lang="en"
         path="/en/ebook"
-        title="Free guide: how to build a sales process from scratch"
       />
       <EbookSection lang="en" />
     </>
