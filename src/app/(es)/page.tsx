@@ -403,7 +403,7 @@ export default function HomePage() {
               dark
               maxWidth={800}
               className="mb-[15px]"
-              titleClassName="!text-[44px] !leading-[1.3]"
+              titleClassName="!text-[45px] !leading-[1.3]"
             />
             <CheckList items={partnerChecklist} dark size="md" centerOnMobile />
             <div className="mt-[15px] text-center md:text-left">
@@ -484,7 +484,7 @@ export default function HomePage() {
             showLine={false}
             maxWidth={900}
             className="mb-[20px]"
-            titleClassName="!text-[26px] !leading-[40px] md:!text-[40px] md:!leading-[50px] dt:!text-[44px] dt:!leading-[68px]"
+            titleClassName="!text-[26px] !leading-[40px] md:!text-[40px] md:!leading-[50px] dt:!text-[45px] dt:!leading-[68px]"
             descriptionClassName="!text-[24px] !text-[#C6C6C6] !pt-[20px]"
           />
           <div className="text-center">

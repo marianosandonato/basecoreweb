@@ -91,7 +91,7 @@ export default function BaseHubTeaser({
           showLine={false}
           maxWidth={800}
           className="mx-auto mb-[20px]"
-          titleClassName="!text-[36px] !font-normal !leading-[1.3] md:!text-[44px]"
+          titleClassName="!text-[36px] !font-normal !leading-[1.3] md:!text-[45px]"
         />
         <Button href={t.href} size="sm">
           {t.cta}
