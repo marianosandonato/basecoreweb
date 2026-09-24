@@ -26,6 +26,12 @@ function blogAlternateHref(pathname: string): string | null {
   return null;
 }
 
+/** ES/EN are ~16x23px and sit 16px apart — an invisible ::before grows each
+    link's clickable area to ~30x45px without moving anything visible. 7px per
+    side keeps the two areas from overlapping across the "|" separator. */
+const HIT_AREA =
+  "relative before:absolute before:-inset-x-[7px] before:-inset-y-[11px] before:content-['']";
+
 export default function LanguageSwitcher({ className = "" }: { className?: string }) {
   const pathname = usePathname();
   const lang: Lang = pathname.startsWith("/en") ? "en" : "es";
@@ -44,13 +50,13 @@ export default function LanguageSwitcher({ className = "" }: { className?: strin
         onClick={() => rememberLang("es")}
         aria-current={lang === "es" ? "true" : undefined}
         prefetch={lang === "es" ? false : undefined}
-        className={`transition-colors hover:text-accent-light ${
+        className={`${HIT_AREA} transition-colors hover:text-accent-light ${
           lang === "es" ? "text-accent-light" : "text-inherit opacity-70"
         }`}
       >
         ES
       </Link>
-      <span aria-hidden="true" className="opacity-40">
+      <span aria-hidden="true" className="pointer-events-none opacity-40">
         |
       </span>
       <Link
@@ -58,7 +64,7 @@ export default function LanguageSwitcher({ className = "" }: { className?: strin
         onClick={() => rememberLang("en")}
         aria-current={lang === "en" ? "true" : undefined}
         prefetch={lang === "en" ? false : undefined}
-        className={`transition-colors hover:text-accent-light ${
+        className={`${HIT_AREA} transition-colors hover:text-accent-light ${
           lang === "en" ? "text-accent-light" : "text-inherit opacity-70"
         }`}
       >
