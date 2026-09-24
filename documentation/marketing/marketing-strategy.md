@@ -1,7 +1,8 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`social-content`, `seo-marketing`, `web-lead`) — la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma). Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/artifact/5nEdULGfDWCWES17cpptDp
-> - Última sincronización: 2026-09-23 (v11)
+> - Última sincronización: 2026-09-24 (v12)
+> - Nota v12 (24/9): cambios de Mariano fuera de sesión — 1.6, 1.7 y 1.8 Hecho (Fase 1 cerrada), 2.1 perfil de Instagram Hecho (bio publicada, Nombre queda "Base Core"), logo con slogan en inglés para todo, 2.2 Facebook Hecho (intro = bio IG, "Sin horario disponible", servicios/portada/pin en Buenos Aires), 2.3 Página de LinkedIn Hecho (banner sigue en 4.5), 2.4 y 3.0e Hecho (Open to Work desactivado, aptitudes quedan en inglés), post IG 2022 eliminado, Linktree actualizado (se mantiene), IG linkeado a FB; decisiones abiertas: quedan 5 (1 tipografía, 2 Reels, 3 logo schema, 4 email/scoring, 5 IA), con la nueva: 10.2 "IA en el posicionamiento" (evaluar "Consultoría Comercial, Marketing e IA"; auditoría definida, sin lanzar — Mariano pidió no correrla todavía).
 > - Nota: v11 reestructurado con el brief de Mariano (23/9): Parte 1 = fases accionables F1 Higiene · F2 Social Media preparación · F3 Social Media exposición · F4 Diseño gráfico · F5 Organización de leads · F6 Campañas · F7 Prueba social · F8 Paid · F9 SEO · F10 Marca. Parte 2 = Diagnóstico de marketing D1-D13 (informativo). Auditoría con navegador logueado en IG/FB/LinkedIn. Hallazgos clave: formularios del sitio no llegan a HubSpot (Resend→email), LinkedIn personal sin publicar desde dic 2022, Página LinkedIn 0 posts, IG ya es Empresa, IG ya conectado a la Página en Business Suite. Tabla de renumeración v10→v11 al final.
 
 ---
@@ -14,15 +15,15 @@ Base Core · marketing, marca y pilares comunicacionales
 
 Plan único de marketing y desarrollo comercial de Base Core. Arriba, las **fases accionables**: Social Media (preparación y exposición), Diseño gráfico, Organización de leads y Campañas, más prueba social, paid, SEO y marca. Abajo, el **diagnóstico de marketing** como material de referencia. Auditoría del 23/9 con navegador en vivo y sesión iniciada en Instagram, Facebook y LinkedIn, hecha por `social-content`, `seo-marketing` y `web-lead`.
 
-Fase 2 · Preparación en curso — primer punto: bio de Instagram
+Fase 2 · Preparación en curso — Fase 1 cerrada, perfiles de Instagram y Facebook listos; perfiles de los 4 canales listos; siguen las piezas de F4 y el contenido semilla
 
-**97**
+**98**
 accionables
 
-**68**
+**61**
 pendientes o futuras
 
-**8**
+**5**
 decisiones de Mariano
 
 **10**
@@ -66,7 +67,7 @@ Fase 2 · ahora
 
 #### Social Media: preparación
 
-Instagram (bio primero) → Facebook espejo → Página de LinkedIn. Contenido semilla, copy y protocolo de comunidad. **Sin** salir a buscar seguidores. En paralelo: F4 Diseño, F5 captura de leads y F6 configuración de campañas.
+Instagram (perfil listo) → Facebook espejo → Página de LinkedIn. Contenido semilla, copy y protocolo de comunidad. **Sin** salir a buscar seguidores. En paralelo: F4 Diseño, F5 captura de leads y F6 configuración de campañas.
 
 se cumple el umbral 2.18 →
 
@@ -80,124 +81,25 @@ Parte 1
 
 ## Accionables
 
-Mismo criterio que el Plan de SEO: el detalle de lo Pendiente vive en [Activo hoy](#activo), agrupado por fase y en orden de ejecución. Cada fase más abajo tiene su tabla de estado completa. Lo Bloqueado mantiene su detalle breve en su fase y lo Hecho queda como una línea en la tabla. En vivo 23/9 marca los datos vistos hoy con sesión iniciada.
+Mismo criterio que el Plan de SEO: el detalle de lo Pendiente vive en [Activo hoy](#activo), agrupado por fase y en orden de ejecución. Cada fase más abajo tiene su tabla de estado completa. Lo Bloqueado mantiene su detalle breve en su fase y lo Hecho queda como una línea en la tabla. En vivo 23/9 marca los datos vistos con sesión iniciada; Mariano 24/9, los cambios que hizo Mariano fuera de sesión y reportó el 24/9.
 
-#### Ocho decisiones que son de Mariano
+#### Cinco decisiones que siguen abiertas
 
-1. **Bio de Instagram** (2.1): 4 opciones. Recomendada la D, la del método.
-2. **Criterio de ubicación** (1.7): el sitio dice "Bs.As. - Barcelona", Instagram solo Barcelona y Facebook se contradice. Recomendado: "Buenos Aires · Barcelona", igual en todos lados.
-3. **Tipografía para piezas** (4.2): verificar si la licencia de Gilmer permite subirla a Canva. Si no, usar Jost.
-4. **Reels de voz en off en Instagram** (2.9). Recomendado: sí, 1 en el contenido semilla.
-5. **A qué LinkedIn apuntan los links** (1.6): el contacto de Facebook lleva a tu perfil personal y el sitio, a la Página. Recomendado: la Página desde Facebook e Instagram; el personal, sumado en el footer del sitio.
-6. **"Open to Work"** (3.0e): no se pudo ver desde el navegador. Mantener o apagar antes de la exposición.
-7. **Logo del schema del sitio con el tagline viejo "CREAMOS"** (4.1): ¿se suma como tarea al Plan de SEO, que es el documento dueño?
-8. **Herramienta de email y modelo de scoring** (6.1 y 5.11): HubSpot gratis/Starter o Brevo. Y definir si el scoring de leads inbound es el mismo que el del Plan de Prospección (Fit/Intent/Behaviour) o uno propio.
+1. **Tipografía para piezas** (4.2): verificar si la licencia de Gilmer permite subirla a Canva. Si no, usar Jost.
+2. **Reels de voz en off en Instagram** (2.9). Recomendado: sí, 1 en el contenido semilla.
+3. **Logo del schema del sitio** (4.1): el sitio le muestra a Google `LOGO-BASE-CORE-SALES-CON-SLOGAN.png`, con el tagline viejo "CREAMOS", mientras que en redes ya se usa el logo con slogan en inglés. ¿Se suma como tarea al Plan de SEO (el documento dueño) cambiarlo por el mismo logo de redes?
+4. **Herramienta de email y modelo de scoring** (6.1 y 5.11): HubSpot gratis/Starter o Brevo. Y definir si el scoring de leads inbound es el mismo que el del Plan de Prospección (Fit/Intent/Behaviour) o uno propio.
+5. **IA en el posicionamiento** (10.2): ¿pasar de "Consultoría Comercial y Marketing" a "Consultoría Comercial, Marketing e IA"? Mariano le ve mucho potencial (24/9). Se decide después de la auditoría de 10.2, todavía sin lanzar.
+
+**Resueltas el 24/9 por Mariano:** bio de Instagram (versión propia, alineada con LinkedIn, ver 2.1) · ubicación: "Bs. As. - Barcelona", con Buenos Aires como dirección principal (1.7) · LinkedIn de los links: Facebook apunta a la Página (1.6) · logo: el que tiene el slogan en inglés, para todo (4.1) · "Open to Work": desactivado (3.0e).
 
 ### Activo hoy
 
 Todo lo Pendiente, en orden de ejecución. Cada tarjeta trae una checklist, el porqué y cuándo se da por hecha.
 
-Fase 1 · Higiene (reabierta el 23/9)
-
-#### 1.6 El LinkedIn del contacto de Facebook apunta a tu perfil personal En vivo 23/9
-
-En "Información de contacto → Medios sociales", Facebook enlaza a `linkedin.com/in/marianosandonato` y no a `linkedin.com/company/base-core`. El link ya no está roto (1.2), pero lleva al lugar equivocado para una Página de empresa.
-
-* Cambiarlo por la Página de LinkedIn (decisión 5).
-
-**Hecho cuando:** el ícono de LinkedIn de la Página de Facebook abre la Página de empresa.
-
-#### 1.7 Ubicación inconsistente entre canales En vivo 23/9
-
-* **Instagram:** dirección de negocio "Barcelona, Spain", sin calle. Instagram avisa que falta una dirección válida.
-* **Facebook:** "Datos personales" dice Buenos Aires, pero el campo con el pin del mapa sigue en Barcelona. La corrección de 1.4 quedó a medias.
-* **Sitio (footer):** "Dónde estamos: Bs.As. - Barcelona".
-
-* Aplicar el mismo criterio en todos los canales (decisión 2). Donde el campo acepte una sola ciudad, poner la sede legal y nombrar la otra en la bio o la intro.
-
-**Hecho cuando:** el sitio, Instagram, Facebook y LinkedIn dicen lo mismo.
-
-#### 1.8 Los mensajes de Instagram no llegan a la bandeja de Business Suite En vivo 23/9
-
-Meta Business Suite muestra una alerta: los mensajes de Instagram no van a estar en la bandeja unificada hasta que confirmes que quienes administran la Página también pueden administrar los mensajes de Instagram.
-
-* Business Suite → aceptar ese permiso. Es un clic y hace posible atender los DMs desde un solo lugar (protocolo 2.17).
-
 Fase 2 · Social Media: preparación de canales secundarios
 
-Auditoría y optimización de perfiles
-
-#### 2.1 Perfil y bio de Instagram Primer punto
-
-En vivo 23/9 Ya está resuelto: cuenta profesional **Empresa**, categoría "Consulting agency", botones de **email** (info@basecoresales.com) y **WhatsApp Business** verificado. Queda pendiente: la bio ("Consultoría Comercial y Marketing", 33 caracteres), el campo Nombre ("Base Core", sin keyword), el link (Linktree de 2022) y la dirección (1.7).
-
-* **Campo Nombre** (Instagram lo usa en la búsqueda): `Base Core · Consultoría B2B` (27 caracteres).
-* **Bio:** una de estas cuatro, todas ≤150 caracteres:
-
-D · El método · recomendada145 car.
-
-```
-Ordenamos tu proceso comercial.
-Marketing ATRAE · Preventa CALIFICA
-Venta CIERRA · Posventa FIDELIZA
-Pymes de España y LatAm ↓ diagnóstico gratis
-```
-
-B · Ciclo comercial108 car.
-
-```
-Tu proceso comercial, ordenado: preventa, venta, posventa y marketing. Consultoría B2B para pymes ES/LatAm ↓
-```
-
-A · Funcional141 car.
-
-```
-Consultoría comercial para pymes de España y LatAm. Preventa, venta, posventa y marketing con proceso, no solo consejos. Diagnóstico gratis ↓
-```
-
-C · Proceso como servicio120 car.
-
-```
-No vendemos consejos, implementamos procesos. Consultoría comercial y marketing para pymes ES/LatAm ↓ Diagnóstico gratis
-```
-
-* **Link:** reemplazar el Linktree (reparte en 4 destinos y muestra perfiles de terceros) por **un link directo** al sitio o a la agenda. Se edita desde la app del celular. Más adelante, links múltiples nativos (hasta 5), no Linktree.
-* **Foto:** el isotipo del árbol solo, 1080×1080, cuando esté el asset de 4.1.
-* **Post de 2022** ("Nace Base Core!", etiquetado en Barcelona): archivarlo (no borrarlo) al publicar el primer post semilla.
-
-**Por qué la D:** los que crecen en Instagram (Signos, NA+) ponen su método con nombre en la bio. Base Core tiene uno que hoy no aparece en ninguna red.
-
-**Hecho cuando:** la bio, el nombre, el link y la dirección están publicados.
-
-#### 2.2 Página de Facebook
-
-En vivo 23/9 2 seguidores, categoría "Agencia consultora", botón de **WhatsApp activo**, un solo post (el de 2022, fijado), 0 reseñas. Mariano es el único administrador humano.
-
-* **Intro:** la misma bio elegida en 2.1 (hoy copia la frase genérica).
-* **Horario real:** hoy dice "Siempre abierto".
-* **Servicios:** las 5 unidades del sitio (Preventa, Venta, Posventa, Marketing, Tecnología).
-* **Portada** 1640×624 y foto de perfil, desde F4 (4.5).
-
-**Hecho cuando:** alguien que solo ve la Página entiende qué hace Base Core y puede escribir en un clic.
-
-#### 2.3 Página de LinkedIn: campos
-
-En vivo 23/9 Ya resuelto: el **About es bueno** (711 caracteres, incluye ATRAE/CALIFICA/CIERRA/FIDELIZA y BaseHub), está activo el **botón** "Visit website" (sin Premium), el logo está cargado y figura **1 empleado**. Queda pendiente:
-
-* **Tagline** (hoy "Consultoría Comercial y Marketing"): *Consultoría comercial B2B para pymes de España y LatAm*.
-* **Especialidades:** las 5 actuales son informales (`consultoría, ventas, marketingdigital, procesos, mentoring`). Reemplazarlas por: Consultoría Comercial, Preventa, Gestión de Ventas, Posventa, Customer Success, Marketing B2B, CRM, Automatización con IA, PMO, Recruiting Comercial, Pymes.
-* **About:** sumar "basecoresales.com" en el cierre.
-* Evaluar cambiar el botón a "Contact us" apuntando a /contacto.
-* **Banner:** vacío, sale de F4 (4.5).
-
-#### 2.4 LinkedIn personal: lo que falta antes de exponer
-
-En vivo 23/9 Headline, About (primera persona, sin tono de catálogo), Featured (sitio + e-book + blog), experiencia y formación: completos y bien escritos. Las 5 aptitudes que encabezan la lista ya son de consultoría (Business Process Design, Management Consulting…). 1.631 seguidores. Lo que falta:
-
-* **Banner:** es una imagen genérica de 2020, anterior a Base Core. Reemplazarlo por uno de marca (4.5).
-* **Idioma de las aptitudes:** el perfil está en español y las aptitudes en inglés. Opcional: "Consultoría Comercial", "Diseño de Procesos Comerciales".
-* **Featured:** sumar el primer post nativo apenas exista (3.1).
-* "Open to Work": decisión 6.
+Fase 1 cerrada y perfiles de los 4 canales listos (2.1-2.4, 24/9). Lo que sigue es contenido.
 
 Estrategia de contenidos
 
@@ -238,7 +140,7 @@ Entre 9 y 12 publicaciones es el mínimo para que un perfil nuevo no parezca aba
 
 * Cada post del grid, compartido en historias con un dato extra. De 3 a 5 historias, 1-2 veces por semana, con un sticker de pregunta ("¿Tu equipo usa CRM?"). En Fase 3 pasa a casi diario.
 
-#### 2.9 Reel de voz en off Decisión 4
+#### 2.9 Reel de voz en off Decisión 2
 
 El formato que menos producción pide: la voz de Mariano sobre 3-5 pantallas de texto, reutilizando el guion de un carrusel. Otras opciones: grabación de pantalla narrada o manos + escritorio. Nunca avatar de IA.
 
@@ -446,9 +348,9 @@ Programación de publicaciones
 
 #### 2.15 Sincronizar Instagram → Facebook
 
-En vivo 23/9 **Paso 1 hecho:** Instagram ya está conectado a la Página en Meta Business Suite (aparecen como el combo "Base Core, basecoresales"). El estado del interruptor que comparte publicaciones, historias y Reels no se pudo leer: la versión web de Meta da error y ese ajuste solo se maneja desde la app.
+En vivo 23/9 **Paso 1 hecho:** Instagram ya está conectado a la Página en Meta Business Suite (aparecen como el combo "Base Core, basecoresales"). Mariano 24/9 **Paso 2:** Mariano confirma que Instagram quedó linkeado con Facebook. Falta la prueba, que recién se puede hacer con el primer post semilla.
 
-* App de Instagram → ☰ → Centro de cuentas → Compartir entre perfiles → destino "Página Base Core" → activar **por separado** Publicaciones, Historias y Reels.
+* Confirmar en la app (☰ → Centro de cuentas → Compartir entre perfiles → "Página Base Core") que están activos **por separado** Publicaciones, Historias y Reels.
 * Prueba: un post, un Reel y una historia deben aparecer en la **Página**, no en el perfil personal. Los carruseles a veces no se replican: revisar cada uno. Lo ya publicado no se sincroniza hacia atrás.
 
 #### 2.16 Herramienta y horarios de publicación
@@ -489,6 +391,7 @@ Plantillas de respuesta y reglas
 **Pasar a WhatsApp:** después de 2-3 idas y vueltas, o apenas pregunte precio o plazos. "Para no perdernos nada en los comentarios, ¿te escribo por WhatsApp?" **Pasar a reunión:** apenas confirme interés. El diagnóstico gratuito es la instancia de calificación, no hace falta calificar del todo por chat.
 
 * Cargar las plantillas como respuestas guardadas en Business Suite y como respuestas rápidas en WhatsApp Business (6.7).
+* Mariano 24/9 **Solicitudes de mensajes:** los DMs de cuentas que Base Core no sigue entran como "solicitud" y no en la bandeja principal (así llegó la prueba). Instagram → Configuración → Mensajes y respuestas a historias → Controles de mensajes: pasar "Otras personas" a la bandeja de chats, o como mínimo revisar Solicitudes todos los días, porque ahí van a llegar casi todos los prospectos.
 
 Cierre de la preparación
 
@@ -496,9 +399,9 @@ Cierre de la preparación
 
 | Canal | Contenido mínimo | Perfil mínimo |
 | --- | --- | --- |
-| **Instagram** | 12 posts, 3 fijados, 5 destacadas, 1 Reel | Bio, nombre, link directo, dirección |
-| **Facebook** | Sincronización probada, 4-6 piezas replicadas | Intro, horario, servicios, portada |
-| **Página de LinkedIn** | 8-12 posts, documento fijado | Tagline, especialidades, banner |
+| **Instagram** | 12 posts, 3 fijados, 5 destacadas, 1 Reel | Bio ✓, dirección ✓, Linktree ✓, nombre ✓ |
+| **Facebook** | Sincronización probada, 4-6 piezas replicadas | Servicios ✓, portada ✓, intro ✓, horario ✓ |
+| **Página de LinkedIn** | 8-12 posts, documento fijado | Tagline ✓, especialidades ✓, banner |
 | **LinkedIn personal** | — | Banner de marca |
 | **Soporte** | Plantillas 4.4, protocolo 2.17 | Formularios llegando a HubSpot (5.1) |
 
@@ -511,7 +414,7 @@ Fase 3 · Social Media: exposición — arranca al cumplir 2.18
 El último post original es de diciembre de 2022 ("I've started my personal project by founding Base Core!", 28 reacciones). Desde entonces hay unos 3 años sin publicar, y el perfil muestra "You haven't posted yet" en la actividad reciente. El plan anterior hablaba de "subir la cadencia", pero en realidad hay que reactivar el perfil.
 
 * El primer post es el reciclaje "¿Qué CRM elegir para una pyme?" (el contenido que más cita la IA), en texto nativo, sin link en el cuerpo.
-* Fijarlo en Featured cuando tenga tracción.
+* Fijarlo en Featured del perfil (pendiente heredado de 2.4) cuando tenga tracción.
 
 **Hecho cuando:** hay un post nuevo visible en "Actividad".
 
@@ -581,9 +484,11 @@ El repo tiene 7 archivos de logo, pero ninguno es el isotipo solo en navy (el fa
 
 * Isotipo del árbol en **navy #00294b** y en **blanco**, mínimo 1080×1080, fondo transparente. Una versión **monocromo**.
 * Vectorizar el isotipo y el logotipo a **SVG**.
-* Tagline: **"Creando Bases Productivas"** en todas las piezas nuevas. Todavía dicen "CREAMOS" el post de Instagram/Facebook y `LOGO-BASE-CORE-SALES-CON-SLOGAN.png`, el logo que el schema del sitio le muestra a Google (`src/lib/metadata.ts:57`): decisión 7.
+* Mariano 24/9 **Logo con slogan: el de la versión en inglés, para todo.** Ya está en la foto de perfil y la portada de Facebook y en la imagen del post de 2022. En el sitio en inglés el tagline es "Building Productive Foundations"; en el sitio en español sigue "Creamos bases productivas".
+* Revisar lo que todavía dice "Creando Bases Productivas" en este plan (caption y alt text del post semilla #1, D9, D11) y definir si esas piezas llevan el slogan en inglés o en español.
+* El logo que el schema del sitio le muestra a Google (`LOGO-BASE-CORE-SALES-CON-SLOGAN.png`, `src/lib/metadata.ts:57`) sigue con "CREAMOS": decisión 3.
 
-#### 4.2 Tipografía y Canva Brand Kit Decisión 3
+#### 4.2 Tipografía y Canva Brand Kit Decisión 1
 
 * Gilmer (títulos) + DM Sans (texto), como en el sitio En vivo 23/9. Gilmer está en el repo solo como `.woff2`, que Canva no acepta, y su licencia no está verificada para la nube: si no alcanza, usar **Jost** (gratis) solo en las piezas.
 * Brand Kit con los logos de 4.1, la paleta (navy #00294b, azul #056cb0, azul claro #4fa8e0, #1b1f2e, #edf3f6, blanco) y las fuentes.
@@ -608,7 +513,7 @@ Foto real + franja navy + título en Gilmer/Jost: el mismo recurso del hero del 
 
 * **Página de LinkedIn** 1128×191: hoy **vacío** En vivo 23/9. El beneficio + el ciclo + el isotipo.
 * **LinkedIn personal** 1584×396: hoy una imagen genérica de 2020. La misma familia visual que el de la Página, con tono personal.
-* **Portada de Facebook** 1640×624, con lo importante al centro.
+* **Portada de Facebook** 1640×624: Mariano 24/9 hecha, con el slogan en inglés.
 
 #### 4.6 Firma de email
 
@@ -713,7 +618,7 @@ El resultado de 5.4 a 5.9 con el esquema de 5.2, directamente en HubSpot (una ve
 
 Scoring y nurturing
 
-#### 5.11 Scoring por reglas Decisión 8
+#### 5.11 Scoring por reglas Decisión 4
 
 | Señal | Puntos |
 | --- | --- |
@@ -730,7 +635,7 @@ Scoring y nurturing
 
 Fase 6 · Campañas
 
-#### 6.1 Elegir la herramienta de email Decisión 8
+#### 6.1 Elegir la herramienta de email Decisión 4
 
 Primero, el email de HubSpot (gratis o Starter): un solo lugar para el contacto, el historial y el scoring, una vez hecho 5.1. Alternativa: **Brevo** (plan gratis generoso, europea, cumple RGPD por defecto) sincronizado con HubSpot.
 
@@ -796,18 +701,18 @@ Fase 1
 
 ### Higiene inmediata
 
-Defectos concretos en los canales existentes. Reabierta el 23/9 con tres hallazgos de la auditoría en vivo.
+Defectos concretos en los canales existentes. Reabierta el 23/9 con tres hallazgos de la auditoría en vivo; los tres cerrados por Mariano el 24/9. Fase cerrada.
 
 | # | Tarea | Estado |
 | --- | --- | --- |
 | 1.1 | Texto roto ("NaN") en el About de la Página de LinkedIn | Hecho |
 | 1.2 | Link roto a LinkedIn en Facebook | Hecho |
 | 1.3 | Ubicación del LinkedIn personal | Hecho |
-| 1.4 | Dirección de Facebook (Barcelona → Buenos Aires), a medias: ver 1.7 | Hecho |
+| 1.4 | Dirección de Facebook (Barcelona → Buenos Aires); el pin se completó en 1.7 | Hecho |
 | 1.5 | Post roto de Facebook | Hecho |
-| 1.6 | El LinkedIn del contacto de Facebook apunta al perfil personal | Pendiente |
-| 1.7 | Ubicación inconsistente (Instagram, pin de Facebook, sitio) | Pendiente |
-| 1.8 | DMs de Instagram fuera de la bandeja de Business Suite | Pendiente |
+| 1.6 | El LinkedIn del contacto de Facebook apuntaba al perfil personal: ahora apunta a la Página (24/9) | Hecho |
+| 1.7 | Ubicación unificada: "Bs. As. - Barcelona", Buenos Aires como dirección principal en Instagram y Facebook, pin de Facebook corregido (24/9) | Hecho |
+| 1.8 | DMs de Instagram en la bandeja de Business Suite: conectado y probado el 24/9 (el mensaje de prueba entró como solicitud, ver 2.17) | Hecho |
 
 Fase 2
 
@@ -820,10 +725,10 @@ Instagram, Facebook y la Página de LinkedIn van a ser pilares de comunicación,
 | 2.0a | Instagram: cuenta Empresa + botones de email y WhatsApp | Perfiles | Hecho |
 | 2.0b | Facebook: botón de WhatsApp | Perfiles | Hecho |
 | 2.0c | Página de LinkedIn: About, botón, logo, 1 empleado | Perfiles | Hecho |
-| 2.1 | Perfil y bio de Instagram **(primer punto)** | Perfiles | Pendiente |
-| 2.2 | Página de Facebook: intro, horario, servicios, portada | Perfiles | Pendiente |
-| 2.3 | Página de LinkedIn: tagline, especialidades, URL, banner | Perfiles | Pendiente |
-| 2.4 | LinkedIn personal: banner, idioma de aptitudes, Featured | Perfiles | Pendiente |
+| 2.1 | Perfil de Instagram: bio ("Consultoría Comercial y Marketing / Te acompañamos en atraer, calificar, cerrar y fidelizar a tus clientes. / Bs. As. - Barcelona"), dirección Buenos Aires, Linktree actualizado (se mantiene, decisión de Mariano), foto con el logo en inglés, post de 2022 eliminado. El Nombre queda "Base Core": sumar keyword repetía "consultoría" tres veces y la búsqueda interna aporta poco a una consultora B2B (24/9) | Perfiles | Hecho |
+| 2.2 | Página de Facebook: intro = la bio de Instagram completa, horario "Sin horario disponible" (la opción "con cita previa" ya no existe), servicios, foto y portada con el logo en inglés, pin en Buenos Aires (24/9) | Perfiles | Hecho |
+| 2.3 | Página de LinkedIn: tagline "Consultoría Comercial y Marketing" (se mantiene por coherencia con Instagram y Facebook), 11 especialidades nuevas, basecoresales.com en el About, botón "Contact us" → /contacto (24/9). El banner sigue en 4.5 | Perfiles | Hecho |
+| 2.4 | LinkedIn personal: "Open to Work" desactivado; las aptitudes quedan en inglés (decisión de Mariano, 24/9). El banner sigue en 4.5 y el Featured con el primer post, en 3.1 | Perfiles | Hecho |
 | 2.5 | Elección de canales: Instagram, Facebook (espejo), Página y personal de LinkedIn | Canales | Hecho |
 | 2.5a | YouTube | Canales | Bloqueado |
 | 2.5b | X/Twitter (solo reservar el handle) | Canales | Bloqueado |
@@ -832,13 +737,13 @@ Instagram, Facebook y la Página de LinkedIn van a ser pilares de comunicación,
 | 2.6 | Grid semilla de Instagram (12 posts y 3 fijados) | Contenidos | Pendiente |
 | 2.7 | 5 historias destacadas | Contenidos | Pendiente |
 | 2.8 | Historias con ritmo bajo | Contenidos | Pendiente |
-| 2.9 | Reel de voz en off (decisión 4) | Contenidos | Pendiente |
+| 2.9 | Reel de voz en off (decisión 2) | Contenidos | Pendiente |
 | 2.10 | 8-12 posts semilla en la Página de LinkedIn | Contenidos | Pendiente |
 | 2.11 | Guía de copy por canal | Copywriting | Pendiente |
 | 2.12 | Captions de los 12 posts semilla (redactadas) | Copywriting | En progreso |
 | 2.13 | Stack de producción y reciclaje | Producción | Pendiente |
 | 2.14 | Calendario de producción (semanas 1-5) | Producción | Pendiente |
-| 2.15 | Sincronizar Instagram → Facebook (paso 1 hecho) | Programación | En progreso |
+| 2.15 | Sincronizar Instagram → Facebook (conectado y linkeado; falta la prueba con el primer post) | Programación | En progreso |
 | 2.16 | Herramienta y horarios de publicación | Programación | Pendiente |
 | 2.17 | Protocolo de community management | Community | Pendiente |
 | 2.18 | Umbral "listo para exponer" | Cierre | Pendiente |
@@ -859,7 +764,7 @@ La inicia el LinkedIn personal de Mariano, el único canal con audiencia real (1
 | 3.0b | About, Featured y experiencia del personal | Hecho |
 | 3.0c | Dirección de contenido: eje B, con A como motor y C dosificado | Hecho |
 | 3.0d | Aptitudes fijadas: el top 5 ya es de consultoría | Hecho |
-| 3.0e | "Open to Work" (decisión 6) | Pendiente |
+| 3.0e | "Open to Work": desactivado, confirmado por Mariano (24/9) | Hecho |
 | 3.1 | Volver a publicar (último post: dic 2022) | Pendiente |
 | 3.2 | Cadencia de 2 por semana + rutina de comentarios | Pendiente |
 | 3.3 | Primeros 6 posts | Pendiente |
@@ -879,11 +784,11 @@ Corre en paralelo a la Fase 2: 4.1-4.5 son requisito para producir el contenido 
 
 | # | Tarea | Punto del brief | Estado |
 | --- | --- | --- | --- |
-| 4.1 | Logos que faltan + tagline unificado | Identidad visual | Pendiente |
+| 4.1 | Logos que faltan + tagline unificado (logo con slogan en inglés elegido el 24/9) | Identidad visual | Pendiente |
 | 4.2 | Tipografía + Canva Brand Kit | Identidad visual | Pendiente |
 | 4.3 | Dirección "Documental + dato" | Piezas gráficas | Pendiente |
 | 4.4 | Kit de plantillas mínimo (5 piezas) | Piezas gráficas | Pendiente |
-| 4.5 | Banners (Página y personal de LinkedIn) y portada de Facebook | Piezas gráficas | Pendiente |
+| 4.5 | Banners (Página y personal de LinkedIn) y portada de Facebook (portada hecha el 24/9) | Piezas gráficas | En progreso |
 | 4.6 | Firma de email | Piezas gráficas | Pendiente |
 | 4.7 | Creatividades publicitarias (Meta y LinkedIn Ads) | Creatividades | Futuro · F8 |
 | 4.8 | Dossier comercial | Presentaciones | Pendiente |
@@ -920,7 +825,7 @@ Hoy los leads llegan como emails sueltos. Primero se ordena la captura hacia Hub
 | 5.8 | Tomadores de decisión | Decisores | Pendiente |
 | 5.9 | Investigación de sitios y redes | Investigación | Pendiente |
 | 5.10 | Armado de la base de prospección | Base | Pendiente |
-| 5.11 | Scoring por reglas (decisión 8) | Scoring | Pendiente |
+| 5.11 | Scoring por reglas (decisión 4) | Scoring | Pendiente |
 | 5.12 | Scoring predictivo | Scoring predictivo | Bloqueado |
 | 5.13 | Nurturing integrado (ver F6) | Nurturing | Pendiente |
 
@@ -938,7 +843,7 @@ Newsletters, email marketing y WhatsApp. En Fase 2 se deja todo configurado (her
 | --- | --- | --- | --- |
 | 6.0a | Formulario + WhatsApp + agenda de HubSpot en el sitio | — | Hecho |
 | 6.0b | Eventos de conversión en GA4 | — | Hecho |
-| 6.1 | Herramienta de email (decisión 8) | Email marketing | Pendiente |
+| 6.1 | Herramienta de email (decisión 4) | Email marketing | Pendiente |
 | 6.2 | Consentimiento y doble opt-in | Email marketing | Pendiente |
 | 6.3 | Newsletter "Una observación comercial" | Newsletters | Pendiente |
 | 6.4 | Secuencia de bienvenida | Email marketing | Pendiente |
@@ -1002,16 +907,33 @@ El dueño del detalle legal es la [Auditoría de Marca de Base Core](https://cla
 
 Hay riesgo de confusión con BaseCore™ (geoceldas) y con Base Power (baterías). El **árbol** es el elemento gráfico que más diferencia: nada de íconos de "core", circuitos ni energía, y ningún copy tipo "Base Core + tecnología" sin el contexto de consultoría comercial. Sigue esperando la decisión de Mariano sobre la auditoría.
 
+#### 10.2 Evaluar sumar IA al posicionamiento Pendiente · auditoría sin lanzar
+
+Planteado por Mariano el 24/9: cambiar "Consultoría Comercial y Marketing" por "Consultoría Comercial, Marketing e IA" en el sitio, el SEO y todos los titulares de redes. Lo ve como un gran potencial. Este plan es el dueño de la evaluación y de la decisión, porque es una pregunta de posicionamiento (D8, D9); el Plan de SEO solo tiene una línea que linkea acá.
+
+**Tensión a resolver:** a favor, el grupo CRM/IA tiene la mejor relación entre volumen y competencia del Mapa de Keywords ("IA para empresas": 100 a 1.000 búsquedas por mes en ES, competencia media), la IA ya es parte real de la oferta (/tecnologia, ejecución de marketing) y competidores como Olmos & Co y Signos la ponen adelante. En contra, el posicionamiento vigente es "proceso antes que herramienta", Base Core "no es una AI agency genérica" (D9), la IA es el pilar 05 dosificado (D12), casi todo el sector suma "IA" en 2026, y la IA puede aumentar la confusión con BaseCore™ y Base Power (10.1).
+
+##### Auditoría (`seo-marketing`, con `social-content` para redes)
+
+* **Demanda:** keywords de IA en ES, AR y EN (Mapa de Keywords 8.6 + búsqueda actual).
+* **Competencia:** cómo usan la IA en el mensaje los 16 referentes de D4: en el titular o como apoyo.
+* **Resultados en Google y en buscadores con IA** para "consultoría comercial con IA", "IA para ventas pymes" y similares: ¿hay un hueco?
+* **Riesgo de marca:** "IA" en el titular frente a BaseCore™ y Base Power.
+* **Respaldo de la oferta:** qué parte de los servicios reales es IA hoy.
+* **Opciones con su costo:** A) no cambiar · B) IA en el segundo nivel (bio: "Te acompañamos a atraer, calificar, cerrar y fidelizar clientes, con procesos e IA") · C) cambio completo (sitio: `src/lib/site.ts` nombre y descripción, `ContactForm.tsx`, titles y schema vía Plan de SEO; redes: bio de Instagram, intro de Facebook, tagline de la Página y titular del personal, el mismo día).
+
+**Hecho cuando:** Mariano elige A, B o C con la auditoría en la mano. Si elige C, la parte del sitio se ejecuta desde el Plan de SEO.
+
 ### Roadmap
 
 Las semanas son orientativas: lo que manda es el umbral 2.18.
 
 #### Semanas 1–2 · Bases
 
-* Decisiones 1-5
-* 1.6-1.8 higiene
-* 2.1 bio de Instagram (primer punto)
-* 2.2-2.4 perfiles
+* Decisiones 1-2
+* 1.6-1.8 higiene (hechas)
+* 2.1 perfil de Instagram (hecho)
+* 2.2-2.4 Facebook y LinkedIn (hechos)
 * 4.1-4.2 logos y Brand Kit
 * 2.15 sincronización (app)
 * 5.1-5.3 formularios → HubSpot
@@ -1042,14 +964,14 @@ Parte 2
 
 Material de referencia, en el orden del brief. No requiere acciones por sí mismo: las acciones que surgen de acá están en la Parte 1. Donde ya existe un documento dueño (`product-marketing.md`, Plan de SEO, Auditoría de Marca), va un resumen con link.
 
-### Estado de los canales al 23/9 En vivo
+### Estado de los canales al 24/9 En vivo 23/9 + cambios de Mariano 24/9
 
 | Canal | Seguidores | Publicaciones | Qué está bien | Qué falta |
 | --- | --- | --- | --- | --- |
 | **LinkedIn personal** | 1.631 | Última de dic 2022 | Headline, About, Featured, experiencia, aptitudes | Publicar; banner de 2020 |
-| **Página de LinkedIn** | 56 | 0 | About con el método, botón, logo, 1 empleado, 50 créditos | Tagline, especialidades, banner, contenido |
-| **Instagram** | 41 | 1 (2022) | Cuenta Empresa, email y WhatsApp verificados, conectado a Facebook | Bio, nombre, link, dirección, contenido |
-| **Facebook** | 2 | 1 (2022) | Botón de WhatsApp, único admin: Mariano | Intro, horario, pin, link de LinkedIn |
+| **Página de LinkedIn** | 56 | 0 | About con el método, botón, logo, 1 empleado, 50 créditos | Banner, contenido |
+| **Instagram** | 41 | 0 (el de 2022, eliminado) | Cuenta Empresa, email y WhatsApp verificados, linkeado a Facebook, bio nueva, dirección Buenos Aires, Linktree actualizado | Contenido |
+| **Facebook** | 2 | 1 (2022, imagen actualizada) | WhatsApp, servicios, logo y portada con slogan en inglés, pin en Buenos Aires, link a la Página de LinkedIn | Contenido |
 | **Sitio** | — | 7 posts de blog | Sistema visual consistente, sin overflow en mobile | Formularios fuera de HubSpot; hero de /tecnologia |
 
 D1
@@ -1058,10 +980,10 @@ D1
 
 | Etapa | Duración orientativa | Depende de |
 | --- | --- | --- |
-| F1 Higiene | 1 semana (reabierta) | Decisiones 2 y 5 |
-| F2 Preparación + F4 Diseño + F5 captura + F6 configuración | 4-6 semanas en paralelo | Decisiones 1-4, 8 |
+| F1 Higiene | Cerrada el 24/9 | — |
+| F2 Preparación + F4 Diseño + F5 captura + F6 configuración | 4-6 semanas en paralelo | Decisiones 1, 2 y 4 |
 | F3 Exposición + activar F6 | 8-13 semanas | Umbral 2.18 |
-| F5 base de prospección | Desde la semana 6 | 5.1, decisión 8 |
+| F5 base de prospección | Desde la semana 6 | 5.1, decisión 4 |
 | F7 Prueba social | Cuando se destrabe 7.1 | Mariano |
 | F8 Paid media | Después de la semana 13 | 5.1 + 6.4-6.6 + oferta |
 | F9 SEO / F10 Marca | Continuo | Plan de SEO / Auditoría de Marca |
@@ -1429,4 +1351,4 @@ Especificación del manual. Su producción es la tarea 4.12.
 | F4 Producción (4.1-4.3) | 2.13-2.14 |
 | F5 Prueba social / F6 Demanda / F7 Paid / F8 SEO / F9 Marca | F7 / F5 + F6 / F8 / F9 / F10 |
 
-Marketing Strategy Basecore · Base Core · actualizado el 23 de septiembre de 2026 (v11) · Reestructurado con el brief de Mariano: el diagnóstico de marketing pasa a la Parte 2; Social Media (preparación y exposición), Diseño gráfico, Organización de leads y Campañas son fases accionables. Contexto 2022 incorporado (objetivo 2027, target, comunicación, competidores) · Auditoría con navegador en vivo y sesión iniciada en Instagram, Facebook y LinkedIn, solo lectura, sin publicar ni interactuar: `social-content` (perfiles propios, social media, campañas), `seo-marketing` (competencia, búsquedas, diagnóstico, fuentes de empresas target), `web-lead` (verificaciones con clic, sitio, diseño gráfico, código de los formularios, leads) · Sin verificar: el interruptor de compartir Instagram → Facebook (solo desde la app) y "Open to Work" · Versiones anteriores: v10 (23/9, preparación y exposición), v9 (21/9) · Espejo de trabajo: `documentation/marketing/marketing-strategy.md`
+Marketing Strategy Basecore · Base Core · actualizado el 24 de septiembre de 2026 (v12) · v12, trabajado en vivo con Mariano el 24/9: 1.8, 2.1, 2.2 y 2.3 cerradas; nueva 10.2 "IA en el posicionamiento", sin auditar todavía; cambios que Mariano hizo fuera de sesión en Facebook e Instagram (1.6, 1.7 y 1.8 cerradas: Fase 1 completa; bio de Instagram publicada, logo con slogan en inglés para todo, servicios, portada y pin de Facebook, post de 2022 de Instagram eliminado, Linktree actualizado, Instagram linkeado a Facebook); decisiones renumeradas de 8 a 5 · v11: reestructurado con el brief de Mariano: el diagnóstico de marketing pasa a la Parte 2; Social Media (preparación y exposición), Diseño gráfico, Organización de leads y Campañas son fases accionables. Contexto 2022 incorporado (objetivo 2027, target, comunicación, competidores) · Auditoría con navegador en vivo y sesión iniciada en Instagram, Facebook y LinkedIn, solo lectura, sin publicar ni interactuar: `social-content` (perfiles propios, social media, campañas), `seo-marketing` (competencia, búsquedas, diagnóstico, fuentes de empresas target), `web-lead` (verificaciones con clic, sitio, diseño gráfico, código de los formularios, leads) · Sin verificar: el interruptor de compartir Instagram → Facebook (solo desde la app) y "Open to Work" · Versiones anteriores: v11 (23/9, fases accionables), v10 (23/9, preparación y exposición), v9 (21/9) · Espejo de trabajo: `documentation/marketing/marketing-strategy.md`
