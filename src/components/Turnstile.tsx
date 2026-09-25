@@ -76,7 +76,19 @@ export default function Turnstile({
       onStuck?.();
     }
 
-    const stuckTimer = window.setTimeout(markStuck, STUCK_TIMEOUT_MS);
+    // Started only once the widget is actually rendered (not on page load —
+    // the widget is deferred until the form scrolls near the viewport), and
+    // cleared as soon as the widget verifies or hands control to the visitor
+    // with an interactive checkbox. Otherwise it fires on healthy widgets too.
+    let stuckTimer: number | undefined;
+    function startStuckTimer() {
+      window.clearTimeout(stuckTimer);
+      stuckTimer = window.setTimeout(markStuck, STUCK_TIMEOUT_MS);
+    }
+    function clearStuckTimer() {
+      window.clearTimeout(stuckTimer);
+      stuckTimer = undefined;
+    }
 
     function clearWidget() {
       if (widgetIdRef.current && window.turnstile) {
@@ -86,17 +98,25 @@ export default function Turnstile({
     }
 
     function mountWidget() {
+      // Covers the script itself never loading (content blocker, flaky
+      // connection) — restarted below once the widget is rendered.
+      startStuckTimer();
       loadTurnstileScript()
         .then(() => {
           if (cancelled || !containerRef.current || !window.turnstile) return;
           clearWidget();
+          startStuckTimer();
           widgetIdRef.current = window.turnstile.render(containerRef.current, {
             sitekey: siteKey,
             callback: (token: string) => {
               if (cancelled) return;
+              clearStuckTimer();
               setStuck(false);
               onVerify(token);
             },
+            // The widget is waiting on a click, not hung — the visitor may
+            // take longer than STUCK_TIMEOUT_MS to get to it.
+            "before-interactive-callback": clearStuckTimer,
             "expired-callback": () => {
               if (cancelled) return;
               onExpire?.();
@@ -104,11 +124,20 @@ export default function Turnstile({
             // Both a network/render failure and an interactive-challenge
             // timeout leave the checkbox unusable — same fallback as the
             // silent Safari hang the stuckTimer above catches.
-            "error-callback": markStuck,
-            "timeout-callback": markStuck,
+            "error-callback": () => {
+              clearStuckTimer();
+              markStuck();
+            },
+            "timeout-callback": () => {
+              clearStuckTimer();
+              markStuck();
+            },
           });
         })
-        .catch(markStuck);
+        .catch(() => {
+          clearStuckTimer();
+          markStuck();
+        });
     }
 
     // Defer fetching/executing the Turnstile script (and its CPU cost) until
