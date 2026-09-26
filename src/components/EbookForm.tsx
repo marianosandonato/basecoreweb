@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { site, type Lang } from "@/lib/site";
+import { readUtm } from "@/lib/utm";
 import Turnstile from "./Turnstile";
 
 declare global {
@@ -104,6 +105,7 @@ export default function EbookForm({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...data,
+          ...readUtm(),
           idioma: lang === "en" ? "EN" : "ES",
           turnstileToken: captchaToken,
         }),

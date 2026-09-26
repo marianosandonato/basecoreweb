@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { site, type Lang } from "@/lib/site";
+import { readUtm } from "@/lib/utm";
 import Turnstile from "./Turnstile";
 
 declare global {
@@ -122,7 +123,7 @@ export default function ContactForm({ lang = "es" }: { lang?: Lang }) {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, turnstileToken: captchaToken }),
+        body: JSON.stringify({ ...data, ...readUtm(), turnstileToken: captchaToken }),
       });
       const json = await res.json().catch(() => ({}));
       if (!res.ok) {

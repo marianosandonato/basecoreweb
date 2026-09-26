@@ -1,5 +1,7 @@
+import { after } from "next/server";
 import { Resend } from "resend";
 import { verifyTurnstile } from "@/lib/turnstile";
+import { pickUtm, syncLeadToHubSpot } from "@/lib/hubspot";
 
 type ContactPayload = {
   nombre?: string;
@@ -11,6 +13,10 @@ type ContactPayload = {
   mensaje?: string;
   website?: string; // honeypot
   turnstileToken?: string;
+  marketingConsent?: boolean | string; // checkbox from SEO plan 4.5.4, not in the form yet
+  utm_source?: string;
+  utm_medium?: string;
+  utm_campaign?: string;
 };
 
 function escapeHtml(value: string): string {
@@ -52,6 +58,23 @@ export async function POST(request: Request) {
       { status: 400 },
     );
   }
+
+  // HubSpot runs after the response and independently of the email below:
+  // it can't slow the form down or make it fail.
+  after(() =>
+    syncLeadToHubSpot({
+      source: "Web-contacto",
+      nombre,
+      apellidos: data.apellidos,
+      empresa,
+      email: data.email,
+      whatsapp,
+      servicio: data.servicio,
+      mensaje: data.mensaje,
+      utm: pickUtm(data),
+      marketingConsent: data.marketingConsent === true || data.marketingConsent === "on",
+    }),
+  );
 
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
