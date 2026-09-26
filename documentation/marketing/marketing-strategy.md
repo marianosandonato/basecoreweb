@@ -1,13 +1,12 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`social-content`, `seo-marketing`, `web-lead`) — la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma). Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/artifact/5nEdULGfDWCWES17cpptDp
-> - Última sincronización: 2026-09-26 (v14)
+> - Última sincronización: 2026-09-26 (v15)
+> - Nota v15 (26/9): paquete de privacidad (Plan de SEO 4.5) en suspenso, armado y aprobado en preview; banner retirado de producción; 5.3 y 6.2 dependen de él; Cloudflare Web Analytics se mantiene como conteo total de visitas.
 > - Nota v14 (26/9): 5.1 Hecho — formularios del sitio → HubSpot en producción (commit 2193af7): contacto por email con fuente, servicio, UTM y mensaje como nota; Resend sigue de respaldo. 5.3 pasa a depender de la 4.5.4 del Plan de SEO (campo marketingConsent + 2 campos de HubSpot por crear).
 > - Nota v13 (24/9): nueva 1.9 "Configuración completa de Instagram, paso a paso" (26 pasos en 6 bloques: seguridad y propiedad, perfil, mensajes, protección, publicación, cierre), Pendiente en Fase 1 (reabierta). El paso de Controles de mensajes de 2.17 pasa a 1.9 (paso 11). Umbral 2.18, roadmap, D1 y estado de canales actualizados.
 > - Nota v12 (24/9): cambios de Mariano fuera de sesión — 1.6, 1.7 y 1.8 Hecho (Fase 1 cerrada), 2.1 perfil de Instagram Hecho (bio publicada, Nombre queda "Base Core"), logo con slogan en inglés para todo, 2.2 Facebook Hecho (intro = bio IG, "Sin horario disponible", servicios/portada/pin en Buenos Aires), 2.3 Página de LinkedIn Hecho (banner sigue en 4.5), 2.4 y 3.0e Hecho (Open to Work desactivado, aptitudes quedan en inglés), post IG 2022 eliminado, Linktree actualizado (se mantiene), IG linkeado a FB; decisiones abiertas: quedan 5 (1 tipografía, 2 Reels, 3 logo schema, 4 email/scoring, 5 IA), con la nueva: 10.2 "IA en el posicionamiento" (evaluar "Consultoría Comercial, Marketing e IA"; auditoría definida, sin lanzar — Mariano pidió no correrla todavía).
 > - Nota: v11 reestructurado con el brief de Mariano (23/9): Parte 1 = fases accionables F1 Higiene · F2 Social Media preparación · F3 Social Media exposición · F4 Diseño gráfico · F5 Organización de leads · F6 Campañas · F7 Prueba social · F8 Paid · F9 SEO · F10 Marca. Parte 2 = Diagnóstico de marketing D1-D13 (informativo). Auditoría con navegador logueado en IG/FB/LinkedIn. Hallazgos clave: formularios del sitio no llegan a HubSpot (Resend→email), LinkedIn personal sin publicar desde dic 2022, Página LinkedIn 0 posts, IG ya es Empresa, IG ya conectado a la Página en Business Suite. Tabla de renumeración v10→v11 al final.
-
----
 
 Marketing Strategy Basecore
 
@@ -608,6 +607,8 @@ Captura de leads desde la web y las redes a HubSpot
 
 **5.1 hecha (26/9):** desde el commit `2193af7`, cada formulario del sitio (contacto y e-book) crea o actualiza el contacto en HubSpot, con fuente, servicio, UTM de la página y el mensaje como nota. El email a info@ sigue llegando como respaldo. Detalle en la tabla de la Fase 5.
 
+**Paquete de privacidad en suspenso (26/9), por decisión de Mariano:** la política de privacidad y de cookies, el banner de cookies, el aviso bajo los formularios y el checkbox de marketing (tarea 4.5 del [Plan de SEO](https://claude.ai/artifact/XPrZBTCe2b7tvbzzNuf1GT), dueña del tema) están armados y aprobados por Mariano en un preview, sin publicar. El banner llegó a estar en producción y se retiró el mismo 26/9. Salen todos juntos cuando Mariano resuelva sus pendientes: consultar a su contador, crear las 2 propiedades de HubSpot, inscribir la base en la AAIP y sumar a la política el párrafo de Cloudflare Web Analytics. **Medición mientras tanto:** GA4 mide todas las visitas (no hay banner) y Cloudflare Web Analytics se mantiene como conteo total sin cookies. Cuando vuelva el banner, GA4 solo va a contar a quienes acepten y el total real va a venir de Cloudflare.
+
 #### 5.2 Campos mínimos por prospecto
 
 | Campo | Tipo | Obligatorio |
@@ -628,7 +629,7 @@ Captura de leads desde la web y las redes a HubSpot
 #### 5.3 Consentimiento en los formularios
 
 * Checkbox sin marcar ("Quiero recibir contenido de Base Core") + un texto que diga para qué se usan los datos (Ley 25.326) + link a la privacidad (RGPD).
-* **Se implementa en la subtarea 4.5.4 del Plan de SEO** (política de privacidad, en progreso desde el 25/9), que es la dueña del checkbox y de la página de privacidad. El envío a HubSpot ya está listo para recibirlo: el campo del formulario se tiene que llamar `marketingConsent`.
+* **Se implementa en la subtarea 4.5.4 del Plan de SEO**, que es la dueña del checkbox y de la página de privacidad. **Estado (26/9):** el checkbox (`marketingConsent`, desmarcado, con el texto del abogado de Mariano) y el aviso bajo los formularios están implementados y aprobados por Mariano en un preview, **en suspenso** hasta que se publique todo el paquete de privacidad (ver la nota al inicio de la Fase 5).
 * Antes de que salga el checkbox, crear en HubSpot **Consentimiento marketing** (casilla de verificación única, `consentimiento_marketing`) y **Fecha consentimiento marketing** (selector de fecha, `fecha_consentimiento_marketing`). Solo se completan cuando la persona tilda el checkbox.
 
 **Mientras tanto:** guardar en HubSpot a quien pidió que lo contacten está justificado; mandarle newsletters o secuencias no, hasta que existan esta tarea y la 6.2.
@@ -691,6 +692,7 @@ Primero, el email de HubSpot (gratis o Starter): un solo lugar para el contacto,
 #### 6.2 Consentimiento y doble opt-in
 
 * Un solo estándar para los dos países: doble opt-in (email de confirmación), baja visible en cada envío y finalidad informada al pedir el dato. Cumple el RGPD y la Ley 25.326. Tiene que estar antes del primer envío.
+* Depende de que se publique el checkbox de 5.3 (paquete de privacidad del Plan de SEO, en suspenso desde el 26/9): sin él no hay a quién mandarle el email de confirmación.
 
 #### 6.3 Newsletter "Una observación comercial" (mensual)
 
@@ -867,7 +869,7 @@ Hoy los leads llegan como emails sueltos. Primero se ordena la captura hacia Hub
 | --- | --- | --- | --- |
 | 5.1 | Formularios del sitio → HubSpot: contacto creado o actualizado por email, con fuente, servicio, UTM (leídos de la URL, sin cookies hasta el banner de 4.5.3) y el mensaje como nota; Service Key con solo contactos lectura/escritura; email de Resend como respaldo. Probado en preview contra el HubSpot real y en producción desde el 26/9 (commit `2193af7`) | Captura web/redes | Hecho |
 | 5.2 | Campos mínimos y propiedades en HubSpot | Campos mínimos | Pendiente |
-| 5.3 | Consentimiento en los formularios (lo implementa 4.5.4 del Plan de SEO) | Validación de datos | Pendiente |
+| 5.3 | Consentimiento en los formularios (lo implementa 4.5.4 del Plan de SEO; armado y aprobado en preview, en suspenso desde el 26/9 junto con todo el paquete de privacidad) | Validación de datos | Pendiente · en suspenso |
 | 5.4 | Identificación de empresas target | Empresas target | Pendiente |
 | 5.5 | Perfil del prospecto | Perfil del prospecto | Pendiente |
 | 5.6 | Scrapers (web, Google Maps, directorios) | Scrapers | Pendiente |
@@ -987,7 +989,7 @@ Las semanas son orientativas: lo que manda es el umbral 2.18.
 * 2.2-2.4 Facebook y LinkedIn (hechos)
 * 4.1-4.2 logos y Brand Kit
 * 2.15 sincronización (app)
-* 5.1 formularios → HubSpot (hecho) · 5.3 con 4.5.4
+* 5.1 formularios → HubSpot (hecho) · 5.3 con 4.5.4 (en suspenso)
 * 6.7 WhatsApp Business
 
 #### Semanas 3–5 · Contenido semilla
@@ -1023,7 +1025,7 @@ Material de referencia, en el orden del brief. No requiere acciones por sí mism
 | **Página de LinkedIn** | 56 | 0 | About con el método, botón, logo, 1 empleado, 50 créditos | Banner, contenido |
 | **Instagram** | 41 | 0 (el de 2022, eliminado) | Cuenta Empresa, email y WhatsApp verificados, linkeado a Facebook, bio nueva, dirección Buenos Aires, Linktree actualizado | Configuración interna (1.9), contenido |
 | **Facebook** | 2 | 1 (2022, imagen actualizada) | WhatsApp, servicios, logo y portada con slogan en inglés, pin en Buenos Aires, link a la Página de LinkedIn | Contenido |
-| **Sitio** | — | 7 posts de blog | Sistema visual consistente, sin overflow en mobile | Hero de /tecnologia; consentimiento de marketing (5.3) |
+| **Sitio** | — | 7 posts de blog | Sistema visual consistente, sin overflow en mobile | Hero de /tecnologia; política de privacidad, banner de cookies y consentimiento de marketing (5.3), armados y en suspenso |
 
 D1
 
@@ -1402,4 +1404,4 @@ Especificación del manual. Su producción es la tarea 4.12.
 | F4 Producción (4.1-4.3) | 2.13-2.14 |
 | F5 Prueba social / F6 Demanda / F7 Paid / F8 SEO / F9 Marca | F7 / F5 + F6 / F8 / F9 / F10 |
 
-Marketing Strategy Basecore · Base Core · actualizado el 26 de septiembre de 2026 (v14) · v14: 5.1 hecha, formularios del sitio → HubSpot en producción (commit `2193af7`); 5.3 pasa a depender de la 4.5.4 del Plan de SEO (checkbox `marketingConsent` + 2 campos de HubSpot por crear); umbral 2.18 y estado de canales actualizados · v13, a pedido de Mariano (24/9): nueva 1.9 "Configuración completa de Instagram, paso a paso" (26 pasos en 6 bloques, Pendiente), Fase 1 reabierta; el paso de Controles de mensajes que estaba en 2.17 pasa a 1.9 (paso 11); umbral 2.18, roadmap y estado de canales actualizados · v12, trabajado en vivo con Mariano el 24/9: 1.8, 2.1, 2.2 y 2.3 cerradas; nueva 10.2 "IA en el posicionamiento", sin auditar todavía; cambios que Mariano hizo fuera de sesión en Facebook e Instagram (1.6, 1.7 y 1.8 cerradas: Fase 1 completa; bio de Instagram publicada, logo con slogan en inglés para todo, servicios, portada y pin de Facebook, post de 2022 de Instagram eliminado, Linktree actualizado, Instagram linkeado a Facebook); decisiones renumeradas de 8 a 5 · v11: reestructurado con el brief de Mariano: el diagnóstico de marketing pasa a la Parte 2; Social Media (preparación y exposición), Diseño gráfico, Organización de leads y Campañas son fases accionables. Contexto 2022 incorporado (objetivo 2027, target, comunicación, competidores) · Auditoría con navegador en vivo y sesión iniciada en Instagram, Facebook y LinkedIn, solo lectura, sin publicar ni interactuar: `social-content` (perfiles propios, social media, campañas), `seo-marketing` (competencia, búsquedas, diagnóstico, fuentes de empresas target), `web-lead` (verificaciones con clic, sitio, diseño gráfico, código de los formularios, leads) · Sin verificar: el interruptor de compartir Instagram → Facebook (solo desde la app) y "Open to Work" · Versiones anteriores: v11 (23/9, fases accionables), v10 (23/9, preparación y exposición), v9 (21/9) · Espejo de trabajo: `documentation/marketing/marketing-strategy.md`
+Marketing Strategy Basecore · Base Core · actualizado el 26 de septiembre de 2026 (v15) · v15: el paquete de privacidad (Plan de SEO 4.5: política, banner de cookies, aviso en formularios y checkbox de marketing) queda en suspenso por decisión de Mariano, armado y aprobado en preview; el banner se retiró de producción; 5.3 y 6.2 dependen de ese paquete; Cloudflare Web Analytics se mantiene como conteo total de visitas · v14: 5.1 hecha, formularios del sitio → HubSpot en producción (commit `2193af7`); 5.3 pasa a depender de la 4.5.4 del Plan de SEO (checkbox `marketingConsent` + 2 campos de HubSpot por crear); umbral 2.18 y estado de canales actualizados · v13, a pedido de Mariano (24/9): nueva 1.9 "Configuración completa de Instagram, paso a paso" (26 pasos en 6 bloques, Pendiente), Fase 1 reabierta; el paso de Controles de mensajes que estaba en 2.17 pasa a 1.9 (paso 11); umbral 2.18, roadmap y estado de canales actualizados · v12, trabajado en vivo con Mariano el 24/9: 1.8, 2.1, 2.2 y 2.3 cerradas; nueva 10.2 "IA en el posicionamiento", sin auditar todavía; cambios que Mariano hizo fuera de sesión en Facebook e Instagram (1.6, 1.7 y 1.8 cerradas: Fase 1 completa; bio de Instagram publicada, logo con slogan en inglés para todo, servicios, portada y pin de Facebook, post de 2022 de Instagram eliminado, Linktree actualizado, Instagram linkeado a Facebook); decisiones renumeradas de 8 a 5 · v11: reestructurado con el brief de Mariano: el diagnóstico de marketing pasa a la Parte 2; Social Media (preparación y exposición), Diseño gráfico, Organización de leads y Campañas son fases accionables. Contexto 2022 incorporado (objetivo 2027, target, comunicación, competidores) · Auditoría con navegador en vivo y sesión iniciada en Instagram, Facebook y LinkedIn, solo lectura, sin publicar ni interactuar: `social-content` (perfiles propios, social media, campañas), `seo-marketing` (competencia, búsquedas, diagnóstico, fuentes de empresas target), `web-lead` (verificaciones con clic, sitio, diseño gráfico, código de los formularios, leads) · Sin verificar: el interruptor de compartir Instagram → Facebook (solo desde la app) y "Open to Work" · Versiones anteriores: v11 (23/9, fases accionables), v10 (23/9, preparación y exposición), v9 (21/9) · Espejo de trabajo: `documentation/marketing/marketing-strategy.md`
