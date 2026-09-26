@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import type { ComponentType, ReactNode, SVGProps } from "react";
 import { site, siteEn } from "@/lib/site";
+import { openCookieSettings } from "@/lib/consent";
 import { FacebookIcon, InstagramIcon, LinkedinIcon } from "./icons";
 import { FooterEmailIcon, FooterPhoneIcon, FooterPinIcon } from "./footerIcons";
 
@@ -56,6 +57,7 @@ const copy = {
     contactanos: "Contactanos",
     dondeEstamos: "Dónde estamos",
     rights: `Base Core © ${yearRange} Todos los Derechos Reservados`,
+    cookieSettings: "Configurar cookies",
   },
   en: {
     homeLabel: "Base Core – Home",
@@ -64,6 +66,7 @@ const copy = {
     contactanos: "Contact us",
     dondeEstamos: "Where we are",
     rights: `Base Core © ${yearRange} All Rights Reserved`,
+    cookieSettings: "Cookie settings",
   },
 } as const;
 
@@ -244,11 +247,19 @@ export default function Footer() {
       {/* ── Section 2 — copyright (#d01ae78) ─────────────────────────────── */}
       <div className="bg-navy">
         <div className="container-bc px-0">
-          <div className="px-[15px]">
+          <div className="border-t border-white/10 px-[15px] py-[20px] text-center xl:py-[25px]">
             {/* Year is hard-coded on the original — see documentation/PLAN-FOOTER.md. */}
-            <p className="border-t border-white/10 py-[20px] text-center font-sans text-[16px] leading-[32.4px] text-[#C5D2DD] xl:py-[25px]">
-              {t.rights}
-            </p>
+            <p className="font-sans text-[16px] leading-[32.4px] text-[#C5D2DD]">{t.rights}</p>
+            {/* Reopens CookieConsent.tsx's settings panel (plan-seo 4.5.3) via a
+                plain window event — CookieConsent listens for it globally, so
+                this stays a one-line trigger with no consent state of its own. */}
+            <button
+              type="button"
+              onClick={openCookieSettings}
+              className="mt-[4px] font-sans text-[14px] text-[#C5D2DD] underline underline-offset-2 transition-colors hover:text-white"
+            >
+              {t.cookieSettings}
+            </button>
           </div>
         </div>
       </div>

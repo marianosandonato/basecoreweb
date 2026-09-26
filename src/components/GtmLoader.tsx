@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { CONSENT_EVENT, hasAnalyticsConsent, type ConsentChangeDetail } from "@/lib/consent";
 
 let requested = false;
 
@@ -73,11 +74,30 @@ const IDLE_TIMEOUT_MS = 2500;
  */
 const PRE_IDLE_DELAY_MS = 2000;
 
+/**
+ * Consent gate (plan-seo 4.5.3, Google Consent Mode v2, Basic): this is the
+ * one place that decides *whether* the library is ever requested at all,
+ * layered on top of the *when* logic above -- deny-by-default means the
+ * ~166KB fetch this file makes literally cannot happen before someone has
+ * accepted analytics cookies (CookieConsent.tsx), or already had on a
+ * previous visit (the `bc_consent` cookie -- `hasAnalyticsConsent()` reads
+ * it the same way the inline shim in AppShell.tsx does for its own
+ * `consent default` call, so both agree on the same visitor).
+ * `CONSENT_EVENT` is dispatched by consent.ts's `setAnalyticsConsent()`
+ * whenever the banner or the settings panel changes the choice; a `granted`
+ * event just starts the existing idle/timeout schedule below, same as if
+ * consent had already been there on mount. There's no matching "cancel" path
+ * for `denied` -- once `<script>` is appended to `<head>` it can't be
+ * un-requested, so a later withdrawal is handled entirely in consent.ts by
+ * deleting the `_ga`/`_ga_*` cookies instead of anything in this file.
+ */
 export default function GtmLoader({ gaId }: { gaId: string }) {
   useEffect(() => {
     if (requested) return undefined;
 
     let idleId: number | undefined;
+    let delayId: number | undefined;
+    let scheduled = false;
 
     function scheduleIdle() {
       if (typeof window.requestIdleCallback === "function") {
@@ -92,10 +112,23 @@ export default function GtmLoader({ gaId }: { gaId: string }) {
       }
     }
 
-    const delayId = window.setTimeout(scheduleIdle, PRE_IDLE_DELAY_MS);
+    function startScheduleIfNeeded() {
+      if (scheduled || requested) return;
+      scheduled = true;
+      delayId = window.setTimeout(scheduleIdle, PRE_IDLE_DELAY_MS);
+    }
+
+    if (hasAnalyticsConsent()) startScheduleIfNeeded();
+
+    function handleConsentChange(event: Event) {
+      if ((event as CustomEvent<ConsentChangeDetail>).detail?.granted) startScheduleIfNeeded();
+    }
+
+    window.addEventListener(CONSENT_EVENT, handleConsentChange);
 
     return () => {
-      window.clearTimeout(delayId);
+      window.removeEventListener(CONSENT_EVENT, handleConsentChange);
+      if (delayId !== undefined) window.clearTimeout(delayId);
       if (idleId !== undefined) window.cancelIdleCallback(idleId);
     };
   }, [gaId]);
