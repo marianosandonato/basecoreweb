@@ -8,14 +8,31 @@ import { site } from "@/lib/site";
  * The theme's `gva_post_breadcrumb` widget.
  *
  * It renders **empty** on /preventa, /venta, /posventa and /marketing, and as a
- * full 280px hero on /contacto (#0a10a20). Hence two variants:
+ * full 280px hero on /contacto (#0a10a20). Hence three variants:
  *
  *   "bar"  (default) — our own compact navy strip, kept on the four pages where
  *          the original shows nothing at all. A deliberate deviation for UX/SEO,
- *          recorded in documentation/PLAN-PREVENTA.md.
+ *          recorded in documentation/PLAN-PREVENTA.md. Relies on a dark
+ *          PageHero photo rendering immediately after it — see "solid" below
+ *          for pages that have none.
  *   "hero" — a faithful reproduction of the real thing, used on /contacto:
  *          280px of `breadcrumb.jpg` over #1B1F2E with no overlay, and the trail
  *          in a white tab absolutely anchored to the bottom-right corner.
+ *   "solid" — same compact trail as "bar", but for pages with no hero/photo
+ *          of their own at all (blog articles, /blog, the legal pages,
+ *          not-found). Fix for a real bug Mariano found (26/9): from 1200px
+ *          up, Header.tsx is an absolute overlay expecting a dark hero
+ *          right underneath it — its 200x200 white logo (Bar B, y 61-261,
+ *          see Header.tsx's own comment) sits on nothing when there's no
+ *          hero, so its opaque pixels painted directly over this page's own
+ *          H1/date/first H2 instead of just tinting a photo, and this same
+ *          trail sat fully hidden behind Bar A (identical navy, same
+ *          z-order). "solid" reserves that same 261px in real document flow
+ *          with an actual navy fill, so the logo gets a proper backdrop
+ *          (visible, not corrupting) and this page's content starts below
+ *          it instead of underneath it. Below 1200px it's pixel-identical to
+ *          "bar" (Header is in normal flow there, so neither variant has
+ *          this problem to begin with).
  */
 export default function Breadcrumb({
   current,
@@ -25,7 +42,7 @@ export default function Breadcrumb({
   path,
 }: {
   current: string;
-  variant?: "bar" | "hero";
+  variant?: "bar" | "hero" | "solid";
   lang?: Lang;
   /** Only used by the "hero" variant — grows the box to fit a headline
       above the corner trail tab (/ebook). /contacto passes none, so its
@@ -112,6 +129,48 @@ export default function Breadcrumb({
     );
   }
 
+  /** Shared by "bar" and "solid" — same trail markup either way. */
+  const trail = (
+    <ol className="flex items-center gap-2 font-sans text-sm text-white/80">
+      <li>
+        <Link href={homeHref} className="transition-colors hover:text-primary">
+          {homeLabel}
+        </Link>
+      </li>
+      <li aria-hidden>›</li>
+      <li className="font-semibold text-white">{current}</li>
+    </ol>
+  );
+
+  if (variant === "solid") {
+    return (
+      <>
+        {/* <1200px: Header is in normal flow (not an overlay) at this width,
+            so this has nothing to fix — pixel-identical to "bar" below. */}
+        <div className="absolute inset-x-0 top-0 z-30 flex h-[58px] items-center bg-navy min-[1200px]:hidden">
+          <nav aria-label="Breadcrumb" className="container-bc">
+            {trail}
+          </nav>
+        </div>
+
+        {/* >=1200px: real document-flow height (not absolute), so this
+            pushes the page's own content down instead of letting Header's
+            absolute overlay paint over it. 261px = Bar A's 58px + Bar B's
+            offset/logo (58 + 3 + 200) — see Header.tsx's own comment for
+            that math. Filled navy so the white logo lands on a proper
+            backdrop, same as it does on every hero page, instead of on
+            this page's plain background. The trail sits bottom-right,
+            clear of the logo's column on the left. */}
+        <div className="relative hidden bg-navy min-[1200px]:block min-[1200px]:h-[261px]">
+          <nav aria-label="Breadcrumb" className="container-bc flex h-full items-end justify-end px-0 pb-[20px]">
+            {trail}
+          </nav>
+          {jsonLdScript}
+        </div>
+      </>
+    );
+  }
+
   return (
     <div className="absolute inset-x-0 top-0 z-30 flex h-[58px] items-center bg-navy">
       {/* Flat navy, no photo texture, and taken out of flow (absolute, like
@@ -126,17 +185,11 @@ export default function Breadcrumb({
           otherwise the visible navy band above the hero photo ends up 10px
           taller than home's. The original's breadcrumb widget renders empty
           on these pages; ours is kept deliberately for UX/SEO (see
-          documentation/PLAN-PREVENTA.md). */}
+          documentation/PLAN-PREVENTA.md). This variant assumes a dark
+          PageHero renders right after it — see "solid" above for pages with
+          no hero of their own. */}
       <nav aria-label="Breadcrumb" className="container-bc">
-        <ol className="flex items-center gap-2 text-sm text-white/80">
-          <li>
-            <Link href={homeHref} className="transition-colors hover:text-primary">
-              {homeLabel}
-            </Link>
-          </li>
-          <li aria-hidden>›</li>
-          <li className="font-semibold text-white">{current}</li>
-        </ol>
+        {trail}
       </nav>
       {jsonLdScript}
     </div>

@@ -11,7 +11,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 export default function NotFoundEn() {
   return (
     <>
-      <Breadcrumb current="Page not found" lang="en" />
+      <Breadcrumb current="Page not found" lang="en" variant="solid" />
       <section className="py-24 text-center">
         <div className="mx-auto max-w-xl px-4">
           <p className="font-heading text-7xl font-light text-primary">404</p>

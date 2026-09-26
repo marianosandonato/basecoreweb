@@ -41,7 +41,7 @@ export default function BlogPostPage({
   return (
     <>
       <BlogPostingJsonLd post={post} path={path} />
-      <Breadcrumb current={post.title} lang={lang} path={path} />
+      <Breadcrumb current={post.title} lang={lang} path={path} variant="solid" />
 
       <article className="container-bc py-[70px] xl:py-[90px]">
         <div className="mx-auto max-w-[760px]">

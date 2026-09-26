@@ -38,7 +38,7 @@ export default function BlogListPage({
 
   return (
     <>
-      <Breadcrumb current={t.breadcrumbLabel} lang={lang} path={path} />
+      <Breadcrumb current={t.breadcrumbLabel} lang={lang} path={path} variant="solid" />
 
       <section className="container-bc py-[70px] xl:py-[90px]">
         <SectionHeading
