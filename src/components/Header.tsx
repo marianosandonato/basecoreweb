@@ -79,11 +79,11 @@ export default function Header() {
   return (
     <>
       {/* ── Desktop (≥1200px) — absolute overlay ─────────────────────────── */}
-      <header className="absolute inset-x-0 top-0 z-40 hidden min-[1200px]:block">
+      <header className="pointer-events-none absolute inset-x-0 top-0 z-40 hidden min-[1200px]:block">
         {/* Bar A — navy, 58px. The original swaps to position:fixed via JS on
             scroll; since it already sits at y=0, fixed from the start is
             visually identical and needs no script. */}
-        <div className="fixed inset-x-0 top-0 z-[999] bg-navy">
+        <div className="pointer-events-auto fixed inset-x-0 top-0 z-[999] bg-navy">
           {/* px-0: the Elementor container is a flush 1200px and the 15px inset
               lives on each column, so the 45/41.333/13 split is of 1200, not 1170.
               Widened to container-bc-wide (1400) once the nav grew to 7 items —
@@ -225,11 +225,15 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Bar B — transparent, holds the 200x200 white logo. Scrolls away. */}
+        {/* Bar B — transparent, holds the 200x200 white logo. Scrolls away.
+            Click-through except for the logo itself (the <header> above is
+            pointer-events-none too, Bar A opts back in): the full-width box
+            otherwise swallowed clicks meant for whatever sits under it (e.g.
+            the breadcrumb's "Inicio" link on hero-less pages). */}
         <div className="mt-[58px]">
           <div className="container-bc px-0">
             <div className="w-1/4 px-[15px] pt-[3px]">
-              <Link href={homeHref} aria-label={homeLabel} className="block" prefetch={isHome ? false : undefined}>
+              <Link href={homeHref} aria-label={homeLabel} className="pointer-events-auto block" prefetch={isHome ? false : undefined}>
                 <Image
                   src="/images/logotipo-base-core-sales-marketing-espana-latam.png"
                   alt={lang === "en" ? siteEn.name : site.name}

@@ -30,9 +30,8 @@ import { site } from "@/lib/site";
  *          z-order). "solid" reserves that same 261px in real document flow
  *          with an actual navy fill, so the logo gets a proper backdrop
  *          (visible, not corrupting) and this page's content starts below
- *          it instead of underneath it. Below 1200px it's pixel-identical to
- *          "bar" (Header is in normal flow there, so neither variant has
- *          this problem to begin with).
+ *          it instead of underneath it. Below 1200px it's a navy strip in
+ *          normal flow right under the (in-flow) mobile header.
  */
 export default function Breadcrumb({
   current,
@@ -145,9 +144,12 @@ export default function Breadcrumb({
   if (variant === "solid") {
     return (
       <>
-        {/* <1200px: Header is in normal flow (not an overlay) at this width,
-            so this has nothing to fix — pixel-identical to "bar" below. */}
-        <div className="absolute inset-x-0 top-0 z-30 flex h-[58px] items-center bg-navy min-[1200px]:hidden">
+        {/* <1200px: Header is in normal flow here, so this strip goes in
+            flow right under it. It used to be absolute at top-0 like "bar",
+            which put it behind the mobile header where nobody could see it
+            (1.20 of Mejora Estética Web, 28/9). Grows with the text so a
+            long post title wraps instead of being clipped. */}
+        <div className="flex min-h-[48px] items-center bg-navy py-[12px] min-[1200px]:hidden">
           <nav aria-label="Breadcrumb" className="container-bc">
             {trail}
           </nav>
