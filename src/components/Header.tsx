@@ -232,7 +232,7 @@ export default function Header() {
               <Link href={homeHref} aria-label={homeLabel} className="block" prefetch={isHome ? false : undefined}>
                 <Image
                   src="/images/logotipo-base-core-sales-marketing-espana-latam.png"
-                  alt={site.name}
+                  alt={lang === "en" ? siteEn.name : site.name}
                   width={200}
                   height={200}
                   quality={60}
