@@ -1,20 +1,21 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`web-lead`, `seo-marketing`, `performance`) — confirmado el 3/9 que la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma, no de configuración), así que solo la sesión principal puede leer el artifact directo. Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8
-> - Última sincronización: 2026-09-26
+> - Última sincronización: 2026-09-28
+> - Nota 28/9: el artifact pasa a llamarse "Historial Técnico WEB" y unifica todo el historial: suma completas la Auditoría Final Base Core (14-19/9, 25 hallazgos, prefijo AF) y la Mejora Estética Web (21-28/9, 20 tareas, prefijo ME; ME 1.8 descartada). Esos dos artifacts quedan para eliminar. El nombre de este archivo espejo no cambia, para no romper las referencias de los agentes.
 > - Nota 26/9: 1.42 agregada (header desktop superpuesto en páginas sin hero, commit 30067e5).
 > - Nota 25/9: 1.37 cerrada del todo — reapertura del 24/9 (cartel falso por el temporizador de Turnstile.tsx), fix efc5266 y regla de rate limiting en Cloudflare, con su verificación en producción.
 > - Nota: nota agregada a 3.10 — el título del hero de /ebook se sacó el 24/9 (tarea 1.7 de Mejora Estética Web, commit f9e94d3) por repetir el H1; el H1 con la keyword no cambió.
 
-Historial Técnico SEO
+Historial Técnico WEB
 
 basecoresales.com · registro histórico
 
-# Historial Técnico SEO
+# Historial Técnico WEB
 
-Detalle completo de cada tarea del [Plan de SEO](https://claude.ai/artifact/XPrZBTCe2b7tvbzzNuf1GT) ya resuelta — texto exacto, commits, hallazgos y el razonamiento detrás de cada decisión. Este documento no se usa para saber "qué falta": para eso está el Plan de SEO, que solo detalla las tareas activas. Acá vive el registro permanente de todo lo que ya se hizo, para que nada se pierda al sacarlo del tablero activo.
+Registro unificado y permanente de todo el trabajo técnico ya resuelto en basecoresales.com — texto exacto, commits, hallazgos y el razonamiento detrás de cada decisión. Reúne tres fuentes: las tareas cerradas del [BaseCoreWeb: SEO y Performance](https://claude.ai/artifact/XPrZBTCe2b7tvbzzNuf1GT) (Fases 1 a 8), la [Auditoría Final](#auditoria-final) de UX/diseño (14-19/9) y la [Mejora Estética Web](#mejora-estetica) (21-28/9). Las dos auditorías se sumaron completas el 28/9, a pedido de Mariano, para poder eliminar sus artifacts. Este documento no se usa para saber "qué falta": para eso está el tablero activo, que solo detalla lo pendiente.
 
-← [Volver al Plan de SEO](https://claude.ai/artifact/XPrZBTCe2b7tvbzzNuf1GT)
+← [Volver a BaseCoreWeb: SEO y Performance](https://claude.ai/artifact/XPrZBTCe2b7tvbzzNuf1GT)
 
 [Fase 1 · Técnico](#fase1)
 [Fase 2 · Medición](#fase2)
@@ -24,6 +25,8 @@ Detalle completo de cada tarea del [Plan de SEO](https://claude.ai/artifact/XPrZ
 [Fase 6 · Buscadores de IA](#fase6)
 [Fase 7 · BaseHub](#fase7)
 [Fase 8 · Base Core en buscadores](#fase8)
+[Auditoría Final (14-19/9)](#auditoria-final)
+[Mejora Estética Web (21-28/9)](#mejora-estetica)
 [Cronología completa](#cronologia)
 
 Fase 1
@@ -1025,7 +1028,7 @@ EN nuevo: Free guide: how to build a sales process from scratch
 
 **Para qué sirve:** cierra el gap entre lo investigado y lo que el sitio muestra.
 
-**Nota posterior (24/9):** el título del hero se sacó en ES y EN en la tarea 1.7 del artifact [Mejora Estética Web](https://claude.ai/artifact/TMjLE1yCsc5kB5nr6DZqEy) (commit `f9e94d3`). Repetía textualmente al H1 de la sección de abajo, así que la misma frase se veía dos veces seguidas en la primera pantalla. El hero de /ebook quedó igual que el de /contacto (foto + breadcrumb). **El H1 con la keyword no cambió**, así que el objetivo SEO de esta tarea se mantiene: el título del Breadcrumb era un `<p>` decorativo, sin peso de encabezado.
+**Nota posterior (24/9):** el título del hero se sacó en ES y EN en la tarea 1.7 de [Mejora Estética Web](#me-1-7) (ME 1.7, más abajo en este documento) (commit `f9e94d3`). Repetía textualmente al H1 de la sección de abajo, así que la misma frase se veía dos veces seguidas en la primera pantalla. El hero de /ebook quedó igual que el de /contacto (foto + breadcrumb). **El H1 con la keyword no cambió**, así que el objetivo SEO de esta tarea se mantiene: el título del Breadcrumb era un `<p>` decorativo, sin peso de encabezado.
 
 3.11 — Keyword validada "customer success" ausente del title/H1 de /posventa
 
@@ -1394,6 +1397,586 @@ Página de empresa (about):
 
 **Para qué sirve:** que cualquiera que conozca el negocio como "Base Core"/"BaseCore" (sin el "Sales") pueda encontrarlo igual, dentro de lo que es realmente posible frente a la competencia por el término — y de paso, un perfil de LinkedIn completo en vez de uno vacío, que ya era un objetivo de 4.6.
 
+Auditoría
+
+## Auditoría Final Base Core (14-19/9)
+
+Auditoría integral de solo diagnóstico corrida el 14/9 sobre el sitio real: 10 páginas en español × 4 viewports (1440/1280/390/375px) con Playwright, más código fuente, SEO técnico y performance. 25 hallazgos priorizados sin inflar (P1 alto impacto de UX/SEO/accesibilidad, P2 inconsistencia o mejora significativa, P3 detalle menor; ningún P0: nada roto a nivel funcional). Mariano revisó los 25 en el widget del artifact (22 OK, 3 No, con aclaraciones) y se trabajaron fase por fase entre el 17 y el 19/9. Se sumó completa a este documento el 28/9 para poder eliminar el artifact de origen; el detalle día a día del proceso de cierre también está en `documentation/PLAN-AUDITORIA-FINAL.md`.
+
+**Cómo terminó (19/9), los 25 hallazgos cerrados:** **9** implementados con código real y verificados (SquareCta, footer, padding de Metodología, 4 de flip cards, Turnstile, Puestos); **10** migrados al Plan de SEO, dueño de SEO y performance (1.29-1.35, 3.11-3.12 y dos notas en 1.28); **2** falsos positivos (tabla sticky, hero de /tecnologia, este último cerrado como 1.36); **1** descartado por desproporción de alcance (`aria-expanded`); **3** "no tocar" por decisión de Mariano (H1 de Home, gap de logos, script de Cloudflare). El 19/9 se cerró el último cabo suelto: una nota de Mariano sobre el margen del cajón "Etapas" (commit `d93b6a1`).
+
+Estado general del sitio al 14/9
+
+| Área | Evaluación |
+| --- | --- |
+| UX | Sólido en general — un problema real de accesibilidad (Puestos) y fricción real en flip cards (el tap no revierte). |
+| UI | Consistente en la mayoría — los componentes compartidos se reutilizan bien; un puñado de inconsistencias de escala tipográfica. |
+| Responsive | Limpio — sin overflow horizontal ni elementos rotos en 10 páginas × 4 viewports. |
+| Spacing | Funcional pero sin sistema — valores ad hoc por sección, calibrados a mano para igualar el diseño original. |
+| Flip interactions | Funcionan visualmente; el modelo por foco (no un toggle) genera fricción real en mobile. |
+| Navigation | Sin links rotos; menú mobile funcional con submenú. |
+| Conversion | CTAs consistentes; no se auditó copy en profundidad (fuera del alcance). |
+| SEO | Técnicamente sano (canonical, hreflang, sitemap, schema) con hallazgos puntuales (title de /en, breadcrumb, H2 del blog). |
+| Performance | Limpio en todo lo medible desde el entorno; faltaba el dato de campo real de PSI/CWV. |
+| Accessibility | Foco visible y reduced-motion bien resueltos en flip cards; el hallazgo fuerte fue el contenido de Puestos inalcanzable. |
+
+Spacing y márgenes
+
+AF · Padding vertical de sección sin patrón en Home (0 a 120px)
+
+P2 · ajuste puntual 18/9 + cabo suelto 19/9
+
+**Home, 12 secciones.** pt/pb medidos por sección: 0/90, 0/0, 90/90, 90/90, 50/50, 0/0, 90/90, 90/90, 0/0, 90/75, 90/90, 90/120 px. Causa: sin escala de spacing compartida; cada sección calibrada a mano en píxeles para igualar el diseño original de Elementor. Recomendación original: definir 4-5 valores estándar (50/70/90/120) solo para spacing nuevo.
+
+**Revisión de Mariano:** primero pidió una recomendación de medidas y un test antes de tocar nada; el 17/9 se propuso la escala 0/50/90/120. Después preguntó si era necesario o si alcanzaba con corregir los "2 o 3 márgenes que están mal". Se eligió lo segundo.
+
+**Implementado (18/9, commit `dd8392f`):** la sección "Nuestra metodología" pasó de `dt:pt-[110px]` a `dt:py-[90px]`, el único 110 de la Home, para emparejar con las secciones simétricas (90/90). El resto de los valores se dejó: están documentados como intencionales o se repiten en otras secciones.
+
+**Cabo suelto (19/9, commit `d93b6a1`, `web-lead`):** una nota posterior de Mariano ("en preventa, venta y posventa, el cajón de Etapas tiene un margen superior muy chico") había quedado sin retomar. El `SectionHeading` de "Etapas" en `ServiceCyclePage.tsx` no tenía margen inferior: 10px reales antes del grid. Se le agregó `mb-[20px]`, igual que "Puestos" en la misma página. De paso se revisó "Pilares comunicacionales" de /marketing: ya tenía 66px de aire, sin acción. El margen *superior* del mismo cajón se corrigió después como tarea 1.39 del Plan de SEO (Fase 1, arriba).
+
+AF · H1 de Home (70/40px) más grande que el resto (50/35px)
+
+P3 · no tocar, decisión de Mariano
+
+**Home vs. /tecnologia, /marketing, /preventa, /venta, /posventa, /basehub.** Home no usa el `PageHero` compartido y tiene su propia escala tipográfica.
+
+**Decisión de Mariano:** "es jerarquía intencional, no modificar".
+
+AF · H2 de SquareCta (60px) más grande que el resto de los H2 (45px)
+
+P3 · implementado
+
+**/preventa, /venta.** El H2 "Descubrí cómo continúan los ciclos" (componente `SquareCta`) no reutilizaba la clase de H2 estándar.
+
+**Implementado (sesión previa al 18/9):** bajado de 60px a 45px en desktop, igual que el resto de los H2 de la página.
+
+AF · Footer de 1373px en mobile, más de 2× su alto en desktop
+
+P3 · implementado, alcance acotado
+
+**Todas las páginas.** Desktop 667px; mobile 390px: 1373px, por apilar los 11 links en una sola columna. Recomendación original: acordeón o grilla de 2 columnas.
+
+**Implementado (sesión previa al 18/9), sin reorganizar el footer:** el texto de los 5 links de "Servicios" pasó de 16px a 18px.
+
+**No tocar (spacing):** container `.container-bc` (1200px + 15px laterales) idéntico en las 10 páginas y 4 viewports; gap `PageHero` → siguiente sección exactamente 50px en las 6 páginas que lo comparten; entre las 12 secciones de Home el spacing es 100% interno (padding), no márgenes colapsados.
+
+Flip cards
+
+AF · El segundo tap sobre la misma card no revertía el flip
+
+P1 · implementado 18/9
+
+**Home, /tecnologia, /marketing, /preventa, /venta, /posventa (`FlipBox` vía `FlipCardGrid`).** Trigger por CSS `:hover`/`:focus-within`, sin toggle: el segundo tap no cerraba la card, solo moverse a otra.
+
+**Causa real (18/9):** además del foco, en touch el elemento quedaba "pegado" en `:hover` (los navegadores táctiles no tienen gesto de "unhover"), así que un toggle con `blur()` no alcanzaba. Fix: todas las reglas `:hover` de `.flip-box`/`.service-card` viven dentro de `@media (hover: hover)`; en touch el estado lo controla solo el toggle. Verificado con Playwright en emulación táctil (iPhone 13). Commit `9ef3ca8` (fase 2 completa), en producción. El bug reapareció el 19-20/9 con otra causa y se resolvió como 1.41 del Plan de SEO (Fase 1, arriba).
+
+AF · Auto-reveal por scroll inconsistente y abrupto (incluye el riesgo de scroll interno en /venta)
+
+P2 · implementado 18/9
+
+**Todas las páginas con `FlipBox` (mobile/touch).** El teaser por `IntersectionObserver` (60% visible, solo touch real, sin reduced-motion) corría una sola vez por carga. Un segundo hallazgo, "riesgo de scroll interno compitiendo con el scroll de la página en la cara trasera de /venta" (`boxHeight` 250, lista con `overflow-y-auto`), terminó con el mismo pedido.
+
+**Revisión de Mariano:** "al scrollear no siempre se flipean las cards y las que sí se flipean se sienten abruptas"; "si vuelvo a scrollear para arriba el flip automático se pierde. Quiero que esté siempre presente y que sea menos abrupto".
+
+**Implementado (18/9, commit `9ef3ca8`):** el observer ya no se desconecta: se re-arma cada vez que la card vuelve a cruzar el 60% visible, en cualquier dirección, con una transición propia más lenta. Verificado con Playwright.
+
+AF · ServiceCards sin el teaser automático de las flip cards
+
+P2 · implementado 18/9
+
+**Home ("Ciclos") y /preventa, /venta, /posventa ("Puestos").** `ServiceCards` usaba hover/focus sin JS ni teaser.
+
+**Pedido de Mariano:** sumar el mismo flip, siempre presente al scrollear en ambas direcciones y sin ser abrupto.
+
+**Implementado (18/9, commit `9ef3ca8`):** hook compartido nuevo, `useFlipTeaser.ts`, aplicado a `ServiceCards`. De paso, las cards de "Puestos" (sin link) pasaron a ser tocables y enfocables por primera vez. Refactor: `ServiceCards.tsx` se dividió en un Server Component y `ServiceCard.tsx` cliente, porque Next no deja pasar el ícono (una función) de servidor a cliente.
+
+AF · role="group" no comunica el estado abierto/cerrado
+
+P3 · evaluado, descartado
+
+**Todas las páginas con `FlipBox`.** Recomendación opcional: `aria-expanded`. Impacto real bajo: las dos caras viven siempre en el DOM.
+
+**Evaluado (18/9), no implementado:** `aria-expanded` sobre `role="group"` es ARIA inválido (`jsx-a11y/role-supports-aria-props`). Hacerlo bien pide pasar a `role="button"` con Enter/Espacio, alcance desproporcionado para un hallazgo opcional. Se retoma solo como pedido propio.
+
+**No tocar (flip cards):** el scroll de la página nunca se bloquea; foco visible (sin `outline:none`); `prefers-reduced-motion` respetado en CSS y en el teaser de JS; animan solo con `transform`/`opacity`.
+
+Responsive y UX/UI
+
+AF · Tabla "Capacidad × Etapa" sin columna sticky en mobile
+
+P3 · falso positivo
+
+**/tecnologia, 390/375px.** **Verificado (18/9):** la columna "Capacidad" tiene `sticky left-0` desde el commit original de `TechStageMatrix.tsx` (`6214384`), como decisión documentada. Playwright con scroll horizontal real de 200px: la columna no se mueve. Sin cambio de código.
+
+AF · Turnstile en /contacto: warnings en consola, y en realidad formulario trabado en mobile
+
+P3 → P1 de hecho · seguido en 1.37
+
+**/contacto, 390/375px.** El hallazgo era ruido de consola (2 errores + 8 warnings de Turnstile). **Mariano encontró el problema real:** en mobile el captcha a veces no aparecía o quedaba procesando para siempre, y sin captcha el formulario no se podía enviar.
+
+**18/9, primer fix (commit `dd8392f`):** manejo de error de carga del script, `error-callback`/`timeout-callback` y un link "Reintentar" a los 12 s. No alcanzó en su iPhone real: la causa es un conflicto documentado entre Turnstile e iCloud Private Relay / "Evitar rastreo entre sitios" de Safari, que no dispara ningún callback. **Segundo fix, con OK de Mariano:** si el widget queda colgado 12 s, el formulario se habilita igual, con el honeypot como filtro. Mariano: "lo doy como OK ya que este punto vive en el Plan SEO". Detalle completo, confirmación en dos iPhones y el cierre del 25/9 en la tarea 1.37 (Fase 1, arriba).
+
+AF · Grid de logos de clientes con gap:0
+
+P2 · no tocar, decisión de Mariano
+
+**Home, "Empresas con las que trabajamos".** gap medido 0px, contra 16-64px en el resto de los grids. **Decisión de Mariano:** "es intencional, dejar como está".
+
+**No tocar (responsive):** cero overflow horizontal en 10 páginas × 4 viewports; ningún botón se sale del viewport; menú mobile con submenú funcional.
+
+SEO técnico (migrado al Plan de SEO)
+
+Mariano, en el widget: "Todos los OK correspondientes a SEO técnico y performance son porque los voy a trabajar en el Plan SEO". Cada uno tiene su detalle completo, con commit, en su tarea de la Fase 1 o 3 de este documento.
+
+AF · Title de /en sin sufijo de marca
+
+P1 · migrado a 1.29
+
+**/en (Home en inglés).** Hallazgo de SEO/performance de la auditoría. Por decisión de Mariano (18/9) no se trabajó desde la Auditoría Final: se migró al Plan de SEO, su dueño correcto (criterio Camino B, un solo dueño por dato). Resuelto el 18/9: ver **1.29** en la Fase 1.
+
+AF · /contacto sin Open Graph / Twitter Card propio
+
+P2 · migrado a 1.30
+
+**/contacto.** Hallazgo de SEO/performance de la auditoría. Por decisión de Mariano (18/9) no se trabajó desde la Auditoría Final: se migró al Plan de SEO, su dueño correcto (criterio Camino B, un solo dueño por dato). Resuelto el 18/9: ver **1.30**. La parte de Twitter Card por página sigue abierta en el tablero activo como 1.43 (28/9).
+
+AF · Breadcrumb dice "Home" en las páginas ES
+
+P2 · migrado a 1.31
+
+**9 páginas en español.** Hallazgo de SEO/performance de la auditoría. Por decisión de Mariano (18/9) no se trabajó desde la Auditoría Final: se migró al Plan de SEO, su dueño correcto (criterio Camino B, un solo dueño por dato). Resuelto el 18/9: ver **1.31** (y 1.38, mismo bug en el nav).
+
+AF · /blog salta de H1 a H3
+
+P2 · migrado a 1.32
+
+**/blog, /en/blog.** Hallazgo de SEO/performance de la auditoría. Por decisión de Mariano (18/9) no se trabajó desde la Auditoría Final: se migró al Plan de SEO, su dueño correcto (criterio Camino B, un solo dueño por dato). Resuelto el 18/9: ver **1.32**.
+
+AF · Keyword "customer success" ausente del title/H1
+
+P3 · migrado a 3.11
+
+**/posventa, /en/post-sales.** Hallazgo de SEO/performance de la auditoría. Por decisión de Mariano (18/9) no se trabajó desde la Auditoría Final: se migró al Plan de SEO, su dueño correcto (criterio Camino B, un solo dueño por dato). Resuelto el 18/9: ver **3.11** en la Fase 3.
+
+AF · Frase exacta de keyword diluida por "e"/"&"
+
+P3 · migrado a 3.12
+
+**/tecnologia, /en/tecnologia.** Hallazgo de SEO/performance de la auditoría. Por decisión de Mariano (18/9) no se trabajó desde la Auditoría Final: se migró al Plan de SEO, su dueño correcto (criterio Camino B, un solo dueño por dato). Resuelto el 18/9: ver **3.12** en la Fase 3.
+
+AF · Title/description largos de /basehub
+
+P3 · migrado a 1.33
+
+**/basehub.** Hallazgo de SEO/performance de la auditoría. Por decisión de Mariano (18/9) no se trabajó desde la Auditoría Final: se migró al Plan de SEO, su dueño correcto (criterio Camino B, un solo dueño por dato). Mariano había pedido ver la propuesta exacta de copy antes de decidir; se resolvió en la migración. Ver **1.33**.
+
+AF · Title de /en/presales cerca del límite
+
+P3 · migrado a 1.34
+
+**/en/presales.** Hallazgo de SEO/performance de la auditoría. Por decisión de Mariano (18/9) no se trabajó desde la Auditoría Final: se migró al Plan de SEO, su dueño correcto (criterio Camino B, un solo dueño por dato). Medido de nuevo: 59 caracteres, dentro del rango. Cerrado sin cambio: ver **1.34**.
+
+AF · 4 meta descriptions cortas
+
+P3 · migrado a 1.35
+
+**/blog, /en/blog, /en/contact, /en/marketing.** Hallazgo de SEO/performance de la auditoría. Por decisión de Mariano (18/9) no se trabajó desde la Auditoría Final: se migró al Plan de SEO, su dueño correcto (criterio Camino B, un solo dueño por dato). Copy propuesto y aprobado en la migración: ver **1.35**.
+
+**No tocar (SEO técnico):** canonical correctos en las 20 páginas (apex → www 301, barra final → 308); hreflang recíproco (es/en/x-default); robots.txt y sitemap (34 URLs) coinciden con las páginas públicas; JSON-LD bien tipado; alt="" solo en imágenes decorativas; sin 404 en links internos ni externos; las 20 imágenes OG responden 200; un solo H1 por página.
+
+Performance (migrado al Plan de SEO)
+
+AF · "Imagen hero (LCP)" de /tecnologia más pesada que el resto
+
+P3 · falso positivo, cerrado como 1.36
+
+**/tecnologia.** Mariano pidió ajustar la calidad con un preview de Vercel. **Investigado (18/9):** `bg-5.jpg` (68KB) no es el hero sino el fondo de `ContactSection`, al final de la página; el hero real usa `PageHero`, ya optimizado en 1.26/1.27. Sin preview ni cambio: ver **1.36** en el tablero de SEO (cerrada directo como Hecho).
+
+AF · Script email-decode de Cloudflare sin async/defer
+
+P3 · no tocar, decisión de Mariano
+
+**Todas las páginas.** 661 bytes inyectados por Cloudflare (Scrape Shield), no por el código. Mariano: "no hacer nada con esto". Ya estaba cerrado en 1.28 desde el 14/9.
+
+AF · Falta un dato real de Core Web Vitals
+
+P2 · resuelto con la API key de PSI (18/9)
+
+**Todas las páginas.** El entorno no podía correr PSI confiable (cuota en 0, banda muy limitada). **Pedido de Mariano:** dar una API key para consultar PSI de forma autónoma. Anotado en 1.28; ese mismo día Mariano generó la key y se creó `scripts/seo/psi.py` (commit `61931b6`). Ver **1.28** en la Fase 1.
+
+**No tocar (performance):** `next/image` con srcset/sizes y lazy loading en todo lo que no es hero; CSS de Tailwind inline; JS propio ~233KB comprimidos, async salvo el polyfill `noModule`; fuentes woff2 con `preload:false` donde compiten con el hero; terceros limitados a GA4 y Cloudflare; Recruiting con `bg-fixed` es decisión ya tomada.
+
+Accesibilidad
+
+AF · Contenido de "Puestos" inalcanzable por teclado y en mobile
+
+P1 · implementado 18/9
+
+**/preventa, /venta, /posventa** (un solo componente, `ServiceCyclePage`/`ServiceCards`). Las cards no tenían href, tabindex ni nada enfocable; los roles reales (ej. "Inbound Sales Representative") tenían `aria-hidden="true"` y solo se veían con `:hover`.
+
+**Implementado en dos partes:** la fase de flip cards (`9ef3ca8`) las hizo tocables y enfocables. La segunda parte agregó, solo en cards sin link, una lista `sr-only` con los roles, presente para lectores de pantalla y sin cambio visual. Verificado con Playwright y en el HTML de producción. Commit `8851d29`.
+
+**Problemas sistémicos identificados:** (1) sin escala de spacing compartida, estructural en las 10 páginas; (2) dos sistemas de breakpoints conviviendo (md/dt de 768/1025px vs. los 4 propios de `.heading-title`), candidato a saltos de tamaño en 992-1024px; (3) "Puestos" era un solo problema en un componente compartido, no tres; (4) dos implementaciones de "hover-reveal" sin paridad (`FlipBox` con soporte táctil vs. `ServiceCards` básico), resuelto al compartir `useFlipTeaser`; (5) contraejemplo positivo: `PageHero` + gap de 50px, perfectamente consistente donde hay componente compartido.
+
+Auditoría
+
+## Mejora Estética Web (21-28/9)
+
+Tablero de mejora visual del sitio, abierto el 21/9 a partir de una auditoría de `design-review` (gstack) corrida por `web-lead` en modo solo lectura sobre las 10 páginas en español, y ampliado el 28/9 con una auditoría enfocada de las páginas en inglés (ME 1.13, que dejó ME 1.16-1.20). Cada hallazgo se resolvió de a uno, con decisión de Mariano, un commit por hallazgo y, para los cambios visibles, un preview de Vercel antes de producción. Se sumó completo a este documento el 28/9 para poder eliminar el artifact de origen. Las tareas llevan el prefijo "ME" para no confundirse con la Fase 1 del Plan de SEO.
+
+**Cómo terminó (28/9), 20 de 20 cerradas:** **13 resueltas con código**, en producción: ME 1.2 (`ef45f7e`), 1.3 (`3ca280d`), 1.14 (`b916a18`), 1.5 (`5f71767`), 1.7 (`f9e94d3`), 1.10 (`7ff5427`), 1.12 (`4f8089f`), 1.15 (`511684a`), 1.16 (`17dbc4f`), 1.17 (`a6767c6`), 1.18 (`6bd209d`), 1.19 (`ab9cb62`) y 1.20 (`3b0f61b`). **5 cerradas sin código:** 1.1, 1.6 y 1.9 fueron falsos positivos (la auditoría capturó antes de que cargaran las fotos), y 1.4 y 1.11 se cerraron por decisión de Mariano. **1.13** fue la auditoría de las páginas en inglés. **1.8** (hero de /tecnologia) quedó descartada el 28/9. La Twitter Card en español de `/en/*`, encontrada en 1.13, sigue abierta en el tablero activo como 1.43.
+
+Diagnóstico inicial (21/9)
+
+Resultado de la auditoría corrida el 21/9 por `web-lead` con el skill `design-review` (gstack) sobre `www.basecoresales.com`, 10 páginas en español. Navegador usado: Playwright MCP (ni Aside ni el navegador headless propio de gstack estaban disponibles en este entorno). Motor determinístico de Impeccable no instalado (se ofreció y se difirió). Sin segunda voz de modelo cruzado (Codex no disponible). Categoría "Performance as Design" fuera de alcance a propósito — es dominio del agente `performance`, trackeado en el Plan de SEO.
+
+| Score | Nota | Lectura |
+| --- | --- | --- |
+| Design Score | B | Fundamentos sólidos — fotografía consistente, paleta coherente, copy sin relleno |
+| AI Slop Score | B | Sin grids de relleno ni testimonios falsos; un solo hero (1.8) rompe el registro |
+
+| Categoría | Peso | Nota | Motivo |
+| --- | --- | --- | --- |
+| Jerarquía Visual y Composición | 15% | A | Sin hallazgos propios; foco claro por sección |
+| Tipografía | 15% | B | 1.4 — cerrada: Montserrat/Sora se conservan como acento intencional (decisión de Mariano, 24/9) |
+| Color y Contraste | 10% | A | Paleta coherente, sin violación de contraste confirmada |
+| Spacing y Layout | 15% | A | Sin hallazgos alto/medio; 1.9 (pulido) resultó falso positivo |
+| Interaction States | 10% | **D** | 1.2 y 1.3 (ambos alto, ya resueltos) cayeron acá |
+| Responsive | 10% | A | Menú mobile con criterio: 51px de touch target, sin scroll horizontal |
+| Contenido y Microcopy | 10% | B | 1.7 — título duplicado en /ebook (resuelto 24/9); resto sin "happy talk" |
+| AI Slop Detection | 5% | B | 1.8 — hero de /tecnologia genérico |
+| Motion & Animation | 5% | A | Sin bounce/elástico detectado; `prefers-reduced-motion` sin confirmar en este entorno |
+| Performance as Design | 5% | No evaluado | Fuera de alcance — dominio del agente `performance` |
+
+Goodwill — flujos recorridos
+
+```
+Flujo 1: "Diagnóstico Gratuito" (Home → formulario de contacto)
+Goodwill: 70 → 65/100 — saludable, al límite (medido antes de 1.2/1.3)
+  Home → CTA visible          70 → 80  (+10 CTA primario obvio)
+  Primera visita → banner     80 → 65  (-15 banner tapa contenido, 1.2 — resuelto 22/9)
+  Formulario → labels ocultos 65 → 55  (-10 label desaparece al escribir, 1.3 — resuelto 23/9)
+  Alternativa directa         55 → 60  (+5 "PROGRAMAR REUNIÓN" evita el form)
+  Contacto visible en header  60 → 65  (+5 email/whatsapp/tel siempre arriba)
+
+Flujo 2: "Leer un artículo del blog" (Home → Blog → artículo)
+Goodwill: 70 → 75/100 — saludable
+  Home → carrusel + CTA claro   70 → 75  (+5 tarjetas bien etiquetadas)
+  Índice del blog               75 → 80  (+5 tiempo de lectura, sin relleno)
+  Artículo: contenido real      80 → 85  (+5 jerarquía clara, sin AI slop)
+  Formulario al pie del artículo 85 → 75 (-10 mismo problema de 1.3 — resuelto 23/9)
+
+Los dos flujos perdían puntos en el mismo lugar exacto: el formulario de
+contacto reutilizado en todo el sitio (1.2 y 1.3, ambos ya resueltos).
+Medición no repetida todavía tras los fixes.
+```
+
+Fortalezas confirmadas
+
+Cero errores de consola propios en las 10 páginas (el único ruido, en /contacto, es 100% de Cloudflare Turnstile). Paleta coherente, sin colores que choquen. Sin lorem ipsum ni copy de relleno en ninguna página. /tecnologia y /basehub son las páginas mejor resueltas en estructura de contenido (tabla comparativa real, captura de producto real, metodología propia). Menú mobile ejecutado con criterio. Sin testimonios falsos ni métricas de relleno en ningún lado.
+
+Quick Wins (<30 min cada uno)
+
+1. Completar las 3 fotos faltantes en /venta (1.1 — cerrado, falso positivo). 2. Borrar el H2 duplicado en /ebook (1.7 — cerrado: se sacó el texto del hero, no un H2). 3. `padding-bottom` mientras el banner de idioma está visible (1.2 — cerrado). 4. Ampliar el área clicable del nav desktop/footer/íconos a 44px (1.5 — cerrado, acotado al selector ES | EN). 5. Migrar el CTA del hero y 2 labels de montserrat/sora a gilmer/dmSans (1.4 — cerrado sin acción, se conservan las tipografías).
+
+Reporte completo, 16 screenshots y baseline para una futura auditoría de regresión: `~/.gstack/projects/marianosandonato-basecoreweb/designs/design-audit-20260921/` (local, no publicado como artifact).
+
+Tareas
+
+ME 1.1 — Tarjetas sin foto en la grilla "Etapas" de /venta
+
+Hecho · confirmado falso positivo, cerrado sin acción (22/9)
+
+El hallazgo original (auditoría 21/9): de las 9 tarjetas de "Etapas", las últimas 3 ("Modelos de inducción y supervisión", "Esquemas de compensación", "Implementación CRM") se veían como bloques grises lisos en el screenshot de la auditoría, sin foto.
+
+**Investigado (22/9):** Mariano revisó /venta en vivo y las 9 tarjetas se ven correctas, con foto. Confirmado en el código: `src/content/venta.ts` define imagen para las 9 (incluidas las 3 señaladas), y los 3 archivos existen en `public/images/` con tamaño normal (70-95KB, igual que el resto). Navegando la página real con Playwright: al cargar, **ninguna** de las 9 tarjetas tiene la imagen cargada todavía (`naturalWidth: 0` en las 9, no solo en las 3 señaladas) — `FlipBox.tsx` usa `next/image` sin `priority`, carga diferida por diseño. Al hacer scroll hasta la fila y esperar, las 3 cargan perfecto (`naturalWidth: 400`, confirmado con captura real).
+
+**Causa raíz:** carrera de tiempos de la auditoría automatizada — el screenshot de esa fila se capturó antes de que terminara de resolver la imagen optimizada de Next.js (`/_next/image?...&w=3840&q=75`) para las últimas 3 tarjetas, mientras las primeras 6 ya habían tenido más tiempo de red. No es una condición que un visitante real llegue a ver — el lazy-load nativo carga la imagen bastante antes de que la tarjeta entre al viewport real durante un scroll normal.
+
+**Cerrado sin acción de código** — no hay ningún asset faltante ni bug de layout.
+
+**Para qué sirve:** confirma que no todo hallazgo de una auditoría automatizada es un bug real — vale la verificación manual antes de gastar tiempo arreglando algo que ya funciona.
+
+ME 1.2 — Banner de idioma tapa contenido real en la primera visita
+
+Hecho · en producción (22/9)
+
+El banner "This site is also available in English" es `position: fixed` en la parte inferior del viewport y no reservaba espacio para sí mismo — se superponía directo sobre el contenido en vez de convivir con él. En desktop tapaba la firma y el ícono de LinkedIn de la sección de contacto; en mobile tapaba el final del footer.
+
+**Implementado por `web-lead`:** el banner ya exponía su altura real vía la variable CSS `--lang-banner-height` (seteada por `ResizeObserver` en `LanguageBanner.tsx`, ya consumida por `WhatsAppButton.tsx` para no chocar con el banner) — pero ningún `<body>` la estaba usando. Se agregó `pb-[var(--lang-banner-height,0px)]` a la clase del `<body>` en los dos root layouts (`src/app/(es)/layout.tsx` y `src/app/(en)/en/layout.tsx`) — reserva exactamente la altura del banner al final del documento (0px cuando está dismisseado). No se tocó el componente del banner ni su lógica de dismiss/cookie.
+
+**Verificado por `web-lead`:** `tsc`/`eslint`/`build` limpios; verificación visual con Playwright en desktop y mobile en `/contacto` y Home — firma, LinkedIn y footer completo visibles arriba del banner; dismiss (cookie `basecore_lang`) intacto.
+
+**Verificado de forma independiente en producción (sesión principal, mismo día):** navegación real a `www.basecoresales.com/contacto` con Playwright — `padding-bottom` computado de 49px, exactamente igual a la altura real del banner (`getBoundingClientRect`). Capturas en desktop y mobile confirman el footer completo (firma, íconos sociales, copyright) visible arriba del banner. Los 2 errores de consola presentes son 100% de Cloudflare Turnstile (ruido de tercero ya documentado en el Historial Técnico SEO), sin relación con este cambio.
+
+**Commit:** `ef45f7e` — "fix(a11y): reserve space for the language banner so it never covers content" — pusheado directo a `master`.
+
+**Para qué sirve:** que ningún visitante nuevo (la primera visita es la que más importa) llegue a ver contenido real tapado por el banner.
+
+ME 1.3 — Labels del formulario de contacto invisibles al escribir
+
+Hecho · en producción (23/9)
+
+El formulario de contacto (reutilizado en Home, /contacto y el CTA de pie de cada página de servicio) tenía `<label>` reales asociados a los 6 campos de texto vía `label[for]`, pero posicionados con el patrón "sr-only" — accesibles para lector de pantalla, invisibles para un usuario vidente. El único identificador visible era el placeholder, que desaparecía apenas se empezaba a escribir. El select "Servicio" tenía el mismo problema vía una opción deshabilitada como placeholder.
+
+**Implementado por `web-lead`:** componente tocado, `src/components/ContactForm.tsx` — el único reutilizado (vía `ContactSection` → `ContactFormLazy`) en Home, /contacto y el CTA de /preventa, /venta, /posventa, /marketing y /tecnologia. Enfoque elegido: **floating label** en vez de label persistente, porque el formulario tiene alturas pixel-exactas documentadas como invariantes frágiles (ej. el alto del wrapper del textarea es load-bearing para el total de 646px) — el floating label vive dentro de la altura ya existente de cada campo, sin tocar esa aritmética. Inputs y textarea resueltos 100% con CSS (`peer` + `:placeholder-shown`, placeholder vacío). El select "Servicio" no soporta `:placeholder-shown` nativamente, así que sumó un estado local mínimo solo para la posición del label (el valor enviado se sigue leyendo de `FormData` igual que antes) y agregó el `id`/`label[for]` que el select nunca había tenido (antes solo `aria-label`). El textarea necesitó además que su `padding-top` crezca al enfocar/llenar, para que texto y label no arranquen en el mismo punto. Se agregó `motion-reduce:transition-none` a las transiciones nuevas.
+
+**Bugs encontrados y corregidos durante la verificación visual** (no eran evidentes en el diff de código): el label del select se superponía con el valor elegido por un conflicto de especificidad entre clases Tailwind; el label del textarea se superponía con el texto tipeado hasta que se ajustó el `padding-top` descrito arriba.
+
+**Verificado por `web-lead`:** `tsc`/`eslint`/`build` limpios. Playwright en /contacto: estado vacío, foco+tipeo y blur-con-contenido en los 7 campos (6 inputs/textarea + select), en desktop (1440px) y mobile (390px), sin overflow horizontal. `label[for]` verificado programáticamente contra los 7 ids. Propagación confirmada en /preventa (mismo componente vía `ContactSection`).
+
+**Hallazgo relacionado sin resolver:** /ebook usa un componente de formulario distinto, `EbookForm.tsx` (no la misma instancia), con el mismo bug — no estaba en el alcance de este fix. Documentado como tarea nueva, [ME 1.14](#me-1-14).
+
+**Commit:** `3ca280d` — "fix(a11y): make contact form labels visible on focus/fill" — pusheado directo a `master`.
+
+**Para qué sirve:** resuelve, junto con 1.2, el punto exacto donde los dos flujos de usuario recorridos en la auditoría perdían más goodwill (ver Diagnóstico).
+
+ME 1.4 — Dos familias tipográficas sueltas sin razón clara
+
+Hecho · validado por Mariano, cerrado sin cambios (24/9)
+
+El hallazgo original (auditoría 21/9): **montserrat** aparecía solo en el botón CTA del hero de Home y **sora** solo en 2 labels verticales ("Marketing"/"Tecnología"). Se proponía migrarlos a gilmer/dmSans y dejar de cargar esas dos fuentes.
+
+**Investigado (24/9):** la auditoría había medido mal el alcance. Montserrat 300 es también el **H1 del hero** de /preventa, /venta, /posventa, /marketing, /tecnologia y /basehub (`PageHero.tsx`, ES y EN), y Sora 200 es el título de las **tarjetas que se dan vuelta** en las 3 páginas del ciclo (`FlipCardGrid.tsx`), además de los labels de `AboutLogoBlock.tsx`/`TechnologyBlock.tsx`. Gilmer solo tiene grosores 400/500/700 y DM Sans 400-700, así que el estilo finito de esos títulos no se puede reproducir con las fuentes "oficiales". Unificar todo habría cambiado el carácter visual de 6 páginas.
+
+**Probado:** se aplicó solo el alcance acotado (el botón "AGENDAR RELEVAMIENTO"/"BOOK A DISCOVERY CALL" de Montserrat 600 a Gilmer 700, igual que los demás botones del sitio) y se publicó un preview en Vercel, sin commit ni push, para comparar contra producción.
+
+**Decisión de Mariano:** no le gustó cómo quedaba. Se conservan las tipografías tal como están (Montserrat y Sora como acento intencional del diseño). El cambio se revirtió en el working tree y no llegó a producción. La tarea queda cerrada sin cambios de código.
+
+**Para qué sirve:** deja registrado que Montserrat/Sora son parte deliberada del sistema tipográfico. Una futura auditoría no debería volver a marcarlas como "familias sueltas".
+
+ME 1.5 — Touch targets por debajo de 44px en nav/footer de escritorio
+
+Hecho · en producción, alcance acotado a ES | EN (24/9)
+
+El hallazgo original (auditoría 21/9): varios elementos clicables de escritorio por debajo de 44px (nav, íconos sociales, links del footer/contacto, selector ES/EN). Se propuso llevarlos a 44px.
+
+**Medido en producción (24/9, 1440px):** 24 elementos por debajo de 44px, pero 44px es el criterio AAA de WCAG (pensado sobre todo para táctil). Contra el mínimo AA de WCAG 2.2 (24px, o espacio suficiente alrededor) casi todo cumple: nav de 40-43px de alto, íconos de 38×38, links del footer y del contacto del header de 22-23px bien espaciados. **El único caso flojo de verdad era el selector ES | EN**: 15-17 × 23px cada opción, pegadas y separadas solo por la barra. Mobile ya estaba bien (51px).
+
+**Decisión de Mariano:** acotar el alcance al selector ES | EN, sin cambio visual.
+
+**Implementado (sesión principal):** en `src/components/LanguageSwitcher.tsx`, cada link recibe un `::before` absoluto e invisible (`-inset-x-[7px] -inset-y-[11px]`) que amplía el área clicable a unos 29-31 × 45px sin mover nada visible. Con 7px por lado, las áreas de ES y EN no se pisan (hay unos 16px entre las dos). Durante la verificación apareció que la barra "|" (con `opacity-40`, que crea su propio contexto de apilamiento) tapaba 2px del área de ES: se le agregó `pointer-events-none`, ya que es decorativa.
+
+**Verificado:** `tsc`/`eslint`/`build` limpios. Playwright contra un build de producción local: los 4 bordes de cada área responden al clic, sin superposición entre ES y EN, el ícono de Instagram vecino sigue respondiendo, el área queda dentro del header, y en mobile (390px) también se amplía y no hay desborde horizontal. Mariano lo aprobó en un preview de Vercel. Después del push, verificado en `www.basecoresales.com/contacto`, con los 4 bordes de ES y de EN respondiendo. Los errores de consola son todos de Cloudflare Turnstile.
+
+**Commit:** `5f71767` — "fix(a11y): enlarge ES/EN language switcher hit area without visual change" — pusheado a `master`.
+
+**Para qué sirve:** resuelve el único target realmente difícil de acertar con el mouse, sin tocar el diseño del header.
+
+ME 1.6 — Bloque "IA+CRM" con 3 tratamientos visuales distintos según la página
+
+Hecho · confirmado falso positivo, cerrado sin acción (24/9)
+
+El hallazgo original (auditoría 21/9): el bloque "IA + CRM" se veía como grilla 2×2 en Home, como lista angosta sobre fondo blanco en /preventa y /venta, y como lista sobre foto en /posventa, /marketing y /tecnologia. Se proponía unificarlo en la grilla 2×2.
+
+**Investigado (24/9):** es **un solo componente**, `src/components/TechnologyBlock.tsx`, que no se toca desde el 18/9 (antes de la auditoría). Lo usan Home, /preventa, /venta, /posventa y /marketing (ES y EN) con el mismo tratamiento: foto de fondo `Base-Core-Sales-estrategia-tecnologia.jpeg`, logo con "Tecnología" a la izquierda, panel de vidrio esmerilado con las 4 filas con ícono (IA / Automatización / Software a medida / CRM) y el botón "IMPLEMENTACIONES TECNOLÓGICAS". Solo cambian el eyebrow y el texto de cada fila por página (prop `stage`), más el nombre de la etapa bajo el logo en las páginas de servicio. **No existe ninguna grilla 2×2**, y **/tecnologia no tiene este bloque**.
+
+**Verificado en producción:** se obtuvo el HTML de las 6 páginas y en las 5 que tienen el bloque aparecen la misma foto y el mismo panel (`backdrop-blur-sm`). Las capturas de Home y /preventa a 1440px, con la foto ya cargada, muestran un tratamiento idéntico.
+
+**Causa probable:** la misma de 1.1. Las capturas de página completa de la auditoría se tomaron antes de que la foto de fondo (`next/image`, carga diferida) terminara de cargar, así que en algunas páginas el bloque se vio "sobre fondo blanco" y se leyó como un tratamiento distinto.
+
+**Cerrado sin acción de código**, con confirmación de Mariano.
+
+ME 1.7 — Título repetido en /ebook
+
+Hecho · en producción (24/9)
+
+El hallazgo original (auditoría 21/9): el H1 del hero de /ebook se repetía textualmente como H2 de la sección de abajo. Se proponía borrar ese H2.
+
+**Investigado (24/9):** la auditoría lo describió al revés. El texto sobre la foto del hero no es un heading: es un `<p>` decorativo que `Breadcrumb.tsx` renderiza con la prop `title`. El **H1 real** es el de la sección blanca (`EbookSection.tsx`), con la keyword. "Descarga nuestro E-book" es un H2 distinto, así que no había nada que borrar ahí. La repetición venía de la tarea SEO 3.10 (5/9), que le puso al hero el mismo texto que el H1. Resultado: la misma frase dos veces seguidas en la primera pantalla.
+
+**Decisión de Mariano:** sacar el texto del hero, igual que en /contacto, sin tocar el H1.
+
+**Implementado (sesión principal):** se sacó la prop `title` del `Breadcrumb` en `src/app/(es)/ebook/page.tsx` y `src/app/(en)/en/ebook/page.tsx`. El hero queda solo con la foto y el breadcrumb "Inicio / E-Book" y baja de ~490px a 280px, el mismo alto que /contacto. El H1, el H2 "Descarga nuestro E-book" y el formulario no se tocaron.
+
+**Verificado:** `tsc`/`eslint`/`build` limpios. Playwright contra un build de producción local: la frase aparece una sola vez (como H1) en ES y EN; en desktop el H1 ahora entra en la primera pantalla; en mobile el hero mide 280px y no hay desborde horizontal. Mariano lo aprobó en un preview de Vercel ("buen cambio"). Después del push, verificado en `www.basecoresales.com/ebook` y `/en/ebook`: ya no está el texto del hero y el H1 sigue intacto.
+
+**Commit:** `f9e94d3` — "fix(ui): drop the hero copy on /ebook that repeated the H1" — pusheado a `master`. Se agregó una nota a la tarea 3.10 del Historial Técnico SEO, porque este cambio revierte el texto del hero que se había puesto ahí.
+
+ME 1.8 — Hero de /tecnologia rompe el registro visual del resto del sitio
+
+Descartado (28/9) · decisión de Mariano
+
+El hero usa una imagen de cabeza robótica brillante con overlay de partículas digitales — uno de los clichés visuales más reconocibles del marketing genérico de "IA" — mientras que Home, Preventa, Venta, Posventa y Marketing usan fotografía documental consistente de personas en contextos de negocio reales. Es la única página cuya primera impresión no se siente parte de la misma familia visual que las otras cinco.
+
+**Corrección sugerida:** reemplazar por una foto consistente con el estilo documental del resto del sitio (ej. un equipo trabajando con dashboards reales del BaseCore AI System), sin imaginería literal de robots/circuitos en ningún punto del sitio.
+
+**Por qué importa:** es el único hallazgo de la categoría "AI Slop" con peso real — el resto del sitio no tiene grids de relleno ni testimonios falsos.
+
+**Investigado (24/9):** la imagen es `/images/TECNOLOGIA-BASECORE.jpg` y se usa en dos lugares: el hero (`PageHero`) y la imagen Open Graph de /tecnologia y /en/tecnologia. Cambiarla afecta también la vista previa al compartir el link. En el repo no hay una foto de reemplazo que sirva sin repetirse: de las fotos con ancho de hero (≥1600px), la única sin usar es `Project-Management-Base-Core-Sales.webp`, casi blanca (fundido a blanco), y no se leería bajo el H1 blanco; todas las demás ya se usan en otras páginas.
+
+**Decisión de Mariano (24/9):** por ahora se conserva el robot. **No se cancela**: queda en pausa como posible cambio futuro. Para retomarla hace falta decidir de dónde sale la foto nueva (una foto propia de Mariano o de su equipo trabajando con BaseHub o un dashboard real, o 3-4 opciones con licencia libre en el estilo documental del resto del sitio) y pasar por un preview de Vercel antes de producción.
+
+**Descartado (28/9), decisión de Mariano:** al unificar los historiales se da por descartado como posible cambio. El hero de /tecnologia conserva la imagen actual (`/images/TECNOLOGIA-BASECORE.jpg`, también imagen Open Graph de /tecnologia y /en/tecnologia) y no queda en ningún tablero como pendiente. Si en el futuro se quisiera cambiar, se abre como tarea nueva, partiendo de lo investigado arriba.
+
+ME 1.9 — Espacio en blanco desproporcionado en la sección "Puestos"
+
+Hecho · confirmado falso positivo, cerrado sin acción (24/9)
+
+El hallazgo original (auditoría 21/9): la sección "Puestos" de /preventa, /venta y /posventa tenía un espacio en blanco desproporcionado arriba y alrededor de las tarjetas. Se proponía reducir padding/min-height o sumar texto por tarjeta.
+
+**Investigado (24/9):** en la captura original de la auditoría (`preventa-desktop-full.jpg`) el hueco entre el título "Puestos" y las tarjetas es el espacio de las **fotos de cada tarjeta, que todavía no habían cargado**: se cargan de forma diferida (`next/image`) y la captura de página completa se tomó antes. En producción, a 1440px, cada tarjeta muestra su foto y el espaciado coincide con el resto de las secciones (sección con padding 50/50, unos 65px arriba del eyebrow y unos 90px debajo de las tarjetas, sin `min-height`).
+
+**Verificado en las 3 páginas:** /preventa (Inbound, Outbound), /venta (Cerradores, Nuevos Negocios) y /posventa (Retención, Crecimiento). Todas las imágenes cargan (`naturalWidth > 0`) al hacer scroll hasta la sección.
+
+**Cerrado sin acción de código**, con confirmación de Mariano. Es la misma causa que 1.1: la auditoría automatizada capturó antes de que terminara el lazy-load.
+
+ME 1.10 — Escala de headings no sistemática
+
+Hecho · en producción (24/9)
+
+El hallazgo original (auditoría 21/9): H1 70px, H2 45px (con algunas secciones en 44px) y H3 20-22px. Se proponía unificar el H2 en un solo valor y considerar un tamaño intermedio entre H2 y H3.
+
+**Investigado (24/9):** no era un tema de redondeo. Cuatro bloques pisaban el tamaño del título con 44px fijo: Agencia de Marketing y el banner del ebook en el home, `TechnologyBlock` (IA + CRM) y `BaseHubTeaser`. En total eran 6 lugares en el código, contando el home en ES y EN. El resto del sitio usa 45px (`.heading-title`).
+
+**Decisión de Mariano (24/9):** unificar en 45px. El tamaño intermedio entre H2 y H3 queda afuera.
+
+**Implementado:** 44px pasa a 45px en los 6 lugares, sin otros cambios. Medido contra un build de producción local a 1440px: los 11 H2 del home quedan en 45px, en ES y EN. Mariano lo aprobó en un preview de Vercel.
+
+**Commit:** `7ff5427` — "fix(ui): unify side-block H2s at 45px to match the rest of the site" — pusheado a `master`.
+
+**Hallazgo relacionado:** al medir en tablet y celular aparecieron bloques que no se achican como el resto de los títulos. Ya pasaba antes de este cambio. Quedó como tarea nueva, [ME 1.15](#me-1-15).
+
+ME 1.11 — Ritmo de secciones muy uniforme entre páginas
+
+Hecho · cerrado sin cambios, decisión de Mariano (24/9)
+
+El hallazgo original (auditoría 21/9): las secciones a todo el ancho alternando oscuro/claro tenían un ritmo muy uniforme en Home, /marketing y /tecnologia. Se proponía variar 1-2 secciones por página (layout asimétrico, una cita destacada o un dato destacado).
+
+**Revisado en producción (24/9, 1440px, con todas las fotos cargadas):**
+
+* **Home:** ya tiene variedad real. Hay fotos a todo el ancho, bloques de 2 columnas asimétricos (Proceso como servicio, Agencia de Marketing, Recruiting), tarjetas, carrusel y el banner del ebook. La propia auditoría usaba "Agencia de Marketing" como ejemplo de lo que está bien.
+* **/tecnologia:** es la página con más variedad del sitio: tabla comparativa, las etapas del BaseCore AI System, pasos numerados y un recuadro destacado.
+* **/marketing:** es la única que sigue la plantilla tal cual (hero, bloque azul, grilla de 8 tarjetas, IA + CRM, BaseHub, Recruiting, contacto). Es una cuestión de gusto, no un defecto.
+
+**Por qué no se aplicó la corrección sugerida:** el sitio no tiene testimonios a propósito, así que no hay citas reales para usar. El único dato disponible en /marketing ("el 90% de los compradores B2B empieza investigando por su cuenta") no tiene fuente citada, así que no conviene destacarlo como número grande.
+
+**Decisión de Mariano (24/9):** cerrar sin cambios. Si más adelante se quiere darle un momento propio a /marketing, es un proyecto de diseño aparte, no pulido. Para destacar el dato del 90% primero hace falta su fuente.
+
+ME 1.12 — Anillo de foco sutil en el formulario
+
+Hecho · en producción (24/9)
+
+El hallazgo original (auditoría 21/9): el anillo de foco de los campos del formulario era un box-shadow de 1px, fácil de perder de vista al navegar con teclado. Se proponía subirlo a 2px con buen contraste.
+
+**Investigado (24/9):** el color ya cumplía. El azul del anillo (`#056cb0`) tiene un contraste de unos 4.8:1 contra el fondo del campo (`#edf3f6`), y WCAG pide 3:1 para indicadores de foco. El problema era solo el grosor. Los campos están separados 20-22px entre sí, así que un anillo de 2px no choca con nada.
+
+**Implementado:** `focus:ring-1` pasa a `focus:ring-2` en `ContactForm.tsx` (home, /contacto y las páginas de servicio) y `EbookForm.tsx` (/ebook). Mismo color. Como el anillo es un box-shadow, no mueve el layout.
+
+**Verificado:** build limpio. Playwright contra un build de producción local en /contacto (1440px y 390px) y /ebook (1440px): el campo enfocado muestra el anillo de 2px y el alto del formulario no cambia con el foco. Mariano lo aprobó en un preview de Vercel.
+
+**Commit:** `4f8089f` — "fix(a11y): thicken form focus ring from 1px to 2px" — pusheado a `master`.
+
+ME 1.13 — Páginas /en/\* sin auditar
+
+Hecho · auditoría enfocada (28/9)
+
+La ronda 1 (21/9) auditó solo las 10 páginas en español. **Decisión de Mariano (28/9):** auditoría enfocada en lo propio del inglés, en vez de una ronda 2 completa de `design-review`. Motivo: las páginas `/en/*` usan exactamente los mismos componentes que las de español (verificado en el código), así que los fixes de la ronda 1 ya se aplicaban.
+
+**Cómo se hizo:** `web-lead`, solo lectura, contra producción: `/en`, `/en/presales`, `/en/sales`, `/en/post-sales`, `/en/marketing`, `/en/tecnologia`, `/en/basehub`, `/en/ebook`, `/en/contact`, `/en/blog` y 2 posts, a 1440, 768 y 390px, esperando la carga de las imágenes antes de marcar una como faltante. La sesión principal verificó en el código y en producción los hallazgos de los links, la Twitter Card y el alt del logo.
+
+**Lo que está bien:** sin scroll horizontal en ninguna página ni ancho; sin textos sin traducir ni mezcla de idiomas en lo visible (el único "falso" fue Don Seitán, nombre propio de un cliente); fechas del blog en formato inglés; menú y submenú traducidos; mensaje de respaldo de Turnstile en inglés. Los fixes de la ronda 1 se ven igual en inglés: labels flotantes (1.3/1.14), selector ES | EN (1.5), hero de /en/ebook (1.7), H2 45/34/28px (1.10/1.15) y anillo de foco de 2px (1.12).
+
+**No verificado en vivo:** el banner de idioma (1.2) no se pudo forzar a aparecer, porque depende del idioma del navegador; el componente es el mismo que en español. Tampoco se vieron los mensajes de éxito o error del formulario, porque no se envió ninguno.
+
+**Hallazgos:** 1.16 (links del home a páginas en español), 1.17 (404 global en español), 1.18 (alt del logo), y dos problemas que también existen en español: 1.19 (Recruiting en tablet) y 1.20 (breadcrumb de los posts). La Twitter Card y el title por defecto en español son metadata, así que su dueño es el [Plan de SEO](https://claude.ai/artifact/XPrZBTCe2b7tvbzzNuf1GT), tarea 1.43. Pulido sin acción: "Recruiting" ocupa 5 líneas en inglés contra 4 en español a 1440px, sin romper nada.
+
+ME 1.14 — Mismo problema de 1.3 en el formulario de /ebook
+
+Hecho · en producción (23/9)
+
+Al implementar 1.3, `web-lead` encontró que /ebook no usa `ContactForm.tsx` (ya arreglado) sino un componente separado, `EbookForm.tsx`, con el mismo patrón de labels "sr-only" invisibles al escribir. Los 5 campos del formulario (nombre, apellido, empresa, whatsapp, email) tenían el bug — no tiene select ni textarea, a diferencia de ContactForm.
+
+**Implementado por `web-lead`:** se reutilizó tal cual el patrón ya validado en el commit `3ca280d` (floating label vía CSS, `peer` + `:placeholder-shown`, placeholder vacío). Al no haber select ni textarea, no hizo falta el estado local para tracking de relleno ni el ajuste de `padding-top` que sí necesitó ContactForm — el fix quedó más simple. Los `label[for]` existentes no se tocaron.
+
+**Verificado por `web-lead`:** `tsc`/`eslint`/`build` limpios. Playwright contra build de producción local en /ebook, desktop (1440px) y mobile (390px), estado vacío y con los 5 campos completados — label flota arriba del campo sin superposición, sin cambio de layout/altura en reposo. `label[for]` confirmado programáticamente contra los 5 ids (`ebook-nombre`, `ebook-apellidos`, `ebook-empresa`, `ebook-whatsapp`, `ebook-email`).
+
+**Commit:** `b916a18` — "fix(a11y): make ebook form labels visible on focus/fill" — pusheado directo a `master`.
+
+**Para qué sirve:** cierra el mismo problema de 1.3 en el único formulario de descarga del ebook, que había quedado afuera del fix original por ser una instancia de componente separada.
+
+ME 1.15 — Títulos que no se achican en tablet y celular
+
+Hecho · en producción (24/9)
+
+Encontrado el 24/9 al medir 1.10. Los H2 del sitio se achican con la pantalla (45 → 39 → 34 → 30 → 28px), pero cuatro bloques tenían tamaños fijos propios: Agencia de Marketing y el banner del ebook (home), `TechnologyBlock` (IA + CRM) y `BaseHubTeaser`. En celular, Agencia de Marketing e IA + CRM quedaban en 45px contra 28px del resto, BaseHub en 36px y el banner del ebook con su propia escala (40/26px).
+
+**Implementado:** se sacaron los tamaños forzados de los 4 bloques (6 lugares en el código, contando el home en ES y EN), así que ahora heredan la escala estándar de `.heading-title`. En desktop no cambia nada: siguen en 45px, y el banner del ebook conserva su interlineado de 68px.
+
+**Verificado:** build limpio. Medido contra un build de producción local en el home ES y EN, /preventa y /marketing, a 1440, 1024, 800, 600 y 390px: en cada ancho los 4 bloques quedan exactamente igual que el título de referencia ("Proceso como servicio"), sin scroll horizontal. Capturas en 390px con los títulos en una o pocas líneas, sin cortes. Mariano lo aprobó en un preview de Vercel.
+
+**Commit:** `511684a` — "fix(ui): let side-block H2s follow the standard responsive scale" — pusheado a `master`.
+
+ME 1.16 — Tarjetas "Sales Cycles" del home en inglés llevan a las páginas en español
+
+Hecho · en producción (28/9)
+
+En `/en`, las tarjetas Presales / Sales / Post-Sales linkeaban a `/preventa`, `/venta` y `/posventa`. Un comentario en `src/app/(en)/en/page.tsx` decía que esas páginas todavía no tenían versión en inglés (citando `documentation/PLAN-I18N.md`, que ya no existe); hoy `/en/presales`, `/en/sales` y `/en/post-sales` existen, así que el visitante en inglés terminaba en español sin motivo.
+
+**Implementado (28/9, sesión principal):** los 3 `href` pasan a `/en/presales`, `/en/sales` y `/en/post-sales`, y se borró el comentario obsoleto. De paso se borró el mismo comentario obsoleto en `Footer.tsx`, cuyos links en inglés ya estaban bien. Sin cambio visible, así que no hace falta preview de Vercel.
+
+**Verificado:** `tsc`, `eslint` y `next build` limpios. Contra un build de producción local: el home en inglés solo tiene links a las rutas `/en/*` de las 3 etapas, las 3 responden 200, y el home en español sigue apuntando a `/preventa`, `/venta` y `/posventa`.
+
+**Commit:** `17dbc4f` — "fix(i18n): point the English home's sales-cycle cards to the /en pages" — pusheado a `master` con el OK de Mariano. Verificado en `www.basecoresales.com/en`: solo links a las rutas `/en/*` de las 3 etapas, las 3 responden 200, y el home en español sin cambios.
+
+ME 1.17 — El 404 de una dirección /en/\* mal escrita sale en español
+
+Hecho · en producción (28/9)
+
+Si alguien entra a una dirección `/en/...` que no existe (por ejemplo, un typo), ve `src/app/global-not-found.tsx`, que está todo en español: pestaña "404 - Página no encontrada", breadcrumb "Inicio", H1 "Página no encontrada" y botón "Volver al inicio" que lleva al home en español. Verificado en producción con `/en/this-page-does-not-exist-xyz`.
+
+**Contexto:** es una limitación conocida y comentada en el propio archivo. Next 16 no le pasa a `global-not-found.tsx` la dirección que falló, así que no puede saber si era una ruta en inglés. El 404 de rutas dinámicas en inglés (`(en)/en/not-found.tsx`) sí está en inglés; su title de pestaña en español es parte de la 1.43 del [Plan de SEO](https://claude.ai/artifact/XPrZBTCe2b7tvbzzNuf1GT).
+
+**Implementado (28/9, sesión principal):** no hizo falta tocar `proxy.ts`. Se agregó una ruta comodín, `src/app/(en)/en/[...slug]/page.tsx`, que solo llama a `notFound()`. Así cualquier dirección `/en/...` que no exista cae en el 404 en inglés que ya existía (`(en)/en/not-found.tsx`), dentro del layout en inglés, en vez del 404 global en español. Es el mecanismo que indica la documentación de Next 16. Las rutas fijas y `blog/[slug]` tienen prioridad sobre el comodín, así que solo recibe direcciones que igual iban a dar 404.
+
+**Verificado:** `tsc`, `eslint` y `next build` limpios. Contra un build de producción local: `/en/this-page-does-not-exist-xyz`, `/en/a/b/c`, `/en/blog/a/b` y `/en/services/old-page` devuelven 404 con `noindex`, `lang="en"`, header y footer en inglés, breadcrumb "Home › Page not found" y botón "Back to home" a `/en`, sin scroll horizontal (Playwright, 1440px y celular). Las páginas reales en inglés siguen dando 200, `/en/blog/nope` sigue igual, el 404 en español no cambió y la barra final sigue redirigiendo (308). El HTML servido es el mismo tipo de respuesta que ya da en producción el 404 de un post inexistente.
+
+**Queda para la 1.43 del Plan de SEO:** la pestaña sigue mostrando el title por defecto en español, igual que el 404 de posts inexistentes.
+
+**Commit:** `a6767c6` — "fix(i18n): serve the English 404 for unknown /en/\* URLs" — pusheado a `master` con el OK de Mariano (sin preview de Vercel: la página ya existía en producción). Verificado en vivo: `/en/this-page-does-not-exist-xyz`, `/en/a/b/c` y `/en/services/old-page` dan 404 con `noindex`, `lang="en"`, H1 "Page not found" y botón a `/en`; las páginas reales siguen en 200 y el 404 en español no cambió. El texto "Page not found" aparece dentro de los datos internos de Next de cada página en inglés, pero no se ve: es normal y pasa igual en español con "Página no encontrada".
+
+ME 1.18 — Texto alternativo del logo del header en español en las páginas en inglés
+
+Hecho · en producción (28/9)
+
+El logo del header de escritorio (a partir de 1200px) usa `alt={site.name}` fijo en `src/components/Header.tsx:235`, así que en todas las páginas `/en/*` dice "Base Core – Consultoría Comercial y Marketing". El logo del celular (líneas 286 y 320) ya elige el texto según el idioma.
+
+**Implementado (28/9, sesión principal):** el logo de escritorio usa el mismo condicional que el del celular (`lang === "en" ? siteEn.name : site.name`). Sin cambio visible. No queda ningún otro `alt` fijo en español en los componentes.
+
+**Verificado:** `tsc`, `eslint` y `next build` limpios. Commit `6bd209d` — "fix(i18n): translate the desktop header logo's alt text on /en pages" — pusheado a `master` con el OK de Mariano. En vivo, en `/en` y `/en/contact` los dos logos dicen "Base Core – Commercial Consulting & Marketing"; en el home en español siguen en español.
+
+ME 1.19 — Texto de "Recruiting" ilegible sobre la foto en tablet (home)
+
+Hecho · en producción (28/9)
+
+En el home, a 768px, el texto de la sección "Recruiting" queda encima de la foto de la entrevista y en partes no se lee. Pasa igual en español y en inglés: no es un problema de traducción, apareció de paso en la auditoría de 1.13.
+
+**Medido (28/9, build local):** el problema va de unos 500px a 1024px. En ese rango la sección apila el texto sobre la foto, que se recorta desde la derecha, y las dos personas de la entrevista quedan detrás del título y el párrafo (lo peor, a 1024px). En celular (hasta ~440px) se ve solo la parte clara de la foto, y en escritorio (desde 1025px) el texto va al lado de la foto: los dos se ven bien.
+
+**Decisión de Mariano (28/9):** panel de vidrio detrás del texto, el mismo recurso que el bloque IA + CRM (entre las opciones había también un velo blanco sobre toda la foto, o la foto como franja arriba y el texto abajo).
+
+**Implementado:** en el home ES y EN (`src/app/(es)/page.tsx` y `src/app/(en)/en/page.tsx`), un panel `bg-white/75` + `backdrop-blur-sm`, borde y sombra iguales a los de `TechnologyBlock`, solo entre 480 y 1024px (`min-[480px]:max-dt:`). Celular y escritorio no cambian.
+
+**Verificado:** `tsc`, `eslint` y `next build` limpios. Playwright contra un build local en ES y EN a 390, 479, 480, 600, 768, 1024, 1025 y 1440px: el panel aparece solo entre 480 y 1024, entra entero en la sección y no hay scroll horizontal. Preview de Vercel para comparar: `basecoreweb-2zaiwtp7w-base-core.vercel.app`.
+
+**Commit:** `ab9cb62` — "fix(ui): frosted panel behind the home Recruiting copy on tablet" — pusheado a `master` después de que Mariano aprobó el preview. Verificado en vivo en el home ES y EN: el panel aparece a 768px y no a 390 ni a 1440, sin scroll horizontal.
+
+ME 1.20 — Breadcrumb invisible en los posts del blog en celular y tablet
+
+Hecho · en producción (28/9)
+
+En celular y tablet, el breadcrumb de cada post (`nav[aria-label="Breadcrumb"]`, texto blanco) queda dentro de una barra oscura que el header fijo, del mismo color, tapa por completo. Pasa igual en español y en inglés; apareció de paso en la auditoría de 1.13. Hay que confirmar si es un efecto de la 1.42 del Plan de SEO (header en páginas sin hero, 26/9).
+
+**Medido en producción (28/9):** el alcance era más grande. Por debajo de 1200px el breadcrumb no se ve en **ninguna** página salvo /contacto (blog, posts, /preventa, /marketing, /en/presales…): las variantes "bar" y "solid" de `Breadcrumb.tsx` son una franja `absolute top-0` que queda detrás del header de celular. No lo causó la 1.42 (solo tocó escritorio). En escritorio, en las páginas con foto el breadcrumb queda a propósito detrás de la barra superior, y en el blog se ve pero el link "Inicio" no se podía cliquear: la capa transparente del header (`<header>` absoluto de 261px) se quedaba con el clic. Los datos estructurados del breadcrumb sí están en todas las páginas.
+
+**Decisión de Mariano (28/9):** hacerlo visible solo en el blog y las páginas sin foto (variante "solid": /blog, posts, 404), donde se llega desde Google a leer; las páginas de servicio quedan como están, porque su hero con el H1 ya orienta. Más el arreglo del clic en escritorio. (Las otras opciones eran hacerlo visible en todo el sitio, o cerrar sin cambios visibles.)
+
+**Implementado:** en `Breadcrumb.tsx`, la variante "solid" por debajo de 1200px pasa a ir en el flujo de la página, debajo del header, como franja navy de 48px como mínimo que crece si el título es largo. En `Header.tsx`, el header de escritorio deja pasar los clics (`pointer-events-none`) salvo la barra superior y el logo. En escritorio no cambia nada a la vista.
+
+**Verificado:** `tsc`, `eslint` y `next build` limpios. Playwright contra un build local a 390, 768, 1100, 1199, 1200 y 1440px en posts ES/EN, /blog, un 404 en inglés, /preventa, /en/presales, /contacto y el home: el breadcrumb se ve y se puede cliquear en las páginas "solid" en todos los anchos; /preventa, /contacto y el home quedan igual; sin scroll horizontal. En escritorio siguen funcionando el logo, el menú, el submenú de Venta y el selector de idioma, y el clic real en "Inicio" del breadcrumb lleva al home. Preview de Vercel: `basecoreweb-byni233jz-base-core.vercel.app`.
+
+**Commit:** `3b0f61b` — "fix(ui): show the breadcrumb on hero-less pages below 1200px, make it clickable on desktop" — pusheado a `master` después de que Mariano aprobó el preview. Verificado en vivo a 390, 768 y 1440px: el breadcrumb se ve y se puede cliquear en /blog y en los posts ES/EN, /preventa queda igual, sin scroll horizontal; en escritorio funcionan el logo, el submenú de Venta y el clic en "Inicio" del breadcrumb.
+
 ## Cronología completa
 
 El registro día a día de cómo se llegó al estado actual — el "Por dónde seguir" original del Plan de SEO, movido acá en su totalidad para no repetirlo en el documento activo.
@@ -1428,5 +2011,10 @@ El registro día a día de cómo se llegó al estado actual — el "Por dónde s
 28. **21/9, cierre de 8.2:** Mariano revisó personalmente `crunchbase.com/organization/base-core` (bloqueado para cualquier cliente automatizado por un challenge de Cloudflare desde el 20/9) y confirmó que la ficha pertenece a BaseCore™ (geoceldas, Scottsdale AZ) — no a Base Power ni a Base Core Sales. Sin nada que reclamar, la tarea se cierra con las 11 recomendaciones resueltas.
 29. **25/9, cierre definitivo de 1.37:** reabierta el 24/9 por un cartel de error falso. La causa estaba en el temporizador de `Turnstile.tsx` (no se cancelaba al verificar y arrancaba antes de que existiera el widget); Cloudflare y el servidor estaban bien. Fix verificado en local, en un preview aprobado por Mariano y en producción (commit `efc5266`). Además, una regla de rate limiting en Cloudflare cubre el hueco de envíos sin token, verificada en producción.
 30. **26/9, cierre de 1.42:** al verificar las páginas legales de la 4.5.4 se encontró que, en desktop, el logo blanco del header (overlay pensado para heros oscuros) pisaba las primeras letras del contenido en las páginas sin hero, bug ya presente en producción en todos los artículos del blog. Fix con la variante `"solid"` del Breadcrumb, subido solo, separado de la 4.5.4, a pedido de Mariano. Commit `30067e5`, verificado en vivo.
+31. **14/9, Auditoría Final de UX/diseño:** auditoría integral de solo diagnóstico (10 páginas × 4 viewports, código, SEO y performance), 25 hallazgos. Mariano los revisa en el widget del artifact. Detalle completo en [Auditoría Final](#auditoria-final).
+32. **17-19/9, cierre de la Auditoría Final, fase por fase:** padding de Metodología y primer fix de Turnstile (`dd8392f`), flip cards y ServiceCards (`9ef3ca8`), Puestos accesible (`8851d29`); SEO y performance migrados al Plan de SEO; el 19/9 se cierra el último cabo suelto, el margen de "Etapas" (`d93b6a1`). Artifact archivado ese día.
+33. **21-24/9, Mejora Estética Web, ronda 1:** auditoría de `design-review` sobre las 10 páginas en español (15 tareas con las que surgieron en el camino). Resueltas de a una, con preview de Vercel para lo visible. Detalle en [Mejora Estética Web](#mejora-estetica).
+34. **28/9, Mejora Estética Web, páginas en inglés:** auditoría enfocada de `/en/*` (ME 1.13); ME 1.16-1.20 resueltas y en producción el mismo día; la Twitter Card en español pasa al tablero activo como 1.43. ME 1.8 queda descartada.
+35. **28/9, historial unificado:** a pedido de Mariano, este documento pasa a llamarse "Historial Técnico WEB" y suma completas la Auditoría Final y la Mejora Estética Web, para poder eliminar esos dos artifacts.
 
-Historial Técnico SEO · Base Core · creado el 5 de septiembre de 2026, a partir del Plan de SEO original · actualizado el 26 de septiembre (1.42 nueva y cerrada: header desktop superpuesto en páginas sin hero, fix con la variante "solid" del Breadcrumb, commit `30067e5`) · antes, el 25 de septiembre (1.37 cerrada del todo: causa del cartel falso en el temporizador de `Turnstile.tsx`, fix `efc5266` verificado en producción, y regla de rate limiting en Cloudflare para los envíos sin token) · antes, el 24 de septiembre (nota en 3.10: se sacó el título del hero de /ebook porque repetía el H1, tarea 1.7 de Mejora Estética Web, commit `f9e94d3`) · antes, el 21 de septiembre (consolidación del artifact Performance Web: se suman acá el detalle completo de 1.23-1.27, la cronología punto a punto de la regresión de Core Web Vitals, el cierre de los dos hallazgos que 1.14 tenía abiertos — Recruiting se queda en CSS a propósito, JS sin usar del bundle propio medido y sin acción — y una nota de método para la próxima medición de performance; el artifact Performance Web quedó sin contenido propio y se eliminó) · antes, el mismo día: 8.2 movida acá del todo — cerrada tras confirmar que la ficha de crunchbase.com/organization/base-core la ocupa BaseCore™, geoceldas de Scottsdale AZ, no Base Power; detalle completo de las 11 recomendaciones en la Fase 8) · antes, el mismo día: 4.6 movida acá — Mariano revierte la decisión del 5/9 de no activar canales secundarios; LinkedIn empresa, Instagram y Facebook pasan a desarrollo urgente, gestionado desde el Plan de Marketing/Social, no acá — primera tarea de una nueva Fase 4 en este documento · antes, el mismo día: 1.28 movida acá del todo — Mariano decidió no seguir persiguiendo el objetivo de mobile +90 en el score de laboratorio de PSI; queda reemplazada por 5.9 en el Plan de SEO, un chequeo mensual recurrente sin objetivo activo de score) · antes: 20 de septiembre (1.40 movida acá — el overlay de /marketing necesitó una 3ra ronda: medido el color de las 5 fotos de hero, la de /marketing resultó la más saturada de azul con diferencia, así que el overlay nunca fue la causa principal; fix real con filtro de color sobre la propia imagen + overlay neutro, confirmado por Mariano en un preview de Vercel y llevado a producción. De paso se retiró el widget de revisión interactiva del Plan de SEO — duplicaba el archivo y dejaba una línea sin poder leer, forzando un publish con `force` en otra sesión; el veredicto de revisión se registra por chat de acá en más) · antes, el mismo día: 1.37, 1.39 y 1.41 movidas acá — 1.37 confirmada por Mariano en iPhone real; 1.39 y 1.41 marcadas OK en el (todavía vigente en ese momento) widget de revisión interactiva del Plan de SEO, ahora "BaseCoreWeb: SEO y Performance" · antes: 18 de septiembre, sesión posterior (1.29-1.35, 1.38, 3.11 y 3.12 movidas acá) · antes, el mismo día: migración de 9 hallazgos SEO desde la Auditoría Final de UX/diseño (1.29-1.35, 3.11-3.12) · antes: 14 de septiembre (Fase 8 nueva, 8.1 cerrada — decisión de no unificar el naming a "BaseCore") · espejo de trabajo en `documentation/seo/historial-seo.md`
+Historial Técnico WEB (antes Historial Técnico SEO) · Base Core · creado el 5 de septiembre de 2026, a partir del Plan de SEO original · actualizado el 28 de septiembre (historial unificado: se suman completas la Auditoría Final Base Core, 25 hallazgos del 14-19/9, y la Mejora Estética Web, 20 tareas del 21-28/9, con ME 1.8 descartada; los dos artifacts quedan listos para eliminarse) · antes, el 26 de septiembre (1.42 nueva y cerrada: header desktop superpuesto en páginas sin hero, fix con la variante "solid" del Breadcrumb, commit `30067e5`) · antes, el 25 de septiembre (1.37 cerrada del todo: causa del cartel falso en el temporizador de `Turnstile.tsx`, fix `efc5266` verificado en producción, y regla de rate limiting en Cloudflare para los envíos sin token) · antes, el 24 de septiembre (nota en 3.10: se sacó el título del hero de /ebook porque repetía el H1, tarea 1.7 de Mejora Estética Web, commit `f9e94d3`) · antes, el 21 de septiembre (consolidación del artifact Performance Web: se suman acá el detalle completo de 1.23-1.27, la cronología punto a punto de la regresión de Core Web Vitals, el cierre de los dos hallazgos que 1.14 tenía abiertos — Recruiting se queda en CSS a propósito, JS sin usar del bundle propio medido y sin acción — y una nota de método para la próxima medición de performance; el artifact Performance Web quedó sin contenido propio y se eliminó) · antes, el mismo día: 8.2 movida acá del todo — cerrada tras confirmar que la ficha de crunchbase.com/organization/base-core la ocupa BaseCore™, geoceldas de Scottsdale AZ, no Base Power; detalle completo de las 11 recomendaciones en la Fase 8) · antes, el mismo día: 4.6 movida acá — Mariano revierte la decisión del 5/9 de no activar canales secundarios; LinkedIn empresa, Instagram y Facebook pasan a desarrollo urgente, gestionado desde el Plan de Marketing/Social, no acá — primera tarea de una nueva Fase 4 en este documento · antes, el mismo día: 1.28 movida acá del todo — Mariano decidió no seguir persiguiendo el objetivo de mobile +90 en el score de laboratorio de PSI; queda reemplazada por 5.9 en el Plan de SEO, un chequeo mensual recurrente sin objetivo activo de score) · antes: 20 de septiembre (1.40 movida acá — el overlay de /marketing necesitó una 3ra ronda: medido el color de las 5 fotos de hero, la de /marketing resultó la más saturada de azul con diferencia, así que el overlay nunca fue la causa principal; fix real con filtro de color sobre la propia imagen + overlay neutro, confirmado por Mariano en un preview de Vercel y llevado a producción. De paso se retiró el widget de revisión interactiva del Plan de SEO — duplicaba el archivo y dejaba una línea sin poder leer, forzando un publish con `force` en otra sesión; el veredicto de revisión se registra por chat de acá en más) · antes, el mismo día: 1.37, 1.39 y 1.41 movidas acá — 1.37 confirmada por Mariano en iPhone real; 1.39 y 1.41 marcadas OK en el (todavía vigente en ese momento) widget de revisión interactiva del Plan de SEO, ahora "BaseCoreWeb: SEO y Performance" · antes: 18 de septiembre, sesión posterior (1.29-1.35, 1.38, 3.11 y 3.12 movidas acá) · antes, el mismo día: migración de 9 hallazgos SEO desde la Auditoría Final de UX/diseño (1.29-1.35, 3.11-3.12) · antes: 14 de septiembre (Fase 8 nueva, 8.1 cerrada — decisión de no unificar el naming a "BaseCore") · espejo de trabajo en `documentation/seo/historial-seo.md`
