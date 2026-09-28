@@ -43,3 +43,7 @@ public/_rwd/
 
 # playwright mcp output
 .playwright-mcp/
+
+# Borradores legales de la 4.5 (privacidad/cookies): tienen CUIT y domicilio
+# reales y el repo es público. El texto final se publica vía las páginas legales.
+documentation/legal/
