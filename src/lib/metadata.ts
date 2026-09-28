@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { site } from "@/lib/site";
+import { site, siteEn } from "@/lib/site";
 
 /**
  * Shared root-layout metadata defaults, factored out so both root layouts
@@ -7,17 +7,28 @@ import { site } from "@/lib/site";
  * documentation/seo/plan-seo.md 1.18) declare the same `metadata` export
  * without duplicating the object by hand. Every individual page already
  * overrides title/description/openGraph via its own `generateMetadata`, so
- * this only matters as the fallback for routes that don't set their own —
- * and as the base `openGraph.locale`, which does need to differ per root.
+ * this only matters as the fallback for routes that don't set their own
+ * (the 404s, for one) — and as the base `openGraph.locale`, which does need
+ * to differ per root. The fallback copy follows the root's language too:
+ * with `site` hard-coded here, every /en/* 404 tab and share preview came
+ * out in Spanish.
+ *
+ * `twitter` only sets the card type on purpose. Next fills twitter:title,
+ * :description and :image from each route's own openGraph when the twitter
+ * block doesn't set them (postProcessMetadata in
+ * next/dist/lib/metadata/resolve-metadata.js), so every page shares with its
+ * own title and language. Setting them here instead pinned all pages to the
+ * home page's generic Spanish copy.
  */
 export function buildRootMetadata(openGraphLocale: "es_ES" | "en_US"): Metadata {
+  const copy = openGraphLocale === "en_US" ? siteEn : site;
   return {
     metadataBase: new URL(site.url),
     title: {
-      default: site.name,
+      default: copy.name,
       template: `%s – ${site.shortName}`,
     },
-    description: site.description,
+    description: copy.description,
     icons: {
       icon: "/images/cropped-FAVICON-BASE-CORE-SALES-32x32.png",
       apple: "/images/cropped-FAVICON-BASE-CORE-SALES-192x192.png",
@@ -27,15 +38,12 @@ export function buildRootMetadata(openGraphLocale: "es_ES" | "en_US"): Metadata 
       locale: openGraphLocale,
       url: site.url,
       siteName: site.shortName,
-      title: site.name,
-      description: site.description,
+      title: copy.name,
+      description: copy.description,
       images: ["/images/basecoresales-slide-marketing-espana-1.jpg"],
     },
     twitter: {
       card: "summary_large_image",
-      title: site.name,
-      description: site.description,
-      images: ["/images/basecoresales-slide-marketing-espana-1.jpg"],
     },
   };
 }
