@@ -450,18 +450,25 @@ export default function HomePage() {
             either a re-cropped source asset or accepting the tighter zoom --
             a visual/design call, not a mechanical migration. */}
         <div className="px-[15px] pb-[45px] dt:w-[45%] dt:py-[100px] dt:pl-[85px]">
-          <SectionHeading
-            eyebrow="RECRUITING: FUERZA DE VENTAS"
-            title="Te acompañamos en la búsqueda y selección de perfiles acordes a tu negocio."
-            description="Además de nuestro modelo de formación, buscamos perfiles acordes y eficientes al modelo de ventas propuesto."
-            align="left"
-            centerOnMobile
-            showLine={false}
-            maxWidth={800}
-            className="mb-[8px] md:pr-[50px] dt:mb-[10px]"
-          />
-          <div className="mt-[20px]">
-            <CheckList items={recruitingChecklist} size="md" centerOnMobile />
+          {/* Tablet only (480px to dt): the photo is cropped from the right, so the
+              two people in the interview land right behind the heading. Same
+              frosted-glass panel as TechnologyBlock keeps the text readable
+              without hiding the photo. Mobile shows only the light part of the
+              photo and desktop puts the text beside it, so both stay as-is. */}
+          <div className="min-[480px]:max-dt:rounded-[14px] min-[480px]:max-dt:border min-[480px]:max-dt:border-line/70 min-[480px]:max-dt:bg-white/75 min-[480px]:max-dt:px-[30px] min-[480px]:max-dt:py-[35px] min-[480px]:max-dt:shadow-[0_10px_30px_-12px_rgba(0,41,75,0.28)] min-[480px]:max-dt:backdrop-blur-sm">
+            <SectionHeading
+              eyebrow="RECRUITING: FUERZA DE VENTAS"
+              title="Te acompañamos en la búsqueda y selección de perfiles acordes a tu negocio."
+              description="Además de nuestro modelo de formación, buscamos perfiles acordes y eficientes al modelo de ventas propuesto."
+              align="left"
+              centerOnMobile
+              showLine={false}
+              maxWidth={800}
+              className="mb-[8px] md:pr-[50px] dt:mb-[10px]"
+            />
+            <div className="mt-[20px]">
+              <CheckList items={recruitingChecklist} size="md" centerOnMobile />
+            </div>
           </div>
         </div>
       </section>
