@@ -1,7 +1,9 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`social-content`, `seo-marketing`, `web-lead`) — la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma). Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/artifact/5nEdULGfDWCWES17cpptDp
-> - Última sincronización: 2026-09-28 (v16)
+> - Última sincronización: 2026-09-28 (v18)
+> - Nota v18 (28/9): 2.13 con el circuito de producción (Claude arma las piezas en Claude Design; Mariano revisa, exporta y publica; Canva y Figma opcionales); 2.9 con CapCut; 4.2 Hecho (Design System en vez de Brand Kit de Canva); 4.4 con el carrusel #2 como plantilla; nueva 4.13 Hecho (flujo de producción configurado, JPG en DISEÑO\RRSS\instagram).
+> - Nota v17 (28/9): 4.1 Hecho (logos originales ordenados en PNG y SVG, isotipo solo descartado, slogan oficial en español "Creando"); decisión 1 resuelta (Figtree + DM Sans en las piezas, prueba con Claude Design en 4.2); decisión 3 resuelta (logo del schema con slogan en inglés y meta descriptions en "Creando", Plan de SEO 1.44). Quedan 3 decisiones abiertas.
 > - Nota v16 (28/9): 1.9 Hecho — Instagram configurado de punta a punta con Mariano en vivo (Fase 1 cerrada otra vez); la cuenta no tiene preguntas frecuentes, se reemplazan con 5 respuestas guardadas (texto en 2.17); Linktree con la agenda de HubSpot primero; admin de respaldo en Business Suite; nueva 5.14 (fuente del lead en reservas directas de la agenda); 6.7 usa el mismo texto de bienvenida.
 > - Nota v15 (26/9): paquete de privacidad (Plan de SEO 4.5) en suspenso, armado y aprobado en preview; banner retirado de producción; 5.3 y 6.2 dependen de él; Cloudflare Web Analytics se mantiene como conteo total de visitas.
 > - Nota v14 (26/9): 5.1 Hecho — formularios del sitio → HubSpot en producción (commit 2193af7): contacto por email con fuente, servicio, UTM y mensaje como nota; Resend sigue de respaldo. 5.3 pasa a depender de la 4.5.4 del Plan de SEO (campo marketingConsent + 2 campos de HubSpot por crear).
@@ -19,13 +21,13 @@ Plan único de marketing y desarrollo comercial de Base Core. Arriba, las **fase
 
 Fase 2 · Preparación en curso — perfiles de los 4 canales listos e Instagram configurado (1.9, 28/9); siguen las piezas de F4 y el contenido semilla
 
-**100**
+**101**
 accionables
 
-**61**
+**59**
 pendientes o futuras
 
-**5**
+**3**
 decisiones de Mariano
 
 **10**
@@ -85,11 +87,11 @@ Parte 1
 
 Mismo criterio que el Plan de SEO: el detalle de lo Pendiente vive en [Activo hoy](#activo), agrupado por fase y en orden de ejecución. Cada fase más abajo tiene su tabla de estado completa. Lo Bloqueado mantiene su detalle breve en su fase y lo Hecho queda como una línea en la tabla. En vivo 23/9 marca los datos vistos con sesión iniciada; Mariano 24/9, los cambios que hizo Mariano fuera de sesión y reportó el 24/9.
 
-#### Cinco decisiones que siguen abiertas
+#### Tres decisiones que siguen abiertas (la 1 y la 3 se resolvieron el 28/9)
 
-1. **Tipografía para piezas** (4.2): verificar si la licencia de Gilmer permite subirla a Canva. Si no, usar Jost.
+1. **Resuelta (28/9) · Tipografía para piezas** (4.2): **Figtree** para títulos y DM Sans para texto. Figtree fue la más parecida a Gilmer en una comparación lado a lado; Jost quedó descartada. El sitio sigue con Gilmer.
 2. **Reels de voz en off en Instagram** (2.9). Recomendado: sí, 1 en el contenido semilla.
-3. **Logo del schema del sitio** (4.1): el sitio le muestra a Google `LOGO-BASE-CORE-SALES-CON-SLOGAN.png`, con el tagline viejo "CREAMOS", mientras que en redes ya se usa el logo con slogan en inglés. ¿Se suma como tarea al Plan de SEO (el documento dueño) cambiarlo por el mismo logo de redes?
+3. **Resuelta (28/9) · Logo del schema del sitio** (4.1): Google ahora recibe el logo azul con el slogan en inglés, sobre fondo blanco, y las dos meta descriptions que decían "Creamos" pasaron a "Creando", el slogan oficial en español. En producción, tarea 1.44 del [Plan de SEO](https://claude.ai/artifact/XPrZBTCe2b7tvbzzNuf1GT) (commit `61668f2`).
 4. **Herramienta de email y modelo de scoring** (6.1 y 5.11): HubSpot gratis/Starter o Brevo. Y definir si el scoring de leads inbound es el mismo que el del Plan de Prospección (Fit/Intent/Behaviour) o uno propio.
 5. **IA en el posicionamiento** (10.2): ¿pasar de "Consultoría Comercial y Marketing" a "Consultoría Comercial, Marketing e IA"? Mariano le ve mucho potencial (24/9). Se decide después de la auditoría de 10.2, todavía sin lanzar.
 
@@ -147,6 +149,8 @@ Entre 9 y 12 publicaciones es el mínimo para que un perfil nuevo no parezca aba
 #### 2.9 Reel de voz en off Decisión 2
 
 El formato que menos producción pide: la voz de Mariano sobre 3-5 pantallas de texto, reutilizando el guion de un carrusel. Otras opciones: grabación de pantalla narrada o manos + escritorio. Nunca avatar de IA.
+
+**Edición (28/9):** las pantallas de texto se diseñan en Claude Design (2.13); Mariano graba la voz con el teléfono y un micrófono simple, y arma y subtitula el Reel en **CapCut** (gratis).
 
 **Por qué:** En vivo 23/9 la mayoría del grid de Signos (16.800 seguidores, el que más creció en Instagram) son Reels verticales, no carruseles.
 
@@ -341,7 +345,9 @@ Producción de contenido
 
 #### 2.13 Stack de producción y "una idea, cuatro salidas"
 
-* **Research y guion:** Perplexity + Claude. **Diseño:** Canva con Brand Kit (4.2). **Reels:** teléfono + micrófono simple, y CapCut o Descript para subtitular.
+* **Research y guion:** Perplexity + Claude.
+* Mariano 28/9 **Diseño:** Claude arma las piezas en Claude Design con el Design System "Base Core" (4.2), probado con el carrusel #2. **Mariano:** revisa en el lienzo (puede retocar a mano), exporta desde Share › Export y publica desde Meta Business Suite con el caption. El PDF exportado lo pasa Claude a JPG de 1080×1350, en `BASECORE\DISEÑO\RRSS\instagram` (carpeta compartida con la VM). **Canva y Figma:** opcionales, si Mariano prefiere editar algo él.
+* **Reels:** teléfono + micrófono simple, y CapCut para editar y subtitular (2.9).
 * **Reciclaje:** una sesión de guion por semana alimenta los cuatro canales: blog → carrusel de Instagram (se replica en Facebook) → documento para la Página de LinkedIn → texto nativo en el personal (en Fase 3) → Reel opcional.
 
 #### 2.14 Calendario de producción de la preparación
@@ -494,36 +500,17 @@ Instagram seguía en 41 el 28/9: es la línea base tomada en 1.9, antes del prim
 
 Fase 4 · Diseño gráfico (en paralelo a la Fase 2)
 
-Diseño de identidad visual
-
-#### 4.1 Logos que faltan y tagline unificado
-
-El repo tiene 7 archivos de logo, pero ninguno es el isotipo solo en navy (el favicon está en negro y a 192 px), y no hay ningún SVG.
-
-* Isotipo del árbol en **navy #00294b** y en **blanco**, mínimo 1080×1080, fondo transparente. Una versión **monocromo**.
-* Vectorizar el isotipo y el logotipo a **SVG**.
-* Mariano 24/9 **Logo con slogan: el de la versión en inglés, para todo.** Ya está en la foto de perfil y la portada de Facebook y en la imagen del post de 2022. En el sitio en inglés el tagline es "Building Productive Foundations"; en el sitio en español sigue "Creamos bases productivas".
-* Revisar lo que todavía dice "Creando Bases Productivas" en este plan (caption y alt text del post semilla #1, D9, D11) y definir si esas piezas llevan el slogan en inglés o en español.
-* El logo que el schema del sitio le muestra a Google (`LOGO-BASE-CORE-SALES-CON-SLOGAN.png`, `src/lib/metadata.ts:57`) sigue con "CREAMOS": decisión 3.
-
-#### 4.2 Tipografía y Canva Brand Kit Decisión 1
-
-* Gilmer (títulos) + DM Sans (texto), como en el sitio En vivo 23/9. Gilmer está en el repo solo como `.woff2`, que Canva no acepta, y su licencia no está verificada para la nube: si no alcanza, usar **Jost** (gratis) solo en las piezas.
-* Brand Kit con los logos de 4.1, la paleta (navy #00294b, azul #056cb0, azul claro #4fa8e0, #1b1f2e, #edf3f6, blanco) y las fuentes.
-
-**Hecho cuando:** una plantilla nueva abre con la marca aplicada sin cargar nada a mano.
-
 Diseño de piezas gráficas
 
 #### 4.3 Dirección visual "Documental + dato"
 
-Foto real + franja navy + título en Gilmer/Jost: el mismo recurso del hero del sitio. Para los carruseles de frameworks, formato secundario **diagrama** (líneas azules sobre fondo claro). Así se diferencia de RMG (Playfair Display + Open Sans, look de "agencia editorial") y de los clichés de IA. Detalle en [Identidad corporativa](#d10).
+Foto real + franja navy + título en Figtree: el mismo recurso del hero del sitio. Para los carruseles de frameworks, formato secundario **diagrama** (líneas azules sobre fondo claro). Así se diferencia de RMG (Playfair Display + Open Sans, look de "agencia editorial") y de los clichés de IA. Detalle en [Identidad corporativa](#d10).
 
 #### 4.4 Kit de plantillas mínimo
 
 * **1.** Foto de perfil 1080×1080 (Instagram + Facebook).
 * **2.** Plantilla cita/dato 1080×1350.
-* **3.** Plantilla carrusel/documento 1080×1350, de 7 a 9 láminas (portada con promesa → problema → error habitual → framework → pasos → ejemplo → resumen → CTA). Es la misma para Instagram y para los PDF de LinkedIn.
+* **3.** Plantilla carrusel/documento 1080×1350, de 7 a 9 láminas (portada con promesa → problema → error habitual → framework → pasos → ejemplo → resumen → CTA). Es la misma para Instagram y para los PDF de LinkedIn. Hecha 28/9: el carrusel #2 "El ciclo" es la plantilla.
 * **4.** 5 portadas de destacadas (ícono sólido sobre navy, centrado en un círculo de ~600 px).
 * **5.** Portada de Reel y plantilla de historia 1080×1920, con el texto dentro del centro 1080×1420.
 
@@ -562,7 +549,7 @@ Manual de marca
 
 #### 4.12 Producir el manual de marca
 
-El índice de 12 secciones y el estado de cada una están en [D13](#d13). v1, dentro de la Fase 2: marca en una página, logo, paleta, tipografía, aplicaciones en redes y guía de copy (2.11). v2: fotografía (con el hero de /tecnologia como ejemplo de qué evitar), aplicaciones en documentos (4.6, 4.8-4.10) e historial. Formatos: PDF de referencia + Canva Brand Kit.
+El índice de 12 secciones y el estado de cada una están en [D13](#d13). v1, dentro de la Fase 2: marca en una página, logo, paleta, tipografía, aplicaciones en redes y guía de copy (2.11). v2: fotografía (con el hero de /tecnologia como ejemplo de qué evitar), aplicaciones en documentos (4.6, 4.8-4.10) e historial. Formatos: PDF de referencia + el Design System "Base Core" de Claude Design.
 
 Fase 5 · Plan de organización de leads
 
@@ -765,7 +752,7 @@ Instagram, Facebook y la Página de LinkedIn van a ser pilares de comunicación,
 | 2.10 | 8-12 posts semilla en la Página de LinkedIn | Contenidos | Pendiente |
 | 2.11 | Guía de copy por canal | Copywriting | Pendiente |
 | 2.12 | Captions de los 12 posts semilla (redactadas) | Copywriting | En progreso |
-| 2.13 | Stack de producción y reciclaje | Producción | Pendiente |
+| 2.13 | Stack de producción (definido 28/9: Claude Design, CapCut; Canva y Figma opcionales) y reciclaje | Producción | En progreso |
 | 2.14 | Calendario de producción (semanas 1-5) | Producción | Pendiente |
 | 2.15 | Sincronizar Instagram → Facebook (conectado y linkeado; falta la prueba con el primer post) | Programación | En progreso |
 | 2.16 | Herramienta y horarios de publicación | Programación | Pendiente |
@@ -808,8 +795,8 @@ Corre en paralelo a la Fase 2: 4.1-4.5 son requisito para producir el contenido 
 
 | # | Tarea | Punto del brief | Estado |
 | --- | --- | --- | --- |
-| 4.1 | Logos que faltan + tagline unificado (logo con slogan en inglés elegido el 24/9) | Identidad visual | Pendiente |
-| 4.2 | Tipografía + Canva Brand Kit | Identidad visual | Pendiente |
+| 4.1 | Logos y tagline (28/9): originales exportados por Mariano, en PNG y SVG con el texto en contornos, en azul, blanco y negro, sin fondo y con fondo, vertical y horizontal, en EN, ES y sin slogan, con nombres finales ("Azul fondo blanco con slogan", etc.); duplicados borrados. Logo con slogan en inglés para todo (24/9). Slogan oficial en español: "Creando bases productivas" (el sitio ya lo usa en todos lados, 1.44 del Plan de SEO). Isotipo solo y horizontal blanco: descartados por Mariano (se piden si hacen falta) | Identidad visual | Hecho |
+| 4.2 | Tipografía + Brand Kit (28/9): piezas en Figtree (títulos) + DM Sans (texto), decisión 1; la marca vive en el Design System "Base Core" de Claude Design (paleta del sitio, tipografías, logos), en vez de un Brand Kit de Canva. Probado: el carrusel #2 salió con la marca aplicada sin cargar nada a mano | Identidad visual | Hecho |
 | 4.3 | Dirección "Documental + dato" | Piezas gráficas | Pendiente |
 | 4.4 | Kit de plantillas mínimo (5 piezas) | Piezas gráficas | Pendiente |
 | 4.5 | Banners (Página y personal de LinkedIn) y portada de Facebook (portada hecha el 24/9) | Piezas gráficas | En progreso |
@@ -820,6 +807,7 @@ Corre en paralelo a la Fase 2: 4.1-4.5 son requisito para producir el contenido 
 | 4.10 | Kit de ventas | Presentaciones | Pendiente |
 | 4.11 | Sistema de variantes creativas | Variantes | Futuro · F3 + 6 sem. |
 | 4.12 | Producción del manual de marca (v1/v2) | Manual | Pendiente |
+| 4.13 | Flujo de producción configurado (28/9): Design System instalado en Claude Design, exportación probada (8 láminas de 1080×1350 exactas), conversión a JPG por Claude, carpeta compartida Windows ↔ VM funcionando (JPG en `DISEÑO\RRSS\instagram`) | Producción | Hecho |
 
 #### 4.7 Medidas de creatividades (dejarlas listas para F8)
 
@@ -960,7 +948,7 @@ Las semanas son orientativas: lo que manda es el umbral 2.18.
 * 1.9 configuración de Instagram (hecha 28/9)
 * 2.1 perfil de Instagram (hecho)
 * 2.2-2.4 Facebook y LinkedIn (hechos)
-* 4.1-4.2 logos y Brand Kit
+* 4.1-4.2 logos y Design System (hechos 28/9)
 * 2.15 sincronización (app)
 * 5.1 formularios → HubSpot (hecho) · 5.3 con 4.5.4 (en suspenso)
 * 6.7 WhatsApp Business
@@ -1237,10 +1225,10 @@ Fondo suave
 `#edf3f6`
 
 * **Paleta monocromática a propósito:** no sumar acentos cálidos. El azul claro se usa solo como texto sobre navy.
-* **Tipografía:** Gilmer (títulos, números, CTA) + DM Sans (texto). La firma manuscrita, solo en piezas firmadas por Mariano. Montserrat y Sora son restos del sitio y no pasan a las piezas.
+* **Tipografía:** Gilmer (títulos, números, CTA) + DM Sans (texto). En las piezas, Figtree reemplaza a Gilmer (4.2). La firma manuscrita, solo en piezas firmadas por Mariano. Montserrat y Sora son restos del sitio y no pasan a las piezas.
 * **Fotografía:** documental, gente real en contextos reales de negocio. La excepción es el hero de /tecnologia.
 * **Iconografía:** sólida, de un color.
-* **Logos:** logotipo horizontal y apilado en navy y blanco. Faltan el isotipo solo, el monocromo y los SVG (4.1).
+* **Logos:** vertical y horizontal, en azul, blanco y negro, en PNG y SVG (4.1, 28/9). Sin isotipo solo, por decisión de Mariano.
 
 #### Direcciones visuales evaluadas
 
@@ -1349,7 +1337,7 @@ Especificación del manual. Su producción es la tarea 4.12.
 | --- | --- | --- | --- |
 | 1 | Introducción y para quién es | Nuevo | v2 |
 | 2 | La marca en una página | Sale de 4.2 | v1 |
-| 3 | Logo: versiones, zona de respeto, tamaño mínimo, usos incorrectos | Faltan los assets de 4.1 | v1 |
+| 3 | Logo: versiones, zona de respeto, tamaño mínimo, usos incorrectos | Assets de 4.1 listos (28/9) | v1 |
 | 4 | Paleta y combinaciones prohibidas | Casi completa | v1 |
 | 5 | Tipografía y jerarquía | Existe | v1 |
 | 6 | Fotografía (con el hero de /tecnologia como ejemplo a evitar) | Criterio sí, banco de fotos chico | v2 |
@@ -1377,4 +1365,4 @@ Especificación del manual. Su producción es la tarea 4.12.
 | F4 Producción (4.1-4.3) | 2.13-2.14 |
 | F5 Prueba social / F6 Demanda / F7 Paid / F8 SEO / F9 Marca | F7 / F5 + F6 / F8 / F9 / F10 |
 
-Marketing Strategy Basecore · Base Core · actualizado el 28 de septiembre de 2026 (v16) · v16, trabajado en vivo con Mariano el 28/9: 1.9 hecha, Instagram configurado de punta a punta (Fase 1 cerrada otra vez); la cuenta no tiene preguntas frecuentes y se reemplazan con 5 respuestas guardadas (texto en 2.17); Linktree con la agenda de HubSpot primero; admin de respaldo sumado en Business Suite; compartir Instagram → Página confirmado; nueva 5.14 (fuente del lead en las reservas directas de la agenda); 6.7 usa el mismo texto de bienvenida · v15: el paquete de privacidad (Plan de SEO 4.5: política, banner de cookies, aviso en formularios y checkbox de marketing) queda en suspenso por decisión de Mariano, armado y aprobado en preview; el banner se retiró de producción; 5.3 y 6.2 dependen de ese paquete; Cloudflare Web Analytics se mantiene como conteo total de visitas · v14: 5.1 hecha, formularios del sitio → HubSpot en producción (commit `2193af7`); 5.3 pasa a depender de la 4.5.4 del Plan de SEO (checkbox `marketingConsent` + 2 campos de HubSpot por crear); umbral 2.18 y estado de canales actualizados · v13, a pedido de Mariano (24/9): nueva 1.9 "Configuración completa de Instagram, paso a paso" (26 pasos en 6 bloques, Pendiente), Fase 1 reabierta; el paso de Controles de mensajes que estaba en 2.17 pasa a 1.9 (paso 11); umbral 2.18, roadmap y estado de canales actualizados · v12, trabajado en vivo con Mariano el 24/9: 1.8, 2.1, 2.2 y 2.3 cerradas; nueva 10.2 "IA en el posicionamiento", sin auditar todavía; cambios que Mariano hizo fuera de sesión en Facebook e Instagram (1.6, 1.7 y 1.8 cerradas: Fase 1 completa; bio de Instagram publicada, logo con slogan en inglés para todo, servicios, portada y pin de Facebook, post de 2022 de Instagram eliminado, Linktree actualizado, Instagram linkeado a Facebook); decisiones renumeradas de 8 a 5 · v11: reestructurado con el brief de Mariano: el diagnóstico de marketing pasa a la Parte 2; Social Media (preparación y exposición), Diseño gráfico, Organización de leads y Campañas son fases accionables. Contexto 2022 incorporado (objetivo 2027, target, comunicación, competidores) · Auditoría con navegador en vivo y sesión iniciada en Instagram, Facebook y LinkedIn, solo lectura, sin publicar ni interactuar: `social-content` (perfiles propios, social media, campañas), `seo-marketing` (competencia, búsquedas, diagnóstico, fuentes de empresas target), `web-lead` (verificaciones con clic, sitio, diseño gráfico, código de los formularios, leads) · Versiones anteriores: v11 (23/9, fases accionables), v10 (23/9, preparación y exposición), v9 (21/9) · Espejo de trabajo: `documentation/marketing/marketing-strategy.md`
+Marketing Strategy Basecore · Base Core · actualizado el 28 de septiembre de 2026 (v18) · v18 (28/9), con OK de Mariano: 2.13 con el circuito de producción (Claude arma las piezas en Claude Design; Mariano revisa, exporta y publica; Canva y Figma opcionales); 2.9 con CapCut; 4.2 hecha (Design System en vez de Brand Kit de Canva); 4.4 con el carrusel #2 como plantilla; nueva 4.13, flujo de producción configurado (hecha) · v17 (28/9): 4.1 hecha (logos originales ordenados en PNG y SVG, isotipo solo descartado, slogan oficial en español "Creando"); decisión 1 resuelta (Figtree + DM Sans en las piezas, prueba con Claude Design en 4.2); decisión 3 resuelta (logo del schema con slogan en inglés y meta descriptions en "Creando", Plan de SEO 1.44) · v16, trabajado en vivo con Mariano el 28/9: 1.9 hecha, Instagram configurado de punta a punta (Fase 1 cerrada otra vez); la cuenta no tiene preguntas frecuentes y se reemplazan con 5 respuestas guardadas (texto en 2.17); Linktree con la agenda de HubSpot primero; admin de respaldo sumado en Business Suite; compartir Instagram → Página confirmado; nueva 5.14 (fuente del lead en las reservas directas de la agenda); 6.7 usa el mismo texto de bienvenida · v15: el paquete de privacidad (Plan de SEO 4.5: política, banner de cookies, aviso en formularios y checkbox de marketing) queda en suspenso por decisión de Mariano, armado y aprobado en preview; el banner se retiró de producción; 5.3 y 6.2 dependen de ese paquete; Cloudflare Web Analytics se mantiene como conteo total de visitas · v14: 5.1 hecha, formularios del sitio → HubSpot en producción (commit `2193af7`); 5.3 pasa a depender de la 4.5.4 del Plan de SEO (checkbox `marketingConsent` + 2 campos de HubSpot por crear); umbral 2.18 y estado de canales actualizados · v13, a pedido de Mariano (24/9): nueva 1.9 "Configuración completa de Instagram, paso a paso" (26 pasos en 6 bloques, Pendiente), Fase 1 reabierta; el paso de Controles de mensajes que estaba en 2.17 pasa a 1.9 (paso 11); umbral 2.18, roadmap y estado de canales actualizados · v12, trabajado en vivo con Mariano el 24/9: 1.8, 2.1, 2.2 y 2.3 cerradas; nueva 10.2 "IA en el posicionamiento", sin auditar todavía; cambios que Mariano hizo fuera de sesión en Facebook e Instagram (1.6, 1.7 y 1.8 cerradas: Fase 1 completa; bio de Instagram publicada, logo con slogan en inglés para todo, servicios, portada y pin de Facebook, post de 2022 de Instagram eliminado, Linktree actualizado, Instagram linkeado a Facebook); decisiones renumeradas de 8 a 5 · v11: reestructurado con el brief de Mariano: el diagnóstico de marketing pasa a la Parte 2; Social Media (preparación y exposición), Diseño gráfico, Organización de leads y Campañas son fases accionables. Contexto 2022 incorporado (objetivo 2027, target, comunicación, competidores) · Auditoría con navegador en vivo y sesión iniciada en Instagram, Facebook y LinkedIn, solo lectura, sin publicar ni interactuar: `social-content` (perfiles propios, social media, campañas), `seo-marketing` (competencia, búsquedas, diagnóstico, fuentes de empresas target), `web-lead` (verificaciones con clic, sitio, diseño gráfico, código de los formularios, leads) · Versiones anteriores: v11 (23/9, fases accionables), v10 (23/9, preparación y exposición), v9 (21/9) · Espejo de trabajo: `documentation/marketing/marketing-strategy.md`
