@@ -8,7 +8,7 @@ export const site = {
    */
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.basecoresales.com",
   description:
-    "Consultoría comercial y marketing para todos los ciclos de venta: preventa, venta, posventa y marketing. Creamos bases productivas.",
+    "Consultoría comercial y marketing para todos los ciclos de venta: preventa, venta, posventa y marketing. Creando bases productivas.",
   email: "info@basecoresales.com",
   phoneSpain: { display: "+34 607 206 559", tel: "+34607206559" },
   phoneArgentina: { display: "+54 11 5564-3798", tel: "+541155643798" },

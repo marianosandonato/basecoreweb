@@ -62,7 +62,7 @@ export const professionalServiceJsonLd = {
   name: site.shortName,
   alternateName: "Base Core",
   url: site.url,
-  logo: `${site.url}/images/LOGO-BASE-CORE-SALES-CON-SLOGAN.png`,
+  logo: `${site.url}/images/logo-base-core-building-productive-foundations.png`,
   description: site.description,
   // schema.org's field for exactly this case: distinguishes this entity from
   // others sharing the "Base Core" name (see documentation/seo/plan-seo.md

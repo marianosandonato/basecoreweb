@@ -24,7 +24,7 @@ import {
 export const metadata: Metadata = {
   title: "Consultoría Comercial para Pymes – Base Core Sales",
   description:
-    "Consultoría comercial para pymes en España y Latinoamérica: procesos como servicio para preventa, venta, posventa y marketing. Creamos bases productivas.",
+    "Consultoría comercial para pymes en España y Latinoamérica: procesos como servicio para preventa, venta, posventa y marketing. Creando bases productivas.",
   alternates: {
     canonical: "/",
     languages: { es: "/", en: "/en", "x-default": "/" },
