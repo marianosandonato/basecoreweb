@@ -103,13 +103,10 @@ const methodology: readonly MethodologyStep[] = [
   },
 ];
 
-// Destinations stay on the Spanish routes: those pages don't have an /en
-// version yet (see documentation/PLAN-I18N.md) and a translated card linking
-// to a translated page beats a 404 or blocking the link entirely.
 const cycles = [
   {
     title: "Presales",
-    href: "/preventa",
+    href: "/en/presales",
     icon: PreventaIcon,
     image: "/images/presales-basecoresales-espana.jpg",
     roles: [
@@ -118,7 +115,7 @@ const cycles = [
   },
   {
     title: "Sales",
-    href: "/venta",
+    href: "/en/sales",
     icon: VentaIcon,
     image: "/images/sales-basecoresales-espana.jpg",
     roles: [
@@ -127,7 +124,7 @@ const cycles = [
   },
   {
     title: "Post-Sales",
-    href: "/posventa",
+    href: "/en/post-sales",
     icon: PosventaIcon,
     image: "/images/support-basecoresales-espana.jpg",
     roles: [

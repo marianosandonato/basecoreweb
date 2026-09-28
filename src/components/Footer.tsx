@@ -28,9 +28,6 @@ const services = [
   { label: "Tecnología", href: "/tecnologia" },
 ];
 
-// Same routes as the Spanish list — those pages don't have an /en version
-// yet (see documentation/PLAN-I18N.md), so the label translates but the
-// destination stays the closest available content.
 const servicesEn = [
   { label: "Marketing", href: "/en/marketing" },
   { label: "Presales", href: "/en/presales" },
