@@ -1,7 +1,8 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`social-content`, `seo-marketing`, `web-lead`) — la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma). Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/artifact/5nEdULGfDWCWES17cpptDp
-> - Última sincronización: 2026-09-26 (v15)
+> - Última sincronización: 2026-09-28 (v16)
+> - Nota v16 (28/9): 1.9 Hecho — Instagram configurado de punta a punta con Mariano en vivo (Fase 1 cerrada otra vez); la cuenta no tiene preguntas frecuentes, se reemplazan con 5 respuestas guardadas (texto en 2.17); Linktree con la agenda de HubSpot primero; admin de respaldo en Business Suite; nueva 5.14 (fuente del lead en reservas directas de la agenda); 6.7 usa el mismo texto de bienvenida.
 > - Nota v15 (26/9): paquete de privacidad (Plan de SEO 4.5) en suspenso, armado y aprobado en preview; banner retirado de producción; 5.3 y 6.2 dependen de él; Cloudflare Web Analytics se mantiene como conteo total de visitas.
 > - Nota v14 (26/9): 5.1 Hecho — formularios del sitio → HubSpot en producción (commit 2193af7): contacto por email con fuente, servicio, UTM y mensaje como nota; Resend sigue de respaldo. 5.3 pasa a depender de la 4.5.4 del Plan de SEO (campo marketingConsent + 2 campos de HubSpot por crear).
 > - Nota v13 (24/9): nueva 1.9 "Configuración completa de Instagram, paso a paso" (26 pasos en 6 bloques: seguridad y propiedad, perfil, mensajes, protección, publicación, cierre), Pendiente en Fase 1 (reabierta). El paso de Controles de mensajes de 2.17 pasa a 1.9 (paso 11). Umbral 2.18, roadmap, D1 y estado de canales actualizados.
@@ -16,9 +17,9 @@ Base Core · marketing, marca y pilares comunicacionales
 
 Plan único de marketing y desarrollo comercial de Base Core. Arriba, las **fases accionables**: Social Media (preparación y exposición), Diseño gráfico, Organización de leads y Campañas, más prueba social, paid, SEO y marca. Abajo, el **diagnóstico de marketing** como material de referencia. Auditoría del 23/9 con navegador en vivo y sesión iniciada en Instagram, Facebook y LinkedIn, hecha por `social-content`, `seo-marketing` y `web-lead`.
 
-Fase 2 · Preparación en curso — perfiles de los 4 canales listos; sigue la configuración de Instagram (1.9), después las piezas de F4 y el contenido semilla
+Fase 2 · Preparación en curso — perfiles de los 4 canales listos e Instagram configurado (1.9, 28/9); siguen las piezas de F4 y el contenido semilla
 
-**99**
+**100**
 accionables
 
 **61**
@@ -98,63 +99,11 @@ Mismo criterio que el Plan de SEO: el detalle de lo Pendiente vive en [Activo ho
 
 Todo lo Pendiente, en orden de ejecución. Cada tarjeta trae una checklist, el porqué y cuándo se da por hecha.
 
-Fase 1 · Higiene inmediata — reabierta el 24/9
-
-#### 1.9 Configuración completa de Instagram, paso a paso Antes del primer post
-
-El perfil visible ya está listo (2.1), pero la configuración interna de la cuenta no se revisó entera: seguridad, propiedad, mensajes, automatizaciones, protección y publicación. Esta tarea deja la cuenta configurada de punta a punta antes de que empiece el contenido semilla (2.6). La hace Mariano con su sesión, en la app del celular, salvo los pasos que dicen "Business Suite". Los menús se verificaron el 24/9; si alguna opción no aparece con ese nombre, está en ☰ → Configuración y actividad, o en la versión web.
-
-##### A · Seguridad y propiedad (primero: protege todo lo demás)
-
-* **1. Verificación en dos pasos** con app de autenticación (Google Authenticator o similar), no por SMS. Perfil → ☰ → Centro de cuentas → Contraseña y seguridad → Autenticación en dos pasos. En "Métodos adicionales", generar los **códigos de recuperación** y guardarlos fuera del celular.
-* **2. Email y teléfono de la cuenta:** Centro de cuentas → Datos personales. Que el email de acceso sea `info@basecoresales.com` (del dominio, no uno personal), para poder recuperar la cuenta aunque cambie quien la maneja.
-* **3. Sesiones abiertas:** Contraseña y seguridad → Dónde iniciaste sesión. Cerrar las que no se reconozcan (incluidas las de herramientas viejas) y activar las alertas de inicio de sesión.
-* **4. Propiedad en Business Suite:** Meta Business Suite → Configuración → Cuentas → Cuentas de Instagram. Confirmar que Instagram está dentro del **portfolio comercial de Base Core** (no solo linkeado a la Página) y que Mariano tiene control total. **Sumar un segundo administrador de respaldo** (Configuración → Personas → Invitar) para no perder la cuenta si se bloquea el Facebook personal de Mariano. *Pregunta para Mariano: ¿quién es el admin de respaldo?*
-
-##### B · Perfil (verificar lo hecho y completar)
-
-* **5. Usuario:** confirmar que es `@basecoresales`, igual que el dominio. No cambiarlo: rompe los links y menciones existentes.
-* **6. Linktree con UTM:** la bio, el nombre, la foto y el Linktree ya están (2.1). Falta que cada link al sitio lleve `?utm_source=instagram&utm_medium=social&utm_campaign=bio`, para distinguir en GA4 las visitas que vienen de Instagram. Orden recomendado: 1) Diagnóstico gratuito, 2) Sitio, 3) E-book, 4) Blog, 5) WhatsApp.
-* **7. Categoría:** Editar perfil → Categoría: la más cercana a consultoría de negocios ("Consultor/a de negocios" o "Servicio de consultoría"). Activar **Mostrar etiqueta de categoría** (Editar perfil → Visualización del perfil): le dice a quien llega qué es Base Core antes de leer la bio.
-* **8. Contacto visible:** email ✓, WhatsApp ✓ y dirección Buenos Aires ✓ ya están. Activar **Mostrar información de contacto** y confirmar que el botón de WhatsApp abre el número +54 9 11 5564-3798.
-* **9. Botón de acción:** Editar perfil → Botones de acción. Si aparece un proveedor de agenda compatible, usar "Reservar"; si no (HubSpot Meetings no es socio nativo), no agregar ninguno: el primer link del Linktree ya lleva a la agenda.
-* **10. Sugerencias de cuentas similares:** dejarla **activada** (Editar perfil; a veces solo aparece en la versión web). Hace que Base Core aparezca como sugerencia en perfiles parecidos: descubrimiento gratis para una cuenta de 41 seguidores.
-
-##### C · Mensajes (por acá van a entrar los prospectos)
-
-* **11. Controles de mensajes:** ☰ → Mensajes y respuestas a historias → Controles de mensajes. En "Otras personas en Instagram", mandar los mensajes a **Chats**, no a Solicitudes. La prueba del 24/9 entró como solicitud (ver 1.8): así se pierden prospectos.
-* **12. Respuesta instantánea** (Business Suite → Bandeja de entrada → Automatizaciones): "¡Hola! Gracias por escribirnos a Base Core. Te respondemos dentro de las 24 h hábiles. Si querés adelantar, agendá tu diagnóstico gratuito desde el link de la bio." Es el mismo texto de bienvenida de WhatsApp (6.7), para que los dos canales digan lo mismo.
-* **13. Preguntas frecuentes** (misma pantalla, hasta 4, aparecen como botones al abrir un chat nuevo): "¿Qué hace Base Core?" · "¿Cómo es el diagnóstico gratuito?" · "¿Trabajan con empresas de mi país?" · "¿Cuánto cuesta?". La respuesta a la del precio lleva al diagnóstico, igual que la plantilla de 2.17.
-* **14. Respuestas guardadas:** cargar las plantillas de 2.17 (precio, pregunta técnica, pasar a WhatsApp). El texto vive en 2.17; acá solo se cargan.
-* **15. Notificaciones:** activar las de mensajes y comentarios en el celular de Mariano, en Instagram y en la app de Business Suite. Un DM que se contesta al día siguiente pierde contra uno que se contesta en una hora.
-
-##### D · Interacciones y protección
-
-* **16. Palabras ocultas:** ☰ → Palabras ocultas. Activar el filtro de comentarios y de solicitudes de mensajes ofensivos, y sumar una lista propia contra el spam típico de cuentas de negocio: "seguidores gratis", "promo", "colaboración pagada", "cripto", "inversión", "DM para trabajar juntos".
-* **17. Comentarios:** permitidos para todos (la cuenta necesita interacción). Bloquear cuentas puntuales solo si hacen spam.
-* **18. Etiquetas y menciones:** ☰ → Etiquetas y menciones. Permitir de todos, pero con **aprobación manual** de las etiquetas antes de que aparezcan en el perfil, para que ninguna publicación ajena quede asociada a la marca sin revisar.
-* **19. Compartir y reutilizar:** ☰ → Compartir y reutilizar. Permitir compartir publicaciones en historias, remix y descarga de Reels. Cada vez que alguien comparte, el contenido llega a gente que no sigue la cuenta.
-
-##### E · Publicación y medición (listo antes del primer post)
-
-* **20. Subir con la máxima calidad:** ☰ → Uso de datos y calidad de los archivos multimedia → activar "Subir con la máxima calidad". Si no, Instagram comprime las piezas de Canva y los textos de los carruseles se ven borrosos.
-* **21. Subtítulos automáticos** activados para los Reels (la mayoría se mira sin sonido). El texto alternativo de cada post se escribe a mano (ya está en las captions de 2.12).
-* **22. Compartir en Facebook:** se configura y se prueba en 2.15. Acá solo se confirma que no quedó a medias.
-* **23. Línea base de estadísticas:** Panel profesional → Estadísticas. Anotar seguidores (41 el 23/9), alcance y visitas al perfil antes del primer post, para medir contra las metas de 3.7.
-* **24. Meta Verified para empresas: no por ahora.** Es pago y mensual, y con 41 seguidores y sin contenido no cambia nada. Se reevalúa en Fase 3 si hay intentos de suplantación o si la pauta (F8) lo justifica.
-
-##### F · Cierre
-
-* **25. Prueba de punta a punta:** desde una cuenta que no sigue a Base Core, mandar un DM. Tiene que entrar a Chats (paso 11), recibir la respuesta instantánea (12) y mostrar las preguntas frecuentes (13), y la notificación tiene que llegar al celular (15).
-* **26. Mirar el perfil como un prospecto:** abrirlo sin sesión (ventana privada o la cuenta de otra persona) y revisar que se lean la categoría, la bio, el botón de contacto y el Linktree.
-
-**Por qué ahora y en Higiene:** todo esto es configuración, no contenido, y se hace una sola vez. Si se hace después de publicar, los primeros DMs que traiga el contenido semilla caen en Solicitudes sin respuesta automática y sin notificación, y la cuenta queda expuesta sin verificación en dos pasos ni admin de respaldo.
-
-**Hecho cuando:** los 26 pasos están hechos o descartados con motivo, la prueba del paso 25 sale bien y Mariano confirmó quién es el admin de respaldo.
+**Fase 1 cerrada otra vez (28/9):** la 1.9, configuración completa de Instagram, quedó hecha con Mariano en vivo. El resumen de lo que se configuró está en la tabla de la [Fase 1](#f1); las respuestas guardadas, en 2.17.
 
 Fase 2 · Social Media: preparación de canales secundarios
 
-Perfiles de los 4 canales listos (2.1-2.4, 24/9). Lo que sigue es contenido, después de la configuración de Instagram (1.9).
+Perfiles de los 4 canales listos (2.1-2.4, 24/9) e Instagram configurado de punta a punta (1.9, 28/9). Lo que sigue es contenido.
 
 Estrategia de contenidos
 
@@ -405,7 +354,7 @@ Programación de publicaciones
 
 En vivo 23/9 **Paso 1 hecho:** Instagram ya está conectado a la Página en Meta Business Suite (aparecen como el combo "Base Core, basecoresales"). Mariano 24/9 **Paso 2:** Mariano confirma que Instagram quedó linkeado con Facebook. Falta la prueba, que recién se puede hacer con el primer post semilla.
 
-* Confirmar en la app (☰ → Centro de cuentas → Compartir entre perfiles → "Página Base Core") que están activos **por separado** Publicaciones, Historias y Reels.
+* Mariano 28/9 Confirmado en la app (☰ → Centro de cuentas → Compartir entre perfiles → "Página Base Core"): Publicaciones, Historias y Reels activos **por separado** (1.9, paso 22). Depende del Centro de cuentas: por eso Instagram no se sacó de ahí.
 * Prueba: un post, un Reel y una historia deben aparecer en la **Página**, no en el perfil personal. Los carruseles a veces no se replican: revisar cada uno. Lo ya publicado no se sincroniza hacia atrás.
 
 #### 2.16 Herramienta y horarios de publicación
@@ -445,8 +394,22 @@ Plantillas de respuesta y reglas
 
 **Pasar a WhatsApp:** después de 2-3 idas y vueltas, o apenas pregunte precio o plazos. "Para no perdernos nada en los comentarios, ¿te escribo por WhatsApp?" **Pasar a reunión:** apenas confirme interés. El diagnóstico gratuito es la instancia de calificación, no hace falta calificar del todo por chat.
 
-* Cargar las plantillas como respuestas guardadas en Business Suite y como respuestas rápidas en WhatsApp Business (6.7).
-* Mariano 24/9 **Solicitudes de mensajes:** los DMs de cuentas que Base Core no sigue entraban como "solicitud" (así llegó la prueba). Se resuelve en 1.9, paso 11, junto con la respuesta instantánea y las preguntas frecuentes (pasos 12-13).
+Respuestas guardadas en Business Suite (cargadas el 28/9)
+
+Reemplazan a las preguntas frecuentes, que la cuenta no tiene disponibles (ni en Business Suite ni en la app, 28/9). Sirven para Instagram y Messenger. Texto base con vos; Mariano puede haberlo ajustado al cargarlo.
+
+**`quehacemos`:** "Somos una consultora comercial y de marketing. Acompañamos a empresas en todo el proceso: atraer, calificar, cerrar y fidelizar clientes, con metodología y herramientas concretas para cada etapa."
+
+**`diagnostico`:** "Es una reunión de 30 minutos, sin costo ni compromiso. Revisamos tu proceso comercial, dónde se pierden oportunidades y por dónde conviene empezar. Agendalo acá: https://meetings-eu1.hubspot.com/msandonato"
+
+**`paises`:** "Sí. Estamos en Buenos Aires y Barcelona, y trabajamos de forma remota con empresas de Argentina, España y otros países. Contanos de dónde nos escribís y te respondemos."
+
+**`precio`:** "Depende de la situación de cada empresa, por eso empezamos con un diagnóstico gratuito de 30 minutos: https://meetings-eu1.hubspot.com/msandonato. Si preferís, contanos acá qué es lo que más te está costando hoy en lo comercial y te orientamos."
+
+**`whatsapp`:** "Para no perdernos nada, ¿te escribo por WhatsApp? Pasame tu número o escribinos al +54 9 11 5564-3798."
+
+* Mariano 28/9 Respuestas guardadas cargadas en Business Suite (1.9, paso 14). Falta cargarlas como respuestas rápidas en WhatsApp Business (6.7).
+* Mariano 28/9 **Solicitudes de mensajes resuelto:** los DMs de cuentas que Base Core no sigue ahora entran a Chats, con respuesta instantánea y notificación (1.9, pasos 11, 12 y 15; probado desde una cuenta que no sigue a Base Core).
 
 Cierre de la preparación
 
@@ -454,7 +417,7 @@ Cierre de la preparación
 
 | Canal | Contenido mínimo | Perfil mínimo |
 | --- | --- | --- |
-| **Instagram** | 12 posts, 3 fijados, 5 destacadas, 1 Reel | Bio ✓, dirección ✓, Linktree ✓, nombre ✓, configuración completa (1.9) |
+| **Instagram** | 12 posts, 3 fijados, 5 destacadas, 1 Reel | Bio ✓, dirección ✓, Linktree con UTM ✓, nombre ✓, configuración completa (1.9) ✓ |
 | **Facebook** | Sincronización probada, 4-6 piezas replicadas | Servicios ✓, portada ✓, intro ✓, horario ✓ |
 | **Página de LinkedIn** | 8-12 posts, documento fijado | Tagline ✓, especialidades ✓, banner |
 | **LinkedIn personal** | — | Banner de marca |
@@ -521,7 +484,7 @@ El último post original es de diciembre de 2022 ("I've started my personal proj
 | Instagram | 41 | +15 a +50 | +35 a +100 | +75 a +200 |
 | Facebook | 2 | +10 a +40 | +25 a +80 | +50 a +150 |
 
-Son rangos para planificar, no promesas. El KPI principal son las oportunidades ([Objetivos](#d2)).
+Instagram seguía en 41 el 28/9: es la línea base tomada en 1.9, antes del primer post. Son rangos para planificar, no promesas. El KPI principal son las oportunidades ([Objetivos](#d2)).
 
 #### 3.8–3.10 Comunidad, cadencias y referidos en exposición
 
@@ -634,6 +597,15 @@ Captura de leads desde la web y las redes a HubSpot
 
 **Mientras tanto:** guardar en HubSpot a quien pidió que lo contacten está justificado; mandarle newsletters o secuencias no, hasta que existan esta tarea y la 6.2.
 
+#### 5.14 Fuente del lead en las reservas directas de la agenda
+
+Surgió en 1.9 (28/9). El Linktree ("Programar reunión"), la respuesta instantánea de Instagram y Messenger y las respuestas guardadas llevan directo a la agenda de HubSpot (`meetings-eu1.hubspot.com/msandonato`), sin pasar por el formulario del sitio. HubSpot crea el contacto con la reunión, pero `fuente_del_lead` queda vacío, y los UTM en el link de la agenda no se registran de forma confiable.
+
+* **Mientras tanto:** cuando entra una reunión, completar a mano "Fuente del lead" en el contacto (si llegó por un DM, el origen se ve en la conversación).
+* **Solución:** sumar al formulario de la agenda de HubSpot una pregunta obligatoria "¿Cómo nos conociste?" mapeada a `fuente_del_lead`, con las mismas opciones de la propiedad. Cubre cualquier canal: Linktree, chats, WhatsApp, email.
+
+**Hecho cuando:** una reserva de prueba por el link directo crea el contacto con la fuente completa.
+
 Base para prospección
 
 #### 5.4 Identificación de empresas target
@@ -722,7 +694,7 @@ En vivo 23/9 El número +54 9 11 5564-3798 figura como WhatsApp Business verific
 * **Catálogo:** Preventa, Venta, Posventa, Marketing y "Diagnóstico gratuito" destacado.
 * **Respuestas rápidas** (precio, modalidad, plazos, cómo agendar) y las plantillas de 2.17.
 * **Etiquetas:** Nuevo contacto / Diagnóstico agendado / En seguimiento.
-* **Bienvenida:** "¡Hola! Gracias por escribirnos a Base Core. Te respondemos dentro de 24 h hábiles. Si querés adelantar, agendá tu diagnóstico gratuito: [link]". **Ausencia** fuera de horario.
+* **Bienvenida:** el mismo texto de la respuesta instantánea de Instagram y Messenger (1.9, 28/9: versión de Mariano, con el link directo a la agenda), para que los tres canales digan lo mismo. **Ausencia** fuera de horario.
 
 #### 6.8 Listas de difusión de WhatsApp (solo con opt-in)
 
@@ -752,7 +724,7 @@ Fase 1
 
 ### Higiene inmediata
 
-Defectos concretos en los canales existentes. Reabierta el 23/9 con tres hallazgos de la auditoría en vivo; los tres cerrados por Mariano el 24/9. Reabierta otra vez el 24/9 con 1.9, la configuración completa de Instagram, a pedido de Mariano.
+Defectos concretos en los canales existentes. Reabierta el 23/9 con tres hallazgos de la auditoría en vivo; los tres cerrados por Mariano el 24/9. Reabierta otra vez el 24/9 con 1.9, la configuración completa de Instagram, a pedido de Mariano, y cerrada el 28/9.
 
 | # | Tarea | Estado |
 | --- | --- | --- |
@@ -764,7 +736,7 @@ Defectos concretos en los canales existentes. Reabierta el 23/9 con tres hallazg
 | 1.6 | El LinkedIn del contacto de Facebook apuntaba al perfil personal: ahora apunta a la Página (24/9) | Hecho |
 | 1.7 | Ubicación unificada: "Bs. As. - Barcelona", Buenos Aires como dirección principal en Instagram y Facebook, pin de Facebook corregido (24/9) | Hecho |
 | 1.8 | DMs de Instagram en la bandeja de Business Suite: conectado y probado el 24/9 (el mensaje de prueba entró como solicitud, se resuelve en 1.9) | Hecho |
-| 1.9 | Configuración completa de Instagram, paso a paso (26 pasos: seguridad, propiedad, perfil, mensajes, protección, publicación) | Pendiente |
+| 1.9 | Configuración completa de Instagram, hecha con Mariano en vivo (28/9). **Seguridad:** verificación en dos pasos con app y códigos de recuperación; número viejo reemplazado, email del dominio; sesiones revisadas; Instagram dentro del portfolio de Base Core en Business Suite, con un admin de respaldo (otra persona con su propio Facebook, control total, sin permisos de finanzas). Instagram se deja en el Centro de cuentas porque de ahí depende el compartir a Facebook. **Perfil:** categoría "Consulting Agency", visible; contacto visible; sin botón de acción (HubSpot no es socio); sugerencias activadas; Linktree: 1) Programar reunión (agenda de HubSpot con UTM), 2) Sitio (con UTM), 3) WhatsApp, 4) LinkedIn, 5) Facebook. **Mensajes:** todos a Chats; respuesta instantánea en Instagram y Messenger (texto de Mariano, con link directo a la agenda); la cuenta no tiene preguntas frecuentes, se reemplazan con 5 respuestas guardadas (texto en 2.17); "mensaje sin responder" y demás automatizaciones apagadas; notificaciones en Instagram, Business Suite y el sistema. **Protección y publicación:** palabras ocultas con lista propia, comentarios abiertos, etiquetas con aprobación manual, compartir, remix y descargas, máxima calidad, subtítulos automáticos, compartir a la Página confirmado (2.15). Línea base: 41 seguidores. Meta Verified: no. Prueba de punta a punta y perfil visto sin sesión: OK. Queda derivada la 5.14 | Hecho |
 
 Fase 2
 
@@ -880,6 +852,7 @@ Hoy los leads llegan como emails sueltos. Primero se ordena la captura hacia Hub
 | 5.11 | Scoring por reglas (decisión 4) | Scoring | Pendiente |
 | 5.12 | Scoring predictivo | Scoring predictivo | Bloqueado |
 | 5.13 | Nurturing integrado (ver F6) | Nurturing | Pendiente |
+| 5.14 | Fuente del lead en las reservas directas de la agenda: pregunta "¿Cómo nos conociste?" en el formulario de la agenda de HubSpot (surgió en 1.9, 28/9) | Captura web/redes | Pendiente |
 
 #### 5.12 Scoring predictivo: bloqueado por datos y costo
 
@@ -984,7 +957,7 @@ Las semanas son orientativas: lo que manda es el umbral 2.18.
 
 * Decisiones 1-2
 * 1.6-1.8 higiene (hechas)
-* 1.9 configuración de Instagram
+* 1.9 configuración de Instagram (hecha 28/9)
 * 2.1 perfil de Instagram (hecho)
 * 2.2-2.4 Facebook y LinkedIn (hechos)
 * 4.1-4.2 logos y Brand Kit
@@ -1017,13 +990,13 @@ Parte 2
 
 Material de referencia, en el orden del brief. No requiere acciones por sí mismo: las acciones que surgen de acá están en la Parte 1. Donde ya existe un documento dueño (`product-marketing.md`, Plan de SEO, Auditoría de Marca), va un resumen con link.
 
-### Estado de los canales al 24/9 En vivo 23/9 + cambios de Mariano 24/9
+### Estado de los canales al 28/9 En vivo 23/9 + cambios de Mariano 24/9 y 28/9
 
 | Canal | Seguidores | Publicaciones | Qué está bien | Qué falta |
 | --- | --- | --- | --- | --- |
 | **LinkedIn personal** | 1.631 | Última de dic 2022 | Headline, About, Featured, experiencia, aptitudes | Publicar; banner de 2020 |
 | **Página de LinkedIn** | 56 | 0 | About con el método, botón, logo, 1 empleado, 50 créditos | Banner, contenido |
-| **Instagram** | 41 | 0 (el de 2022, eliminado) | Cuenta Empresa, email y WhatsApp verificados, linkeado a Facebook, bio nueva, dirección Buenos Aires, Linktree actualizado | Configuración interna (1.9), contenido |
+| **Instagram** | 41 | 0 (el de 2022, eliminado) | Cuenta Empresa, email y WhatsApp verificados, linkeado a Facebook, bio nueva, dirección Buenos Aires, Linktree con UTM, configuración interna completa (1.9, 28/9) | Contenido |
 | **Facebook** | 2 | 1 (2022, imagen actualizada) | WhatsApp, servicios, logo y portada con slogan en inglés, pin en Buenos Aires, link a la Página de LinkedIn | Contenido |
 | **Sitio** | — | 7 posts de blog | Sistema visual consistente, sin overflow en mobile | Hero de /tecnologia; política de privacidad, banner de cookies y consentimiento de marketing (5.3), armados y en suspenso |
 
@@ -1033,7 +1006,7 @@ D1
 
 | Etapa | Duración orientativa | Depende de |
 | --- | --- | --- |
-| F1 Higiene | Reabierta el 24/9 con 1.9 (configuración de Instagram, una sesión de 1-2 horas) | Mariano, con su sesión |
+| F1 Higiene | Cerrada el 28/9 (1.9, configuración de Instagram, hecha en una sesión) | Mariano, con su sesión |
 | F2 Preparación + F4 Diseño + F5 captura + F6 configuración | 4-6 semanas en paralelo | Decisiones 1, 2 y 4 |
 | F3 Exposición + activar F6 | 8-13 semanas | Umbral 2.18 |
 | F5 base de prospección | Desde la semana 6 | 5.1, decisión 4 |
@@ -1404,4 +1377,4 @@ Especificación del manual. Su producción es la tarea 4.12.
 | F4 Producción (4.1-4.3) | 2.13-2.14 |
 | F5 Prueba social / F6 Demanda / F7 Paid / F8 SEO / F9 Marca | F7 / F5 + F6 / F8 / F9 / F10 |
 
-Marketing Strategy Basecore · Base Core · actualizado el 26 de septiembre de 2026 (v15) · v15: el paquete de privacidad (Plan de SEO 4.5: política, banner de cookies, aviso en formularios y checkbox de marketing) queda en suspenso por decisión de Mariano, armado y aprobado en preview; el banner se retiró de producción; 5.3 y 6.2 dependen de ese paquete; Cloudflare Web Analytics se mantiene como conteo total de visitas · v14: 5.1 hecha, formularios del sitio → HubSpot en producción (commit `2193af7`); 5.3 pasa a depender de la 4.5.4 del Plan de SEO (checkbox `marketingConsent` + 2 campos de HubSpot por crear); umbral 2.18 y estado de canales actualizados · v13, a pedido de Mariano (24/9): nueva 1.9 "Configuración completa de Instagram, paso a paso" (26 pasos en 6 bloques, Pendiente), Fase 1 reabierta; el paso de Controles de mensajes que estaba en 2.17 pasa a 1.9 (paso 11); umbral 2.18, roadmap y estado de canales actualizados · v12, trabajado en vivo con Mariano el 24/9: 1.8, 2.1, 2.2 y 2.3 cerradas; nueva 10.2 "IA en el posicionamiento", sin auditar todavía; cambios que Mariano hizo fuera de sesión en Facebook e Instagram (1.6, 1.7 y 1.8 cerradas: Fase 1 completa; bio de Instagram publicada, logo con slogan en inglés para todo, servicios, portada y pin de Facebook, post de 2022 de Instagram eliminado, Linktree actualizado, Instagram linkeado a Facebook); decisiones renumeradas de 8 a 5 · v11: reestructurado con el brief de Mariano: el diagnóstico de marketing pasa a la Parte 2; Social Media (preparación y exposición), Diseño gráfico, Organización de leads y Campañas son fases accionables. Contexto 2022 incorporado (objetivo 2027, target, comunicación, competidores) · Auditoría con navegador en vivo y sesión iniciada en Instagram, Facebook y LinkedIn, solo lectura, sin publicar ni interactuar: `social-content` (perfiles propios, social media, campañas), `seo-marketing` (competencia, búsquedas, diagnóstico, fuentes de empresas target), `web-lead` (verificaciones con clic, sitio, diseño gráfico, código de los formularios, leads) · Sin verificar: el interruptor de compartir Instagram → Facebook (solo desde la app) y "Open to Work" · Versiones anteriores: v11 (23/9, fases accionables), v10 (23/9, preparación y exposición), v9 (21/9) · Espejo de trabajo: `documentation/marketing/marketing-strategy.md`
+Marketing Strategy Basecore · Base Core · actualizado el 28 de septiembre de 2026 (v16) · v16, trabajado en vivo con Mariano el 28/9: 1.9 hecha, Instagram configurado de punta a punta (Fase 1 cerrada otra vez); la cuenta no tiene preguntas frecuentes y se reemplazan con 5 respuestas guardadas (texto en 2.17); Linktree con la agenda de HubSpot primero; admin de respaldo sumado en Business Suite; compartir Instagram → Página confirmado; nueva 5.14 (fuente del lead en las reservas directas de la agenda); 6.7 usa el mismo texto de bienvenida · v15: el paquete de privacidad (Plan de SEO 4.5: política, banner de cookies, aviso en formularios y checkbox de marketing) queda en suspenso por decisión de Mariano, armado y aprobado en preview; el banner se retiró de producción; 5.3 y 6.2 dependen de ese paquete; Cloudflare Web Analytics se mantiene como conteo total de visitas · v14: 5.1 hecha, formularios del sitio → HubSpot en producción (commit `2193af7`); 5.3 pasa a depender de la 4.5.4 del Plan de SEO (checkbox `marketingConsent` + 2 campos de HubSpot por crear); umbral 2.18 y estado de canales actualizados · v13, a pedido de Mariano (24/9): nueva 1.9 "Configuración completa de Instagram, paso a paso" (26 pasos en 6 bloques, Pendiente), Fase 1 reabierta; el paso de Controles de mensajes que estaba en 2.17 pasa a 1.9 (paso 11); umbral 2.18, roadmap y estado de canales actualizados · v12, trabajado en vivo con Mariano el 24/9: 1.8, 2.1, 2.2 y 2.3 cerradas; nueva 10.2 "IA en el posicionamiento", sin auditar todavía; cambios que Mariano hizo fuera de sesión en Facebook e Instagram (1.6, 1.7 y 1.8 cerradas: Fase 1 completa; bio de Instagram publicada, logo con slogan en inglés para todo, servicios, portada y pin de Facebook, post de 2022 de Instagram eliminado, Linktree actualizado, Instagram linkeado a Facebook); decisiones renumeradas de 8 a 5 · v11: reestructurado con el brief de Mariano: el diagnóstico de marketing pasa a la Parte 2; Social Media (preparación y exposición), Diseño gráfico, Organización de leads y Campañas son fases accionables. Contexto 2022 incorporado (objetivo 2027, target, comunicación, competidores) · Auditoría con navegador en vivo y sesión iniciada en Instagram, Facebook y LinkedIn, solo lectura, sin publicar ni interactuar: `social-content` (perfiles propios, social media, campañas), `seo-marketing` (competencia, búsquedas, diagnóstico, fuentes de empresas target), `web-lead` (verificaciones con clic, sitio, diseño gráfico, código de los formularios, leads) · Versiones anteriores: v11 (23/9, fases accionables), v10 (23/9, preparación y exposición), v9 (21/9) · Espejo de trabajo: `documentation/marketing/marketing-strategy.md`
