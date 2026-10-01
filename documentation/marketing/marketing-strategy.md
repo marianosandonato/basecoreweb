@@ -1,7 +1,11 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`social-content`, `seo-marketing`, `web-lead`) — la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma). Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/artifact/5nEdULGfDWCWES17cpptDp
-> - Última sincronización: 2026-09-28 (v18)
+> - Última sincronización: 2026-10-01 (v19)
+> - Nota v19 (1/10, 2): HubSpot Free alcanza por ahora; Starter queda como opción futura solo para la bienvenida de 3 emails (6.1, 6.4); se descarta el link de agenda por canal (5.14).
+> - Nota v19 (1/10): 5.2 hecha — propiedades de HubSpot configuradas por Mariano (estándar + score + consentimiento, tamaño de la empresa, señal de compra, opciones nuevas de fuente_del_lead); la etapa vive en el "Base Core Pipeline", no en el contacto.
+> - Nota v19 (30/9, 2): 5.14 hecha — la UTM en el link de la agenda no identifica el canal en HubSpot Free (probado en la cuenta real); carga a mano sin pedirle nada al cliente (origen del DM o pregunta en el diagnóstico); un link por canal al pasar a Starter; Google Calendar estaba desconectado de HubSpot y se reconectó.
+> - Nota v19 (30/9): decisiones 2, 4 y 5 resueltas — Reel sí (2.9); HubSpot Free por ahora, Starter al activar la bienvenida de 3 emails (6.1 Hecho); un solo scoring Fit/Intent/Behaviour (el del Plan de Prospección), cargado a mano en HubSpot (5.11 reescrita y corregida: el scoring nativo de HubSpot es solo Professional/Enterprise); remitente mixto, por ahora desde el mail personal de Mariano; 10.2 decidida con dos auditorías (seo-marketing y web-lead), cambio escalonado, plan en la 8.4 del Plan de SEO, sin ejecutar; homónimo BaseCore de Brasil en 10.1 y D9.
 > - Nota v18 (28/9): 2.13 con el circuito de producción (Claude arma las piezas en Claude Design; Mariano revisa, exporta y publica; Canva y Figma opcionales); 2.9 con CapCut; 4.2 Hecho (Design System en vez de Brand Kit de Canva); 4.4 con el carrusel #2 como plantilla; nueva 4.13 Hecho (flujo de producción configurado, JPG en DISEÑO\RRSS\instagram).
 > - Nota v17 (28/9): 4.1 Hecho (logos originales ordenados en PNG y SVG, isotipo solo descartado, slogan oficial en español "Creando"); decisión 1 resuelta (Figtree + DM Sans en las piezas, prueba con Claude Design en 4.2); decisión 3 resuelta (logo del schema con slogan en inglés y meta descriptions en "Creando", Plan de SEO 1.44). Quedan 3 decisiones abiertas.
 > - Nota v16 (28/9): 1.9 Hecho — Instagram configurado de punta a punta con Mariano en vivo (Fase 1 cerrada otra vez); la cuenta no tiene preguntas frecuentes, se reemplazan con 5 respuestas guardadas (texto en 2.17); Linktree con la agenda de HubSpot primero; admin de respaldo en Business Suite; nueva 5.14 (fuente del lead en reservas directas de la agenda); 6.7 usa el mismo texto de bienvenida.
@@ -10,7 +14,6 @@
 > - Nota v13 (24/9): nueva 1.9 "Configuración completa de Instagram, paso a paso" (26 pasos en 6 bloques: seguridad y propiedad, perfil, mensajes, protección, publicación, cierre), Pendiente en Fase 1 (reabierta). El paso de Controles de mensajes de 2.17 pasa a 1.9 (paso 11). Umbral 2.18, roadmap, D1 y estado de canales actualizados.
 > - Nota v12 (24/9): cambios de Mariano fuera de sesión — 1.6, 1.7 y 1.8 Hecho (Fase 1 cerrada), 2.1 perfil de Instagram Hecho (bio publicada, Nombre queda "Base Core"), logo con slogan en inglés para todo, 2.2 Facebook Hecho (intro = bio IG, "Sin horario disponible", servicios/portada/pin en Buenos Aires), 2.3 Página de LinkedIn Hecho (banner sigue en 4.5), 2.4 y 3.0e Hecho (Open to Work desactivado, aptitudes quedan en inglés), post IG 2022 eliminado, Linktree actualizado (se mantiene), IG linkeado a FB; decisiones abiertas: quedan 5 (1 tipografía, 2 Reels, 3 logo schema, 4 email/scoring, 5 IA), con la nueva: 10.2 "IA en el posicionamiento" (evaluar "Consultoría Comercial, Marketing e IA"; auditoría definida, sin lanzar — Mariano pidió no correrla todavía).
 > - Nota: v11 reestructurado con el brief de Mariano (23/9): Parte 1 = fases accionables F1 Higiene · F2 Social Media preparación · F3 Social Media exposición · F4 Diseño gráfico · F5 Organización de leads · F6 Campañas · F7 Prueba social · F8 Paid · F9 SEO · F10 Marca. Parte 2 = Diagnóstico de marketing D1-D13 (informativo). Auditoría con navegador logueado en IG/FB/LinkedIn. Hallazgos clave: formularios del sitio no llegan a HubSpot (Resend→email), LinkedIn personal sin publicar desde dic 2022, Página LinkedIn 0 posts, IG ya es Empresa, IG ya conectado a la Página en Business Suite. Tabla de renumeración v10→v11 al final.
-
 Marketing Strategy Basecore
 
 Base Core · marketing, marca y pilares comunicacionales
@@ -27,8 +30,8 @@ accionables
 **59**
 pendientes o futuras
 
-**3**
-decisiones de Mariano
+**0**
+decisiones abiertas
 
 **10**
 fases
@@ -87,13 +90,13 @@ Parte 1
 
 Mismo criterio que el Plan de SEO: el detalle de lo Pendiente vive en [Activo hoy](#activo), agrupado por fase y en orden de ejecución. Cada fase más abajo tiene su tabla de estado completa. Lo Bloqueado mantiene su detalle breve en su fase y lo Hecho queda como una línea en la tabla. En vivo 23/9 marca los datos vistos con sesión iniciada; Mariano 24/9, los cambios que hizo Mariano fuera de sesión y reportó el 24/9.
 
-#### Tres decisiones que siguen abiertas (la 1 y la 3 se resolvieron el 28/9)
+#### Las cinco decisiones, resueltas (la 1 y la 3 el 28/9; la 2, la 4 y la 5 el 30/9)
 
 1. **Resuelta (28/9) · Tipografía para piezas** (4.2): **Figtree** para títulos y DM Sans para texto. Figtree fue la más parecida a Gilmer en una comparación lado a lado; Jost quedó descartada. El sitio sigue con Gilmer.
-2. **Reels de voz en off en Instagram** (2.9). Recomendado: sí, 1 en el contenido semilla.
+2. **Resuelta (30/9) · Reels de voz en off en Instagram** (2.9): sí, 1 Reel en el contenido semilla (el #10 del grid).
 3. **Resuelta (28/9) · Logo del schema del sitio** (4.1): Google ahora recibe el logo azul con el slogan en inglés, sobre fondo blanco, y las dos meta descriptions que decían "Creamos" pasaron a "Creando", el slogan oficial en español. En producción, tarea 1.44 del [Plan de SEO](https://claude.ai/artifact/XPrZBTCe2b7tvbzzNuf1GT) (commit `61668f2`).
-4. **Herramienta de email y modelo de scoring** (6.1 y 5.11): HubSpot gratis/Starter o Brevo. Y definir si el scoring de leads inbound es el mismo que el del Plan de Prospección (Fit/Intent/Behaviour) o uno propio.
-5. **IA en el posicionamiento** (10.2): ¿pasar de "Consultoría Comercial y Marketing" a "Consultoría Comercial, Marketing e IA"? Mariano le ve mucho potencial (24/9). Se decide después de la auditoría de 10.2, todavía sin lanzar.
+4. **Resuelta (30/9) · Herramienta de email, scoring y remitente** (6.1 y 5.11): **HubSpot Free** por ahora (Mariano ya lo usa; Brevo descartado); pasar a Starter recién cuando haga falta la bienvenida de 3 emails. **Scoring:** un solo modelo, el Fit/Intent/Behaviour del Plan de Prospección, para inbound y outbound, con el score cargado a mano en HubSpot. **Remitente:** mixto, "Mariano Sandonato · Base Core" para newsletter y secuencias (por ahora desde su mail personal; después desde mariano@basecoresales.com, que Mariano va a crear) y "Base Core" para los emails de sistema.
+5. **Resuelta (30/9) · IA en el posicionamiento** (10.2): cambio **escalonado**, con las dos auditorías en la mano. El plan completo vive en la tarea 8.4 del [Plan de SEO](https://claude.ai/artifact/XPrZBTCe2b7tvbzzNuf1GT), sin ejecutar hasta que Mariano lo pida.
 
 **Resueltas el 24/9 por Mariano:** bio de Instagram (versión propia, alineada con LinkedIn, ver 2.1) · ubicación: "Bs. As. - Barcelona", con Buenos Aires como dirección principal (1.7) · LinkedIn de los links: Facebook apunta a la Página (1.6) · logo: el que tiene el slogan en inglés, para todo (4.1) · "Open to Work": desactivado (3.0e).
 
@@ -146,7 +149,7 @@ Entre 9 y 12 publicaciones es el mínimo para que un perfil nuevo no parezca aba
 
 * Cada post del grid, compartido en historias con un dato extra. De 3 a 5 historias, 1-2 veces por semana, con un sticker de pregunta ("¿Tu equipo usa CRM?"). En Fase 3 pasa a casi diario.
 
-#### 2.9 Reel de voz en off Decisión 2
+#### 2.9 Reel de voz en off Decisión 2 · sí (30/9)
 
 El formato que menos producción pide: la voz de Mariano sobre 3-5 pantallas de texto, reutilizando el guion de un carrusel. Otras opciones: grabación de pantalla narrada o manos + escritorio. Nunca avatar de IA.
 
@@ -559,7 +562,9 @@ Captura de leads desde la web y las redes a HubSpot
 
 **Paquete de privacidad en suspenso (26/9), por decisión de Mariano:** la política de privacidad y de cookies, el banner de cookies, el aviso bajo los formularios y el checkbox de marketing (tarea 4.5 del [Plan de SEO](https://claude.ai/artifact/XPrZBTCe2b7tvbzzNuf1GT), dueña del tema) están armados y aprobados por Mariano en un preview, sin publicar. El banner llegó a estar en producción y se retiró el mismo 26/9. Salen todos juntos cuando Mariano resuelva sus pendientes: consultar a su contador, crear las 2 propiedades de HubSpot, inscribir la base en la AAIP y sumar a la política el párrafo de Cloudflare Web Analytics. **Medición mientras tanto:** GA4 mide todas las visitas (no hay banner) y Cloudflare Web Analytics se mantiene como conteo total sin cookies. Cuando vuelva el banner, GA4 solo va a contar a quienes acepten y el total real va a venir de Cloudflare.
 
-#### 5.2 Campos mínimos por prospecto
+#### 5.2 Campos mínimos por prospecto Hecho (1/10)
+
+**Configurado en HubSpot por Mariano (30/9-1/10).** Se reusan las propiedades estándar (Cargo `jobtitle`, País/región, Ciudad, Industria) y las que ya existían (`fuente_del_lead`, `servicio_de_interes`, `utm_*`, y `score`, creada por la sesión del agente `sales-lead`). Nuevas: `consentimiento_marketing` (casilla única, sin valor predeterminado), `fecha_consentimiento_marketing` (fecha), "Tamaño de la empresa" (1-9 · 10-49 · 50-200 · Más de 200) y "Señal de compra" (texto, el Intent del scoring). "Fuente del lead" suma LinkedIn personal, Instagram, Facebook, WhatsApp, Referido, Scraping y Ads (Web-contacto y Web-ebook sin tocar, el sitio los manda así). **Sin "etapa del ciclo" en el contacto:** el estado comercial vive en las etapas del negocio del "Base Core Pipeline" (Contactado → Maduración → Reunión → Anteproyecto → Propuesta enviada → Cierre), que usa el agente `sales-lead`. "Tramo del score" no se creó: alcanza con ordenar por `score`.
 
 | Campo | Tipo | Obligatorio |
 | --- | --- | --- |
@@ -570,9 +575,10 @@ Captura de leads desde la web y las redes a HubSpot
 | WhatsApp | Texto | Sí |
 | País / ciudad | Lista | Sí |
 | Fuente (`fuente_del_lead`) | Lista: Web-contacto / Web-ebook / LinkedIn personal / Instagram / Referido / Scraping / Ads | Sí |
-| Etapa (`etapa_del_ciclo`) | Nuevo → Calificando → Diagnóstico agendado → Propuesta → Cliente / Perdido | Sí (por defecto, Nuevo) |
-| Sector y tamaño (empleados) | Lista / rango | No |
-| Scoring | Número (5.11) | Se calcula |
+| Etapa | Etapa del negocio en el "Base Core Pipeline" (no es propiedad del contacto) | Al abrir el negocio |
+| Sector (Industria) y tamaño ("Tamaño de la empresa") | Lista / rango | No |
+| Señal de compra | Texto (Intent del scoring) | Si hay |
+| Scoring (`score`) | Número 0-100 (5.11, Fit/Intent/Behaviour) | Se carga a mano |
 | Consentimiento de marketing + fecha | Checkbox | Sí, antes de cualquier envío |
 | Notas del diagnóstico | Texto largo | No |
 
@@ -580,18 +586,21 @@ Captura de leads desde la web y las redes a HubSpot
 
 * Checkbox sin marcar ("Quiero recibir contenido de Base Core") + un texto que diga para qué se usan los datos (Ley 25.326) + link a la privacidad (RGPD).
 * **Se implementa en la subtarea 4.5.4 del Plan de SEO**, que es la dueña del checkbox y de la página de privacidad. **Estado (26/9):** el checkbox (`marketingConsent`, desmarcado, con el texto del abogado de Mariano) y el aviso bajo los formularios están implementados y aprobados por Mariano en un preview, **en suspenso** hasta que se publique todo el paquete de privacidad (ver la nota al inicio de la Fase 5).
-* Antes de que salga el checkbox, crear en HubSpot **Consentimiento marketing** (casilla de verificación única, `consentimiento_marketing`) y **Fecha consentimiento marketing** (selector de fecha, `fecha_consentimiento_marketing`). Solo se completan cuando la persona tilda el checkbox.
+* Hecho 1/10 Antes de que salga el checkbox, crear en HubSpot **Consentimiento marketing** (casilla de verificación única, `consentimiento_marketing`) y **Fecha consentimiento marketing** (selector de fecha, `fecha_consentimiento_marketing`). Solo se completan cuando la persona tilda el checkbox.
 
 **Mientras tanto:** guardar en HubSpot a quien pidió que lo contacten está justificado; mandarle newsletters o secuencias no, hasta que existan esta tarea y la 6.2.
 
-#### 5.14 Fuente del lead en las reservas directas de la agenda
+#### 5.14 Fuente del lead en las reservas directas de la agenda Hecho (30/9)
 
-Surgió en 1.9 (28/9). El Linktree ("Programar reunión"), la respuesta instantánea de Instagram y Messenger y las respuestas guardadas llevan directo a la agenda de HubSpot (`meetings-eu1.hubspot.com/msandonato`), sin pasar por el formulario del sitio. HubSpot crea el contacto con la reunión, pero `fuente_del_lead` queda vacío, y los UTM en el link de la agenda no se registran de forma confiable.
+Surgió en 1.9 (28/9). El Linktree ("Programar reunión"), la respuesta instantánea de Instagram y Messenger y las respuestas guardadas llevan directo a la agenda de HubSpot (`meetings-eu1.hubspot.com/msandonato`), sin pasar por el formulario del sitio. HubSpot crea el contacto con la reunión, pero `fuente_del_lead` queda vacío.
 
-* **Mientras tanto:** cuando entra una reunión, completar a mano "Fuente del lead" en el contacto (si llegó por un DM, el origen se ve en la conversación).
-* **Solución:** sumar al formulario de la agenda de HubSpot una pregunta obligatoria "¿Cómo nos conociste?" mapeada a `fuente_del_lead`, con las mismas opciones de la propiedad. Cubre cualquier canal: Linktree, chats, WhatsApp, email.
+**Criterio de Mariano (30/9):** no pedirle al cliente que complete nada para reservar. Se descartó la pregunta obligatoria "¿Cómo nos conociste?" en el formulario de la agenda.
 
-**Hecho cuando:** una reserva de prueba por el link directo crea el contacto con la fuente completa.
+**Prueba de UTM (30/9), en la cuenta real:** reserva en incógnito desde `…/msandonato?utm_source=instagram&utm_medium=social&utm_campaign=prueba-utm` con un email nuevo. HubSpot registró "Tráfico directo", con el detalle `meetings-eu1.hubspot.com/msandonato`, sin rastro de la UTM, y las propiedades UTM quedaron vacías (esas las llena solo el formulario del sitio). **En HubSpot Free, la UTM en el link de la agenda no identifica el canal.**
+
+* **Esquema vigente, sin fricción para el cliente:** si reservó después de un DM, el origen se ve en la conversación y Mariano completa "Fuente del lead" a mano. Si llegó por el Linktree o sin conversación previa, se pregunta en el diagnóstico ("¿cómo llegaste a nosotros?") y se carga después de la reunión.
+* **Descartado por ahora (1/10):** un link de agenda por canal. Free permite un solo link y Starter queda reservado para la bienvenida de 3 emails (6.1), no para esto. Con el volumen actual, la carga a mano alcanza.
+* **Incidente encontrado en la prueba (30/9):** el Google Calendar de Mariano estaba desconectado de HubSpot, así que las reservas no creaban la reunión (solo llegaba un aviso para mandar la invitación a mano). Reconectado el mismo día, sin el enriquecimiento de registros de HubSpot ni la creación de contactos desde el calendario, y verificado con una reserva real que apareció en el calendario. Si vuelve a pasar, el aviso llega por mail con el asunto "no pudo reservar una reunión porque tu calendario está desconectado".
 
 Base para prospección
 
@@ -627,26 +636,33 @@ El resultado de 5.4 a 5.9 con el esquema de 5.2, directamente en HubSpot (una ve
 
 Scoring y nurturing
 
-#### 5.11 Scoring por reglas Decisión 4
+#### 5.11 Scoring Fit / Intent / Behaviour Decisión 4 · resuelta 30/9
 
-| Señal | Puntos |
-| --- | --- |
-| Empresa dentro del ICP (pyme o startup en crecimiento, ES o LatAm) | +20 |
-| Dueño, fundador o director comercial/marketing | +20 |
-| Completó el formulario de contacto | +15 |
-| Agendó el diagnóstico | +25 |
-| Interactuó con contenido (abrió 2 emails o más, comentó) | +10 |
-| Email verificado | +10 |
+**Un solo modelo para todos los leads**, los que llegan solos (formulario, e-book, agenda, redes) y los de la prospección 1:1: el Fit/Intent/Behaviour de la tarea 3.1 del Plan de Prospección, que es su dueño. Acá va cómo entran las señales de los leads que llegan solos. Reemplaza al modelo de suma de puntos que tenía esta tarea.
 
-60 o más: preventa activa · 30-59: nurturing · menos de 30: base fría. Se configura con el scoring manual de HubSpot (tiers bajos).
+| Bloque | Peso | Qué mide | Señales |
+| --- | --- | --- | --- |
+| **Fit** | 50 | ¿Quién es? | Cargo (dueño, fundador, director comercial o de marketing), tamaño (~10-200 personas), rubro, país (España o LatAm). Email verificado suma acá. |
+| **Intent** | 30 | ¿Tiene un problema ahora? | Agendó el diagnóstico (lo más fuerte), completó el formulario de contacto, señal pública de compra (busca vendedores, habla de desorden comercial). |
+| **Behaviour** | 20 | ¿Qué hizo con nosotros? | Bajó el e-book, abrió 2 emails o más, comentó, aceptó la conexión, respondió, vio el perfil. |
 
-**Superposición con el Plan de Prospección:** ese tablero ya tiene un modelo Fit/Intent/Behaviour para la prospección 1:1. Conviene decidir si hay un solo modelo o uno para inbound y otro para outbound, y en cualquier caso usar un único esquema de campos en HubSpot (5.2).
+**70 o más:** prioridad, contactar ya · **40-69:** calificado, seguimiento personal · **menos de 40:** nurturing (newsletter). Los puntos exactos de cada señal se ajustan con los primeros leads reales.
+
+* **A mano en HubSpot Free:** una propiedad numérica "Score" (y, si sirve, una de lista con el tramo), dentro del esquema de 5.2. Cuando entra un lead se mira, se suma con la tabla y se carga; la lista de contactos se ordena y filtra por ese campo.
+* **Corrección (30/9):** esta tarea decía "se configura con el scoring manual de HubSpot (tiers bajos)". La herramienta de scoring de HubSpot existe solo en Marketing Hub Professional o Enterprise (Professional: US$800 por mes + US$3.000 de alta, hasta 50 scores); ni Free ni Starter la incluyen. Por eso el score es un campo cargado a mano.
+* El scoring automático se reevalúa con volumen, mismo criterio que 5.12.
+
+**Hecho cuando:** la propiedad existe en HubSpot y los leads nuevos entran con su score.
 
 Fase 6 · Campañas
 
-#### 6.1 Elegir la herramienta de email Decisión 4
+#### 6.1 Herramienta de email y remitente Decisión 4 · resuelta 30/9
 
-Primero, el email de HubSpot (gratis o Starter): un solo lugar para el contacto, el historial y el scoring, una vez hecho 5.1. Alternativa: **Brevo** (plan gratis generoso, europea, cumple RGPD por defecto) sincronizado con HubSpot.
+**HubSpot Free**, el plan que Mariano ya tiene: un solo lugar para el contacto, el historial y el score. Alcanza para la newsletter (hasta 2.000 envíos por mes, con la marca de HubSpot al pie) y 1 acción automática (un email de bienvenida). Brevo, descartado.
+
+* **Starter, solo como opción futura para la bienvenida de 3 emails** (6.4, que necesita más de una acción automática; hoy US$20 por asiento al mes, o US$7 con contrato anual). Decisión de Mariano (1/10): Free alcanza por ahora y no se contrata Starter para ninguna otra cosa. La condición "si no agendó" del tercer email probablemente pida Professional: confirmarlo en la cuenta antes de armar 6.4.
+* **Remitente mixto:** "Mariano Sandonato · Base Core" en la newsletter y las secuencias (la voz personal rinde más en B2B pyme y es coherente con el LinkedIn personal), "Base Core" en los emails de sistema (confirmación de suscripción, avisos). Por ahora desde el mail personal de Mariano; cuando exista **mariano@basecoresales.com**, se cambia y se autentica el dominio (SPF, DKIM y DMARC en Cloudflare).
+* Pendiente de Mariano, sin fecha: crear mariano@basecoresales.com.
 
 #### 6.2 Consentimiento y doble opt-in
 
@@ -748,7 +764,7 @@ Instagram, Facebook y la Página de LinkedIn van a ser pilares de comunicación,
 | 2.6 | Grid semilla de Instagram (12 posts y 3 fijados) | Contenidos | Pendiente |
 | 2.7 | 5 historias destacadas | Contenidos | Pendiente |
 | 2.8 | Historias con ritmo bajo | Contenidos | Pendiente |
-| 2.9 | Reel de voz en off (decisión 2) | Contenidos | Pendiente |
+| 2.9 | Reel de voz en off (decisión 2: sí, 30/9) | Contenidos | Pendiente |
 | 2.10 | 8-12 posts semilla en la Página de LinkedIn | Contenidos | Pendiente |
 | 2.11 | Guía de copy por canal | Copywriting | Pendiente |
 | 2.12 | Captions de los 12 posts semilla (redactadas) | Copywriting | En progreso |
@@ -828,7 +844,7 @@ Hoy los leads llegan como emails sueltos. Primero se ordena la captura hacia Hub
 | # | Tarea | Punto del brief | Estado |
 | --- | --- | --- | --- |
 | 5.1 | Formularios del sitio → HubSpot: contacto creado o actualizado por email, con fuente, servicio, UTM (leídos de la URL, sin cookies hasta el banner de 4.5.3) y el mensaje como nota; Service Key con solo contactos lectura/escritura; email de Resend como respaldo. Probado en preview contra el HubSpot real y en producción desde el 26/9 (commit `2193af7`) | Captura web/redes | Hecho |
-| 5.2 | Campos mínimos y propiedades en HubSpot | Campos mínimos | Pendiente |
+| 5.2 | Campos mínimos y propiedades en HubSpot (1/10): estándar + `score` + consentimiento, tamaño, señal de compra y opciones de fuente; la etapa vive en el pipeline de negocios | Campos mínimos | Hecho |
 | 5.3 | Consentimiento en los formularios (lo implementa 4.5.4 del Plan de SEO; armado y aprobado en preview, en suspenso desde el 26/9 junto con todo el paquete de privacidad) | Validación de datos | Pendiente · en suspenso |
 | 5.4 | Identificación de empresas target | Empresas target | Pendiente |
 | 5.5 | Perfil del prospecto | Perfil del prospecto | Pendiente |
@@ -837,10 +853,10 @@ Hoy los leads llegan como emails sueltos. Primero se ordena la captura hacia Hub
 | 5.8 | Tomadores de decisión | Decisores | Pendiente |
 | 5.9 | Investigación de sitios y redes | Investigación | Pendiente |
 | 5.10 | Armado de la base de prospección | Base | Pendiente |
-| 5.11 | Scoring por reglas (decisión 4) | Scoring | Pendiente |
+| 5.11 | Scoring Fit/Intent/Behaviour, un solo modelo, a mano en HubSpot (decisión 4 resuelta 30/9) | Scoring | Pendiente |
 | 5.12 | Scoring predictivo | Scoring predictivo | Bloqueado |
 | 5.13 | Nurturing integrado (ver F6) | Nurturing | Pendiente |
-| 5.14 | Fuente del lead en las reservas directas de la agenda: pregunta "¿Cómo nos conociste?" en el formulario de la agenda de HubSpot (surgió en 1.9, 28/9) | Captura web/redes | Pendiente |
+| 5.14 | Fuente del lead en las reservas directas de la agenda: la UTM en el link no sirve en Free (probado 30/9); carga a mano con el origen del DM o preguntándolo en el diagnóstico. Calendario reconectado (30/9) | Captura web/redes | Hecho |
 
 #### 5.12 Scoring predictivo: bloqueado por datos y costo
 
@@ -856,7 +872,7 @@ Newsletters, email marketing y WhatsApp. En Fase 2 se deja todo configurado (her
 | --- | --- | --- | --- |
 | 6.0a | Formulario + WhatsApp + agenda de HubSpot en el sitio | — | Hecho |
 | 6.0b | Eventos de conversión en GA4 | — | Hecho |
-| 6.1 | Herramienta de email (decisión 4) | Email marketing | Pendiente |
+| 6.1 | Herramienta de email: HubSpot Free; Starter solo como opción futura para la bienvenida de 3 emails (6.4); remitente mixto | Email marketing | Hecho |
 | 6.2 | Consentimiento y doble opt-in | Email marketing | Pendiente |
 | 6.3 | Newsletter "Una observación comercial" | Newsletters | Pendiente |
 | 6.4 | Secuencia de bienvenida | Email marketing | Pendiente |
@@ -918,24 +934,29 @@ El dueño del detalle legal es la [Auditoría de Marca de Base Core](https://cla
 
 #### 10.1 Homonimia: qué evitar en piezas nuevas
 
-Hay riesgo de confusión con BaseCore™ (geoceldas) y con Base Power (baterías). El **árbol** es el elemento gráfico que más diferencia: nada de íconos de "core", circuitos ni energía, y ningún copy tipo "Base Core + tecnología" sin el contexto de consultoría comercial. Sigue esperando la decisión de Mariano sobre la auditoría.
+Hay riesgo de confusión con BaseCore™ (geoceldas), con Base Power (baterías) y, desde el 30/9, con BaseCore de Brasil (basecore.com.br, software e IA, el más cercano en rubro). El **árbol** es el elemento gráfico que más diferencia: nada de íconos de "core", circuitos ni energía, y ningún copy tipo "Base Core + tecnología" sin el contexto de consultoría comercial. Sigue esperando la decisión de Mariano sobre la auditoría.
 
-#### 10.2 Evaluar sumar IA al posicionamiento Pendiente · auditoría sin lanzar
+#### 10.2 Evaluar sumar IA al posicionamiento Decidida (30/9) · ejecución en espera
 
-Planteado por Mariano el 24/9: cambiar "Consultoría Comercial y Marketing" por "Consultoría Comercial, Marketing e IA" en el sitio, el SEO y todos los titulares de redes. Lo ve como un gran potencial. Este plan es el dueño de la evaluación y de la decisión, porque es una pregunta de posicionamiento (D8, D9); el Plan de SEO solo tiene una línea que linkea acá.
+Planteado por Mariano el 24/9: cambiar "Consultoría Comercial y Marketing" por "Consultoría Comercial, Marketing e IA" en el sitio, el SEO y todos los titulares de redes. Este plan es el dueño de la evaluación y de la decisión; la ejecución vive en la tarea 8.4 del [Plan de SEO](https://claude.ai/artifact/XPrZBTCe2b7tvbzzNuf1GT).
 
-**Tensión a resolver:** a favor, el grupo CRM/IA tiene la mejor relación entre volumen y competencia del Mapa de Keywords ("IA para empresas": 100 a 1.000 búsquedas por mes en ES, competencia media), la IA ya es parte real de la oferta (/tecnologia, ejecución de marketing) y competidores como Olmos & Co y Signos la ponen adelante. En contra, el posicionamiento vigente es "proceso antes que herramienta", Base Core "no es una AI agency genérica" (D9), la IA es el pilar 05 dosificado (D12), casi todo el sector suma "IA" en 2026, y la IA puede aumentar la confusión con BaseCore™ y Base Power (10.1).
+**Decisión de Mariano (30/9): cambio escalonado.** Lo que lo mueve: quien busque IA puede aterrizar en Base Core y descubrir que también hace preventa, venta, posventa y marketing, un gancho para generar oportunidades. Pasos: 1) IA en bios y taglines de redes; 2) opción con IA en el selector de servicio del formulario; 3) reforzar la IA en la Home sin tocar el H1; 4) medir 4-6 semanas; 5) si los datos acompañan, cambio completo en dos tandas. Alternativa: landing "IA para ventas en pymes". **Nada se ejecuta todavía**, ni el paso 1, hasta que Mariano lo pida.
 
-##### Auditoría (`seo-marketing`, con `social-content` para redes)
+##### Auditoría 1 · `seo-marketing` (28/9)
 
-* **Demanda:** keywords de IA en ES, AR y EN (Mapa de Keywords 8.6 + búsqueda actual).
-* **Competencia:** cómo usan la IA en el mensaje los 16 referentes de D4: en el titular o como apoyo.
-* **Resultados en Google y en buscadores con IA** para "consultoría comercial con IA", "IA para ventas pymes" y similares: ¿hay un hueco?
-* **Riesgo de marca:** "IA" en el titular frente a BaseCore™ y Base Power.
-* **Respaldo de la oferta:** qué parte de los servicios reales es IA hoy.
-* **Opciones con su costo:** A) no cambiar · B) IA en el segundo nivel (bio: "Te acompañamos a atraer, calificar, cerrar y fidelizar clientes, con procesos e IA") · C) cambio completo (sitio: `src/lib/site.ts` nombre y descripción, `ContactForm.tsx`, titles y schema vía Plan de SEO; redes: bio de Instagram, intro de Facebook, tagline de la Página y titular del personal, el mismo día).
+* **Demanda:** "IA para empresas" tiene volumen (ES 100-1.000 por mes), pero ya la atiende /tecnologia; "consultoría comercial + IA" no tiene volumen medido.
+* **Competencia:** solo 2 de los 16 referentes (Signos y Posizionate) ponen IA en el titular; la mayoría la usa como servicio o en el blog.
+* **Google y buscadores con IA:** "consultoría comercial con IA" devuelve implementadores puros de IA (Daimons, Naranja Mecánica, EY, PwC); cuando la pregunta describe el ciclo completo con IA, Perplexity ya cita a Base Core primero.
+* **Marca:** nuevo homónimo, BaseCore (basecore.com.br, Brasil, software e IA), sumado a la Auditoría de Marca.
+* **Respaldo:** la IA es real pero está concentrada en /tecnologia y en el sistema de agentes interno.
 
-**Hecho cuando:** Mariano elige A, B o C con la auditoría en la mano. Si elige C, la parte del sitio se ejecuta desde el Plan de SEO.
+##### Auditoría 2 · `web-lead` (30/9), riesgo SEO del cambio completo
+
+* Ningún title de las 16 páginas depende de `site.ts` y el sufijo "– Base Core Sales" no cambia; el cambio con peso real es el H1 de la Home.
+* Riesgo bajo en titles, marca y posiciones actuales (casi no hay tráfico orgánico que proteger); bajo-medio por canibalización Home vs. /tecnologia; medio si se reescribe todo el mismo día o por la homonimia con BaseCore Brasil.
+* El gancho ya funciona sin el cambio; el hueco concreto es que el selector de servicio del formulario no tiene ninguna opción con IA.
+
+**Hecha (decisión):** Mariano eligió el escalonado con las dos auditorías en la mano. Detalle, línea base y criterios de vuelta atrás en la 8.4 del Plan de SEO.
 
 ### Roadmap
 
@@ -995,7 +1016,7 @@ D1
 | Etapa | Duración orientativa | Depende de |
 | --- | --- | --- |
 | F1 Higiene | Cerrada el 28/9 (1.9, configuración de Instagram, hecha en una sesión) | Mariano, con su sesión |
-| F2 Preparación + F4 Diseño + F5 captura + F6 configuración | 4-6 semanas en paralelo | Decisiones 1, 2 y 4 |
+| F2 Preparación + F4 Diseño + F5 captura + F6 configuración | 4-6 semanas en paralelo | Decisiones 1, 2 y 4 (resueltas) |
 | F3 Exposición + activar F6 | 8-13 semanas | Umbral 2.18 |
 | F5 base de prospección | Desde la semana 6 | 5.1, decisión 4 |
 | F7 Prueba social | Cuando se destrabe 7.1 | Mariano |
@@ -1198,7 +1219,7 @@ D9
 
 **LinkedIn personal:** la voz, el diagnóstico en público. **Página de LinkedIn:** catálogo y método. **Instagram:** el método hecho visual. **Facebook:** presencia local, espejo. **Blog:** la profundidad, lo que cita la IA. **Newsletter:** la relación. **WhatsApp:** la conversación comercial.
 
-**Riesgo:** homonimia con BaseCore™ y Base Power (F10, Auditoría de Marca).
+**Riesgo:** homonimia con BaseCore™, Base Power y BaseCore de Brasil (F10, Auditoría de Marca).
 
 D10
 
@@ -1365,4 +1386,4 @@ Especificación del manual. Su producción es la tarea 4.12.
 | F4 Producción (4.1-4.3) | 2.13-2.14 |
 | F5 Prueba social / F6 Demanda / F7 Paid / F8 SEO / F9 Marca | F7 / F5 + F6 / F8 / F9 / F10 |
 
-Marketing Strategy Basecore · Base Core · actualizado el 28 de septiembre de 2026 (v18) · v18 (28/9), con OK de Mariano: 2.13 con el circuito de producción (Claude arma las piezas en Claude Design; Mariano revisa, exporta y publica; Canva y Figma opcionales); 2.9 con CapCut; 4.2 hecha (Design System en vez de Brand Kit de Canva); 4.4 con el carrusel #2 como plantilla; nueva 4.13, flujo de producción configurado (hecha) · v17 (28/9): 4.1 hecha (logos originales ordenados en PNG y SVG, isotipo solo descartado, slogan oficial en español "Creando"); decisión 1 resuelta (Figtree + DM Sans en las piezas, prueba con Claude Design en 4.2); decisión 3 resuelta (logo del schema con slogan en inglés y meta descriptions en "Creando", Plan de SEO 1.44) · v16, trabajado en vivo con Mariano el 28/9: 1.9 hecha, Instagram configurado de punta a punta (Fase 1 cerrada otra vez); la cuenta no tiene preguntas frecuentes y se reemplazan con 5 respuestas guardadas (texto en 2.17); Linktree con la agenda de HubSpot primero; admin de respaldo sumado en Business Suite; compartir Instagram → Página confirmado; nueva 5.14 (fuente del lead en las reservas directas de la agenda); 6.7 usa el mismo texto de bienvenida · v15: el paquete de privacidad (Plan de SEO 4.5: política, banner de cookies, aviso en formularios y checkbox de marketing) queda en suspenso por decisión de Mariano, armado y aprobado en preview; el banner se retiró de producción; 5.3 y 6.2 dependen de ese paquete; Cloudflare Web Analytics se mantiene como conteo total de visitas · v14: 5.1 hecha, formularios del sitio → HubSpot en producción (commit `2193af7`); 5.3 pasa a depender de la 4.5.4 del Plan de SEO (checkbox `marketingConsent` + 2 campos de HubSpot por crear); umbral 2.18 y estado de canales actualizados · v13, a pedido de Mariano (24/9): nueva 1.9 "Configuración completa de Instagram, paso a paso" (26 pasos en 6 bloques, Pendiente), Fase 1 reabierta; el paso de Controles de mensajes que estaba en 2.17 pasa a 1.9 (paso 11); umbral 2.18, roadmap y estado de canales actualizados · v12, trabajado en vivo con Mariano el 24/9: 1.8, 2.1, 2.2 y 2.3 cerradas; nueva 10.2 "IA en el posicionamiento", sin auditar todavía; cambios que Mariano hizo fuera de sesión en Facebook e Instagram (1.6, 1.7 y 1.8 cerradas: Fase 1 completa; bio de Instagram publicada, logo con slogan en inglés para todo, servicios, portada y pin de Facebook, post de 2022 de Instagram eliminado, Linktree actualizado, Instagram linkeado a Facebook); decisiones renumeradas de 8 a 5 · v11: reestructurado con el brief de Mariano: el diagnóstico de marketing pasa a la Parte 2; Social Media (preparación y exposición), Diseño gráfico, Organización de leads y Campañas son fases accionables. Contexto 2022 incorporado (objetivo 2027, target, comunicación, competidores) · Auditoría con navegador en vivo y sesión iniciada en Instagram, Facebook y LinkedIn, solo lectura, sin publicar ni interactuar: `social-content` (perfiles propios, social media, campañas), `seo-marketing` (competencia, búsquedas, diagnóstico, fuentes de empresas target), `web-lead` (verificaciones con clic, sitio, diseño gráfico, código de los formularios, leads) · Versiones anteriores: v11 (23/9, fases accionables), v10 (23/9, preparación y exposición), v9 (21/9) · Espejo de trabajo: `documentation/marketing/marketing-strategy.md`
+Marketing Strategy Basecore · Base Core · actualizado el 1 de octubre de 2026 (v19) · v19 (30/9-1/10), decisiones de Mariano: Free alcanza por ahora y Starter queda como opción futura solo para la bienvenida de 3 emails (1/10; se descarta un link de agenda por canal); 5.2 hecha (propiedades de HubSpot configuradas por Mariano; la etapa vive en el "Base Core Pipeline", no en el contacto); 5.14 hecha (la UTM en el link de la agenda no identifica el canal en HubSpot Free, probado en la cuenta real; carga a mano sin pedirle nada al cliente, un link por canal al pasar a Starter; calendario de Google reconectado a HubSpot tras encontrarlo desconectado); decisión 2 resuelta (sí al Reel, 2.9); decisión 4 resuelta (HubSpot Free por ahora, Starter al activar la bienvenida de 3 emails, Brevo descartado; un solo scoring Fit/Intent/Behaviour, el del Plan de Prospección, cargado a mano en HubSpot; remitente mixto, por ahora desde el mail personal de Mariano); 5.11 reescrita y corregida (la herramienta de scoring de HubSpot es solo de Professional y Enterprise); 6.1 hecha; decisión 5 resuelta: 10.2 decidida con dos auditorías (`seo-marketing` y `web-lead`), cambio escalonado, plan en la 8.4 del Plan de SEO, sin ejecutar; nuevo homónimo BaseCore de Brasil en 10.1, D9 y la Auditoría de Marca · v18 (28/9), con OK de Mariano: 2.13 con el circuito de producción (Claude arma las piezas en Claude Design; Mariano revisa, exporta y publica; Canva y Figma opcionales); 2.9 con CapCut; 4.2 hecha (Design System en vez de Brand Kit de Canva); 4.4 con el carrusel #2 como plantilla; nueva 4.13, flujo de producción configurado (hecha) · v17 (28/9): 4.1 hecha (logos originales ordenados en PNG y SVG, isotipo solo descartado, slogan oficial en español "Creando"); decisión 1 resuelta (Figtree + DM Sans en las piezas, prueba con Claude Design en 4.2); decisión 3 resuelta (logo del schema con slogan en inglés y meta descriptions en "Creando", Plan de SEO 1.44) · v16, trabajado en vivo con Mariano el 28/9: 1.9 hecha, Instagram configurado de punta a punta (Fase 1 cerrada otra vez); la cuenta no tiene preguntas frecuentes y se reemplazan con 5 respuestas guardadas (texto en 2.17); Linktree con la agenda de HubSpot primero; admin de respaldo sumado en Business Suite; compartir Instagram → Página confirmado; nueva 5.14 (fuente del lead en las reservas directas de la agenda); 6.7 usa el mismo texto de bienvenida · v15: el paquete de privacidad (Plan de SEO 4.5: política, banner de cookies, aviso en formularios y checkbox de marketing) queda en suspenso por decisión de Mariano, armado y aprobado en preview; el banner se retiró de producción; 5.3 y 6.2 dependen de ese paquete; Cloudflare Web Analytics se mantiene como conteo total de visitas · v14: 5.1 hecha, formularios del sitio → HubSpot en producción (commit `2193af7`); 5.3 pasa a depender de la 4.5.4 del Plan de SEO (checkbox `marketingConsent` + 2 campos de HubSpot por crear); umbral 2.18 y estado de canales actualizados · v13, a pedido de Mariano (24/9): nueva 1.9 "Configuración completa de Instagram, paso a paso" (26 pasos en 6 bloques, Pendiente), Fase 1 reabierta; el paso de Controles de mensajes que estaba en 2.17 pasa a 1.9 (paso 11); umbral 2.18, roadmap y estado de canales actualizados · v12, trabajado en vivo con Mariano el 24/9: 1.8, 2.1, 2.2 y 2.3 cerradas; nueva 10.2 "IA en el posicionamiento", sin auditar todavía; cambios que Mariano hizo fuera de sesión en Facebook e Instagram (1.6, 1.7 y 1.8 cerradas: Fase 1 completa; bio de Instagram publicada, logo con slogan en inglés para todo, servicios, portada y pin de Facebook, post de 2022 de Instagram eliminado, Linktree actualizado, Instagram linkeado a Facebook); decisiones renumeradas de 8 a 5 · v11: reestructurado con el brief de Mariano: el diagnóstico de marketing pasa a la Parte 2; Social Media (preparación y exposición), Diseño gráfico, Organización de leads y Campañas son fases accionables. Contexto 2022 incorporado (objetivo 2027, target, comunicación, competidores) · Auditoría con navegador en vivo y sesión iniciada en Instagram, Facebook y LinkedIn, solo lectura, sin publicar ni interactuar: `social-content` (perfiles propios, social media, campañas), `seo-marketing` (competencia, búsquedas, diagnóstico, fuentes de empresas target), `web-lead` (verificaciones con clic, sitio, diseño gráfico, código de los formularios, leads) · Versiones anteriores: v11 (23/9, fases accionables), v10 (23/9, preparación y exposición), v9 (21/9) · Espejo de trabajo: `documentation/marketing/marketing-strategy.md`
