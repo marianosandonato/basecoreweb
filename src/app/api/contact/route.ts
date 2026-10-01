@@ -13,7 +13,7 @@ type ContactPayload = {
   mensaje?: string;
   website?: string; // honeypot
   turnstileToken?: string;
-  marketingConsent?: boolean | string; // checkbox from SEO plan 4.5.4, not in the form yet
+  marketingConsent?: boolean | string; // checkbox from SEO plan 4.5.4
   utm_source?: string;
   utm_medium?: string;
   utm_campaign?: string;

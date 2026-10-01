@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import type { ComponentType, ReactNode, SVGProps } from "react";
 import { site, siteEn } from "@/lib/site";
+import { openCookieSettings } from "@/lib/consent";
 import { FacebookIcon, InstagramIcon, LinkedinIcon } from "./icons";
 import { FooterEmailIcon, FooterPhoneIcon, FooterPinIcon } from "./footerIcons";
 
@@ -53,6 +54,11 @@ const copy = {
     contactanos: "Contactanos",
     dondeEstamos: "Dónde estamos",
     rights: `Base Core © ${yearRange} Todos los Derechos Reservados`,
+    privacyLabel: "Política de Privacidad",
+    privacyHref: "/privacidad",
+    cookiesLabel: "Política de Cookies",
+    cookiesHref: "/cookies",
+    cookieSettings: "Configurar cookies",
   },
   en: {
     homeLabel: "Base Core – Home",
@@ -61,6 +67,11 @@ const copy = {
     contactanos: "Contact us",
     dondeEstamos: "Where we are",
     rights: `Base Core © ${yearRange} All Rights Reserved`,
+    privacyLabel: "Privacy Policy",
+    privacyHref: "/en/privacy",
+    cookiesLabel: "Cookie Policy",
+    cookiesHref: "/en/cookies",
+    cookieSettings: "Cookie settings",
   },
 } as const;
 
@@ -241,11 +252,45 @@ export default function Footer() {
       {/* ── Section 2 — copyright (#d01ae78) ─────────────────────────────── */}
       <div className="bg-navy">
         <div className="container-bc px-0">
-          <div className="px-[15px]">
+          <div className="border-t border-white/10 px-[15px] py-[20px] text-center xl:py-[25px]">
             {/* Year is hard-coded on the original — see documentation/PLAN-FOOTER.md. */}
-            <p className="border-t border-white/10 py-[20px] text-center font-sans text-[16px] leading-[32.4px] text-[#C5D2DD] xl:py-[25px]">
-              {t.rights}
-            </p>
+            <p className="font-sans text-[16px] leading-[32.4px] text-[#C5D2DD]">{t.rights}</p>
+            {/* Privacy/Cookie policy links (plan-seo 4.5.4) sit next to the
+                pre-existing "Configurar cookies" trigger, same small
+                underlined style, so the three legal entry points read as one
+                group instead of the button standing alone. Stacked
+                (flex-col) below sm: WhatsAppButton.tsx floats `fixed
+                right-5 bottom-5` (64px) over this exact bottom-right corner,
+                and a single wide wrapped line here (all three items side by
+                side) reached far enough right, at narrow widths, to sit
+                partly underneath it — verified with Playwright at 390px.
+                Stacking removes the overlap without touching the button
+                itself; the "·" separators only make sense once everything
+                is back on one line, so they're hidden below sm. */}
+            <div className="mt-[4px] flex flex-col items-center gap-[4px] font-sans text-[14px] text-[#C5D2DD] sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-[12px] sm:gap-y-[4px]">
+              <Link href={t.privacyHref} className="underline underline-offset-2 transition-colors hover:text-white">
+                {t.privacyLabel}
+              </Link>
+              <span aria-hidden="true" className="hidden sm:inline">
+                ·
+              </span>
+              <Link href={t.cookiesHref} className="underline underline-offset-2 transition-colors hover:text-white">
+                {t.cookiesLabel}
+              </Link>
+              <span aria-hidden="true" className="hidden sm:inline">
+                ·
+              </span>
+              {/* Reopens CookieConsent.tsx's settings panel (plan-seo 4.5.3) via a
+                  plain window event — CookieConsent listens for it globally, so
+                  this stays a one-line trigger with no consent state of its own. */}
+              <button
+                type="button"
+                onClick={openCookieSettings}
+                className="cursor-pointer underline underline-offset-2 transition-colors hover:text-white"
+              >
+                {t.cookieSettings}
+              </button>
+            </div>
           </div>
         </div>
       </div>

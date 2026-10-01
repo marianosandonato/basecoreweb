@@ -25,6 +25,17 @@ const pairs: { es: string; en: string; lastModified: string }[] = [
   { es: "/blog", en: "/en/blog", lastModified: "2026-09-05" }, // title + OG image (3.9, 1.20)
 ];
 
+/**
+ * Legal pages (plan-seo 4.5.4) — low priority like the rest of the site's
+ * utility/legal content, not the 0.8 given to real service/content pages.
+ * lastModified is LEGAL_PUBLICATION_DATE's own day; bump both together the
+ * day the policy text actually changes.
+ */
+const legalPairs: { es: string; en: string; lastModified: string }[] = [
+  { es: "/privacidad", en: "/en/privacy", lastModified: "2026-09-26" },
+  { es: "/cookies", en: "/en/cookies", lastModified: "2026-09-26" },
+];
+
 // Each post's ES/EN pair shares the same publishedAt in every case today —
 // verified against src/content/blog/{es,en}/*.ts — so one date covers both
 // sitemap entries; this stays real per-post data, not a guess.
@@ -52,6 +63,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "monthly",
       priority: es === "" ? 1 : 0.8,
+      alternates: { languages },
+    });
+  }
+
+  for (const { es, en, lastModified } of legalPairs) {
+    const esUrl = `${site.url}${es}`;
+    const languages = { es: esUrl, en: `${site.url}${en}`, "x-default": esUrl };
+    entries.push({
+      url: esUrl,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.3,
+      alternates: { languages },
+    });
+    entries.push({
+      url: `${site.url}${en}`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.3,
       alternates: { languages },
     });
   }

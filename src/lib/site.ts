@@ -119,6 +119,10 @@ export const routeMap: Record<string, string> = {
   "/en/blog": "/blog",
   "/basehub": "/en/basehub",
   "/en/basehub": "/basehub",
+  "/privacidad": "/en/privacy",
+  "/en/privacy": "/privacidad",
+  "/cookies": "/en/cookies",
+  "/en/cookies": "/cookies",
 };
 
 export const siteEn = {

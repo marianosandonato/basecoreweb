@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { site, type Lang } from "@/lib/site";
 import { readUtm } from "@/lib/utm";
+import { renderRich } from "@/lib/renderBold";
 import Turnstile from "./Turnstile";
 
 declare global {
@@ -32,6 +33,12 @@ const copy = {
     errorOrText: "o a",
     captchaStuckMessage: "No pudimos verificar la seguridad automáticamente — podés descargar igual.",
     captchaRetryLabel: "Reintentar la verificación",
+    // Textos exactos de documentation/legal/publicar/formularios.md (plan-seo
+    // 4.5.4/4.5.5, revisados por el abogado) — no reescribir.
+    marketingConsentLabel:
+      "Quiero recibir por email novedades, contenidos y comunicaciones comerciales de Base Core. Puedo retirar mi consentimiento en cualquier momento.",
+    firstLayer:
+      "Responsable: Mariano Sandonato. Usaremos los datos que proporciones para entregarte el e-book solicitado y, cuando corresponda, gestionar la consulta comercial que hayas iniciado. Para más información, consultá nuestra [Política de Privacidad](/privacidad).",
   },
   en: {
     name: "FIRST NAME",
@@ -49,6 +56,12 @@ const copy = {
     errorOrText: "or at",
     captchaStuckMessage: "We couldn't verify the security check automatically — you can still download it.",
     captchaRetryLabel: "Retry verification",
+    // Exact text from documentation/legal/publicar/formularios.md (plan-seo
+    // 4.5.4/4.5.5, lawyer-reviewed) — do not rewrite.
+    marketingConsentLabel:
+      "I would like to receive Base Core news, content and commercial communications by email. I can withdraw my consent at any time.",
+    firstLayer:
+      "Controller: Mariano Sandonato. We will use the information you provide to deliver the requested e-book and, where applicable, manage the commercial enquiry you initiated. For more information, please see our [Privacy Policy](/en/privacy).",
   },
 } as const;
 
@@ -203,6 +216,25 @@ export default function EbookForm({
         </div>
       )}
 
+      {/* Marketing checkbox (plan-seo 4.5.4/5.1 of the Marketing Strategy):
+          unchecked by default, optional, its own <label>, kept as a standalone
+          row separate from every other field/control. Unticked, the checkbox
+          simply has no entry in FormData, so `data.marketingConsent` is
+          `undefined` on submit; ticked, the browser's default checkbox value
+          is "on" — exactly what /api/ebook + hubspot.ts already expect
+          (`data.marketingConsent === "on"`). */}
+      <div className="flex items-start gap-[10px] sm:col-span-2">
+        <input
+          type="checkbox"
+          id="ebook-marketingConsent"
+          name="marketingConsent"
+          className="mt-[3px] h-[16px] w-[16px] shrink-0 rounded-[3px] border border-line text-primary accent-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+        />
+        <label htmlFor="ebook-marketingConsent" className="font-sans text-[13px] leading-[1.5] text-body">
+          {t.marketingConsentLabel}
+        </label>
+      </div>
+
       <div className="pt-0 sm:col-span-2 md:pt-[13px]">
         <button
           type="submit"
@@ -225,6 +257,12 @@ export default function EbookForm({
             .
           </p>
         )}
+        {/* First-layer privacy notice (plan-seo 4.5.4), exact text from
+            formularios.md — link resolves to /privacidad via renderRich's
+            [label](href) syntax. */}
+        <p className="mt-[14px] max-w-[520px] font-sans text-[12px] leading-[1.6] text-body">
+          {renderRich(t.firstLayer, { linkClassName: "text-primary underline underline-offset-2 hover:text-primary-dark" })}
+        </p>
       </div>
     </form>
   );
