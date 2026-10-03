@@ -1,5 +1,6 @@
 import { EstrategiaIcon, VentaIcon } from "@/components/cycleIcons";
 import { PREVENTA_GRID } from "./flipGrids";
+import { preventaFaq } from "./faqs";
 import type { ServicePageData } from "./types";
 
 export const preventa: ServicePageData = {
@@ -25,7 +26,7 @@ export const preventa: ServicePageData = {
     ],
     paragraphs: [
       "Antes de que exista una venta, existe un trabajo silencioso de identificar, calificar y acercarse a quien realmente puede convertirse en cliente. **Esa es la preventa**: el conjunto de actividades que transforma una base de datos fría en una agenda de reuniones calificadas.",
-      "Según **McKinsey & Company**, las empresas con procesos de preventa sólidos logran tasas de éxito de 40% a 50% en negocios nuevos y de 80% a 90% en renovaciones. Ese resultado no sale de un informe: sale de un proceso bien construido y sostenido en el tiempo.",
+      "Según [McKinsey & Company](https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/to-improve-sales-pay-more-attention-to-presales), las empresas con procesos de preventa sólidos consiguen de forma consistente tasas de cierre (win rates) de 40% a 50% en negocios nuevos y de 80% a 90% en renovaciones. Ese resultado no sale de un informe: sale de un proceso bien construido y sostenido en el tiempo.",
       "Si estás armando tu [proceso de ventas desde cero](/ebook), descargá nuestro e-book gratuito.",
     ],
   },
@@ -123,4 +124,5 @@ export const preventa: ServicePageData = {
     label: "VER FUNNEL VENTAS",
     href: "/venta",
   },
+  faq: preventaFaq,
 };

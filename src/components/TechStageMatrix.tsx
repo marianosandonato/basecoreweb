@@ -8,7 +8,7 @@ type Row = {
 
 /**
  * "La misma tecnología, en todo el ciclo comercial" — /tecnologia's own
- * matrix cajón, between "Módulos" and "BaseCore AI System" (see that page
+ * matrix cajón, between "Módulos" and "Base Core AI System" (see that page
  * for placement).
  *
  * Deliberately inverted vs. a conventional table: the 4 commercial stages

@@ -6,6 +6,7 @@ import Button from "@/components/Button";
 import CheckList from "@/components/CheckList";
 import ClientsCarousel from "@/components/ClientsCarouselLazy";
 import ContactSection from "@/components/ContactSection";
+import FaqSection from "@/components/FaqSection";
 import MethodologyGrid, { type MethodologyStep } from "@/components/MethodologyGrid";
 import ProcessImageStack from "@/components/ProcessImageStack";
 import SectionHeading from "@/components/SectionHeading";
@@ -13,6 +14,7 @@ import ServiceCards from "@/components/ServiceCards";
 import TechnologyBlock from "@/components/TechnologyBlock";
 import { blogPosts } from "@/content/blog/posts";
 import { clientProjects } from "@/content/clients/projects";
+import { homeFaq } from "@/content/faqs";
 import { PosventaIcon, PreventaIcon, VentaIcon } from "@/components/cycleIcons";
 import {
   ChartBarIcon,
@@ -46,7 +48,7 @@ const methodology: readonly MethodologyStep[] = [
     icon: PaperPlaneIcon,
     frontImage: "/images/01-base-core-sales.jpg",
     backImage: "/images/1-diagnostico-base-core-sales.webp",
-    items: ["Auditoría gratuita", "Relevamiento del estado actual del negocio"],
+    items: ["Diagnóstico gratuito", "Relevamiento del estado actual del negocio"],
   },
   {
     title: "Plan de Ruta",
@@ -167,7 +169,7 @@ export default function HomePage() {
                   href="#contacto"
                   className="hero-button inline-block rounded-[4px] bg-primary font-montserrat font-semibold uppercase tracking-[1px] text-white transition-colors duration-300 hover:bg-[rgba(5,117,188,0.9)]"
                 >
-                  AGENDAR RELEVAMIENTO
+                  DIAGNÓSTICO GRATUITO
                 </a>
               </div>
             </div>
@@ -524,6 +526,9 @@ export default function HomePage() {
           </Button>
         </div>
       </section>
+
+      {/* Preguntas frecuentes (seo-plan 3.13) */}
+      <FaqSection data={homeFaq} className="pt-0" />
 
       <ContactSection />
     </>

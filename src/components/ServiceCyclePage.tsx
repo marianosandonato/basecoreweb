@@ -8,6 +8,7 @@ import Breadcrumb from "./Breadcrumb";
 import Button from "./Button";
 import CheckList from "./CheckList";
 import ContactSection from "./ContactSection";
+import FaqSection from "./FaqSection";
 import FlipCardGrid from "./FlipCardGrid";
 import PageHero from "./PageHero";
 import SectionHeading from "./SectionHeading";
@@ -17,7 +18,7 @@ import TechnologyBlock from "./TechnologyBlock";
 
 const copy = {
   es: {
-    cta: "AGENDAR RELEVAMIENTO",
+    cta: "DIAGNÓSTICO GRATUITO",
     etapas: "Etapas",
     recruitingEyebrow: "RECLUTAMIENTO: FUERZA DE VENTAS",
     recruitingDescription:
@@ -262,6 +263,9 @@ export default function ServiceCyclePage({
           </div>
         </section>
       )}
+
+      {/* Preguntas frecuentes (seo-plan 3.13) — ES only until EN is approved. */}
+      {data.faq && <FaqSection data={data.faq} />}
 
       {/* Contacto (#71f8f2e1) */}
       <ContactSection

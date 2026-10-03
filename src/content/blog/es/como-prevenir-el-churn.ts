@@ -12,7 +12,7 @@ export const comoPrevenirElChurn: BlogPost = {
   body: [
     {
       type: "p",
-      text: "Adquirir un cliente nuevo puede costar hasta **7 veces más** que retener a uno que ya confía en tu empresa. Un cliente existente tiene entre **60% y 70%** de probabilidad de volver a comprarte; un prospecto nuevo, apenas entre 5% y 20%. Con esa diferencia, cualquier pyme debería tratar la retención como una prioridad de negocio, no como una tarea de soporte que se atiende cuando hay tiempo. El problema es que la mayoría se entera de que un cliente se iba a ir recién cuando ya avisó que se va.",
+      text: "Según Harvard Business Review, captar un cliente nuevo puede costar **entre 5 y 25 veces más** que retener a uno que ya confía en tu empresa, según el estudio y la industria. Un cliente existente ya te conoce; a uno nuevo todavía hay que convencerlo. Con esa diferencia, cualquier pyme debería tratar la retención como una prioridad de negocio, no como una tarea de soporte que se atiende cuando hay tiempo. El problema es que la mayoría se entera de que un cliente se iba a ir recién cuando ya avisó que se va.",
     },
     {
       type: "h2",

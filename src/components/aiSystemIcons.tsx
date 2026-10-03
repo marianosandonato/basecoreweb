@@ -3,7 +3,7 @@ import type { SVGProps } from "react";
 type IconProps = SVGProps<SVGSVGElement>;
 
 /**
- * Small stroke-style icon set for the "BaseCore AI System" cajón only.
+ * Small stroke-style icon set for the "Base Core AI System" cajón only.
  * Deliberately different construction from `icons.tsx` (solid FontAwesome-style
  * silhouettes): these three are simple enough to hand-draw as clean line icons,
  * and a stroke style reads as more "systemic/technical" for this one section

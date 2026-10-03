@@ -71,7 +71,7 @@ export const professionalServiceJsonLd = {
   disambiguatingDescription:
     "Base Core Sales es una consultoría de ventas, marketing y tecnología B2B para empresas de España y Latinoamérica, con foco en preventa, venta, posventa y marketing.",
   email: site.email,
-  areaServed: ["ES", "AR"],
+  areaServed: ["ES", "AR", "Latinoamérica"],
   founder: {
     "@type": "Person",
     name: site.founder.name,

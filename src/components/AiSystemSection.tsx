@@ -26,7 +26,7 @@ type WorkflowStep = {
 };
 
 /**
- * "BaseCore AI System" — /tecnologia's own methodology cajón, between
+ * "Base Core AI System" — /tecnologia's own methodology cajón, between
  * TechStageMatrix and the BaseHub teaser (see that page for placement).
  *
  * Structure (top to bottom): eyebrow/title/intro -> "HOY, EN PRODUCCIÓN"
@@ -40,7 +40,7 @@ type WorkflowStep = {
 const copy = {
   es: {
     eyebrow: "METODOLOGÍA PROPIA DE IA",
-    title: "BaseCore AI System",
+    title: "Base Core AI System",
     intro: "Agentes de IA que investigan, deciden y proponen antes de ejecutar.",
     agentsBadge: "AGENTES EN PRODUCCIÓN",
     agents: [
@@ -112,7 +112,7 @@ const copy = {
   },
   en: {
     eyebrow: "OUR OWN AI METHODOLOGY",
-    title: "BaseCore AI System",
+    title: "Base Core AI System",
     intro: "AI agents that research, decide, and propose before acting.",
     agentsBadge: "AGENTS IN PRODUCTION",
     agents: [

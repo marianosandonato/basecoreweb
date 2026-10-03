@@ -6,6 +6,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import Button from "@/components/Button";
 import CheckList from "@/components/CheckList";
 import ContactSection from "@/components/ContactSection";
+import FaqSection from "@/components/FaqSection";
 import FlipCardGrid from "@/components/FlipCardGrid";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
@@ -13,6 +14,7 @@ import ServiceJsonLd from "@/components/ServiceJsonLd";
 import TechStageMatrix from "@/components/TechStageMatrix";
 import { TECNOLOGIA_GRID } from "@/content/flipGrids";
 import type { FlipCardData } from "@/content/types";
+import { tecnologiaFaq } from "@/content/faqs";
 
 /**
  * The eight "Soluciones" flip boxes (was "Módulos") — /tecnologia's counterpart to /marketing's
@@ -134,7 +136,7 @@ export default function TecnologiaPage() {
           "Migramos e instalamos CRM y otros softwares.",
         ]}
         image="/images/TECNOLOGIA-BASECORE.jpg"
-        cta={{ label: "AGENDAR RELEVAMIENTO", href: "#contacto" }}
+        cta={{ label: "DIAGNÓSTICO GRATUITO", href: "#contacto" }}
         overlayOpacity={0.32}
       />
 
@@ -176,9 +178,9 @@ export default function TecnologiaPage() {
 
           <div className="text-center">
             <p className="font-sans text-[18px] leading-[1.8] text-muted">
-              Más de la mitad de las implementaciones de CRM para empresas
-              falla por falta de adopción, roles poco claros o flujos que
-              nunca se ordenaron. Un CRM no ordena un proceso comercial, lo refleja.
+              Muchas implementaciones de CRM para empresas no cumplen lo que
+              se esperaba de ellas, casi siempre por falta de adopción, roles
+              poco claros o flujos que nunca se ordenaron. Un CRM no ordena un proceso comercial, lo refleja.
               Por eso definimos el proceso{" "}
               <strong className="font-bold text-white">antes de implementar</strong>{" "}
               la herramienta.
@@ -222,11 +224,11 @@ export default function TecnologiaPage() {
       <div className="h-[50px]" aria-hidden="true" />
 
       {/* "La misma tecnología, en todo el ciclo comercial" — matrix cajón
-          (stages x capabilities), between Soluciones and BaseCore AI System.
+          (stages x capabilities), between Soluciones and Base Core AI System.
           Self-contained (own header, spacer at the end). */}
       <TechStageMatrix lang="es" />
 
-      {/* "BaseCore AI System" — the AI methodology cajón, between the matrix
+      {/* "Base Core AI System" — the AI methodology cajón, between the matrix
           above and the BaseHub teaser. Self-contained (own header, spacer at
           the end). */}
       <AiSystemSection lang="es" />
@@ -235,6 +237,9 @@ export default function TecnologiaPage() {
           IS the tecnologia page), so the teaser sits here instead, right
           before Contacto. */}
       <BaseHubTeaser />
+
+      {/* Preguntas frecuentes (seo-plan 3.13) */}
+      <FaqSection data={tecnologiaFaq} />
 
       <ContactSection
         titleAs="h2"

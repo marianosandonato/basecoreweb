@@ -117,7 +117,7 @@ export default function ContactSection({
           container, not of the 1170 content box — with the 15px padding inside
           them, giving 570px of content. Same rule as the flip boxes and the
           Ciclos cards (documentation/PLAN.md). */}
-      <div className="container-bc relative px-0 md:flex md:items-center">
+      <div className="container-bc relative px-0 md:flex md:items-start">
         {/* Left column */}
         <div className="px-[15px] md:w-1/2">
           <SectionHeading

@@ -116,7 +116,7 @@ export default function BaseHubPage() {
         // change to PageHero doesn't silently start capping a photo that has
         // nothing to gain from it.
         sizes="100vw"
-        cta={{ label: "AGENDAR RELEVAMIENTO", href: "#contacto" }}
+        cta={{ label: "DIAGNÓSTICO GRATUITO", href: "#contacto" }}
       />
 
       {/* "Qué es" — no logo lockup: just "BaseHub" on its own, larger, set
@@ -215,7 +215,7 @@ export default function BaseHubPage() {
             className="mx-auto mb-[30px]"
           />
           <Button href="#contacto" size="sm">
-            AGENDAR RELEVAMIENTO
+            DIAGNÓSTICO GRATUITO
           </Button>
         </div>
       </section>

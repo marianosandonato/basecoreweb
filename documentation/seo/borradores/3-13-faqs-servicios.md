@@ -311,3 +311,27 @@ Se empieza por un diagnóstico tecnológico, que ordena qué herramientas tienes
 
 - Keyword: implementación CRM, consultoría CRM.
 - Fuente: /tecnologia (card "Diagnóstico tecnológico"); no hay precios.
+
+---
+
+## Respuestas de Mariano (3/10/2026) — aplicar a todo el borrador
+
+**Formato:** acordeón con `<details>/<summary>` nativo, renderizado en el servidor (todo el texto en el HTML inicial), **todas las preguntas cerradas** por defecto. Sección antes de `ContactSection` en las 6 páginas. `FAQPage` JSON-LD generado desde la misma fuente de datos que el texto visible. Voz: **tuteo**. Solo ES; EN después del ok de Mariano en el preview.
+
+1. **Precio:** sin precio ni modelo de cobro. Fórmula: "El presupuesto se define en la propuesta comercial que enviamos después del relevamiento inicial, porque depende del alcance del proyecto."
+2. **Plazos:** no prometer cifras, volúmenes ni tiempos de resultado. Los plazos concretos se definen en el plan de trabajo según el alcance.
+3. **Primer paso gratuito:** es el **relevamiento inicial**: primera reunión para evaluar la viabilidad del proyecto y presentar la propuesta de valor; después Base Core envía la propuesta comercial. Gratuito y **sin compromiso de contratación**; no mencionar duración.
+   - **Corrección importante:** los **diagnósticos** (comercial, tecnológico, de equipo, de marketing, según lo que amerite el proyecto) NO son el paso gratuito: empiezan cuando el cliente contrata, son parte del proceso de la consultoría y están **incluidos en el servicio, no se cobran aparte**. Si el proyecto abarca marketing, venta y tecnología, hay tres diagnósticos.
+   - **Nombre (criterio mixto):** botones y títulos dicen "Diagnóstico gratuito" (keyword del mapa); la FAQ aclara que es una primera reunión de relevamiento sin costo y que, si se avanza, los diagnósticos en profundidad son parte del proyecto.
+4. **Para quién:** pymes y empresas medianas B2B (que venden a otras empresas), sin mínimo de empleados ni vendedores.
+5. **Dónde y cómo:** modalidad remota, empresas de España y Latinoamérica, con base en Buenos Aires y Barcelona. Ajustar `areaServed` del schema para incluir Latinoamérica.
+6. **Preventa:** la ejecuta **el equipo del cliente**. Base Core diseña el modelo de contactación, arma el equipo de preventa (recruiting) y lo capacita. Reescribir 2.1, 2.3 y 2.4: el entregable no es "una agenda de reuniones" hecha por Base Core.
+7. **Gerente comercial:** complementa a la dirección comercial, no la reemplaza. Al cierre del proyecto, procesos, herramientas y seguimiento quedan en manos del equipo del cliente, que además puede contratar un abono de **mejora continua**.
+8. **Posventa (equipo):** "se puede sumar al proyecto según lo que surja del diagnóstico", sin decir incluido ni aparte.
+9. **Marketing:** la inversión en medios la paga el cliente directamente a cada plataforma; Base Core cobra estrategia y gestión. Sin mínimos. **No mencionar permanencia.**
+10. **Tecnología:** licencias de CRM las contrata el cliente a su nombre (Base Core implementa y configura). El software a medida queda **a nombre del cliente** al finalizar. El diagnóstico tecnológico es parte del proyecto e incluido en el servicio (ver punto 3).
+
+**Cambios extra incluidos en esta tarea (mismo preview):**
+- Unificar "Auditoría gratuita" / "Agendar relevamiento" → "Diagnóstico gratuito" en todo el sitio ES.
+- `/tecnologia`: "BaseCore AI System" → "Base Core AI System".
+- Estadísticas sin fuente (/posventa "7 veces más", "60-70%"; /venta "80%/44%"; /tecnologia "más de la mitad de los CRM fallan"; /marketing "90% de compradores B2B"): buscar la fuente real y enlazarla; si no hay fuente confiable, reformular o sacar (proponer a Mariano).

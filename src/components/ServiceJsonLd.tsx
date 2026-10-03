@@ -23,7 +23,7 @@ export default function ServiceJsonLd({
       name: site.shortName,
       url: site.url,
     },
-    areaServed: ["ES", "AR"],
+    areaServed: ["ES", "AR", "Latinoamérica"],
   };
 
   return (

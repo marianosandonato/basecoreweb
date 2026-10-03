@@ -1,5 +1,6 @@
 import { EstrategiaIcon, VentaIcon } from "@/components/cycleIcons";
 import { POSVENTA_GRID } from "./flipGrids";
+import { posventaFaq } from "./faqs";
 import type { ServicePageData } from "./types";
 
 export const posventa: ServicePageData = {
@@ -24,8 +25,8 @@ export const posventa: ServicePageData = {
       "Retención y fidelización de clientes.",
     ],
     paragraphs: [
-      "Adquirir un cliente nuevo puede costar hasta 7 veces más que **retener a uno que ya confía** en tu empresa, pero la mayoría concentra su energía en abrir cuentas nuevas. Ahí la posventa define el resultado: una relación rentable, o una nueva baja.",
-      "Un cliente existente tiene entre 60% y 70% de probabilidad de volver a comprarte; un prospecto nuevo, apenas 5% a 20%. Por eso pequeñas mejoras en retención impactan tanto en la rentabilidad: la posventa no es soporte, es el **activo más subestimado del ciclo**.",
+      "Según [Harvard Business Review](https://hbr.org/2014/10/the-value-of-keeping-the-right-customers), captar un cliente nuevo puede costar entre 5 y 25 veces más que **retener a uno que ya confía** en tu empresa, según el estudio y la industria. Aun así, la mayoría concentra su energía en abrir cuentas nuevas. Ahí la posventa define el resultado: una relación rentable, o una nueva baja.",
+      "Un cliente existente ya te conoce y ya confía en ti; venderle a un cliente nuevo suele ser más difícil. Por eso pequeñas mejoras en retención impactan tanto en la rentabilidad: la posventa no es soporte, es el **activo más subestimado del ciclo**.",
     ],
   },
   etapas: {
@@ -99,4 +100,5 @@ export const posventa: ServicePageData = {
     ],
   },
   contactTitleAs: "h2",
+  faq: posventaFaq,
 };

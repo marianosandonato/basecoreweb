@@ -12,7 +12,7 @@ export const howToPreventChurn: BlogPost = {
   body: [
     {
       type: "p",
-      text: "Acquiring a new customer can cost up to **7 times more** than retaining one who already trusts your business. An existing customer has a **60% to 70%** chance of buying again; a new prospect, only 5% to 20%. With a gap that wide, any small business should treat retention as a core priority, not a support task that gets handled when there's time. The problem is that most companies only find out a customer was leaving once they've already said so.",
+      text: "According to Harvard Business Review, acquiring a new customer can cost **anywhere from 5 to 25 times more** than retaining one who already trusts your business, depending on the study and the industry. An existing customer already knows you; a new one still has to be convinced. With a gap that wide, any small business should treat retention as a core priority, not a support task that gets handled when there's time. The problem is that most companies only find out a customer was leaving once they've already said so.",
     },
     {
       type: "h2",

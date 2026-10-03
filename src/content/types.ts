@@ -97,4 +97,15 @@ export type ServicePageData = {
   };
   /** /preventa renders the Contacto title as h3, /venta as h2. */
   contactTitleAs?: "h2" | "h3";
+  /** "Preguntas frecuentes" block before Contacto (seo-plan 3.13). */
+  faq?: FaqData;
+};
+
+/** One page's FAQ block. `answer` accepts `renderRich` markers (`**bold**`,
+    `[label](href)`); FaqSection strips them for the FAQPage JSON-LD. */
+export type FaqData = {
+  /** Canonical path of the page the block lives on, for the schema `url`. */
+  path: string;
+  title: string;
+  items: readonly { question: string; answer: string }[];
 };

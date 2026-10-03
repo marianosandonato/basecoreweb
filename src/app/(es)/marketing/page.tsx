@@ -5,6 +5,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import Button from "@/components/Button";
 import CheckList from "@/components/CheckList";
 import ContactSection from "@/components/ContactSection";
+import FaqSection from "@/components/FaqSection";
 import FlipCardGrid from "@/components/FlipCardGrid";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
@@ -12,6 +13,7 @@ import ServiceJsonLd from "@/components/ServiceJsonLd";
 import TechnologyBlock from "@/components/TechnologyBlock";
 import { MARKETING_GRID } from "@/content/flipGrids";
 import type { FlipCardData } from "@/content/types";
+import { marketingFaq } from "@/content/faqs";
 
 const title = "Marketing Digital para Pymes";
 const description =
@@ -153,7 +155,7 @@ export default function MarketingPage() {
           "Generamos campañas para atraer leads.",
         ]}
         image="/images/marketing-slide-base-core-sales.jpg"
-        cta={{ label: "AGENDAR RELEVAMIENTO", href: "#contacto" }}
+        cta={{ label: "DIAGNÓSTICO GRATUITO", href: "#contacto" }}
         imageClassName="saturate-[.45] brightness-[1.12]"
         overlayColorClassName="bg-black"
         overlayOpacity={0.1}
@@ -206,7 +208,16 @@ export default function MarketingPage() {
               <strong className="font-bold text-white">El marketing es la base.</strong>
             </p>
             <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-muted">
-              El 90% de los compradores B2B empieza su proceso de compra investigando por su cuenta, mucho antes de hablar con un vendedor. Para cuando llegan a tu equipo comercial, ya se formaron una opinión: el marketing define{" "}
+              Según el{" "}
+              <a
+                href="https://6sense.com/science-of-b2b/2024-buyer-experience-report/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white underline underline-offset-2 hover:no-underline"
+              >
+                2024 Buyer Experience Report de 6sense
+              </a>
+              , el 81% de los compradores B2B elige un proveedor preferido antes de hablar con un vendedor, y cerca del 70% del proceso de compra ocurre antes de ese primer contacto. Para cuando llegan a tu equipo comercial, ya se formaron una opinión: el marketing define{" "}
               <strong className="font-bold text-white">con qué opinión llegan</strong>.
             </p>
           </div>
@@ -285,6 +296,9 @@ export default function MarketingPage() {
       </section>
 
       {/* Contacto (#437d5e49) */}
+      {/* Preguntas frecuentes (seo-plan 3.13) */}
+      <FaqSection data={marketingFaq} />
+
       <ContactSection
         titleAs="h2"
         backgroundImage="/images/bg-5.jpg"
