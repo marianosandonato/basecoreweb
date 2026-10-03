@@ -51,7 +51,7 @@ const copy = {
     homeLabel: "Base Core – Inicio",
     servicios: "Servicios",
     contacto: "Contacto",
-    contactanos: "Contactanos",
+    contactanos: "Contáctanos",
     dondeEstamos: "Dónde estamos",
     rights: `Base Core © ${yearRange} Todos los Derechos Reservados`,
     privacyLabel: "Política de Privacidad",

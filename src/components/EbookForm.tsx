@@ -25,20 +25,20 @@ const copy = {
     email: "EMAIL",
     sending: "ENVIANDO...",
     submit: "DESCARGAR",
-    sentTitle: "¡Gracias! Ya podés descargar tu E-Book.",
+    sentTitle: "¡Gracias! Ya puedes descargar tu E-Book.",
     sentBody: "La descarga debería haber comenzado sola.",
-    retryLabel: "Si no comenzó, hacé clic acá.",
+    retryLabel: "Si no comenzó, haz clic aquí.",
     defaultError: "No se pudo procesar la descarga.",
     errorAlsoText: "También puedes escribirnos por",
     errorOrText: "o a",
-    captchaStuckMessage: "No pudimos verificar la seguridad automáticamente — podés descargar igual.",
+    captchaStuckMessage: "No pudimos verificar la seguridad automáticamente — puedes descargar igual.",
     captchaRetryLabel: "Reintentar la verificación",
     // Textos exactos de documentation/legal/publicar/formularios.md (plan-seo
     // 4.5.4/4.5.5, revisados por el abogado) — no reescribir.
     marketingConsentLabel:
       "Quiero recibir por email novedades, contenidos y comunicaciones comerciales de Base Core. Puedo retirar mi consentimiento en cualquier momento.",
     firstLayer:
-      "Responsable: Mariano Sandonato. Usaremos los datos que proporciones para entregarte el e-book solicitado y, cuando corresponda, gestionar la consulta comercial que hayas iniciado. Para más información, consultá nuestra [Política de Privacidad](/privacidad).",
+      "Responsable: Mariano Sandonato. Usaremos los datos que proporciones para entregarte el e-book solicitado y, cuando corresponda, gestionar la consulta comercial que hayas iniciado. Para más información, consulta nuestra [Política de Privacidad](/privacidad).",
   },
   en: {
     name: "FIRST NAME",

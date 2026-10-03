@@ -19,7 +19,7 @@ export const queCrmElegirParaPyme: BlogPost = {
     },
     {
       type: "p",
-      text: "Si tu equipo no tiene un proceso definido (etapas claras, criterios de avance, alguien responsable de cada paso), cualquiera de las herramientas de abajo va a terminar siendo una agenda cara. La comparación que sigue asume que ya tenés, o estás por definir, ese proceso, y buscás la herramienta que mejor lo sostenga.",
+      text: "Si tu equipo no tiene un proceso definido (etapas claras, criterios de avance, alguien responsable de cada paso), cualquiera de las herramientas de abajo va a terminar siendo una agenda cara. La comparación que sigue asume que ya tienes, o estás por definir, ese proceso, y buscas la herramienta que mejor lo sostenga.",
     },
     {
       type: "h2",
@@ -35,7 +35,7 @@ export const queCrmElegirParaPyme: BlogPost = {
     },
     {
       type: "p",
-      text: "Plan gratuito para hasta tres usuarios, y su plan pago de entrada (Standard, ~14 USD/usuario/mes) es el que más funciones trae por ese precio: múltiples pipelines, email masivo, dashboards personalizados. Zoho tiene sentido cuando ya usás, o vas a usar, otras herramientas de su suite (facturación, soporte, inventario), porque todo se integra nativamente. Si tu operación es más compleja que \"solo ventas\", vale la pena mirarlo primero por eso, no solo por precio.",
+      text: "Plan gratuito para hasta tres usuarios, y su plan pago de entrada (Standard, ~14 USD/usuario/mes) es el que más funciones trae por ese precio: múltiples pipelines, email masivo, dashboards personalizados. Zoho tiene sentido cuando ya usas, o vas a usar, otras herramientas de su suite (facturación, soporte, inventario), porque todo se integra nativamente. Si tu operación es más compleja que \"solo ventas\", vale la pena mirarlo primero por eso, no solo por precio.",
     },
     {
       type: "h2",
@@ -63,16 +63,16 @@ export const queCrmElegirParaPyme: BlogPost = {
     },
     {
       type: "h2",
-      text: "Entonces, ¿cuál elegís?",
+      text: "Entonces, ¿cuál eliges?",
     },
     {
       type: "ul",
       items: [
-        "Marketing y ventas comparten la misma base, y preferís no pagar hasta crecer → HubSpot",
+        "Marketing y ventas comparten la misma base, y prefieres no pagar hasta crecer → HubSpot",
         "Tu negocio ya es (o va a ser) más que ventas: soporte, facturación, inventario → Zoho",
-        "Sos un equipo chico, con presupuesto ajustado, y no querés pagar por asiento → Bitrix24",
+        "Eres un equipo pequeño, con presupuesto ajustado, y no quieres pagar por asiento → Bitrix24",
         "Simplicidad y foco absoluto en el pipeline → Pipedrive",
-        "Necesitás el CRM más completo del mercado y tenés equipo o presupuesto para sostenerlo → Salesforce",
+        "Necesitas el CRM más completo del mercado y tienes equipo o presupuesto para sostenerlo → Salesforce",
       ],
     },
     {
@@ -85,7 +85,7 @@ export const queCrmElegirParaPyme: BlogPost = {
     },
     {
       type: "p",
-      text: "Ninguno de los cinco CRM de arriba es la única opción. En vez de adoptar una herramienta ya armada, también podés desarrollar una a medida para tu proceso comercial. No es el punto de partida para la mayoría de las pymes, pero con IA la ecuación de costo cambió bastante en los últimos años.",
+      text: "Ninguno de los cinco CRM de arriba es la única opción. En vez de adoptar una herramienta ya armada, también puedes desarrollar una a medida para tu proceso comercial. No es el punto de partida para la mayoría de las pymes, pero con IA la ecuación de costo cambió bastante en los últimos años.",
     },
     {
       type: "p",
@@ -94,9 +94,9 @@ export const queCrmElegirParaPyme: BlogPost = {
     {
       type: "ul",
       items: [
-        "Se adapta al 100% a tu proceso, en vez de que vos adaptes tu proceso a la lógica de un plan ya armado.",
+        "Se adapta al 100% a tu proceso, en vez de que tú adaptes tu proceso a la lógica de un plan ya armado.",
         "No hay límites de usuarios ni de funciones impuestos por un plan: solo lo que tu equipo necesita.",
-        "No hay costo recurrente por asiento que crezca cada vez que sumás a alguien al equipo.",
+        "No hay costo recurrente por asiento que crezca cada vez que sumas a alguien al equipo.",
         "Con herramientas como Claude Code, el tiempo y el costo de desarrollo bajaron mucho frente a hace pocos años.",
       ],
     },
@@ -108,7 +108,7 @@ export const queCrmElegirParaPyme: BlogPost = {
       type: "ul",
       items: [
         "La inversión inicial es mayor que activar un plan de CRM ya armado.",
-        "Necesitás a alguien, interno o externo, que lo mantenga y lo haga evolucionar con el tiempo.",
+        "Necesitas a alguien, interno o externo, que lo mantenga y lo haga evolucionar con el tiempo.",
         "No tiene, de entrada, el ecosistema de integraciones que sí traen HubSpot, Zoho, Bitrix24, Pipedrive o Salesforce.",
       ],
     },

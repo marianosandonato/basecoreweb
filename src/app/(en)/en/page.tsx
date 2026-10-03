@@ -6,6 +6,7 @@ import Button from "@/components/Button";
 import CheckList from "@/components/CheckList";
 import ClientsCarousel from "@/components/ClientsCarouselLazy";
 import ContactSection from "@/components/ContactSection";
+import FaqSection from "@/components/FaqSection";
 import MethodologyGrid, { type MethodologyStep } from "@/components/MethodologyGrid";
 import ProcessImageStack from "@/components/ProcessImageStack";
 import SectionHeading from "@/components/SectionHeading";
@@ -13,6 +14,7 @@ import ServiceCards from "@/components/ServiceCards";
 import TechnologyBlock from "@/components/TechnologyBlock";
 import { blogPosts } from "@/content/blog/posts";
 import { clientProjects } from "@/content/clients/projects";
+import { homeFaqEn } from "@/content/faqs.en";
 import { site } from "@/lib/site";
 import { PosventaIcon, PreventaIcon, VentaIcon } from "@/components/cycleIcons";
 import {
@@ -69,7 +71,7 @@ const methodology: readonly MethodologyStep[] = [
     icon: PaperPlaneIcon,
     frontImage: "/images/01-base-core-sales.jpg",
     backImage: "/images/1-diagnostico-base-core-sales.webp",
-    items: ["Free audit", "Assessment of your business's current state"],
+    items: ["Free diagnostic", "Assessment of your business's current state"],
   },
   {
     title: "Roadmap",
@@ -461,6 +463,9 @@ export default function HomePageEn() {
           </Button>
         </div>
       </section>
+
+      {/* FAQ (seo-plan 3.13) */}
+      <FaqSection data={homeFaqEn} className="pt-0" />
 
       <ContactSection lang="en" />
     </>

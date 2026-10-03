@@ -37,14 +37,14 @@ const copy = {
     defaultError: "No se pudo enviar el mensaje.",
     errorAlsoText: "También puedes escribirnos por",
     errorOrText: "o a",
-    captchaStuckMessage: "No pudimos verificar la seguridad automáticamente — podés enviar el mensaje igual.",
+    captchaStuckMessage: "No pudimos verificar la seguridad automáticamente — puedes enviar el mensaje igual.",
     captchaRetryLabel: "Reintentar la verificación",
     // Textos exactos de documentation/legal/publicar/formularios.md (plan-seo
     // 4.5.4/4.5.5, revisados por el abogado) — no reescribir.
     marketingConsentLabel:
       "Quiero recibir por email novedades, contenidos y comunicaciones comerciales de Base Core. Puedo retirar mi consentimiento en cualquier momento.",
     firstLayer:
-      "Responsable: Mariano Sandonato. Usaremos los datos que proporciones para responder tu consulta, gestionar el contacto solicitado y, cuando corresponda, preparar una propuesta o coordinar una reunión. Para más información sobre finalidades, proveedores, transferencias internacionales y tus derechos, consultá nuestra [Política de Privacidad](/privacidad).",
+      "Responsable: Mariano Sandonato. Usaremos los datos que proporciones para responder tu consulta, gestionar el contacto solicitado y, cuando corresponda, preparar una propuesta o coordinar una reunión. Para más información sobre finalidades, proveedores, transferencias internacionales y tus derechos, consulta nuestra [Política de Privacidad](/privacidad).",
   },
   en: {
     name: "FIRST NAME",

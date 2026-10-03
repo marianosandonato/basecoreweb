@@ -43,7 +43,7 @@ export async function POST(request: Request) {
   const captchaOk = await verifyTurnstile(data.turnstileToken, ip);
   if (!captchaOk) {
     return Response.json(
-      { error: "Verificación de seguridad fallida. Volvé a intentarlo." },
+      { error: "Verificación de seguridad fallida. Vuelve a intentarlo." },
       { status: 400 },
     );
   }

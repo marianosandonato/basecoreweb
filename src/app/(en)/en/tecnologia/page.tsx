@@ -6,6 +6,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import Button from "@/components/Button";
 import CheckList from "@/components/CheckList";
 import ContactSection from "@/components/ContactSection";
+import FaqSection from "@/components/FaqSection";
 import FlipCardGrid from "@/components/FlipCardGrid";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
@@ -13,6 +14,7 @@ import ServiceJsonLd from "@/components/ServiceJsonLd";
 import TechStageMatrix from "@/components/TechStageMatrix";
 import { TECNOLOGIA_GRID } from "@/content/flipGrids";
 import type { FlipCardData } from "@/content/types";
+import { tecnologiaFaqEn } from "@/content/faqs.en";
 import { site } from "@/lib/site";
 
 /** EN counterpart of /tecnologia's "Soluciones" (was "Módulos") — see the ES page for source. */
@@ -229,6 +231,9 @@ export default function TechnologyPage() {
           (it IS the tecnologia page), so the teaser sits here instead, right
           before Contact. */}
       <BaseHubTeaser lang="en" />
+
+      {/* FAQ (seo-plan 3.13) */}
+      <FaqSection data={tecnologiaFaqEn} />
 
       <ContactSection
         titleAs="h2"

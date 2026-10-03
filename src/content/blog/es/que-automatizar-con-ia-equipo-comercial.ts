@@ -27,7 +27,7 @@ export const queAutomatizarConIaEquipoComercial: BlogPost = {
     },
     {
       type: "p",
-      text: "Buscar, enriquecer datos de contacto y armar la primera lista de empresas que encajan con tu ICP es terreno ganado para la IA: es trabajo mecánico, de volumen, sin componente de relación. Donde conviene frenar es en el primer mensaje. Un outreach que suena claramente generado en masa se nota, y quema el contacto antes de que exista una conversación real. La automatización acá funciona mejor como filtro previo (a quién sí vale la pena escribirle) que como redactor final del mensaje.",
+      text: "Buscar, enriquecer datos de contacto y armar la primera lista de empresas que encajan con tu ICP es terreno ganado para la IA: es trabajo mecánico, de volumen, sin componente de relación. Donde conviene frenar es en el primer mensaje. Un outreach que suena claramente generado en masa se nota, y quema el contacto antes de que exista una conversación real. La automatización aquí funciona mejor como filtro previo (a quién sí vale la pena escribirle) que como redactor final del mensaje.",
     },
     {
       type: "h2",
@@ -35,7 +35,7 @@ export const queAutomatizarConIaEquipoComercial: BlogPost = {
     },
     {
       type: "p",
-      text: "Cruzar datos firmográficos, comportamiento en el sitio y señales de intención para puntuar leads es, de todas las etapas, donde la IA tiene el mejor cociente entre valor y riesgo. Un modelo de scoring alimentado con los criterios de un método como BANT o MEDDIC no reemplaza el criterio comercial, pero sí evita que un vendedor abra la mañana sin saber a quién llamar primero. El riesgo real acá no es automatizar de más: es automatizar sobre datos sucios y confiar el resultado sin revisarlo las primeras semanas.",
+      text: "Cruzar datos firmográficos, comportamiento en el sitio y señales de intención para puntuar leads es, de todas las etapas, donde la IA tiene el mejor cociente entre valor y riesgo. Un modelo de scoring alimentado con los criterios de un método como BANT o MEDDIC no reemplaza el criterio comercial, pero sí evita que un vendedor abra la mañana sin saber a quién llamar primero. El riesgo real aquí no es automatizar de más: es automatizar sobre datos sucios y confiar el resultado sin revisarlo las primeras semanas.",
     },
     {
       type: "h2",
@@ -63,11 +63,11 @@ export const queAutomatizarConIaEquipoComercial: BlogPost = {
     },
     {
       type: "h2",
-      text: "Negociación: por qué conviene frenar la automatización acá",
+      text: "Negociación: por qué conviene frenar la automatización aquí",
     },
     {
       type: "p",
-      text: "Negociar bien depende de leer tono, urgencia y lo que el cliente no dice explícitamente, tres cosas que hoy siguen siendo terreno humano. Automatizar respuestas en esta etapa (aunque sea con la mejor herramienta) tiende a producir intercambios correctos en la forma y torpes en el fondo: responden lo que se preguntó, no lo que realmente estaba en juego. Acá el rol razonable de la IA es de apoyo (resumir el historial de la cuenta antes de la llamada, sugerir objeciones probables), nunca de reemplazo de quien está del otro lado de la mesa.",
+      text: "Negociar bien depende de leer tono, urgencia y lo que el cliente no dice explícitamente, tres cosas que hoy siguen siendo terreno humano. Automatizar respuestas en esta etapa (aunque sea con la mejor herramienta) tiende a producir intercambios correctos en la forma y torpes en el fondo: responden lo que se preguntó, no lo que realmente estaba en juego. Aquí el rol razonable de la IA es de apoyo (resumir el historial de la cuenta antes de la llamada, sugerir objeciones probables), nunca de reemplazo de quien está del otro lado de la mesa.",
     },
     {
       type: "h2",
@@ -89,7 +89,7 @@ export const queAutomatizarConIaEquipoComercial: BlogPost = {
       type: "ul",
       items: [
         "¿Esta tarea es repetitiva y de bajo criterio, o repetitiva pero con juicio real detrás?",
-        "Si la IA se equivoca acá, ¿el error se nota antes o después de llegar al cliente?",
+        "Si la IA se equivoca aquí, ¿el error se nota antes o después de llegar al cliente?",
         "¿El proceso que estoy por automatizar ya está definido, o estoy por automatizar un desorden?",
       ],
     },

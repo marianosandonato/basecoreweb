@@ -1,5 +1,6 @@
 import { EstrategiaIcon, VentaIcon } from "@/components/cycleIcons";
 import { POSVENTA_GRID } from "./flipGrids";
+import { posventaFaqEn } from "./faqs.en";
 import type { ServicePageData } from "./types";
 
 export const posventaEn: ServicePageData = {
@@ -99,4 +100,5 @@ export const posventaEn: ServicePageData = {
     ],
   },
   contactTitleAs: "h2",
+  faq: posventaFaqEn,
 };

@@ -1,5 +1,6 @@
 import { EstrategiaIcon, VentaIcon } from "@/components/cycleIcons";
 import { PREVENTA_GRID } from "./flipGrids";
+import { preventaFaqEn } from "./faqs.en";
 import type { ServicePageData } from "./types";
 
 export const preventaEn: ServicePageData = {
@@ -123,4 +124,5 @@ export const preventaEn: ServicePageData = {
     label: "SEE THE SALES FUNNEL",
     href: "/en/sales",
   },
+  faq: preventaFaqEn,
 };

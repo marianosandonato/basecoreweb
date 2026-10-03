@@ -1,5 +1,6 @@
 import { EstrategiaIcon, VentaIcon } from "@/components/cycleIcons";
 import { VENTA_GRID } from "./flipGrids";
+import { ventaFaqEn } from "./faqs.en";
 import type { ServicePageData } from "./types";
 
 export const ventaEn: ServicePageData = {
@@ -163,4 +164,5 @@ export const ventaEn: ServicePageData = {
     href: "/en/post-sales",
   },
   contactTitleAs: "h2",
+  faq: ventaFaqEn,
 };

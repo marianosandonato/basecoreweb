@@ -27,7 +27,7 @@ export const comoCalificarLeadsB2b: BlogPost = {
     },
     {
       type: "p",
-      text: "BANT nació en IBM hace más de cinco décadas y sigue siendo el punto de partida más simple: Budget (¿hay presupuesto real, o recién se está explorando la idea?), Authority (¿la persona con la que hablás decide, o tiene que convencer a alguien más?), Need (¿el problema que resolvés es una prioridad, o una mejora que puede esperar?) y Timeline (¿hay un plazo concreto para resolverlo, o es \"en algún momento\"). Su ventaja es la velocidad: cuatro preguntas alcanzan para descartar a la mayoría de los leads que no van a avanzar. Su límite es que asume que el proceso de compra es lineal, y en ventas B2B complejas, con varias personas influyendo en la decisión, rara vez lo es.",
+      text: "BANT nació en IBM hace más de cinco décadas y sigue siendo el punto de partida más simple: Budget (¿hay presupuesto real, o recién se está explorando la idea?), Authority (¿la persona con la que hablas decide, o tiene que convencer a alguien más?), Need (¿el problema que resuelves es una prioridad, o una mejora que puede esperar?) y Timeline (¿hay un plazo concreto para resolverlo, o es \"en algún momento\"). Su ventaja es la velocidad: cuatro preguntas alcanzan para descartar a la mayoría de los leads que no van a avanzar. Su límite es que asume que el proceso de compra es lineal, y en ventas B2B complejas, con varias personas influyendo en la decisión, rara vez lo es.",
     },
     {
       type: "h2",

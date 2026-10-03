@@ -9,7 +9,7 @@ export const posventa: ServicePageData = {
   hero: {
     title: ["¿Buscas fidelizar clientes y", "fortalecer tu customer success?"],
     lines: [
-      "Mejorá la experiencia de tus usuarios.",
+      "Mejora la experiencia de tus usuarios.",
       "Identificamos oportunidades para el desarrollo de cuentas.",
     ],
     image: "/images/Base-Core-Consultoria-Comercial-y-Marketing-Support.jpg",

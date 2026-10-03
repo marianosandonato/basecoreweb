@@ -48,7 +48,7 @@ export default function Turnstile({
   onVerify,
   onExpire,
   onStuck,
-  stuckMessage = "No pudimos verificar la seguridad automáticamente — podés enviar el formulario igual.",
+  stuckMessage = "No pudimos verificar la seguridad automáticamente — puedes enviar el formulario igual.",
   retryLabel = "Reintentar la verificación",
 }: {
   siteKey: string;

@@ -204,8 +204,8 @@ export default function BaseHubPage() {
             title="Empieza tu implementación con BaseHub incluido"
             description={
               <>
-                No necesitás pagar otra herramienta para gestionar tu proyecto.
-                <br /> BaseHub está incluido en tu implementación para que vos y tu equipo
+                No necesitas pagar otra herramienta para gestionar tu proyecto.
+                <br /> BaseHub está incluido en tu implementación para que tú y tu equipo
                 <br /> puedan seguir avances, tareas y resultados en un solo lugar.
               </>
             }

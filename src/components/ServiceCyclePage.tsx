@@ -24,7 +24,7 @@ const copy = {
     recruitingDescription:
       "Además de nuestro modelo de formación, buscamos perfiles acordes y eficientes al modelo de ventas propuesto.",
     puestos: "Puestos",
-    nextCycleTitle: "Descubrí cómo continúan los ciclos",
+    nextCycleTitle: "Descubre cómo continúan los ciclos",
     aboutCta: "CONTÁCTANOS",
   },
   en: {
@@ -264,7 +264,7 @@ export default function ServiceCyclePage({
         </section>
       )}
 
-      {/* Preguntas frecuentes (seo-plan 3.13) — ES only until EN is approved. */}
+      {/* Preguntas frecuentes (seo-plan 3.13) */}
       {data.faq && <FaqSection data={data.faq} />}
 
       {/* Contacto (#71f8f2e1) */}

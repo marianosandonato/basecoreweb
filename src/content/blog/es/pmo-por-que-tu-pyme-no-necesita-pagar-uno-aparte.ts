@@ -23,7 +23,7 @@ export const pmoPorQueTuPymeNoNecesitaPagarUnoAparte: BlogPost = {
     },
     {
       type: "h2",
-      text: "Lo que en realidad estás buscando cuando buscás \"PMO\"",
+      text: "Lo que en realidad estás buscando cuando buscas \"PMO\"",
     },
     {
       type: "p",
@@ -47,19 +47,19 @@ export const pmoPorQueTuPymeNoNecesitaPagarUnoAparte: BlogPost = {
     },
     {
       type: "h2",
-      text: "Antes de decidir: 3 preguntas para no comprar más estructura de la que necesitás",
+      text: "Antes de decidir: 3 preguntas para no comprar más estructura de la que necesitas",
     },
     {
       type: "ul",
       items: [
-        "¿Necesitás gobernar varios proyectos en simultáneo entre distintas áreas, o solo tener visibilidad clara de una implementación puntual?",
-        "¿Tenés presupuesto y volumen real para sostener un rol full-time, o preferís que el seguimiento venga incluido en lo que ya estás contratando?",
+        "¿Necesitas gobernar varios proyectos en simultáneo entre distintas áreas, o solo tener visibilidad clara de una implementación puntual?",
+        "¿Tienes presupuesto y volumen real para sostener un rol full-time, o prefieres que el seguimiento venga incluido en lo que ya estás contratando?",
         "¿El problema es falta de metodología, o simplemente que hoy nadie tiene un lugar único donde ver en qué estado está cada cosa?",
       ],
     },
     {
       type: "p",
-      text: "Si la respuesta a la mayoría de estas preguntas es la segunda opción, probablemente no necesitás una PMO — necesitás que el proveedor que ya elegiste te dé esa visibilidad sin cobrarte aparte por ella.",
+      text: "Si la respuesta a la mayoría de estas preguntas es la segunda opción, probablemente no necesitas una PMO — necesitas que el proveedor que ya elegiste te dé esa visibilidad sin cobrarte aparte por ella.",
     },
   ],
   cta: {

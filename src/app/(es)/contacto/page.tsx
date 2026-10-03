@@ -4,7 +4,7 @@ import ContactSection from "@/components/ContactSection";
 
 const title = "Diagnóstico Gratuito";
 const description =
-  "Solicita un diagnóstico gratuito: dejanos tus datos y te proponemos un plan de ruta para mejorar tus procesos y metodologías.";
+  "Solicita un diagnóstico gratuito: déjanos tus datos y te proponemos un plan de ruta para mejorar tus procesos y metodologías.";
 
 export const metadata: Metadata = {
   title,

@@ -5,6 +5,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import Button from "@/components/Button";
 import CheckList from "@/components/CheckList";
 import ContactSection from "@/components/ContactSection";
+import FaqSection from "@/components/FaqSection";
 import FlipCardGrid from "@/components/FlipCardGrid";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
@@ -12,6 +13,7 @@ import ServiceJsonLd from "@/components/ServiceJsonLd";
 import TechnologyBlock from "@/components/TechnologyBlock";
 import { MARKETING_GRID } from "@/content/flipGrids";
 import type { FlipCardData } from "@/content/types";
+import { marketingFaqEn } from "@/content/faqs.en";
 import { site } from "@/lib/site";
 
 const title = "Marketing Consulting for Small Business";
@@ -254,6 +256,9 @@ export default function MarketingPageEn() {
           </div>
         </div>
       </section>
+
+      {/* FAQ (seo-plan 3.13) */}
+      <FaqSection data={marketingFaqEn} />
 
       <ContactSection
         titleAs="h2"

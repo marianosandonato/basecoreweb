@@ -22,20 +22,20 @@ const copy = {
   es: {
     bannerAriaLabel: "Aviso de cookies",
     message:
-      "Usamos cookies técnicas para que el sitio funcione y, si aceptás, cookies de analítica (Google Analytics) para entender cómo se usa. Podés cambiar tu elección cuando quieras desde “Configurar cookies” en el pie de página.",
+      "Usamos cookies técnicas para que el sitio funcione y, si aceptas, cookies de analítica (Google Analytics) para entender cómo se usa. Puedes cambiar tu elección cuando quieras desde “Configurar cookies” en el pie de página.",
     accept: "Aceptar",
     reject: "Rechazar",
     configure: "Configurar",
     panelAriaLabel: "Configurar cookies",
     panelTitle: "Configurar cookies",
     panelIntro:
-      "Elegí qué cookies permitís. Las técnicas son necesarias para que el sitio funcione y no se pueden desactivar.",
+      "Elige qué cookies permites. Las técnicas son necesarias para que el sitio funcione y no se pueden desactivar.",
     technicalTitle: "Técnicas",
     technicalDescription: "Necesarias para que el sitio funcione correctamente. Siempre activas.",
     alwaysOn: "Siempre activas",
     analyticsTitle: "Analíticas",
     analyticsDescription:
-      "Google Analytics — nos ayuda a entender cómo se usa el sitio. Solo se activan si las aceptás.",
+      "Google Analytics — nos ayuda a entender cómo se usa el sitio. Solo se activan si las aceptas.",
     analyticsToggleLabel: "Activar cookies analíticas",
     save: "Guardar",
     close: "Cerrar",
