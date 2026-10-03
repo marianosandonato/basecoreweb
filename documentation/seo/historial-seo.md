@@ -1,7 +1,9 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`web-lead`, `seo-marketing`, `performance`) — confirmado el 3/9 que la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma, no de configuración), así que solo la sesión principal puede leer el artifact directo. Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8
-> - Última sincronización: 2026-09-28
+> - Última sincronización: 2026-10-03
+> - Nota 3/10 (3.13): se suma 3.13 (FAQs + FAQPage ES/EN, estadísticas con fuente, tuteo) con notas en 3.3 y 3.9.
+> - Nota 3/10: 4.1 agregada a la Fase 4 (ficha de Google Business Profile publicada; la verificación de los cambios sigue en 4.7 del Plan de SEO).
 > - Nota 28/9 (3): 1.44 agregada a la Fase 1 (slogan "Creando" en las meta descriptions y logo del schema con slogan en inglés, commit 61668f2); texto de la Home en 1.2 actualizado.
 > - Nota 28/9 (2): 1.43 agregada a la Fase 1 (Twitter Card propia por página e idioma, commit ad44955).
 > - Nota 28/9: el artifact pasa a llamarse "Historial Técnico WEB" y unifica todo el historial: suma completas la Auditoría Final Base Core (14-19/9, 25 hallazgos, prefijo AF) y la Mejora Estética Web (21-28/9, 20 tareas, prefijo ME; ME 1.8 descartada). Esos dos artifacts quedan para eliminar. El nombre de este archivo espejo no cambia, para no romper las referencias de los agentes.
@@ -828,7 +830,7 @@ Fase 3
 
 ## Palabras clave y contenido
 
-El sitio técnicamente listo para posicionar, ampliado con las palabras que usan los clientes potenciales. Cerrada del todo.
+El sitio técnicamente listo para posicionar, ampliado con las palabras que usan los clientes potenciales. Cerrada el 18/9 y reabierta el 2/10 con 3.13 (cerrada el 3/10, abajo) y 3.14, que sigue activa en el Plan de SEO.
 
 3.1 — Investigación de palabras clave
 
@@ -979,6 +981,8 @@ Hecho · cerrada 30/8
 
 2 párrafos nuevos por página (ES+EN) citando una estadística con fuente: Preventa (McKinsey, 40–50%/80–90%), Venta (80% necesita 5+ contactos), Posventa (retener cuesta 7x menos), Marketing (90% investiga antes de hablar con ventas), Tecnología (más de la mitad de implementaciones CRM falla por adopción).
 
+**Nota posterior (3/10, tarea 3.13):** salvo McKinsey, ninguna de estas cifras tenía una fuente verificable. Se reformularon con fuente enlazada (HBR "5 a 25 veces" en Posventa, 6sense 2024 "81%" en Marketing), se enlazó McKinsey, y se quitaron las cifras de Venta y Tecnología. Detalle en 3.13.
+
 **Para qué sirve:** más oportunidades de coincidir con búsquedas long-tail.
 
 3.4 — Sección de blog/recursos
@@ -1054,7 +1058,7 @@ ES (/blog):     Blog de Gestión Comercial y CRM
 EN (/en/blog):  Commercial Management & CRM Blog
 ```
 
-**Oportunidad separada, no un defecto:** schema `FAQPage` sigue ausente en páginas de servicio — necesita contenido real, queda para fase futura.
+**Oportunidad separada, no un defecto:** schema `FAQPage` sigue ausente en páginas de servicio — necesita contenido real, queda para fase futura. *Resuelto el 3/10 en 3.13.*
 
 3.10 — H1 de /ebook y /en/ebook
 
@@ -1132,11 +1136,144 @@ Cambio mínimo invasivo: inserción de dos-tres palabras por oración en párraf
 
 **Para qué sirve:** sumar match textual exacto de dos keywords validadas sin tocar el copy de metadata ya decidido.
 
+3.13 — Preguntas frecuentes + schema FAQPage en las páginas de servicio
+
+Hecho · ES y EN en producción 3/10
+
+Abierta el 2/10 a partir de la segunda ronda de 5.10: "consultoría comercial para pymes" no traía ninguna página de servicio ni en Perplexity ni en Google (Search Console: 0 impresiones con "consultoría" en 90 días; el blog sí aparecía, posiciones 11-47). Las páginas de servicio vendían pero respondían poco, y buscadores e IA citan respuestas directas de 2-4 líneas. Es además la oportunidad que 3.9 había dejado anotada: `FAQPage` "necesita contenido real".
+
+**Proceso:** `seo-marketing` redactó el 2/10 un borrador de 36 preguntas a partir del contenido real del sitio, con marcadores donde faltaba un dato (precio, plazos, resultados). El 3/10 Mariano respondió con selector, una pregunta a la vez; con eso `seo-marketing` escribió el texto final y la sesión principal lo implementó. Preview de Vercel → ok de Mariano → producción, primero en español y después en inglés.
+
+Decisiones de Mariano (3/10)
+
+```
+Formato   Acordeón <details>/<summary> nativo, renderizado en el
+          servidor, todas las preguntas cerradas, antes del bloque
+          de contacto. Mariano prefirió el acordeón a la lista
+          abierta; se confirmó que Google indexa el contenido
+          plegado con el mismo peso, y el texto viaja en el HTML
+          inicial (los bots de IA casi no ejecutan JS).
+Voz       Tuteo (y después, todo el sitio ES en tuteo, ver abajo).
+ 1 Precio      Sin precio ni modelo de cobro: "El presupuesto se
+               define en la propuesta comercial que enviamos después
+               del relevamiento inicial, porque depende del alcance".
+ 2 Plazos      Sin cifras, volúmenes ni tiempos de resultado
+               prometidos; los plazos van en el plan de trabajo.
+ 3 Gratuito    Corrección de Mariano: lo gratuito es el RELEVAMIENTO
+               INICIAL (primera reunión: viabilidad + propuesta de
+               valor, después propuesta comercial), sin compromiso.
+               Los diagnósticos (comercial, tecnológico, de equipo,
+               de marketing, según el proyecto) son parte del
+               proyecto contratado, incluidos en el servicio.
+               Nombre mixto: botones "Diagnóstico gratuito"
+               (keyword del Mapa) y la FAQ explica qué es.
+ 4 Cliente     Pymes y empresas medianas B2B, sin mínimo.
+ 5 Geografía   Remoto, España y Latinoamérica (areaServed del schema
+               suma "Latinoamérica").
+ 6 Preventa    La ejecuta el equipo del cliente; Base Core diseña el
+               modelo, arma el equipo y lo capacita.
+ 7 Gerente     Complementa, no reemplaza; al cierre, traspaso al
+               equipo o abono de mejora continua.
+ 8 Posventa    El equipo "se puede sumar según el diagnóstico".
+ 9 Marketing   La pauta la paga el cliente a cada plataforma, sin
+               mínimos; no se menciona permanencia.
+10 Tecnología  Licencias a nombre del cliente; el software a medida
+               queda del cliente.
+```
+
+Implementado
+
+```
+ef58591 (ES, 3/10)
+- FaqSection.tsx + src/content/faqs.ts: una sola fuente para el
+  texto visible y el JSON-LD FAQPage (el schema quita el markdown
+  de los enlaces). 36 preguntas: Home, /preventa, /venta,
+  /posventa, /marketing, /tecnologia.
+- Márgenes (pedido de Mariano tras el primer preview): sin padding
+  inferior, porque ContactSection aporta el suyo (antes sumaban
+  ~210px); en Home sin padding superior porque el blog aporta el
+  suyo. Medido: 90/120 px en escritorio en las páginas de
+  servicio, 90/90 en Home, 65-70 en celular.
+- "Auditoría gratuita" / "Agendar relevamiento" → "Diagnóstico
+  gratuito" en todo el sitio ES (7 lugares).
+- "BaseCore AI System" → "Base Core AI System" (ES y EN), la
+  grafía que 8.1/8.2 decidió evitar por BaseCore™.
+- Estadísticas sin fuente (ver nota en 3.3): /posventa HBR "5 a 25
+  veces" enlazada y 60-70% quitada; /venta sin 80%/44%;
+  /tecnologia sin "más de la mitad"; /marketing 6sense 2024
+  (81% / ~70%) enlazada; /preventa McKinsey enlazada ("win
+  rates"). Mismo ajuste en el post de churn ES/EN. Cifras de
+  McKinsey y 6sense verificadas por Mariano en su navegador.
+- ContactSection: columnas alineadas arriba (md:items-start) en
+  todas las páginas, pedido de Mariano (la columna izquierda
+  quedaba más abajo que el formulario).
+
+4c9d316 (EN + tuteo, 3/10)
+- src/content/faqs.en.ts: mismas 36 preguntas en /en,
+  /en/presales, /en/sales, /en/post-sales, /en/marketing,
+  /en/tecnologia, con keywords EN del Mapa (commercial
+  management, customer success, AI for businesses, CRM
+  consulting, appointment setting). "Free audit" → "Free
+  diagnostic" en /en; los botones EN siguen "BOOK A DISCOVERY
+  CALL".
+- Todo el sitio ES pasa de voseo a tuteo neutro (decisión de
+  Mariano: el voseo suena raro en España): 41 líneas en 17
+  archivos (páginas, formularios, banner de cookies, Turnstile,
+  errores de API, 4 posts), más "acá" → "aquí". Legales sin
+  voseo, sin tocar. Registro línea por línea en
+  documentation/seo/borradores/tuteo-cambios.md. Pendiente
+  fuera del código: el PDF del e-book ES podría tener voseo.
+```
+
+**Verificado:** `tsc`, `eslint` y `next build` limpios en los dos commits. Contra un build local: las 12 páginas traen 6 `<details>` cerrados con las respuestas en el HTML inicial y un `FAQPage` con el texto idéntico al visible; las páginas EN sin FAQs antes del segundo commit; sin voseo en el HTML servido. En producción: `FAQPage` en `/`, `/venta`, `/tecnologia` y `/en/sales`, "Descubre cómo continúan los ciclos" y "déjanos" en vivo. Borradores y fuentes de las estadísticas en `documentation/seo/borradores/`.
+
+**Nota de expectativa:** desde 2023 Google solo muestra el rich result de FAQ a sitios de gobierno y salud; el valor es el texto citable por Google e IA. Se mide en la próxima ronda de 5.10 (principios de noviembre) con la query "consultoría comercial para pymes". Mariano pidió indexación de las URLs en Search Console el 3/10.
+
+**Para qué sirve:** dar a las páginas de servicio respuestas citables para las búsquedas de contratación, que no aparecían en ningún motor.
+
 Fase 4
 
 ## SEO local y autoridad
 
-Solo 4.2 y 4.6 cerradas — el resto (4.1, 4.3, 4.4, 4.5) sigue Bloqueado, detalle en el [Plan de SEO](https://claude.ai/artifact/XPrZBTCe2b7tvbzzNuf1GT).
+Cerradas 4.1, 4.2 y 4.6. El resto (4.3, 4.4, 4.5, 4.7) sigue activo o Bloqueado, con su detalle en el [Plan de SEO](https://claude.ai/artifact/XPrZBTCe2b7tvbzzNuf1GT).
+
+4.1 — Google Business Profile
+
+Hecho · ficha publicada, cerrada 3/10 (sigue en 4.7)
+
+**3/10: ajustes 1-4 retenidos por Google, se evaluó revertirlos (al final se dejaron cargados, ver Cierre).** Mariano hizo los 6 ajustes; en la vista pública (Google y Maps) solo salieron las fotos (5). Dirección, horario, categoría y sitio siguen con los datos viejos: Google los retiene hasta una nueva verificación y el único método que ofrece es el **video en vivo desde la app**, imposible desde Australia (no se puede subir un video grabado y, filmado lejos de Buenos Aires, lo rechazarían; cada rechazo reduce los métodos disponibles y suma riesgo de suspensión). **Decisión de Mariano: opción 3**: volver a los valores originales en los campos clave (dirección visible, categoría "Asesor", sitio sin UTM) para que la ficha siga verificada y publicada; se quedan las fotos y, si sale, el horario. Google no documenta que revertir cancele el pedido de verificación; en la práctica suele desaparecer. Riesgo aceptado: la dirección del departamento queda visible sin atender clientes ahí (contra las pautas, riesgo bajo de suspensión). **Descartado borrar la ficha y crear otra:** una ficha nueva arranca sin verificar (pediría el mismo video), borrar una ficha verificada no tiene vuelta atrás, y crear fichas repetidas para el mismo negocio y teléfono es señal de spam para Google. Los ajustes 1-4 completos se retoman cuando Mariano esté en Argentina (video en el lugar) o con alguien de confianza en Buenos Aires como administrador de la ficha. Las reseñas (6) siguen, no dependen de la verificación.
+
+**Desbloqueada el 2/10.** La verificación de Buenos Aires de agosto había sido rechazada (Google pedía cartelería y video en vivo desde el local). Mariano creó una ficha nueva y la verificó. Ficha pública: Google kgmid `/g/11zy0wvdzb` (link para compartir `share.google/VkfGjWpjxH2XQaTk1`). En Maps aparece una sola ficha "Base Core", sin duplicado visible de la vieja.
+
+**Revisión del 2/10 (vista pública, Google + Maps):** bien el nombre "Base Core", el teléfono +54 9 11 5564-3798 (coincide con el sitio y WhatsApp), el sitio web y la descripción. Mariano avisa que Google le pide **verificar de nuevo** (pasa al editar datos clave como dirección o categoría): completar esa verificación en esta misma ficha, no crear otra.
+
+Ajustes propuestos el 2/10 (los hizo Mariano en el panel el 3/10)
+
+```
+1 Dirección visible: La Pampa 3000 6 c (su departamento). Google
+  pide ocultarla si no se atiende a clientes ahí (riesgo de
+  suspensión) → "Mostrar la dirección": desactivado + Zona de
+  servicio (CABA, Gran Buenos Aires, Argentina).
+2 Horario: lunes a sábado 6-22 h (parece cargado en hora de
+  Australia). Pasar a un horario real de Argentina, p. ej. lunes
+  a viernes 9-18 h. Definir con Mariano.
+3 Categoría: "Asesor"/"Consultant", genérica. Principal tipo
+  "Consultor empresarial" / "Consultor de gestión empresarial" +
+  secundaria "Consultor de marketing" (nombres exactos según el
+  panel).
+4 Sitio web: basecoresales.com sin www ni UTM → cambiar a
+  https://www.basecoresales.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp
+  para distinguir en GA4 las visitas desde la ficha.
+5 Fotos: ninguna. Logo, portada y fotos de Mariano (Windows:
+  DISEÑO/BRANDKIT/LOGOS y FOTOS BANCO/FOTOS MIAS).
+6 Reseñas: ninguna. "Pedir reseñas" a 3-5 clientes (cruza con 4.4).
+Opcional: Servicios (5 ciclos con link a su página) y
+publicaciones periódicas.
+```
+
+**Cierre (3/10):** Mariano completó la carga de los 6 ajustes. Como Google retiene los cambios de datos clave hasta una nueva verificación, al principio se decidió revertirlos (opción 3). Después quedó claro que la ficha sigue publicada aunque los cambios estén pendientes, y que las fotos también esperan la validación (solo salió el logo). Mariano decidió dejar todo cargado y cerrar 4.1 con la ficha publicada. La verificación por video en vivo desde Buenos Aires, imposible desde Australia, pasa a la tarea nueva **4.7 — Validar Google Business Profile**, Bloqueada, en el tablero activo. Descartado borrar la ficha y crear otra con los datos correctos.
+
+**Para qué sirve:** aparecer en el mapa y en el bloque local de resultados; señal fuerte de "negocio real" para quien investiga antes de contratar.
 
 4.6 — Decisión de canal social: LinkedIn empresa, Instagram y Facebook
 
@@ -2061,5 +2198,7 @@ El registro día a día de cómo se llegó al estado actual — el "Por dónde s
 35. **28/9, cierre de 1.43:** el bloque `twitter` de `buildRootMetadata()` queda solo con el tipo de tarjeta y el layout en inglés usa textos en inglés como respaldo: cada página comparte con su propio título y en su idioma. Commit `ad44955`, verificado en producción.
 36. **28/9, cierre de 1.44:** las meta descriptions de la Home y la general del sitio pasan de "Creamos" a "Creando bases productivas", el slogan oficial en español, y el logo del schema pasa al azul con slogan en inglés sobre fondo blanco. Commit `61668f2`, verificado en producción.
 37. **28/9, historial unificado:** a pedido de Mariano, este documento pasa a llamarse "Historial Técnico WEB" y suma completas la Auditoría Final y la Mejora Estética Web, para poder eliminar esos dos artifacts.
+38. **2-3/10, cierre de 4.1:** ficha nueva de Google Business Profile publicada (la verificación de agosto había sido rechazada). Los ajustes de dirección, horario, categoría, sitio y fotos quedan cargados pero retenidos hasta una verificación por video en vivo desde Buenos Aires; esa verificación pasa a la nueva 4.7, Bloqueada.
+39. **3/10, cierre de 3.13:** preguntas frecuentes con `FAQPage` en las 6 páginas de servicio, ES y EN, a partir de las respuestas de Mariano (lo gratuito es el relevamiento inicial; sin precios ni cifras prometidas). En el camino: botones unificados en "Diagnóstico gratuito", estadísticas sin fuente corregidas, formulario de contacto alineado y todo el sitio ES en tuteo. Commits `ef58591` y `4c9d316`, verificados en producción.
 
-Historial Técnico WEB (antes Historial Técnico SEO) · Base Core · creado el 5 de septiembre de 2026, a partir del Plan de SEO original · actualizado el 28 de septiembre (1.44 nueva y cerrada: slogan "Creamos" → "Creando" en las meta descriptions y logo del schema con slogan en inglés sobre fondo blanco, commit `61668f2`) · antes, el mismo día (1.43 cerrada: Twitter Card propia por página e idioma y respaldos en inglés en `/en`, commit `ad44955`) · antes, el mismo día (historial unificado: se suman completas la Auditoría Final Base Core, 25 hallazgos del 14-19/9, y la Mejora Estética Web, 20 tareas del 21-28/9, con ME 1.8 descartada; los dos artifacts quedan listos para eliminarse) · antes, el 26 de septiembre (1.42 nueva y cerrada: header desktop superpuesto en páginas sin hero, fix con la variante "solid" del Breadcrumb, commit `30067e5`) · antes, el 25 de septiembre (1.37 cerrada del todo: causa del cartel falso en el temporizador de `Turnstile.tsx`, fix `efc5266` verificado en producción, y regla de rate limiting en Cloudflare para los envíos sin token) · antes, el 24 de septiembre (nota en 3.10: se sacó el título del hero de /ebook porque repetía el H1, tarea 1.7 de Mejora Estética Web, commit `f9e94d3`) · antes, el 21 de septiembre (consolidación del artifact Performance Web: se suman acá el detalle completo de 1.23-1.27, la cronología punto a punto de la regresión de Core Web Vitals, el cierre de los dos hallazgos que 1.14 tenía abiertos — Recruiting se queda en CSS a propósito, JS sin usar del bundle propio medido y sin acción — y una nota de método para la próxima medición de performance; el artifact Performance Web quedó sin contenido propio y se eliminó) · antes, el mismo día: 8.2 movida acá del todo — cerrada tras confirmar que la ficha de crunchbase.com/organization/base-core la ocupa BaseCore™, geoceldas de Scottsdale AZ, no Base Power; detalle completo de las 11 recomendaciones en la Fase 8) · antes, el mismo día: 4.6 movida acá — Mariano revierte la decisión del 5/9 de no activar canales secundarios; LinkedIn empresa, Instagram y Facebook pasan a desarrollo urgente, gestionado desde el Plan de Marketing/Social, no acá — primera tarea de una nueva Fase 4 en este documento · antes, el mismo día: 1.28 movida acá del todo — Mariano decidió no seguir persiguiendo el objetivo de mobile +90 en el score de laboratorio de PSI; queda reemplazada por 5.9 en el Plan de SEO, un chequeo mensual recurrente sin objetivo activo de score) · antes: 20 de septiembre (1.40 movida acá — el overlay de /marketing necesitó una 3ra ronda: medido el color de las 5 fotos de hero, la de /marketing resultó la más saturada de azul con diferencia, así que el overlay nunca fue la causa principal; fix real con filtro de color sobre la propia imagen + overlay neutro, confirmado por Mariano en un preview de Vercel y llevado a producción. De paso se retiró el widget de revisión interactiva del Plan de SEO — duplicaba el archivo y dejaba una línea sin poder leer, forzando un publish con `force` en otra sesión; el veredicto de revisión se registra por chat de acá en más) · antes, el mismo día: 1.37, 1.39 y 1.41 movidas acá — 1.37 confirmada por Mariano en iPhone real; 1.39 y 1.41 marcadas OK en el (todavía vigente en ese momento) widget de revisión interactiva del Plan de SEO, ahora "BaseCoreWeb: SEO y Performance" · antes: 18 de septiembre, sesión posterior (1.29-1.35, 1.38, 3.11 y 3.12 movidas acá) · antes, el mismo día: migración de 9 hallazgos SEO desde la Auditoría Final de UX/diseño (1.29-1.35, 3.11-3.12) · antes: 14 de septiembre (Fase 8 nueva, 8.1 cerrada — decisión de no unificar el naming a "BaseCore") · espejo de trabajo en `documentation/seo/historial-seo.md`
+Historial Técnico WEB (antes Historial Técnico SEO) · Base Core · creado el 5 de septiembre de 2026, a partir del Plan de SEO original · actualizado el 3 de octubre (3.13 cerrada: FAQs con FAQPage ES y EN, estadísticas con fuente, sitio ES en tuteo, commits `ef58591` y `4c9d316`; notas en 3.3 y 3.9) · antes, el mismo día (4.1 cerrada: ficha de Google Business Profile publicada; la verificación por video de los cambios pasa a 4.7 en el Plan de SEO) · antes, el 28 de septiembre (1.44 nueva y cerrada: slogan "Creamos" → "Creando" en las meta descriptions y logo del schema con slogan en inglés sobre fondo blanco, commit `61668f2`) · antes, el mismo día (1.43 cerrada: Twitter Card propia por página e idioma y respaldos en inglés en `/en`, commit `ad44955`) · antes, el mismo día (historial unificado: se suman completas la Auditoría Final Base Core, 25 hallazgos del 14-19/9, y la Mejora Estética Web, 20 tareas del 21-28/9, con ME 1.8 descartada; los dos artifacts quedan listos para eliminarse) · antes, el 26 de septiembre (1.42 nueva y cerrada: header desktop superpuesto en páginas sin hero, fix con la variante "solid" del Breadcrumb, commit `30067e5`) · antes, el 25 de septiembre (1.37 cerrada del todo: causa del cartel falso en el temporizador de `Turnstile.tsx`, fix `efc5266` verificado en producción, y regla de rate limiting en Cloudflare para los envíos sin token) · antes, el 24 de septiembre (nota en 3.10: se sacó el título del hero de /ebook porque repetía el H1, tarea 1.7 de Mejora Estética Web, commit `f9e94d3`) · antes, el 21 de septiembre (consolidación del artifact Performance Web: se suman acá el detalle completo de 1.23-1.27, la cronología punto a punto de la regresión de Core Web Vitals, el cierre de los dos hallazgos que 1.14 tenía abiertos — Recruiting se queda en CSS a propósito, JS sin usar del bundle propio medido y sin acción — y una nota de método para la próxima medición de performance; el artifact Performance Web quedó sin contenido propio y se eliminó) · antes, el mismo día: 8.2 movida acá del todo — cerrada tras confirmar que la ficha de crunchbase.com/organization/base-core la ocupa BaseCore™, geoceldas de Scottsdale AZ, no Base Power; detalle completo de las 11 recomendaciones en la Fase 8) · antes, el mismo día: 4.6 movida acá — Mariano revierte la decisión del 5/9 de no activar canales secundarios; LinkedIn empresa, Instagram y Facebook pasan a desarrollo urgente, gestionado desde el Plan de Marketing/Social, no acá — primera tarea de una nueva Fase 4 en este documento · antes, el mismo día: 1.28 movida acá del todo — Mariano decidió no seguir persiguiendo el objetivo de mobile +90 en el score de laboratorio de PSI; queda reemplazada por 5.9 en el Plan de SEO, un chequeo mensual recurrente sin objetivo activo de score) · antes: 20 de septiembre (1.40 movida acá — el overlay de /marketing necesitó una 3ra ronda: medido el color de las 5 fotos de hero, la de /marketing resultó la más saturada de azul con diferencia, así que el overlay nunca fue la causa principal; fix real con filtro de color sobre la propia imagen + overlay neutro, confirmado por Mariano en un preview de Vercel y llevado a producción. De paso se retiró el widget de revisión interactiva del Plan de SEO — duplicaba el archivo y dejaba una línea sin poder leer, forzando un publish con `force` en otra sesión; el veredicto de revisión se registra por chat de acá en más) · antes, el mismo día: 1.37, 1.39 y 1.41 movidas acá — 1.37 confirmada por Mariano en iPhone real; 1.39 y 1.41 marcadas OK en el (todavía vigente en ese momento) widget de revisión interactiva del Plan de SEO, ahora "BaseCoreWeb: SEO y Performance" · antes: 18 de septiembre, sesión posterior (1.29-1.35, 1.38, 3.11 y 3.12 movidas acá) · antes, el mismo día: migración de 9 hallazgos SEO desde la Auditoría Final de UX/diseño (1.29-1.35, 3.11-3.12) · antes: 14 de septiembre (Fase 8 nueva, 8.1 cerrada — decisión de no unificar el naming a "BaseCore") · espejo de trabajo en `documentation/seo/historial-seo.md`
