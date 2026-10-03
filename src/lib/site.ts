@@ -25,6 +25,12 @@ export const site = {
     facebook: "https://www.facebook.com/basecore",
     instagram: "https://www.instagram.com/basecoresales/",
   },
+  /**
+   * Google Business Profile listing (Maps CID), linked from the JSON-LD
+   * sameAs so Google ties the site to the same entity as the listing. See
+   * documentation/seo/plan-seo.md 4.1/4.7.
+   */
+  googleBusinessProfileUrl: "https://maps.google.com/?cid=8098302433778327757",
   /** Google Analytics 4 measurement ID (GA4 property "Base Core Sales"). */
   gaId: "G-0NRE1KWMBM",
 } as const;

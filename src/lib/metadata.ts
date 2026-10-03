@@ -71,11 +71,20 @@ export const professionalServiceJsonLd = {
   disambiguatingDescription:
     "Base Core Sales es una consultoría de ventas, marketing y tecnología B2B para empresas de España y Latinoamérica, con foco en preventa, venta, posventa y marketing.",
   email: site.email,
+  // Same number as the Google Business Profile listing (with the mobile 9),
+  // so the listing and the site match on NAP. No address on purpose: the
+  // listing will hide it once 4.7 is verified.
+  telephone: "+54 9 11 5564-3798",
   areaServed: ["ES", "AR", "Latinoamérica"],
   founder: {
     "@type": "Person",
     name: site.founder.name,
     url: site.founder.linkedin,
   },
-  sameAs: [site.social.linkedin, site.social.instagram, site.social.facebook],
+  sameAs: [
+    site.social.linkedin,
+    site.social.instagram,
+    site.social.facebook,
+    site.googleBusinessProfileUrl,
+  ],
 };
