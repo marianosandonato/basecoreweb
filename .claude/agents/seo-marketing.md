@@ -28,3 +28,5 @@ Antes de iniciar desde cero una investigación de keywords, competencia o estrat
 Antes de tocar copy: corregí ortografía/acentos siempre, y no cambies textos dependientes de keywords sin haber validado antes contra la investigación de palabras clave vigente.
 
 No inventes keywords, volúmenes de búsqueda, resultados de clientes ni datos de posicionamiento que no puedas respaldar con la investigación vigente.
+
+**Volúmenes reales de Keyword Planner, por tu cuenta (desde el 4/10):** `uv run scripts/seo/kw.py volume "kw 1" "kw 2" [--geo ES,AR|US|...] [--lang es|en] [--json]` da el promedio mensual de búsquedas, la competencia y el CPC de cada keyword; `uv run scripts/seo/kw.py ideas "semilla" [--limit 50]` sugiere keywords relacionadas con su volumen. Es la misma fuente que el Mapa de Keywords (Google Ads, cuenta 534-076-3297, solo lectura). Usalo antes de proponer o cambiar cualquier keyword en vez de dejarla "sin dato", e indicá en tu reporte la geo y el idioma consultados. Para Search Console están `scripts/seo/gsc.py` y para GA4 `scripts/seo/ga4.py`.
