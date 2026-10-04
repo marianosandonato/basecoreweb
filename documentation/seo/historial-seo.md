@@ -1,7 +1,8 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`web-lead`, `seo-marketing`, `performance`) — confirmado el 3/9 que la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma, no de configuración), así que solo la sesión principal puede leer el artifact directo. Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8
-> - Última sincronización: 2026-10-03
+> - Última sincronización: 2026-10-04
+> - Nota 4/10: se suman 3.14 (post de leads B2B, 473a9e3) y 1.45 (margen del logo, ca5038d).
 > - Nota 3/10 (3): 4.1 — sitio conectado con la ficha vía sameAs y telephone del JSON-LD (commit be5342b).
 > - Nota 3/10 (3.13): se suma 3.13 (FAQs + FAQPage ES/EN, estadísticas con fuente, tuteo) con notas en 3.3 y 3.9.
 > - Nota 3/10: 4.1 agregada a la Fase 4 (ficha de Google Business Profile publicada; la verificación de los cambios sigue en 4.7 del Plan de SEO).
@@ -791,6 +792,20 @@ public/images/             nuevo PNG 700×700, logo azul con slogan en inglés
 
 **Para qué sirve:** que el slogan en español sea uno solo en todo lo que lee Google, y que el logo que Google puede mostrar junto al nombre de la empresa se vea sobre fondo blanco y coincida con el de redes.
 
+1.45 — Logo sin margen inferior en la franja navy de las páginas sin foto
+
+Hecho · en producción 4/10
+
+Reportado por Mariano el 3/10, navegando el sitio: en el blog (listado y posts), las páginas legales y las 404, la franja navy de arriba (variante `"solid"` de `Breadcrumb.tsx`, ver 1.42) termina justo donde termina el logo del header, así que el logo queda pegado al recuadro blanco del contenido, mientras que el breadcrumb de la derecha sí tiene 20px de aire abajo. Pidió darle al logo el mismo margen que el breadcrumb, alargando la franja, y revisar todo el sitio.
+
+**Medido (Playwright, 1440px):** logo de y 61 a 261, franja hasta 261 (margen 0), breadcrumb con `pb-[20px]` (su texto terminaba en 241). Revisadas también las páginas con foto: /contacto y /ebook ya tienen unos 19px bajo el logo (hero de 280px), y /preventa, /tecnologia y el resto tienen la foto debajo, sin recuadro blanco pegado. Por debajo de 1200px el header va en el flujo y no hay superposición. El problema estaba solo en la variante `"solid"`, así que un cambio la arregla en todas sus páginas (ES y EN).
+
+**Implementado:** la franja de escritorio pasa de `min-[1200px]:h-[261px]` a `h-[281px]`. El breadcrumb se queda con su `pb-[20px]`, así que baja 20px y su texto termina en y 261, a la misma altura que el borde inferior del logo: los dos quedan con 20px de margen y alineados abajo.
+
+**Verificado:** `tsc`, `eslint` y `next build` limpios. Contra un build local a 1440px: logo hasta 261, breadcrumb hasta 261, franja hasta 281; tablet (1100px) sin cambios. Mariano lo vio en el preview de Vercel junto con la 3.14. Commit `ca5038d`, pusheado a `master` con el ok de Mariano.
+
+**Para qué sirve:** que el logo no quede pegado al contenido en las páginas sin foto, con el mismo aire que ya tenía el breadcrumb.
+
 Fase 2
 
 ## Medición
@@ -831,7 +846,7 @@ Fase 3
 
 ## Palabras clave y contenido
 
-El sitio técnicamente listo para posicionar, ampliado con las palabras que usan los clientes potenciales. Cerrada el 18/9 y reabierta el 2/10 con 3.13 (cerrada el 3/10, abajo) y 3.14, que sigue activa en el Plan de SEO.
+El sitio técnicamente listo para posicionar, ampliado con las palabras que usan los clientes potenciales. Cerrada el 18/9 y reabierta el 2/10 con 3.13 (cerrada el 3/10) y 3.14 (cerrada el 4/10), las dos abajo. Vuelve a quedar cerrada del todo.
 
 3.1 — Investigación de palabras clave
 
@@ -1231,6 +1246,67 @@ ef58591 (ES, 3/10)
 **Nota de expectativa:** desde 2023 Google solo muestra el rich result de FAQ a sitios de gobierno y salud; el valor es el texto citable por Google e IA. Se mide en la próxima ronda de 5.10 (principios de noviembre) con la query "consultoría comercial para pymes". Mariano pidió indexación de las URLs en Search Console el 3/10.
 
 **Para qué sirve:** dar a las páginas de servicio respuestas citables para las búsquedas de contratación, que no aparecían en ningún motor.
+
+3.14 — Refuerzo del post de leads B2B
+
+Hecho · ES y EN en producción 4/10
+
+Abierta el 2/10: `/blog/como-calificar-leads-b2b` fue la única citación en Perplexity de la ronda 1 de 5.10 (5/9) y no apareció en la ronda 2 (2/10). Sin reescribir el post: una respuesta directa al principio, una tabla comparativa de los métodos que ya trata y algunas preguntas frecuentes. Borrador del 2/10 en `documentation/seo/borradores/3-14-refuerzo-leads-b2b.md` (estaba en voseo; se pasó a tuteo).
+
+**Proceso:** primer preview el 3/10 con el borrador aplicado por la sesión principal. Mariano pidió cambios y, desde esta tarea, una regla nueva para todo el blog: el contenido lo escribe el agente de copywriting (`seo-marketing`, con los skills de copy) y lo coordina y revisa `web-lead` antes del preview. Así se hicieron las dos rondas siguientes (dos pasadas de cada agente).
+
+Decisiones de Mariano (3-4/10)
+
+```
+B Tabla      Tabla real (bloque nuevo "table"), no lista. Estilo
+             igual a la tabla de las páginas legales.
+  Columna    "Equipo y ticket" sacada: seo-marketing no encontró
+             consenso verificable (HubSpot, Salesforce, Gong); los
+             cortes en US$ son reglas de blogs de proveedores. Queda
+             Método / Qué evalúa / Cuándo conviene.
+  Criterio   Fuera "tamaño de equipo" como criterio para elegir el
+             método (misma falta de fuente): H2 "Cómo elegir un
+             método según tu ciclo de venta y la cantidad de
+             decisores", meta, párrafo, bullets, respuesta corta y
+             FAQ. Analizadas las keywords antes de decidir: ninguna
+             frase en juego estaba en el Mapa de Keywords y "ciclo
+             de venta" se mantiene.
+  MEDDIC     Seis elementos: cuatro sin equivalente en BANT
+             (Metrics, Decision criteria, Decision process,
+             Champion) y dos que profundizan (Economic buyer,
+             Identify pain). Antes decía "tres capas".
+  BANT       "nació en IBM hace más de cinco décadas" → "se
+             popularizó desde IBM hace décadas" (sin fuente firme).
+  Links      Dos links contextuales por idioma a /preventa y
+             /en/presales.
+  Fecha      Sin dateModified: queda la fecha original (viene una
+             tanda de 6 posts nuevos).
+```
+
+Implementado (commit 473a9e3)
+
+```
+src/content/blog/types.ts   bloque "table" (caption, headers, rows;
+                            la 1.ª celda de cada fila es th scope=row)
+src/components/BlogPostPage.tsx
+                            render de la tabla (estilo de LegalPage,
+                            caption sr-only, contenedor con scroll
+                            horizontal enfocable con teclado) y p/ul
+                            por renderRich (links [texto](url))
+Post ES y EN                "Respuesta corta" al inicio, H2 + tabla
+                            comparativa antes de "Cómo elegir", 3 FAQs
+                            al final (h2 + p con pregunta en negrita),
+                            MEDDIC, BANT, criterio y links de arriba;
+                            lectura 8 → 9 min; em dashes del EN
+                            limpiados; "implicaciones" (no
+                            "implicancias")
+```
+
+**Verificado:** `tsc`, `eslint` y `next build` limpios. Contra un build local: tabla a 1440px y a 390px (scroll dentro del recuadro, sin scroll horizontal de la página), meta ES 155 y EN 151 caracteres, H2 nuevo en los dos idiomas, links a `/preventa` y `/en/presales`, sin voseo. Previews de Vercel `basecoreweb-gbv2fhuhh` y `basecoreweb-531j7woo6`; Mariano aprobó y pidió producción el 4/10. Pusheado a `master`.
+
+**Pendiente fuera de esta tarea:** que el refuerzo recupere la cita es hipótesis, no dato; se mide en la próxima ronda de 5.10 con la query 1 exacta. Mejora opcional anotada por `web-lead`: las FAQs como H3 (y `FAQPage` en el post) pedirían un bloque nuevo en el renderer.
+
+**Para qué sirve:** darle al post que ya se había citado una respuesta directa y una comparativa escaneable, el formato que más citan Google y los motores de IA.
 
 Fase 4
 
@@ -2203,5 +2279,6 @@ El registro día a día de cómo se llegó al estado actual — el "Por dónde s
 37. **28/9, historial unificado:** a pedido de Mariano, este documento pasa a llamarse "Historial Técnico WEB" y suma completas la Auditoría Final y la Mejora Estética Web, para poder eliminar esos dos artifacts.
 38. **2-3/10, cierre de 4.1:** ficha nueva de Google Business Profile publicada (la verificación de agosto había sido rechazada). Los ajustes de dirección, horario, categoría, sitio y fotos quedan cargados pero retenidos hasta una verificación por video en vivo desde Buenos Aires; esa verificación pasa a la nueva 4.7, Bloqueada.
 39. **3/10, cierre de 3.13:** preguntas frecuentes con `FAQPage` en las 6 páginas de servicio, ES y EN, a partir de las respuestas de Mariano (lo gratuito es el relevamiento inicial; sin precios ni cifras prometidas). En el camino: botones unificados en "Diagnóstico gratuito", estadísticas sin fuente corregidas, formulario de contacto alineado y todo el sitio ES en tuteo. Commits `ef58591` y `4c9d316`, verificados en producción.
+40. **4/10, cierre de 3.14 y 1.45:** el post de leads B2B suma respuesta corta, tabla comparativa y 3 FAQs, con MEDDIC corregido, el criterio de elección por ciclo y decisores y links a /preventa (commit `473a9e3`). Desde esta tarea, el contenido de blog lo escribe `seo-marketing` y lo revisa `web-lead`. De paso, el logo del header gana margen inferior en las páginas sin foto (commit `ca5038d`). Verificados en producción.
 
-Historial Técnico WEB (antes Historial Técnico SEO) · Base Core · creado el 5 de septiembre de 2026, a partir del Plan de SEO original · actualizado el 3 de octubre (4.1: sitio conectado con la ficha vía `sameAs` y `telephone` del JSON-LD, commit `be5342b`) · antes, el mismo día (3.13 cerrada: FAQs con FAQPage ES y EN, estadísticas con fuente, sitio ES en tuteo, commits `ef58591` y `4c9d316`; notas en 3.3 y 3.9) · antes, el mismo día (4.1 cerrada: ficha de Google Business Profile publicada; la verificación por video de los cambios pasa a 4.7 en el Plan de SEO) · antes, el 28 de septiembre (1.44 nueva y cerrada: slogan "Creamos" → "Creando" en las meta descriptions y logo del schema con slogan en inglés sobre fondo blanco, commit `61668f2`) · antes, el mismo día (1.43 cerrada: Twitter Card propia por página e idioma y respaldos en inglés en `/en`, commit `ad44955`) · antes, el mismo día (historial unificado: se suman completas la Auditoría Final Base Core, 25 hallazgos del 14-19/9, y la Mejora Estética Web, 20 tareas del 21-28/9, con ME 1.8 descartada; los dos artifacts quedan listos para eliminarse) · antes, el 26 de septiembre (1.42 nueva y cerrada: header desktop superpuesto en páginas sin hero, fix con la variante "solid" del Breadcrumb, commit `30067e5`) · antes, el 25 de septiembre (1.37 cerrada del todo: causa del cartel falso en el temporizador de `Turnstile.tsx`, fix `efc5266` verificado en producción, y regla de rate limiting en Cloudflare para los envíos sin token) · antes, el 24 de septiembre (nota en 3.10: se sacó el título del hero de /ebook porque repetía el H1, tarea 1.7 de Mejora Estética Web, commit `f9e94d3`) · antes, el 21 de septiembre (consolidación del artifact Performance Web: se suman acá el detalle completo de 1.23-1.27, la cronología punto a punto de la regresión de Core Web Vitals, el cierre de los dos hallazgos que 1.14 tenía abiertos — Recruiting se queda en CSS a propósito, JS sin usar del bundle propio medido y sin acción — y una nota de método para la próxima medición de performance; el artifact Performance Web quedó sin contenido propio y se eliminó) · antes, el mismo día: 8.2 movida acá del todo — cerrada tras confirmar que la ficha de crunchbase.com/organization/base-core la ocupa BaseCore™, geoceldas de Scottsdale AZ, no Base Power; detalle completo de las 11 recomendaciones en la Fase 8) · antes, el mismo día: 4.6 movida acá — Mariano revierte la decisión del 5/9 de no activar canales secundarios; LinkedIn empresa, Instagram y Facebook pasan a desarrollo urgente, gestionado desde el Plan de Marketing/Social, no acá — primera tarea de una nueva Fase 4 en este documento · antes, el mismo día: 1.28 movida acá del todo — Mariano decidió no seguir persiguiendo el objetivo de mobile +90 en el score de laboratorio de PSI; queda reemplazada por 5.9 en el Plan de SEO, un chequeo mensual recurrente sin objetivo activo de score) · antes: 20 de septiembre (1.40 movida acá — el overlay de /marketing necesitó una 3ra ronda: medido el color de las 5 fotos de hero, la de /marketing resultó la más saturada de azul con diferencia, así que el overlay nunca fue la causa principal; fix real con filtro de color sobre la propia imagen + overlay neutro, confirmado por Mariano en un preview de Vercel y llevado a producción. De paso se retiró el widget de revisión interactiva del Plan de SEO — duplicaba el archivo y dejaba una línea sin poder leer, forzando un publish con `force` en otra sesión; el veredicto de revisión se registra por chat de acá en más) · antes, el mismo día: 1.37, 1.39 y 1.41 movidas acá — 1.37 confirmada por Mariano en iPhone real; 1.39 y 1.41 marcadas OK en el (todavía vigente en ese momento) widget de revisión interactiva del Plan de SEO, ahora "BaseCoreWeb: SEO y Performance" · antes: 18 de septiembre, sesión posterior (1.29-1.35, 1.38, 3.11 y 3.12 movidas acá) · antes, el mismo día: migración de 9 hallazgos SEO desde la Auditoría Final de UX/diseño (1.29-1.35, 3.11-3.12) · antes: 14 de septiembre (Fase 8 nueva, 8.1 cerrada — decisión de no unificar el naming a "BaseCore") · espejo de trabajo en `documentation/seo/historial-seo.md`
+Historial Técnico WEB (antes Historial Técnico SEO) · Base Core · creado el 5 de septiembre de 2026, a partir del Plan de SEO original · actualizado el 4 de octubre (3.14 cerrada: post de leads B2B reforzado, commit `473a9e3`; 1.45 nueva y cerrada: margen inferior del logo en las páginas sin foto, commit `ca5038d`) · antes, el 3 de octubre (4.1: sitio conectado con la ficha vía `sameAs` y `telephone` del JSON-LD, commit `be5342b`) · antes, el mismo día (3.13 cerrada: FAQs con FAQPage ES y EN, estadísticas con fuente, sitio ES en tuteo, commits `ef58591` y `4c9d316`; notas en 3.3 y 3.9) · antes, el mismo día (4.1 cerrada: ficha de Google Business Profile publicada; la verificación por video de los cambios pasa a 4.7 en el Plan de SEO) · antes, el 28 de septiembre (1.44 nueva y cerrada: slogan "Creamos" → "Creando" en las meta descriptions y logo del schema con slogan en inglés sobre fondo blanco, commit `61668f2`) · antes, el mismo día (1.43 cerrada: Twitter Card propia por página e idioma y respaldos en inglés en `/en`, commit `ad44955`) · antes, el mismo día (historial unificado: se suman completas la Auditoría Final Base Core, 25 hallazgos del 14-19/9, y la Mejora Estética Web, 20 tareas del 21-28/9, con ME 1.8 descartada; los dos artifacts quedan listos para eliminarse) · antes, el 26 de septiembre (1.42 nueva y cerrada: header desktop superpuesto en páginas sin hero, fix con la variante "solid" del Breadcrumb, commit `30067e5`) · antes, el 25 de septiembre (1.37 cerrada del todo: causa del cartel falso en el temporizador de `Turnstile.tsx`, fix `efc5266` verificado en producción, y regla de rate limiting en Cloudflare para los envíos sin token) · antes, el 24 de septiembre (nota en 3.10: se sacó el título del hero de /ebook porque repetía el H1, tarea 1.7 de Mejora Estética Web, commit `f9e94d3`) · antes, el 21 de septiembre (consolidación del artifact Performance Web: se suman acá el detalle completo de 1.23-1.27, la cronología punto a punto de la regresión de Core Web Vitals, el cierre de los dos hallazgos que 1.14 tenía abiertos — Recruiting se queda en CSS a propósito, JS sin usar del bundle propio medido y sin acción — y una nota de método para la próxima medición de performance; el artifact Performance Web quedó sin contenido propio y se eliminó) · antes, el mismo día: 8.2 movida acá del todo — cerrada tras confirmar que la ficha de crunchbase.com/organization/base-core la ocupa BaseCore™, geoceldas de Scottsdale AZ, no Base Power; detalle completo de las 11 recomendaciones en la Fase 8) · antes, el mismo día: 4.6 movida acá — Mariano revierte la decisión del 5/9 de no activar canales secundarios; LinkedIn empresa, Instagram y Facebook pasan a desarrollo urgente, gestionado desde el Plan de Marketing/Social, no acá — primera tarea de una nueva Fase 4 en este documento · antes, el mismo día: 1.28 movida acá del todo — Mariano decidió no seguir persiguiendo el objetivo de mobile +90 en el score de laboratorio de PSI; queda reemplazada por 5.9 en el Plan de SEO, un chequeo mensual recurrente sin objetivo activo de score) · antes: 20 de septiembre (1.40 movida acá — el overlay de /marketing necesitó una 3ra ronda: medido el color de las 5 fotos de hero, la de /marketing resultó la más saturada de azul con diferencia, así que el overlay nunca fue la causa principal; fix real con filtro de color sobre la propia imagen + overlay neutro, confirmado por Mariano en un preview de Vercel y llevado a producción. De paso se retiró el widget de revisión interactiva del Plan de SEO — duplicaba el archivo y dejaba una línea sin poder leer, forzando un publish con `force` en otra sesión; el veredicto de revisión se registra por chat de acá en más) · antes, el mismo día: 1.37, 1.39 y 1.41 movidas acá — 1.37 confirmada por Mariano en iPhone real; 1.39 y 1.41 marcadas OK en el (todavía vigente en ese momento) widget de revisión interactiva del Plan de SEO, ahora "BaseCoreWeb: SEO y Performance" · antes: 18 de septiembre, sesión posterior (1.29-1.35, 1.38, 3.11 y 3.12 movidas acá) · antes, el mismo día: migración de 9 hallazgos SEO desde la Auditoría Final de UX/diseño (1.29-1.35, 3.11-3.12) · antes: 14 de septiembre (Fase 8 nueva, 8.1 cerrada — decisión de no unificar el naming a "BaseCore") · espejo de trabajo en `documentation/seo/historial-seo.md`
