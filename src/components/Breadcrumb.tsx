@@ -159,11 +159,14 @@ export default function Breadcrumb({
             pushes the page's own content down instead of letting Header's
             absolute overlay paint over it. 261px = Bar A's 58px + Bar B's
             offset/logo (58 + 3 + 200) — see Header.tsx's own comment for
-            that math. Filled navy so the white logo lands on a proper
+            that math — plus 20px so the logo gets the same bottom margin
+            as the trail's pb-[20px] (it used to sit flush on the white
+            content box; Mariano, 3/10). The trail's baseline box now ends
+            at y 261, level with the logo's bottom edge. Filled navy so the white logo lands on a proper
             backdrop, same as it does on every hero page, instead of on
             this page's plain background. The trail sits bottom-right,
             clear of the logo's column on the left. */}
-        <div className="relative hidden bg-navy min-[1200px]:block min-[1200px]:h-[261px]">
+        <div className="relative hidden bg-navy min-[1200px]:block min-[1200px]:h-[281px]">
           <nav aria-label="Breadcrumb" className="container-bc flex h-full items-end justify-end px-0 pb-[20px]">
             {trail}
           </nav>
