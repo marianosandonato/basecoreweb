@@ -2,6 +2,7 @@
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8
 > - Última sincronización: 2026-10-04
+> - Nota 4/10 (2): se suma 4.5 completa (privacidad y consentimiento); la 4.5.8 sigue como 4.8 en el Plan.
 > - Nota 4/10: se suman 3.14 (post de leads B2B, 473a9e3) y 1.45 (margen del logo, ca5038d).
 > - Nota 3/10 (3): 4.1 — sitio conectado con la ficha vía sameAs y telephone del JSON-LD (commit be5342b).
 > - Nota 3/10 (3.13): se suma 3.13 (FAQs + FAQPage ES/EN, estadísticas con fuente, tuteo) con notas en 3.3 y 3.9.
@@ -1312,7 +1313,7 @@ Fase 4
 
 ## SEO local y autoridad
 
-Cerradas 4.1, 4.2 y 4.6. El resto (4.3, 4.4, 4.5, 4.7) sigue activo o Bloqueado, con su detalle en el [Plan de SEO](https://claude.ai/artifact/XPrZBTCe2b7tvbzzNuf1GT).
+Cerradas 4.1, 4.2, 4.5 (4/10) y 4.6. El resto (4.3, 4.4, 4.7, 4.8) sigue activo o Bloqueado, con su detalle en el [Plan de SEO](https://claude.ai/artifact/XPrZBTCe2b7tvbzzNuf1GT).
 
 4.1 — Google Business Profile
 
@@ -1353,6 +1354,167 @@ publicaciones periódicas.
 **Sitio conectado con la ficha (3/10, commit `be5342b`):** el JSON-LD `ProfessionalService` suma la ficha de Maps al `sameAs` (`https://maps.google.com/?cid=8098302433778327757`, verificado que abre la ficha de Base Core) y `telephone` `+54 9 11 5564-3798`, el mismo de la ficha. Sin dirección, a propósito. URL en `site.googleBusinessProfileUrl` (`src/lib/site.ts`). tsc, eslint y build OK; verificado en producción en Home, `/en`, `/preventa` y `/blog`. Sin cambio visible.
 
 **Para qué sirve:** aparecer en el mapa y en el bloque local de resultados; señal fuerte de "negocio real" para quien investiga antes de contratar.
+
+4.5 — Política de privacidad y consentimiento (GDPR/LOPDGDD)
+
+Hecho · en producción 1/10, cerrada 4/10 (sigue en 4.8)
+
+**Cierre (4/10), decisión de Mariano:** la 4.5 pasa a Hecho; el paquete está en producción desde el 1/10 (commit `befbf58`). Lo único abierto, la subtarea 4.5.8 (correcciones a la presentación de la base en la AAIP), pasa a ser la tarea **4.8** del Plan de SEO, En progreso hasta que la AAIP apruebe la presentación.
+
+**1/10: paquete PUBLICADO en producción (commit `befbf58`), verificado en vivo.** Mariano revisó el preview y pidió un solo cambio: cursor de mano en "Configurar cookies" del footer (aplicado también a los botones del banner). Solo queda 4.5.8 (correcciones a la presentación de la AAIP); al cerrarla, el detalle de 4.5 pasa al Historial Técnico WEB.
+
+**1/10: pendientes de 4.5.6 resueltos y preview listo.** Contador y abogado dieron el ok, las propiedades de HubSpot existen, el responsable y la base quedaron inscriptos en la AAIP y el párrafo de Cloudflare Web Analytics está redactado. Preview del paquete completo, al día con master: `basecoreweb-357m4aogb-base-core.vercel.app`. Solo falta el ok de Mariano para publicar (4.5.7). Quedan correcciones menores a la presentación de la AAIP (4.5.8), que no bloquean la publicación.
+
+**En suspenso (26/9), por decisión de Mariano.** Todo el paquete de privacidad queda armado y sin publicar hasta que Mariano dé el ok: banner de cookies (4.5.3, retirado de producción con el revert `1ead6e8`), páginas legales, links, aviso bajo los formularios y checkbox de marketing (4.5.4, preview revisado y aprobado por Mariano el 26/9). Se publica todo junto, en un solo paso, cuando estén resueltos los pendientes de 4.5.6. Quedan en producción, fuera del paquete: el arreglo del header (1.42, `30067e5`) y Cloudflare Web Analytics (decisión: mantenerlo).
+
+Cero rutas legales, cero menciones a privacidad/GDPR, ningún checkbox de consentimiento. En España, GDPR (Art. 13) + LOPDGDD exige aviso de privacidad y consentimiento inequívoco para procesar datos de formularios, y la LSSI (art. 22.2) exige consentimiento previo para cookies no necesarias — obligación legal, no recomendación.
+
+**Desbloqueada (25/9) a pedido de Mariano**, porque traba la 5.1 (formularios → HubSpot), la 5.3 (consentimiento) y la 6.2 (doble opt-in) del [Marketing Strategy](https://claude.ai/artifact/5nEdULGfDWCWES17cpptDp). Reemplaza la decisión anterior ("nada por ahora, ni el andamiaje técnico"). Decisiones de Mariano:
+
+· **Vía:** borrador propio basado en un inventario real de tratamientos y en las guías de la AEPD (Facilita RGPD, guía de cookies), marcado como borrador. Antes de publicarlo lo revisa un abogado, o Mariano decide publicarlo bajo su criterio. No es asesoría legal.
+· **Responsable del tratamiento:** Mariano Sandonato, persona física, CUIT y domicilio en CABA (datos en `documentation/legal/`); se cambia si se constituye una sociedad (ver 8.3).
+· **Enfoque (25/9, noche): base 100% en Argentina**, sin radicación en España por ahora. Marco principal: Ley 25.326 + Decreto 1558/2001, con la AAIP como autoridad de control; el RGPD queda como sección secundaria para visitantes del EEE. El banner de cookies se mantiene como buena práctica y por los visitantes de la UE.
+· **Cookies:** banner con Aceptar / Rechazar / Configurar al mismo nivel, y GA4 se carga solo después de un "Aceptar". Se acepta perder los datos de GA4 de quien rechaza o ignora el banner (típico 30-50%); Search Console no se afecta.
+
+Inventario de tratamientos (25/9, leído del código)
+
+```
+Formularios (ContactForm, EbookForm → /api/contact, /api/ebook):
+nombre, apellidos, empresa, servicio, WhatsApp, email, mensaje
+→ email vía Resend (EE.UU.) + HubSpot (en producción desde
+  2193af7, 5.1 del Marketing): suma UTM leídos de la URL, sin
+  cookies; consentimiento de marketing solo si se tilda el checkbox
+Turnstile (Cloudflare): anti-bot, necesario → sin consentimiento
+Cookie de idioma (LanguageBanner/LanguageSwitcher): técnica → exenta
+GA4 G-0NRE1KWMBM (GtmLoader.tsx): analítica → HOY carga para todas
+las visitas: el banner que lo condiciona (eed9e24) se retiró de
+producción el 26/9 (1ead6e8) y vuelve con el paquete
+Cloudflare Web Analytics: medición sin cookies, inyectada desde el
+panel de Cloudflare (no está en el código). Se mantiene; hay que
+declararla en la política antes de publicar
+Hosting: Vercel (EE.UU.)
+Sin píxeles de Meta ni de LinkedIn.
+```
+
+Subtareas
+
+```
+4.5.1  Inventario de tratamientos                          Hecho (25/9)
+4.5.2  Borrador de política de privacidad y cookies ES/EN + Hecho (25/9)
+     primera capa de formularios → documentation/legal/
+     (placeholders del titular + [VERIFICAR] para el revisor)
+4.5.3  Banner de cookies + Consent Mode v2 básico, GA4 solo En suspenso
+     tras "Aceptar", link "Configurar cookies" en el footer.
+     Estuvo en producción el 26/9 (eed9e24, verificado en
+     vivo); Mariano pidió retirarlo hasta publicar la política
+     completa: revert 1ead6e8, verificado (sin banner, GA4 para
+     todas las visitas). Para reactivarlo: revertir 1ead6e8
+4.5.4  Páginas /privacidad, /en/privacy, /cookies,         En suspenso
+     /en/cookies con el texto del abogado; links en el       (aprobado)
+     footer y en el banner; primera capa y checkbox
+     marketingConsent en contacto y e-book. Preview
+     basecoreweb-mr1tzvefk-base-core.vercel.app, revisado y
+     aprobado por Mariano el 26/9. Código sin commitear en el
+     worktree .claude/worktrees/agent-a7aeb211238a63018 (NO
+     borrarlo). Incluye también el fix del header, ya en
+     producción por separado (1.42).
+4.5.5  Versión maestra del abogado recibida (26/9):          Hecho (26/9)
+     documentation/legal/final/. Texto público en
+     documentation/legal/publicar/ con 13 ajustes de forma
+     listados en cambios-vs-version-abogado.md (Gmail como
+     proveedor del email, bc_consent en la tabla de
+     cookies, ubicación real de cada proveedor).
+4.5.6  Pendientes de Mariano antes de publicar:              Hecho (1/10)
+     a) HECHO (1/10): contador y abogado dieron el ok
+        (CUIT y domicilio en la política).
+     b) HECHO (1/10): Mariano creó en HubSpot
+        consentimiento_marketing (casilla única, sin valor
+        predeterminado) y fecha_consentimiento_marketing
+        (selector de fecha), nombres internos verificados
+        contra src/lib/hubspot.ts.
+     c) HECHO (1/10): inscripción en la AAIP por TAD.
+        Paso 1, responsable privado, persona humana:
+        EX-2026-96066523-APN-DNPDP#AAIP, legajo/código
+        RL-2026-96066568-APN-DNPDP#AAIP. Paso 2, base
+        "Contactos comerciales y leads":
+        EX-2026-96082495-APN-DNPDP#AAIP, presentada y en
+        revisión. No se pidió estatuto. PDFs en la carpeta
+        de Windows PAQUETE SEGURIDAD/paso 1 y paso2.
+        Inscripción sin vencimiento según la AAIP: se
+        modifica solo si cambia lo declarado. Ver 4.5.8.
+     d) HECHO (1/10): párrafo de Cloudflare Web Analytics
+        redactado por pedido de Mariano, sin revisión del
+        abogado: final de 3.5 de privacidad (título
+        ampliado), fila de Cloudflare ampliada en la tabla
+        de proveedores y párrafo en cookies junto al de
+        Turnstile, ES/EN. Verificado en producción: el
+        beacon carga en todas las páginas, sin cookies ni
+        storage. Registrado en el punto 13 de
+        cambios-vs-version-abogado.md.
+     e) Documentación interna, sin bloquear la publicación:
+        registro de DPA por proveedor y medidas de seguridad
+        (accesos, backups, incidentes), según el abogado.
+4.5.7  Publicar (el día del ok de Mariano):                  Hecho (1/10)
+     revertir 1ead6e8 (vuelve el banner) + aplicar el
+     worktree de 4.5.4 al día con master + párrafo de
+     Cloudflare en /privacidad y /cookies + fecha en
+     LEGAL_PUBLICATION_DATE + tsc/lint/build + push +
+     verificación en vivo con Playwright.
+     1/10: hecho todo menos commit/push. Worktree nuevo
+     desde master: .claude/worktrees/privacy-4-5-7 (sin
+     commitear; el de 4.5.4 queda intacto). Conflicto
+     único en Breadcrumb.tsx, resuelto con la versión de
+     master. Fecha: 1 de octubre de 2026 (cambiarla si se
+     publica otro día). tsc, lint y build OK. Banner
+     verificado en un build local: sin cookies ni GA4 al
+     entrar; Rechazar deja solo bc_consent; Configurar →
+     analíticas → Guardar pone _ga y _ga_0NRE1KWMBM.
+     Preview: basecoreweb-357m4aogb-base-core.vercel.app.
+     Cambio pedido por Mariano tras el preview: cursor-pointer
+     en "Configurar cookies" (footer) y en los botones del
+     banner. Commit befbf58, pusheado a master. Verificado
+     en vivo: banner sin cookies ni GA4 al entrar, Rechazar
+     deja solo bc_consent, cursor de mano, párrafo de
+     Cloudflare y fecha 1/10 en /privacidad, checkbox en
+     /contacto, /cookies y /en/* responden 200.
+4.5.8  Corregir la presentación de la base en la AAIP       → 4.8 del Plan
+     (EX-2026-96082495). Esperar la aprobación y hacer
+     UNA sola "Modificación de datos del Registro de
+     Bases de Datos Privadas" con todo junto (o
+     corregir en la respuesta si la AAIP manda una
+     observación antes). No bloquea la publicación.
+     A corregir (declaración jurada):
+     1) Seguridad: quedó el corchete literal "usuario y
+        contraseña [y verificación en dos pasos]" y el
+        campo cortó el final ("acceso limitado al tit").
+        Dejar el texto sin corchete, con o sin 2FA según
+        lo que Mariano tenga activo en HubSpot y Gmail, y
+        más corto para que entre.
+     2) Tipo de datos: solo "Datos identificatorios".
+        Sumar "Datos comerciales, económicos y financieros"
+        (empresa, servicio de interés) y "Otros" (UTM de
+        origen y consentimiento de marketing con fecha).
+        La ley prohíbe tener datos de otra naturaleza que
+        la declarada.
+     Menores, en la misma modificación:
+     3) Finalidad: quedó "Publicidad, venta directa y
+        similares". Aceptable; cambiarla solo si la lista
+        tiene una opción tipo gestión de clientes o
+        atención de consultas.
+     4) Forma de actualización: sumar "Manual".
+     5) Transferencias: sumar Alemania/UE (HubSpot);
+        hoy solo figura EE.UU.
+     6) Contacto para derechos: quedaron
+        marianosandonato@gmail.com y 5491155643798, pero
+        el procedimiento y la política dicen
+        info@basecoresales.com. Unificar en info@.
+```
+
+**Auditoría técnica en producción (26/9, Playwright, sesión limpia):** GA4 (`gtag.js`, sin contenedor GTM) carga al entrar y pone `_ga` y `_ga_0NRE1KWMBM`, de 13 meses; son las únicas cookies de una visita normal. No hay Meta Pixel, LinkedIn Insight, Hotjar ni Clarity, ni cookies de terceros, y el almacenamiento local está vacío. Cloudflare Web Analytics (sin cookies) carga en todas las páginas y Turnstile en las páginas con formulario, sin cookies en el dominio. "Configurar cookies" no existe hoy en producción (vuelve con el banner). La tabla de cookies de la política ya se ajustó a los 13 meses reales, en `documentation/legal/publicar/` y en el worktree de 4.5.4. Texto de la auditoría entregado a Mariano para su abogado.
+
+**Cruce con el Marketing Strategy:** formularios → HubSpot ya en producción (5.1), sin checkbox. Guardar en el CRM a quien pidió que lo contacten está justificado; mandarle newsletters o secuencias no, hasta que se publique este paquete (checkbox) y exista la 6.2 (doble opt-in). La 5.3 y la 6.2 del Marketing Strategy dependen de esta tarea.
+
+**Para qué sirve:** cierra un riesgo de cumplimiento real (el más visible desde afuera: GA4 sin consentimiento) y destraba la captura de leads con permiso para email marketing.
 
 4.6 — Decisión de canal social: LinkedIn empresa, Instagram y Facebook
 
@@ -2280,5 +2442,6 @@ El registro día a día de cómo se llegó al estado actual — el "Por dónde s
 38. **2-3/10, cierre de 4.1:** ficha nueva de Google Business Profile publicada (la verificación de agosto había sido rechazada). Los ajustes de dirección, horario, categoría, sitio y fotos quedan cargados pero retenidos hasta una verificación por video en vivo desde Buenos Aires; esa verificación pasa a la nueva 4.7, Bloqueada.
 39. **3/10, cierre de 3.13:** preguntas frecuentes con `FAQPage` en las 6 páginas de servicio, ES y EN, a partir de las respuestas de Mariano (lo gratuito es el relevamiento inicial; sin precios ni cifras prometidas). En el camino: botones unificados en "Diagnóstico gratuito", estadísticas sin fuente corregidas, formulario de contacto alineado y todo el sitio ES en tuteo. Commits `ef58591` y `4c9d316`, verificados en producción.
 40. **4/10, cierre de 3.14 y 1.45:** el post de leads B2B suma respuesta corta, tabla comparativa y 3 FAQs, con MEDDIC corregido, el criterio de elección por ciclo y decisores y links a /preventa (commit `473a9e3`). Desde esta tarea, el contenido de blog lo escribe `seo-marketing` y lo revisa `web-lead`. De paso, el logo del header gana margen inferior en las páginas sin foto (commit `ca5038d`). Verificados en producción.
+41. **4/10, cierre de 4.5:** política de privacidad, banner de cookies y consentimiento en producción desde el 1/10 (`befbf58`). Las correcciones a la presentación de la base en la AAIP (antes subtarea 4.5.8) pasan a la nueva 4.8 del Plan de SEO, En progreso hasta la aprobación.
 
-Historial Técnico WEB (antes Historial Técnico SEO) · Base Core · creado el 5 de septiembre de 2026, a partir del Plan de SEO original · actualizado el 4 de octubre (3.14 cerrada: post de leads B2B reforzado, commit `473a9e3`; 1.45 nueva y cerrada: margen inferior del logo en las páginas sin foto, commit `ca5038d`) · antes, el 3 de octubre (4.1: sitio conectado con la ficha vía `sameAs` y `telephone` del JSON-LD, commit `be5342b`) · antes, el mismo día (3.13 cerrada: FAQs con FAQPage ES y EN, estadísticas con fuente, sitio ES en tuteo, commits `ef58591` y `4c9d316`; notas en 3.3 y 3.9) · antes, el mismo día (4.1 cerrada: ficha de Google Business Profile publicada; la verificación por video de los cambios pasa a 4.7 en el Plan de SEO) · antes, el 28 de septiembre (1.44 nueva y cerrada: slogan "Creamos" → "Creando" en las meta descriptions y logo del schema con slogan en inglés sobre fondo blanco, commit `61668f2`) · antes, el mismo día (1.43 cerrada: Twitter Card propia por página e idioma y respaldos en inglés en `/en`, commit `ad44955`) · antes, el mismo día (historial unificado: se suman completas la Auditoría Final Base Core, 25 hallazgos del 14-19/9, y la Mejora Estética Web, 20 tareas del 21-28/9, con ME 1.8 descartada; los dos artifacts quedan listos para eliminarse) · antes, el 26 de septiembre (1.42 nueva y cerrada: header desktop superpuesto en páginas sin hero, fix con la variante "solid" del Breadcrumb, commit `30067e5`) · antes, el 25 de septiembre (1.37 cerrada del todo: causa del cartel falso en el temporizador de `Turnstile.tsx`, fix `efc5266` verificado en producción, y regla de rate limiting en Cloudflare para los envíos sin token) · antes, el 24 de septiembre (nota en 3.10: se sacó el título del hero de /ebook porque repetía el H1, tarea 1.7 de Mejora Estética Web, commit `f9e94d3`) · antes, el 21 de septiembre (consolidación del artifact Performance Web: se suman acá el detalle completo de 1.23-1.27, la cronología punto a punto de la regresión de Core Web Vitals, el cierre de los dos hallazgos que 1.14 tenía abiertos — Recruiting se queda en CSS a propósito, JS sin usar del bundle propio medido y sin acción — y una nota de método para la próxima medición de performance; el artifact Performance Web quedó sin contenido propio y se eliminó) · antes, el mismo día: 8.2 movida acá del todo — cerrada tras confirmar que la ficha de crunchbase.com/organization/base-core la ocupa BaseCore™, geoceldas de Scottsdale AZ, no Base Power; detalle completo de las 11 recomendaciones en la Fase 8) · antes, el mismo día: 4.6 movida acá — Mariano revierte la decisión del 5/9 de no activar canales secundarios; LinkedIn empresa, Instagram y Facebook pasan a desarrollo urgente, gestionado desde el Plan de Marketing/Social, no acá — primera tarea de una nueva Fase 4 en este documento · antes, el mismo día: 1.28 movida acá del todo — Mariano decidió no seguir persiguiendo el objetivo de mobile +90 en el score de laboratorio de PSI; queda reemplazada por 5.9 en el Plan de SEO, un chequeo mensual recurrente sin objetivo activo de score) · antes: 20 de septiembre (1.40 movida acá — el overlay de /marketing necesitó una 3ra ronda: medido el color de las 5 fotos de hero, la de /marketing resultó la más saturada de azul con diferencia, así que el overlay nunca fue la causa principal; fix real con filtro de color sobre la propia imagen + overlay neutro, confirmado por Mariano en un preview de Vercel y llevado a producción. De paso se retiró el widget de revisión interactiva del Plan de SEO — duplicaba el archivo y dejaba una línea sin poder leer, forzando un publish con `force` en otra sesión; el veredicto de revisión se registra por chat de acá en más) · antes, el mismo día: 1.37, 1.39 y 1.41 movidas acá — 1.37 confirmada por Mariano en iPhone real; 1.39 y 1.41 marcadas OK en el (todavía vigente en ese momento) widget de revisión interactiva del Plan de SEO, ahora "BaseCoreWeb: SEO y Performance" · antes: 18 de septiembre, sesión posterior (1.29-1.35, 1.38, 3.11 y 3.12 movidas acá) · antes, el mismo día: migración de 9 hallazgos SEO desde la Auditoría Final de UX/diseño (1.29-1.35, 3.11-3.12) · antes: 14 de septiembre (Fase 8 nueva, 8.1 cerrada — decisión de no unificar el naming a "BaseCore") · espejo de trabajo en `documentation/seo/historial-seo.md`
+Historial Técnico WEB (antes Historial Técnico SEO) · Base Core · creado el 5 de septiembre de 2026, a partir del Plan de SEO original · actualizado el 4 de octubre (4.5 cerrada: detalle completo movido acá desde el Plan de SEO; las correcciones de la AAIP siguen como 4.8 en el Plan) · antes, el mismo día (3.14 cerrada: post de leads B2B reforzado, commit `473a9e3`; 1.45 nueva y cerrada: margen inferior del logo en las páginas sin foto, commit `ca5038d`) · antes, el 3 de octubre (4.1: sitio conectado con la ficha vía `sameAs` y `telephone` del JSON-LD, commit `be5342b`) · antes, el mismo día (3.13 cerrada: FAQs con FAQPage ES y EN, estadísticas con fuente, sitio ES en tuteo, commits `ef58591` y `4c9d316`; notas en 3.3 y 3.9) · antes, el mismo día (4.1 cerrada: ficha de Google Business Profile publicada; la verificación por video de los cambios pasa a 4.7 en el Plan de SEO) · antes, el 28 de septiembre (1.44 nueva y cerrada: slogan "Creamos" → "Creando" en las meta descriptions y logo del schema con slogan en inglés sobre fondo blanco, commit `61668f2`) · antes, el mismo día (1.43 cerrada: Twitter Card propia por página e idioma y respaldos en inglés en `/en`, commit `ad44955`) · antes, el mismo día (historial unificado: se suman completas la Auditoría Final Base Core, 25 hallazgos del 14-19/9, y la Mejora Estética Web, 20 tareas del 21-28/9, con ME 1.8 descartada; los dos artifacts quedan listos para eliminarse) · antes, el 26 de septiembre (1.42 nueva y cerrada: header desktop superpuesto en páginas sin hero, fix con la variante "solid" del Breadcrumb, commit `30067e5`) · antes, el 25 de septiembre (1.37 cerrada del todo: causa del cartel falso en el temporizador de `Turnstile.tsx`, fix `efc5266` verificado en producción, y regla de rate limiting en Cloudflare para los envíos sin token) · antes, el 24 de septiembre (nota en 3.10: se sacó el título del hero de /ebook porque repetía el H1, tarea 1.7 de Mejora Estética Web, commit `f9e94d3`) · antes, el 21 de septiembre (consolidación del artifact Performance Web: se suman acá el detalle completo de 1.23-1.27, la cronología punto a punto de la regresión de Core Web Vitals, el cierre de los dos hallazgos que 1.14 tenía abiertos — Recruiting se queda en CSS a propósito, JS sin usar del bundle propio medido y sin acción — y una nota de método para la próxima medición de performance; el artifact Performance Web quedó sin contenido propio y se eliminó) · antes, el mismo día: 8.2 movida acá del todo — cerrada tras confirmar que la ficha de crunchbase.com/organization/base-core la ocupa BaseCore™, geoceldas de Scottsdale AZ, no Base Power; detalle completo de las 11 recomendaciones en la Fase 8) · antes, el mismo día: 4.6 movida acá — Mariano revierte la decisión del 5/9 de no activar canales secundarios; LinkedIn empresa, Instagram y Facebook pasan a desarrollo urgente, gestionado desde el Plan de Marketing/Social, no acá — primera tarea de una nueva Fase 4 en este documento · antes, el mismo día: 1.28 movida acá del todo — Mariano decidió no seguir persiguiendo el objetivo de mobile +90 en el score de laboratorio de PSI; queda reemplazada por 5.9 en el Plan de SEO, un chequeo mensual recurrente sin objetivo activo de score) · antes: 20 de septiembre (1.40 movida acá — el overlay de /marketing necesitó una 3ra ronda: medido el color de las 5 fotos de hero, la de /marketing resultó la más saturada de azul con diferencia, así que el overlay nunca fue la causa principal; fix real con filtro de color sobre la propia imagen + overlay neutro, confirmado por Mariano en un preview de Vercel y llevado a producción. De paso se retiró el widget de revisión interactiva del Plan de SEO — duplicaba el archivo y dejaba una línea sin poder leer, forzando un publish con `force` en otra sesión; el veredicto de revisión se registra por chat de acá en más) · antes, el mismo día: 1.37, 1.39 y 1.41 movidas acá — 1.37 confirmada por Mariano en iPhone real; 1.39 y 1.41 marcadas OK en el (todavía vigente en ese momento) widget de revisión interactiva del Plan de SEO, ahora "BaseCoreWeb: SEO y Performance" · antes: 18 de septiembre, sesión posterior (1.29-1.35, 1.38, 3.11 y 3.12 movidas acá) · antes, el mismo día: migración de 9 hallazgos SEO desde la Auditoría Final de UX/diseño (1.29-1.35, 3.11-3.12) · antes: 14 de septiembre (Fase 8 nueva, 8.1 cerrada — decisión de no unificar el naming a "BaseCore") · espejo de trabajo en `documentation/seo/historial-seo.md`
