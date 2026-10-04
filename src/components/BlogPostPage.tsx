@@ -3,9 +3,14 @@ import Breadcrumb from "@/components/Breadcrumb";
 import Button from "@/components/Button";
 import ContactSection from "@/components/ContactSection";
 import BlogPostingJsonLd from "@/components/BlogPostingJsonLd";
-import { renderBold } from "@/lib/renderBold";
+import { renderRich } from "@/lib/renderBold";
 import { site, siteEn, type Lang } from "@/lib/site";
 import type { BlogPost } from "@/content/blog/types";
+
+const richOptions = {
+  boldClassName: "text-heading",
+  linkClassName: "text-primary underline underline-offset-2 hover:no-underline",
+};
 
 const copy = {
   es: {
@@ -88,14 +93,59 @@ export default function BlogPostPage({
                 return (
                   <ul key={index} className="mb-[20px] list-disc space-y-[8px] pl-[22px]">
                     {block.items.map((item) => (
-                      <li key={item}>{renderBold(item, "text-heading")}</li>
+                      <li key={item}>{renderRich(item, richOptions)}</li>
                     ))}
                   </ul>
                 );
               }
+              if (block.type === "table") {
+                return (
+                  <div
+                    key={index}
+                    role="region"
+                    aria-label={block.caption}
+                    tabIndex={0}
+                    className="mb-[24px] overflow-x-auto rounded-[8px] border border-line focus-visible:outline-2 focus-visible:outline-primary"
+                  >
+                    <table className="w-full min-w-[640px] border-collapse font-sans text-[14px] leading-[1.5]">
+                      <caption className="sr-only">{block.caption}</caption>
+                      <thead>
+                        <tr>
+                          {block.headers.map((header) => (
+                            <th
+                              key={header}
+                              scope="col"
+                              className="border-b-2 border-line bg-soft px-[14px] py-[10px] text-left font-heading text-[13px] font-semibold uppercase tracking-[0.5px] text-heading"
+                            >
+                              {header}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {block.rows.map(([rowHeader, ...cells]) => (
+                          <tr key={rowHeader} className="odd:bg-white even:bg-soft/40">
+                            <th
+                              scope="row"
+                              className="border-b border-line px-[14px] py-[10px] text-left align-top font-bold text-heading"
+                            >
+                              {rowHeader}
+                            </th>
+                            {cells.map((cell, cellIndex) => (
+                              <td key={cellIndex} className="border-b border-line px-[14px] py-[10px] align-top text-body">
+                                {cell}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                );
+              }
               return (
                 <p key={index} className="mb-[20px]">
-                  {renderBold(block.text, "text-heading")}
+                  {renderRich(block.text, richOptions)}
                 </p>
               );
             })}
