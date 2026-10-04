@@ -176,10 +176,10 @@ export default function TechnologyPage() {
 
           <div className="text-center">
             <p className="font-sans text-[18px] leading-[1.8] text-muted">
-              More than half of all CRM implementations fail because of low
-              adoption, unclear roles, or workflows that were never mapped
-              out. A CRM doesn&apos;t fix a broken sales process, it mirrors
-              it. That&apos;s why we define the process{" "}
+              Many CRM implementations fall short of what was expected of
+              them, almost always because of low adoption, unclear roles, or
+              workflows that were never mapped out. A CRM doesn&apos;t fix a
+              sales process, it mirrors it. That&apos;s why we define the process{" "}
               <strong className="font-bold text-white">before implementing</strong>{" "}
               the tool.
             </p>

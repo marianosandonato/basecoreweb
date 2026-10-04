@@ -11,7 +11,7 @@ export const queCrmElegirParaPyme: BlogPost = {
   body: [
     {
       type: "p",
-      text: "Más de la mitad de las implementaciones de CRM fracasa. La causa casi nunca es el software: es la falta de adopción, los roles poco claros o un proceso que nunca se ordenó antes de automatizarlo. Aun así, la pregunta que más se repite entre pymes es cuál herramienta usar. Antes de responder, una aclaración necesaria: **el CRM no arregla un proceso comercial, lo refleja**.",
+      text: "Muchas implementaciones de CRM no cumplen lo que se esperaba de ellas. La causa casi nunca es el software: es la falta de adopción, los roles poco claros o un proceso que nunca se ordenó antes de automatizarlo. Aun así, la pregunta que más se repite entre pymes es cuál herramienta usar. Antes de responder, una aclaración necesaria: **el CRM no arregla un proceso comercial, lo refleja**.",
     },
     {
       type: "h2",

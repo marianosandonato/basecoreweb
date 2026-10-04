@@ -11,7 +11,7 @@ export const whichCrmToChoose: BlogPost = {
   body: [
     {
       type: "p",
-      text: "More than half of CRM rollouts fail. The cause is rarely the software: it's low adoption, unclear roles, or a process that was never mapped out before automating it. Even so, the question small businesses ask most is which tool to use. Before answering that, a plain fact worth stating: **a CRM doesn't fix a sales process, it mirrors it**.",
+      text: "Many CRM rollouts fall short of expectations. The cause is rarely the software: it's low adoption, unclear roles, or a process that was never mapped out before automating it. Even so, the question small businesses ask most is which tool to use. Before answering that, a plain fact worth stating: **a CRM doesn't fix a sales process, it mirrors it**.",
     },
     {
       type: "h2",
