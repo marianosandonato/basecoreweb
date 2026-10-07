@@ -4,6 +4,8 @@
 
 MarkItDown (Microsoft, instalado vía pipx) está disponible como comando `markitdown` — convierte PDF/Word/Excel/PowerPoint/imágenes a Markdown. Uso: `markitdown archivo.pdf -o archivo.md`.
 
+**Perplexity se paga por uso (desde el 7/10): primero lo gratis.** Todo lo resoluble con herramientas gratis (`WebSearch`, `WebFetch` a la fuente oficial, Playwright, artifacts y espejos del repo) se hace con ellas. Perplexity solo después de recomendárselo a Mariano (herramienta, pregunta y qué decisión cambia) y con su OK, tanto en la sesión principal como en los agentes. Excepción: que el pedido de Mariano ya diga que se use. Detalle en el paso 4 de `basecore-workflow`.
+
 ## Regla general de artifacts (todas las sesiones, no solo SEO)
 
 **Nunca cambiar el nombre/`<title>` de un artifact existente al republicarlo, salvo pedido explícito de Mariano en esa misma conversación.** Pasó más de una vez (el artifact ahora llamado "BaseCoreWeb: SEO y Performance" apareció listado como "plan-seo-update2" y, de nuevo, con otro nombre genérico en una ronda posterior) que una sesión republicó el HTML sin preservar el `<title>` real — probablemente porque el archivo local que se pasó a `file_path` no tenía la etiqueta `<title>` (o tenía una distinta, tipo nombre de archivo de scratchpad), y la plataforma usa esa etiqueta (o, si falta, el nombre del archivo) para el nombre mostrado en el listado. Mariano lo notó y tuvo que pedir la corrección — no debería volver a pasar.

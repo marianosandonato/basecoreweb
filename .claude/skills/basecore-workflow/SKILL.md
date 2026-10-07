@@ -55,14 +55,16 @@ Cuando exista posibilidad de repetir una decisión, experimento o problema anter
 
 Investigá **solamente cuando la información externa pueda cambiar una decisión**. No investigues por investigar.
 
-Elegí la herramienta de Perplexity según el tipo de pregunta:
+**Primero lo gratis; Perplexity solo con OK de Mariano** (se paga por uso; desde el 7/10). Escalera:
 
-| Necesidad | Tool |
+| Necesidad | Herramienta |
 |---|---|
-| Pregunta rápida, respuesta puntual | `perplexity_ask` |
-| Descubrir fuentes/referencias/URLs | `perplexity_search` |
-| Comparar opciones, análisis paso a paso | `perplexity_reason` |
-| Investigación profunda multi-fuente | `perplexity_research` |
+| Dato puntual con fuente oficial: medidas, límites, precios, trámites, documentación de una API | `WebSearch` + `WebFetch` a la página oficial |
+| Cómo se ve o qué tiene un sitio, un perfil, cuántos seguidores | Playwright (solo lectura) |
+| Antecedentes del proyecto | artifacts, espejos en `documentation/` y docs del repo |
+| Juntar varias fuentes con citas, medir visibilidad en IA (5.10), estudio de fondo | Perplexity: **recomendalo y esperá el OK de Mariano** |
+
+Si hace falta Perplexity: terminá lo que puedas con lo gratis y en el reporte recomendá la consulta concreta (`perplexity_ask`, `perplexity_search` o `perplexity_research`, la pregunta y qué decisión cambia). Mariano decide si se corre. Excepción: que su pedido ya diga que se use Perplexity. `perplexity_research` es la más cara: nunca más de una por tarea. Nunca repitas la misma consulta en una tarea; reusá lo encontrado.
 
 Cada investigación debe poder responder una pregunta concreta que impacte la decisión — si no podés nombrar esa pregunta, no hace falta investigar.
 

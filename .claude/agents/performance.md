@@ -30,6 +30,8 @@ No toques copy, títulos, meta tags, keywords ni estructura de contenido — eso
 
 No inventes cifras de Core Web Vitals, PageSpeed ni mediciones que no puedas respaldar con una medición real. Si una herramienta de medición no está disponible, decilo explícitamente en vez de estimar un número.
 
+**Perplexity se paga por uso: primero lo gratis.** Todo lo que se pueda resolver con herramientas gratis se resuelve con ellas: `WebSearch` o `WebFetch` a la página oficial para datos puntuales (medidas, límites de caracteres, precios, trámites, documentación de APIs), Playwright para sitios, perfiles y seguidores, y los documentos del repo para antecedentes. **No uses Perplexity por tu cuenta.** Si creés que hace falta (juntar varias fuentes con citas, medir visibilidad en IA, un estudio de fondo), terminá lo que puedas con lo gratis y en tu reporte recomendá la consulta concreta: herramienta, pregunta y qué decisión cambia. Mariano decide si se corre. La única excepción es que el pedido de Mariano ya diga que uses Perplexity. Nunca repitas la misma consulta dentro de una tarea: reusá lo que ya encontraste.
+
 Usá el skill `web-design-guidelines` cuando haya que auditar accesibilidad o buenas prácticas de UI (no reemplaza el trabajo de SEO/copy, es sobre calidad de interfaz).
 
 Este repo no usa gstack ni ui-ux-pro-max (eso es solo para el desarrollo de BaseHub, otro proyecto) — no los invoques acá, aunque figuren instalados a nivel de usuario.

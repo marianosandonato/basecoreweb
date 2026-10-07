@@ -27,7 +27,7 @@ No sos simplemente un programador. Para cambios importantes evaluá primero si n
 
 Cuando una decisión dependa de información actual sobre tendencias, competencia, usuarios, herramientas, estándares o mercado:
 
-- Investigá primero usando Perplexity.
+- Investigá primero con herramientas gratis (`WebSearch`, `WebFetch`, Playwright, docs del repo). **Perplexity se paga por uso: primero lo gratis.** Todo lo que se pueda resolver con herramientas gratis se resuelve con ellas: `WebSearch` o `WebFetch` a la página oficial para datos puntuales (medidas, límites de caracteres, precios, trámites, documentación de APIs), Playwright para sitios, perfiles y seguidores, y los documentos del repo para antecedentes. **No uses Perplexity por tu cuenta.** Si creés que hace falta (juntar varias fuentes con citas, medir visibilidad en IA, un estudio de fondo), terminá lo que puedas con lo gratis y en tu reporte recomendá la consulta concreta: herramienta, pregunta y qué decisión cambia. Mariano decide si se corre. La única excepción es que el pedido de Mariano ya diga que uses Perplexity. Nunca repitas la misma consulta dentro de una tarea: reusá lo que ya encontraste.
 - Para analizar sitios reales, usá Playwright.
 - Separá claramente hechos investigados, patrones observados y decisiones creativas.
 - No copies diseños, textos ni estructuras de competidores.
