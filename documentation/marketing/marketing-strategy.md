@@ -1,7 +1,8 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`social-content`, `seo-marketing`, `web-lead`) — la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma). Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/artifact/5nEdULGfDWCWES17cpptDp
-> - Última sincronización: 2026-10-01 (v19)
+> - Última sincronización: 2026-10-07 (v20)
+> - Nota v20 (7/10): 5.6 y 5.10 corregidas según la Fase 10 del Plan de Prospección — API oficial de Google Maps en vez de Apify u Outscraper; contacto en frío por país en vez del interés legítimo del RGPD; 5.7 sin scraper.
 > - Nota v19 (1/10, 2): HubSpot Free alcanza por ahora; Starter queda como opción futura solo para la bienvenida de 3 emails (6.1, 6.4); se descarta el link de agenda por canal (5.14).
 > - Nota v19 (1/10): 5.2 hecha — propiedades de HubSpot configuradas por Mariano (estándar + score + consentimiento, tamaño de la empresa, señal de compra, opciones nuevas de fuente_del_lead); la etapa vive en el "Base Core Pipeline", no en el contacto.
 > - Nota v19 (30/9, 2): 5.14 hecha — la UTM en el link de la agenda no identifica el canal en HubSpot Free (probado en la cuenta real); carga a mano sin pedirle nada al cliente (origen del DM o pregunta en el diagnóstico); un link por canal al pasar a Starter; Google Calendar estaba desconectado de HubSpot y se reconectó.
@@ -614,15 +615,15 @@ Fuentes públicas verificadas por `seo-marketing`: **España**: Censo de Cámara
 
 Una ficha por empresa con los campos de 5.2 + qué vende, a quién, tamaño aparente, si usa CRM o chat visible, quién decide y qué señal de crecimiento tiene. Junta 5.4, 5.8 y 5.9 en un solo registro.
 
-#### 5.6 Scrapers (sitios web, Google Maps y directorios; **nunca LinkedIn**)
+#### 5.6 Fuentes de datos (sitios web, Google Maps y directorios; **sin scraping**)
 
-* **Herramienta:** Apify (actors de Google Maps y Website Content Crawler, pago por uso, ~US$5-30 por corrida de unos cientos de negocios, con crédito gratis mensual) u Outscraper (~US$0,5-2 cada 1.000 resultados). Un script propio recién cuando el volumen lo justifique.
-* **Qué extrae:** nombre, rubro, dirección, teléfono, web, reseñas (señal de actividad), email público, redes de la empresa.
-* **RGPD:** un contacto B2B público puede ampararse en el interés legítimo (art. 6.1.f), pero en el primer contacto hay que decir de dónde salió el dato y dar una baja simple. Nada de emails personales.
+* **Herramienta (corregida el 7/10):** API oficial de Google Maps (Places API, Text Search), en corridas manuales que autoriza Mariano, con tope de US$2 por mes y cuota diaria. Se descartan Apify, Outscraper, SerpAPI y cualquier navegador automatizado sobre Maps: los términos de Google prohíben extraer y guardar sus datos. De Google solo se guarda el `place_id`. Instagram se mide con la API oficial de Meta más revisión manual. Nunca LinkedIn. Detalle en la Fase 10 del Plan de Prospección.
+* **Qué se usa y qué se guarda:** del descubrimiento salen nombre, rubro, web, teléfono y reseñas (señal de actividad), que se usan en el día y se descartan. Lo que se guarda sale del sitio y del Instagram público de la empresa: email de rol, redes, qué vende.
+* **Contacto en frío, por país (7/10):** Argentina sí, con "publicidad" en el encabezado y baja simple. España no: la LSSI (art. 21) exige autorización previa también entre empresas, así que el interés legítimo del RGPD no alcanza para el mail. Australia: aplica la Spam Act porque Mariano envía desde Brisbane. Todo sujeto a la consulta al abogado. En el primer contacto se dice de dónde salió el dato y nunca se usan emails personales.
 
 #### 5.7 Validación de datos y verificación de emails
 
-* Scraper → formato → verificación por API → solo los "válidos" entran a HubSpot.
+* Descubrimiento → formato → verificación por API → solo los "válidos" entran a HubSpot.
 * **ZeroBounce** (100 por mes gratis, los créditos no vencen) o **NeverBounce** (1.000 de prueba, ~US$8 cada 1.000). **Hunter.io** si además hay que *encontrar* el email de quien decide (US$34-104 por mes).
 * Deduplicar por dominio y normalizar los teléfonos (+34 / +54).
 
@@ -632,7 +633,7 @@ A mano: las páginas "Equipo" o "Nosotros" de cada empresa (en una pyme suele fi
 
 #### 5.10 Armar la base de prospección
 
-El resultado de 5.4 a 5.9 con el esquema de 5.2, directamente en HubSpot (una vez hecho 5.1) con la fuente "Scraping". Mientras tanto, en una planilla intermedia con las mismas columnas.
+El resultado de 5.4 a 5.9 con el esquema de 5.2, directamente en HubSpot (una vez hecho 5.1). La fuente "Scraping" queda como histórica: lo que salga de Google Maps entra con la opción "Google Maps" (tarea 10.8 del Plan de Prospección). Mientras tanto, en una planilla intermedia con las mismas columnas.
 
 Scoring y nurturing
 
@@ -848,7 +849,7 @@ Hoy los leads llegan como emails sueltos. Primero se ordena la captura hacia Hub
 | 5.3 | Consentimiento en los formularios (lo implementa 4.5.4 del Plan de SEO; armado y aprobado en preview, en suspenso desde el 26/9 junto con todo el paquete de privacidad) | Validación de datos | Pendiente · en suspenso |
 | 5.4 | Identificación de empresas target | Empresas target | Pendiente |
 | 5.5 | Perfil del prospecto | Perfil del prospecto | Pendiente |
-| 5.6 | Scrapers (web, Google Maps, directorios) | Scrapers | Pendiente |
+| 5.6 | Fuentes de datos: API oficial de Google Maps, sitios y directorios, sin scraping (corregida 7/10) | Scrapers | Pendiente |
 | 5.7 | Validación de datos y verificación de emails | Validación / emails | Pendiente |
 | 5.8 | Tomadores de decisión | Decisores | Pendiente |
 | 5.9 | Investigación de sitios y redes | Investigación | Pendiente |
