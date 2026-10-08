@@ -1,7 +1,7 @@
 # Product Marketing Context
 
 **Document version:** v3
-**Last updated:** 2026-09-04
+**Last updated:** 2026-10-08
 
 ## Product Overview
 **One-liner:** Consultoría comercial y de marketing para pymes en España y Latinoamérica, con "proceso como servicio" para todo el ciclo de venta: preventa, venta, posventa y marketing.
@@ -50,8 +50,8 @@
 - Implementar un CRM sin rediseñar el proceso comercial produce "un pipeline ciego": datos sin metodología detrás.
 
 **What it costs them:**
-- El 80% de las ventas requiere al menos 5 contactos para concretarse, pero el 44% de los vendedores abandona tras el primero (fuente citada en copy, sin atribución específica — venta.ts).
-- Adquirir un cliente nuevo cuesta hasta 7x más que retener uno existente; un cliente existente tiene 60–70% de probabilidad de volver a comprar vs. 5–20% de un prospecto nuevo (posventa.ts).
+- Muchas ventas no se cierran en el primer contacto, y sin un proceso definido el seguimiento depende de la memoria de cada vendedor (venta.ts). El "80% requiere 5 contactos / 44% abandona tras el primero" se sacó del sitio: no tiene fuente auditable (informe 3.13 de basecoreweb). No usarlo.
+- Según Harvard Business Review (Amy Gallo, 2014, https://hbr.org/2014/10/the-value-of-keeping-the-right-customers), conseguir un cliente nuevo puede costar entre 5 y 25 veces más que retener a uno existente, según el estudio y la industria (posventa.ts). El "hasta 7x" y el "60–70% vs. 5–20%" se sacaron del sitio por no tener fuente primaria (informe 3.13). No usarlos.
 - Empresas con preventa sólida logran 40–50% de éxito en negocios nuevos y 80–90% en renovaciones, según McKinsey & Company (preventa.ts) — implica que sin ese proceso, se está muy por debajo.
 
 **Emotional tension:** Sensación de estar "corriendo de atrás" comercialmente — crecer a los tumbos, sin plan, con miedo a que un cliente se vaya sin darse cuenta o a que el próximo mes de ventas dependa otra vez de la suerte.

@@ -25,8 +25,8 @@ export const posventaEn: ServicePageData = {
       "Customer retention & loyalty.",
     ],
     paragraphs: [
-      "Acquiring a new customer can cost up to 7 times more than **retaining one who already trusts** your business, yet most companies pour their energy into opening new accounts. That's where post-sales decides the outcome: a profitable relationship, or another lost account.",
-      "An existing customer has a 60% to 70% chance of buying again; a new prospect, just 5% to 20%. That's why small gains in retention move profitability so much — post-sales isn't support, it's **the most underrated asset in the cycle**.",
+      "According to [Harvard Business Review](https://hbr.org/2014/10/the-value-of-keeping-the-right-customers), acquiring a new customer can cost anywhere from 5 to 25 times more than **retaining one who already trusts** your business, depending on the study and the industry. Even so, most companies pour their energy into opening new accounts. That's where post-sales decides the outcome: a profitable relationship, or another lost account.",
+      "An existing customer already knows you and already trusts you; selling to a new one is usually harder. That's why small gains in retention move profitability so much — post-sales isn't support, it's **the most underrated asset in the cycle**.",
     ],
   },
   etapas: {

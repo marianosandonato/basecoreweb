@@ -1,7 +1,8 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`social-content`, `seo-marketing`, `web-lead`) — la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma). Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/artifact/5nEdULGfDWCWES17cpptDp
-> - Última sincronización: 2026-10-07 (v20)
+> - Última sincronización: 2026-10-08 (v21)
+> - Nota v21 (8/10): cifras de las captions semilla #3 y #6 alineadas con el sitio (informe 3.13: HBR "entre 5 y 25 veces" con fuente; CRM sin cifra) y tope de 5 hashtags en 2.12 (Instagram, desde diciembre de 2025).
 > - Nota v20 (7/10): 5.6 y 5.10 corregidas según la Fase 10 del Plan de Prospección — API oficial de Google Maps en vez de Apify u Outscraper; contacto en frío por país en vez del interés legítimo del RGPD; 5.7 sin scraper.
 > - Nota v19 (1/10, 2): HubSpot Free alcanza por ahora; Starter queda como opción futura solo para la bienvenida de 3 emails (6.1, 6.4); se descarta el link de agenda por canal (5.14).
 > - Nota v19 (1/10): 5.2 hecha — propiedades de HubSpot configuradas por Mariano (estándar + score + consentimiento, tamaño de la empresa, señal de compra, opciones nuevas de fuente_del_lead); la etapa vive en el "Base Core Pipeline", no en el contacto.
@@ -185,7 +186,7 @@ Copywriting
 
 #### 2.12 Captions de los 12 posts semilla (listas para pegar)
 
-Redactadas por `social-content` con la voz de Base Core: la keyword al inicio, 4-8 hashtags variados y el alt text escrito a mano.
+Redactadas por `social-content` con la voz de Base Core: la keyword al inicio, hasta 5 hashtags variados (el tope de Instagram desde diciembre de 2025) y el alt text escrito a mano.
 
 Ver las 12 captions
 
@@ -218,7 +219,7 @@ Deslizá para ver cómo se conectan.
 ###### #3 ¿Qué CRM elegir para una pyme?
 
 ```
-Más de la mitad de las implementaciones de CRM fracasa. Casi nunca es culpa del software.
+Muchas implementaciones de CRM no cumplen lo que se esperaba. Casi nunca es culpa del software.
 
 HubSpot, Zoho, Bitrix24, Pipedrive o Salesforce: comparamos precio, funciones y para qué equipo sirve cada uno.
 
@@ -258,7 +259,7 @@ Cómo armar esa cadencia, en el blog (link en bio).
 ###### #6 Cómo prevenir el churn
 
 ```
-Retener un cliente cuesta hasta 7 veces menos que conseguir uno nuevo.
+Según Harvard Business Review, conseguir un cliente nuevo puede costar entre 5 y 25 veces más que retener a uno existente.
 
 Aun así, la mayoría de las pymes se entera de que un cliente se iba recién cuando ya avisó.
 
@@ -343,7 +344,7 @@ Sin costo, sin compromiso. Agendalo desde el link en la bio.
 
 #DiagnósticoGratuito #ConsultoríaComercial #PymesEspaña #PymesLatam
 
-**Antes de publicar:** confirmá que las cifras ("hasta 7 veces menos", "más de la mitad fracasa") son las mismas que cita el blog, con su fuente.
+**Cifras (8/10):** alineadas con el sitio según el informe 3.13 de fuentes. La #6 cita a Harvard Business Review (Amy Gallo, 2014, https://hbr.org/2014/10/the-value-of-keeping-the-right-customers: "entre 5 y 25 veces", según el estudio y la industria); el "hasta 7 veces" no tiene fuente primaria. La #3 va sin cifra: el "más de la mitad fracasa" viene de Gartner 2001 ("55% no cumplió expectativas") y el propio Gartner aclaró que el fracaso real rondaba el 5%. Toda cifra nueva lleva su fuente.
 
 Producción de contenido
 

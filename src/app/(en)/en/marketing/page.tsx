@@ -196,7 +196,16 @@ export default function MarketingPageEn() {
               <strong className="font-bold text-white">Marketing is the foundation.</strong>
             </p>
             <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-muted">
-              90% of B2B buyers start researching on their own, long before they talk to a salesperson. By the time they reach your sales team, they&apos;ve already formed an opinion: marketing defines{" "}
+              According to{" "}
+              <a
+                href="https://6sense.com/science-of-b2b/2024-buyer-experience-report/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white underline underline-offset-2 hover:no-underline"
+              >
+                6sense&apos;s 2024 Buyer Experience Report
+              </a>
+              , 81% of B2B buyers pick a preferred vendor before talking to a salesperson, and about 70% of the buying process happens before that first contact. By the time they reach your sales team, they&apos;ve already formed an opinion: marketing defines{" "}
               <strong className="font-bold text-white">which opinion they arrive with</strong>.
             </p>
           </div>
