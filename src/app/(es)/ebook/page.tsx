@@ -3,6 +3,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import EbookSection from "@/components/EbookSection";
 
 const title = "Proceso de Ventas desde Cero";
+const shareTitle = "Primeros pasos para un proceso comercial efectivo";
 const description =
   "Descarga gratis nuestro e-book: cómo armar un proceso de ventas desde cero y la importancia de un buen ciclo de preventa para atraer nuevos clientes.";
 
@@ -15,7 +16,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     locale: "es_ES",
-    title,
+    // Nombre real del e-book al compartir el link; el <title> conserva la keyword.
+    title: shareTitle,
     description,
     images: ["/images/base-core-sales-ebook.webp"],
   },
