@@ -69,6 +69,11 @@ const copy = {
 const buttonBase =
   "cursor-pointer inline-flex items-center justify-center whitespace-nowrap rounded-[4px] px-[20px] py-[12px] font-heading text-[14px] font-medium leading-none tracking-[1px] transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
 
+// Banner-only sizing: on phones the three buttons share one row (grid of 3)
+// with tighter padding, so the bar stays short instead of wrapping Aceptar
+// onto a second line. The settings panel keeps buttonBase's full size.
+const bannerButton = `${buttonBase} px-[8px] py-[10px] text-[13px] tracking-[0.5px] md:px-[20px] md:py-[12px] md:text-[14px] md:tracking-[1px]`;
+
 /**
  * Cookie consent banner + settings panel (plan-seo 4.5.3). Rendered once
  * from AppShell.tsx via DynamicCookieConsent (ssr:false, same reasoning as
@@ -213,17 +218,17 @@ export default function CookieConsent() {
           ref={bannerRef}
           role="region"
           aria-label={t.bannerAriaLabel}
-          className="fixed inset-x-0 bottom-[var(--lang-banner-height,0px)] z-[1000] bg-navy px-[15px] py-[16px] text-white shadow-[0_-2px_10px_rgba(0,0,0,0.15)]"
+          className="fixed inset-x-0 bottom-[var(--lang-banner-height,0px)] z-[1000] bg-navy px-[15px] py-[12px] text-white md:py-[16px] shadow-[0_-2px_10px_rgba(0,0,0,0.15)]"
         >
-          <div className="container-bc flex flex-col gap-[16px] px-0 md:flex-row md:items-center md:justify-between">
-            <p className="font-sans text-[14px] leading-[1.6] text-[#D2DCE5] md:max-w-[640px]">
+          <div className="container-bc flex flex-col gap-[10px] px-0 md:flex-row md:gap-[16px] md:items-center md:justify-between">
+            <p className="font-sans text-[13px] leading-[1.5] text-[#D2DCE5] md:max-w-[640px] md:text-[14px] md:leading-[1.6]">
               {t.message}
             </p>
-            <div className="flex flex-wrap gap-[12px] md:shrink-0">
+            <div className="grid grid-cols-3 gap-[8px] md:flex md:shrink-0 md:gap-[12px]">
               <button
                 type="button"
                 onClick={handleReject}
-                className={`${buttonBase} border-2 border-white bg-transparent text-white hover:bg-white/10`}
+                className={`${bannerButton} border-2 border-white bg-transparent text-white hover:bg-white/10`}
               >
                 {t.reject}
               </button>
@@ -231,14 +236,14 @@ export default function CookieConsent() {
                 ref={configureButtonRef}
                 type="button"
                 onClick={openPanel}
-                className={`${buttonBase} border-2 border-white/50 bg-transparent text-white hover:border-white`}
+                className={`${bannerButton} border-2 border-white/50 bg-transparent text-white hover:border-white`}
               >
                 {t.configure}
               </button>
               <button
                 type="button"
                 onClick={handleAccept}
-                className={`${buttonBase} border-2 border-primary bg-primary text-white hover:bg-primary-dark`}
+                className={`${bannerButton} border-2 border-primary bg-primary text-white hover:bg-primary-dark`}
               >
                 {t.accept}
               </button>
