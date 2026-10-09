@@ -27,7 +27,7 @@ const copy = {
       "CONSULTORÍA DE MARKETING",
       "CONSULTORÍA COMERCIAL Y MARKETING",
     ],
-    whatsapp: "WHATSAPP",
+    whatsapp: "WHATSAPP (OPCIONAL)",
     email: "EMAIL",
     message: "MENSAJE",
     sending: "ENVIANDO...",
@@ -56,7 +56,7 @@ const copy = {
       "MARKETING CONSULTING",
       "COMMERCIAL & MARKETING CONSULTING",
     ],
-    whatsapp: "WHATSAPP",
+    whatsapp: "WHATSAPP (OPTIONAL)",
     email: "EMAIL",
     message: "MESSAGE",
     sending: "SENDING...",
@@ -221,13 +221,13 @@ export default function ContactForm({ lang = "es" }: { lang?: Lang }) {
         </svg>
       </div>
       <div className="relative">
-        <input required id="contact-whatsapp" name="whatsapp" placeholder=" " className={fieldCls} />
+        <input id="contact-whatsapp" name="whatsapp" placeholder=" " className={fieldCls} />
         <label htmlFor="contact-whatsapp" className={floatingLabelCls}>
           {t.whatsapp}
         </label>
       </div>
       <div className="relative">
-        <input type="email" id="contact-email" name="email" placeholder=" " className={fieldCls} />
+        <input required type="email" id="contact-email" name="email" placeholder=" " className={fieldCls} />
         <label htmlFor="contact-email" className={floatingLabelCls}>
           {t.email}
         </label>

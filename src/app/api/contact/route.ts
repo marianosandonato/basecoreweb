@@ -52,9 +52,10 @@ export async function POST(request: Request) {
   const nombre = data.nombre?.trim();
   const empresa = data.empresa?.trim();
   const whatsapp = data.whatsapp?.trim();
-  if (!nombre || !empresa || !whatsapp) {
+  const email = data.email?.trim();
+  if (!nombre || !empresa || !email) {
     return Response.json(
-      { error: "Nombre, empresa y WhatsApp son obligatorios." },
+      { error: "Nombre, empresa y email son obligatorios." },
       { status: 400 },
     );
   }
@@ -67,7 +68,7 @@ export async function POST(request: Request) {
       nombre,
       apellidos: data.apellidos,
       empresa,
-      email: data.email,
+      email,
       whatsapp,
       servicio: data.servicio,
       mensaje: data.mensaje,
@@ -93,7 +94,7 @@ export async function POST(request: Request) {
     ["Empresa", empresa],
     ["Servicio", data.servicio],
     ["WhatsApp", whatsapp],
-    ["Email", data.email],
+    ["Email", email],
     ["Mensaje", data.mensaje],
   ];
 
@@ -113,7 +114,7 @@ export async function POST(request: Request) {
   const { error } = await resend.emails.send({
     from: `Base Core Sales <${from}>`,
     to,
-    replyTo: data.email?.trim() || undefined,
+    replyTo: email,
     subject: `Contacto web: ${nombre} (${empresa})`,
     html,
   });
