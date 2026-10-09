@@ -1,7 +1,8 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`web-lead`, `seo-marketing`, `performance`) — confirmado el 3/9 que la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma, no de configuración), así que solo la sesión principal puede leer el artifact directo. Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8
-> - Última sincronización: 2026-10-06
+> - Última sincronización: 2026-10-09
+> - Nota 9/10: se suman 1.46 (nombre real del e-book en el sitio y og:title, 35336fa y 558a276), 2.4 (eventos de GA4 hero_diagnostico_click y agenda_click, 35336fa) y 3.15 (title de /ebook con "e-book gratis", 59e683d), con notas en 1.1 y 3.8; el paso pendiente de la 2.4 pasa al Plan como 2.5.
 > - Nota 6/10: se suma 8.3 completa (marca en el INPI, acta 4801934, y basecore.com.ar); el registro en España sigue como 8.3.1 en el Plan.
 > - Nota 4/10 (2): se suma 4.5 completa (privacidad y consentimiento); la 4.5.8 sigue como 4.8 en el Plan.
 > - Nota 4/10: se suman 3.14 (post de leads B2B, 473a9e3) y 1.45 (margen del logo, ca5038d).
@@ -60,6 +61,7 @@ Marketing:  Marketing Digital para Pymes – Base Core Sales
 Contacto:   Diagnóstico Gratuito – Base Core Sales
 Tecnología: CRM e IA para Empresas – Base Core Sales
 E-Book:     Proceso de Ventas desde Cero – Base Core Sales
+            (desde el 9/10: "Proceso de Ventas desde Cero: e-book gratis", ver 3.15)
 ```
 
 **Para qué sirve:** es el texto azul y clickeable que aparece en los resultados de Google. Es la señal más fuerte de "de qué trata esta página" para el buscador, y lo primero que decide si alguien hace clic.
@@ -808,6 +810,47 @@ Reportado por Mariano el 3/10, navegando el sitio: en el blog (listado y posts),
 
 **Para qué sirve:** que el logo no quede pegado al contenido en las páginas sin foto, con el mismo aire que ya tenía el breadcrumb.
 
+1.46 — Nombre real del e-book en el sitio y en la vista previa al compartir
+
+Hecho · en producción 9/10
+
+Surgió el 9/10 de la auditoría del recorrido de Instagram al sitio (`web-lead-consultor`, propuesta de la grilla de Instagram en el [Marketing Strategy](https://claude.ai/artifact/5nEdULGfDWCWES17cpptDp) 2.6). El e-book tenía tres nombres: el PDF dice "Primeros pasos para un proceso comercial efectivo", la home "Optimiza tus procesos: primeros pasos para un proceso comercial efectivo" y `/ebook` "Guía gratis: cómo armar tu proceso de ventas desde cero" (H1) y "Proceso de Ventas desde Cero" (title y vista previa). Además, el texto de `/ebook` describía los servicios de Base Core ("la reorganización de todo tu equipo y proceso comercial") en vez del e-book, y el formulario prometía "toda la información relacionada al tema".
+
+**Decisión de Mariano (9/10):** usar el nombre del PDF en todas las piezas. Se le presentó un cuadro con lo que había y lo propuesto, fila por fila; el title de Google se dejó con la keyword (ver 3.15).
+
+Cambios (ES; mismo criterio en EN)
+
+```
+/ebook eyebrow   E-BOOK → E-BOOK GRATUITO
+/ebook H1        Guía gratis: cómo armar tu proceso de ventas desde cero
+                 → Primeros pasos para un proceso comercial efectivo
+/ebook texto     "Desde Base Core trabajamos en la reorganización de todo tu
+                 equipo..." → "Cómo armar tu proceso de ventas desde cero.
+                 Una guía para dueños, CEOs y emprendedores: cómo ordenar la
+                 preventa de tu empresa (generación de demanda, calificación
+                 de leads, automatización y el rol de la IA) para dejar de
+                 perder oportunidades por falta de proceso." (texto de la tapa)
+Formulario       "...obtener gratis toda la información relacionada al tema."
+                 → "Completa el formulario y te enviamos la guía gratis."
+/venta link      [e-book, Proceso de Ventas desde Cero](/ebook)
+                 → [guía: Primeros pasos para un proceso comercial efectivo](/ebook)
+Home tarjeta     Optimiza tus procesos: primeros pasos para un proceso
+                 comercial efectivo → Primeros pasos para un proceso
+                 comercial efectivo
+og:title /ebook  Proceso de Ventas desde Cero → Primeros pasos para un
+                 proceso comercial efectivo (twitter:title lo hereda, ver 1.43)
+EN               "Free guide: how to build a sales process from scratch" /
+                 "Optimize your processes: first steps toward..." /
+                 "Sales Process from Scratch" (og) → "First Steps to an
+                 Effective Sales Process"
+```
+
+**Sin cambios, a propósito:** el `<title>` (keyword "proceso de ventas desde cero"; se le sumó "e-book gratis" en 3.15) y el link de `/preventa`, que usa la frase de búsqueda y no el nombre del e-book.
+
+**Verificado:** `tsc`, `eslint` y `next build` limpios. En producción: H1 de `/ebook` con el nombre nuevo; `og:title` y `twitter:title` "Primeros pasos para un proceso comercial efectivo", `<title>` con la keyword. Commits `35336fa` (textos) y `558a276` (vista previa), pusheados a `master` con el OK de Mariano.
+
+**Para qué sirve:** que el e-book se llame igual en el PDF, el sitio, Instagram y la vista previa al compartir el link, y que la página no prometa más de lo que trae.
+
 Fase 2
 
 ## Medición
@@ -843,6 +886,18 @@ Hecho · evento clave marcado 4/9
 `ContactForm.tsx` dispara `generate_lead`; `EbookForm.tsx` dispara `generate_lead` y `file_download`. Confirmado en Tiempo real con 2 envíos reales el 4/9, y ambos marcados como eventos clave en GA4 Admin ese mismo día.
 
 **Para qué sirve:** saber cuánta gente efectivamente deja sus datos, no solo cuánta entra.
+
+2.4 — Eventos de clic en el botón del hero y en PROGRAMAR REUNIÓN
+
+Hecho · en producción 9/10
+
+Surgió el 9/10: se evaluó si el botón "DIAGNÓSTICO GRATUITO" del hero de la home debía ir a la agenda de HubSpot en vez de `#contacto`. Mariano pidió un análisis de comportamiento antes de decidir. `web-lead-consultor` revisó el recorrido (en celular, el botón aterriza en la sección de contacto con "PROGRAMAR REUNIÓN" visible y el formulario una pantalla más abajo; la agenda se titula "Auditoría Base Core") y HubSpot mostró volumen insuficiente (5 contactos y 1 reserva por agenda). El hueco: ni el botón ni PROGRAMAR REUNIÓN tenían eventos, solo se medía el formulario enviado.
+
+**Implementado:** `src/components/ClickTracker.tsx`, un listener único (cliente, montado en `AppShell`) que manda un evento de GA4 al hacer clic en cualquier elemento con `data-ga-event` (y `data-ga-location`). Así los Server Components se marcan con atributos. Eventos: `hero_diagnostico_click` (`location: home_hero`, ES y EN) y `agenda_click` (`location: contacto`, en `ContactSection`, todas las páginas). Respeta el consentimiento: GA4 sigue en `analytics_storage: denied` hasta que la persona acepta.
+
+**Verificado:** `tsc`, `eslint` y `next build` limpios. Commit `35336fa`, pusheado a `master` con el OK de Mariano.
+
+**Para qué sirve:** decidir con datos reales si el botón principal de la home debe ir a la agenda o al formulario.
 
 Fase 3
 
@@ -1061,6 +1116,7 @@ Texto en producción (ES)
 ```
 Desde /preventa: anchor "proceso de ventas desde cero"
 Desde /venta: anchor "e-book Proceso de Ventas desde Cero"
+(desde el 9/10: "guía: Primeros pasos para un proceso comercial efectivo", ver 1.46)
 ```
 
 **Para qué sirve:** un lead magnet con un solo punto de entrada es enlazado débil.
@@ -1309,6 +1365,23 @@ Post ES y EN                "Respuesta corta" al inicio, H2 + tabla
 **Pendiente fuera de esta tarea:** que el refuerzo recupere la cita es hipótesis, no dato; se mide en la próxima ronda de 5.10 con la query 1 exacta. Mejora opcional anotada por `web-lead`: las FAQs como H3 (y `FAQPage` en el post) pedirían un bloque nuevo en el renderer.
 
 **Para qué sirve:** darle al post que ya se había citado una respuesta directa y una comparativa escaneable, el formato que más citan Google y los motores de IA.
+
+3.15 — Title de /ebook con "e-book gratis"
+
+Hecho · en producción 9/10
+
+Pedido de Mariano el 9/10, al revisar los cambios de 1.46: sumar "e-book" al title de la pestaña y de Google. Se mantuvo la keyword del Mapa ("cómo armar un proceso de ventas desde cero") al principio y se agregó el formato después, para mejorar el clic sin correr la keyword.
+
+```
+ES  Proceso de Ventas desde Cero – Base Core Sales
+    → Proceso de Ventas desde Cero: e-book gratis – Base Core Sales (58)
+EN  Sales Process from Scratch – Base Core Sales
+    → Sales Process from Scratch: Free E-book – Base Core Sales
+```
+
+**Verificado:** `tsc` limpio; title nuevo en vivo en `/ebook` y `/en/ebook`. Commit `59e683d`, pusheado a `master` con el OK de Mariano. Google actualiza el resultado cuando vuelve a rastrear la página.
+
+**Para qué sirve:** que el resultado de Google diga qué formato es y que es gratis, con la keyword intacta.
 
 Fase 4
 
@@ -2479,5 +2552,6 @@ El registro día a día de cómo se llegó al estado actual — el "Por dónde s
 40. **4/10, cierre de 3.14 y 1.45:** el post de leads B2B suma respuesta corta, tabla comparativa y 3 FAQs, con MEDDIC corregido, el criterio de elección por ciclo y decisores y links a /preventa (commit `473a9e3`). Desde esta tarea, el contenido de blog lo escribe `seo-marketing` y lo revisa `web-lead`. De paso, el logo del header gana margen inferior en las páginas sin foto (commit `ca5038d`). Verificados en producción.
 41. **4/10, cierre de 4.5:** política de privacidad, banner de cookies y consentimiento en producción desde el 1/10 (`befbf58`). Las correcciones a la presentación de la base en la AAIP (antes subtarea 4.5.8) pasan a la nueva 4.8 del Plan de SEO, En progreso hasta la aprobación.
 42. **6/10, cierre de 4.8 y 8.3:** la base de leads queda presentada ante la AAIP (1/10) y sus correcciones pasan a la 4.8.1, Bloqueada, sin fecha. La marca "BASE CORE" queda presentada y pagada en el INPI (clase 35, acta 4801934) y basecore.com.ar activo con redirección 301; el registro en España (OEPM) pasa a la 8.3.1, Bloqueada.
+43. **9/10, 1.46, 2.4 y 3.15 nuevas y cerradas:** a partir de la propuesta de la grilla de Instagram, el e-book pasa a llamarse igual que el PDF en todo el sitio y en la vista previa al compartir (`35336fa`, `558a276`); eventos de GA4 en el botón del hero y en PROGRAMAR REUNIÓN para decidir con datos su destino (`35336fa`); title de /ebook con "e-book gratis" (`59e683d`). Verificados en producción.
 
-Historial Técnico WEB (antes Historial Técnico SEO) · Base Core · creado el 5 de septiembre de 2026, a partir del Plan de SEO original · actualizado el 6 de octubre (8.3 cerrada: marca "BASE CORE" presentada en el INPI, clase 35, acta 4801934, y basecore.com.ar activo; detalle completo movido acá desde el Plan de SEO, el registro en España sigue como 8.3.1 en el Plan) · antes, el 4 de octubre (4.5 cerrada: detalle completo movido acá desde el Plan de SEO; las correcciones de la AAIP siguen como 4.8 en el Plan) · antes, el mismo día (3.14 cerrada: post de leads B2B reforzado, commit `473a9e3`; 1.45 nueva y cerrada: margen inferior del logo en las páginas sin foto, commit `ca5038d`) · antes, el 3 de octubre (4.1: sitio conectado con la ficha vía `sameAs` y `telephone` del JSON-LD, commit `be5342b`) · antes, el mismo día (3.13 cerrada: FAQs con FAQPage ES y EN, estadísticas con fuente, sitio ES en tuteo, commits `ef58591` y `4c9d316`; notas en 3.3 y 3.9) · antes, el mismo día (4.1 cerrada: ficha de Google Business Profile publicada; la verificación por video de los cambios pasa a 4.7 en el Plan de SEO) · antes, el 28 de septiembre (1.44 nueva y cerrada: slogan "Creamos" → "Creando" en las meta descriptions y logo del schema con slogan en inglés sobre fondo blanco, commit `61668f2`) · antes, el mismo día (1.43 cerrada: Twitter Card propia por página e idioma y respaldos en inglés en `/en`, commit `ad44955`) · antes, el mismo día (historial unificado: se suman completas la Auditoría Final Base Core, 25 hallazgos del 14-19/9, y la Mejora Estética Web, 20 tareas del 21-28/9, con ME 1.8 descartada; los dos artifacts quedan listos para eliminarse) · antes, el 26 de septiembre (1.42 nueva y cerrada: header desktop superpuesto en páginas sin hero, fix con la variante "solid" del Breadcrumb, commit `30067e5`) · antes, el 25 de septiembre (1.37 cerrada del todo: causa del cartel falso en el temporizador de `Turnstile.tsx`, fix `efc5266` verificado en producción, y regla de rate limiting en Cloudflare para los envíos sin token) · antes, el 24 de septiembre (nota en 3.10: se sacó el título del hero de /ebook porque repetía el H1, tarea 1.7 de Mejora Estética Web, commit `f9e94d3`) · antes, el 21 de septiembre (consolidación del artifact Performance Web: se suman acá el detalle completo de 1.23-1.27, la cronología punto a punto de la regresión de Core Web Vitals, el cierre de los dos hallazgos que 1.14 tenía abiertos — Recruiting se queda en CSS a propósito, JS sin usar del bundle propio medido y sin acción — y una nota de método para la próxima medición de performance; el artifact Performance Web quedó sin contenido propio y se eliminó) · antes, el mismo día: 8.2 movida acá del todo — cerrada tras confirmar que la ficha de crunchbase.com/organization/base-core la ocupa BaseCore™, geoceldas de Scottsdale AZ, no Base Power; detalle completo de las 11 recomendaciones en la Fase 8) · antes, el mismo día: 4.6 movida acá — Mariano revierte la decisión del 5/9 de no activar canales secundarios; LinkedIn empresa, Instagram y Facebook pasan a desarrollo urgente, gestionado desde el Plan de Marketing/Social, no acá — primera tarea de una nueva Fase 4 en este documento · antes, el mismo día: 1.28 movida acá del todo — Mariano decidió no seguir persiguiendo el objetivo de mobile +90 en el score de laboratorio de PSI; queda reemplazada por 5.9 en el Plan de SEO, un chequeo mensual recurrente sin objetivo activo de score) · antes: 20 de septiembre (1.40 movida acá — el overlay de /marketing necesitó una 3ra ronda: medido el color de las 5 fotos de hero, la de /marketing resultó la más saturada de azul con diferencia, así que el overlay nunca fue la causa principal; fix real con filtro de color sobre la propia imagen + overlay neutro, confirmado por Mariano en un preview de Vercel y llevado a producción. De paso se retiró el widget de revisión interactiva del Plan de SEO — duplicaba el archivo y dejaba una línea sin poder leer, forzando un publish con `force` en otra sesión; el veredicto de revisión se registra por chat de acá en más) · antes, el mismo día: 1.37, 1.39 y 1.41 movidas acá — 1.37 confirmada por Mariano en iPhone real; 1.39 y 1.41 marcadas OK en el (todavía vigente en ese momento) widget de revisión interactiva del Plan de SEO, ahora "BaseCoreWeb: SEO y Performance" · antes: 18 de septiembre, sesión posterior (1.29-1.35, 1.38, 3.11 y 3.12 movidas acá) · antes, el mismo día: migración de 9 hallazgos SEO desde la Auditoría Final de UX/diseño (1.29-1.35, 3.11-3.12) · antes: 14 de septiembre (Fase 8 nueva, 8.1 cerrada — decisión de no unificar el naming a "BaseCore") · espejo de trabajo en `documentation/seo/historial-seo.md`
+Historial Técnico WEB (antes Historial Técnico SEO) · Base Core · creado el 5 de septiembre de 2026, a partir del Plan de SEO original · actualizado el 9 de octubre (1.46, 2.4 y 3.15 nuevas y cerradas: nombre real del e-book en el sitio y en la vista previa, eventos de GA4 del botón del hero y de la agenda, title de /ebook con "e-book gratis"; commits `35336fa`, `558a276` y `59e683d`; notas en 1.1 y 3.8) · antes, el 6 de octubre (8.3 cerrada: marca "BASE CORE" presentada en el INPI, clase 35, acta 4801934, y basecore.com.ar activo; detalle completo movido acá desde el Plan de SEO, el registro en España sigue como 8.3.1 en el Plan) · antes, el 4 de octubre (4.5 cerrada: detalle completo movido acá desde el Plan de SEO; las correcciones de la AAIP siguen como 4.8 en el Plan) · antes, el mismo día (3.14 cerrada: post de leads B2B reforzado, commit `473a9e3`; 1.45 nueva y cerrada: margen inferior del logo en las páginas sin foto, commit `ca5038d`) · antes, el 3 de octubre (4.1: sitio conectado con la ficha vía `sameAs` y `telephone` del JSON-LD, commit `be5342b`) · antes, el mismo día (3.13 cerrada: FAQs con FAQPage ES y EN, estadísticas con fuente, sitio ES en tuteo, commits `ef58591` y `4c9d316`; notas en 3.3 y 3.9) · antes, el mismo día (4.1 cerrada: ficha de Google Business Profile publicada; la verificación por video de los cambios pasa a 4.7 en el Plan de SEO) · antes, el 28 de septiembre (1.44 nueva y cerrada: slogan "Creamos" → "Creando" en las meta descriptions y logo del schema con slogan en inglés sobre fondo blanco, commit `61668f2`) · antes, el mismo día (1.43 cerrada: Twitter Card propia por página e idioma y respaldos en inglés en `/en`, commit `ad44955`) · antes, el mismo día (historial unificado: se suman completas la Auditoría Final Base Core, 25 hallazgos del 14-19/9, y la Mejora Estética Web, 20 tareas del 21-28/9, con ME 1.8 descartada; los dos artifacts quedan listos para eliminarse) · antes, el 26 de septiembre (1.42 nueva y cerrada: header desktop superpuesto en páginas sin hero, fix con la variante "solid" del Breadcrumb, commit `30067e5`) · antes, el 25 de septiembre (1.37 cerrada del todo: causa del cartel falso en el temporizador de `Turnstile.tsx`, fix `efc5266` verificado en producción, y regla de rate limiting en Cloudflare para los envíos sin token) · antes, el 24 de septiembre (nota en 3.10: se sacó el título del hero de /ebook porque repetía el H1, tarea 1.7 de Mejora Estética Web, commit `f9e94d3`) · antes, el 21 de septiembre (consolidación del artifact Performance Web: se suman acá el detalle completo de 1.23-1.27, la cronología punto a punto de la regresión de Core Web Vitals, el cierre de los dos hallazgos que 1.14 tenía abiertos — Recruiting se queda en CSS a propósito, JS sin usar del bundle propio medido y sin acción — y una nota de método para la próxima medición de performance; el artifact Performance Web quedó sin contenido propio y se eliminó) · antes, el mismo día: 8.2 movida acá del todo — cerrada tras confirmar que la ficha de crunchbase.com/organization/base-core la ocupa BaseCore™, geoceldas de Scottsdale AZ, no Base Power; detalle completo de las 11 recomendaciones en la Fase 8) · antes, el mismo día: 4.6 movida acá — Mariano revierte la decisión del 5/9 de no activar canales secundarios; LinkedIn empresa, Instagram y Facebook pasan a desarrollo urgente, gestionado desde el Plan de Marketing/Social, no acá — primera tarea de una nueva Fase 4 en este documento · antes, el mismo día: 1.28 movida acá del todo — Mariano decidió no seguir persiguiendo el objetivo de mobile +90 en el score de laboratorio de PSI; queda reemplazada por 5.9 en el Plan de SEO, un chequeo mensual recurrente sin objetivo activo de score) · antes: 20 de septiembre (1.40 movida acá — el overlay de /marketing necesitó una 3ra ronda: medido el color de las 5 fotos de hero, la de /marketing resultó la más saturada de azul con diferencia, así que el overlay nunca fue la causa principal; fix real con filtro de color sobre la propia imagen + overlay neutro, confirmado por Mariano en un preview de Vercel y llevado a producción. De paso se retiró el widget de revisión interactiva del Plan de SEO — duplicaba el archivo y dejaba una línea sin poder leer, forzando un publish con `force` en otra sesión; el veredicto de revisión se registra por chat de acá en más) · antes, el mismo día: 1.37, 1.39 y 1.41 movidas acá — 1.37 confirmada por Mariano en iPhone real; 1.39 y 1.41 marcadas OK en el (todavía vigente en ese momento) widget de revisión interactiva del Plan de SEO, ahora "BaseCoreWeb: SEO y Performance" · antes: 18 de septiembre, sesión posterior (1.29-1.35, 1.38, 3.11 y 3.12 movidas acá) · antes, el mismo día: migración de 9 hallazgos SEO desde la Auditoría Final de UX/diseño (1.29-1.35, 3.11-3.12) · antes: 14 de septiembre (Fase 8 nueva, 8.1 cerrada — decisión de no unificar el naming a "BaseCore") · espejo de trabajo en `documentation/seo/historial-seo.md`
