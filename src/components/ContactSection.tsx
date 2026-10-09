@@ -138,6 +138,8 @@ export default function ContactSection({
             </p>
             <a
               href={site.meetingUrl}
+              data-ga-event="agenda_click"
+              data-ga-location="contacto"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-[22px] inline-block w-auto rounded-[4px] bg-primary px-[24px] py-[12px] font-heading text-[14px] font-bold uppercase leading-[22px] tracking-[2px] text-white transition-colors duration-300 hover:bg-[rgba(0,0,0,0.77)] md:mt-[15px] md:px-[30px] md:py-[18px]"

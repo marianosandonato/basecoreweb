@@ -28,7 +28,7 @@ export const venta: ServicePageData = {
     paragraphs: [
       "Los resultados sostenidos no salen de la intuición: salen de un proceso que el equipo pueda seguir y repetir con resultados consistentes. **Ordenar la venta** es responder, en cualquier momento, en qué etapa está cada oportunidad y qué empuja el cierre.",
       "Un pipeline sin métricas es, literalmente, un pipeline ciego. Muchas ventas no se cierran en el primer contacto, pero sin un proceso definido el seguimiento depende de la memoria de cada vendedor. Esa brecha se cierra con un proceso que defina **cuándo y cómo avanzar**.",
-      "¿Ya tienes un proceso pero necesitas ordenarlo? Descarga gratis nuestro [e-book, Proceso de Ventas desde Cero](/ebook).",
+      "¿Ya tienes un proceso pero necesitas ordenarlo? Descarga gratis nuestra [guía: Primeros pasos para un proceso comercial efectivo](/ebook).",
     ],
   },
   etapas: {

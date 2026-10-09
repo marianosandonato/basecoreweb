@@ -11,15 +11,14 @@ const cycleLinksEn = navEn.slice(1, 6);
 
 const copy = {
   es: {
-    eyebrow: "E-BOOK",
-    title: "Guía gratis: cómo armar tu proceso de ventas desde cero",
+    eyebrow: "E-BOOK GRATUITO",
+    title: "Primeros pasos para un proceso comercial efectivo",
     description: (
       <>
-        Desde Base Core trabajamos en la reorganización de todo tu equipo y proceso
-        comercial. Contratamos y/o capacitamos a tu equipo actual, sistematizamos un proceso
-        para la atracción de nuevos clientes potenciales, redefinimos y separamos los ciclos
-        comerciales para un correcto abordaje y definimos metas y objetivos para que el
-        equipo alcance los resultados esperados.
+        Cómo armar tu proceso de ventas desde cero. Una guía para dueños, CEOs y
+        emprendedores: cómo ordenar la preventa de tu empresa (generación de demanda,
+        calificación de leads, automatización y el rol de la IA) para dejar de perder
+        oportunidades por falta de proceso.
       </>
     ),
     founderRole: site.founder.role,
@@ -27,19 +26,19 @@ const copy = {
     linkedinAria: "LinkedIn de Mariano Sandonato",
     formTitle: "Descarga nuestro E-book",
     formIntro:
-      "Completa nuestro formulario para recibir nuestro E-book y obtener gratis toda la información relacionada al tema.",
+      "Completa el formulario y te enviamos la guía gratis.",
     file: "/ebook/base-core-primeros-pasos-proceso-comercial-efectivo.pdf",
     fileName: "Base Core - Primeros pasos para un proceso comercial efectivo.pdf",
   },
   en: {
-    eyebrow: "E-BOOK",
-    title: "Free guide: how to build a sales process from scratch",
+    eyebrow: "FREE E-BOOK",
+    title: "First Steps to an Effective Sales Process",
     description: (
       <>
-        At Base Core we work on reorganizing your entire team and sales process. We hire
-        and/or train your current team, systematize a process to attract new potential
-        clients, redefine and separate the sales cycles for the right approach, and set
-        goals and objectives so your team reaches the results you expect.
+        How to build a sales process from scratch. A guide for owners, CEOs and
+        founders: how to organize your company&apos;s pre-sales stage (demand generation,
+        lead qualification, automation and the role of AI) so you stop losing
+        opportunities for lack of a process.
       </>
     ),
     founderRole: siteEn.founderRole,
@@ -47,7 +46,7 @@ const copy = {
     linkedinAria: "Mariano Sandonato's LinkedIn",
     formTitle: "Download our E-book",
     formIntro:
-      "Fill out our form to receive our E-book and get all the related information for free.",
+      "Fill out the form and we'll send you the free guide.",
     file: "/ebook/base-core-first-steps-effective-sales-process.pdf",
     fileName: "Base Core - First Steps to an Effective Sales Process.pdf",
   },

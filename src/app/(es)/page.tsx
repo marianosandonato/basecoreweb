@@ -167,6 +167,8 @@ export default function HomePage() {
               <div className="animate-hero-button">
                 <a
                   href="#contacto"
+                  data-ga-event="hero_diagnostico_click"
+                  data-ga-location="home_hero"
                   className="hero-button inline-block rounded-[4px] bg-primary font-montserrat font-semibold uppercase tracking-[1px] text-white transition-colors duration-300 hover:bg-[rgba(5,117,188,0.9)]"
                 >
                   DIAGNÓSTICO GRATUITO
@@ -487,7 +489,7 @@ export default function HomePage() {
         <span aria-hidden="true" className="absolute inset-0 bg-navy opacity-[0.82]" />
         <div className="container-bc relative">
           <SectionHeading
-            title="Optimiza tus procesos: primeros pasos para un proceso comercial efectivo"
+            title="Primeros pasos para un proceso comercial efectivo"
             description="Descarga nuestro E-Book"
             dark
             showLine={false}

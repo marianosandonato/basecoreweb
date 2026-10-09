@@ -4,6 +4,7 @@ import DynamicLanguageBanner from "@/components/DynamicLanguageBanner";
 import Footer from "@/components/Footer";
 import GtmLoader from "@/components/GtmLoader";
 import Header from "@/components/Header";
+import ClickTracker from "@/components/ClickTracker";
 import WebVitals from "@/components/WebVitals";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { site } from "@/lib/site";
@@ -79,6 +80,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       <DynamicLanguageBanner />
       <DynamicCookieConsent />
       <WebVitals />
+      <ClickTracker />
     </>
   );
 }

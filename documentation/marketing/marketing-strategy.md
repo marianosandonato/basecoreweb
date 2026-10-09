@@ -1,7 +1,8 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`social-content`, `seo-marketing`, `web-lead`) — la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma). Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/artifact/5nEdULGfDWCWES17cpptDp
-> - Última sincronización: 2026-10-08 (v21)
+> - Última sincronización: 2026-10-09 (v22)
+> - Nota v22 (9/10): decisiones de Mariano sobre Instagram — 2.6 redefinida (12 carruseles de 8 láminas en tablero Blanco/Azul, sin Reel, fijados #1-#3, CTA de diagnóstico en 4 de 12, tuteo); 2.7 con "Inicio" y portadas de ícono navy de línea sobre círculo claro (también 4.4 y D10); 2.9 en pausa; 2.1 con nombre "Base Core | Ventas y marketing" y bio nueva por cargar; 2.11 registro de Instagram; 2.12 reemplazada por las captions de borradores/instagram/2026-10-09-grilla-propuesta-final.md; 2.18 sin Reel; 4.3 y D12 con el sistema tipográfico; diseño en el lienzo Instagram · Grilla final.
 > - Nota v21 (8/10): cifras de las captions semilla #3 y #6 alineadas con el sitio (informe 3.13: HBR "entre 5 y 25 veces" con fuente; CRM sin cifra) y tope de 5 hashtags en 2.12 (Instagram, desde diciembre de 2025).
 > - Nota v20 (7/10): 5.6 y 5.10 corregidas según la Fase 10 del Plan de Prospección — API oficial de Google Maps en vez de Apify u Outscraper; contacto en frío por país en vez del interés legítimo del RGPD; 5.7 sin scraper.
 > - Nota v19 (1/10, 2): HubSpot Free alcanza por ahora; Starter queda como opción futura solo para la bienvenida de 3 emails (6.1, 6.4); se descarta el link de agenda por canal (5.14).
@@ -95,7 +96,7 @@ Mismo criterio que el Plan de SEO: el detalle de lo Pendiente vive en [Activo ho
 #### Las cinco decisiones, resueltas (la 1 y la 3 el 28/9; la 2, la 4 y la 5 el 30/9)
 
 1. **Resuelta (28/9) · Tipografía para piezas** (4.2): **Figtree** para títulos y DM Sans para texto. Figtree fue la más parecida a Gilmer en una comparación lado a lado; Jost quedó descartada. El sitio sigue con Gilmer.
-2. **Resuelta (30/9) · Reels de voz en off en Instagram** (2.9): sí, 1 Reel en el contenido semilla (el #10 del grid).
+2. **Revisada (9/10) · Reels de voz en off en Instagram** (2.9): **sin Reels por ahora**. El 30/9 se había decidido 1 Reel en el grid semilla; el 9/10 Mariano lo sacó: el grid son 12 carruseles estáticos de 8 láminas.
 3. **Resuelta (28/9) · Logo del schema del sitio** (4.1): Google ahora recibe el logo azul con el slogan en inglés, sobre fondo blanco, y las dos meta descriptions que decían "Creamos" pasaron a "Creando", el slogan oficial en español. En producción, tarea 1.44 del [Plan de SEO](https://claude.ai/artifact/XPrZBTCe2b7tvbzzNuf1GT) (commit `61668f2`).
 4. **Resuelta (30/9) · Herramienta de email, scoring y remitente** (6.1 y 5.11): **HubSpot Free** por ahora (Mariano ya lo usa; Brevo descartado); pasar a Starter recién cuando haga falta la bienvenida de 3 emails. **Scoring:** un solo modelo, el Fit/Intent/Behaviour del Plan de Prospección, para inbound y outbound, con el score cargado a mano en HubSpot. **Remitente:** mixto, "Mariano Sandonato · Base Core" para newsletter y secuencias (por ahora desde su mail personal; después desde mariano@basecoresales.com, que Mariano va a crear) y "Base Core" para los emails de sistema.
 5. **Resuelta (30/9) · IA en el posicionamiento** (10.2): cambio **escalonado**, con las dos auditorías en la mano. El plan completo vive en la tarea 8.4 del [Plan de SEO](https://claude.ai/artifact/XPrZBTCe2b7tvbzzNuf1GT), sin ejecutar hasta que Mariano lo pida.
@@ -114,33 +115,36 @@ Perfiles de los 4 canales listos (2.1-2.4, 24/9) e Instagram configurado de punt
 
 Estrategia de contenidos
 
-#### 2.6 Grid semilla de Instagram: 12 publicaciones y 3 fijadas
+#### 2.6 Grid semilla de Instagram: 12 carruseles y 3 fijados Redefinida 9/10
 
-Entre 9 y 12 publicaciones es el mínimo para que un perfil nuevo no parezca abandonado. Nueve reciclan contenido que ya existe. Las captions, listas para pegar, están en 2.12.
+**Redefinida con Mariano el 9/10.** Son 12 carruseles de 8 láminas, sin Reel (2.9). La grilla es un **tablero de ajedrez**: las portadas alternan el modelo Blanco y el Azul; los interiores son blancos y el cierre es navy en los dos. Cada portada lleva una palabra protagonista. Diseño en [Instagram · Grilla final](https://claude.ai/artifact/F8sPgxX8V4fzAHxiAa2f3B); copy lámina por lámina, captions, alt text y hashtags en `basecore-content/borradores/instagram/2026-10-09-grilla-propuesta-final.md`.
 
-| # | Pieza | Formato |
-| --- | --- | --- |
-| 1 | Presentación — **fijada** | Imagen |
-| 2 | El ciclo ATRAE → CALIFICA → CIERRA → FIDELIZA — **fijada** | Carrusel diagrama |
-| 3 | ¿Qué CRM elegir para una pyme? | Carrusel |
-| 4 | Cómo calificar leads B2B | Carrusel |
-| 5 | Seguimiento comercial | Carrusel |
-| 6 | Cómo prevenir el churn | Carrusel |
-| 7 | Estrategia de marketing para pymes | Carrusel |
-| 8 | PMO sin PMO propia | Carrusel |
-| 9 | Qué automatizar con IA (y qué no) | Carrusel |
-| 10 | Error al calificar leads | Reel de voz en off |
-| 11 | E-book "Proceso de Ventas desde Cero" — **fijada** | Imagen |
-| 12 | Invitación al diagnóstico gratuito | Cita/dato |
+| # | Carrusel | Portada | Palabra |
+| --- | --- | --- | --- |
+| 1 | Presentación: quiénes somos y a quién ayudamos — **fijada** | Blanco | Hola. |
+| 2 | El ciclo ATRAE → CALIFICA → CIERRA → FIDELIZA — **fijada** | Azul | Ciclo. |
+| 3 | Cómo trabajamos: Diagnóstico → Plan de Ruta → Estrategia y sprints → Mejora continua — **fijada** | Blanco | Método. |
+| 4 | ATRAE: más leads no arreglan un proceso comercial roto | Azul | Leads. |
+| 5 | CALIFICA: a quién llamar primero (BANT) | Blanco | Calificar. |
+| 6 | CIERRA: el silencio después de la propuesta | Azul | Seguimiento. |
+| 7 | FIDELIZA: clientes que avisan antes de irse | Blanco | Retener. |
+| 8 | Por qué tu equipo no usa el CRM | Azul | CRM. |
+| 9 | Qué automatizar con IA (y qué no) | Blanco | IA. |
+| 10 | PMO sin área de PMO | Azul | PMO. |
+| 11 | Guía gratuita "Primeros pasos para un proceso comercial efectivo" | Blanco | Guía. |
+| 12 | Diagnóstico gratuito | Azul | Gratis. |
 
-* Formato 4:5 (1080×1350) y lo importante dentro del centro 3:4, que es como se ve el grid. NA+ pasó de 1:1 (2024) a 4:5 (2026).
-* Ritmo de preparación: 1-2 por semana. Se replican solas en Facebook (2.15).
+* Formato 4:5 (1080×1350) y lo importante dentro del centro 3:4, que es como se ve el grid.
+* CTA de diagnóstico solo en 4 de 12 (#1, #2, #3 y #12); el resto rota entre guardar, enviar, comentar, blog y e-book.
+* Se publican de abajo hacia arriba (el #12 primero) y se fijan el #3, el #2 y el #1. Si algo queda desfasado, "Reordenar cuadrícula".
+* Registro: tuteo neutro en los textos. Cifras solo con fuente (HBR 2014 en el #7; PM Solutions 2025 en el #10, verificada el 9/10).
 
 **Hecho cuando:** las 12 están publicadas y las 3 fijadas.
 
 #### 2.7 Historias destacadas: 5 carpetas
 
-* **Empezá acá** · **Servicios** (una por unidad) · **Método** (Diagnóstico → Plan de Ruta → Estrategia y sprint → Mejora continua) · **Recursos** (e-book, blog) · **FAQ** (cómo es el diagnóstico gratuito, a quién le sirve).
+* **Inicio** (antes "Empezá acá"; renombrada el 9/10 por el tuteo) · **Servicios** (una por unidad) · **Método** (Diagnóstico → Plan de Ruta → Estrategia y sprint → Mejora continua) · **Recursos** (e-book, blog) · **FAQ** (cómo es el diagnóstico gratuito, a quién le sirve).
+* **Portadas (9/10):** ícono navy de línea, de un solo set, sobre círculo claro, para que no se funda con la foto de perfil (círculo navy). Las 5 portadas y 30 historias guionadas (5 clips a cámara con subtítulos, 2 con voz en off y el resto en plantillas) están en [Instagram · Grilla final](https://claude.ai/artifact/F8sPgxX8V4fzAHxiAa2f3B). Se cargan de derecha a izquierda (FAQ primero, Inicio al final).
 * Más adelante, **Clientes** (cuando se destraben los testimonios, 7.1).
 
 **Referencia en vivo:** RMG tiene 7 destacadas (¿LO SABES?, BLOG, NOSOTROS, FORMACIÓN, ESTRATEGIA, VENTAS, DIGITAL); Signos, 6 (Podcast, Testimonios, Nosotros, Servicios, Consultas, Sesiones). Es el estándar del sector.
@@ -151,7 +155,9 @@ Entre 9 y 12 publicaciones es el mínimo para que un perfil nuevo no parezca aba
 
 * Cada post del grid, compartido en historias con un dato extra. De 3 a 5 historias, 1-2 veces por semana, con un sticker de pregunta ("¿Tu equipo usa CRM?"). En Fase 3 pasa a casi diario.
 
-#### 2.9 Reel de voz en off Decisión 2 · sí (30/9)
+#### 2.9 Reel de voz en off En pausa (9/10)
+
+**9/10:** Mariano decidió no hacer Reels por ahora. Cuando se retome, publicarlos sin mostrarlos en la grilla principal para no romper el tablero (2.6). El formato de video vive en las historias (2.7).
 
 El formato que menos producción pide: la voz de Mariano sobre 3-5 pantallas de texto, reutilizando el guion de un carrusel. Otras opciones: grabación de pantalla narrada o manos + escritorio. Nunca avatar de IA.
 
@@ -180,11 +186,15 @@ Copywriting
 | **Instagram** | La keyword en las primeras palabras, como problema o beneficio, no como anuncio | 3-6 líneas + CTA; el carrusel lleva el desarrollo | Alternar "Guardá este post" / "Diagnóstico gratis, link en bio" | Directo, con datos |
 | **Facebook** | Espejo de Instagram. Si se ajusta a mano: igual que Instagram, sin hashtags. | | | |
 
+**Registro en Instagram (9/10):** tuteo neutro en posts y plantillas ("Guárdalo", "Desliza"), igual que el sitio y el blog; en los videos, la voz natural de Mariano. La fila de Instagram de esta tabla queda con esa conversión.
+
 **Estructura del caso anónimo** (pilar 04): síntoma que parecía el problema → diagnóstico real → decisión → resultado (solo cifras verificadas con el cliente) → tesis que le sirva a cualquiera.
 
 **Hecho cuando:** la guía está en el manual de marca (sección 8) y se usa en las piezas semilla.
 
 #### 2.12 Captions de los 12 posts semilla (listas para pegar)
+
+**Reemplazadas el 9/10:** las captions vigentes de los 12 carruseles nuevos (con alt text por lámina y 3 hashtags) están en `basecore-content/borradores/instagram/2026-10-09-grilla-propuesta-final.md`. Las de abajo quedan como historial.
 
 Redactadas por `social-content` con la voz de Base Core: la keyword al inicio, hasta 5 hashtags variados (el tope de Instagram desde diciembre de 2025) y el alt text escrito a mano.
 
@@ -344,7 +354,7 @@ Sin costo, sin compromiso. Agendalo desde el link en la bio.
 
 #DiagnósticoGratuito #ConsultoríaComercial #PymesEspaña #PymesLatam
 
-**Cifras (8/10):** alineadas con el sitio según el informe 3.13 de fuentes. La #6 cita a Harvard Business Review (Amy Gallo, 2014, https://hbr.org/2014/10/the-value-of-keeping-the-right-customers: "entre 5 y 25 veces", según el estudio y la industria); el "hasta 7 veces" no tiene fuente primaria. La #3 va sin cifra: el "más de la mitad fracasa" viene de Gartner 2001 ("55% no cumplió expectativas") y el propio Gartner aclaró que el fracaso real rondaba el 5%. Toda cifra nueva lleva su fuente.
+**Cifras (8/10):** alineadas con el sitio según el informe 3.13 de fuentes. La #6 cita a [Harvard Business Review](https://hbr.org/2014/10/the-value-of-keeping-the-right-customers) (Amy Gallo, 2014: "entre 5 y 25 veces", según el estudio y la industria); el "hasta 7 veces" no tiene fuente primaria. La #3 va sin cifra: el "más de la mitad fracasa" viene de Gartner 2001 ("55% no cumplió expectativas") y el propio Gartner aclaró que el fracaso real rondaba el 5%. Toda cifra nueva lleva su fuente.
 
 Producción de contenido
 
@@ -428,7 +438,7 @@ Cierre de la preparación
 
 | Canal | Contenido mínimo | Perfil mínimo |
 | --- | --- | --- |
-| **Instagram** | 12 posts, 3 fijados, 5 destacadas, 1 Reel | Bio ✓, dirección ✓, Linktree con UTM ✓, nombre ✓, configuración completa (1.9) ✓ |
+| **Instagram** | 12 carruseles, 3 fijados, 5 destacadas (sin Reel desde el 9/10) | Bio y nombre nuevos (9/10, ver 2.1) por cargar, dirección ✓, Linktree con e-book y blog por completar, configuración completa (1.9) ✓ |
 | **Facebook** | Sincronización probada, 4-6 piezas replicadas | Servicios ✓, portada ✓, intro ✓, horario ✓ |
 | **Página de LinkedIn** | 8-12 posts, documento fijado | Tagline ✓, especialidades ✓, banner |
 | **LinkedIn personal** | — | Banner de marca |
@@ -509,6 +519,8 @@ Diseño de piezas gráficas
 
 #### 4.3 Dirección visual "Documental + dato"
 
+**9/10:** para los carruseles de Instagram, Mariano eligió el sistema tipográfico Blanco y Azul del lienzo [Identidad Visual IG](https://claude.ai/artifact/Jibpv5gFvkY3gwHdskyE8h) (portada con palabra protagonista, Figtree 800). La foto documental queda para las historias y para cuando haya una sesión de fotos nueva.
+
 Foto real + franja navy + título en Figtree: el mismo recurso del hero del sitio. Para los carruseles de frameworks, formato secundario **diagrama** (líneas azules sobre fondo claro). Así se diferencia de RMG (Playfair Display + Open Sans, look de "agencia editorial") y de los clichés de IA. Detalle en [Identidad corporativa](#d10).
 
 #### 4.4 Kit de plantillas mínimo
@@ -516,8 +528,8 @@ Foto real + franja navy + título en Figtree: el mismo recurso del hero del siti
 * **1.** Foto de perfil 1080×1080 (Instagram + Facebook).
 * **2.** Plantilla cita/dato 1080×1350.
 * **3.** Plantilla carrusel/documento 1080×1350, de 7 a 9 láminas (portada con promesa → problema → error habitual → framework → pasos → ejemplo → resumen → CTA). Es la misma para Instagram y para los PDF de LinkedIn. Hecha 28/9: el carrusel #2 "El ciclo" es la plantilla.
-* **4.** 5 portadas de destacadas (ícono sólido sobre navy, centrado en un círculo de ~600 px).
-* **5.** Portada de Reel y plantilla de historia 1080×1920, con el texto dentro del centro 1080×1420.
+* **4.** 5 portadas de destacadas: **ícono navy de línea sobre círculo claro** (decisión del 9/10; antes "ícono sólido sobre navy"), centrado en un círculo de ~600 px. Hecha 9/10 en Instagram · Grilla final.
+* **5.** Plantillas de historia 1080×1920 (zona segura de 250 px arriba y abajo). Hechas 9/10: 7 tipos (texto, lista, paso, pregunta, video con subtítulos, recurso, CTA).
 
 #### 4.5 Banners y portadas
 
@@ -754,7 +766,7 @@ Instagram, Facebook y la Página de LinkedIn van a ser pilares de comunicación,
 | 2.0a | Instagram: cuenta Empresa + botones de email y WhatsApp | Perfiles | Hecho |
 | 2.0b | Facebook: botón de WhatsApp | Perfiles | Hecho |
 | 2.0c | Página de LinkedIn: About, botón, logo, 1 empleado | Perfiles | Hecho |
-| 2.1 | Perfil de Instagram: bio ("Consultoría Comercial y Marketing / Te acompañamos en atraer, calificar, cerrar y fidelizar a tus clientes. / Bs. As. - Barcelona"), dirección Buenos Aires, Linktree actualizado (se mantiene, decisión de Mariano), foto con el logo en inglés, post de 2022 eliminado. El Nombre queda "Base Core": sumar keyword repetía "consultoría" tres veces y la búsqueda interna aporta poco a una consultora B2B (24/9) | Perfiles | Hecho |
+| 2.1 | Perfil de Instagram: bio ("Consultoría Comercial y Marketing / Te acompañamos en atraer, calificar, cerrar y fidelizar a tus clientes. / Bs. As. - Barcelona"), dirección Buenos Aires, Linktree actualizado (se mantiene, decisión de Mariano), foto con el logo en inglés, post de 2022 eliminado. El Nombre queda "Base Core": sumar keyword repetía "consultoría" tres veces y la búsqueda interna aporta poco a una consultora B2B (24/9). **Actualización 9/10 (por cargar en la app):** Nombre "Base Core | Ventas y marketing"; bio "Consultoría para pymes en España y LatAm. / Te acompañamos a atraer, calificar, cerrar y fidelizar a tus clientes. / Diagnóstico gratis ↓"; Linktree: Diagnóstico → E-book → Blog → Sitio → WhatsApp → LinkedIn → Facebook | Perfiles | En progreso |
 | 2.2 | Página de Facebook: intro = la bio de Instagram completa, horario "Sin horario disponible" (la opción "con cita previa" ya no existe), servicios, foto y portada con el logo en inglés, pin en Buenos Aires (24/9) | Perfiles | Hecho |
 | 2.3 | Página de LinkedIn: tagline "Consultoría Comercial y Marketing" (se mantiene por coherencia con Instagram y Facebook), 11 especialidades nuevas, basecoresales.com en el About, botón "Contact us" → /contacto (24/9). El banner sigue en 4.5 | Perfiles | Hecho |
 | 2.4 | LinkedIn personal: "Open to Work" desactivado; las aptitudes quedan en inglés (decisión de Mariano, 24/9). El banner sigue en 4.5 y el Featured con el primer post, en 3.1 | Perfiles | Hecho |
@@ -763,10 +775,10 @@ Instagram, Facebook y la Página de LinkedIn van a ser pilares de comunicación,
 | 2.5b | X/Twitter (solo reservar el handle) | Canales | Bloqueado |
 | 2.5c | TikTok | Canales | Bloqueado |
 | 2.5d | Reddit (solo research) | Canales | Bloqueado |
-| 2.6 | Grid semilla de Instagram (12 posts y 3 fijados) | Contenidos | Pendiente |
-| 2.7 | 5 historias destacadas | Contenidos | Pendiente |
+| 2.6 | Grid semilla de Instagram (12 carruseles y 3 fijados; diseño y copy listos el 9/10, falta publicar) | Contenidos | En progreso |
+| 2.7 | 5 historias destacadas (portadas, plantillas y 30 guiones listos el 9/10; faltan grabar los clips y cargarlas) | Contenidos | En progreso |
 | 2.8 | Historias con ritmo bajo | Contenidos | Pendiente |
-| 2.9 | Reel de voz en off (decisión 2: sí, 30/9) | Contenidos | Pendiente |
+| 2.9 | Reel de voz en off (en pausa por decisión de Mariano, 9/10) | Contenidos | En pausa |
 | 2.10 | 8-12 posts semilla en la Página de LinkedIn | Contenidos | Pendiente |
 | 2.11 | Guía de copy por canal | Copywriting | Pendiente |
 | 2.12 | Captions de los 12 posts semilla (redactadas) | Copywriting | En progreso |
@@ -1250,7 +1262,7 @@ Fondo suave
 * **Paleta monocromática a propósito:** no sumar acentos cálidos. El azul claro se usa solo como texto sobre navy.
 * **Tipografía:** Gilmer (títulos, números, CTA) + DM Sans (texto). En las piezas, Figtree reemplaza a Gilmer (4.2). La firma manuscrita, solo en piezas firmadas por Mariano. Montserrat y Sora son restos del sitio y no pasan a las piezas.
 * **Fotografía:** documental, gente real en contextos reales de negocio. La excepción es el hero de /tecnologia.
-* **Iconografía:** sólida, de un color.
+* **Iconografía:** de un color. En las portadas de destacadas de Instagram, de línea (9/10).
 * **Logos:** vertical y horizontal, en azul, blanco y negro, en PNG y SVG (4.1, 28/9). Sin isotipo solo, por decisión de Mariano.
 
 #### Direcciones visuales evaluadas
@@ -1332,7 +1344,7 @@ La *mejora continua*: herramientas para la venta (CRM, prospección, IA) que sos
 | --- | --- | --- |
 | LinkedIn personal | Texto nativo de 1.000-1.500 caracteres | Documento |
 | Página de LinkedIn | Documento PDF de catálogo | Compartir del personal |
-| Instagram | Carrusel 4:5 | Reel de voz en off, historias |
+| Instagram | Carrusel 4:5 (tablero Blanco/Azul) | Historias (Reels en pausa desde el 9/10) |
 | Facebook | Espejo de Instagram | — |
 | Email | Newsletter mensual | Secuencias |
 
@@ -1388,4 +1400,4 @@ Especificación del manual. Su producción es la tarea 4.12.
 | F4 Producción (4.1-4.3) | 2.13-2.14 |
 | F5 Prueba social / F6 Demanda / F7 Paid / F8 SEO / F9 Marca | F7 / F5 + F6 / F8 / F9 / F10 |
 
-Marketing Strategy Basecore · Base Core · actualizado el 1 de octubre de 2026 (v19) · v19 (30/9-1/10), decisiones de Mariano: Free alcanza por ahora y Starter queda como opción futura solo para la bienvenida de 3 emails (1/10; se descarta un link de agenda por canal); 5.2 hecha (propiedades de HubSpot configuradas por Mariano; la etapa vive en el "Base Core Pipeline", no en el contacto); 5.14 hecha (la UTM en el link de la agenda no identifica el canal en HubSpot Free, probado en la cuenta real; carga a mano sin pedirle nada al cliente, un link por canal al pasar a Starter; calendario de Google reconectado a HubSpot tras encontrarlo desconectado); decisión 2 resuelta (sí al Reel, 2.9); decisión 4 resuelta (HubSpot Free por ahora, Starter al activar la bienvenida de 3 emails, Brevo descartado; un solo scoring Fit/Intent/Behaviour, el del Plan de Prospección, cargado a mano en HubSpot; remitente mixto, por ahora desde el mail personal de Mariano); 5.11 reescrita y corregida (la herramienta de scoring de HubSpot es solo de Professional y Enterprise); 6.1 hecha; decisión 5 resuelta: 10.2 decidida con dos auditorías (`seo-marketing` y `web-lead`), cambio escalonado, plan en la 8.4 del Plan de SEO, sin ejecutar; nuevo homónimo BaseCore de Brasil en 10.1, D9 y la Auditoría de Marca · v18 (28/9), con OK de Mariano: 2.13 con el circuito de producción (Claude arma las piezas en Claude Design; Mariano revisa, exporta y publica; Canva y Figma opcionales); 2.9 con CapCut; 4.2 hecha (Design System en vez de Brand Kit de Canva); 4.4 con el carrusel #2 como plantilla; nueva 4.13, flujo de producción configurado (hecha) · v17 (28/9): 4.1 hecha (logos originales ordenados en PNG y SVG, isotipo solo descartado, slogan oficial en español "Creando"); decisión 1 resuelta (Figtree + DM Sans en las piezas, prueba con Claude Design en 4.2); decisión 3 resuelta (logo del schema con slogan en inglés y meta descriptions en "Creando", Plan de SEO 1.44) · v16, trabajado en vivo con Mariano el 28/9: 1.9 hecha, Instagram configurado de punta a punta (Fase 1 cerrada otra vez); la cuenta no tiene preguntas frecuentes y se reemplazan con 5 respuestas guardadas (texto en 2.17); Linktree con la agenda de HubSpot primero; admin de respaldo sumado en Business Suite; compartir Instagram → Página confirmado; nueva 5.14 (fuente del lead en las reservas directas de la agenda); 6.7 usa el mismo texto de bienvenida · v15: el paquete de privacidad (Plan de SEO 4.5: política, banner de cookies, aviso en formularios y checkbox de marketing) queda en suspenso por decisión de Mariano, armado y aprobado en preview; el banner se retiró de producción; 5.3 y 6.2 dependen de ese paquete; Cloudflare Web Analytics se mantiene como conteo total de visitas · v14: 5.1 hecha, formularios del sitio → HubSpot en producción (commit `2193af7`); 5.3 pasa a depender de la 4.5.4 del Plan de SEO (checkbox `marketingConsent` + 2 campos de HubSpot por crear); umbral 2.18 y estado de canales actualizados · v13, a pedido de Mariano (24/9): nueva 1.9 "Configuración completa de Instagram, paso a paso" (26 pasos en 6 bloques, Pendiente), Fase 1 reabierta; el paso de Controles de mensajes que estaba en 2.17 pasa a 1.9 (paso 11); umbral 2.18, roadmap y estado de canales actualizados · v12, trabajado en vivo con Mariano el 24/9: 1.8, 2.1, 2.2 y 2.3 cerradas; nueva 10.2 "IA en el posicionamiento", sin auditar todavía; cambios que Mariano hizo fuera de sesión en Facebook e Instagram (1.6, 1.7 y 1.8 cerradas: Fase 1 completa; bio de Instagram publicada, logo con slogan en inglés para todo, servicios, portada y pin de Facebook, post de 2022 de Instagram eliminado, Linktree actualizado, Instagram linkeado a Facebook); decisiones renumeradas de 8 a 5 · v11: reestructurado con el brief de Mariano: el diagnóstico de marketing pasa a la Parte 2; Social Media (preparación y exposición), Diseño gráfico, Organización de leads y Campañas son fases accionables. Contexto 2022 incorporado (objetivo 2027, target, comunicación, competidores) · Auditoría con navegador en vivo y sesión iniciada en Instagram, Facebook y LinkedIn, solo lectura, sin publicar ni interactuar: `social-content` (perfiles propios, social media, campañas), `seo-marketing` (competencia, búsquedas, diagnóstico, fuentes de empresas target), `web-lead` (verificaciones con clic, sitio, diseño gráfico, código de los formularios, leads) · Versiones anteriores: v11 (23/9, fases accionables), v10 (23/9, preparación y exposición), v9 (21/9) · Espejo de trabajo: `documentation/marketing/marketing-strategy.md`
+Marketing Strategy Basecore · Base Core · actualizado el 9 de octubre de 2026 (v22) · v22 (9/10), decisiones de Mariano sobre Instagram: 2.6 redefinida (12 carruseles de 8 láminas en tablero Blanco/Azul, sin Reel, 3 fijados #1-#3, CTA de diagnóstico en 4 de 12, tuteo); 2.7 con "Inicio" en lugar de "Empezá acá" y portadas de ícono navy de línea sobre círculo claro (también en 4.4 y D10); 2.9 en pausa; 2.1 con nombre y bio nuevos por cargar; 2.11 con el registro de Instagram; 2.12 reemplazada por las captions del documento de la grilla; 2.18 sin Reel; 4.3 y D12 con el sistema tipográfico; diseño en Instagram · Grilla final · v21 (8/10): cifras de las captions semilla #3 y #6 alineadas con el sitio (informe 3.13: HBR "entre 5 y 25 veces" con fuente; CRM sin cifra) y tope de 5 hashtags en 2.12 (Instagram, desde diciembre de 2025) · v20 (7/10): 5.6 y 5.10 corregidas según la Fase 10 del Plan de Prospección (API oficial de Google Maps en vez de Apify u Outscraper; contacto en frío por país en vez del interés legítimo del RGPD) y 5.7 sin scraper · v19 (30/9-1/10), decisiones de Mariano: Free alcanza por ahora y Starter queda como opción futura solo para la bienvenida de 3 emails (1/10; se descarta un link de agenda por canal); 5.2 hecha (propiedades de HubSpot configuradas por Mariano; la etapa vive en el "Base Core Pipeline", no en el contacto); 5.14 hecha (la UTM en el link de la agenda no identifica el canal en HubSpot Free, probado en la cuenta real; carga a mano sin pedirle nada al cliente, un link por canal al pasar a Starter; calendario de Google reconectado a HubSpot tras encontrarlo desconectado); decisión 2 resuelta (sí al Reel, 2.9); decisión 4 resuelta (HubSpot Free por ahora, Starter al activar la bienvenida de 3 emails, Brevo descartado; un solo scoring Fit/Intent/Behaviour, el del Plan de Prospección, cargado a mano en HubSpot; remitente mixto, por ahora desde el mail personal de Mariano); 5.11 reescrita y corregida (la herramienta de scoring de HubSpot es solo de Professional y Enterprise); 6.1 hecha; decisión 5 resuelta: 10.2 decidida con dos auditorías (`seo-marketing` y `web-lead`), cambio escalonado, plan en la 8.4 del Plan de SEO, sin ejecutar; nuevo homónimo BaseCore de Brasil en 10.1, D9 y la Auditoría de Marca · v18 (28/9), con OK de Mariano: 2.13 con el circuito de producción (Claude arma las piezas en Claude Design; Mariano revisa, exporta y publica; Canva y Figma opcionales); 2.9 con CapCut; 4.2 hecha (Design System en vez de Brand Kit de Canva); 4.4 con el carrusel #2 como plantilla; nueva 4.13, flujo de producción configurado (hecha) · v17 (28/9): 4.1 hecha (logos originales ordenados en PNG y SVG, isotipo solo descartado, slogan oficial en español "Creando"); decisión 1 resuelta (Figtree + DM Sans en las piezas, prueba con Claude Design en 4.2); decisión 3 resuelta (logo del schema con slogan en inglés y meta descriptions en "Creando", Plan de SEO 1.44) · v16, trabajado en vivo con Mariano el 28/9: 1.9 hecha, Instagram configurado de punta a punta (Fase 1 cerrada otra vez); la cuenta no tiene preguntas frecuentes y se reemplazan con 5 respuestas guardadas (texto en 2.17); Linktree con la agenda de HubSpot primero; admin de respaldo sumado en Business Suite; compartir Instagram → Página confirmado; nueva 5.14 (fuente del lead en las reservas directas de la agenda); 6.7 usa el mismo texto de bienvenida · v15: el paquete de privacidad (Plan de SEO 4.5: política, banner de cookies, aviso en formularios y checkbox de marketing) queda en suspenso por decisión de Mariano, armado y aprobado en preview; el banner se retiró de producción; 5.3 y 6.2 dependen de ese paquete; Cloudflare Web Analytics se mantiene como conteo total de visitas · v14: 5.1 hecha, formularios del sitio → HubSpot en producción (commit `2193af7`); 5.3 pasa a depender de la 4.5.4 del Plan de SEO (checkbox `marketingConsent` + 2 campos de HubSpot por crear); umbral 2.18 y estado de canales actualizados · v13, a pedido de Mariano (24/9): nueva 1.9 "Configuración completa de Instagram, paso a paso" (26 pasos en 6 bloques, Pendiente), Fase 1 reabierta; el paso de Controles de mensajes que estaba en 2.17 pasa a 1.9 (paso 11); umbral 2.18, roadmap y estado de canales actualizados · v12, trabajado en vivo con Mariano el 24/9: 1.8, 2.1, 2.2 y 2.3 cerradas; nueva 10.2 "IA en el posicionamiento", sin auditar todavía; cambios que Mariano hizo fuera de sesión en Facebook e Instagram (1.6, 1.7 y 1.8 cerradas: Fase 1 completa; bio de Instagram publicada, logo con slogan en inglés para todo, servicios, portada y pin de Facebook, post de 2022 de Instagram eliminado, Linktree actualizado, Instagram linkeado a Facebook); decisiones renumeradas de 8 a 5 · v11: reestructurado con el brief de Mariano: el diagnóstico de marketing pasa a la Parte 2; Social Media (preparación y exposición), Diseño gráfico, Organización de leads y Campañas son fases accionables. Contexto 2022 incorporado (objetivo 2027, target, comunicación, competidores) · Auditoría con navegador en vivo y sesión iniciada en Instagram, Facebook y LinkedIn, solo lectura, sin publicar ni interactuar: `social-content` (perfiles propios, social media, campañas), `seo-marketing` (competencia, búsquedas, diagnóstico, fuentes de empresas target), `web-lead` (verificaciones con clic, sitio, diseño gráfico, código de los formularios, leads) · Versiones anteriores: v11 (23/9, fases accionables), v10 (23/9, preparación y exposición), v9 (21/9) · Espejo de trabajo: `documentation/marketing/marketing-strategy.md`

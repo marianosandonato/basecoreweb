@@ -28,7 +28,7 @@ export const ventaEn: ServicePageData = {
     paragraphs: [
       "Sustained results don't come from intuition — they come from a process the team can follow and repeat with consistent results. **Getting sales in order** means answering, at any moment, what stage each deal is in and what's pushing it toward close.",
       "A pipeline without metrics is, literally, a blind pipeline. Many sales don't close on the first contact, yet without a defined process, follow-up depends on each rep's memory. That gap closes with a process that defines **when and how to move forward**.",
-      "Already have a process but need to structure it? Download our free [e-book, Sales Process from Scratch](/en/ebook).",
+      "Already have a process but need to structure it? Download our free [guide: First Steps to an Effective Sales Process](/en/ebook).",
     ],
   },
   etapas: {

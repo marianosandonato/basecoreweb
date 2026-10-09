@@ -186,6 +186,8 @@ export default function HomePageEn() {
               <div className="animate-hero-button">
                 <a
                   href="#contacto"
+                  data-ga-event="hero_diagnostico_click"
+                  data-ga-location="home_hero"
                   className="hero-button inline-block rounded-[4px] bg-primary font-montserrat font-semibold uppercase tracking-[1px] text-white transition-colors duration-300 hover:bg-[rgba(5,117,188,0.9)]"
                 >
                   BOOK A DISCOVERY CALL
@@ -425,7 +427,7 @@ export default function HomePageEn() {
         <span aria-hidden="true" className="absolute inset-0 bg-navy opacity-[0.82]" />
         <div className="container-bc relative">
           <SectionHeading
-            title="Optimize your processes: first steps toward an effective sales process"
+            title="First Steps to an Effective Sales Process"
             description="Download our free E-Book"
             dark
             showLine={false}
