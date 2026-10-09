@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
 import EbookSection from "@/components/EbookSection";
 
-const title = "Proceso de Ventas desde Cero";
+const title = "Proceso de Ventas desde Cero: e-book gratis";
 const shareTitle = "Primeros pasos para un proceso comercial efectivo";
 const description =
   "Descarga gratis nuestro e-book: cómo armar un proceso de ventas desde cero y la importancia de un buen ciclo de preventa para atraer nuevos clientes.";
