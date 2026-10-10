@@ -223,7 +223,7 @@ export default function TecnologiaPage() {
           the teaser's photo below it). */}
       <div className="h-[50px]" aria-hidden="true" />
 
-      {/* "La misma tecnología, en todo el ciclo comercial" — matrix cajón
+      {/* "La misma tecnología, en todo el proceso comercial" — matrix cajón
           (stages x capabilities), between Soluciones and Base Core AI System.
           Self-contained (own header, spacer at the end). */}
       <TechStageMatrix lang="es" />

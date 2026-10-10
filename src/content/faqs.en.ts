@@ -4,7 +4,7 @@ import type { FaqData } from "./types";
  * EN counterpart of faqs.ts (seo-plan 3.13) — same questions and the same
  * commitments Mariano approved for the ES version on 3/10/2026 (no prices, no
  * promised figures; the free first step is an initial discovery meeting, the
- * in-depth diagnostics are part of the engagement). Keywords from the EN
+ * full diagnosis is part of the engagement). Keywords from the EN
  * section of documentation/seo/mapa-keywords.md. Rendered by FaqSection.
  */
 
@@ -15,17 +15,17 @@ export const homeFaqEn: FaqData = {
     {
       question: "What is commercial consulting, and what does Base Core do for a small business?",
       answer:
-        "Commercial consulting organizes and improves the way a company wins, closes and keeps customers. Base Core works with small and mid-sized B2B companies, meaning businesses that sell to other businesses, with no minimum number of employees or salespeople. It covers the four cycles (marketing, presales, sales and post-sales) with diagnosis, a roadmap, hands-on implementation and continuous improvement.",
+        "Commercial consulting organizes and improves the way a company wins, closes and keeps customers. Base Core works with small and mid-sized B2B companies, meaning businesses that sell to other businesses, with no minimum number of employees or salespeople. It covers the four phases of the sales process (marketing, presales, sales and post-sales) with diagnosis, a roadmap, hands-on implementation and continuous improvement.",
     },
     {
       question: "What does the working process look like?",
       answer:
-        "The process moves through four stages: Diagnosis, Roadmap, Strategy and Continuous Improvement. In the strategy stage the diagnosis is presented, the plan is adjusted, a project leader is assigned and a sprint of weekly meetings is set up. Throughout the project you can see the status of every task in BaseHub, Base Core's tracking platform, included in the service.",
+        "The work moves through four steps: Free Diagnostic, Roadmap, Strategy & Sprints, and Continuous Improvement. In the strategy step we run the full diagnosis and adjust the plan. A Base Core consultant leads the plan, and your company appoints a project owner as their direct counterpart for implementation. The work is organized in sprints of weekly meetings. Throughout the project you can see the status of every task in BaseHub, Base Core's tracking platform, included in the service.",
     },
     {
       question: "What is the free diagnostic, and what happens next?",
       answer:
-        "The free diagnostic is a first discovery meeting, at no cost and with no obligation to hire. In it we assess whether the project is viable and present our value proposition; afterwards Base Core sends you a commercial proposal. If you decide to move forward, the in-depth diagnostics (commercial, technology, team or marketing, depending on what the project needs) are part of the engagement and included in the service.",
+        "The free diagnostic is a first discovery meeting, at no cost and with no obligation to hire. In it we assess whether the project is viable and present our value proposition; afterwards Base Core sends you a commercial proposal. If you decide to move forward, the full diagnosis (commercial, technology, team or marketing, depending on what the project needs) is part of the engagement and included in the service.",
     },
     {
       question: "How is the consulting priced, and what determines the budget?",
@@ -35,7 +35,7 @@ export const homeFaqEn: FaqData = {
     {
       question: "Does it replace my sales manager or complement my team?",
       answer:
-        "It complements your sales leadership; it doesn't replace it. Base Core covers the full cycle in a single service, instead of a single piece like an agency or a software tool, and adds the tools, team recruiting and tracking in BaseHub. When the project ends, the processes, tools and tracking stay with your team, which can also sign up for an ongoing continuous improvement plan.",
+        "It complements your sales leadership; it doesn't replace it. Base Core covers the full sales process in a single service, instead of a single piece like an agency or a software tool, and adds the tools, team recruiting and tracking in BaseHub. When the project ends, the processes, tools and tracking stay with your team, which can also sign up for an ongoing continuous improvement plan.",
     },
     {
       question: "Which countries do you work in, and is the service remote?",
@@ -109,12 +109,12 @@ export const ventaFaqEn: FaqData = {
     {
       question: "Do you also implement the CRM?",
       answer:
-        "Yes, CRM implementation is one of the stages of commercial management: prospecting database, presales and sales processes, activities, tasks and follow-up, quotes, and reports and dashboards. Details on platforms and custom development are on [CRM and AI for businesses](/en/tecnologia).",
+        "Yes, CRM implementation is one of the processes we implement in sales consulting: prospecting database, presales and sales processes, activities, tasks and follow-up, quotes, and reports and dashboards. Details on platforms and custom development are on [CRM and AI for businesses](/en/tecnologia).",
     },
     {
       question: "How is commercial management priced, and where do I start?",
       answer:
-        "You start with the free diagnostic, a first discovery meeting at no cost or obligation. The budget is set in the commercial proposal we send after that meeting, because it depends on the scope of the project, and specific timelines are set in the work plan. If you move forward, the in-depth commercial diagnosis is included in the service. Request your [free diagnostic](#contacto).",
+        "You start with the free diagnostic, a first discovery meeting at no cost or obligation. The budget is set in the commercial proposal we send after that meeting, because it depends on the scope of the project, and specific timelines are set in the work plan. If you move forward, the full commercial diagnosis is included in the service. Request your [free diagnostic](#contacto).",
     },
   ],
 };
@@ -126,7 +126,7 @@ export const posventaFaqEn: FaqData = {
     {
       question: "What does the customer retention service include?",
       answer:
-        "It includes three lines of work: account development (ABC revenue analysis, product mix, ticket size, seasonality and commercial potential), historical measurement of new and lost customers (churn) and portfolio segmentation. On top of that, cross-selling, upselling, win-back, acquisition, retention and loyalty actions are built.",
+        "It includes three lines of work: account development (ABC revenue analysis, product mix, ticket size, seasonality and commercial potential), historical measurement of new and lost customers (churn) and portfolio segmentation. On top of that, cross-selling, upselling, win-back, retention and loyalty actions are built.",
     },
     {
       question: "What is customer success, and how is it different from customer loyalty?",
@@ -136,7 +136,7 @@ export const posventaFaqEn: FaqData = {
     {
       question: "How do you measure how many customers are lost, and why?",
       answer:
-        "Through a historical measurement of new and lost customers (churn): its impact on the target, segmented by type of sale, channel and customer, with provisioning for expected losses. That measurement drives the win-back and acquisition actions. To go deeper, see our guide on [how to prevent churn](/en/blog/how-to-prevent-churn).",
+        "Through a historical measurement of new and lost customers (churn): its impact on the target, segmented by type of sale, channel and customer, with provisioning for expected losses. That measurement drives the win-back and retention actions. To go deeper, see our guide on [how to prevent churn](/en/blog/how-to-prevent-churn).",
     },
     {
       question: "How do you grow a customer who is already buying?",
@@ -163,7 +163,7 @@ export const marketingFaqEn: FaqData = {
     {
       question: "What does the marketing service for small businesses include?",
       answer:
-        "It includes eight pillars: work plan, creative strategy, AI and software, SEO and AI search, websites, social media, paid media, and graphic design and content. Each pillar starts from defined objectives and metrics, with a working team and a project leader.",
+        "It includes eight pillars: work plan, creative strategy, AI and software, SEO and AI search, websites, social media, paid media, and graphic design and content. Each pillar starts from defined objectives and metrics, with the Base Core team and your company's project owner.",
     },
     {
       question: "Is Base Core a consultancy or a marketing agency that executes?",
@@ -173,7 +173,7 @@ export const marketingFaqEn: FaqData = {
     {
       question: "How is the work organized, and how are results measured?",
       answer:
-        "Everything starts with a work plan: objectives, actions per pillar, a Gantt chart with the schedule, the team and the project leader. Measurement is weekly, with analytics and reporting, and project tracking is visible in BaseHub, Base Core's platform, included in the service.",
+        "Everything starts with a work plan: objectives, actions per pillar, a Gantt chart with the schedule, the Base Core team and your company's project owner. Measurement is weekly, with analytics and reporting, and project tracking is visible in BaseHub, Base Core's platform, included in the service.",
     },
     {
       question: "Who pays for paid media?",

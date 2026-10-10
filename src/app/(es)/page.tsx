@@ -44,33 +44,33 @@ const aboutChecklist = [
 
 const methodology: readonly MethodologyStep[] = [
   {
-    title: "Diagnóstico",
+    title: "Diagnóstico gratuito",
     icon: PaperPlaneIcon,
     frontImage: "/images/01-base-core-sales.jpg",
     backImage: "/images/1-diagnostico-base-core-sales.webp",
-    items: ["Diagnóstico gratuito", "Relevamiento del estado actual del negocio"],
+    items: ["Reunión de 30 minutos, sin compromiso", "Relevamiento del estado actual del negocio"],
   },
   {
     title: "Plan de Ruta",
     icon: ChartBarIcon,
     frontImage: "/images/02-base-core-sales.jpg",
     backImage: "/images/2-plan-de-rutas-base-core-sales.webp",
-    items: ["Presentación de gantt o plan de acción"],
+    items: ["Propuesta comercial con alcance y plazos", "Gantt o plan de acción"],
   },
   {
-    title: "Estrategia",
+    title: "Estrategia y sprints",
     icon: CogsIcon,
     frontImage: "/images/03-base-core-sales.jpg",
     backImage: "/images/3-estrategia-base-core-sales.webp",
     items: [
-      "Presentación de diagnóstico",
+      "Diagnóstico completo",
       "Adaptación del plan",
-      "Asignación de tu project leader",
-      "Sprint de reuniones semanales",
+      "Tu empresa designa un responsable del proyecto",
+      "Sprints de reuniones semanales",
     ],
   },
   {
-    title: "Mejora Continua",
+    title: "Mejora continua",
     icon: ChartLineIcon,
     frontImage: "/images/04-base-core-sales.jpg",
     backImage: "/images/4-mejora-continua-base-core-sales.webp",
@@ -107,7 +107,7 @@ const cycles = [
     icon: PosventaIcon,
     image: "/images/support-basecoresales-espana.jpg",
     roles: [
-      "Calificación de clientes - ABC - Cross & Up Selling - Medición histórica de altas y bajas - Recupero - Captación - Segmentación de cartera - Retención – Fidelización",
+      "Calificación de clientes - ABC - Cross & Up Selling - Medición histórica de altas y bajas - Recupero - Segmentación de cartera - Retención – Fidelización",
     ],
   },
 ];
@@ -182,7 +182,7 @@ export default function HomePage() {
       {/* ── Nosotros / Proceso como servicio (#3b58066) ────────────────────
           50px top/bottom, matching the cycle pages' Etapas/Puestos boxes.
           Three columns: text, the shrunk image composition centred, then
-          the "ciclo completo" copy. */}
+          the "proceso completo" copy. */}
       {/* dt:pb-0 (punto 15 fix): at dt: this section's own closing padding
           just stacked on top of the next section's (Empresas) own opening
           padding, which is already symmetric with ITS OWN closing padding
@@ -213,7 +213,7 @@ export default function HomePage() {
                 heading below (65px combined) -- without it the heading now
                 sits at the section's own 50px top padding alone, which
                 matches the plain `pt-[50px]`/`py-[50px]` several other Home
-                sections (Ciclos de Venta, etc.) use as their sole top gap
+                sections (Fases de venta, etc.) use as their sole top gap
                 before a SectionHeading, so no extra compensation was added;
                 confirmed by eye it doesn't read as glued to the header. */}
             <SectionHeading
@@ -227,8 +227,8 @@ export default function HomePage() {
 
             {/* icon-box (#a20a695) — a statement, not a heading description */}
             <h3 className="mb-[12px] font-heading text-[18px] font-medium leading-[24px] text-heading md:text-[20px] md:leading-[32px]">
-              Base Core ofrece servicios de consultoría para todos los ciclos de ventas y
-              marketing.
+              Base Core ofrece consultoría para todas las fases del proceso comercial:
+              marketing, preventa, venta y posventa.
             </h3>
 
             <CheckList items={aboutChecklist} centerOnMobile />
@@ -286,7 +286,7 @@ export default function HomePage() {
               preventa <strong className="font-bold uppercase">califica</strong>. La venta{" "}
               <strong className="font-bold uppercase">cierra</strong>. La posventa{" "}
               <strong className="font-bold uppercase">fideliza</strong>.
-              <br /> Ese es el ciclo completo que trabajamos en Base Core.
+              <br /> Ese es el proceso completo que trabajamos en Base Core.
             </p>
           </div>
         </div>
@@ -347,14 +347,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Ciclos de Venta (#6ff6d2e) ─────────────────────────────────────
+      {/* ── Fases de venta (#6ff6d2e) ─────────────────────────────────────
           50px top/bottom, matching the cycle pages' Etapas/Puestos boxes. */}
       <section className="py-[50px]">
         <div className="container-bc px-0">
           <div className="px-[15px]">
             <SectionHeading
               eyebrow="mentoring comercial"
-              title="Ciclos de Venta"
+              title="Fases de venta"
               maxWidth={800}
               className="mb-[30px]"
             />

@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 const title = "Sales Process from Scratch: Free E-book";
 const shareTitle = "First Steps to an Effective Sales Process";
 const description =
-  "Download our free e-book: how to build a sales process from scratch and the importance of a strong presales cycle to attract new clients.";
+  "Download our free e-book: how to build a sales process from scratch and the importance of a strong presales phase to attract new clients.";
 
 export const metadata: Metadata = {
   title,

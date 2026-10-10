@@ -1,7 +1,7 @@
 import type { BlogPost } from "../types";
 
 export const pmoPorQueTuPymeNoNecesitaPagarUnoAparte: BlogPost = {
-  title: "PMO: por qué tu pyme no necesita pagar uno aparte",
+  title: "PMO: por qué tu pyme no necesita pagar una aparte",
   description:
     "PMO es de las palabras más buscadas por dueños de pyme que necesitan visibilidad de sus proyectos — pero casi ninguno necesita una oficina de gestión de proyectos propia. Qué pedir en su lugar.",
   publishedAt: "2026-10-11",

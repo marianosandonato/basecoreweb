@@ -67,28 +67,28 @@ const aboutChecklist = [
 
 const methodology: readonly MethodologyStep[] = [
   {
-    title: "Discovery",
+    title: "Free Diagnostic",
     icon: PaperPlaneIcon,
     frontImage: "/images/01-base-core-sales.jpg",
     backImage: "/images/1-diagnostico-base-core-sales.webp",
-    items: ["Free diagnostic", "Assessment of your business's current state"],
+    items: ["30-minute meeting, no commitment", "Assessment of your business's current state"],
   },
   {
     title: "Roadmap",
     icon: ChartBarIcon,
     frontImage: "/images/02-base-core-sales.jpg",
     backImage: "/images/2-plan-de-rutas-base-core-sales.webp",
-    items: ["Gantt chart or action plan presentation"],
+    items: ["Commercial proposal with scope and timelines", "Gantt chart or action plan"],
   },
   {
-    title: "Strategy",
+    title: "Strategy & Sprints",
     icon: CogsIcon,
     frontImage: "/images/03-base-core-sales.jpg",
     backImage: "/images/3-estrategia-base-core-sales.webp",
     items: [
-      "Discovery findings presentation",
+      "Full diagnosis",
       "Plan refinement",
-      "Your project leader is assigned",
+      "Your company appoints a project owner",
       "Weekly meeting sprints",
     ],
   },
@@ -130,7 +130,7 @@ const cycles = [
     icon: PosventaIcon,
     image: "/images/support-basecoresales-espana.jpg",
     roles: [
-      "Customer scoring - ABC analysis - Cross & up-selling - Historical churn & acquisition tracking - Win-back - Customer acquisition - Portfolio segmentation - Retention & loyalty",
+      "Customer scoring - ABC analysis - Cross & up-selling - Historical churn & acquisition tracking - Win-back - Portfolio segmentation - Retention & loyalty",
     ],
   },
 ];
@@ -201,7 +201,7 @@ export default function HomePageEn() {
       {/* ── About Us / Process as a Service ───────────────────────────────
           50px top/bottom, matching the cycle pages' Etapas/Puestos boxes.
           Three columns: text, the shrunk image composition centred, then
-          the "full cycle" copy. */}
+          the "complete process" copy. */}
       {/* dt:pb-0 (punto 15 fix) + dt:pt-[70px] xl:pt-[90px] (12/9 re-check,
           task 2c) -- mirrors the ES Home's own fix, see that file for the
           full note. */}
@@ -257,7 +257,7 @@ export default function HomePageEn() {
               <strong className="font-bold uppercase">qualifies</strong>. Sales{" "}
               <strong className="font-bold uppercase">closes</strong>. Post-sales{" "}
               <strong className="font-bold uppercase">retains</strong>.
-              <br /> That&apos;s the complete cycle we work on at Base Core.
+              <br /> That&apos;s the complete process we work on at Base Core.
             </p>
           </div>
         </div>
@@ -302,14 +302,14 @@ export default function HomePageEn() {
         </div>
       </section>
 
-      {/* ── Sales Cycles ─────────────────────────────────────────────────────
+      {/* ── Sales Phases ─────────────────────────────────────────────────────
           50px top/bottom, matching the cycle pages' Etapas/Puestos boxes. */}
       <section className="py-[50px]">
         <div className="container-bc px-0">
           <div className="px-[15px]">
             <SectionHeading
               eyebrow="commercial mentoring"
-              title="Sales Cycles"
+              title="Sales Phases"
               maxWidth={800}
               className="mb-[30px]"
             />

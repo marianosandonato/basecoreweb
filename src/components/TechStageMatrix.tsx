@@ -7,7 +7,7 @@ type Row = {
 };
 
 /**
- * "La misma tecnología, en todo el ciclo comercial" — /tecnologia's own
+ * "La misma tecnología, en todo el proceso comercial" — /tecnologia's own
  * matrix cajón, between "Módulos" and "Base Core AI System" (see that page
  * for placement).
  *
@@ -32,7 +32,7 @@ type Row = {
 const copy = {
   es: {
     eyebrow: "TECNOLOGÍA POR ETAPA",
-    title: ["La misma tecnología,", "en todo el ciclo comercial"] as const,
+    title: ["La misma tecnología,", "en todo el proceso comercial"] as const,
     caption:
       "Tabla: capacidades de tecnología (IA, automatización, software a medida, CRM) aplicadas a marketing, preventa, venta y posventa.",
     corner: "Capacidad",
@@ -87,7 +87,7 @@ const copy = {
   },
   en: {
     eyebrow: "TECHNOLOGY BY STAGE",
-    title: ["The same technology,", "across your entire sales cycle"] as const,
+    title: ["The same technology,", "across your entire sales process"] as const,
     caption:
       "Table: technology capabilities (AI, automation, custom software, CRM) applied to marketing, presales, sales, and post-sales.",
     corner: "Capability",

@@ -5,7 +5,7 @@ import EbookSection from "@/components/EbookSection";
 const title = "Proceso de Ventas desde Cero: e-book gratis";
 const shareTitle = "Primeros pasos para un proceso comercial efectivo";
 const description =
-  "Descarga gratis nuestro e-book: cómo armar un proceso de ventas desde cero y la importancia de un buen ciclo de preventa para atraer nuevos clientes.";
+  "Descarga gratis nuestro e-book: cómo armar un proceso de ventas desde cero y la importancia de una buena fase de preventa para atraer nuevos clientes.";
 
 export const metadata: Metadata = {
   title,

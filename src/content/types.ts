@@ -72,6 +72,8 @@ export type ServicePageData = {
     image: string;
   };
   etapas: {
+    /** Heading over the flip cards: "Etapas" on /preventa, "Procesos" on /venta and /posventa. */
+    title: string;
     eyebrow: string;
     cards: readonly FlipCardData[];
     grid: FlipGridSpec;

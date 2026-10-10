@@ -18,7 +18,7 @@ import { site } from "@/lib/site";
 
 const title = "Marketing Consulting for Small Business";
 const description =
-  "Marketing consulting for small business: branding, SEO, social media, paid advertising, graphic design, and websites, built for your full sales cycle.";
+  "Marketing consulting for small business: branding, SEO, social media, paid advertising, graphic design, and websites, built for your full sales process.";
 
 export const metadata: Metadata = {
   title,
@@ -44,7 +44,7 @@ const pilares: readonly FlipCardData[] = [
       "Defined objectives and tracking metrics",
       "Actions mapped out for each communication pillar",
       "Scheduling on a Gantt timeline",
-      "Definition of the work team and project lead",
+      "Work team and project owner",
       "Measurement, analytics and weekly reporting",
     ],
   },
@@ -192,7 +192,7 @@ export default function MarketingPageEn() {
 
           <div className="text-center">
             <p className="font-sans text-[18px] leading-[1.8] text-muted">
-              No stage of the sales cycle works in isolation: presales needs a trustworthy brand, sales needs materials that back the pitch, and post-sales needs consistent communication.{" "}
+              No phase of the sales process works in isolation: presales needs a trustworthy brand, sales needs materials that back the pitch, and post-sales needs consistent communication.{" "}
               <strong className="font-bold text-white">Marketing is the foundation.</strong>
             </p>
             <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-muted">

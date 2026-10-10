@@ -30,6 +30,7 @@ export const posventa: ServicePageData = {
     ],
   },
   etapas: {
+    title: "Procesos",
     eyebrow: "MENTORING POSVENTA",
     grid: POSVENTA_GRID,
     cards: [
@@ -47,7 +48,7 @@ export const posventa: ServicePageData = {
       },
       {
         title: "Medición histórica de altas y bajas (CHURN)",
-        tagline: ["RECUPERO", "CAPTACIÓN"],
+        tagline: ["RECUPERO", "RETENCIÓN"],
         image: "/images/Base-Core-Consultoria-Comercial-y-Marketing-MEDICION-HISTORICA-DE-ALTAS-Y-BAJAS-CHURN.jpg",
         items: [
           "Impacto en meta",

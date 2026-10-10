@@ -30,6 +30,7 @@ export const posventaEn: ServicePageData = {
     ],
   },
   etapas: {
+    title: "Processes",
     eyebrow: "POST-SALES MENTORING",
     grid: POSVENTA_GRID,
     cards: [
@@ -47,7 +48,7 @@ export const posventaEn: ServicePageData = {
       },
       {
         title: "Historical Churn & Acquisition Tracking",
-        tagline: ["WIN-BACK", "ACQUISITION"],
+        tagline: ["WIN-BACK", "RETENTION"],
         image: "/images/Base-Core-Consultoria-Comercial-y-Marketing-MEDICION-HISTORICA-DE-ALTAS-Y-BAJAS-CHURN.jpg",
         items: [
           "Impact on target",

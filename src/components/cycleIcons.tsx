@@ -1,5 +1,5 @@
 /**
- * Ciclos de Venta card icons.
+ * Fases de venta card icons.
  *
  * Extracted from the conult-themer icon fonts so we don't ship two full icon
  * fonts for three glyphs:

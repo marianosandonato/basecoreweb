@@ -8,7 +8,7 @@ export const site = {
    */
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.basecoresales.com",
   description:
-    "Consultoría comercial y marketing para todos los ciclos de venta: preventa, venta, posventa y marketing. Creando bases productivas.",
+    "Consultoría comercial y marketing para todas las fases del proceso comercial: preventa, venta, posventa y marketing. Creando bases productivas.",
   email: "info@basecoresales.com",
   phoneSpain: { display: "+34 607 206 559", tel: "+34607206559" },
   phoneArgentina: { display: "+54 11 5564-3798", tel: "+541155643798" },
@@ -134,6 +134,6 @@ export const routeMap: Record<string, string> = {
 export const siteEn = {
   name: "Base Core – Commercial Consulting & Marketing",
   description:
-    "Commercial consulting and marketing for every stage of the sales cycle: presales, sales, post-sales and marketing. We build productive foundations.",
+    "Commercial consulting and marketing for every phase of the sales process: presales, sales, post-sales and marketing. We build productive foundations.",
   founderRole: "Founder",
 } as const;

@@ -20,7 +20,7 @@ export const venta: ServicePageData = {
     bullets: [
       "Definición de modelo comercial",
       "Pipeline y forecast",
-      "Funnels y ciclos comerciales",
+      "Funnels y duración del ciclo de venta",
       "Manuales y materiales de venta",
       "Metas, objetivos y KPI’s",
       "Esquemas de compensación",
@@ -32,6 +32,7 @@ export const venta: ServicePageData = {
     ],
   },
   etapas: {
+    title: "Procesos",
     eyebrow: "MENTORING COMERCIAL",
     grid: VENTA_GRID,
     cards: [
@@ -160,7 +161,7 @@ export const venta: ServicePageData = {
     ],
   },
   nextCycle: {
-    label: "VER FUNNEL POSVENTA",
+    label: "VER POSVENTA",
     href: "/posventa",
   },
   contactTitleAs: "h2",

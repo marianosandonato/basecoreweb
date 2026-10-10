@@ -15,17 +15,17 @@ export const homeFaq: FaqData = {
     {
       question: "¿Qué es una consultoría comercial y qué hace Base Core por una pyme?",
       answer:
-        "Una consultoría comercial ordena y mejora la forma en que una empresa consigue, cierra y conserva clientes. Base Core trabaja con pymes y empresas medianas B2B, es decir, que venden a otras empresas, sin un mínimo de empleados ni de vendedores. Cubre los cuatro ciclos (marketing, preventa, venta y posventa) con diagnóstico, plan de ruta, implementación acompañada y mejora continua.",
+        "Una consultoría comercial ordena y mejora la forma en que una empresa consigue, cierra y conserva clientes. Base Core trabaja con pymes y empresas medianas B2B, es decir, que venden a otras empresas, sin un mínimo de empleados ni de vendedores. Cubre las cuatro fases del proceso comercial (marketing, preventa, venta y posventa) con diagnóstico, plan de ruta, implementación acompañada y mejora continua.",
     },
     {
       question: "¿Cómo es el proceso de trabajo?",
       answer:
-        "El proceso avanza en cuatro etapas: Diagnóstico, Plan de Ruta, Estrategia y Mejora Continua. En la etapa de estrategia se presenta el diagnóstico, se adapta el plan, se asigna un project leader y se arma un sprint de reuniones semanales. Durante todo el proyecto puedes ver el estado de cada tarea en BaseHub, la plataforma de seguimiento de Base Core incluida en el servicio.",
+        "El trabajo avanza en cuatro pasos: Diagnóstico gratuito, Plan de Ruta, Estrategia y sprints, y Mejora continua. En el paso de estrategia se hace el diagnóstico completo y se adapta el plan. Un consultor de Base Core lleva adelante el plan y tu empresa designa un responsable del proyecto, su interlocutor directo para la implementación. El trabajo se organiza en sprints de reuniones semanales. Durante todo el proyecto puedes ver el estado de cada tarea en BaseHub, la plataforma de seguimiento de Base Core incluida en el servicio.",
     },
     {
       question: "¿Qué es el diagnóstico gratuito y qué pasa después?",
       answer:
-        "El diagnóstico gratuito es una primera reunión de relevamiento inicial, sin costo y sin compromiso de contratación. En ella se evalúa la viabilidad del proyecto y se presenta la propuesta de valor; después Base Core te envía una propuesta comercial. Si decides avanzar, los diagnósticos en profundidad (comercial, tecnológico, de equipo o de marketing, según lo que amerite) son parte del proyecto y están incluidos en el servicio.",
+        "El diagnóstico gratuito es una primera reunión de relevamiento inicial, sin costo y sin compromiso de contratación. En ella se evalúa la viabilidad del proyecto y se presenta la propuesta de valor; después Base Core te envía una propuesta comercial. Si decides avanzar, el diagnóstico completo (comercial, tecnológico, de equipo o de marketing, según lo que amerite) es parte del proyecto y está incluido en el servicio.",
     },
     {
       question: "¿Cómo se cotiza la consultoría y qué determina el presupuesto?",
@@ -35,7 +35,7 @@ export const homeFaq: FaqData = {
     {
       question: "¿Reemplaza a mi gerente comercial o complementa a mi equipo?",
       answer:
-        "Complementa a tu dirección comercial, no la reemplaza. Base Core cubre el ciclo completo en un solo servicio, en lugar de una sola pieza como una agencia o un software, y suma las herramientas, la selección de equipos y el seguimiento en BaseHub. Al cierre del proyecto, los procesos, las herramientas y el seguimiento quedan en manos de tu equipo, que además puede contratar un abono de mejora continua.",
+        "Complementa a tu dirección comercial, no la reemplaza. Base Core cubre el proceso comercial completo en un solo servicio, en lugar de una sola pieza como una agencia o un software, y suma las herramientas, la selección de equipos y el seguimiento en BaseHub. Al cierre del proyecto, los procesos, las herramientas y el seguimiento quedan en manos de tu equipo, que además puede contratar un abono de mejora continua.",
     },
     {
       question: "¿En qué países trabajan y el servicio es remoto?",
@@ -52,7 +52,7 @@ export const preventaFaq: FaqData = {
     {
       question: "¿Qué incluye el servicio de prospección B2B?",
       answer:
-        "Base Core diseña el modelo de preventa y tu equipo lo ejecuta. El modelo cubre el armado de la base de empresas objetivo, la calificación de leads, los modelos de contactación (emails personalizados, material comercial, llamados en frío) y la agenda de reunión con tu ejecutivo de venta. Todo se organiza en un CRM, con campos mínimos definidos por empresa y por prospecto.",
+        "Base Core diseña el modelo de preventa y tu equipo lo ejecuta. El modelo cubre el armado de la base de empresas objetivo, la calificación de leads, los modelos de contacto (emails personalizados, material comercial, llamados en frío) y la agenda de reunión con tu ejecutivo de venta. Todo se organiza en un CRM, con campos mínimos definidos por empresa y por prospecto.",
     },
     {
       question: "¿Cómo se califican los leads antes de pasarlos al equipo de ventas?",
@@ -62,12 +62,12 @@ export const preventaFaq: FaqData = {
     {
       question: "¿Qué recibo de la preventa si la ejecuta mi equipo?",
       answer:
-        "Recibes un sistema de preventa listo para operar y un equipo preparado para hacerlo: el modelo de contactación, los criterios de calificación, la base de prospección en el CRM y el equipo de preventa armado y capacitado. Base Core no promete un número de reuniones; las reuniones con clientes potenciales son el resultado de que tu equipo ejecute el modelo.",
+        "Recibes un sistema de preventa listo para operar y un equipo preparado para hacerlo: el modelo de contacto, los criterios de calificación, la base de prospección en el CRM y el equipo de preventa armado y capacitado. Base Core no promete un número de reuniones; las reuniones con clientes potenciales son el resultado de que tu equipo ejecute el modelo.",
     },
     {
       question: "¿La prospección la hace Base Core o mi propio equipo?",
       answer:
-        "La ejecuta tu propio equipo. Base Core diseña el modelo de contactación, arma el equipo de preventa y lo capacita. Para armarlo define las descripciones de puesto, las fuentes de reclutamiento, el direccionamiento de las entrevistas y la presentación de candidatos.",
+        "La ejecuta tu propio equipo. Base Core diseña el modelo de contacto, arma el equipo de preventa y lo capacita. Para armarlo define las descripciones de puesto, las fuentes de reclutamiento, el direccionamiento de las entrevistas y la presentación de candidatos.",
     },
     {
       question: "¿Qué diferencia hay entre prospección inbound y outbound?",
@@ -109,12 +109,12 @@ export const ventaFaq: FaqData = {
     {
       question: "¿También implementan el CRM?",
       answer:
-        "Sí, la implementación de CRM es una de las etapas de la gestión comercial: base de datos para prospección, procesos de preventa y venta, acciones, tareas y seguimiento, presupuestos, y reportes y paneles. El detalle de plataformas y de desarrollos a medida está en [CRM e IA para empresas](/tecnologia).",
+        "Sí, la implementación de CRM es uno de los procesos que implementamos en la consultoría de ventas: base de datos para prospección, procesos de preventa y venta, acciones, tareas y seguimiento, presupuestos, y reportes y paneles. El detalle de plataformas y de desarrollos a medida está en [CRM e IA para empresas](/tecnologia).",
     },
     {
       question: "¿Cómo se cotiza la gestión comercial y por dónde se empieza?",
       answer:
-        "Se empieza con el diagnóstico gratuito, una primera reunión de relevamiento inicial sin costo ni compromiso. El presupuesto se define en la propuesta comercial que enviamos después del relevamiento inicial, porque depende del alcance del proyecto, y los plazos concretos se fijan en el plan de trabajo. Si avanzas, el diagnóstico comercial en profundidad está incluido en el servicio. Solicita tu [diagnóstico gratuito](#contacto).",
+        "Se empieza con el diagnóstico gratuito, una primera reunión de relevamiento inicial sin costo ni compromiso. El presupuesto se define en la propuesta comercial que enviamos después del relevamiento inicial, porque depende del alcance del proyecto, y los plazos concretos se fijan en el plan de trabajo. Si avanzas, el diagnóstico comercial completo está incluido en el servicio. Solicita tu [diagnóstico gratuito](#contacto).",
     },
   ],
 };
@@ -126,7 +126,7 @@ export const posventaFaq: FaqData = {
     {
       question: "¿Qué incluye el servicio de fidelización de clientes?",
       answer:
-        "Incluye tres líneas de trabajo: desarrollo de cuentas (facturación ABC, mix de productos, ticket, estacionalidad y potencial comercial), medición histórica de altas y bajas (churn) y segmentación de cartera. Sobre eso se arman las acciones de cross selling, up selling, recupero, captación, retención y fidelización.",
+        "Incluye tres líneas de trabajo: desarrollo de cuentas (facturación ABC, mix de productos, ticket, estacionalidad y potencial comercial), medición histórica de altas y bajas (churn) y segmentación de cartera. Sobre eso se arman las acciones de cross selling, up selling, recupero, retención y fidelización.",
     },
     {
       question: "¿Qué es customer success y en qué se diferencia de la fidelización?",
@@ -136,7 +136,7 @@ export const posventaFaq: FaqData = {
     {
       question: "¿Cómo se mide cuántos clientes se pierden y por qué?",
       answer:
-        "Se hace una medición histórica de altas y bajas (churn): su impacto en la meta, segmentada por tipo de venta, canal y cliente, y con provisionamiento por caídas. Con esa medición se definen las acciones de recupero y de captación. Para profundizar, tienes la guía [cómo prevenir el churn](/blog/como-prevenir-el-churn).",
+        "Se hace una medición histórica de altas y bajas (churn): su impacto en la meta, segmentada por tipo de venta, canal y cliente, y con provisionamiento por caídas. Con esa medición se definen las acciones de recupero y de retención. Para profundizar, tienes la guía [cómo prevenir el churn](/blog/como-prevenir-el-churn).",
     },
     {
       question: "¿Cómo se hace crecer a un cliente que ya compra?",
@@ -163,7 +163,7 @@ export const marketingFaq: FaqData = {
     {
       question: "¿Qué incluye el servicio de marketing digital para pymes?",
       answer:
-        "Incluye ocho pilares: plan de trabajo, estrategia creativa, IA y software, SEO y buscadores de IA, sitios web, redes sociales, pauta publicitaria y diseño gráfico y contenido. Cada pilar parte de objetivos y métricas definidos, con un equipo de trabajo y un project leader.",
+        "Incluye ocho pilares: plan de trabajo, estrategia creativa, IA y software, SEO y buscadores de IA, sitios web, redes sociales, pauta publicitaria y diseño gráfico y contenido. Cada pilar parte de objetivos y métricas definidos, con el equipo de Base Core y el responsable del proyecto de tu empresa.",
     },
     {
       question: "¿Base Core es una consultora o una agencia de marketing que ejecuta?",
@@ -173,7 +173,7 @@ export const marketingFaq: FaqData = {
     {
       question: "¿Cómo se organiza el trabajo y cómo se miden los resultados?",
       answer:
-        "Todo arranca con un plan de trabajo: objetivos, acciones por pilar, un Gantt con la calendarización, el equipo y el project leader. La medición es semanal, con analítica y reporting, y el seguimiento del proyecto se ve en BaseHub, la plataforma de Base Core incluida en el servicio.",
+        "Todo arranca con un plan de trabajo: objetivos, acciones por pilar, un Gantt con la calendarización, el equipo de Base Core y el responsable del proyecto de tu empresa. La medición es semanal, con analítica y reporting, y el seguimiento del proyecto se ve en BaseHub, la plataforma de Base Core incluida en el servicio.",
     },
     {
       question: "¿Quién paga la pauta publicitaria?",

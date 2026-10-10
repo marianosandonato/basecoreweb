@@ -19,22 +19,20 @@ import TechnologyBlock from "./TechnologyBlock";
 const copy = {
   es: {
     cta: "DIAGNÓSTICO GRATUITO",
-    etapas: "Etapas",
     recruitingEyebrow: "RECLUTAMIENTO: FUERZA DE VENTAS",
     recruitingDescription:
       "Además de nuestro modelo de formación, buscamos perfiles acordes y eficientes al modelo de ventas propuesto.",
     puestos: "Puestos",
-    nextCycleTitle: "Descubre cómo continúan los ciclos",
+    nextCycleTitle: "Sigue con la próxima fase",
     aboutCta: "CONTÁCTANOS",
   },
   en: {
     cta: "BOOK A DISCOVERY CALL",
-    etapas: "Stages",
     recruitingEyebrow: "RECRUITING: SALES FORCE",
     recruitingDescription:
       "Beyond our training model, we look for profiles that fit and perform within the proposed sales model.",
     puestos: "Positions",
-    nextCycleTitle: "See how the cycles continue",
+    nextCycleTitle: "Continue to the next phase",
     aboutCta: "CONTACT US",
   },
 } as const;
@@ -160,7 +158,7 @@ export default function ServiceCyclePage({
               abajo en este archivo. */}
           <SectionHeading
             eyebrow={data.etapas.eyebrow}
-            title={t.etapas}
+            title={data.etapas.title}
             maxWidth={800}
             className="mb-[20px]"
           />

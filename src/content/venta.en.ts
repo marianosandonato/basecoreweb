@@ -32,6 +32,7 @@ export const ventaEn: ServicePageData = {
     ],
   },
   etapas: {
+    title: "Processes",
     eyebrow: "COMMERCIAL MENTORING",
     grid: VENTA_GRID,
     cards: [
@@ -160,7 +161,7 @@ export const ventaEn: ServicePageData = {
     ],
   },
   nextCycle: {
-    label: "SEE THE POST-SALES FUNNEL",
+    label: "SEE POST-SALES",
     href: "/en/post-sales",
   },
   contactTitleAs: "h2",

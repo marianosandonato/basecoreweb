@@ -217,7 +217,7 @@ export default function TechnologyPage() {
           the teaser's photo below it). */}
       <div className="h-[50px]" aria-hidden="true" />
 
-      {/* "The same technology, across your entire sales cycle" — matrix
+      {/* "The same technology, across your entire sales process" — matrix
           cajón (stages x capabilities), between Solutions and BaseCore AI
           System. Self-contained (own header, spacer at the end). */}
       <TechStageMatrix lang="en" />

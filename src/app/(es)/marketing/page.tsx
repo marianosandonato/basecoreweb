@@ -46,7 +46,7 @@ const pilares: readonly FlipCardData[] = [
       "Objetivos definidos y métricas de seguimiento",
       "Acciones a realizar en cada pilar comunicacional",
       "Calendarización en una línea de tiempo (Gantt)",
-      "Definición del equipo de trabajo y project leader",
+      "Equipo de trabajo y responsable del proyecto",
       "Medición, analítica y reporting semanal",
     ],
   },
@@ -204,7 +204,7 @@ export default function MarketingPage() {
 
           <div className="text-center">
             <p className="font-sans text-[18px] leading-[1.8] text-muted">
-              Ninguna etapa del ciclo comercial funciona en el vacío: la preventa necesita una marca confiable, la venta necesita materiales que respalden la propuesta, y la posventa necesita comunicación consistente.{" "}
+              Ninguna fase del proceso comercial funciona en el vacío: la preventa necesita una marca confiable, la venta necesita materiales que respalden la propuesta, y la posventa necesita comunicación consistente.{" "}
               <strong className="font-bold text-white">El marketing es la base.</strong>
             </p>
             <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-muted">
