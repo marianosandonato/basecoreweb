@@ -26,7 +26,6 @@ export const preventa: ServicePageData = {
     ],
     paragraphs: [
       "Antes de que exista una venta, existe un trabajo silencioso de identificar, calificar y acercarse a quien realmente puede convertirse en cliente. **Esa es la preventa**: el conjunto de actividades que transforma una base de datos fría en una agenda de reuniones calificadas.",
-      "Una preventa ordenada hace que tu equipo de ventas hable solo con quien puede comprar, en vez de repartir su tiempo entre todos los contactos que llegan. Ese resultado no sale de un informe: sale de un proceso bien construido y sostenido en el tiempo.",
       "Si estás armando tu [proceso de ventas desde cero](/ebook), descarga nuestro e-book gratuito.",
     ],
   },

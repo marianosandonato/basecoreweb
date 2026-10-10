@@ -71,7 +71,7 @@ const methodology: readonly MethodologyStep[] = [
     icon: PaperPlaneIcon,
     frontImage: "/images/01-base-core-sales.jpg",
     backImage: "/images/1-diagnostico-base-core-sales.webp",
-    items: ["30-minute meeting, no commitment", "Assessment of your business's current state"],
+    items: ["Assessment of your business's current state"],
   },
   {
     title: "Roadmap",

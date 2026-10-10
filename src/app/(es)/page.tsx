@@ -48,7 +48,7 @@ const methodology: readonly MethodologyStep[] = [
     icon: PaperPlaneIcon,
     frontImage: "/images/01-base-core-sales.jpg",
     backImage: "/images/1-diagnostico-base-core-sales.webp",
-    items: ["Reunión de 30 minutos, sin compromiso", "Relevamiento del estado actual del negocio"],
+    items: ["Relevamiento del estado actual del negocio"],
   },
   {
     title: "Plan de Ruta",
