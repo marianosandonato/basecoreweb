@@ -305,7 +305,7 @@ export default function HomePageEn() {
         <div className="container-bc px-0">
           <div className="px-[15px]">
             <SectionHeading
-              eyebrow="commercial mentoring"
+              eyebrow="commercial consulting"
               title="Sales Phases"
               maxWidth={800}
               className="mb-[30px]"

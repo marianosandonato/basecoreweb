@@ -351,7 +351,7 @@ export default function HomePage() {
         <div className="container-bc px-0">
           <div className="px-[15px]">
             <SectionHeading
-              eyebrow="mentoring comercial"
+              eyebrow="consultoría comercial"
               title="Fases de venta"
               maxWidth={800}
               className="mb-[30px]"

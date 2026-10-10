@@ -33,7 +33,7 @@ export const venta: ServicePageData = {
   },
   etapas: {
     title: "Procesos",
-    eyebrow: "MENTORING COMERCIAL",
+    eyebrow: "CONSULTORÍA EN VENTAS",
     grid: VENTA_GRID,
     cards: [
       {
