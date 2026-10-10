@@ -1,7 +1,15 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`web-lead`, `seo-marketing`, `performance`) — confirmado el 3/9 que la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma, no de configuración), así que solo la sesión principal puede leer el artifact directo. Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/code/artifact/06216aa3-06d1-4a75-a16a-f76e134cfcd8
-> - Última sincronización: 2026-10-09
+> - Última sincronización: 2026-10-10
+> - Nota 10/10 (8): Fase 3 vuelve a quedar cerrada; el resto de los hallazgos de la auditoría de la Home se descartó por decisión de Mariano. 96/105.
+> - Nota 10/10 (7): 3.20 cerrada → Hecho (sin "mentoring" en la Home, /venta y /posventa, commit 0973c4f). 96/106.
+> - Nota 10/10 (6): tarea de prueba social de la Home eliminada por decisión de Mariano, sin cambios en el sitio. 95/106.
+> - Nota 10/10 (5): tarea del formulario y los botones de la Home eliminada por decisión de Mariano, sin cambios en el sitio. 95/107.
+> - Nota 10/10 (4): 3.17 cerrada → Hecho (frase del ciclo y título nuevo en la primera sección de la Home, commit d296041). 95/108.
+> - Nota 10/10 (3): 3.16 (hero de la Home) pasa a la 8.4 y se borra del Plan, decisión de Mariano. 94/108.
+> - Nota 10/10 (2): 2.5 cerrada sin cambios (el botón del hero sigue yendo a #contacto, decisión de Mariano). 94/109.
+> - Nota 10/10: 1.47 cerrada sin cambios (falso positivo por carga diferida de las fotos, el texto está en el HTML servido). 93/109.
 > - Nota 9/10 (2): ajuste en 4.5, banner de cookies compacto en celular (256 → 154px a 390px, botones en una fila) y botón de WhatsApp de 56px, a partir de la auditoría de la Home de la evaluación 1.5 de Faustina (d40548b, merge a5ce82c).
 > - Nota 9/10: se suman 1.46 (nombre real del e-book en el sitio y og:title, 35336fa y 558a276), 2.4 (eventos de GA4 hero_diagnostico_click y agenda_click, 35336fa) y 3.15 (title de /ebook con "e-book gratis", 59e683d), con notas en 1.1 y 3.8; el paso pendiente de la 2.4 pasa al Plan como 2.5.
 > - Nota 6/10: se suma 8.3 completa (marca en el INPI, acta 4801934, y basecore.com.ar); el registro en España sigue como 8.3.1 en el Plan.
@@ -852,11 +860,23 @@ EN               "Free guide: how to build a sales process from scratch" /
 
 **Para qué sirve:** que el e-book se llame igual en el PDF, el sitio, Instagram y la vista previa al compartir el link, y que la página no prometa más de lo que trae.
 
+1.47 — Secciones de la Home que se ven vacías en una captura de página completa
+
+Hecho · falso positivo, cerrada sin cambios (10/10)
+
+Salió de la auditoría de la Home de Faustina (evaluación 1.5, 9/10, `basecore-content/borradores/otros/2026-10-09-auditoria-home.md`), hallazgo H6: en una captura de página completa de Playwright, "Nuestra metodología" y "Ciclos de Venta" (desde el 10/10, "Fases de venta") aparecían con las tarjetas casi vacías. Se sospechaba de una animación al scrollear o de la carga diferida de las fotos.
+
+**Investigado (10/10, en producción):** (1) el texto de las dos secciones está en el HTML servido ("Relevamiento del estado actual del negocio", "Sprints de reuniones semanales" y las listas de las tarjetas de Preventa y Posventa aparecen en el `curl` de la Home), así que Google y los bots de IA lo leen completo; (2) `MethodologyGrid` y `ServiceCards` no tienen ninguna animación al scrollear (sin `IntersectionObserver`); (3) 40 de las 41 imágenes de la Home usan `loading="lazy"`. La captura de página completa reproduce el hallazgo (tarjetas de "Fases de venta" sin foto, "Marketing" y "Tecnología" como bloques oscuros) porque no scrollea y las fotos nunca llegan a pedirse. Con scroll real, todas cargan y la sección se ve completa. Las tarjetas del método son blancas a propósito: el detalle va en la cara de atrás.
+
+**Decisión de Mariano (10/10):** cerrar sin cambios. Se descartó cargar esas fotos sin diferir: arreglaría la captura a costa de sumar peso a la carga inicial en celular.
+
+**Para qué sirve:** es el cuarto falso positivo por carga diferida (ME 1.1, 1.6 y 1.9). Para la próxima auditoría con capturas de página completa: scrollear la página antes de capturar, o verificar el HTML servido, antes de marcar una sección como vacía.
+
 Fase 2
 
 ## Medición
 
-Sin esto, cualquier trabajo de SEO posterior no se puede medir. Cerrada del todo.
+Sin esto, cualquier trabajo de SEO posterior no se puede medir. Cerrada del todo (2.4 y 2.5 se sumaron y cerraron el 9 y el 10/10).
 
 2.1 — Instalar Google Analytics 4
 
@@ -899,6 +919,16 @@ Surgió el 9/10: se evaluó si el botón "DIAGNÓSTICO GRATUITO" del hero de la 
 **Verificado:** `tsc`, `eslint` y `next build` limpios. Commit `35336fa`, pusheado a `master` con el OK de Mariano.
 
 **Para qué sirve:** decidir con datos reales si el botón principal de la home debe ir a la agenda o al formulario.
+
+2.5 — Destino del botón del hero de la Home
+
+Hecho · cerrada sin cambios (10/10)
+
+Abierta el 9/10 junto con la 2.4: decidir, con 4-6 semanas de datos de `hero_diagnostico_click` y `agenda_click`, si el botón "DIAGNÓSTICO GRATUITO" del hero de la Home seguía yendo a `#contacto` (la sección del final, con el formulario y PROGRAMAR REUNIÓN) o pasaba directo a la agenda de HubSpot. La auditoría de la Home de Faustina (evaluación 1.5, pedido 3) había llegado a la misma pregunta desde la UX. El 9/10 Mariano renombró la agenda de HubSpot de "Auditoría Base Core" a "Diagnóstico Base Core".
+
+**Decisión de Mariano (10/10):** dejar el botón como está y cerrar la tarea, sin esperar los datos. Las alternativas eran esperar hasta el 6/11 o mandarlo directo a la agenda. Los dos eventos siguen en producción.
+
+**Para qué sirve:** deja registrado que el destino del botón principal se evaluó y se mantuvo a propósito.
 
 Fase 3
 
@@ -1383,6 +1413,62 @@ EN  Sales Process from Scratch – Base Core Sales
 **Verificado:** `tsc` limpio; title nuevo en vivo en `/ebook` y `/en/ebook`. Commit `59e683d`, pusheado a `master` con el OK de Mariano. Google actualiza el resultado cuando vuelve a rastrear la página.
 
 **Para qué sirve:** que el resultado de Google diga qué formato es y que es gratis, con la keyword intacta.
+
+3.17 — Frase del ciclo con protagonismo y nuevo título de la primera sección de la Home
+
+Hecho · en producción 10/10
+
+Salió de la auditoría de la Home de Faustina (evaluación 1.5, 9/10, `basecore-content/borradores/otros/2026-10-09-auditoria-home.md`), pedido 2 (hallazgo H2, impacto alto): el título de la primera sección debajo del hero era "Proceso como servicio" (término interno; Keyword Planner no registra búsquedas, sin dato) y el diferencial (El marketing ATRAE. La preventa CALIFICA. La venta CIERRA. La posventa FIDELIZA.) estaba en el tercer párrafo, como texto corriente. La frase no puede subir al hero sin tocar el H1 (8.4), así que se le dio protagonismo dentro de la sección.
+
+**Proceso:** Mariano decidió desde una tabla Ubicación / Contenido actual / Cambio sugerido, sin preview, y autorizó llevarlo directo a producción. En la verificación local el título aprobado ocupaba 4 renglones en escritorio: se le propuso la versión corta y la eligió. De paso pidió sacar la descripción de "Empresas con las que trabajamos", y se corrigió la frase en inglés de la columna izquierda, que había quedado con el vocabulario viejo.
+
+Cambios (Home ES; mismo criterio en EN)
+
+```
+Texto chico   NOSOTROS → PROCESO COMO SERVICIO
+              (EN ABOUT US → PROCESS AS A SERVICE)
+Título (H2)   Proceso como servicio
+              → Tu proceso comercial, de punta a punta
+              (EN Process as a Service → Your sales process, end to end)
+Columna der.  "Implementamos procesos para impulsar el desarrollo de tu
+              empresa, organizarla y aumentar sus ventas." → se saca; en su
+              lugar va la frase del ciclo, en letra de título (20/24px),
+              que antes era el último párrafo
+Párrafo       "...visibles en cada etapa." → "...en cada paso." (EN "step")
+EN col. izq.  "Base Core delivers consulting services across every stage of
+              sales and marketing." → "Base Core offers consulting across
+              every phase of the sales process: marketing, presales, sales
+              and post-sales." (espejo del ES del 10/10)
+Clientes      "Organizaciones con las que ya implementamos procesos
+              comerciales, marketing y tecnología." → se saca (ES y EN)
+```
+
+**Verificado:** `eslint` y `next build` limpios. Contra un build local: título en 3 renglones a 1440px y en 2 a 390px, sin scroll horizontal, sección de clientes sin descripción. Commit `d296041`, pusheado a `master` con el OK de Mariano y verificado en `www.basecoresales.com` y `/en`.
+
+**Para qué sirve:** que el diferencial de Base Core sea lo primero que se lee en la sección y que el título hable del proceso comercial en vez de un término interno.
+
+3.20 — Etiqueta "mentoring" en la Home, /venta y /posventa
+
+Hecho · en producción 10/10
+
+Salió de la auditoría de la Home de Faustina (evaluación 1.5, 9/10, `basecore-content/borradores/otros/2026-10-09-auditoria-home.md`), hallazgo H6: el texto chico arriba del título de la sección de las fases de venta de la Home decía "mentoring comercial", un término que no está en la estrategia ni en la oferta y sugiere otro servicio. El mismo término estaba arriba de las tarjetas de /venta ("MENTORING COMERCIAL") y /posventa ("MENTORING POSVENTA"), y en sus pares en inglés. Keyword Planner (ES/AR): "mentoring comercial" ~10 búsquedas por mes; "consultoría comercial" ~70, keyword principal de la Home.
+
+Cambios (decisión de Mariano, 10/10)
+
+```
+Home, sección Fases de venta   mentoring comercial → consultoría comercial
+                               (EN commercial mentoring → commercial consulting)
+/venta, arriba de Procesos     MENTORING COMERCIAL → CONSULTORÍA EN VENTAS
+                               (EN COMMERCIAL MENTORING → SALES CONSULTING)
+/posventa, arriba de Procesos  MENTORING POSVENTA → CONSULTORÍA EN POSVENTA
+                               (EN POST-SALES MENTORING → POST-SALES CONSULTING)
+```
+
+La propuesta era "VENTA" y "POSVENTA" para las páginas de servicio; Mariano eligió "Consultoría en ventas" y "Consultoría en posventa".
+
+**Verificado:** `eslint` y `next build` limpios; a 390px la etiqueta más larga (POST-SALES CONSULTING) entra en una línea, sin scroll horizontal. Commit `0973c4f`, pusheado a `master` con el OK de Mariano; en producción ninguna de las 6 páginas dice "mentoring".
+
+**Para qué sirve:** que las etiquetas nombren el servicio que Base Core vende.
 
 Fase 4
 
@@ -2557,5 +2643,9 @@ El registro día a día de cómo se llegó al estado actual — el "Por dónde s
 42. **6/10, cierre de 4.8 y 8.3:** la base de leads queda presentada ante la AAIP (1/10) y sus correcciones pasan a la 4.8.1, Bloqueada, sin fecha. La marca "BASE CORE" queda presentada y pagada en el INPI (clase 35, acta 4801934) y basecore.com.ar activo con redirección 301; el registro en España (OEPM) pasa a la 8.3.1, Bloqueada.
 43. **9/10, 1.46, 2.4 y 3.15 nuevas y cerradas:** a partir de la propuesta de la grilla de Instagram, el e-book pasa a llamarse igual que el PDF en todo el sitio y en la vista previa al compartir (`35336fa`, `558a276`); eventos de GA4 en el botón del hero y en PROGRAMAR REUNIÓN para decidir con datos su destino (`35336fa`); title de /ebook con "e-book gratis" (`59e683d`). Verificados en producción.
 44. **9/10, ajuste en 4.5:** banner de cookies compacto en celular (de 256 a 154px a 390px, botones en una fila) y botón de WhatsApp de 56px, a partir de la auditoría de la Home de la evaluación 1.5 de Faustina. Commit `d40548b` (merge `a5ce82c`), verificado en producción.
+45. **10/10, cierre de 1.47:** las secciones de la Home que se veían vacías en la captura de página completa de la auditoría de Faustina eran un falso positivo por carga diferida de las fotos: el texto está en el HTML servido y con scroll real se ve todo. Cerrada sin cambios.
+46. **10/10, cierre de 2.5:** el botón "DIAGNÓSTICO GRATUITO" del hero de la Home sigue yendo a `#contacto`, por decisión de Mariano, sin esperar los datos de la 2.4.
+47. **10/10, cierre de 3.17:** la frase ATRAE/CALIFICA/CIERRA/FIDELIZA encabeza la columna derecha de la primera sección de la Home, el título pasa a "Tu proceso comercial, de punta a punta" y la sección de clientes pierde su descripción. Commit `d296041`, verificado en producción.
+48. **10/10, cierre de 3.20:** las etiquetas "mentoring" de la Home, /venta y /posventa pasan a "consultoría comercial", "consultoría en ventas" y "consultoría en posventa" (ES y EN). Commit `0973c4f`, verificado en producción.
 
-Historial Técnico WEB (antes Historial Técnico SEO) · Base Core · creado el 5 de septiembre de 2026, a partir del Plan de SEO original · actualizado el 9 de octubre (ajuste en 4.5: banner de cookies compacto en celular y botón de WhatsApp de 56px, commit `d40548b`, a partir de la auditoría de la Home de la evaluación 1.5) · antes, el mismo día (1.46, 2.4 y 3.15 nuevas y cerradas: nombre real del e-book en el sitio y en la vista previa, eventos de GA4 del botón del hero y de la agenda, title de /ebook con "e-book gratis"; commits `35336fa`, `558a276` y `59e683d`; notas en 1.1 y 3.8) · antes, el 6 de octubre (8.3 cerrada: marca "BASE CORE" presentada en el INPI, clase 35, acta 4801934, y basecore.com.ar activo; detalle completo movido acá desde el Plan de SEO, el registro en España sigue como 8.3.1 en el Plan) · antes, el 4 de octubre (4.5 cerrada: detalle completo movido acá desde el Plan de SEO; las correcciones de la AAIP siguen como 4.8 en el Plan) · antes, el mismo día (3.14 cerrada: post de leads B2B reforzado, commit `473a9e3`; 1.45 nueva y cerrada: margen inferior del logo en las páginas sin foto, commit `ca5038d`) · antes, el 3 de octubre (4.1: sitio conectado con la ficha vía `sameAs` y `telephone` del JSON-LD, commit `be5342b`) · antes, el mismo día (3.13 cerrada: FAQs con FAQPage ES y EN, estadísticas con fuente, sitio ES en tuteo, commits `ef58591` y `4c9d316`; notas en 3.3 y 3.9) · antes, el mismo día (4.1 cerrada: ficha de Google Business Profile publicada; la verificación por video de los cambios pasa a 4.7 en el Plan de SEO) · antes, el 28 de septiembre (1.44 nueva y cerrada: slogan "Creamos" → "Creando" en las meta descriptions y logo del schema con slogan en inglés sobre fondo blanco, commit `61668f2`) · antes, el mismo día (1.43 cerrada: Twitter Card propia por página e idioma y respaldos en inglés en `/en`, commit `ad44955`) · antes, el mismo día (historial unificado: se suman completas la Auditoría Final Base Core, 25 hallazgos del 14-19/9, y la Mejora Estética Web, 20 tareas del 21-28/9, con ME 1.8 descartada; los dos artifacts quedan listos para eliminarse) · antes, el 26 de septiembre (1.42 nueva y cerrada: header desktop superpuesto en páginas sin hero, fix con la variante "solid" del Breadcrumb, commit `30067e5`) · antes, el 25 de septiembre (1.37 cerrada del todo: causa del cartel falso en el temporizador de `Turnstile.tsx`, fix `efc5266` verificado en producción, y regla de rate limiting en Cloudflare para los envíos sin token) · antes, el 24 de septiembre (nota en 3.10: se sacó el título del hero de /ebook porque repetía el H1, tarea 1.7 de Mejora Estética Web, commit `f9e94d3`) · antes, el 21 de septiembre (consolidación del artifact Performance Web: se suman acá el detalle completo de 1.23-1.27, la cronología punto a punto de la regresión de Core Web Vitals, el cierre de los dos hallazgos que 1.14 tenía abiertos — Recruiting se queda en CSS a propósito, JS sin usar del bundle propio medido y sin acción — y una nota de método para la próxima medición de performance; el artifact Performance Web quedó sin contenido propio y se eliminó) · antes, el mismo día: 8.2 movida acá del todo — cerrada tras confirmar que la ficha de crunchbase.com/organization/base-core la ocupa BaseCore™, geoceldas de Scottsdale AZ, no Base Power; detalle completo de las 11 recomendaciones en la Fase 8) · antes, el mismo día: 4.6 movida acá — Mariano revierte la decisión del 5/9 de no activar canales secundarios; LinkedIn empresa, Instagram y Facebook pasan a desarrollo urgente, gestionado desde el Plan de Marketing/Social, no acá — primera tarea de una nueva Fase 4 en este documento · antes, el mismo día: 1.28 movida acá del todo — Mariano decidió no seguir persiguiendo el objetivo de mobile +90 en el score de laboratorio de PSI; queda reemplazada por 5.9 en el Plan de SEO, un chequeo mensual recurrente sin objetivo activo de score) · antes: 20 de septiembre (1.40 movida acá — el overlay de /marketing necesitó una 3ra ronda: medido el color de las 5 fotos de hero, la de /marketing resultó la más saturada de azul con diferencia, así que el overlay nunca fue la causa principal; fix real con filtro de color sobre la propia imagen + overlay neutro, confirmado por Mariano en un preview de Vercel y llevado a producción. De paso se retiró el widget de revisión interactiva del Plan de SEO — duplicaba el archivo y dejaba una línea sin poder leer, forzando un publish con `force` en otra sesión; el veredicto de revisión se registra por chat de acá en más) · antes, el mismo día: 1.37, 1.39 y 1.41 movidas acá — 1.37 confirmada por Mariano en iPhone real; 1.39 y 1.41 marcadas OK en el (todavía vigente en ese momento) widget de revisión interactiva del Plan de SEO, ahora "BaseCoreWeb: SEO y Performance" · antes: 18 de septiembre, sesión posterior (1.29-1.35, 1.38, 3.11 y 3.12 movidas acá) · antes, el mismo día: migración de 9 hallazgos SEO desde la Auditoría Final de UX/diseño (1.29-1.35, 3.11-3.12) · antes: 14 de septiembre (Fase 8 nueva, 8.1 cerrada — decisión de no unificar el naming a "BaseCore") · espejo de trabajo en `documentation/seo/historial-seo.md`
+Historial Técnico WEB (antes Historial Técnico SEO) · Base Core · creado el 5 de septiembre de 2026, a partir del Plan de SEO original · actualizado el 10 de octubre (3.20 cerrada: sin "mentoring" en la Home, /venta y /posventa, commit `0973c4f`) · antes, el mismo día (3.17 cerrada: frase del ciclo y título nuevo en la primera sección de la Home, commit `d296041`) · antes, el mismo día (2.5 cerrada sin cambios: el botón del hero sigue yendo a #contacto) · antes, el mismo día (1.47 cerrada sin cambios: falso positivo por carga diferida de las fotos en la captura de página completa) · antes, el 9 de octubre (ajuste en 4.5: banner de cookies compacto en celular y botón de WhatsApp de 56px, commit `d40548b`, a partir de la auditoría de la Home de la evaluación 1.5) · antes, el mismo día (1.46, 2.4 y 3.15 nuevas y cerradas: nombre real del e-book en el sitio y en la vista previa, eventos de GA4 del botón del hero y de la agenda, title de /ebook con "e-book gratis"; commits `35336fa`, `558a276` y `59e683d`; notas en 1.1 y 3.8) · antes, el 6 de octubre (8.3 cerrada: marca "BASE CORE" presentada en el INPI, clase 35, acta 4801934, y basecore.com.ar activo; detalle completo movido acá desde el Plan de SEO, el registro en España sigue como 8.3.1 en el Plan) · antes, el 4 de octubre (4.5 cerrada: detalle completo movido acá desde el Plan de SEO; las correcciones de la AAIP siguen como 4.8 en el Plan) · antes, el mismo día (3.14 cerrada: post de leads B2B reforzado, commit `473a9e3`; 1.45 nueva y cerrada: margen inferior del logo en las páginas sin foto, commit `ca5038d`) · antes, el 3 de octubre (4.1: sitio conectado con la ficha vía `sameAs` y `telephone` del JSON-LD, commit `be5342b`) · antes, el mismo día (3.13 cerrada: FAQs con FAQPage ES y EN, estadísticas con fuente, sitio ES en tuteo, commits `ef58591` y `4c9d316`; notas en 3.3 y 3.9) · antes, el mismo día (4.1 cerrada: ficha de Google Business Profile publicada; la verificación por video de los cambios pasa a 4.7 en el Plan de SEO) · antes, el 28 de septiembre (1.44 nueva y cerrada: slogan "Creamos" → "Creando" en las meta descriptions y logo del schema con slogan en inglés sobre fondo blanco, commit `61668f2`) · antes, el mismo día (1.43 cerrada: Twitter Card propia por página e idioma y respaldos en inglés en `/en`, commit `ad44955`) · antes, el mismo día (historial unificado: se suman completas la Auditoría Final Base Core, 25 hallazgos del 14-19/9, y la Mejora Estética Web, 20 tareas del 21-28/9, con ME 1.8 descartada; los dos artifacts quedan listos para eliminarse) · antes, el 26 de septiembre (1.42 nueva y cerrada: header desktop superpuesto en páginas sin hero, fix con la variante "solid" del Breadcrumb, commit `30067e5`) · antes, el 25 de septiembre (1.37 cerrada del todo: causa del cartel falso en el temporizador de `Turnstile.tsx`, fix `efc5266` verificado en producción, y regla de rate limiting en Cloudflare para los envíos sin token) · antes, el 24 de septiembre (nota en 3.10: se sacó el título del hero de /ebook porque repetía el H1, tarea 1.7 de Mejora Estética Web, commit `f9e94d3`) · antes, el 21 de septiembre (consolidación del artifact Performance Web: se suman acá el detalle completo de 1.23-1.27, la cronología punto a punto de la regresión de Core Web Vitals, el cierre de los dos hallazgos que 1.14 tenía abiertos — Recruiting se queda en CSS a propósito, JS sin usar del bundle propio medido y sin acción — y una nota de método para la próxima medición de performance; el artifact Performance Web quedó sin contenido propio y se eliminó) · antes, el mismo día: 8.2 movida acá del todo — cerrada tras confirmar que la ficha de crunchbase.com/organization/base-core la ocupa BaseCore™, geoceldas de Scottsdale AZ, no Base Power; detalle completo de las 11 recomendaciones en la Fase 8) · antes, el mismo día: 4.6 movida acá — Mariano revierte la decisión del 5/9 de no activar canales secundarios; LinkedIn empresa, Instagram y Facebook pasan a desarrollo urgente, gestionado desde el Plan de Marketing/Social, no acá — primera tarea de una nueva Fase 4 en este documento · antes, el mismo día: 1.28 movida acá del todo — Mariano decidió no seguir persiguiendo el objetivo de mobile +90 en el score de laboratorio de PSI; queda reemplazada por 5.9 en el Plan de SEO, un chequeo mensual recurrente sin objetivo activo de score) · antes: 20 de septiembre (1.40 movida acá — el overlay de /marketing necesitó una 3ra ronda: medido el color de las 5 fotos de hero, la de /marketing resultó la más saturada de azul con diferencia, así que el overlay nunca fue la causa principal; fix real con filtro de color sobre la propia imagen + overlay neutro, confirmado por Mariano en un preview de Vercel y llevado a producción. De paso se retiró el widget de revisión interactiva del Plan de SEO — duplicaba el archivo y dejaba una línea sin poder leer, forzando un publish con `force` en otra sesión; el veredicto de revisión se registra por chat de acá en más) · antes, el mismo día: 1.37, 1.39 y 1.41 movidas acá — 1.37 confirmada por Mariano en iPhone real; 1.39 y 1.41 marcadas OK en el (todavía vigente en ese momento) widget de revisión interactiva del Plan de SEO, ahora "BaseCoreWeb: SEO y Performance" · antes: 18 de septiembre, sesión posterior (1.29-1.35, 1.38, 3.11 y 3.12 movidas acá) · antes, el mismo día: migración de 9 hallazgos SEO desde la Auditoría Final de UX/diseño (1.29-1.35, 3.11-3.12) · antes: 14 de septiembre (Fase 8 nueva, 8.1 cerrada — decisión de no unificar el naming a "BaseCore") · espejo de trabajo en `documentation/seo/historial-seo.md`
