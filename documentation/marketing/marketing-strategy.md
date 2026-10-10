@@ -1,7 +1,8 @@
 > **Espejo de trabajo, no fuente de verdad.** Copia en texto plano del artifact real. Es la única vía de acceso real para los agentes (`social-content`, `seo-marketing`, `web-lead`) — la tool `Artifact` no está disponible para sub-agentes (restricción de plataforma). Si hay conflicto entre este archivo y el artifact, gana el artifact — actualizalo ahí primero y después sincronizá esta copia.
 >
 > - Fuente de verdad: https://claude.ai/artifact/5nEdULGfDWCWES17cpptDp
-> - Última sincronización: 2026-10-09 (v25)
+> - Última sincronización: 2026-10-10 (v26)
+> - Nota v26 (9-10/10): revisión conceptual con Mariano. Vocabulario obligatorio en 2.11 (proceso comercial, fases, etapas, procesos, pasos, áreas, ciclo de venta; diagnóstico gratuito y completo; consultor de Base Core y responsable del proyecto: Base Core no asigna un project leader). 2.6 con el #2 reescrito ("Proceso.") y el pedido de cambios al sitio; D8 con el diferencial "separar las fases de venta" y la tesis de un vendedor para tres fases; 2.7, 2.10, 2.12, 2.17, 3.3, 4.4, 4.5, 4.8-4.10, D3, D4, D6, D7, D11 y D12 alineadas; nuevo ítem en "Temas a evitar".
 > - Nota v25 (9/10): 2.6 con las portadas con foto de fondo (banco WEB, desenfocada bajo velo navy o blanco, solo en la portada) y los pendientes antes de publicar: revisión de Mariano, decidir el carrusel "Nadie se fue enojado" (borrador del 8/10) y el plan semanal real.
 > - Nota v24 (9/10): en la tabla de 5.2, WhatsApp pasa a opcional y el email queda obligatorio también en el formulario de contacto (3.18 del Plan de SEO, en producción).
 > - Nota v23 (9/10): el paquete de privacidad (Plan de SEO 4.5) figura como publicado el 1/10 (commit befbf58) y no en suspenso; lo detectó la auditoría de la Home de la evaluación 1.5 de Faustina. 5.3 Hecho, 6.2 destrabada, nota de la Fase 5 con la medición vigente (GA4 solo cuenta a quienes aceptan; el total viene de Cloudflare), roadmap y estado de canales actualizados.
@@ -126,8 +127,8 @@ Estrategia de contenidos
 | # | Carrusel | Portada | Palabra |
 | --- | --- | --- | --- |
 | 1 | Presentación: quiénes somos y a quién ayudamos — **fijada** | Blanco | Hola. |
-| 2 | El ciclo ATRAE → CALIFICA → CIERRA → FIDELIZA — **fijada** | Azul | Ciclo. |
-| 3 | Cómo trabajamos: Diagnóstico → Plan de Ruta → Estrategia y sprints → Mejora continua — **fijada** | Blanco | Método. |
+| 2 | El proceso comercial: cuatro fases (ATRAE → CALIFICA → CIERRA → FIDELIZA) y quién se ocupa de cada una — **fijada** | Azul | Proceso. |
+| 3 | Cómo trabajamos: Diagnóstico gratuito → Plan de Ruta → Estrategia y sprints → Mejora continua — **fijada** | Blanco | Método. |
 | 4 | ATRAE: más leads no arreglan un proceso comercial roto | Azul | Leads. |
 | 5 | CALIFICA: a quién llamar primero (BANT) | Blanco | Calificar. |
 | 6 | CIERRA: el silencio después de la propuesta | Azul | Seguimiento. |
@@ -142,7 +143,8 @@ Estrategia de contenidos
 * CTA de diagnóstico solo en 4 de 12 (#1, #2, #3 y #12); el resto rota entre guardar, enviar, comentar, blog y e-book.
 * Se publican de abajo hacia arriba (el #12 primero) y se fijan el #3, el #2 y el #1. Si algo queda desfasado, "Reordenar cuadrícula".
 * Registro: tuteo neutro en los textos. Cifras solo con fuente (HBR 2014 en el #7; PM Solutions 2025 en el #10, verificada el 9/10).
-* **Portadas con foto (9/10):** cada portada lleva una foto del banco WEB del brandkit, afín al tema, desenfocada y bajo un velo navy o blanco, como en las secciones del sitio. Solo la portada; los interiores y el cierre siguen lisos. Simulador del perfil actualizado.
+* **Portadas con foto (9/10):** cada portada lleva una foto del banco WEB del brandkit, afín al tema, desenfocada y bajo un velo navy o blanco, como en las secciones del sitio. Solo la portada; los interiores y el cierre siguen lisos. Simulador del perfil actualizado (10/10, con la portada nueva del #2).
+* **Revisión conceptual (9-10/10, con Mariano):** los 12 carruseles, las captions y las historias pasaron al vocabulario de la 2.11 (fases, etapas, pasos; diagnóstico gratuito y completo; consultor de Base Core y responsable del proyecto). El #2 se reescribió: la tesis es "una persona hace marketing y el vendedor, todo lo demás". Se corrigieron además contradicciones internas en el #5 (BANT se confirma en la llamada, no antes), el #6 (cadencia posterior a la propuesta), el #9 y el #10. El pedido de cambios equivalente para el sitio (23 puntos) está en `basecore-content/borradores/otros/2026-10-09-pedido-web-revision-conceptual.md`.
 
 ##### Pendiente antes de publicar
 
@@ -154,7 +156,7 @@ Estrategia de contenidos
 
 #### 2.7 Historias destacadas: 5 carpetas
 
-* **Inicio** (antes "Empezá acá"; renombrada el 9/10 por el tuteo) · **Servicios** (una por unidad) · **Método** (Diagnóstico → Plan de Ruta → Estrategia y sprint → Mejora continua) · **Recursos** (e-book, blog) · **FAQ** (cómo es el diagnóstico gratuito, a quién le sirve).
+* **Inicio** (antes "Empezá acá"; renombrada el 9/10 por el tuteo) · **Servicios** (una por unidad) · **Método** (Diagnóstico gratuito → Plan de Ruta → Estrategia y sprints → Mejora continua) · **Recursos** (e-book, blog) · **FAQ** (cómo es el diagnóstico gratuito, a quién le sirve).
 * **Portadas (9/10):** ícono navy de línea, de un solo set, sobre círculo claro, para que no se funda con la foto de perfil (círculo navy). Las 5 portadas y 30 historias guionadas (5 clips a cámara con subtítulos, 2 con voz en off y el resto en plantillas) están en [Instagram · Grilla final](https://claude.ai/artifact/F8sPgxX8V4fzAHxiAa2f3B). Se cargan de derecha a izquierda (FAQ primero, Inicio al final).
 * Más adelante, **Clientes** (cuando se destraben los testimonios, 7.1).
 
@@ -182,7 +184,7 @@ El formato que menos producción pide: la voz de Mariano sobre 3-5 pantallas de 
 
 En vivo 23/9 La Página tiene **0 publicaciones en total**. En los últimos 7 días apareció 13 veces en búsquedas (+117%) y no sumó seguidores nuevos.
 
-* 1 presentación · 1 documento del ciclo (**fijado**) · 5 documentos-catálogo, uno por unidad · 2 reciclajes de blog · 1 del método · 1 invitación al diagnóstico.
+* 1 presentación · 1 documento del proceso comercial, con sus cuatro fases (**fijado**) · 5 documentos-catálogo, uno por unidad · 2 reciclajes de blog · 1 del método · 1 invitación al diagnóstico.
 * Formato estrella: **documento PDF** 1080×1350, de 6 a 12 láminas. Tono de catálogo, no de primera persona.
 * Ritmo: 2-4 por semana hasta llegar al piso. No activar todavía la newsletter de la Página ni crear Showcase Pages.
 
@@ -199,13 +201,29 @@ Copywriting
 
 **Registro en Instagram (9/10):** tuteo neutro en posts y plantillas ("Guárdalo", "Desliza"), igual que el sitio y el blog; en los videos, la voz natural de Mariano. La fila de Instagram de esta tabla queda con esa conversión.
 
+**Vocabulario (decidido con Mariano el 9 y 10/10, obligatorio en todo el copy):**
+
+| Término | Qué nombra |
+| --- | --- |
+| **Proceso comercial** | El todo, de atraer a fidelizar. |
+| **Fase** | Marketing, preventa, venta y posventa. Preventa, venta y posventa son las *fases de venta*. |
+| **Etapa** | Los pasos dentro de una fase. Preventa: prospección, primer contacto, calificación, oportunidad. Venta: presentación inicial, propuesta, negociación, cierre (las etapas del pipeline). |
+| **Procesos** | Lo que Base Core implementa dentro de cada fase (modelo comercial, pipeline, forecast, CRM, segmentación de cartera…). |
+| **Paso** | El método: Diagnóstico gratuito → Plan de Ruta → Estrategia y sprints → Mejora continua. |
+| **Áreas** | Solo cuando se nombran las cinco, con Tecnología, que atraviesa a las cuatro fases. |
+| **Ciclo de venta** | Solo el tiempo del primer contacto al cierre. Nunca "ciclo" para las fases. |
+| **Diagnóstico gratuito / completo** | "Diagnóstico gratuito" es el CTA y el paso 1 (reunión de 30 minutos). El diagnóstico completo es pago y va en el paso 3. "Relevamiento" queda como verbo y nombre interno (en España no se usa). |
+| **Consultor / responsable del proyecto** | Un consultor de Base Core (hoy, Mariano) lleva adelante el plan. El cliente designa un responsable del proyecto (suele ser el dueño; no se dice en público) como interlocutor directo. Base Core **no asigna un project leader**. |
+
+"Contactación" no existe en español: se dice "contacto". Lead: dejó sus datos. Oportunidad: calificada, con interés concreto. Con una propuesta enviada, "posible cliente".
+
 **Estructura del caso anónimo** (pilar 04): síntoma que parecía el problema → diagnóstico real → decisión → resultado (solo cifras verificadas con el cliente) → tesis que le sirva a cualquiera.
 
 **Hecho cuando:** la guía está en el manual de marca (sección 8) y se usa en las piezas semilla.
 
 #### 2.12 Captions de los 12 posts semilla (listas para pegar)
 
-**Reemplazadas el 9/10:** las captions vigentes de los 12 carruseles nuevos (con alt text por lámina y 3 hashtags) están en `basecore-content/borradores/instagram/2026-10-09-grilla-propuesta-final.md`. Las de abajo quedan como historial.
+**Reemplazadas el 9/10:** las captions vigentes de los 12 carruseles nuevos (con alt text por lámina y 3 hashtags) están en `basecore-content/borradores/instagram/2026-10-09-grilla-propuesta-final.md`. Las de abajo quedan como historial y usan el vocabulario anterior a la revisión del 9-10/10 ("ciclo", "etapas"): no tomarlas como referencia.
 
 Redactadas por `social-content` con la voz de Base Core: la keyword al inicio, hasta 5 hashtags variados (el tope de Instagram desde diciembre de 2025) y el alt text escrito a mano.
 
@@ -430,7 +448,7 @@ Respuestas guardadas en Business Suite (cargadas el 28/9)
 
 Reemplazan a las preguntas frecuentes, que la cuenta no tiene disponibles (ni en Business Suite ni en la app, 28/9). Sirven para Instagram y Messenger. Texto base con vos; Mariano puede haberlo ajustado al cargarlo.
 
-**`quehacemos`:** "Somos una consultora comercial y de marketing. Acompañamos a empresas en todo el proceso: atraer, calificar, cerrar y fidelizar clientes, con metodología y herramientas concretas para cada etapa."
+**`quehacemos`:** "Somos una consultora comercial y de marketing. Acompañamos a empresas en todo el proceso: atraer, calificar, cerrar y fidelizar clientes, con metodología y herramientas concretas para cada fase." *(10/10: decía "para cada etapa"; actualizarla también en Business Suite.)*
 
 **`diagnostico`:** "Es una reunión de 30 minutos, sin costo ni compromiso. Revisamos tu proceso comercial, dónde se pierden oportunidades y por dónde conviene empezar. Agendalo acá: https://meetings-eu1.hubspot.com/msandonato"
 
@@ -486,7 +504,7 @@ El último post original es de diciembre de 2022 ("I've started my personal proj
 | 5 | Tu cartera vale más que tus leads: prevenir el churn | A + B |
 | 6 | Segundo caso anónimo, con BaseHub/IA dentro del caso | B + C |
 
-**Por qué este eje:** entre los 16 referentes relevados, nadie hace "diagnóstico en público" con casos estructurados ni cuenta el ciclo separado (ver [Competencia](#d4)).
+**Por qué este eje:** entre los 16 referentes relevados, nadie hace "diagnóstico en público" con casos estructurados ni separa las fases de venta (ver [Competencia](#d4)).
 
 #### 3.4 Tráfico al blog y medición
 
@@ -538,13 +556,13 @@ Foto real + franja navy + título en Figtree: el mismo recurso del hero del siti
 
 * **1.** Foto de perfil 1080×1080 (Instagram + Facebook).
 * **2.** Plantilla cita/dato 1080×1350.
-* **3.** Plantilla carrusel/documento 1080×1350, de 7 a 9 láminas (portada con promesa → problema → error habitual → framework → pasos → ejemplo → resumen → CTA). Es la misma para Instagram y para los PDF de LinkedIn. Hecha 28/9: el carrusel #2 "El ciclo" es la plantilla.
+* **3.** Plantilla carrusel/documento 1080×1350, de 7 a 9 láminas (portada con promesa → problema → error habitual → framework → pasos → ejemplo → resumen → CTA). Es la misma para Instagram y para los PDF de LinkedIn. Hecha 28/9: el carrusel #2 (hoy "El proceso comercial") es la plantilla.
 * **4.** 5 portadas de destacadas: **ícono navy de línea sobre círculo claro** (decisión del 9/10; antes "ícono sólido sobre navy"), centrado en un círculo de ~600 px. Hecha 9/10 en Instagram · Grilla final.
 * **5.** Plantillas de historia 1080×1920 (zona segura de 250 px arriba y abajo). Hechas 9/10: 7 tipos (texto, lista, paso, pregunta, video con subtítulos, recurso, CTA).
 
 #### 4.5 Banners y portadas
 
-* **Página de LinkedIn** 1128×191: hoy **vacío** En vivo 23/9. El beneficio + el ciclo + el isotipo.
+* **Página de LinkedIn** 1128×191: hoy **vacío** En vivo 23/9. El beneficio + las cuatro fases + el isotipo.
 * **LinkedIn personal** 1584×396: hoy una imagen genérica de 2020. La misma familia visual que el de la Página, con tono personal.
 * **Portada de Facebook** 1640×624: Mariano 24/9 hecha, con el slogan en inglés.
 
@@ -556,18 +574,18 @@ Diseño de presentaciones y dossiers
 
 #### 4.8 Dossier comercial (10 láminas)
 
-Para primeras reuniones, sin personalizar: portada → el problema (el dueño que perdió visibilidad) → el método (relevamiento → plan → estrategia y sprint → mejora continua) → el ciclo ATRAE–FIDELIZA → las 5 unidades → tecnología (CRM, IA, BaseHub) → cómo se trabaja (sprints, project leader) → prueba social (cuando se destrabe 7.1) → sobre Mariano (foto documental) → CTA al diagnóstico gratuito.
+Para primeras reuniones, sin personalizar: portada → el problema (el dueño que perdió visibilidad) → el método (diagnóstico gratuito → plan de ruta → estrategia y sprints → mejora continua) → las cuatro fases ATRAE–FIDELIZA y quién se ocupa de cada una → las 5 unidades → tecnología (CRM, IA, BaseHub) → cómo se trabaja (sprints, un consultor de Base Core y un responsable del proyecto del cliente) → prueba social (cuando se destrabe 7.1) → sobre Mariano (foto documental) → CTA al diagnóstico gratuito.
 
 #### 4.9 Plantilla de propuesta comercial
 
-Se arma después del diagnóstico: cliente y fecha → qué se relevó → 3-5 hallazgos priorizados, en tono directo → plan de ruta con fases, plazos y entregables → alcance y **qué no incluye** → forma de trabajo → inversión (con el modelo real de cotización de Mariano) → próximos pasos y validez. En Canva o Google Docs, con los campos variables marcados.
+Se arma después del diagnóstico gratuito: cliente y fecha → qué se relevó → 3-5 hallazgos priorizados, en tono directo → plan de ruta con hitos, plazos y entregables → alcance y **qué no incluye** → forma de trabajo (consultor de Base Core, responsable del proyecto que designa el cliente, sprints semanales) → inversión (con el modelo real de cotización de Mariano) → próximos pasos y validez. En Canva o Google Docs, con los campos variables marcados.
 
 #### 4.10 Kit de ventas
 
 El contexto de 2022 lo pide explícitamente, y es la base para que en 2027 venda otro consultor además de Mariano:
 
 * Dossier (4.8) + un **one-pager** por unidad, para mandar por WhatsApp.
-* **Guion de la reunión de diagnóstico**: qué preguntar y en qué orden.
+* **Guion del diagnóstico gratuito**: qué preguntar y en qué orden.
 * **Objeciones frecuentes** con respuesta (sale de las buyer personas, [D6](#d6)).
 * Plantilla de propuesta (4.9) y fichas de casos cortas cuando avance 7.2.
 
@@ -589,7 +607,7 @@ Captura de leads desde la web y las redes a HubSpot
 
 #### 5.2 Campos mínimos por prospecto Hecho (1/10)
 
-**Configurado en HubSpot por Mariano (30/9-1/10).** Se reusan las propiedades estándar (Cargo `jobtitle`, País/región, Ciudad, Industria) y las que ya existían (`fuente_del_lead`, `servicio_de_interes`, `utm_*`, y `score`, creada por la sesión del agente `sales-lead`). Nuevas: `consentimiento_marketing` (casilla única, sin valor predeterminado), `fecha_consentimiento_marketing` (fecha), "Tamaño de la empresa" (1-9 · 10-49 · 50-200 · Más de 200) y "Señal de compra" (texto, el Intent del scoring). "Fuente del lead" suma LinkedIn personal, Instagram, Facebook, WhatsApp, Referido, Scraping y Ads (Web-contacto y Web-ebook sin tocar, el sitio los manda así). **Sin "etapa del ciclo" en el contacto:** el estado comercial vive en las etapas del negocio del "Base Core Pipeline" (Contactado → Maduración → Reunión → Anteproyecto → Propuesta enviada → Cierre), que usa el agente `sales-lead`. "Tramo del score" no se creó: alcanza con ordenar por `score`.
+**Configurado en HubSpot por Mariano (30/9-1/10).** Se reusan las propiedades estándar (Cargo `jobtitle`, País/región, Ciudad, Industria) y las que ya existían (`fuente_del_lead`, `servicio_de_interes`, `utm_*`, y `score`, creada por la sesión del agente `sales-lead`). Nuevas: `consentimiento_marketing` (casilla única, sin valor predeterminado), `fecha_consentimiento_marketing` (fecha), "Tamaño de la empresa" (1-9 · 10-49 · 50-200 · Más de 200) y "Señal de compra" (texto, el Intent del scoring). "Fuente del lead" suma LinkedIn personal, Instagram, Facebook, WhatsApp, Referido, Scraping y Ads (Web-contacto y Web-ebook sin tocar, el sitio los manda así). **Sin propiedad de etapa en el contacto:** el estado comercial vive en las etapas del negocio del "Base Core Pipeline" (Contactado → Maduración → Reunión → Anteproyecto → Propuesta enviada → Cierre), que usa el agente `sales-lead`. "Tramo del score" no se creó: alcanza con ordenar por `score`.
 
 | Campo | Tipo | Obligatorio |
 | --- | --- | --- |
@@ -971,7 +989,7 @@ Planteado por Mariano el 24/9: cambiar "Consultoría Comercial y Marketing" por 
 
 * **Demanda:** "IA para empresas" tiene volumen (ES 100-1.000 por mes), pero ya la atiende /tecnologia; "consultoría comercial + IA" no tiene volumen medido.
 * **Competencia:** solo 2 de los 16 referentes (Signos y Posizionate) ponen IA en el titular; la mayoría la usa como servicio o en el blog.
-* **Google y buscadores con IA:** "consultoría comercial con IA" devuelve implementadores puros de IA (Daimons, Naranja Mecánica, EY, PwC); cuando la pregunta describe el ciclo completo con IA, Perplexity ya cita a Base Core primero.
+* **Google y buscadores con IA:** "consultoría comercial con IA" devuelve implementadores puros de IA (Daimons, Naranja Mecánica, EY, PwC); cuando la pregunta describe el proceso comercial completo con IA, Perplexity ya cita a Base Core primero.
 * **Marca:** nuevo homónimo, BaseCore (basecore.com.br, Brasil, software e IA), sumado a la Auditoría de Marca.
 * **Respaldo:** la IA es real pero está concentrada en /tecnologia y en el sistema de agentes interno.
 
@@ -1075,7 +1093,7 @@ D3
 
 ### Investigación de mercado
 
-Pymes y startups en crecimiento de España y Latinoamérica. Las fuentes que se combinan: `.agents/product-marketing.md` (target, JTBD, objeciones), el Mapa de Keywords (volumen real de ES y AR) y la competencia en vivo (D4). La brecha que más se ve: **casi todo lo que aparece en Google por "consultoría comercial" en España son agencias de marketing** (ya lo notaba Mariano en 2022) o especialistas de un solo ciclo, y Base Core no aparece en ninguna de las 4 búsquedas genéricas.
+Pymes y startups en crecimiento de España y Latinoamérica. Las fuentes que se combinan: `.agents/product-marketing.md` (target, JTBD, objeciones), el Mapa de Keywords (volumen real de ES y AR) y la competencia en vivo (D4). La brecha que más se ve: **casi todo lo que aparece en Google por "consultoría comercial" en España son agencias de marketing** (ya lo notaba Mariano en 2022) o especialistas de una sola fase, y Base Core no aparece en ninguna de las 4 búsquedas genéricas.
 
 D4
 
@@ -1113,14 +1131,14 @@ IMPLEMENTACIÓN / EJECUCIÓN
 RMG (Sales Quality) │ Driven Biz (outbound)
 Posizionate · RevOps LATAM│
 │ ● BASE CORE
-── UN SOLO CICLO ─────────────┼────── CICLO COMPLETO ──
+── UNA SOLA FASE ─────────────┼──── PROCESO COMPLETO ──
 │
 Biwott · Growth LinkedIn │ Olmos & Co (discurso similar)
 Elósegui · Gisela Moreno │
 │
 ESTRATEGIA / DIAGNÓSTICO
 
-Base Core es el único del panorama en el cuadrante "ciclo completo + implementación acompañada".
+Base Core es el único del panorama en el cuadrante "proceso completo + implementación acompañada".
 
 Lo que hace todo el sector
 
@@ -1132,7 +1150,7 @@ Lo que hace todo el sector
 
 Huecos para Base Core
 
-* Nadie **separa los ciclos** preventa, venta y posventa.
+* Nadie **separa las fases de venta** (preventa, venta y posventa).
 * Nadie hace **diagnóstico en público** con casos.
 * Casi nadie ofrece un **diagnóstico gratuito** (ToExecutive cobra 100€).
 * Solo RMG publica **cifras**.
@@ -1207,21 +1225,23 @@ Dónde está
 :   Endeavor, aceleradoras, comunidades de founders, LinkedIn.
 
 Contenido
-:   Separar ciclos, primer equipo comercial, compensación por resultados.
+:   Separar las fases de venta, primer equipo comercial, compensación por resultados.
 
 D7
 
 ### Propuesta de valor
 
-*Para las pymes y startups en crecimiento de España y Latinoamérica que sienten que su crecimiento comercial depende de la memoria de una o dos personas, Base Core es la consultoría comercial que ordena preventa, venta, posventa y marketing como un solo proceso. A diferencia de contratar por separado un consultor de ventas, una agencia de marketing y un implementador de CRM que no se hablan entre sí, Base Core diagnostica gratis, implementa con plazos concretos y un project leader asignado, y entrega BaseHub (su plataforma de seguimiento) sin costo adicional.*
+*Para las pymes y startups en crecimiento de España y Latinoamérica que sienten que su crecimiento comercial depende de la memoria de una o dos personas, Base Core es la consultoría comercial que ordena preventa, venta, posventa y marketing como un solo proceso. A diferencia de contratar por separado un consultor de ventas, una agencia de marketing y un implementador de CRM que no se hablan entre sí, Base Core diagnostica gratis, implementa con plazos concretos (un consultor de Base Core lleva adelante el plan junto a un responsable del proyecto que designa el cliente) y entrega BaseHub (su plataforma de seguimiento) sin costo adicional.*
 
 D8
 
 ### Posicionamiento
 
-El diferencial elegido: separar los ciclos de venta
+El diferencial elegido: separar las fases de venta
 
-Preventa, venta y posventa tienen tiempos, focos y métricas propios. Se trabajan cada uno por separado y también se conectan con una mirada holística. Ninguno es menos importante que el otro.
+Preventa, venta y posventa tienen tiempos, focos y métricas propios. Se trabajan cada una por separado y también se conectan con una mirada holística. Ninguna es menos importante que la otra.
+
+**Lo que más vemos (Mariano, 9/10):** una persona hace marketing y el vendedor se ocupa de las tres fases de venta. Con propuestas abiertas deja de prospectar, y después del cierre deja de llamar a sus clientes. Separar las fases no exige contratar una persona por fase: exige que cada una tenga su tiempo, sus etapas y su criterio. Es la tesis del post #2 de Instagram y coincide con la sección 1 del e-book.
 
 Dos apuestas (contexto 2022)
 
@@ -1307,11 +1327,11 @@ D11
 
 ### Concepto comunicacional
 
-**"Creando Bases Productivas"** describe la metodología: **relevamiento de la situación actual → plan de trabajo → estrategia y sprint → desarrollo de procesos con mejora continua**. El gerundio es intencional: construir bases es un proceso que no termina.
+**"Creando Bases Productivas"** describe la metodología: **diagnóstico gratuito (relevamiento de la situación actual) → plan de ruta → estrategia y sprints (diagnóstico completo e implementación) → mejora continua**. El gerundio es intencional: construir bases es un proceso que no termina.
 
 **Capa estratégica:** "Entender antes de automatizar." **Capa de voz:** "Así pienso un problema comercial."
 
-**Mensajes clave (2022):** una base de procesos sólida para crecer rápido · separar los ciclos de venta · la preventa también genera demanda · objetivos claros y compensación por resultados · formación continua y un kit de ventas propio · desarrollar la cartera antes que perseguir leads · 360: desarrollo comercial + marketing + comunicación.
+**Mensajes clave (2022):** una base de procesos sólida para crecer rápido · separar las fases de venta · la preventa también genera demanda · objetivos claros y compensación por resultados · formación continua y un kit de ventas propio · desarrollar la cartera antes que perseguir leads · 360: desarrollo comercial + marketing + comunicación.
 
 D12
 
@@ -1323,7 +1343,7 @@ Regla: mostrar el razonamiento, no dar consejos genéricos. Frases de territorio
 
 #### El proceso invisible
 
-El *relevamiento*: mostrar que el problema es de proceso, no de esfuerzo.
+El *diagnóstico gratuito*: mostrar que el problema es de proceso, no de esfuerzo.
 
 02
 
@@ -1335,13 +1355,13 @@ La preventa como generadora de demanda y la posventa (churn, cartera) como fuent
 
 #### Demanda real vs. presencia de marca
 
-El *plan de trabajo*: ordenar antes de ejecutar. Calificación MQL → SQL.
+El *plan de ruta*: ordenar antes de ejecutar. Calificación MQL → SQL.
 
 04
 
 #### Diagnóstico en público
 
-La *estrategia y sprint*, contada con casos reales. Es el pilar que más credibilidad da y el hueco del sector.
+La *estrategia y sprints*, contada con casos reales. Es el pilar que más credibilidad da y el hueco del sector.
 
 05
 
@@ -1370,6 +1390,8 @@ La *mejora continua*: herramientas para la venta (CRM, prospección, IA) que sos
 × BaseHub en tono de lanzamiento de producto.
 
 × Un avatar de IA, robots, circuitos, stock de apretones de manos.
+
+× Decir que Base Core "asigna un project leader", llamar "ciclos" a las fases o usar "contactación" (vocabulario en 2.11).
 
 × Salir a buscar seguidores antes del umbral 2.18; pautar antes de tener 5.1 y las secuencias de email.
 
@@ -1411,4 +1433,4 @@ Especificación del manual. Su producción es la tarea 4.12.
 | F4 Producción (4.1-4.3) | 2.13-2.14 |
 | F5 Prueba social / F6 Demanda / F7 Paid / F8 SEO / F9 Marca | F7 / F5 + F6 / F8 / F9 / F10 |
 
-Marketing Strategy Basecore · Base Core · actualizado el 9 de octubre de 2026 (v25) · v25 (9/10): 2.6 con las portadas con foto de fondo y los pendientes antes de publicar (revisión de Mariano, decisión sobre el carrusel “Nadie se fue enojado”, plan semanal real) · v24 (9/10): en la tabla de 5.2, WhatsApp pasa a opcional y el email queda obligatorio también en el formulario de contacto (tarea 3.18 del Plan de SEO, en producción) · v23 (9/10): el paquete de privacidad (Plan de SEO 4.5) figura como publicado el 1/10 (commit `befbf58`) y no en suspenso; lo detectó la auditoría de la Home de la evaluación 1.5 de Faustina. 5.3 hecha, 6.2 destrabada, nota de la Fase 5 con la medición vigente (GA4 solo cuenta a quienes aceptan; el total viene de Cloudflare), roadmap y estado de canales actualizados · v22 (9/10), decisiones de Mariano sobre Instagram: 2.6 redefinida (12 carruseles de 8 láminas en tablero Blanco/Azul, sin Reel, 3 fijados #1-#3, CTA de diagnóstico en 4 de 12, tuteo); 2.7 con "Inicio" en lugar de "Empezá acá" y portadas de ícono navy de línea sobre círculo claro (también en 4.4 y D10); 2.9 en pausa; 2.1 con nombre y bio nuevos por cargar; 2.11 con el registro de Instagram; 2.12 reemplazada por las captions del documento de la grilla; 2.18 sin Reel; 4.3 y D12 con el sistema tipográfico; diseño en Instagram · Grilla final · v21 (8/10): cifras de las captions semilla #3 y #6 alineadas con el sitio (informe 3.13: HBR "entre 5 y 25 veces" con fuente; CRM sin cifra) y tope de 5 hashtags en 2.12 (Instagram, desde diciembre de 2025) · v20 (7/10): 5.6 y 5.10 corregidas según la Fase 10 del Plan de Prospección (API oficial de Google Maps en vez de Apify u Outscraper; contacto en frío por país en vez del interés legítimo del RGPD) y 5.7 sin scraper · v19 (30/9-1/10), decisiones de Mariano: Free alcanza por ahora y Starter queda como opción futura solo para la bienvenida de 3 emails (1/10; se descarta un link de agenda por canal); 5.2 hecha (propiedades de HubSpot configuradas por Mariano; la etapa vive en el "Base Core Pipeline", no en el contacto); 5.14 hecha (la UTM en el link de la agenda no identifica el canal en HubSpot Free, probado en la cuenta real; carga a mano sin pedirle nada al cliente, un link por canal al pasar a Starter; calendario de Google reconectado a HubSpot tras encontrarlo desconectado); decisión 2 resuelta (sí al Reel, 2.9); decisión 4 resuelta (HubSpot Free por ahora, Starter al activar la bienvenida de 3 emails, Brevo descartado; un solo scoring Fit/Intent/Behaviour, el del Plan de Prospección, cargado a mano en HubSpot; remitente mixto, por ahora desde el mail personal de Mariano); 5.11 reescrita y corregida (la herramienta de scoring de HubSpot es solo de Professional y Enterprise); 6.1 hecha; decisión 5 resuelta: 10.2 decidida con dos auditorías (`seo-marketing` y `web-lead`), cambio escalonado, plan en la 8.4 del Plan de SEO, sin ejecutar; nuevo homónimo BaseCore de Brasil en 10.1, D9 y la Auditoría de Marca · v18 (28/9), con OK de Mariano: 2.13 con el circuito de producción (Claude arma las piezas en Claude Design; Mariano revisa, exporta y publica; Canva y Figma opcionales); 2.9 con CapCut; 4.2 hecha (Design System en vez de Brand Kit de Canva); 4.4 con el carrusel #2 como plantilla; nueva 4.13, flujo de producción configurado (hecha) · v17 (28/9): 4.1 hecha (logos originales ordenados en PNG y SVG, isotipo solo descartado, slogan oficial en español "Creando"); decisión 1 resuelta (Figtree + DM Sans en las piezas, prueba con Claude Design en 4.2); decisión 3 resuelta (logo del schema con slogan en inglés y meta descriptions en "Creando", Plan de SEO 1.44) · v16, trabajado en vivo con Mariano el 28/9: 1.9 hecha, Instagram configurado de punta a punta (Fase 1 cerrada otra vez); la cuenta no tiene preguntas frecuentes y se reemplazan con 5 respuestas guardadas (texto en 2.17); Linktree con la agenda de HubSpot primero; admin de respaldo sumado en Business Suite; compartir Instagram → Página confirmado; nueva 5.14 (fuente del lead en las reservas directas de la agenda); 6.7 usa el mismo texto de bienvenida · v15: el paquete de privacidad (Plan de SEO 4.5: política, banner de cookies, aviso en formularios y checkbox de marketing) queda en suspenso por decisión de Mariano, armado y aprobado en preview; el banner se retiró de producción; 5.3 y 6.2 dependen de ese paquete; Cloudflare Web Analytics se mantiene como conteo total de visitas · v14: 5.1 hecha, formularios del sitio → HubSpot en producción (commit `2193af7`); 5.3 pasa a depender de la 4.5.4 del Plan de SEO (checkbox `marketingConsent` + 2 campos de HubSpot por crear); umbral 2.18 y estado de canales actualizados · v13, a pedido de Mariano (24/9): nueva 1.9 "Configuración completa de Instagram, paso a paso" (26 pasos en 6 bloques, Pendiente), Fase 1 reabierta; el paso de Controles de mensajes que estaba en 2.17 pasa a 1.9 (paso 11); umbral 2.18, roadmap y estado de canales actualizados · v12, trabajado en vivo con Mariano el 24/9: 1.8, 2.1, 2.2 y 2.3 cerradas; nueva 10.2 "IA en el posicionamiento", sin auditar todavía; cambios que Mariano hizo fuera de sesión en Facebook e Instagram (1.6, 1.7 y 1.8 cerradas: Fase 1 completa; bio de Instagram publicada, logo con slogan en inglés para todo, servicios, portada y pin de Facebook, post de 2022 de Instagram eliminado, Linktree actualizado, Instagram linkeado a Facebook); decisiones renumeradas de 8 a 5 · v11: reestructurado con el brief de Mariano: el diagnóstico de marketing pasa a la Parte 2; Social Media (preparación y exposición), Diseño gráfico, Organización de leads y Campañas son fases accionables. Contexto 2022 incorporado (objetivo 2027, target, comunicación, competidores) · Auditoría con navegador en vivo y sesión iniciada en Instagram, Facebook y LinkedIn, solo lectura, sin publicar ni interactuar: `social-content` (perfiles propios, social media, campañas), `seo-marketing` (competencia, búsquedas, diagnóstico, fuentes de empresas target), `web-lead` (verificaciones con clic, sitio, diseño gráfico, código de los formularios, leads) · Versiones anteriores: v11 (23/9, fases accionables), v10 (23/9, preparación y exposición), v9 (21/9) · Espejo de trabajo: `documentation/marketing/marketing-strategy.md`
+Marketing Strategy Basecore · Base Core · actualizado el 10 de octubre de 2026 (v26) · v26 (9-10/10), revisión conceptual con Mariano: vocabulario obligatorio en 2.11 (proceso comercial, fases, etapas, procesos, pasos, áreas, ciclo de venta; diagnóstico gratuito y completo; consultor de Base Core y responsable del proyecto, Base Core no asigna un project leader); 2.6 con el #2 reescrito ("Proceso.") y el pedido de cambios al sitio; 2.7, 2.10, 2.12, 2.17 (`quehacemos`), 3.3, 4.4, 4.5, 4.8, 4.9 y 4.10 alineadas; D3, D4, D6, D7, D8 (diferencial "separar las fases de venta" con la tesis de un vendedor para tres fases), D11 y D12 con el vocabulario nuevo; nuevo ítem en "Temas a evitar" · v25 (9/10): 2.6 con las portadas con foto de fondo y los pendientes antes de publicar (revisión de Mariano, decisión sobre el carrusel “Nadie se fue enojado”, plan semanal real) · v24 (9/10): en la tabla de 5.2, WhatsApp pasa a opcional y el email queda obligatorio también en el formulario de contacto (tarea 3.18 del Plan de SEO, en producción) · v23 (9/10): el paquete de privacidad (Plan de SEO 4.5) figura como publicado el 1/10 (commit `befbf58`) y no en suspenso; lo detectó la auditoría de la Home de la evaluación 1.5 de Faustina. 5.3 hecha, 6.2 destrabada, nota de la Fase 5 con la medición vigente (GA4 solo cuenta a quienes aceptan; el total viene de Cloudflare), roadmap y estado de canales actualizados · v22 (9/10), decisiones de Mariano sobre Instagram: 2.6 redefinida (12 carruseles de 8 láminas en tablero Blanco/Azul, sin Reel, 3 fijados #1-#3, CTA de diagnóstico en 4 de 12, tuteo); 2.7 con "Inicio" en lugar de "Empezá acá" y portadas de ícono navy de línea sobre círculo claro (también en 4.4 y D10); 2.9 en pausa; 2.1 con nombre y bio nuevos por cargar; 2.11 con el registro de Instagram; 2.12 reemplazada por las captions del documento de la grilla; 2.18 sin Reel; 4.3 y D12 con el sistema tipográfico; diseño en Instagram · Grilla final · v21 (8/10): cifras de las captions semilla #3 y #6 alineadas con el sitio (informe 3.13: HBR "entre 5 y 25 veces" con fuente; CRM sin cifra) y tope de 5 hashtags en 2.12 (Instagram, desde diciembre de 2025) · v20 (7/10): 5.6 y 5.10 corregidas según la Fase 10 del Plan de Prospección (API oficial de Google Maps en vez de Apify u Outscraper; contacto en frío por país en vez del interés legítimo del RGPD) y 5.7 sin scraper · v19 (30/9-1/10), decisiones de Mariano: Free alcanza por ahora y Starter queda como opción futura solo para la bienvenida de 3 emails (1/10; se descarta un link de agenda por canal); 5.2 hecha (propiedades de HubSpot configuradas por Mariano; la etapa vive en el "Base Core Pipeline", no en el contacto); 5.14 hecha (la UTM en el link de la agenda no identifica el canal en HubSpot Free, probado en la cuenta real; carga a mano sin pedirle nada al cliente, un link por canal al pasar a Starter; calendario de Google reconectado a HubSpot tras encontrarlo desconectado); decisión 2 resuelta (sí al Reel, 2.9); decisión 4 resuelta (HubSpot Free por ahora, Starter al activar la bienvenida de 3 emails, Brevo descartado; un solo scoring Fit/Intent/Behaviour, el del Plan de Prospección, cargado a mano en HubSpot; remitente mixto, por ahora desde el mail personal de Mariano); 5.11 reescrita y corregida (la herramienta de scoring de HubSpot es solo de Professional y Enterprise); 6.1 hecha; decisión 5 resuelta: 10.2 decidida con dos auditorías (`seo-marketing` y `web-lead`), cambio escalonado, plan en la 8.4 del Plan de SEO, sin ejecutar; nuevo homónimo BaseCore de Brasil en 10.1, D9 y la Auditoría de Marca · v18 (28/9), con OK de Mariano: 2.13 con el circuito de producción (Claude arma las piezas en Claude Design; Mariano revisa, exporta y publica; Canva y Figma opcionales); 2.9 con CapCut; 4.2 hecha (Design System en vez de Brand Kit de Canva); 4.4 con el carrusel #2 como plantilla; nueva 4.13, flujo de producción configurado (hecha) · v17 (28/9): 4.1 hecha (logos originales ordenados en PNG y SVG, isotipo solo descartado, slogan oficial en español "Creando"); decisión 1 resuelta (Figtree + DM Sans en las piezas, prueba con Claude Design en 4.2); decisión 3 resuelta (logo del schema con slogan en inglés y meta descriptions en "Creando", Plan de SEO 1.44) · v16, trabajado en vivo con Mariano el 28/9: 1.9 hecha, Instagram configurado de punta a punta (Fase 1 cerrada otra vez); la cuenta no tiene preguntas frecuentes y se reemplazan con 5 respuestas guardadas (texto en 2.17); Linktree con la agenda de HubSpot primero; admin de respaldo sumado en Business Suite; compartir Instagram → Página confirmado; nueva 5.14 (fuente del lead en las reservas directas de la agenda); 6.7 usa el mismo texto de bienvenida · v15: el paquete de privacidad (Plan de SEO 4.5: política, banner de cookies, aviso en formularios y checkbox de marketing) queda en suspenso por decisión de Mariano, armado y aprobado en preview; el banner se retiró de producción; 5.3 y 6.2 dependen de ese paquete; Cloudflare Web Analytics se mantiene como conteo total de visitas · v14: 5.1 hecha, formularios del sitio → HubSpot en producción (commit `2193af7`); 5.3 pasa a depender de la 4.5.4 del Plan de SEO (checkbox `marketingConsent` + 2 campos de HubSpot por crear); umbral 2.18 y estado de canales actualizados · v13, a pedido de Mariano (24/9): nueva 1.9 "Configuración completa de Instagram, paso a paso" (26 pasos en 6 bloques, Pendiente), Fase 1 reabierta; el paso de Controles de mensajes que estaba en 2.17 pasa a 1.9 (paso 11); umbral 2.18, roadmap y estado de canales actualizados · v12, trabajado en vivo con Mariano el 24/9: 1.8, 2.1, 2.2 y 2.3 cerradas; nueva 10.2 "IA en el posicionamiento", sin auditar todavía; cambios que Mariano hizo fuera de sesión en Facebook e Instagram (1.6, 1.7 y 1.8 cerradas: Fase 1 completa; bio de Instagram publicada, logo con slogan en inglés para todo, servicios, portada y pin de Facebook, post de 2022 de Instagram eliminado, Linktree actualizado, Instagram linkeado a Facebook); decisiones renumeradas de 8 a 5 · v11: reestructurado con el brief de Mariano: el diagnóstico de marketing pasa a la Parte 2; Social Media (preparación y exposición), Diseño gráfico, Organización de leads y Campañas son fases accionables. Contexto 2022 incorporado (objetivo 2027, target, comunicación, competidores) · Auditoría con navegador en vivo y sesión iniciada en Instagram, Facebook y LinkedIn, solo lectura, sin publicar ni interactuar: `social-content` (perfiles propios, social media, campañas), `seo-marketing` (competencia, búsquedas, diagnóstico, fuentes de empresas target), `web-lead` (verificaciones con clic, sitio, diseño gráfico, código de los formularios, leads) · Versiones anteriores: v11 (23/9, fases accionables), v10 (23/9, preparación y exposición), v9 (21/9) · Espejo de trabajo: `documentation/marketing/marketing-strategy.md`
