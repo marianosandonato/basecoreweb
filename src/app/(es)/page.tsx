@@ -217,8 +217,8 @@ export default function HomePage() {
                 before a SectionHeading, so no extra compensation was added;
                 confirmed by eye it doesn't read as glued to the header. */}
             <SectionHeading
-              eyebrow="Nosotros"
-              title="Proceso como servicio"
+              eyebrow="Proceso como servicio"
+              title="Tu proceso comercial, de punta a punta"
               align="left"
               centerOnMobile
               maxWidth={800}
@@ -271,22 +271,21 @@ export default function HomePage() {
               1280px and 1440px, where `.container-bc`'s 1200px cap keeps
               both columns' text wrapping identical either way). */}
           <div className="px-[15px] pb-[15px] text-center md:pb-[45px] md:text-left dt:flex dt:flex-col dt:justify-center dt:self-stretch">
-            <h3 className="mb-[12px] font-heading text-[18px] font-medium leading-[24px] text-heading md:text-[20px] md:leading-[32px]">
-              Implementamos procesos para impulsar el desarrollo de tu empresa, organizarla
-              y aumentar sus ventas.
-            </h3>
-
-            <p className="font-sans text-[18px] leading-[1.8] text-body">
-              Acompañamos la implementación, con un plan de trabajo detallado y plazos
-              concretos, para que el desarrollo esté monitoreado y los resultados sean
-              visibles en cada etapa.
-            </p>
-            <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-body">
+            {/* 3.17 (10/10): the cycle line moved up from the last paragraph to
+                lead this column, at heading weight, replacing the abstract
+                "Implementamos procesos..." statement. */}
+            <p className="mb-[12px] font-heading text-[20px] font-medium leading-[30px] text-heading md:text-[24px] md:leading-[36px]">
               El marketing <strong className="font-bold uppercase">atrae</strong>. La
               preventa <strong className="font-bold uppercase">califica</strong>. La venta{" "}
               <strong className="font-bold uppercase">cierra</strong>. La posventa{" "}
               <strong className="font-bold uppercase">fideliza</strong>.
               <br /> Ese es el proceso completo que trabajamos en Base Core.
+            </p>
+
+            <p className="font-sans text-[18px] leading-[1.8] text-body">
+              Acompañamos la implementación, con un plan de trabajo detallado y plazos
+              concretos, para que el desarrollo esté monitoreado y los resultados sean
+              visibles en cada paso.
             </p>
           </div>
         </div>
@@ -313,7 +312,6 @@ export default function HomePage() {
         <SectionHeading
           eyebrow="NUESTRO TRABAJO"
           title="Empresas con las que trabajamos"
-          description="Organizaciones con las que ya implementamos procesos comerciales, marketing y tecnología."
           maxWidth={700}
           className="mb-[40px]"
         />

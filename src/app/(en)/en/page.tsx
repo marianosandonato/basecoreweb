@@ -213,8 +213,8 @@ export default function HomePageEn() {
             {/* Mobile-only flat image removed (12/9) -- mirrors the ES Home's
                 own fix, see that file for the full note. */}
             <SectionHeading
-              eyebrow="About Us"
-              title="Process as a Service"
+              eyebrow="Process as a Service"
+              title="Your sales process, end to end"
               align="left"
               centerOnMobile
               maxWidth={800}
@@ -222,8 +222,8 @@ export default function HomePageEn() {
             />
 
             <h3 className="mb-[12px] font-heading text-[18px] font-medium leading-[24px] text-heading md:text-[20px] md:leading-[32px]">
-              Base Core delivers consulting services across every stage of sales and
-              marketing.
+              Base Core offers consulting across every phase of the sales process:
+              marketing, presales, sales and post-sales.
             </h3>
 
             <CheckList items={aboutChecklist} centerOnMobile />
@@ -243,21 +243,19 @@ export default function HomePageEn() {
               12/9, was dt:self-start, before that dt:self-end + dt:pb-0) --
               mirrors the ES Home's own fix, see that file for the full note. */}
           <div className="px-[15px] pb-[15px] text-center md:pb-[45px] md:text-left dt:flex dt:flex-col dt:justify-center dt:self-stretch">
-            <h3 className="mb-[12px] font-heading text-[18px] font-medium leading-[24px] text-heading md:text-[20px] md:leading-[32px]">
-              We implement processes that drive your company&apos;s growth, help you get
-              organized, and increase your sales.
-            </h3>
-
-            <p className="font-sans text-[18px] leading-[1.8] text-body">
-              We support the implementation with a detailed work plan and concrete
-              timelines, so progress is tracked and results are visible at every stage.
-            </p>
-            <p className="mt-[20px] font-sans text-[18px] leading-[1.8] text-body">
+            {/* 3.17 (10/10): mirrors the ES Home -- the cycle line leads this
+                column at heading weight. */}
+            <p className="mb-[12px] font-heading text-[20px] font-medium leading-[30px] text-heading md:text-[24px] md:leading-[36px]">
               Marketing <strong className="font-bold uppercase">attracts</strong>. Presales{" "}
               <strong className="font-bold uppercase">qualifies</strong>. Sales{" "}
               <strong className="font-bold uppercase">closes</strong>. Post-sales{" "}
               <strong className="font-bold uppercase">retains</strong>.
               <br /> That&apos;s the complete process we work on at Base Core.
+            </p>
+
+            <p className="font-sans text-[18px] leading-[1.8] text-body">
+              We support the implementation with a detailed work plan and concrete
+              timelines, so progress is tracked and results are visible at every step.
             </p>
           </div>
         </div>
@@ -272,7 +270,6 @@ export default function HomePageEn() {
         <SectionHeading
           eyebrow="OUR WORK"
           title="Companies we've worked with"
-          description="Organizations where we've already implemented commercial processes, marketing and technology."
           maxWidth={700}
           className="mb-[40px]"
         />
