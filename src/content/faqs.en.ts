@@ -5,7 +5,7 @@ import type { FaqData } from "./types";
  * commitments Mariano approved for the ES version on 3/10/2026 (no prices, no
  * promised figures; the free first step is an initial discovery meeting, the
  * full diagnosis is part of the engagement). Keywords from the EN
- * section of documentation/seo/mapa-keywords.md. Rendered by FaqSection.
+ * section of the keyword map (basecore-contexto/mapa-keywords.md). Rendered by FaqSection.
  */
 
 export const homeFaqEn: FaqData = {

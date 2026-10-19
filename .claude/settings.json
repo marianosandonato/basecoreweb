@@ -2,5 +2,23 @@
   "enabledPlugins": {
     "marketing-skills@marketingskills": true,
     "frontend-design@claude-plugins-official": true
+  },
+  "permissions": {
+    "additionalDirectories": [
+      "../basecore-contexto"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR/..\" && { [ -d basecore-contexto/.git ] || git clone -q https://github.com/marianosandonato/basecore-contexto.git; } && git -C basecore-contexto pull -q --ff-only || echo 'Aviso: no se pudo traer el repo basecore-contexto (contexto de Base Core). Avisale a Mariano antes de producir algo que hable de Base Core.'"
+          }
+        ]
+      }
+    ]
   }
 }

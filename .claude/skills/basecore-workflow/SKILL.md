@@ -49,7 +49,7 @@ Cuando exista posibilidad de repetir una decisión, experimento o problema anter
 
 **Estos documentos son contexto, no autoridad absoluta.** Si la evidencia actual contradice una regla o decisión histórica, gana la evidencia actual — señalá la contradicción en vez de aplicar la regla vieja a ciegas.
 
-**Verificación de frescura del Plan de SEO / Mapa de Keywords (paso de rutina):** estos dos viven como artifact (fuente de verdad) y como espejo en `documentation/seo/` (lo único que pueden leer los sub-agentes — ver `CLAUDE.md`, no tienen la tool `Artifact`). Antes de apoyar una decisión de SEO en el espejo, quien tenga la tool `Artifact` (la sesión principal, no un sub-agente) debe confirmar que sigue al día: `action: "list"` da el `last-updated` de cada artifact sin traer todo el contenido — si es más reciente que la fecha de "Última sincronización" anotada al principio del espejo, resincronizar (`markitdown <html-local> -o documentation/seo/<archivo>.md`) antes de seguir. Un sub-agente que no pueda hacer esta verificación y sospeche que el espejo está viejo (por ejemplo, contradice algo que él mismo observó en el código) debe señalarlo en vez de asumir que está al día.
+**Verificación de frescura del Plan de SEO / Mapa de Keywords (paso de rutina):** estos dos viven como artifact (fuente de verdad) y como espejo (el Plan en `documentation/seo/plan-seo.md`, el Mapa en `../basecore-contexto/mapa-keywords.md`; lo único que pueden leer los sub-agentes — ver `CLAUDE.md`, no tienen la tool `Artifact`). Antes de apoyar una decisión de SEO en el espejo, quien tenga la tool `Artifact` (la sesión principal, no un sub-agente) debe confirmar que sigue al día: `action: "list"` da el `last-updated` de cada artifact sin traer todo el contenido — si es más reciente que la fecha de "Última sincronización" anotada al principio del espejo, resincronizar (`markitdown <html-local> -o <ruta-del-espejo>`) antes de seguir. Un sub-agente que no pueda hacer esta verificación y sospeche que el espejo está viejo (por ejemplo, contradice algo que él mismo observó en el código) debe señalarlo en vez de asumir que está al día.
 
 ## 4. RESEARCH
 
@@ -61,7 +61,7 @@ Investigá **solamente cuando la información externa pueda cambiar una decisió
 |---|---|
 | Dato puntual con fuente oficial: medidas, límites, precios, trámites, documentación de una API | `WebSearch` + `WebFetch` a la página oficial |
 | Cómo se ve o qué tiene un sitio, un perfil, cuántos seguidores | Playwright (solo lectura) |
-| Antecedentes del proyecto | artifacts, espejos en `documentation/` y docs del repo |
+| Antecedentes del proyecto | artifacts, espejos en `documentation/` y en `../basecore-contexto/`, y docs del repo |
 | Juntar varias fuentes con citas, medir visibilidad en IA (5.10), estudio de fondo | Perplexity: **recomendalo y esperá el OK de Mariano** |
 
 Si hace falta Perplexity: terminá lo que puedas con lo gratis y en el reporte recomendá la consulta concreta (`perplexity_ask`, `perplexity_search` o `perplexity_research`, la pregunta y qué decisión cambia). Mariano decide si se corre. Excepción: que su pedido ya diga que se use Perplexity. `perplexity_research` es la más cara: nunca más de una por tarea. Nunca repitas la misma consulta en una tarea; reusá lo encontrado.
